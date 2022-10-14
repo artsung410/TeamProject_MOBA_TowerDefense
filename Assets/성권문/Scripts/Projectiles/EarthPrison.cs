@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-// ###############################################
-//             NAME : ARTSUNG                      
-//             MAIL : artsung410@gmail.com         
-// ###############################################
-public class Laser : MonoBehaviour
+
+    // ###############################################
+    //             NAME : ARTSUNG                      
+    //             MAIL : artsung410@gmail.com         
+    // ###############################################
+
+public class EarthPrison : MonoBehaviour
 {
-    public int damage = 100;
+    public int damage = 50;
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             Damage(other.gameObject.transform);
         }
