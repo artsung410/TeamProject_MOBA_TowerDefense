@@ -8,7 +8,7 @@ using UnityEngine.AI;
     //             MAIL : artsung410@gmail.com         
     // ###############################################
 
-public class asdasd : MonoBehaviour
+public class EnemeyMinion : MonoBehaviour
 {
     [SerializeField]
     Transform tg;
