@@ -66,13 +66,14 @@ public class PlayerBehaviour : MonoBehaviour
             // 마우스위치에서 쏜 raycast가 물체에 맞는다면, 그곳이 navmesh도착지점
             if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out Hit, Mathf.Infinity))
             {
-                Debug.DrawLine(Cam.ScreenPointToRay(Input.mousePosition).origin, Cam.ScreenPointToRay(Input.mousePosition).direction * Mathf.Infinity, Color.blue, 1f);
+                //Debug.DrawLine(Cam.ScreenPointToRay(Input.mousePosition).origin, Cam.ScreenPointToRay(Input.mousePosition).direction * Mathf.Infinity, Color.blue, 1f);
 
                 MoveOntheGround(Hit);
                 GetTargetedObject();
-                MoveEnemyPosition();
             }
         }
+
+        MoveEnemyPosition();
     }
 
 
@@ -112,31 +113,51 @@ public class PlayerBehaviour : MonoBehaviour
 
     public void MoveEnemyPosition()
     {
+        // 타겟이 있을때
         if (targetedEnemy != null)
         {
-            if (Vector3.Distance(transform.position, targetedEnemy.transform.position) > _statScript.attackRange)
+            float dist = Vector3.Distance(transform.position, targetedEnemy.transform.position) - 0.5f;
+
+            // 타겟이 공격범위 밖일때
+            if (dist > _statScript.attackRange)
             {
+                // 그 위치로 이동한다
+                _agent.SetDestination(targetedEnemy.transform.position);
                 _agent.stoppingDistance = _statScript.attackRange;
+
+                Quaternion rotationToLookAt = Quaternion.LookRotation(targetedEnemy.transform.position - transform.position);
+
+                float rotationY = Mathf.SmoothDampAngle(transform.eulerAngles.y,
+                    rotationToLookAt.eulerAngles.y,
+                    ref RotateVelocity,
+                    RotateSpeed * (Time.deltaTime * 5));
+
+                transform.eulerAngles = new Vector3(0, rotationY, 0);
             }
             else
             {
-                _agent.stoppingDistance = Vector3.Distance(transform.position, targetedEnemy.transform.position);
+                _agent.SetDestination(targetedEnemy.transform.position);
+                _agent.stoppingDistance = _statScript.attackRange;
 
+                // 타겟을 바라본다
+                Quaternion rotationToLookAt = Quaternion.LookRotation(targetedEnemy.transform.position - transform.position);
+
+                float rotationY = Mathf.SmoothDampAngle(transform.eulerAngles.y,
+                    rotationToLookAt.eulerAngles.y,
+                    ref RotateVelocity,
+                    RotateSpeed * (Time.deltaTime * 5));
+
+                transform.eulerAngles = new Vector3(0, rotationY, 0);
+
+                // 내가 근접캐라면
                 if (heroAttackType == HeroAttackType.Melee)
                 {
+                    Debug.Log("뭐야");
+                    // 공격 수행 스위치를 true로 바꿈
                     perfomMeleeAttack = true;
                 }
             }
 
-            _agent.SetDestination(targetedEnemy.transform.position);
-            Quaternion rotationToLookAt = Quaternion.LookRotation(targetedEnemy.transform.position - transform.position);
-
-            float rotationY = Mathf.SmoothDampAngle(transform.eulerAngles.y,
-                rotationToLookAt.eulerAngles.y,
-                ref RotateVelocity,
-                RotateSpeed * (Time.deltaTime * 5));
-
-            transform.eulerAngles = new Vector3(0, rotationY, 0);
         }
     }
 
