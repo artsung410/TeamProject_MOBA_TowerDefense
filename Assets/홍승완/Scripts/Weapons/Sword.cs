@@ -9,11 +9,12 @@ public class Sword : MonoBehaviour
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    HeroCombat combat;
+    //HeroCombat combat;
+    PlayerBehaviour _playerScript;
 
     private void Awake()
     {
-        combat = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroCombat>();
+        _playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -21,9 +22,9 @@ public class Sword : MonoBehaviour
         // enemy에 닿았지만 targeted가 null일때 널오류 남
         if (other.CompareTag("Enemy"))
         {
-            if (combat != null)
+            if (_playerScript != null)
             {
-                combat.MeleeAttack();
+                _playerScript.MeleeAttack();
                 Debug.Log("접촉함");
             }
             else

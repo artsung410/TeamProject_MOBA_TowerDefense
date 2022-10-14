@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CamFollower : MonoBehaviour
+public class CameraHandler : MonoBehaviour
 {
     // ###############################################
     //             NAME : HongSW                      
@@ -12,7 +12,7 @@ public class CamFollower : MonoBehaviour
 
     #region CAM FOLLOW
     [Header("카메라 고정")]
-    public Transform Player;
+    //public Transform Player;
     private Vector3 _cameraOffset;
 
     [Range(0.01f, 1)]
@@ -48,7 +48,8 @@ public class CamFollower : MonoBehaviour
 
     void Start()
     {
-        _cameraOffset = transform.position - Player.position;
+        //_cameraOffset = transform.position - Player.position;
+        _cameraOffset = transform.position - PlayerBehaviour.CurrentPlayerPos;
         _camFOV = _cam.fieldOfView;
 
         NumericalInialize();
@@ -63,10 +64,10 @@ public class CamFollower : MonoBehaviour
         
         // 스크롤 관련
         ScrollSmoothness = 0.5f;
-        FollowSmoothness = 0.5f;
+        FollowSmoothness = 0.1f;
 
         // edge 이동관련
-        _camMoveSpeed = 20f;
+        _camMoveSpeed = 30f;
         CamViewChanged = false;
     }
 
@@ -145,7 +146,8 @@ public class CamFollower : MonoBehaviour
 
     private void CameraFollow()
     {
-        Vector3 newPos = Player.position + _cameraOffset;
+        //Vector3 newPos = Player.position + _cameraOffset;
+        Vector3 newPos = PlayerBehaviour.CurrentPlayerPos + _cameraOffset;
         transform.position = Vector3.Slerp(transform.position, newPos, FollowSmoothness);
     }
 }

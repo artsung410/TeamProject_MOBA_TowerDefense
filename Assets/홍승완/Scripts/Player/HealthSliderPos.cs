@@ -9,11 +9,13 @@ public class HealthSliderPos : MonoBehaviour
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    [SerializeField] Camera _cam;
 
     // lateUpdate에서 처리할것
     private void LateUpdate()
     {
-        transform.LookAt(Camera.main.transform);
+        // 3D체력게이지는 카메라르 바라본다
+        transform.LookAt(_cam.transform);
         transform.Rotate(0, 180, 0);
     }
 }

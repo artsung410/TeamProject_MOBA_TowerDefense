@@ -12,8 +12,8 @@ public class PlayerAnimation : MonoBehaviour
 
     NavMeshAgent agent;
     Animator animator;
-    HeroCombat combat;
     Stats playerStats;
+    PlayerBehaviour _playerScript;
 
     float motionSmoothTime = 0.1f;
     
@@ -21,13 +21,8 @@ public class PlayerAnimation : MonoBehaviour
     {
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        combat = GetComponent<HeroCombat>();
         playerStats = GetComponent<Stats>();
-    }
-    
-    void Start()
-    {
-
+        _playerScript = GetComponent<PlayerBehaviour>();
     }
 
     void Update()
@@ -45,7 +40,7 @@ public class PlayerAnimation : MonoBehaviour
     IEnumerator MeleeAttackInterval()
     {
         yield return new WaitForSeconds(2f);
-        combat.perfomMeleeAttack = false;
+        _playerScript.perfomMeleeAttack = false;
         Debug.Log("check");
     }
 
@@ -53,9 +48,9 @@ public class PlayerAnimation : MonoBehaviour
     private void CombatMotion()
     {
         //Debug.Log(randomPose);
-        if (combat.targetedEnemy != null)
+        if (_playerScript.targetedEnemy != null)
         {
-            if (combat.perfomMeleeAttack == true)
+            if (_playerScript.perfomMeleeAttack == true)
             {
                 // 공격 모션 재생
                 animator.SetBool("Attack", true);
@@ -66,12 +61,11 @@ public class PlayerAnimation : MonoBehaviour
                 // 공격 모션 재생 속도
                 animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
                 StartCoroutine(MeleeAttackInterval());
-
             }
         }
         else
         {
-            if (combat.perfomMeleeAttack == false)
+            if (_playerScript.perfomMeleeAttack == false)
             {
                 //Debug.Log("공격 취소");
                 animator.SetBool("Attack", false);

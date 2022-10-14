@@ -16,12 +16,16 @@ public class Stats : MonoBehaviour
     public float attackDmg;
     public float attackSpeed;
     public float attackTime;
+    public float attackRange;
 
-    HeroCombat _heroCombatScripts;
+    //HeroCombat _heroCombatScripts;
+    PlayerBehaviour _playerScript;
 
     private void Awake()
     {
-        _heroCombatScripts = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroCombat>();
+        //_heroCombatScripts = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroCombat>();
+
+        _playerScript = GetComponent<PlayerBehaviour>();
     }
 
     void Start()
@@ -40,8 +44,8 @@ public class Stats : MonoBehaviour
         if (health <= 0)
         {
             Destroy(gameObject);
-            _heroCombatScripts.targetedEnemy = null;
-            _heroCombatScripts.perfomMeleeAttack = false;
+            _playerScript.targetedEnemy = null;
+            _playerScript.perfomMeleeAttack = false;
         }
     }
 

@@ -26,7 +26,7 @@ public class CircularSector : MonoBehaviour
 
     private void Update()
     {
-        TargetOnSlashScope(target);
+        //TargetOnSlashScope(target);
     }
 
     /// <summary>
