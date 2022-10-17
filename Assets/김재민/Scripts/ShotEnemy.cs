@@ -47,6 +47,10 @@ public class ShotEnemy : Enemybase
             {
                 break;
             }
+            if (_target == null)
+            {
+                _target = _PrevTarget;
+            }
             _animator.SetBool("Attack",false);
             canShot = false;
             _navMeshAgent.SetDestination(_target.position);

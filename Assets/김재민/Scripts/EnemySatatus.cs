@@ -46,6 +46,10 @@ public class EnemySatatus : Enemybase
     {
         while (true)
         {
+            if (_target == null)
+            {
+                _target = _PrevTarget;
+            }
             _animator.SetBool("Attack",false);
             _navMeshAgent.SetDestination(_target.position);
             transform.LookAt(_target.position);
