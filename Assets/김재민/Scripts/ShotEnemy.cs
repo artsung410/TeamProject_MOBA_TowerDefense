@@ -73,7 +73,11 @@ public class ShotEnemy : Enemybase
 
             _animator.SetBool("Attack", true);
             canShot = true;
-            
+            if(_target == null)
+            {
+                _target = _PrevTarget; 
+            }
+
             transform.LookAt(_target.position);
            
 
