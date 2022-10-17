@@ -11,7 +11,7 @@ public class Bullet : MonoBehaviour
 
     public float speed = 70f;
 
-    public int damage = 50;
+    public int damage = 20;
 
     public float explosionRadius = 0f;
     public GameObject ImpactEffect;
@@ -75,11 +75,12 @@ public class Bullet : MonoBehaviour
 
     void Damage (Transform enemy)
     {
-        Enemy e = enemy.GetComponent<Enemy>();
+        EnemyMinion e = enemy.GetComponent<EnemyMinion>();
 
         if (e != null)
         {
             e.TakeDamage(damage);
+            Debug.Log("불렛 데미지 적용");
         }
     }
 
