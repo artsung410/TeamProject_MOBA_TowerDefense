@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
+
 
 public enum HeroAttackType
 {
@@ -9,7 +11,7 @@ public enum HeroAttackType
     Ranged,
 }
 
-public class PlayerBehaviour : MonoBehaviour
+public class PlayerBehaviour : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
@@ -56,7 +58,15 @@ public class PlayerBehaviour : MonoBehaviour
     private void Update()
     {
         // 플레이어 위치정보 카메라로 보냄
-        CurrentPlayerPos = transform.position;
+        if (photonView.IsMine)
+        {
+            CurrentPlayerPos = transform.position;
+
+        }
+    }
+
+    public void MoveTo()
+    {
 
         HeroAliveCheck();
 
