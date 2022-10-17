@@ -44,8 +44,9 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
         {
             bool gearable = false;
             // 인벤토리 컴포넌트를 가져온다.
-            Inventory inventory = transform.parent.parent.parent.parent.parent.GetComponent<Inventory>();
-            
+            Inventory inventory = GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>();
+            //Inventory inventory = transform.parent.parent.parent.parent.parent.GetComponent<Inventory>();
+
             // EquipmentSystem(케릭터 장비 창) 컴포넌트를 가져오는데 성공했다면
             if (eS != null)
             {
