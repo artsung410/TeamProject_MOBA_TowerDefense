@@ -20,7 +20,8 @@ public class OtherTab : MonoBehaviour
         // ¥Ÿ∏• ≈‹¿∫ ¥Ÿ ¥›±‚
         if (openOtherTab)
         {
-            gameObject.transform.parent.parent.parent.GetChild(1).GetChild(0).GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.parent.parent.GetChild(1).GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.parent.parent.GetChild(1).GetChild(1).gameObject.SetActive(false);
             openOtherTab = false;
         }
     }

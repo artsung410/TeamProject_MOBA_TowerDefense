@@ -25,7 +25,7 @@ public class InherenceButton : MonoBehaviour
                 {
                     continue;
                 }
-                gameObject.transform.parent.parent.GetChild(i).GetChild(1).gameObject.SetActive(false);
+                gameObject.transform.parent.parent.GetChild(i).GetChild(0).gameObject.SetActive(false);
             }
         }
     }

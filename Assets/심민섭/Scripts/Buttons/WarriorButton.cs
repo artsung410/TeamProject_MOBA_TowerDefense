@@ -20,9 +20,13 @@ public class WarriorButton : MonoBehaviour
         // ¥Ÿ∏• ≈‹¿∫ ¥Ÿ ¥›±‚
         if (openWarriorTab)
         {
-            for (int i = 1; i < 4; i++)
+            for (int i = 0; i < 4; i++)
             {
-                gameObject.transform.parent.parent.GetChild(i).GetChild(1).gameObject.SetActive(false);
+                if (i == 0)
+                {
+                    continue;
+                }
+                gameObject.transform.parent.parent.GetChild(i).GetChild(0).gameObject.SetActive(false);
             }
             //"WizardTab", "InherenceTab", "AssassinTab"); "WarriorTab"
         }

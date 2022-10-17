@@ -16,11 +16,11 @@ public class CardTab : MonoBehaviour
     {
         openCardTab = true;
         gameObject.SetActive(true);
-
+        gameObject.transform.parent.GetChild(0).gameObject.SetActive(true);
         // ¥Ÿ∏• ≈‹¿∫ ¥Ÿ ¥›±‚
         if (openCardTab)
         {
-            gameObject.transform.parent.parent.parent.GetChild(2).GetChild(0).GetChild(0).gameObject.SetActive(false);
+            gameObject.transform.parent.parent.GetChild(2).GetChild(0).gameObject.SetActive(false);
             openCardTab = false;
         }
     }

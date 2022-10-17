@@ -24,7 +24,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         // 드래그아이템 Rect 위치
         rectTransformSlot = GameObject.FindGameObjectWithTag("DraggingItem").GetComponent<RectTransform>();
         // 인벤토리 컴포넌트
-        inventory = transform.parent.parent.parent.parent.parent.GetComponent<Inventory>();
+        inventory = GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>();
         // 드래그 아이템 박스 위치
         draggedItemBox = GameObject.FindGameObjectWithTag("DraggingItem").transform;
     }
