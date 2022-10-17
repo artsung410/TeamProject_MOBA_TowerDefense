@@ -7,10 +7,9 @@ using UnityEngine;
     //             MAIL : artsung410@gmail.com         
     // ###############################################
 
-public class EarthPrison : MonoBehaviour
+public class ArcShot : MonoBehaviour
 {
-    public float damage = 30;
-
+    public int damage = 30;
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy"))
@@ -26,7 +25,7 @@ public class EarthPrison : MonoBehaviour
         if (e != null)
         {
             e.TakeDamage(damage);
-            Debug.Log("암석 데미지 적용");
+            Debug.Log("부채꼴 데미지 적용");
         }
     }
 }

@@ -1,0 +1,25 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+    // ###############################################
+    //             NAME : ARTSUNG                      
+    //             MAIL : artsung410@gmail.com         
+    // ###############################################
+
+public abstract class Turret : MonoBehaviour
+{
+    public int Hp;
+    public int PlayerId;
+
+    public void TakeDamage(int Damage)
+    {
+        if (Damage <= 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Hp -= Damage;
+    }
+}

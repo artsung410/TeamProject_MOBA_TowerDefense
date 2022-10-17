@@ -7,7 +7,7 @@ using UnityEngine;
 // ###############################################
 public class Laser : MonoBehaviour
 {
-    public int damage = 100;
+    public float damage = 20;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -19,11 +19,12 @@ public class Laser : MonoBehaviour
 
     void Damage(Transform enemy)
     {
-        Enemy e = enemy.GetComponent<Enemy>();
+        EnemyMinion e = enemy.GetComponent<EnemyMinion>();
 
         if (e != null)
         {
             e.TakeDamage(damage);
+            Debug.Log("레이저 데미지 적용");
         }
     }
 }
