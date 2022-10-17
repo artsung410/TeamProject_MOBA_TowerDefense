@@ -72,13 +72,13 @@ public class CircularSector : MonoBehaviour
 
     // 유니티에서 제공해주는 메소드
     // 부채꼴을 그리기 위해 사용
-    private void OnDrawGizmos()
-    {
-        Handles.color = isCollision ? _red : _blue;
+    //private void OnDrawGizmos()
+    //{
+    //    Handles.color = isCollision ? _red : _blue;
 
-        // DrawSolidArc(시작점, 노멀(법선)벡터, 그려줄 방향 벡터, 각도, 반지름)
-        Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angleRange/2, radius);
-        Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angleRange/2, radius);
-    }
+    //    // DrawSolidArc(시작점, 노멀(법선)벡터, 그려줄 방향 벡터, 각도, 반지름)
+    //    Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angleRange/2, radius);
+    //    Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angleRange/2, radius);
+    //}
 
 }

@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class CameraHandler : MonoBehaviour
+public class CameraHandler : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
@@ -41,18 +42,25 @@ public class CameraHandler : MonoBehaviour
     bool CamViewChanged;
     #endregion
 
+    public int Id;
+
     private void Awake()
     {
-        _cam = GetComponent<Camera>();
+        if (photonView.IsMine)
+        {
+            _cam = GetComponent<Camera>();
+        }
     }
 
     void Start()
     {
-        //_cameraOffset = transform.position - Player.position;
-        _cameraOffset = transform.position - PlayerBehaviour.CurrentPlayerPos;
-        _camFOV = _cam.fieldOfView;
+        if (photonView.IsMine)
+        {
+            //_cameraOffset = transform.position - PlayerBehaviour.CurrentPlayerPos;
+            _camFOV = _cam.fieldOfView;
 
-        NumericalInialize();
+            NumericalInialize();
+        }
     }
 
     private void NumericalInialize()
@@ -61,7 +69,7 @@ public class CameraHandler : MonoBehaviour
         _zoomSpeed = 30f;
         _minZoomInValue = 20f;
         _maxZoomOutValue = 60f;
-        
+
         // 스크롤 관련
         ScrollSmoothness = 0.5f;
         FollowSmoothness = 0.1f;
@@ -73,27 +81,31 @@ public class CameraHandler : MonoBehaviour
 
     private void Update()
     {
-        CameraScroll();
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (photonView.IsMine)
         {
-            CamViewChanged = !CamViewChanged;
-        }
+            CameraScroll();
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                CamViewChanged = !CamViewChanged;
+            }
 
 
-        if (CamViewChanged)
-        {
-            //Debug.Log("카메라 이동가능");
-            CameraRoam();
+            if (CamViewChanged)
+            {
+                //Debug.Log("카메라 이동가능");
+                CameraRoam();
+            }
+            else
+            {
+                //Debug.Log("카메라 고정");
+                CameraFollow();
+            }
         }
         else
         {
-            //Debug.Log("카메라 고정");
-            CameraFollow();
+            Destroy(gameObject);
         }
-
-        
     }
 
     private void CameraRoam()
@@ -147,7 +159,7 @@ public class CameraHandler : MonoBehaviour
     private void CameraFollow()
     {
         //Vector3 newPos = Player.position + _cameraOffset;
-        Vector3 newPos = PlayerBehaviour.CurrentPlayerPos + _cameraOffset;
+        Vector3 newPos = PlayerBehaviour.CurrentPlayerPos + new Vector3(0f, 15f, -10f);
         transform.position = Vector3.Slerp(transform.position, newPos, FollowSmoothness);
     }
 }
