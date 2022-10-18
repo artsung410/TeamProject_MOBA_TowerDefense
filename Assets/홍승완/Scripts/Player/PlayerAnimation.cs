@@ -44,7 +44,7 @@ public class PlayerAnimation : MonoBehaviour
         Debug.Log("check");
     }
 
-    float attackAnimationPose = 0;
+    //float attackAnimationPose = 0;
     private void CombatMotion()
     {
         //Debug.Log(randomPose);
@@ -56,7 +56,7 @@ public class PlayerAnimation : MonoBehaviour
                 animator.SetBool("Attack", true);
 
                 // 무작위 공격 자세
-                animator.SetFloat("AttackPose", attackAnimationPose);
+                //animator.SetFloat("AttackPose", attackAnimationPose);
 
                 // 공격 모션 재생 속도
                 animator.SetFloat("AttackSpeed", playerStats.attackSpeed);

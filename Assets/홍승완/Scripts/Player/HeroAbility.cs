@@ -1,60 +1,64 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class HeroAbility : MonoBehaviour
+public class HeroAbility : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public List<GameObject> Abillity;
-    
+    public GameObject[] AbilityPrefabs;
+    public Transform skillSpawn;
+
+
+    private bool isCoolMode;
+
     void Awake()
     {
-        
+
     }
-    
+
     void Start()
     {
-        
+        isCoolMode = false;
     }
 
     void Update()
     {
-        
+        if (photonView.IsMine)
+        {
+            AbilityInput();
+            
+        }
     }
 
-    private void AbillityQ()
+
+    private void AbilityInput()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            // 들어갈 스킬
-        }
-    }
+            Instantiate(AbilityPrefabs[0], skillSpawn);
 
-    private void AbillityW()
-    {
+        }
         if (Input.GetKeyDown(KeyCode.W))
         {
+            Instantiate(AbilityPrefabs[1], skillSpawn);
 
         }
-    }
-
-    private void AbillityE()
-    {
         if (Input.GetKeyDown(KeyCode.E))
         {
+            Instantiate(AbilityPrefabs[2], skillSpawn);
 
         }
-    }
-
-    private void AbillityR()
-    {
         if (Input.GetKeyDown(KeyCode.R))
         {
+            Instantiate(AbilityPrefabs[3], skillSpawn);
 
         }
     }
+
+
 }
