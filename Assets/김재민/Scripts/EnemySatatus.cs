@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
-public class EnemySatatus : Enemybase
+public class EnemySatatus : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      

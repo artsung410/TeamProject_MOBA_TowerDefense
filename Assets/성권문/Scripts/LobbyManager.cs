@@ -14,9 +14,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public TextMeshProUGUI connectionInfoText; // 네트워크 상태 텍스트
     public Button joinButton;
-
+    public Button EnterButton;
     private void Start()
     {
+        
         // 포톤 네트워크에 게임 버전을 명시해주어야함
         PhotonNetwork.GameVersion = gameVersion;
 
@@ -79,7 +80,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         // 로드씬으로 진행하면 나만 넘어가고, 방에있는사람은 안넘어감..
 
-        // 그래서 LoadLevel을 이용해서 씬을 동기화할 필요가 있음
+        
         PhotonNetwork.LoadLevel("Prototype_1");
+       
+        
+        // 그래서 LoadLevel을 이용해서 씬을 동기화할 필요가 있음
     }
 }

@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class BulletMove : MonoBehaviour
+public class BulletMove : MonoBehaviourPun
+
 {
     // ###############################################
     //             NAME : KimJaeMin                      

@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
-public class ShotEnemy : Enemybase
+public class ShotEnemy : MonoBehaviourPun
+
 {
     // ###############################################
     //             NAME : KimJaeMin                      

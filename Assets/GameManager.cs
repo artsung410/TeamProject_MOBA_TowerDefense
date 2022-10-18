@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
 
+
     private void Start()
     {
         SpawnPlayer();
@@ -40,6 +41,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         // a플레이어 세상에서 a플레이어를 생성함, 그다음에 b c d 세상에 a의 복제본이 생성됨.
         PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
     }
+
+    
+
+
 
     public override void OnLeftRoom()
     {
