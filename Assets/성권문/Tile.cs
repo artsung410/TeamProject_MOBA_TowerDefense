@@ -13,18 +13,18 @@ public class Tile : MonoBehaviourPun
     {
         isBuild = true;
         currentBuildedTower = PhotonNetwork.Instantiate(towerPrefab.name, transform.position, Quaternion.identity);
-        GameManager.Instance.CurrentTowers.Add(currentBuildedTower);
 
-        if (photonView.IsMine)
+        if (id < 4)
         {
-            currentBuildedTower.tag = "Player";
-            currentBuildedTower.GetComponentInParent<Turret>().enemyTag = "Enemy";
+            currentBuildedTower.tag = "Blue";
+            currentBuildedTower.GetComponent<Turret>().enemyTag = "Red";
         }
-
         else
         {
-            currentBuildedTower.tag = "Enemy";
-            currentBuildedTower.GetComponentInParent<Turret>().enemyTag = "Player";
+            currentBuildedTower.tag = "Red";
+            currentBuildedTower.GetComponent<Turret>().enemyTag = "Blue";
         }
+
+        GameManager.Instance.CurrentTowers.Add(currentBuildedTower);
     }
 }

@@ -11,7 +11,6 @@ using Photon.Pun;
 public abstract class Turret : MonoBehaviourPun
 {
     public int Hp;
-    public int PlayerId;
 
     public void TakeDamage(int Damage)
     {

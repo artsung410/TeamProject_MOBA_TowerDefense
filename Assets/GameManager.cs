@@ -22,8 +22,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     public Tile[] tiles;
-    public GameObject[] towerPrefabs;
-
     private static GameManager instance;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
@@ -32,19 +30,25 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnPlayer();
+
     }
 
     private void SpawnPlayer()
     {
-        // 현재 방에 들어온 로컬 플레이어의 나 자신의 번호를 가져온다.
         var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+
+        if (localPlayerIndex > 1)
+        {
+            OnLeftRoom();
+        }
+
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
-        // a플레이어 세상에서 a플레이어를 생성함, 그다음에 b c d 세상에 a의 복제본이 생성됨.
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
+        GameObject playerPf = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
 
         if (localPlayerIndex == 0)
         {
+            playerPf.tag = "Blue";
             for (int i = 0; i < 4; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
@@ -53,6 +57,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
+            playerPf.tag = "Red";
             for (int i = 0; i < 4; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
