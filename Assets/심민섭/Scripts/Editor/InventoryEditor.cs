@@ -77,7 +77,7 @@ public class InventoryEditor : Editor
         showInventorySettings = EditorGUILayout.Foldout(showInventorySettings, "Inventory Settings");
         if (showInventorySettings)
         {
-            //sizeOfInventoryGUI();
+            sizeOfInventoryGUI();
         }
         GUILayout.EndVertical();
 
@@ -157,14 +157,14 @@ public class InventoryEditor : Editor
             inv.stackableSettings();
         }
 
-        EditorGUI.BeginChangeCheck();
+        /*EditorGUI.BeginChangeCheck();
         EditorGUILayout.IntSlider(inventorySlotSize, 20, 100, new GUIContent("Slot Size"));                                                                                        //intfield for the slotsize
         if (EditorGUI.EndChangeCheck())                                                                                                        //if intfield got changed
         {
             inv.setImportantVariables();
             inv.adjustInventorySize();
             inv.updateSlotSize(inventorySlotSize.intValue);
-        }
+        }*/
 
         EditorGUI.BeginChangeCheck();
         EditorGUILayout.IntSlider(inventoryIconSize, 20, 100, new GUIContent("Icon Size"));                                                                                        //intfield for the slotsize
