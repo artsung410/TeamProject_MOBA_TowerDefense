@@ -11,20 +11,20 @@ public class BlueAttackRange : MonoBehaviour
     // ###############################################
     
     EnemySatatus Pistion;
-    int maxHp = 100;
-    int currentHp = 100;
+   public int maxHp { get; private set; }
+   public int currentHp { get; private set; }
 
-    Slider _slider;
     private void Awake()
     {
+        maxHp = 100;
+        currentHp = 100;
         Pistion = GetComponent<EnemySatatus>();
-        _slider = GetComponentInChildren<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        cullectHp();
+        
         Collider[] Target = Physics.OverlapSphere(transform.position, 5f);
            
         foreach (Collider col in Target)
@@ -44,7 +44,7 @@ public class BlueAttackRange : MonoBehaviour
         if(currentHp <= 0)
         {
             currentHp = 0;
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
         
     }
@@ -53,13 +53,10 @@ public class BlueAttackRange : MonoBehaviour
         if (other.CompareTag("RedBullet"))
         {
             currentHp -= other.GetComponent<BulletMove>().Damage;
+            Destroy(other.gameObject);
         }
     }
-    void cullectHp()
-    {
-        transform.position = Pistion.transform.position;
-        _slider.value = Mathf.Lerp(_slider.value, currentHp / maxHp, Time.deltaTime * 5f);
-    }
+   
 
 
 }

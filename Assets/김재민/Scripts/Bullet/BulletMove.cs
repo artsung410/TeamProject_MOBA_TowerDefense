@@ -30,13 +30,15 @@ public class BulletMove : MonoBehaviour
             return;
         }
         // 유도탄
-         if(tg.position != null)
+        if(tg.position != null) //타켓이 있을때
         {
+            
             rigidbody.velocity = transform.forward * ballVelocity;
             var ballTargetRotation = Quaternion.LookRotation(tg.position + new Vector3(0, 0.8f) - transform.position);
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
+            
         }
-                else 
+        else 
             Destroy(gameObject);
         
     }

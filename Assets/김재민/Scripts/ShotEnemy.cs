@@ -43,12 +43,14 @@ public class ShotEnemy : Enemybase
     {
         while (true)
         {
-            if(_navMeshAgent == null)
+            _navMeshAgent.isStopped = false;
+            if (_navMeshAgent.enabled == false)
             {
                 break;
             }
             if (_target == null)
             {
+                
                 _target = _PrevTarget;
             }
             _animator.SetBool("Attack",false);
@@ -73,17 +75,22 @@ public class ShotEnemy : Enemybase
         while (true)
         {
             // 구분
-          
 
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
             _animator.SetBool("Attack", true);
             canShot = true;
             if(_target == null)
             {
+                
                 _target = _PrevTarget; 
+                
             }
 
             transform.LookAt(_target.position);
-           
+            _navMeshAgent.isStopped = true;
 
             // 애니메이션 추가 + 공격데미지 입히기
             //yield return new WaitForSeconds(1f); //공격쿨타임
