@@ -51,7 +51,7 @@ public class Stats : MonoBehaviour
 
     private void StatInit()
     {
-        //health = maxHealth;
+        health = maxHealth;
         //maxHealth = 100f;
         //attackDmg = 5f;
         //attackSpeed = 1f;

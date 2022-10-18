@@ -2,20 +2,29 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealthSliderPos : MonoBehaviour
+public class TempSkillStat : MonoBehaviour
 {
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    [SerializeField] Camera _cam;
+    /*
+    
+    스킬 데미지
+    스킬 쿨타임
 
-    // lateUpdate에서 처리할것
-    private void LateUpdate()
+     */
+
+    // Start is called before the first frame update
+    void Start()
     {
-        // 3D체력게이지는 카메라르 바라본다
-        transform.LookAt(_cam.transform);
-        transform.Rotate(0, 180, 0);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
     }
 }
