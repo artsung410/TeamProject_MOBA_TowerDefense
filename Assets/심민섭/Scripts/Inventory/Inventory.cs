@@ -109,6 +109,10 @@ public class Inventory : MonoBehaviour
     {
         updateItemIndex();
         //Debug.Log(SlotContainer.transform.childCount);
+        /*foreach (var item in ItemsInInventory)
+        {
+            Debug.Log(item.itemName);
+        }*/
     }
 
     public void updateItemIndex()
@@ -254,6 +258,11 @@ public class Inventory : MonoBehaviour
         {
             GameObject go = slotList[slotList.Count - 1];
             ItemOnObject itemInSlot = go.GetComponentInChildren<ItemOnObject>();
+
+            Debug.Log($"itemInSlot.item.itemName : {itemInSlot.item.itemName}");
+            Debug.Log($"slotList.Count : {slotList.Count}");
+            Debug.Log($"itemsToMove.Count : {itemsToMove.Count}");
+
             if (itemInSlot != null)
             {
                 itemsToMove.Add(itemInSlot.item);
@@ -298,7 +307,7 @@ public class Inventory : MonoBehaviour
         {
             if (SlotContainer.transform.GetChild(i).childCount > 0)
             {
-                SlotContainer.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(iconSize, iconSize);
+                SlotContainer.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(iconSize, iconSize + 40);
             }
         }
         updateItemSize();
@@ -530,8 +539,8 @@ public class Inventory : MonoBehaviour
         {
             if (SlotContainer.transform.GetChild(i).childCount > 0)
             {
-                SlotContainer.transform.GetChild(i).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(slotSize, slotSize);
-                SlotContainer.transform.GetChild(i).GetChild(0).GetChild(2).GetComponent<RectTransform>().sizeDelta = new Vector2(slotSize, slotSize);
+                SlotContainer.transform.GetChild(i).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(slotSize, slotSize + 40);
+                SlotContainer.transform.GetChild(i).GetChild(0).GetChild(2).GetComponent<RectTransform>().sizeDelta = new Vector2(slotSize, slotSize + 40);
             }
 
         }

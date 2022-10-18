@@ -38,7 +38,7 @@ public class RedAttackRange : MonoBehaviour
             if (col.CompareTag("BlueMinion"))
             {
                 Pistion._target = col.gameObject.transform;
-                          }
+            }
 
 
 

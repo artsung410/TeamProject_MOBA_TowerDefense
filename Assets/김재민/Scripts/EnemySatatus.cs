@@ -33,6 +33,8 @@ public class EnemySatatus : Enemybase
         _rigidbody = GetComponent<Rigidbody>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _PrevTarget = _target;
+        _navMeshAgent.enabled = false;
+        _navMeshAgent.enabled = true;
 
 
     }
