@@ -9,18 +9,18 @@ using UnityEngine;
 
 public class Player : MonoBehaviourPun
 {
-    private Rigidbody playerRigidbody;
+    //private Rigidbody playerRigidbody;
     public GameObject swordMaterial;
     private MeshRenderer swordMeshRenderer;
-    private PlayerBehaviour playerBehaviour;
+    //private PlayerBehaviour playerBehaviour;
 
-    public float speed = 3f;
+    //public float speed = 3f;
 
     void Start()
     {
         swordMeshRenderer = swordMaterial.GetComponent<MeshRenderer>();
-        playerRigidbody = GetComponent<Rigidbody>();
-        playerBehaviour = GetComponent<PlayerBehaviour>();
+        //playerRigidbody = GetComponent<Rigidbody>();
+        //playerBehaviour = GetComponent<PlayerBehaviour>();
 
         if (photonView.IsMine)
         {
@@ -32,13 +32,13 @@ public class Player : MonoBehaviourPun
         }
     }
 
-    private void Update()
-    {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
+    //private void Update()
+    //{
+    //    if (!photonView.IsMine)
+    //    {
+    //        return;
+    //    }
 
-        playerBehaviour.MoveTo();
-    }
+    //    playerBehaviour.MoveTo();
+    //}
 }

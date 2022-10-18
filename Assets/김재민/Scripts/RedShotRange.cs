@@ -42,9 +42,13 @@ public class RedShotRange : MonoBehaviour
             }
 
         }
+        
         if (currentHp <= 0)
+        {
+
             currentHp = 0;
-        Destroy(gameObject);
+            Destroy(gameObject);
+        }
     }
 
 
