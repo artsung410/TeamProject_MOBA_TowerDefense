@@ -20,22 +20,35 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    public GameObject[] tiles;
+    public GameObject[] towerPrefabs;
+
     private static GameManager instance;
-    public int PlayerID;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
+
+    public int localPlayerIndex;
 
     private void Start()
     {
         SpawnPlayer();
+
+        if (photonView.IsMine)
+        {
+            //SpawnTower();
+        }
+    }
+
+    private void SpawnTower()
+    {
+        tiles[1].GetComponent<Tile>().BuildTower();
     }
 
     private void SpawnPlayer()
     {
         // 현재 방에 들어온 로컬 플레이어의 나 자신의 번호를 가져온다.
-        var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
-        PlayerID = localPlayerIndex; // 0, 1
 
         // a플레이어 세상에서 a플레이어를 생성함, 그다음에 b c d 세상에 a의 복제본이 생성됨.
         PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
@@ -44,6 +57,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene("Lobby");
+    }
+
+    private void Update()
+    {
     }
 
     //public void AddScore(int playerNumber, int score)

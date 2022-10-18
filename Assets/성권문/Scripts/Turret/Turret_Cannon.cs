@@ -2,11 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-// ###############################################
-//             NAME : ARTSUNG                      
-//             MAIL : artsung410@gmail.com         
-// ###############################################
-public class Turret_Single : MonoBehaviourPun
+
+public class Turret_Cannon : MonoBehaviourPun
 {
     private Transform target;
     private EnemyMinion targetEnemy;
@@ -27,6 +24,11 @@ public class Turret_Single : MonoBehaviourPun
     [Header("회전속도")]
     public float turnSpeed = 10f;
 
+    [Header("공격범위 도형")]
+    public GameObject dangerZonePrefab;
+    private GameObject dangerZone;
+    private bool isEnemyInRange;
+
     [Header("====== 투사체 ======")]
 
     [Header("투사체 프리팹")]
@@ -34,13 +36,13 @@ public class Turret_Single : MonoBehaviourPun
 
     [Header("투사체 발사 위치")]
     public Transform firePoint;
-
     private void Start()
     {
+        dangerZone = PhotonNetwork.Instantiate(dangerZonePrefab.name, transform.position, transform.rotation);
+        dangerZone.SetActive(false);
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
-    // 가장 가까운 적을 찾는다, 단 자주찾지는 않는다. 
     void UpdateTarget()
     {
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
@@ -65,9 +67,11 @@ public class Turret_Single : MonoBehaviourPun
         {
             target = nearestEnemy.transform;
             targetEnemy = nearestEnemy.GetComponent<EnemyMinion>();
+            isEnemyInRange = true;
         }
         else
         {
+            isEnemyInRange = false;
             target = null;
         }
     }
@@ -77,19 +81,29 @@ public class Turret_Single : MonoBehaviourPun
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
         if (target == null)
         {
+            if (dangerZone.activeSelf == true)
+            {
+                dangerZone.SetActive(false);
+            }
             return;
+        }
+
+        // 적이 공격범위에 들어왔을때 도형을 생성한다.
+        if (isEnemyInRange == true)
+        {
+            dangerZone.transform.position = target.transform.position;
+            dangerZone.SetActive(true);
         }
 
         // 타겟을 찾는다.
         LockOnTarget();
 
-
-        // 일정 주기로 총알 발사
         if (fireCountdown <= 0f)
         {
             Shoot();
             fireCountdown = 1f / fireRate;
         }
+
         fireCountdown -= Time.deltaTime;
     }
 
@@ -112,5 +126,13 @@ public class Turret_Single : MonoBehaviourPun
         {
             bullet.Seek(target);
         }
+        Debug.Log("SHOOT!");
+    }
+
+    // 범위 그리기
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }
