@@ -1,5 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,43 +17,48 @@ public class GameManager : MonoBehaviourPunCallbacks
         get
         {
             if (instance == null) instance = FindObjectOfType<GameManager>();
-
             return instance;
         }
     }
 
-    public GameObject[] tiles;
+    public Tile[] tiles;
     public GameObject[] towerPrefabs;
 
     private static GameManager instance;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
-
-    public int localPlayerIndex;
+    public List<GameObject> CurrentTowers;
 
     private void Start()
     {
         SpawnPlayer();
-
-        if (photonView.IsMine)
-        {
-            //SpawnTower();
-        }
-    }
-
-    private void SpawnTower()
-    {
-        tiles[1].GetComponent<Tile>().BuildTower();
     }
 
     private void SpawnPlayer()
     {
         // 현재 방에 들어온 로컬 플레이어의 나 자신의 번호를 가져온다.
-        localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
         // a플레이어 세상에서 a플레이어를 생성함, 그다음에 b c d 세상에 a의 복제본이 생성됨.
         PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
+
+        if (localPlayerIndex == 0)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
+                tiles[i].BuildTower(tower);
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
+                tiles[i + 4].BuildTower(tower);
+            }
+        }
     }
 
     public override void OnLeftRoom()

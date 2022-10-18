@@ -9,24 +9,19 @@ public class TrojanHorse: MonoBehaviour
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
     [Header("플레이어 번호 (마스터 서버 들어온 순서)")]
-    [SerializeField]
-    private int playerNumber;
+    public int playerNumber;
 
     [Header("카드 고유 ID")]
-    [SerializeField]
-    private List<int> cardId = new List<int>();
+    public List<int> cardId = new List<int>();
 
     [Header("장착된 카드 인덱스")]
-    [SerializeField]
-    private List<int> cardIndex = new List<int>();
+    public List<int> cardIndex = new List<int>();
 
     [Header("장착한 카드 명")]
-    [SerializeField]
-    private List<string> cardName = new List<string>();
+    public List<string> cardName = new List<string>();
 
     [Header("장착한 프리펩")]
-    [SerializeField]
-    private List<GameObject> cardPrefab  = new List<GameObject>();
+    public List<GameObject> cardPrefab  = new List<GameObject>();
 
     private ItemOnObject itemOnObject;
 

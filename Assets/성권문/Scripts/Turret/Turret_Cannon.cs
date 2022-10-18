@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class Turret_Cannon : MonoBehaviourPun
+public class Turret_Cannon : Turret
 {
     private Transform target;
     private EnemyMinion targetEnemy;
@@ -14,9 +14,6 @@ public class Turret_Cannon : MonoBehaviourPun
     [Header("공격주기(초당 n번 발사)")]
     public float fireRate = 1f;
     private float fireCountdown = 0f;
-
-    [Header("타겟 TAG")]
-    public string enemyTag = "Enemy";
 
     [Header("회전체")]
     public Transform partToRotate;

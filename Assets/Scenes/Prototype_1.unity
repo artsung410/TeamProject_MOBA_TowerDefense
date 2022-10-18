@@ -3980,6 +3980,8 @@ GameObject:
   - component: {fileID: 685963108}
   - component: {fileID: 685963112}
   - component: {fileID: 685963113}
+  - component: {fileID: 685963115}
+  - component: {fileID: 685963114}
   m_Layer: 0
   m_Name: Tile_Blue4
   m_TagString: Untagged
@@ -4095,7 +4097,46 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 3
   isBuild: 0
-  tower: {fileID: 0}
+  currentBuildedTower: {fileID: 0}
+--- !u!114 &685963114
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685963107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &685963115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685963107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 685963114}
+  sceneViewId: 6
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &686708081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5174,6 +5215,8 @@ GameObject:
   - component: {fileID: 869663256}
   - component: {fileID: 869663260}
   - component: {fileID: 869663261}
+  - component: {fileID: 869663263}
+  - component: {fileID: 869663262}
   m_Layer: 0
   m_Name: Tile_Blue3
   m_TagString: Untagged
@@ -5289,7 +5332,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 2
   isBuild: 0
-  tower: {fileID: 0}
+  currentBuildedTower: {fileID: 0}
+--- !u!114 &869663262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869663255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &869663263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869663255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 7
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &874201652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7428,6 +7509,8 @@ GameObject:
   - component: {fileID: 1227490392}
   - component: {fileID: 1227490396}
   - component: {fileID: 1227490397}
+  - component: {fileID: 1227490399}
+  - component: {fileID: 1227490398}
   m_Layer: 0
   m_Name: Tile_Red4
   m_TagString: Untagged
@@ -7543,7 +7626,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   isBuild: 0
-  tower: {fileID: 0}
+  currentBuildedTower: {fileID: 0}
+--- !u!114 &1227490398
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227490391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &1227490399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227490391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 9
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1237765008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7744,6 +7865,8 @@ GameObject:
   - component: {fileID: 1262351432}
   - component: {fileID: 1262351436}
   - component: {fileID: 1262351437}
+  - component: {fileID: 1262351439}
+  - component: {fileID: 1262351438}
   m_Layer: 0
   m_Name: Tile_Blue1
   m_TagString: Untagged
@@ -7859,7 +7982,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 0
   isBuild: 0
-  tower: {fileID: 0}
+  currentBuildedTower: {fileID: 0}
+--- !u!114 &1262351438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262351431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &1262351439
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262351431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 8
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1266932403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11822,6 +11983,8 @@ GameObject:
   - component: {fileID: 1838243578}
   - component: {fileID: 1838243582}
   - component: {fileID: 1838243583}
+  - component: {fileID: 1838243585}
+  - component: {fileID: 1838243584}
   m_Layer: 0
   m_Name: Tile_Red1
   m_TagString: Untagged
@@ -11937,7 +12100,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 4
   isBuild: 0
-  tower: {fileID: 0}
+  currentBuildedTower: {fileID: 0}
+--- !u!114 &1838243584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838243577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &1838243585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838243577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 2
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1839231288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12076,6 +12277,8 @@ GameObject:
   - component: {fileID: 1859399655}
   - component: {fileID: 1859399659}
   - component: {fileID: 1859399660}
+  - component: {fileID: 1859399662}
+  - component: {fileID: 1859399661}
   m_Layer: 0
   m_Name: Tile_Red3
   m_TagString: Untagged
@@ -12191,7 +12394,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 6
   isBuild: 0
-  tower: {fileID: 0}
+  currentBuildedTower: {fileID: 0}
+--- !u!114 &1859399661
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859399654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &1859399662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859399654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 3
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1886247666
 GameObject:
   m_ObjectHideFlags: 0
@@ -12223,14 +12464,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tiles:
-  - {fileID: 1262351431}
-  - {fileID: 1984740370}
-  - {fileID: 869663255}
-  - {fileID: 685963107}
-  - {fileID: 1838243577}
-  - {fileID: 2104209922}
-  - {fileID: 1859399654}
-  - {fileID: 1227490391}
+  - {fileID: 1262351437}
+  - {fileID: 1984740376}
+  - {fileID: 869663261}
+  - {fileID: 685963113}
+  - {fileID: 1838243583}
+  - {fileID: 2104209928}
+  - {fileID: 1859399660}
+  - {fileID: 1227490397}
   towerPrefabs:
   - {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
   - {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
@@ -12240,7 +12481,6 @@ MonoBehaviour:
   - {fileID: 1668485473}
   - {fileID: 41654625}
   playerPrefab: {fileID: 954630452188391103, guid: 2a70c51b010b7354f9338f6d55ad0608, type: 3}
-  localPlayerIndex: 0
 --- !u!4 &1886247668
 Transform:
   m_ObjectHideFlags: 0
@@ -12664,6 +12904,8 @@ GameObject:
   - component: {fileID: 1984740371}
   - component: {fileID: 1984740375}
   - component: {fileID: 1984740376}
+  - component: {fileID: 1984740378}
+  - component: {fileID: 1984740377}
   m_Layer: 0
   m_Name: Tile_Blue2
   m_TagString: Untagged
@@ -12779,7 +13021,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   isBuild: 0
-  tower: {fileID: 0}
+  currentBuildedTower: {fileID: 0}
+--- !u!114 &1984740377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984740370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &1984740378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984740370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 4
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &1988865983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13776,6 +14056,8 @@ GameObject:
   - component: {fileID: 2104209923}
   - component: {fileID: 2104209927}
   - component: {fileID: 2104209928}
+  - component: {fileID: 2104209930}
+  - component: {fileID: 2104209929}
   m_Layer: 0
   m_Name: Tile_Red2
   m_TagString: Untagged
@@ -13891,7 +14173,45 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 5
   isBuild: 0
-  tower: {fileID: 0}
+  currentBuildedTower: {fileID: 0}
+--- !u!114 &2104209929
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104209922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &2104209930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104209922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 5
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1001 &2104985826
 PrefabInstance:
   m_ObjectHideFlags: 0

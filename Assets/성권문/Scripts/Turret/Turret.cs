@@ -23,4 +23,7 @@ public abstract class Turret : MonoBehaviourPun
 
         Hp -= Damage;
     }
+
+    [Header("Å¸°Ù TAG")]
+    public string enemyTag = "Enemy";
 }

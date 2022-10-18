@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Turret_Laser : MonoBehaviour
+public class Turret_Laser : Turret
 {
     private Transform target;
     private EnemyMinion targetEnemy;
@@ -13,9 +13,6 @@ public class Turret_Laser : MonoBehaviour
     [Header("공격주기(초당 n번 발사)")]
     public float fireRate = 1f;
     private float fireCountdown = 0f;
-
-    [Header("타겟 TAG")]
-    public string enemyTag = "Enemy";
 
     [Header("회전체")]
     public Transform partToRotate;

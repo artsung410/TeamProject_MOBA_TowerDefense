@@ -7,7 +7,7 @@ using Photon.Pun;
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com         
 // ###############################################
-public class Turret_LaserRange : MonoBehaviourPun
+public class Turret_LaserRange : Turret
 {
     private Transform target;
     private EnemyMinion targetEnemy;
@@ -17,9 +17,6 @@ public class Turret_LaserRange : MonoBehaviourPun
 
     [Header("공격주기(초당 n번 발사)")]
     public float fireRate = 1f;
-
-    [Header("타겟 TAG")]
-    public string enemyTag = "Enemy";
 
     [Header("회전체")]
     public Transform partToRotate;
