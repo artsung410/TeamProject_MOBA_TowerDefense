@@ -52,6 +52,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     // join button을 눌렀을때 메소드
     public void Connect()
     {
+        TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        tro.PlayerTrojanInfo();
+
         joinButton.interactable = false;
 
         if (PhotonNetwork.IsConnected)

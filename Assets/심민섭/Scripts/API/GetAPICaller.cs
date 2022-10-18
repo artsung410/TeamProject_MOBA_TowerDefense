@@ -14,7 +14,7 @@ public class GetAPICaller : MonoBehaviourPun
     // ###############################################
 
     // ------- 텍스트 출력 --------
-    private Text text;
+    //private Text text;
 
     private string apiKey = "70pNqHWqzZ0DXwsIP0e0bA";
 
@@ -37,14 +37,14 @@ public class GetAPICaller : MonoBehaviourPun
     private void Start()
     {
         DontDestroyOnLoad(gameObject);
-        text = GameObject.FindGameObjectWithTag("TestText").GetComponent<Text>();
+        //text = GameObject.FindGameObjectWithTag("TestText").GetComponent<Text>();
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            text.text = $"_id : {playerStorage._id}\nseid : {playerStorage.session_id}\nzera : {playerStorage.zera}\nace : {playerStorage.ace}\nplayerNumber : {playerStorage.playerNumber}";
+            //text.text = $"_id : {playerStorage._id}\nseid : {playerStorage.session_id}\nzera : {playerStorage.zera}\nace : {playerStorage.ace}\nplayerNumber : {playerStorage.playerNumber}";
             /*GameObject playerQueueObj = GameObject.FindGameObjectWithTag("PlayerQueue").gameObject;
             PlayerQueue palyerQueue = playerQueueObj.GetComponent<PlayerQueue>();
 

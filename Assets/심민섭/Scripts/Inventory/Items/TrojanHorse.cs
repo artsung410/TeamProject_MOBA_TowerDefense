@@ -32,14 +32,6 @@ public class TrojanHorse: MonoBehaviour
 
     private GameObject EquipmentItemInventory;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            PlayerTrojanInfo();
-        }
-    }
-
     public void PlayerTrojanInfo()
     {
         // PlayerNumber ¹Þ±â
