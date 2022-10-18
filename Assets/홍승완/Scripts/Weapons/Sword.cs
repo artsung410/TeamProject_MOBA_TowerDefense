@@ -10,11 +10,11 @@ public class Sword : MonoBehaviour
     // ###############################################
 
     //HeroCombat combat;
-    PlayerBehaviour _playerScript;
+    [SerializeField] PlayerBehaviour _playerScript;
 
     private void Awake()
     {
-        _playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
+        //_playerScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehaviour>();
     }
 
     private void OnTriggerEnter(Collider other)
