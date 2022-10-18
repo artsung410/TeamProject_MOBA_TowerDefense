@@ -38,8 +38,13 @@ public class HealthSliderHandler : MonoBehaviourPun
         transform.position = PlayerBehaviour.CurrentPlayerPos + new Vector3(0, 3, 0);
         transform.Rotate(0, 0, 0);
 
-        _hpSlider.value = _stats.health;
+        //_hpSlider.value = _stats.health;
+        photonView.RPC("UpdateHealthBar", RpcTarget.All);
     }
 
-    
+    [PunRPC]
+    private void UpdateHealthBar()
+    {
+        _hpSlider.value = _stats.health;
+    }
 }

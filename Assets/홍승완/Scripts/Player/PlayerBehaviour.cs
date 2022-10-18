@@ -59,10 +59,13 @@ public class PlayerBehaviour : MonoBehaviourPun
         if (photonView.IsMine)
         {
             gameObject.tag = "Player";
+            //gameObject.GetComponentInParent<Transform>().gameObject.tag = "Player";
         }
         else
         {
             gameObject.tag = "Enemy";
+            //gameObject.GetComponentInParent<Transform>().gameObject.tag = "Enemy";
+
         }
     }
 
@@ -185,7 +188,8 @@ public class PlayerBehaviour : MonoBehaviourPun
     {
         if (targetedEnemy != null)
         {
-            Debug.Log("적에게 타격을 입힘");
+            //Debug.Log("적에게 타격을 입힘");
+            _statScript.health -= _statScript.attackDmg;
         }
         else
         {
@@ -207,7 +211,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         //{
         //    targetedEnemy = null;
         //}
-        if (Hit.collider.GetComponent<PlayerBehaviour>() != null)
+        if (Hit.collider.CompareTag("Enemy") && !Hit.collider.GetComponent<PhotonView>().IsMine)
         {
             targetedEnemy = Hit.collider.gameObject;
         }
