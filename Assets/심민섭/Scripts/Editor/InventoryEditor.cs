@@ -158,8 +158,8 @@ public class InventoryEditor : Editor
         }
 
         /*EditorGUI.BeginChangeCheck();
-        EditorGUILayout.IntSlider(inventorySlotSize, 20, 100, new GUIContent("Slot Size"));                                                                                        //intfield for the slotsize
-        if (EditorGUI.EndChangeCheck())                                                                                                        //if intfield got changed
+        EditorGUILayout.IntSlider(inventorySlotSize, 20, 100, new GUIContent("Slot Size"));                         
+        if (EditorGUI.EndChangeCheck())                                                                   
         {
             inv.setImportantVariables();
             inv.adjustInventorySize();
@@ -167,8 +167,8 @@ public class InventoryEditor : Editor
         }*/
 
         EditorGUI.BeginChangeCheck();
-        EditorGUILayout.IntSlider(inventoryIconSize, 20, 100, new GUIContent("Icon Size"));                                                                                        //intfield for the slotsize
-        if (EditorGUI.EndChangeCheck())                                                                                                        //if intfield got changed
+        EditorGUILayout.IntSlider(inventoryIconSize, 20, 100, new GUIContent("Icon Size"));
+        if (EditorGUI.EndChangeCheck())                                                     
         {
             inv.updateIconSize(inventoryIconSize.intValue);
         }
@@ -234,6 +234,4 @@ public class InventoryEditor : Editor
             EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료
         }
     }
-
-
 }

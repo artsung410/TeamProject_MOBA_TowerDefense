@@ -6,7 +6,7 @@ using UnityEngine.Networking;
 using UnityEngine.UI;
 using Photon.Pun;
 
-public class GetAPICaller : MonoBehaviourPunCallbacks
+public class GetAPICaller : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : Simstealer                      
@@ -16,7 +16,7 @@ public class GetAPICaller : MonoBehaviourPunCallbacks
     // ------- 텍스트 출력 --------
     private Text text;
 
-    private string apiKey = "507zw8P8wfd3KUttpJRfd0";
+    private string apiKey = "70pNqHWqzZ0DXwsIP0e0bA";
 
     [SerializeField]
     public PlayerStorage playerStorage;

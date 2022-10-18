@@ -57,6 +57,9 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsConnected)
         {
             connectionInfoText.text = "Connecting to Random Room...";
+            // 장착한 아이템을 GetCaller에 넣는 작업이 여기서 한다.
+
+            // -----------------------------------------------------
             PhotonNetwork.JoinRandomRoom();
         }
         else
