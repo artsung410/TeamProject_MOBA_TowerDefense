@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -14,6 +15,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public TextMeshProUGUI connectionInfoText; // 네트워크 상태 텍스트
     public Button joinButton;
+    public GameObject playerStoragePre;
 
     private void Start()
     {
@@ -32,6 +34,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         joinButton.interactable = true;
         connectionInfoText.text = "Online : Connected to Master Server";
+        Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
     }
 
     // 연결이 끊켰을경우 / 자동실행
@@ -49,11 +52,17 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     // join button을 눌렀을때 메소드
     public void Connect()
     {
+        TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        tro.PlayerTrojanInfo();
+
         joinButton.interactable = false;
 
         if (PhotonNetwork.IsConnected)
         {
             connectionInfoText.text = "Connecting to Random Room...";
+            // 장착한 아이템을 GetCaller에 넣는 작업이 여기서 한다.
+
+            // -----------------------------------------------------
             PhotonNetwork.JoinRandomRoom();
         }
         else
