@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public Tile[] tiles;
+    public Transform[] tiles;
     private static GameManager instance;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
@@ -38,20 +38,26 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
 
+        if (localPlayerIndex > 1)
+        { 
+            OnLeftRoom();
+        }
+
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
-        GameObject playerPf = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
-
+        PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
     }
 
     private void SpawnTower()
     {
-        if (GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().playerNumber == 1)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             for (int i = 0; i < 4; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                tiles[i].BuildTower(tower);
+                GameObject currentTower = PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
+                //currentTower.layer = 10;
+
             }
         }
         else
@@ -59,24 +65,20 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < 4; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                tiles[i + 4].BuildTower(tower);
-                
+                GameObject currentTower = PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
+                //photonView.RPC("RPCUpdateLayer", RpcTarget.All, currentTower, 11);
             }
         }
     }
-
-    
-
-
 
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene("Lobby");
     }
 
-    private void Update()
-    {
-    }
+    //private void Update()
+    //{
+    //}
 
     //public void AddScore(int playerNumber, int score)
     //{
@@ -92,4 +94,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     //{
     //    scoreText.text = $"{player1ScoreText} : {player2ScoreText}";
     //}
+
+    [PunRPC]
+    private void RPCUpdateLayer(GameObject tower, int layer)
+    {
+        tower.layer = 10;
+    }
 }

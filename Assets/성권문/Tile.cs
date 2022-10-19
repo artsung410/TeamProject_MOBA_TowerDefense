@@ -12,17 +12,21 @@ public class Tile : MonoBehaviourPun
     public void BuildTower(GameObject towerPrefab)
     {
         isBuild = true;
-        currentBuildedTower = PhotonNetwork.Instantiate(towerPrefab.name, transform.position, Quaternion.identity);
+        GameObject currentBuildedTower = PhotonNetwork.Instantiate(towerPrefab.name, transform.position, Quaternion.identity);
 
-        if(GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().playerNumber == 1)
-        {
-            currentBuildedTower.tag = "Blue";
-            currentBuildedTower.GetComponent<Turret>().enemyTag = "Red";
-        }
-        else
-        {
-            currentBuildedTower.tag = "Red";
-            currentBuildedTower.GetComponent<Turret>().enemyTag = "Blue";
-        }
+        photonView.RPC("SetLayer", RpcTarget.All, currentBuildedTower);
     }
+
+    //[PunRPC]
+    //private void SetLayer(GameObject tower)
+    //{
+    //    if (id < 4)
+    //    {
+    //        tower.layer = 10;
+    //    }
+    //    else
+    //    {
+    //        tower.layer = 11;
+    //    }
+    //}
 }

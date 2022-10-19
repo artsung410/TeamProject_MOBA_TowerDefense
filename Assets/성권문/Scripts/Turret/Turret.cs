@@ -11,6 +11,17 @@ using Photon.Pun;
 public abstract class Turret : MonoBehaviourPun
 {
     public int Hp;
+    protected void OnEnable()
+    {
+        if (PhotonNetwork.IsMasterClient)
+        {
+            gameObject.layer = 10;
+        }
+        else
+        {
+            gameObject.layer = 11;
+        }
+    }
 
     public void TakeDamage(int Damage)
     {
