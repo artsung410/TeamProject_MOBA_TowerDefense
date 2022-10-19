@@ -19,7 +19,6 @@ public abstract class Turret : MonoBehaviourPun
         }
         else
         {
-            gameObject.layer = 11;
             photonView.RPC("SetLayer", RpcTarget.Others);
         }
     }
@@ -27,7 +26,7 @@ public abstract class Turret : MonoBehaviourPun
     [PunRPC]
     public void SetLayer()
     {
-        gameObject.layer = 10;
+        gameObject.layer = 11;
     }
 
     public void TakeDamage(int Damage)
