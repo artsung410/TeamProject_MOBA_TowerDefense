@@ -188,9 +188,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7970178343526229964}
-  - {fileID: 2271650960913031959}
   - {fileID: 7831451401597603356}
+  - {fileID: 2271650960913031959}
+  - {fileID: 7970178343526229964}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 6570642584713909586}
   - component: {fileID: 8948153421829927640}
   - component: {fileID: 2112213623}
+  - component: {fileID: 8968241670288031559}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -267,7 +268,7 @@ Transform:
   - {fileID: 868267934895466008}
   - {fileID: 8390865104711620849}
   m_Father: {fileID: 3960095213218978512}
-  m_RootOrder: 2
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &9172089055866780586
 Animator:
@@ -366,7 +367,7 @@ MonoBehaviour:
   RotateVelocity: 0
   Layer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 2048
   Cam: {fileID: 6842666429008816854}
   targetedEnemy: {fileID: 0}
   perfomMeleeAttack: 0
@@ -467,6 +468,20 @@ MonoBehaviour:
   - {fileID: 3005192478522135544, guid: 1ff6e38d24d9fb74dbbca9b9d3c25117, type: 3}
   - {fileID: 7570805014596217275, guid: ae48745f78ef46b478a6e9debebf5e0e, type: 3}
   skillSpawn: {fileID: 8390865104711620849}
+--- !u!136 &8968241670288031559
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154331253358847308}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.55
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1164865704398189914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1250,6 +1265,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1481369344733934609}
   - component: {fileID: 3706070186879944762}
+  - component: {fileID: 2378495824965305473}
+  - component: {fileID: 8777860807826433995}
   m_Layer: 0
   m_Name: Player Health Slider 3D
   m_TagString: Untagged
@@ -1330,6 +1347,45 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2378495824965305473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682343866267745629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 8777860807826433995}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &8777860807826433995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3682343866267745629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &3842628812154442275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1641,6 +1697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be2e67c14a4eae340bcff7aa0763d3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _playerScript: {fileID: 8238942992231030104}
 --- !u!1 &4092090531622432961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2152,7 +2209,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3960095213218978512}
-  m_RootOrder: 0
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 59.512, y: 0, z: 0}
 --- !u!20 &6842666429008816854
 Camera:

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class RedShotRange : MonoBehaviour
+public class RedShotRange : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      
@@ -13,18 +14,15 @@ public class RedShotRange : MonoBehaviour
     int maxHp = 100;
     int currentHp = 100;
     ShotEnemy Shot;
-    Slider _slider;
     private void Awake()
     {
 
         Shot = GetComponent<ShotEnemy>();
-        _slider = GetComponentInChildren<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        cullectHp();
         Collider[] Target = Physics.OverlapSphere(transform.position, 5f);
 
         foreach (Collider col in Target)
@@ -47,7 +45,7 @@ public class RedShotRange : MonoBehaviour
         {
 
             currentHp = 0;
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 
@@ -58,12 +56,8 @@ public class RedShotRange : MonoBehaviour
         if (other.CompareTag("BlueBullet"))
         {
             currentHp -= other.GetComponent<BulletMove>().Damage;
+            Destroy(other.gameObject);
         }
-    }
-    void cullectHp()
-    {
-        _slider.transform.position = transform.position;
-        _slider.value = Mathf.Lerp(_slider.value, currentHp / maxHp, Time.deltaTime * 1f);
     }
 }
 

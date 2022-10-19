@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 // ###############################################
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com         
 // ###############################################
-public class Turret_Single : MonoBehaviour
+public class Turret_Single : MonoBehaviourPun
 {
     private Transform target;
     private EnemyMinion targetEnemy;
@@ -26,12 +27,6 @@ public class Turret_Single : MonoBehaviour
     [Header("회전속도")]
     public float turnSpeed = 10f;
 
-    [Header("공격범위 도형")]
-    public GameObject dangerZonePrefab;
-    private GameObject dangerZone;
-    Vector3 dangerZonePrevPos;
-    private bool isEnemyInRange;
-
     [Header("====== 투사체 ======")]
 
     [Header("투사체 프리팹")]
@@ -40,25 +35,8 @@ public class Turret_Single : MonoBehaviour
     [Header("투사체 발사 위치")]
     public Transform firePoint;
 
-    [Header("====== 단일 레이저 속성======")]
-    public bool useLaser = false;
-    public int damageOverTime = 30;
-    public float slowAmount = 0.5f;
-
-    public LineRenderer lineRenderer;
-    public ParticleSystem impactEffect;
-    public Light impactLight;
-
     private void Start()
     {
-
-        // 미사일 터렛일때만 dangerZone가져오기 
-        if (gameObject.tag == "CannonTower")
-        {
-            dangerZone = Instantiate(dangerZonePrefab, transform.position, transform.rotation);
-            dangerZone.SetActive(false);
-        }
-
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -87,11 +65,9 @@ public class Turret_Single : MonoBehaviour
         {
             target = nearestEnemy.transform;
             targetEnemy = nearestEnemy.GetComponent<EnemyMinion>();
-            isEnemyInRange = true;
         }
         else
         {
-            isEnemyInRange = false;
             target = null;
         }
     }
@@ -101,52 +77,20 @@ public class Turret_Single : MonoBehaviour
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
         if (target == null)
         {
-            if (useLaser)
-            {
-                if (lineRenderer.enabled)
-                {
-                    lineRenderer.enabled = false;
-                    impactEffect.Stop();
-                    impactLight.enabled = false;
-                }
-            }
-
-            if (gameObject.tag == "CannonTower" && dangerZone.activeSelf == true)
-            {
-                dangerZone.SetActive(false);
-                Debug.Log("false 들어옴");
-            }
             return;
-        }
-
-        // 적이 공격범위에 들어왔을때 도형을 생성한다.
-        if (gameObject.tag == "CannonTower" && isEnemyInRange == true)
-        {
-            dangerZone.transform.position = target.transform.position;
-            dangerZone.SetActive(true);
-            Debug.Log("ture 들어옴");
         }
 
         // 타겟을 찾는다.
         LockOnTarget();
 
-        // 레이저를 사용할 때
-        if (useLaser)
-        {
-            Laser();
-        }
 
-        // 총알을 사용할 때
-        else
+        // 일정 주기로 총알 발사
+        if (fireCountdown <= 0f)
         {
-            if (fireCountdown <= 0f)
-            {
-                Shoot();
-                fireCountdown = 1f / fireRate;
-            }
-
-            fireCountdown -= Time.deltaTime;
+            Shoot();
+            fireCountdown = 1f / fireRate;
         }
+        fireCountdown -= Time.deltaTime;
     }
 
     void LockOnTarget()
@@ -157,38 +101,10 @@ public class Turret_Single : MonoBehaviour
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
-    // ★ 단일 레이저 발사
-    void Laser()
-    {
-        // 데미지 적용 (시간에 비례해서)
-        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
-
-        // 슬로우 효과 적용
-        //targetEnemy.Slow(slowAmount);
-        //if (!lineRenderer.enabled)
-        //{
-        //    lineRenderer.enabled = true;
-        //    impactEffect.Play();
-        //    impactLight.enabled = true;
-        //}
-
-        // 처음 발사 위치
-        lineRenderer.SetPosition(0, firePoint.position);
-
-        // 마지막 위치
-        lineRenderer.SetPosition(1, target.position);
-
-        Vector3 dir = firePoint.position - target.position;
-
-        impactEffect.transform.position = target.position + dir.normalized;
-
-        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
-    }
-
     // ★ 총알 / 미사일 발사
     void Shoot()
     {
-        GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = PhotonNetwork.Instantiate(bulletPrefab.name, firePoint.position, firePoint.rotation);
 
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
@@ -196,15 +112,5 @@ public class Turret_Single : MonoBehaviour
         {
             bullet.Seek(target);
         }
-
-        Debug.Log("SHOOT!");
     }
-
-    // 범위 그리기
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
-    }
-
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -218,7 +218,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 414184758}
-  m_RootOrder: 10
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &13136072
 BoxCollider:
@@ -253,7 +253,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ec653480332d34ead490fcf68c0445, type: 2}
+  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -541,12 +541,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 41654624}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 53, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1091398183}
+  m_Father: {fileID: 87408700}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &52075104
@@ -832,6 +832,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4503351070770854, guid: a20300cbdbbcebe438138d8cb11f6130, type: 3}
   m_PrefabInstance: {fileID: 71444013}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &87408699
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87408700}
+  m_Layer: 0
+  m_Name: Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &87408700
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87408699}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1668485473}
+  - {fileID: 41654625}
+  m_Father: {fileID: 1091398183}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &94960108
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2558,14 +2591,6 @@ Transform:
   m_Children:
   - {fileID: 66844072}
   - {fileID: 1685723464}
-  - {fileID: 2104209926}
-  - {fileID: 1859399658}
-  - {fileID: 1838243581}
-  - {fileID: 1227490395}
-  - {fileID: 1984740374}
-  - {fileID: 869663259}
-  - {fileID: 1262351435}
-  - {fileID: 685963111}
   - {fileID: 13136071}
   - {fileID: 1521354453}
   m_Father: {fileID: 178799848}
@@ -3954,8 +3979,9 @@ GameObject:
   - component: {fileID: 685963109}
   - component: {fileID: 685963108}
   - component: {fileID: 685963112}
+  - component: {fileID: 685963113}
   m_Layer: 0
-  m_Name: Tower_Placement_Area(Blue4)
+  m_Name: Tile_Blue4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3994,7 +4020,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b46aa8848849be4d9b7a33508c35700, type: 2}
+  - {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4031,13 +4057,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685963107}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.763245, y: -53, z: 8.252043}
+  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalPosition: {x: -45.1, y: 0.25758743, z: -19}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414184758}
-  m_RootOrder: 9
+  m_Father: {fileID: 1992064282}
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &685963112
 NavMeshObstacle:
@@ -4055,6 +4081,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &685963113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 685963107}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3f09f2720392b46b3e167bcc2459d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
+  isBuild: 0
+  tower: {fileID: 0}
 --- !u!1001 &686708081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4682,6 +4723,103 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4503351070770854, guid: a20300cbdbbcebe438138d8cb11f6130, type: 3}
   m_PrefabInstance: {fileID: 819138721}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &822714679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 822714683}
+  - component: {fileID: 822714682}
+  - component: {fileID: 822714681}
+  - component: {fileID: 822714680}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &822714680
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822714679}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &822714681
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822714679}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &822714682
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822714679}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &822714683
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 822714679}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -60.5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &826371372
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4813,6 +4951,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 758004325}
     m_Modifications:
+    - target: {fileID: 5555544251181461673, guid: 4402cecd4f5b29f49ac24d31ae632e03, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
     - target: {fileID: 5570529733271156659, guid: 4402cecd4f5b29f49ac24d31ae632e03, type: 3}
       propertyPath: m_Name
       value: ZMOBA_Prop_Crystal_A_6 (1)
@@ -5031,8 +5173,9 @@ GameObject:
   - component: {fileID: 869663257}
   - component: {fileID: 869663256}
   - component: {fileID: 869663260}
+  - component: {fileID: 869663261}
   m_Layer: 0
-  m_Name: Tower_Placement_Area(Blue2)
+  m_Name: Tile_Blue3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5071,7 +5214,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b46aa8848849be4d9b7a33508c35700, type: 2}
+  - {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5108,13 +5251,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869663255}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.763245, y: -53, z: 16.252043}
+  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalPosition: {x: -45.306435, y: 0.25758743, z: -10.870205}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414184758}
-  m_RootOrder: 7
+  m_Father: {fileID: 1992064282}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &869663260
 NavMeshObstacle:
@@ -5132,6 +5275,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &869663261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869663255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3f09f2720392b46b3e167bcc2459d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
+  isBuild: 0
+  tower: {fileID: 0}
 --- !u!1001 &874201652
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5323,6 +5481,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7780602152466853801, guid: cf2f69c71b027274d929690ec6ec6de4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
     m_RemovedComponents:
     - {fileID: 7757780472553134446, guid: cf2f69c71b027274d929690ec6ec6de4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: cf2f69c71b027274d929690ec6ec6de4, type: 3}
@@ -6101,6 +6263,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5870749757424159009, guid: 8e0c414dcff70a149aa0f8bd6c0f89c4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e0c414dcff70a149aa0f8bd6c0f89c4, type: 3}
 --- !u!4 &1043019513 stripped
@@ -6467,8 +6633,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1668485473}
-  - {fileID: 41654625}
+  - {fileID: 87408700}
+  - {fileID: 1992064282}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6611,6 +6777,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8254710939061293162, guid: dafc4deaa983c0a4cb4d599501b4dabc, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
     - target: {fileID: 8272122628254922724, guid: dafc4deaa983c0a4cb4d599501b4dabc, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -6849,6 +7019,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2059085840}
     m_Modifications:
+    - target: {fileID: 7689752879133968747, guid: ced2758204340d841b4715b9a078c254, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
     - target: {fileID: 7701391505519615853, guid: ced2758204340d841b4715b9a078c254, type: 3}
       propertyPath: m_Name
       value: ZMOBA_Prop_Crystal_B_2 (1)
@@ -7253,8 +7427,9 @@ GameObject:
   - component: {fileID: 1227490393}
   - component: {fileID: 1227490392}
   - component: {fileID: 1227490396}
+  - component: {fileID: 1227490397}
   m_Layer: 0
-  m_Name: Tower_Placement_Area(Red4)
+  m_Name: Tile_Red4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7293,7 +7468,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ec653480332d34ead490fcf68c0445, type: 2}
+  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7330,13 +7505,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227490391}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.236755, y: -53, z: 8.252043}
+  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalPosition: {x: 44.831654, y: 0.25758743, z: -17.125221}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414184758}
-  m_RootOrder: 5
+  m_Father: {fileID: 1992064282}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1227490396
 NavMeshObstacle:
@@ -7354,6 +7529,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1227490397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1227490391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3f09f2720392b46b3e167bcc2459d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 7
+  isBuild: 0
+  tower: {fileID: 0}
 --- !u!1001 &1237765008
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7553,8 +7743,9 @@ GameObject:
   - component: {fileID: 1262351433}
   - component: {fileID: 1262351432}
   - component: {fileID: 1262351436}
+  - component: {fileID: 1262351437}
   m_Layer: 0
-  m_Name: Tower_Placement_Area(Blue3)
+  m_Name: Tile_Blue1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7593,7 +7784,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b46aa8848849be4d9b7a33508c35700, type: 2}
+  - {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7630,13 +7821,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262351431}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.763245, y: -53, z: 44.252045}
+  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalPosition: {x: -45.848854, y: 0.25758743, z: 17.12454}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414184758}
-  m_RootOrder: 8
+  m_Father: {fileID: 1992064282}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1262351436
 NavMeshObstacle:
@@ -7654,6 +7845,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1262351437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262351431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3f09f2720392b46b3e167bcc2459d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
+  isBuild: 0
+  tower: {fileID: 0}
 --- !u!1001 &1266932403
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8467,6 +8673,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 758004325}
     m_Modifications:
+    - target: {fileID: 9096455145042224512, guid: fe8a3ee7549ba0c40bbf4165b43b5068, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
     - target: {fileID: 9109866958956249142, guid: fe8a3ee7549ba0c40bbf4165b43b5068, type: 3}
       propertyPath: m_Name
       value: ZMOBA_Prop_Crystal_A_2 (2)
@@ -8739,6 +8949,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2546239552301969772, guid: 30352d5ff7167b74198412650a51888a, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
     m_RemovedComponents:
     - {fileID: 2522889719557881647, guid: 30352d5ff7167b74198412650a51888a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 30352d5ff7167b74198412650a51888a, type: 3}
@@ -9436,7 +9650,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 414184758}
-  m_RootOrder: 11
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1521354454
 BoxCollider:
@@ -9471,7 +9685,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b46aa8848849be4d9b7a33508c35700, type: 2}
+  - {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9968,6 +10182,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7946939884506651524, guid: fe209422dacbaf64d96cd7fe5c328c44, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
     m_RemovedComponents:
     - {fileID: 7933934846546815706, guid: fe209422dacbaf64d96cd7fe5c328c44, type: 3}
     - {fileID: 7933934846546815707, guid: fe209422dacbaf64d96cd7fe5c328c44, type: 3}
@@ -10331,12 +10549,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1668485472}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -53, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1091398183}
+  m_Father: {fileID: 87408700}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1671178436
@@ -10937,6 +11155,10 @@ PrefabInstance:
       propertyPath: m_StaticEditorFlags
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2801643667657790798, guid: 19c8760d5197829489ba0d528a80c87d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
     m_RemovedComponents:
     - {fileID: 2788584057433299831, guid: 19c8760d5197829489ba0d528a80c87d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 19c8760d5197829489ba0d528a80c87d, type: 3}
@@ -11599,8 +11821,9 @@ GameObject:
   - component: {fileID: 1838243579}
   - component: {fileID: 1838243578}
   - component: {fileID: 1838243582}
+  - component: {fileID: 1838243583}
   m_Layer: 0
-  m_Name: Tower_Placement_Area(Red3)
+  m_Name: Tile_Red1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11639,7 +11862,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ec653480332d34ead490fcf68c0445, type: 2}
+  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11676,12 +11899,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838243577}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.236755, y: -53, z: 44.252045}
+  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalPosition: {x: 44.13426, y: 0.25758743, z: 18.868025}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414184758}
+  m_Father: {fileID: 1992064282}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1838243582
@@ -11700,6 +11923,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1838243583
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1838243577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3f09f2720392b46b3e167bcc2459d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
+  isBuild: 0
+  tower: {fileID: 0}
 --- !u!1001 &1839231288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11837,8 +12075,9 @@ GameObject:
   - component: {fileID: 1859399656}
   - component: {fileID: 1859399655}
   - component: {fileID: 1859399659}
+  - component: {fileID: 1859399660}
   m_Layer: 0
-  m_Name: Tower_Placement_Area(Red2)
+  m_Name: Tile_Red3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11877,7 +12116,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ec653480332d34ead490fcf68c0445, type: 2}
+  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11914,13 +12153,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859399654}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.236755, y: -53, z: 16.252043}
+  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalPosition: {x: 44.676678, y: 0.25758743, z: -9.126722}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414184758}
-  m_RootOrder: 3
+  m_Father: {fileID: 1992064282}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1859399659
 NavMeshObstacle:
@@ -11938,6 +12177,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1859399660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859399654}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3f09f2720392b46b3e167bcc2459d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 6
+  isBuild: 0
+  tower: {fileID: 0}
 --- !u!1 &1886247666
 GameObject:
   m_ObjectHideFlags: 0
@@ -11968,11 +12222,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1167d4d738a9748a1f74411978b732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerID: 0
+  tiles:
+  - {fileID: 1262351431}
+  - {fileID: 1984740370}
+  - {fileID: 869663255}
+  - {fileID: 685963107}
+  - {fileID: 1838243577}
+  - {fileID: 2104209922}
+  - {fileID: 1859399654}
+  - {fileID: 1227490391}
+  towerPrefabs:
+  - {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+  - {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
+  - {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
+  - {fileID: 8910650605806270272, guid: 6637d58b99c0eb747b6fc6af434505c8, type: 3}
   spawnPositions:
   - {fileID: 1668485473}
   - {fileID: 41654625}
   playerPrefab: {fileID: 954630452188391103, guid: 2a70c51b010b7354f9338f6d55ad0608, type: 3}
+  localPlayerIndex: 0
 --- !u!4 &1886247668
 Transform:
   m_ObjectHideFlags: 0
@@ -11981,7 +12249,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1886247666}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.63156, y: 29.991186, z: -8.257826}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12395,8 +12663,9 @@ GameObject:
   - component: {fileID: 1984740372}
   - component: {fileID: 1984740371}
   - component: {fileID: 1984740375}
+  - component: {fileID: 1984740376}
   m_Layer: 0
-  m_Name: Tower_Placement_Area(Blue1)
+  m_Name: Tile_Blue2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12435,7 +12704,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3b46aa8848849be4d9b7a33508c35700, type: 2}
+  - {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -12472,13 +12741,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984740370}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.763245, y: -53, z: 36.252045}
+  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalPosition: {x: -45.693874, y: 0.25758743, z: 9.126043}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414184758}
-  m_RootOrder: 6
+  m_Father: {fileID: 1992064282}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &1984740375
 NavMeshObstacle:
@@ -12496,6 +12765,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &1984740376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1984740370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3f09f2720392b46b3e167bcc2459d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
+  isBuild: 0
+  tower: {fileID: 0}
 --- !u!1001 &1988865983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12620,6 +12904,45 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4503351070770854, guid: a20300cbdbbcebe438138d8cb11f6130, type: 3}
   m_PrefabInstance: {fileID: 1991573897}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1992064281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1992064282}
+  m_Layer: 0
+  m_Name: TowerSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1992064282
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1992064281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1262351435}
+  - {fileID: 1984740374}
+  - {fileID: 869663259}
+  - {fileID: 685963111}
+  - {fileID: 1838243581}
+  - {fileID: 2104209926}
+  - {fileID: 1859399658}
+  - {fileID: 1227490395}
+  m_Father: {fileID: 1091398183}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2001409102
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13222,6 +13545,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2059085840}
     m_Modifications:
+    - target: {fileID: 476648592685945828, guid: 4a6408e6f603fde4c993554d00ab35a4, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 14a86fef30d0db04f9d9c7026decc263, type: 2}
     - target: {fileID: 488275634060977216, guid: 4a6408e6f603fde4c993554d00ab35a4, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -13448,8 +13775,9 @@ GameObject:
   - component: {fileID: 2104209924}
   - component: {fileID: 2104209923}
   - component: {fileID: 2104209927}
+  - component: {fileID: 2104209928}
   m_Layer: 0
-  m_Name: Tower_Placement_Area(Red1)
+  m_Name: Tile_Red2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13488,7 +13816,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 53ec653480332d34ead490fcf68c0445, type: 2}
+  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -13525,13 +13853,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104209922}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 45.236755, y: -53, z: 36.252045}
+  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalPosition: {x: 44.289238, y: 0.25758743, z: 10.869528}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 414184758}
-  m_RootOrder: 2
+  m_Father: {fileID: 1992064282}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!208 &2104209927
 NavMeshObstacle:
@@ -13549,6 +13877,21 @@ NavMeshObstacle:
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5
+--- !u!114 &2104209928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2104209922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b3f09f2720392b46b3e167bcc2459d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 5
+  isBuild: 0
+  tower: {fileID: 0}
 --- !u!1001 &2104985826
 PrefabInstance:
   m_ObjectHideFlags: 0
