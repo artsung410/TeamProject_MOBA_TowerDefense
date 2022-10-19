@@ -23,9 +23,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public Tile[] tiles;
     private static GameManager instance;
-    public Transform[] spawnPositions; // ÇÃ·¹ÀÌ¾î°¡ »ı¼ºÇÒ À§Ä¡
-    public GameObject playerPrefab; // »ı¼ºÇÒ ÇÃ·¹ÀÌ¾îÀÇ ¿øÇü ÇÁ¸®ÆÕ
+    public Transform[] spawnPositions; // í”Œë ˆì´ì–´ê°€ ìƒì„±í•  ìœ„ì¹˜
+    public GameObject playerPrefab; // ìƒì„±í•  í”Œë ˆì´ì–´ì˜ ì›í˜• í”„ë¦¬íŒ¹
     public List<GameObject> CurrentTowers;
+    public int localPlayerIndex;
 
     private void Start()
     {
@@ -69,6 +70,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    
+
+
+
     public override void OnLeftRoom()
     {
         SceneManager.LoadScene("Lobby");
@@ -82,7 +87,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     //{
     //    playerScores[playerNumber - 1] += score;
 
-    //    // RpcTarget : ¾î¶² Å¬¶óÀÌ¾ğÆ®¿¡°Ô µ¿±âÈ­¸¦ Â¡ÇàÇÒ °ÍÀÎÁö, AllÀÌ¸é ¸ğµç Å¬¶óÀÌ¾ğÆ®µé¿¡°Ô µ¿±âÈ­ ÁøÇà.
+    //    // RpcTarget : ì–´ë–¤ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë™ê¸°í™”ë¥¼ ì§•í–‰í•  ê²ƒì¸ì§€, Allì´ë©´ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ë“¤ì—ê²Œ ë™ê¸°í™” ì§„í–‰.
     //    photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
     //}
 

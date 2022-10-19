@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
-public class EnemySatatus : Enemybase
+public class EnemySatatus : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      
@@ -41,6 +42,7 @@ public class EnemySatatus : Enemybase
 
     private void Start()
     {
+        _navMeshAgent.speed = 5f;
         StartCoroutine(StateChange());
     }
 
@@ -71,18 +73,22 @@ public class EnemySatatus : Enemybase
     {
         while (true)
         {
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
             // 구분
-           
+            if (_target == null)
+            {
+                _target = _PrevTarget;
+            }
+           float AttackDistance = Vector3.Distance(transform.position,_target.position);
             _animator.SetBool("Attack",true);
             // 애니메이션 추가 + 공격데미지 입히기
             //yield return new WaitForSeconds(1f); //공격쿨타임
             canAttack = true;
-            if(_target == null)
-            {
-                _target = _PrevTarget;
-            }
 
-                if (distance > 2f)
+                if (AttackDistance > 2f)
                 {
                     _estate = ESTATE.move;
                    

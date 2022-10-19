@@ -13,18 +13,17 @@ public class BlueShotRange : MonoBehaviour
     int maxHp = 100;
     int currentHp = 100;
     ShotEnemy Shot;
-    Slider _slider;
+
     private void Awake()
     {
       
         Shot = GetComponent<ShotEnemy>();
-        _slider = GetComponentInChildren<Slider>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        cullectHp();
+  
         Collider[] Target = Physics.OverlapSphere(transform.position, 5f);
 
         foreach (Collider col in Target)
@@ -44,7 +43,7 @@ public class BlueShotRange : MonoBehaviour
         if (currentHp <= 0)
         {
             currentHp = 0;
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
 
     }
@@ -53,16 +52,14 @@ public class BlueShotRange : MonoBehaviour
     {
         if(other.CompareTag("RedBullet"))
         {
+           
             currentHp -= other.GetComponent<BulletMove>().Damage;
-            
+            Destroy(other.gameObject);
+
         }
     }
 
-    void cullectHp ()
-    {
-        transform.position = Shot.transform.position;
-        _slider.value = Mathf.Lerp(_slider.value, currentHp / maxHp, Time.deltaTime * 5f);
-    }
+   
 }
 
 

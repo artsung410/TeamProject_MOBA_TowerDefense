@@ -8,58 +8,119 @@ public class TrojanHorse: MonoBehaviour
     //             NAME : Simstealer                      
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
-    [Header("ÇÃ·¹ÀÌ¾î ¹øÈ£ (¸¶½ºÅÍ ¼­¹ö µé¾î¿Â ¼ø¼­)")]
+    [Header("í”Œë ˆì´ì–´ ë²ˆí˜¸ (ë§ˆìŠ¤í„° ì„œë²„ ë“¤ì–´ì˜¨ ìˆœì„œ)")]
     public int playerNumber;
 
-    [Header("Ä«µå °íÀ¯ ID")]
+    [Header("ì¹´ë“œ ê³ ìœ  ID")]
     public List<int> cardId = new List<int>();
 
-    [Header("ÀåÂøµÈ Ä«µå ÀÎµ¦½º")]
+    [Header("ì¥ì°©ëœ ì¹´ë“œ ì¸ë±ìŠ¤")]
     public List<int> cardIndex = new List<int>();
 
-    [Header("ÀåÂøÇÑ Ä«µå ¸í")]
+    [Header("ì¥ì°©í•œ ì¹´ë“œ ëª…")]
     public List<string> cardName = new List<string>();
 
-    [Header("ÀåÂøÇÑ ÇÁ¸®Æé")]
+    [Header("ì¥ì°©í•œ í”„ë¦¬í©")]
     public List<GameObject> cardPrefab  = new List<GameObject>();
 
     private ItemOnObject itemOnObject;
 
     private GameObject EquipmentItemInventory;
 
+    // ----------- ìŠ¹ì™„ì´ ì—ê²Œ ë³´ë‚¼ ì¶”ê°€ ì •ë³´---------------
+    [Header("ìŠ¤í‚¬ ì¹´ë“œ ê³ ìœ  ID")]
+    [SerializeField]
+    private List<int> skillId = new List<int>();
+
+    [Header("ìŠ¤í‚¬ ì¥ì°©ëœ ì¹´ë“œ ì¸ë±ìŠ¤")]
+    [SerializeField]
+    private List<int> skillIndex = new List<int>();
+
+    [Header("ìŠ¤í‚¬ ì¥ì°©í•œ ì¹´ë“œ ëª…")]
+    [SerializeField]
+    private List<string> skillCName = new List<string>();
+
+    [Header("ìŠ¤í‚¬ ê³µê²©ë ¥")]
+    [SerializeField]
+    private List<int> skillATK = new List<int>();
+
+    [Header("ìŠ¤í‚¬ ì‚¬ê±°ë¦¬")]
+    [SerializeField]
+    private List<int> skillCrossroad = new List<int>();
+
+    [Header("ìŠ¤í‚¬ ì¿¨íƒ€ì„")]
+    [SerializeField]
+    private List<int> skillCoolTime = new List<int>();
+
+    // ê³µê²©ë ¥, ì‚¬ê±°ë¦¬, ì¿¨íƒ€ì„
+    [SerializeField]
+    private ItemDataBaseList itemDatabase;
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.T))
+        {
+            PlayerTrojanInfo();
+        }
+    }
+
     public void PlayerTrojanInfo()
     {
-        // PlayerNumber ¹Ş±â
+        // PlayerNumber ë°›ê¸°
         playerNumber = GetComponent<PlayerStorage>().playerNumber;
 
-        //ItemOnObject¿¡¼­ °¡Á®¿Â´Ù.
+        //ItemOnObjectì—ì„œ ê°€ì ¸ì˜¨ë‹¤.
 
-        // ÀåÂø ½½·Ô ¿ÀºêÁ§Æ® °¡Á®¿À±â
-        EquipmentItemInventory = GameObject.FindGameObjectWithTag("Inventory").transform.GetChild(0).GetChild(0).GetChild(1).GetChild(1).GetChild(1).GetChild(1).gameObject;
+        // ì¥ì°© ìŠ¬ë¡¯ ì˜¤ë¸Œì íŠ¸ ê°€ì ¸ì˜¤ê¸°
+        EquipmentItemInventory = GameObject.FindGameObjectWithTag("Inventory").transform.GetChild(0).GetChild(1).GetChild(1).GetChild(1).GetChild(1).GetChild(1).gameObject;
 
-        // ÇÏÀ§ ¿ÀºêÁ§Æ®µéÀ» ¸®½ºÆ®¿¡ ³Ö´Â´Ù.
+        // í•˜ìœ„ ì˜¤ë¸Œì íŠ¸ë“¤ì„ ë¦¬ìŠ¤íŠ¸ì— ë„£ëŠ”ë‹¤.
         List<GameObject> TrojanDataList= new List<GameObject>();
         for (int i = 0; i < EquipmentItemInventory.transform.childCount; i++)
         {
             TrojanDataList.Add(EquipmentItemInventory.transform.GetChild(i).gameObject);
-            //Debug.Log(TrojanDataList[i].name);
         }
 
         for (int i = 0; i < TrojanDataList.Count; i++)
         {
-            // count°¡ 1ÀÌ¸é ÀÎµ¦½º ÀúÀå
-            //Debug.Log(TrojanDataList[i].transform.childCount);
+            // countê°€ 1ì´ë©´ ì¸ë±ìŠ¤ ì €ì¥(ì•„ì´í…œì´ ë“¤ì–´ ìˆë‹¤ëŠ” ê²ƒ)
             if (TrojanDataList[i].transform.childCount == 1)
             {
-                cardIndex.Add(i);
-                // ±×¸®°í µ¥ÀÌÅÍ¸¦ °¡Á®¿È
-                ItemOnObject itemOnObject = TrojanDataList[i].gameObject.transform.GetChild(0).GetComponent<ItemOnObject>();
-                cardId.Add(itemOnObject.item.itemID);
-                cardName.Add(itemOnObject.item.itemName);
-                cardPrefab.Add(itemOnObject.item.itemModel);
+                if (i <= 3) // 0, 1, 2, 3
+                {
+                    skillIndex.Add(i);
+                    // ê·¸ë¦¬ê³  ë°ì´í„°ë¥¼ ê°€ì ¸ì˜´
+                    ItemOnObject itemOnObject = TrojanDataList[i].gameObject.transform.GetChild(0).GetComponent<ItemOnObject>();
+                    skillId.Add(itemOnObject.item.itemID);
+                    skillCName.Add(itemOnObject.item.itemName);
+                }
+
+                if (i > 3) // 4, 5, 6, 7
+                {
+                    cardIndex.Add(i);
+                    // ê·¸ë¦¬ê³  ë°ì´í„°ë¥¼ ê°€ì ¸ì˜´
+                    ItemOnObject itemOnObject = TrojanDataList[i].gameObject.transform.GetChild(0).GetComponent<ItemOnObject>();
+                    cardId.Add(itemOnObject.item.itemID);
+                    cardName.Add(itemOnObject.item.itemName);
+                    cardPrefab.Add(itemOnObject.item.itemModel);
+                }
             }
         }
-        // ¿ÀºêÁ§Æ® °¡Á®¿Í¼­ ÇÏÀ§ ItemOnObject
-        //itemOnObject = Get
+
+        int count = TrojanDataList.Count / 2;
+
+        for (int i = 0; i < count; i++) // 4
+        {
+            for (int j = 0; j < itemDatabase.itemList.Count; j++) // 100
+            {
+                if (skillId[i] == itemDatabase.itemList[j].itemID) // ì˜ˆì™¸ì²˜ë¦¬ë¥¼ í•´ë¼
+                {
+                    // ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤. Item Attributes
+                    skillATK.Add(itemDatabase.itemList[j].itemAttributes[0].attributeValue);
+                    skillCrossroad.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
+                    skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[2].attributeValue);
+                }
+            }
+        }
     }
 }
