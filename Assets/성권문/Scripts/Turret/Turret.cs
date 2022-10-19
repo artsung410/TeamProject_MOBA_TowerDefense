@@ -21,14 +21,14 @@ public abstract class Turret : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
-                gameObject.tag = "Red";
-                enemyTag = "Blue";
+                gameObject.tag = "Blue";
+                enemyTag = "Red";
             }
 
             else
             {
-                gameObject.tag = "Blue";
-                enemyTag = "Red";
+                gameObject.tag = "Red";
+                enemyTag = "Blue";
             }
         }
 
@@ -36,14 +36,14 @@ public abstract class Turret : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
-                gameObject.tag = "Blue";
-                enemyTag = "Red";
+                gameObject.tag = "Red";
+                enemyTag = "Blue";
             }
 
             else
             {
-                gameObject.tag = "Red";
-                enemyTag = "Blue";
+                gameObject.tag = "Blue";
+                enemyTag = "Red";
             }
         }
     }
