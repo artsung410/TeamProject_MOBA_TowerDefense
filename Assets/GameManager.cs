@@ -30,7 +30,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnPlayer();
-
     }
 
     private void SpawnPlayer()
@@ -38,7 +37,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
 
         if (localPlayerIndex > 1)
-        {
+        { 
             OnLeftRoom();
         }
 
@@ -46,9 +45,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         GameObject playerPf = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
 
-        if (localPlayerIndex == 0)
+        SpawnTower();
+
+    }
+
+
+    private void SpawnTower()
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            playerPf.tag = "Blue";
             for (int i = 0; i < 4; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
@@ -57,11 +62,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            playerPf.tag = "Red";
             for (int i = 0; i < 4; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 tiles[i + 4].BuildTower(tower);
+                
             }
         }
     }
