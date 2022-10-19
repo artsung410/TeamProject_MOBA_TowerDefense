@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
 
+    public Transform[] MinionPosition;
+
 
     public int localPlayerIndex;
 
@@ -56,7 +58,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     
-
+   
 
 
     public override void OnLeftRoom()
@@ -82,4 +84,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     //{
     //    scoreText.text = $"{player1ScoreText} : {player2ScoreText}";
     //}
+
 }
+
