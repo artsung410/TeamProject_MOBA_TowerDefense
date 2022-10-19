@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private static GameManager instance;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
+    public GameObject[] EnemyPrefabs;
     public List<GameObject> CurrentTowers;
     public int localPlayerIndex;
 
@@ -32,6 +33,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         SpawnPlayer();
         SpawnTower();
+        SpawnEnemy();
     }
 
     private void SpawnPlayer()
@@ -67,6 +69,20 @@ public class GameManager : MonoBehaviourPunCallbacks
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 GameObject currentTower = PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
                 //photonView.RPC("RPCUpdateLayer", RpcTarget.All, currentTower, 11);
+            }
+        }
+    }
+
+    private void SpawnEnemy()
+    {
+        if(PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        {
+            for(int i = 0; i < 1; i++)
+            {
+                GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name,spawnPositions[0].position,Quaternion.identity);
+                GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
+                GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
+                GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
             }
         }
     }
