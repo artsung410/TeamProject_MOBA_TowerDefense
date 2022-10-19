@@ -54,6 +54,20 @@ public class PlayerBehaviour : MonoBehaviourPun
         _statScript = GetComponent<Stats>();
     }
 
+    private void Start()
+    {
+        if (photonView.IsMine)
+        {
+            gameObject.tag = "Player";
+            //gameObject.GetComponentInParent<Transform>().gameObject.tag = "Player";
+        }
+        else
+        {
+            gameObject.tag = "Enemy";
+            //gameObject.GetComponentInParent<Transform>().gameObject.tag = "Enemy";
+
+        }
+    }
 
     private void Update()
     {
@@ -61,7 +75,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         if (photonView.IsMine)
         {
             CurrentPlayerPos = transform.position;
-
+            MoveTo();
         }
     }
 
@@ -162,7 +176,6 @@ public class PlayerBehaviour : MonoBehaviourPun
                 // 내가 근접캐라면
                 if (heroAttackType == HeroAttackType.Melee)
                 {
-                    Debug.Log("뭐야");
                     // 공격 수행 스위치를 true로 바꿈
                     perfomMeleeAttack = true;
                 }
@@ -175,7 +188,8 @@ public class PlayerBehaviour : MonoBehaviourPun
     {
         if (targetedEnemy != null)
         {
-            Debug.Log("적에게 타격을 입힘");
+            //Debug.Log("적에게 타격을 입힘");
+            _statScript.health -= _statScript.attackDmg;
         }
         else
         {
@@ -186,12 +200,20 @@ public class PlayerBehaviour : MonoBehaviourPun
     private void GetTargetedObject()
     {
 
-        if (Hit.collider.GetComponent<Targetable>() != null)
+        //if (Hit.collider.GetComponent<Targetable>() != null)
+        //{
+        //    if (Hit.collider.GetComponent<Targetable>().enemyType == Targetable.EnemyType.Minion)
+        //    {
+        //        targetedEnemy = Hit.collider.gameObject;
+        //    }
+        //}
+        //else
+        //{
+        //    targetedEnemy = null;
+        //}
+        if (Hit.collider.CompareTag("Enemy") && !Hit.collider.GetComponent<PhotonView>().IsMine)
         {
-            if (Hit.collider.GetComponent<Targetable>().enemyType == Targetable.EnemyType.Minion)
-            {
-                targetedEnemy = Hit.collider.gameObject;
-            }
+            targetedEnemy = Hit.collider.gameObject;
         }
         else
         {

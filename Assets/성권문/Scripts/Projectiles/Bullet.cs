@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 // ###############################################
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com         
 // ###############################################
-public class Bullet : MonoBehaviour
+public class Bullet : MonoBehaviourPun
 {
     private Transform target;
 
@@ -41,7 +42,6 @@ public class Bullet : MonoBehaviour
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
         transform.LookAt(target);
-
     }
 
     void HitTarget()

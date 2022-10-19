@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-    // ###############################################
-    //             NAME : ARTSUNG                      
-    //             MAIL : artsung410@gmail.com         
-    // ###############################################
+// ###############################################
+//             NAME : ARTSUNG                      
+//             MAIL : artsung410@gmail.com         
+// ###############################################
 
-public class Turret_Buff : MonoBehaviour
+public class Turret_Buff : MonoBehaviourPun
 {
     private Transform target;
     private EnemyMinion targetEnemy;
@@ -98,7 +99,7 @@ public class Turret_Buff : MonoBehaviour
     // ★ 총알 / 미사일 발사
     void Fire()
     {
-        GameObject newSkill = Instantiate(SkillPrefab, target.position, Quaternion.identity);
+        GameObject newSkill = PhotonNetwork.Instantiate(SkillPrefab.name, target.position, Quaternion.identity);
         Destroy(newSkill, 2f);
     }
 

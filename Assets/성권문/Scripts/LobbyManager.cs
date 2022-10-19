@@ -2,6 +2,7 @@ using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine;
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -12,55 +13,63 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 {
     private readonly string gameVersion = "1";
 
-    public TextMeshProUGUI connectionInfoText; // ³×Æ®¿öÅ© »óÅÂ ÅØ½ºÆ®
+    public TextMeshProUGUI connectionInfoText; // ë„¤íŠ¸ì›Œí¬ ìƒíƒœ í…ìŠ¤íŠ¸
     public Button joinButton;
+    public GameObject playerStoragePre;
     private void Start()
     {
         
-        // Æ÷Åæ ³×Æ®¿öÅ©¿¡ °ÔÀÓ ¹öÀüÀ» ¸í½ÃÇØÁÖ¾î¾ßÇÔ
+        // í¬í†¤ ë„¤íŠ¸ì›Œí¬ì— ê²Œì„ ë²„ì „ì„ ëª…ì‹œí•´ì£¼ì–´ì•¼í•¨
         PhotonNetwork.GameVersion = gameVersion;
 
-        // ¸¶½ºÅÍ ¼­¹ö¿¡ Á¢¼ÓÀ» ½ÃµµÇÔ.
+        // ë§ˆìŠ¤í„° ì„œë²„ì— ì ‘ì†ì„ ì‹œë„í•¨.
         PhotonNetwork.ConnectUsingSettings();
 
         joinButton.interactable = false;
         connectionInfoText.text = "Connecting To Master Server...";
     }
 
-    // ¸¶½ºÅÍ ¼­¹ö¿¡ Á¢¼Ó ½Ãµµ / ÀÚµ¿½ÇÇà
+    // ë§ˆìŠ¤í„° ì„œë²„ì— ì ‘ì† ì‹œë„ / ìë™ì‹¤í–‰
     public override void OnConnectedToMaster()
     {
         joinButton.interactable = true;
         connectionInfoText.text = "Online : Connected to Master Server";
+        Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
     }
 
-    // ¿¬°áÀÌ ²÷Ä×À»°æ¿ì / ÀÚµ¿½ÇÇà
+    // ì—°ê²°ì´ ëŠì¼°ì„ê²½ìš° / ìë™ì‹¤í–‰
     public override void OnDisconnected(DisconnectCause cause)
     {
         joinButton.interactable = false;
         connectionInfoText.text = $"Offline : Connection Disabled {cause.ToString()}";
 
-        // ÀçÁ¢¼Ó ½Ãµµ
+        // ì¬ì ‘ì† ì‹œë„
         PhotonNetwork.ConnectUsingSettings();
 
     }
 
 
-    // join buttonÀ» ´­·¶À»¶§ ¸Ş¼Òµå
+    // join buttonì„ ëˆŒë €ì„ë•Œ ë©”ì†Œë“œ
     public void Connect()
     {
+        TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        tro.PlayerTrojanInfo();
+
         joinButton.interactable = false;
 
         if (PhotonNetwork.IsConnected)
         {
             connectionInfoText.text = "Connecting to Random Room...";
+            // ì¥ì°©í•œ ì•„ì´í…œì„ GetCallerì— ë„£ëŠ” ì‘ì—…ì´ ì—¬ê¸°ì„œ í•œë‹¤.
+
+            // -----------------------------------------------------
             PhotonNetwork.JoinRandomRoom();
         }
         else
         {
             connectionInfoText.text = $"Offline : Connection Disabled - Try reconnecting..";
 
-            // ÀçÁ¢¼Ó ½Ãµµ
+            // ì¬ì ‘ì† ì‹œë„
             PhotonNetwork.ConnectUsingSettings();
         }
     }
@@ -69,7 +78,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         connectionInfoText.text = "There is no empty room, Creating new Room.";
 
-        // ³×Æ®¿öÅ© »ó¿¡¼­ ÀÎ¿ø2ÀÎ ¹æÀ» ÀÚµ¿À¸·Î »ı¼ºÇÔ.
+        // ë„¤íŠ¸ì›Œí¬ ìƒì—ì„œ ì¸ì›2ì¸ ë°©ì„ ìë™ìœ¼ë¡œ ìƒì„±í•¨.
         PhotonNetwork.CreateRoom(null, new RoomOptions { MaxPlayers = 2 });
     }
 
@@ -77,12 +86,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         connectionInfoText.text = "Connected with Room.";
 
-        // ·Îµå¾ÀÀ¸·Î ÁøÇàÇÏ¸é ³ª¸¸ ³Ñ¾î°¡°í, ¹æ¿¡ÀÖ´Â»ç¶÷Àº ¾È³Ñ¾î°¨..
+        // ë¡œë“œì”¬ìœ¼ë¡œ ì§„í–‰í•˜ë©´ ë‚˜ë§Œ ë„˜ì–´ê°€ê³ , ë°©ì—ìˆëŠ”ì‚¬ëŒì€ ì•ˆë„˜ì–´ê°..
 
         
         PhotonNetwork.LoadLevel("Prototype_1");
        
         
-        // ±×·¡¼­ LoadLevelÀ» ÀÌ¿ëÇØ¼­ ¾ÀÀ» µ¿±âÈ­ÇÒ ÇÊ¿ä°¡ ÀÖÀ½
+        // ê·¸ë˜ì„œ LoadLevelì„ ì´ìš©í•´ì„œ ì”¬ì„ ë™ê¸°í™”í•  í•„ìš”ê°€ ìˆìŒ
     }
 }

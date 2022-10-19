@@ -4,7 +4,7 @@ using System.Collections;
 public enum ItemType        //all ItemTypes...you can add some 
 {
     None = 0,
-    Weapon = 1,
+    Skill = 1,
     Consumable = 2,
     Quest = 3,
     Head = 4,
@@ -13,7 +13,7 @@ public enum ItemType        //all ItemTypes...you can add some
     Trouser = 7,
     Earrings = 8,
     Necklace = 9,
-    Ring = 10,
+    Tower = 10,
     Hands = 11,
     Blueprint = 12,
     Backpack = 13,
