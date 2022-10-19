@@ -2,47 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class Health : MonoBehaviour
+public class Health : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public Slider playerSlider3D;
-    Slider playerSlider2D;
+    public Slider hpSlider3D;
 
-    //public int health;
-    Stats _playerStats;
+    Stats _stats;
 
+    float health;
 
     private void Awake()
     {
-        playerSlider2D = GetComponent<Slider>();
-        _playerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<Stats>();
+        _stats = GetComponent<Stats>();
     }
 
-    void Start()
+    private void Start()
     {
-        playerSlider2D.maxValue = _playerStats.maxHealth;
-
-        playerSlider3D.maxValue = playerSlider2D.maxValue;
-        _playerStats.health = playerSlider3D.maxValue;
 
     }
 
-    private void Update()
+    private void OnEnable()
     {
-        SyncHealth();
+        health = _stats.StartHealth;
+
+        hpSlider3D.maxValue = _stats.StartHealth;
+
+        hpSlider3D.value = health;
     }
 
-    /// <summary>
-    /// 2d와 3d의 값을 같게함
-    /// </summary>
-    private void SyncHealth()
+    [PunRPC]
+    public void HealthUpdate(float damage)
     {
-        playerSlider2D.value = _playerStats.health;
-        playerSlider3D.value = playerSlider2D.value;
+        
+        health = Mathf.Max(health - damage, 0);
+        hpSlider3D.value = health;
+    }
+
+
+    //[PunRPC]
+    public void OnDamage(float damage, Collider other)
+    {
+        other.GetComponent<PhotonView>().RPC("HealthUpdate", RpcTarget.Others, damage);
     }
 }
