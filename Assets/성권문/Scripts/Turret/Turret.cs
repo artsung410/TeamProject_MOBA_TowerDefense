@@ -16,11 +16,18 @@ public abstract class Turret : MonoBehaviourPun
         if (PhotonNetwork.IsMasterClient)
         {
             gameObject.layer = 10;
+            photonView.RPC("SetLayer", RpcTarget.Others);
         }
         else
         {
             gameObject.layer = 11;
         }
+    }
+
+    [PunRPC]
+    public void SetLayer()
+    {
+        gameObject.layer = 11;
     }
 
     public void TakeDamage(int Damage)
