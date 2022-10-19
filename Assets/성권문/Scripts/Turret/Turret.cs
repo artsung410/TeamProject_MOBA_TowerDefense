@@ -12,18 +12,23 @@ public abstract class Turret : MonoBehaviourPun
 {
     public int Hp;
 
+    [Header("Å¸°Ù TAG")]
+    public string enemyTag;
+
     protected void OnEnable()
     {
         if (PhotonNetwork.IsMasterClient)
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
-                gameObject.layer = 10;
+                gameObject.tag = "Red";
+                enemyTag = "Blue";
             }
 
             else
             {
-                gameObject.layer = 11;
+                gameObject.tag = "Blue";
+                enemyTag = "Red";
             }
         }
 
@@ -31,15 +36,16 @@ public abstract class Turret : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
-                gameObject.layer = 11;
+                gameObject.tag = "Blue";
+                enemyTag = "Red";
             }
 
             else
             {
-                gameObject.layer = 10;
+                gameObject.tag = "Red";
+                enemyTag = "Blue";
             }
         }
-
     }
 
     //[PunRPC]
@@ -78,6 +84,5 @@ public abstract class Turret : MonoBehaviourPun
     //    SetLayer();
     //}
 
-    [Header("Å¸°Ù TAG")]
-    public string enemyTag = "Enemy";
+
 }
