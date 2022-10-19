@@ -14,16 +14,21 @@ public class Tile : MonoBehaviourPun
         isBuild = true;
         currentBuildedTower = PhotonNetwork.Instantiate(towerPrefab.name, transform.position, Quaternion.identity);
 
-        currentBuildedTower.tag = "Blue";
-        currentBuildedTower.GetComponent<Turret>().enemyTag = "Red";
-
-        photonView.RPC("SetTag", RpcTarget.Others);
+        photonView.RPC("SetTag", RpcTarget.All);
     }
 
     [PunRPC]
-    public void SetTag()
+    private void SetTag()
     {
-        currentBuildedTower.tag = "Red";
-        currentBuildedTower.GetComponent<Turret>().enemyTag = "Blue";
+        if (id < 4)
+        {
+            currentBuildedTower.tag = "Blue";
+            currentBuildedTower.GetComponent<Turret>().enemyTag = "Red";
+        }
+        else
+        {
+            currentBuildedTower.tag = "Red";
+            currentBuildedTower.GetComponent<Turret>().enemyTag = "Blue";
+        }
     }
 }

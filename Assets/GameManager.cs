@@ -30,6 +30,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnPlayer();
+        SpawnTower();
     }
 
     private void SpawnPlayer()
@@ -45,10 +46,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         GameObject playerPf = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
 
-        SpawnTower();
-
     }
-
 
     private void SpawnTower()
     {
