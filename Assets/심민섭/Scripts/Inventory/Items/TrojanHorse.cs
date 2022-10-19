@@ -100,17 +100,6 @@ public class TrojanHorse: MonoBehaviour
                     skillCName.Add(itemOnObject.item.itemName);
                 }
 
-                // 장착하고 있는 아이템의 고유 ID를 아이템 베이스에서 찾아서 데이터를 불러온다.
-                if (i == 0)
-                    Debug.Log(itemDatabase.itemList[i + 1].itemAttributes[0].attributeValue); // 10
-                                                                                              //skillATK.Add(itemDatabase.itemList[i + 1].itemAttributes[i].attributeValue);
-                if (i == 1)
-                    //skillCrossroad.Add(itemDatabase.itemList[i + 1].itemAttributes[i].attributeValue);
-                    Debug.Log(itemDatabase.itemList[i + 1].itemAttributes[1].attributeValue);
-                if (i == 2)
-                    //skillCoolTime.Add(itemDatabase.itemList[i + 1].itemAttributes[i].attributeValue);
-                    Debug.Log(itemDatabase.itemList[i + 1].itemAttributes[1].attributeValue);
-
                 if (i > 3) // 4, 5, 6, 7
                 {
                     cardIndex.Add(i);
@@ -119,6 +108,22 @@ public class TrojanHorse: MonoBehaviour
                     cardId.Add(itemOnObject.item.itemID);
                     cardName.Add(itemOnObject.item.itemName);
                     cardPrefab.Add(itemOnObject.item.itemModel);
+                }
+            }
+        }
+
+        int count = TrojanDataList.Count / 2;
+
+        for (int i = 0; i < count; i++) // 4
+        {
+            for (int j = 0; j < itemDatabase.itemList.Count; j++) // 100
+            {
+                if (skillId[i] == itemDatabase.itemList[j].itemID) // 예외처리를 해라
+                {
+                    // 정보를 가져온다. Item Attributes
+                    skillATK.Add(itemDatabase.itemList[j].itemAttributes[0].attributeValue);
+                    skillCrossroad.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
+                    skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[2].attributeValue);
                 }
             }
         }
