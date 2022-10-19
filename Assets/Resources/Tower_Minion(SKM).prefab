@@ -163,7 +163,6 @@ GameObject:
   - component: {fileID: 8910650605039192854}
   - component: {fileID: 8910650605039192851}
   - component: {fileID: 8910650605039192848}
-  - component: {fileID: 8910650605039192849}
   - component: {fileID: 7885278368097239119}
   - component: {fileID: 6538060953382879297}
   m_Layer: 0
@@ -238,19 +237,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &8910650605039192849
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8910650605039192855}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &7885278368097239119
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,7 +790,7 @@ GameObject:
   - component: {fileID: -2562176670870742062}
   m_Layer: 0
   m_Name: Tower_Minion(SKM)
-  m_TagString: Player1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -863,9 +849,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c670c7e5afbe5fc4e89be07096be9b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 0
+  enemyTag: Untagged
   range: 27
   fireRate: 1
-  enemyTag: Enemy
   partToRotate: {fileID: 8910650605811023662}
   turnSpeed: 10
 --- !u!114 &-3171431299336625142

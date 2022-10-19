@@ -180,7 +180,7 @@ GameObject:
   - component: {fileID: -3159367160946976179}
   m_Layer: 0
   m_Name: Tower_Buff(SKM)
-  m_TagString: Player1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -216,9 +216,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f40312e0bc12546b1f66d2ba96b674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 0
+  enemyTag: Untagged
   range: 25
   fireRate: 0.5
-  enemyTag: Enemy
   partToRotate: {fileID: 1093213912431874378}
   turnSpeed: 10
   SkillPrefab: {fileID: 5335353134670440342, guid: fd270451738a31e46a5c9a61c0542116, type: 3}

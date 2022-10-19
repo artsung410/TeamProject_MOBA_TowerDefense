@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 3846757566540716198}
   m_Layer: 0
   m_Name: Tower(SKM)
-  m_TagString: Untagged
+  m_TagString: Blue
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,21 +267,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66552f381f9345418b290e5c1d11d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 0
+  enemyTag: Red
   range: 25
   fireRate: 0.5
-  enemyTag: Enemy
   partToRotate: {fileID: 5338223571047918177}
   turnSpeed: 10
-  dangerZonePrefab: {fileID: 0}
   bulletPrefab: {fileID: 4048302374760608932, guid: 294af2a1f772b6d479230314a7c3ecff, type: 3}
   firePoint: {fileID: 8789408762047325834}
-  useLaser: 0
-  damageOverTime: 30
-  slowAmount: 0.5
-  lineRenderer: {fileID: 0}
-  impactEffect: {fileID: 0}
-  impactLight: {fileID: 0}
-  useLaser_Range: 0
 --- !u!1 &171538
 GameObject:
   m_ObjectHideFlags: 0

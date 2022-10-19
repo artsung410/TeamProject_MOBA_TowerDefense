@@ -235,7 +235,7 @@ GameObject:
   - component: {fileID: 4497294168151578388}
   m_Layer: 0
   m_Name: Tower(SKM)
-  m_TagString: Player1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -269,9 +269,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66552f381f9345418b290e5c1d11d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Hp: 0
+  enemyTag: Untagged
   range: 25
   fireRate: 0.5
-  enemyTag: Enemy
   partToRotate: {fileID: 5338223571047918177}
   turnSpeed: 10
   bulletPrefab: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}

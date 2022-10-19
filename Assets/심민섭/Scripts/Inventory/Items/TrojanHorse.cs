@@ -8,56 +8,51 @@ public class TrojanHorse: MonoBehaviour
     //             NAME : Simstealer                      
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
-    [Header("ÇÃ·¹ÀÌ¾î ¹øÈ£ (¸¶½ºÅÍ ¼­¹ö µé¾î¿Â ¼ø¼­)")]
-    [SerializeField]
-    private int playerNumber;
+    [Header("í”Œë ˆì´ì–´ ë²ˆí˜¸ (ë§ˆìŠ¤í„° ì„œë²„ ë“¤ì–´ì˜¨ ìˆœì„œ)")]
+    public int playerNumber;
 
-    [Header("Å¸¿ö Ä«µå °íÀ¯ ID")]
-    [SerializeField]
-    private List<int> cardId = new List<int>();
+    [Header("ì¹´ë“œ ê³ ìœ  ID")]
+    public List<int> cardId = new List<int>();
 
-    [Header("Å¸¿ö ÀåÂøµÈ Ä«µå ÀÎµ¦½º")]
-    [SerializeField]
-    private List<int> cardIndex = new List<int>();
+    [Header("ì¥ì°©ëœ ì¹´ë“œ ì¸ë±ìŠ¤")]
+    public List<int> cardIndex = new List<int>();
 
-    [Header("Å¸¿ö ÀåÂøÇÑ Ä«µå ¸í")]
-    [SerializeField]
-    private List<string> cardName = new List<string>();
+    [Header("ì¥ì°©í•œ ì¹´ë“œ ëª…")]
+    public List<string> cardName = new List<string>();
 
-    [Header("Å¸¿ö ÀåÂøÇÑ ÇÁ¸®Æé")]
-    [SerializeField]
-    private List<GameObject> cardPrefab  = new List<GameObject>();
+    [Header("ì¥ì°©í•œ í”„ë¦¬í©")]
+    public List<GameObject> cardPrefab  = new List<GameObject>();
 
     private ItemOnObject itemOnObject;
 
     private GameObject EquipmentItemInventory;
 
-    // ----------- ½Â¿ÏÀÌ ¿¡°Ô º¸³¾ Ãß°¡ Á¤º¸---------------
-    [Header("½ºÅ³ Ä«µå °íÀ¯ ID")]
+    // ----------- ìŠ¹ì™„ì´ ì—ê²Œ ë³´ë‚¼ ì¶”ê°€ ì •ë³´---------------
+    [Header("ìŠ¤í‚¬ ì¹´ë“œ ê³ ìœ  ID")]
     [SerializeField]
     private List<int> skillId = new List<int>();
 
-    [Header("½ºÅ³ ÀåÂøµÈ Ä«µå ÀÎµ¦½º")]
+    [Header("ìŠ¤í‚¬ ì¥ì°©ëœ ì¹´ë“œ ì¸ë±ìŠ¤")]
     [SerializeField]
     private List<int> skillIndex = new List<int>();
 
-    [Header("½ºÅ³ ÀåÂøÇÑ Ä«µå ¸í")]
+    [Header("ìŠ¤í‚¬ ì¥ì°©í•œ ì¹´ë“œ ëª…")]
     [SerializeField]
     private List<string> skillCName = new List<string>();
 
-    [Header("½ºÅ³ °ø°İ·Â")]
+    [Header("ìŠ¤í‚¬ ê³µê²©ë ¥")]
     [SerializeField]
     private List<int> skillATK = new List<int>();
 
-    [Header("½ºÅ³ »ç°Å¸®")]
+    [Header("ìŠ¤í‚¬ ì‚¬ê±°ë¦¬")]
     [SerializeField]
     private List<int> skillCrossroad = new List<int>();
 
-    [Header("½ºÅ³ ÄğÅ¸ÀÓ")]
+    [Header("ìŠ¤í‚¬ ì¿¨íƒ€ì„")]
     [SerializeField]
     private List<int> skillCoolTime = new List<int>();
 
-    // °ø°İ·Â, »ç°Å¸®, ÄğÅ¸ÀÓ
+    // ê³µê²©ë ¥, ì‚¬ê±°ë¦¬, ì¿¨íƒ€ì„
     [SerializeField]
     private ItemDataBaseList itemDatabase;
 
@@ -71,15 +66,15 @@ public class TrojanHorse: MonoBehaviour
 
     public void PlayerTrojanInfo()
     {
-        // PlayerNumber ¹Ş±â
+        // PlayerNumber ë°›ê¸°
         playerNumber = GetComponent<PlayerStorage>().playerNumber;
 
-        //ItemOnObject¿¡¼­ °¡Á®¿Â´Ù.
+        //ItemOnObjectì—ì„œ ê°€ì ¸ì˜¨ë‹¤.
 
-        // ÀåÂø ½½·Ô ¿ÀºêÁ§Æ® °¡Á®¿À±â
+        // ì¥ì°© ìŠ¬ë¡¯ ì˜¤ë¸Œì íŠ¸ ê°€ì ¸ì˜¤ê¸°
         EquipmentItemInventory = GameObject.FindGameObjectWithTag("Inventory").transform.GetChild(0).GetChild(1).GetChild(1).GetChild(1).GetChild(1).GetChild(1).gameObject;
 
-        // ÇÏÀ§ ¿ÀºêÁ§Æ®µéÀ» ¸®½ºÆ®¿¡ ³Ö´Â´Ù.
+        // í•˜ìœ„ ì˜¤ë¸Œì íŠ¸ë“¤ì„ ë¦¬ìŠ¤íŠ¸ì— ë„£ëŠ”ë‹¤.
         List<GameObject> TrojanDataList= new List<GameObject>();
         for (int i = 0; i < EquipmentItemInventory.transform.childCount; i++)
         {
@@ -88,13 +83,13 @@ public class TrojanHorse: MonoBehaviour
 
         for (int i = 0; i < TrojanDataList.Count; i++)
         {
-            // count°¡ 1ÀÌ¸é ÀÎµ¦½º ÀúÀå(¾ÆÀÌÅÛÀÌ µé¾î ÀÖ´Ù´Â °Í)
+            // countê°€ 1ì´ë©´ ì¸ë±ìŠ¤ ì €ì¥(ì•„ì´í…œì´ ë“¤ì–´ ìˆë‹¤ëŠ” ê²ƒ)
             if (TrojanDataList[i].transform.childCount == 1)
             {
                 if (i <= 3) // 0, 1, 2, 3
                 {
                     skillIndex.Add(i);
-                    // ±×¸®°í µ¥ÀÌÅÍ¸¦ °¡Á®¿È
+                    // ê·¸ë¦¬ê³  ë°ì´í„°ë¥¼ ê°€ì ¸ì˜´
                     ItemOnObject itemOnObject = TrojanDataList[i].gameObject.transform.GetChild(0).GetComponent<ItemOnObject>();
                     skillId.Add(itemOnObject.item.itemID);
                     skillCName.Add(itemOnObject.item.itemName);
@@ -103,7 +98,7 @@ public class TrojanHorse: MonoBehaviour
                 if (i > 3) // 4, 5, 6, 7
                 {
                     cardIndex.Add(i);
-                    // ±×¸®°í µ¥ÀÌÅÍ¸¦ °¡Á®¿È
+                    // ê·¸ë¦¬ê³  ë°ì´í„°ë¥¼ ê°€ì ¸ì˜´
                     ItemOnObject itemOnObject = TrojanDataList[i].gameObject.transform.GetChild(0).GetComponent<ItemOnObject>();
                     cardId.Add(itemOnObject.item.itemID);
                     cardName.Add(itemOnObject.item.itemName);
@@ -118,9 +113,9 @@ public class TrojanHorse: MonoBehaviour
         {
             for (int j = 0; j < itemDatabase.itemList.Count; j++) // 100
             {
-                if (skillId[i] == itemDatabase.itemList[j].itemID) // ¿¹¿ÜÃ³¸®¸¦ ÇØ¶ó
+                if (skillId[i] == itemDatabase.itemList[j].itemID) // ì˜ˆì™¸ì²˜ë¦¬ë¥¼ í•´ë¼
                 {
-                    // Á¤º¸¸¦ °¡Á®¿Â´Ù. Item Attributes
+                    // ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤. Item Attributes
                     skillATK.Add(itemDatabase.itemList[j].itemAttributes[0].attributeValue);
                     skillCrossroad.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
                     skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[2].attributeValue);

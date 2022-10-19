@@ -11,7 +11,6 @@ using Photon.Pun;
 public abstract class Turret : MonoBehaviourPun
 {
     public int Hp;
-    public int PlayerId;
 
     public void TakeDamage(int Damage)
     {
@@ -23,4 +22,7 @@ public abstract class Turret : MonoBehaviourPun
 
         Hp -= Damage;
     }
+
+    [Header("Å¸°Ù TAG")]
+    public string enemyTag = "Enemy";
 }
