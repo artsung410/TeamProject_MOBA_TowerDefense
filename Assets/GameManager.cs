@@ -38,11 +38,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
 
-        if (localPlayerIndex > 1)
-        { 
-            OnLeftRoom();
-        }
-
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
         GameObject playerPf = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
@@ -51,7 +46,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SpawnTower()
     {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        if (GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().playerNumber == 1)
         {
             for (int i = 0; i < 4; i++)
             {

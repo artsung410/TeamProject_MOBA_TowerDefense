@@ -14,13 +14,7 @@ public class Tile : MonoBehaviourPun
         isBuild = true;
         currentBuildedTower = PhotonNetwork.Instantiate(towerPrefab.name, transform.position, Quaternion.identity);
 
-        photonView.RPC("SetTag", RpcTarget.All);
-    }
-
-    [PunRPC]
-    private void SetTag()
-    {
-        if (id < 4)
+        if(GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().playerNumber == 1)
         {
             currentBuildedTower.tag = "Blue";
             currentBuildedTower.GetComponent<Turret>().enemyTag = "Red";
