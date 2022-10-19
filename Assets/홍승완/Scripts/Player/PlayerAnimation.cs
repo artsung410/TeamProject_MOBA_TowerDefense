@@ -41,7 +41,7 @@ public class PlayerAnimation : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         _playerScript.perfomMeleeAttack = false;
-        Debug.Log("check");
+        //Debug.Log("check");
     }
 
     //float attackAnimationPose = 0;

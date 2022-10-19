@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,8 @@ public class Sword : MonoBehaviour
 
     //HeroCombat combat;
     [SerializeField] PlayerBehaviour _playerScript;
+    [SerializeField] Health _playerHP;
+    [SerializeField] Stats _stat;
 
     private void Awake()
     {
@@ -19,20 +22,23 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //// enemy에 닿았지만 targeted가 null일때 널오류 남
-        //if (other.CompareTag("Enemy"))
-        //{
-        //    if (_playerScript != null)
-        //    {
-        //        _playerScript.MeleeAttack();
-        //        Debug.Log("접촉함");
-        //    }
-        //    else
-        //    {
-        //        Debug.Log("no 접촉");
-        //        return;
-        //    }
-        //}
-        _playerScript.MeleeAttack();
+        //Debug.Log("접촉");
+        // enemy에 닿았지만 targeted가 null일때 널오류 남
+        
+        if (other.tag == _playerScript.EnemyTag && _playerScript.perfomMeleeAttack)
+        {
+            if (_playerScript != null)
+            {
+                //_playerScript.MeleeAttack();
+                _playerHP.OnDamage(_stat.attackDmg, other);
+                //Debug.Log("접촉함");
+            }
+            else
+            {
+                //Debug.Log("no 접촉");
+                return;
+            }
+        }
+
     }
 }
