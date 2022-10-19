@@ -19,11 +19,13 @@ public class EnemyHpBar : MonoBehaviour
         _slider = GetComponent<Slider>();   
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    _slider.value = Mathf.Lerp()
-    //    transform.position = new Vector3(Enemy.position.x, 3f, Enemy.position.z);
+    // Update is called once per frame
+    void Update()
+    {
         
-    //}
+        transform.position = new Vector3(Enemy.position.x, 3f, Enemy.position.z);
+        
+    }
 }
+
+
