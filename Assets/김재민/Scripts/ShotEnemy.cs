@@ -38,6 +38,8 @@ public class ShotEnemy : MonoBehaviourPun
 
     private void Start()
     {
+        _navMeshAgent.enabled = false;
+        _navMeshAgent.enabled = true;
         StartCoroutine(StateChange());
     }
 
@@ -45,7 +47,6 @@ public class ShotEnemy : MonoBehaviourPun
     {
         while (true)
         {
-            _navMeshAgent.isStopped = false;
             if (_navMeshAgent.enabled == false)
             {
                 break;
@@ -90,16 +91,14 @@ public class ShotEnemy : MonoBehaviourPun
                 _target = _PrevTarget; 
                 
             }
-
             transform.LookAt(_target.position);
             _navMeshAgent.isStopped = true;
-
             // 애니메이션 추가 + 공격데미지 입히기
             //yield return new WaitForSeconds(1f); //공격쿨타임
             AttackDistance = Vector3.Distance(transform.position,_target.position);
-
             if (AttackDistance > 5f)
             {
+                _navMeshAgent.isStopped = false;
                 _estate = ESTATE.move;
               
             }
