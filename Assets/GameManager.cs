@@ -24,8 +24,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject[] towerPrefabs;
 
     private static GameManager instance;
-    public Transform[] spawnPositions; // ÇÃ·¹ÀÌ¾î°¡ »ı¼ºÇÒ À§Ä¡
-    public GameObject playerPrefab; // »ı¼ºÇÒ ÇÃ·¹ÀÌ¾îÀÇ ¿øÇü ÇÁ¸®ÆÕ
+    public Transform[] spawnPositions; // í”Œë ˆì´ì–´ê°€ ìƒì„±í•  ìœ„ì¹˜
+    public GameObject playerPrefab; // ìƒì„±í•  í”Œë ˆì´ì–´ì˜ ì›í˜• í”„ë¦¬íŒ¹
+
 
     public int localPlayerIndex;
 
@@ -46,13 +47,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SpawnPlayer()
     {
-        // ÇöÀç ¹æ¿¡ µé¾î¿Â ·ÎÄÃ ÇÃ·¹ÀÌ¾îÀÇ ³ª ÀÚ½ÅÀÇ ¹øÈ£¸¦ °¡Á®¿Â´Ù.
+        // í˜„ì¬ ë°©ì— ë“¤ì–´ì˜¨ ë¡œì»¬ í”Œë ˆì´ì–´ì˜ ë‚˜ ìì‹ ì˜ ë²ˆí˜¸ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
         localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
-        // aÇÃ·¹ÀÌ¾î ¼¼»ó¿¡¼­ aÇÃ·¹ÀÌ¾î¸¦ »ı¼ºÇÔ, ±×´ÙÀ½¿¡ b c d ¼¼»ó¿¡ aÀÇ º¹Á¦º»ÀÌ »ı¼ºµÊ.
+        // aí”Œë ˆì´ì–´ ì„¸ìƒì—ì„œ aí”Œë ˆì´ì–´ë¥¼ ìƒì„±í•¨, ê·¸ë‹¤ìŒì— b c d ì„¸ìƒì— aì˜ ë³µì œë³¸ì´ ìƒì„±ë¨.
         PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
     }
+
+    
+
+
 
     public override void OnLeftRoom()
     {
@@ -67,7 +72,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     //{
     //    playerScores[playerNumber - 1] += score;
 
-    //    // RpcTarget : ¾î¶² Å¬¶óÀÌ¾ğÆ®¿¡°Ô µ¿±âÈ­¸¦ Â¡ÇàÇÒ °ÍÀÎÁö, AllÀÌ¸é ¸ğµç Å¬¶óÀÌ¾ğÆ®µé¿¡°Ô µ¿±âÈ­ ÁøÇà.
+    //    // RpcTarget : ì–´ë–¤ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë™ê¸°í™”ë¥¼ ì§•í–‰í•  ê²ƒì¸ì§€, Allì´ë©´ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ë“¤ì—ê²Œ ë™ê¸°í™” ì§„í–‰.
     //    photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
     //}
 
