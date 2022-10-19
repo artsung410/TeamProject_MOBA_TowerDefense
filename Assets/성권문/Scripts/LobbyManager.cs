@@ -14,7 +14,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public TextMeshProUGUI connectionInfoText; // 네트워크 상태 텍스트
     public Button joinButton;
-    public Button EnterButton;
     private void Start()
     {
         
