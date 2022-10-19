@@ -1,5 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -15,43 +17,74 @@ public class GameManager : MonoBehaviourPunCallbacks
         get
         {
             if (instance == null) instance = FindObjectOfType<GameManager>();
-
             return instance;
         }
     }
 
-    public GameObject[] tiles;
-    public GameObject[] towerPrefabs;
-
+    public Transform[] tiles;
     private static GameManager instance;
-    public Transform[] spawnPositions; // ÇÃ·¹ÀÌ¾î°¡ »ı¼ºÇÒ À§Ä¡
-    public GameObject playerPrefab; // »ı¼ºÇÒ ÇÃ·¹ÀÌ¾îÀÇ ¿øÇü ÇÁ¸®ÆÕ
-
+    public Transform[] spawnPositions; // í”Œë ˆì´ì–´ê°€ ìƒì„±í•  ìœ„ì¹˜
+    public GameObject playerPrefab; // ìƒì„±í•  í”Œë ˆì´ì–´ì˜ ì›í˜• í”„ë¦¬íŒ¹
+    public GameObject[] EnemyPrefabs;
+    public List<GameObject> CurrentTowers;
     public int localPlayerIndex;
 
     private void Start()
     {
         SpawnPlayer();
-
-        if (photonView.IsMine)
-        {
-            //SpawnTower();
-        }
-    }
-
-    private void SpawnTower()
-    {
-        tiles[1].GetComponent<Tile>().BuildTower();
+        SpawnTower();
+        SpawnEnemy();
     }
 
     private void SpawnPlayer()
     {
-        // ÇöÀç ¹æ¿¡ µé¾î¿Â ·ÎÄÃ ÇÃ·¹ÀÌ¾îÀÇ ³ª ÀÚ½ÅÀÇ ¹øÈ£¸¦ °¡Á®¿Â´Ù.
-        localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+        var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
+
+        if (localPlayerIndex > 1)
+        { 
+            OnLeftRoom();
+        }
+
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
-        // aÇÃ·¹ÀÌ¾î ¼¼»ó¿¡¼­ aÇÃ·¹ÀÌ¾î¸¦ »ı¼ºÇÔ, ±×´ÙÀ½¿¡ b c d ¼¼»ó¿¡ aÀÇ º¹Á¦º»ÀÌ »ı¼ºµÊ.
         PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
+    }
+
+    private void SpawnTower()
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
+                GameObject currentTower = PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
+                //currentTower.layer = 10;
+
+            }
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++)
+            {
+                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
+                GameObject currentTower = PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
+                //photonView.RPC("RPCUpdateLayer", RpcTarget.All, currentTower, 11);
+            }
+        }
+    }
+
+    private void SpawnEnemy()
+    {
+        if(PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        {
+            for(int i = 0; i < 1; i++)
+            {
+                GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name,spawnPositions[0].position,Quaternion.identity);
+                GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
+                GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
+                GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
+            }
+        }
     }
 
     public override void OnLeftRoom()
@@ -59,15 +92,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("Lobby");
     }
 
-    private void Update()
-    {
-    }
+    //private void Update()
+    //{
+    //}
 
     //public void AddScore(int playerNumber, int score)
     //{
     //    playerScores[playerNumber - 1] += score;
 
-    //    // RpcTarget : ¾î¶² Å¬¶óÀÌ¾ğÆ®¿¡°Ô µ¿±âÈ­¸¦ Â¡ÇàÇÒ °ÍÀÎÁö, AllÀÌ¸é ¸ğµç Å¬¶óÀÌ¾ğÆ®µé¿¡°Ô µ¿±âÈ­ ÁøÇà.
+    //    // RpcTarget : ì–´ë–¤ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë™ê¸°í™”ë¥¼ ì§•í–‰í•  ê²ƒì¸ì§€, Allì´ë©´ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ë“¤ì—ê²Œ ë™ê¸°í™” ì§„í–‰.
     //    photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
     //}
 
@@ -77,4 +110,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     //{
     //    scoreText.text = $"{player1ScoreText} : {player2ScoreText}";
     //}
+
+    [PunRPC]
+    private void RPCUpdateLayer(GameObject tower, int layer)
+    {
+        tower.layer = 10;
+    }
 }

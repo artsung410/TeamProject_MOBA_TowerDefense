@@ -7,26 +7,7 @@ using Photon.Pun;
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com         
 // ###############################################
-public class Laser : MonoBehaviourPun
+public class Laser : Projectiles
 {
-    public float damage = 20;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("Enemy"))
-        {
-            Damage(other.gameObject.transform);
-        }
-    }
-
-    void Damage(Transform enemy)
-    {
-        EnemyMinion e = enemy.GetComponent<EnemyMinion>();
-
-        if (e != null)
-        {
-            e.TakeDamage(damage);
-            Debug.Log("레이저 데미지 적용");
-        }
-    }
 }

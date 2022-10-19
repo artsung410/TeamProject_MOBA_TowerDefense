@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class EnemySpawner : MonoBehaviour
+using Photon.Pun;
+public class EnemySpawner : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      

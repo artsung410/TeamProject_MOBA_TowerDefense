@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
-public class ShotEnemy : Enemybase
+public class ShotEnemy : MonoBehaviourPun
+
 {
     // ###############################################
     //             NAME : KimJaeMin                      
@@ -36,6 +38,8 @@ public class ShotEnemy : Enemybase
 
     private void Start()
     {
+        _navMeshAgent.enabled = false;
+        _navMeshAgent.enabled = true;
         StartCoroutine(StateChange());
     }
 
@@ -43,12 +47,13 @@ public class ShotEnemy : Enemybase
     {
         while (true)
         {
-            if(_navMeshAgent == null)
+            if (_navMeshAgent.enabled == false)
             {
                 break;
             }
             if (_target == null)
             {
+                
                 _target = _PrevTarget;
             }
             _animator.SetBool("Attack",false);
@@ -73,24 +78,27 @@ public class ShotEnemy : Enemybase
         while (true)
         {
             // 구분
-          
 
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
             _animator.SetBool("Attack", true);
             canShot = true;
             if(_target == null)
             {
+                
                 _target = _PrevTarget; 
+                
             }
-
             transform.LookAt(_target.position);
-           
-
+            _navMeshAgent.isStopped = true;
             // 애니메이션 추가 + 공격데미지 입히기
             //yield return new WaitForSeconds(1f); //공격쿨타임
             AttackDistance = Vector3.Distance(transform.position,_target.position);
-
             if (AttackDistance > 5f)
             {
+                _navMeshAgent.isStopped = false;
                 _estate = ESTATE.move;
               
             }
