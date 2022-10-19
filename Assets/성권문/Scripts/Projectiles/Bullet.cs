@@ -6,13 +6,13 @@ using Photon.Pun;
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com         
 // ###############################################
-public class Bullet : MonoBehaviourPun
+
+public class Bullet : Projectiles
 {
+    
     private Transform target;
 
     public float speed = 70f;
-
-    public int damage = 20;
 
     public float explosionRadius = 0f;
     public GameObject ImpactEffect;
@@ -47,7 +47,7 @@ public class Bullet : MonoBehaviourPun
     void HitTarget()
     {
         GameObject effectIns = (GameObject)Instantiate(ImpactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 5f);
+        Destroy(effectIns, 2f);
 
         if (explosionRadius > 0f)
         {
@@ -66,21 +66,10 @@ public class Bullet : MonoBehaviourPun
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
-            if (collider.tag == "Enemy")
+            if (collider.tag == enemyTag)
             {
                 Damage(collider.transform);
             }
-        }
-    }
-
-    void Damage (Transform enemy)
-    {
-        EnemyMinion e = enemy.GetComponent<EnemyMinion>();
-
-        if (e != null)
-        {
-            e.TakeDamage(damage);
-            Debug.Log("불렛 데미지 적용");
         }
     }
 

@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-// ###############################################
-//             NAME : ARTSUNG                      
-//             MAIL : artsung410@gmail.com         
-// ###############################################
-
-public abstract class Turret : MonoBehaviourPun
+public enum ProjectileType
 {
-    public int Hp;
+    Laser,
+    Arc,
+    Circle,
+    Bullet
+}
+
+public class Projectiles : MonoBehaviourPun
+{
+    // ###############################################
+    //             NAME : ARTSUNG                      
+    //             MAIL : artsung410@gmail.com         
+    // ###############################################
+    public ProjectileType projectileType;
 
     [Header("Å¸°Ù TAG")]
     public string enemyTag;
+    public float damage;
 
     protected void OnEnable()
     {
@@ -48,14 +56,26 @@ public abstract class Turret : MonoBehaviourPun
         }
     }
 
-    public void TakeDamage(int Damage)
+    protected void Damage(Transform enemy)
     {
-        if (Damage <= 0)
+        EnemyMinion e = enemy.GetComponent<EnemyMinion>();
+
+        if (e != null)
         {
-            Destroy(gameObject);
+            e.TakeDamage(damage);
+        }
+    }
+
+    protected void OnTriggerEnter(Collider other)
+    {
+        if (projectileType == ProjectileType.Bullet)
+        {
             return;
         }
 
-        Hp -= Damage;
+        if (other.CompareTag(enemyTag))
+        {
+            Damage(other.gameObject.transform);
+        }
     }
 }
