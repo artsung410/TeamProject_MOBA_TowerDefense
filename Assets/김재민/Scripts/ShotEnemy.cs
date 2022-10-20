@@ -63,7 +63,7 @@ public class ShotEnemy : MonoBehaviourPun
             if (distance < 10f)
             {
                 _estate = ESTATE.attack;
-                Debug.Log($"{_estate}");
+           
 
                 break;
             }

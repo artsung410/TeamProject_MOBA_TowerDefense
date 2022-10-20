@@ -18,26 +18,23 @@ public class BulletSpawn : MonoBehaviourPun
     [SerializeField]
     Transform _gunPivot;
 
-    ShotEnemy ShotSatatus;
+    EnemySatatus Minion;
 
     
     private void Awake()
     {
-       ShotSatatus = GetComponent<ShotEnemy>();
+        Minion = GetComponent<EnemySatatus>();
 
     }    
 
     
 
     public void Spawn()
-    {if(ShotSatatus._target == null)
-        {
-            ShotSatatus._target = ShotSatatus._PrevTarget;
-        }
+    {
 
         GameObject bullet = Instantiate(Prefab, _gunPivot.position, transform.rotation);
 
-        bullet.GetComponent<BulletMove>().tg = ShotSatatus._target;
+        bullet.GetComponent<BulletMove>().tg = Minion._target;
     }
 
     //public void InsertQueue(GameObject P_object)
