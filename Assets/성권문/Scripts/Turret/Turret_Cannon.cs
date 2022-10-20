@@ -6,7 +6,6 @@ using Photon.Pun;
 public class Turret_Cannon : Turret
 {
     private Transform target;
-    private EnemyMinion targetEnemy;
 
     [Header("사거리")]
     public float range = 15f;
@@ -63,7 +62,6 @@ public class Turret_Cannon : Turret
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
-            targetEnemy = nearestEnemy.GetComponent<EnemyMinion>();
             isEnemyInRange = true;
         }
         else
@@ -88,8 +86,9 @@ public class Turret_Cannon : Turret
         // 적이 공격범위에 들어왔을때 도형을 생성한다.
         if (isEnemyInRange == true)
         {
-            dangerZone.transform.position = target.transform.position;
+            dangerZone.transform.position = new Vector3(target.transform.position.x, target.transform.position.y - 0.3f, target.transform.position.z);
             dangerZone.SetActive(true);
+            StartCoroutine(DeActivationDangerZone());
         }
 
         // 타겟을 찾는다.
@@ -102,6 +101,12 @@ public class Turret_Cannon : Turret
         }
 
         fireCountdown -= Time.deltaTime;
+    }
+
+    private IEnumerator DeActivationDangerZone()
+    {
+        yield return new WaitForSeconds(1f);
+        dangerZone.SetActive(false);
     }
 
     void LockOnTarget()

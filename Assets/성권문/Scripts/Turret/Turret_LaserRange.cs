@@ -10,7 +10,6 @@ using Photon.Pun;
 public class Turret_LaserRange : Turret
 {
     private Transform target;
-    private EnemyMinion targetEnemy;
 
     [Header("»ç°Å¸®")]
     public float range = 15f;
@@ -60,7 +59,6 @@ public class Turret_LaserRange : Turret
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
-            targetEnemy = nearestEnemy.GetComponent<EnemyMinion>();
         }
         else
         {
