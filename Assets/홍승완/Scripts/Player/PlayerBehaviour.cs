@@ -47,7 +47,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     #region Other Components
     NavMeshAgent _agent;
     Stats _statScript;
-  
+
 
     #endregion
 
@@ -59,28 +59,110 @@ public class PlayerBehaviour : MonoBehaviourPun
         _agent.enabled = true;
     }
 
+    private void OnEnable()
+    {
+        // 태그처리하깅
+        // 맨처음 들어오는 플레이어 A = blue
+        // 리모트 a = blue
+        // 두번째 플레이어 B =  red
+        // 이때 a는 blue여야함
+        // 리모트 b = red
+
+        //if (PhotonNetwork.IsMasterClient && photonView.IsMine)
+        //{
+        //    gameObject.tag = "Blue";
+        //    EnemyTag = "Red";
+        //}
+        //else if(!PhotonNetwork.IsMasterClient)
+        //{
+        //    photonView.RPC(nameof(ClientTag), RpcTarget.o);
+        //}
+
+        //photonView.RPC(nameof(ClientTag), RpcTarget.All);
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        //    if (photonView.IsMine)
+        //    {
+        //        gameObject.tag = "Blue";
+        //        EnemyTag = "Red";
+        //    }
+        //}
+        //else
+        //{
+        //    if (photonView.IsMine)
+        //    {
+        //        gameObject.tag = "Red";
+        //        EnemyTag = "Blue";
+
+        //    }
+        //}
+    }
+
+
+    
+
     private void Start()
     {
         //PhotonView photonView = PhotonView.Get(this);
         //photonView.RPC("RPCStorageCaller", RpcTarget.MasterClient, playerStorage._id, playerStorage.session_id, playerStorage.userName, playerStorage.playerNumber, playerStorage.zera, playerStorage.ace, playerStorage.bet_id);
 
-        // 호스트에서만 Blue태그 할당
-        
-            gameObject.tag = "Blue";
-            EnemyTag = "Red";
+        //photonView.RPC(nameof(ChangeTag), RpcTarget.Others);
 
-            // 다른 클라이언트 ChangeTag 실행
-            photonView.RPC("ChangeTag", RpcTarget.Others);
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        //    gameObject.tag = "Blue";
+        //    EnemyTag = "Red";
+        //    if (photonView.IsMine)
+        //    {
+        //        gameObject.tag = "Blue";
+        //        EnemyTag = "Red";
+        //    }
+        //}
+        //else
+        //{
+        //    gameObject.tag = "Red";
+        //    EnemyTag = "Blue";
+        //    if (photonView.IsMine)
+        //    {
+        //        gameObject.tag = "Red";
+        //        EnemyTag = "Blue";
+        //    }
+        //}
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+            {
+                gameObject.tag = "Blue";
+                EnemyTag = "Red";
+            }
 
+            else
+            {
+                gameObject.tag = "Red";
+                EnemyTag = "Blue";
+            }
+        }
+
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+            {
+                gameObject.tag = "Red";
+                EnemyTag = "Blue";
+            }
+
+            else
+            {
+                gameObject.tag = "Blue";
+                EnemyTag = "Red";
+            }
+        }
     }
 
+   
 
-    [PunRPC]
-    private void ChangeTag()
-    {
-        gameObject.tag = "Red";
-        EnemyTag = "Blue";
-    }
+
+    
 
     private void Update()
     {

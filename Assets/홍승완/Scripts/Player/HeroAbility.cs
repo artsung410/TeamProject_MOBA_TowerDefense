@@ -31,7 +31,6 @@ public class HeroAbility : MonoBehaviourPun
         if (photonView.IsMine)
         {
             AbilityInput();
-            
         }
     }
 

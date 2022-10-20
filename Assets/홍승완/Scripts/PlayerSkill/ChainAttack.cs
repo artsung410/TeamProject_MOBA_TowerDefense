@@ -43,10 +43,14 @@ public class ChainAttack : MonoBehaviourPun, IDamageable
     // Update is called once per frame
     void Update()
     {
-        // 스킬위치는 플레이어를 따라온다
-        transform.position = playerStats.gameObject.transform.position;
-        transform.rotation = quaternion;
-        SkillHoldingTime(HoldingTime);
+        if (photonView.IsMine)
+        {
+            // 스킬위치는 플레이어를 따라온다
+            transform.position = playerStats.gameObject.transform.position;
+            transform.rotation = quaternion;
+            SkillHoldingTime(HoldingTime);
+
+        }
     }
 
     public void TakeDamage(float damage)
