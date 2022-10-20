@@ -10,20 +10,18 @@ public class Enemybase : MonoBehaviourPun
     //             MAIL : woals1566@gmail.com         
     // ###############################################
 
-    // ÀÌµ¿¼Óµµ
-    protected float moveSpeed;
-    // °ø°İ»ç°Å¸®
+    // ì´ë™ì†ë„
+   protected float moveSpeed;
+    // ê³µê²©ì‚¬ê±°ë¦¬
     protected float attackRange;
-    // °ø°İ·Â
+    // ê³µê²©ë ¥
     protected float Damage;
-    // Ã¼·Â
+    // ì²´ë ¥
     protected float HP = 100f;
-    //°ø°İ ÄğÅ¸ÀÓ
+    //ê³µê²© ì¿¨íƒ€ì„
     protected float AttackTime;
 
     public string EnemyTag;
-
-
 
     protected void OnEnable()
     {
@@ -56,8 +54,5 @@ public class Enemybase : MonoBehaviourPun
             }
         }
     }
-
-
-
 
 }

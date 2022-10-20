@@ -20,7 +20,11 @@ public class Item
     // 아이템의 효과
     [SerializeField]
     public List<ItemAttribute> itemAttributes = new List<ItemAttribute>();    
-    
+
+    [SerializeField]
+    public List<GameObject> specialPrefabs = new List<GameObject>();
+
+
     public Item(){}
 
     public Item(string name, int id, string desc, Sprite icon, GameObject model, int maxStack, ItemType type, string sendmessagetext, List<ItemAttribute> itemAttributes)                 //function to create a instance of the Item

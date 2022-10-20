@@ -48,26 +48,6 @@ public abstract class Turret : MonoBehaviourPun
         }
     }
 
-    //[PunRPC]
-    //public void SetLayer()
-    //{
-    //    if (PhotonNetwork.IsMasterClient)
-    //    {
-    //        gameObject.layer = 10;
-
-      
-    //        photonView.RPC("RedSet", RpcTarget.Others);
-    //        photonView.RPC("SetLayer", RpcTarget.Others);
-           
-    //    }
-    //}
-
-    //[PunRPC]
-    //public void RedSet()
-    //{
-    //    gameObject.layer = 11;
-    //}
-
     public void TakeDamage(int Damage)
     {
         if (Damage <= 0)
@@ -78,11 +58,4 @@ public abstract class Turret : MonoBehaviourPun
 
         Hp -= Damage;
     }
-
-    //private void Update()
-    //{
-    //    SetLayer();
-    //}
-
-
 }

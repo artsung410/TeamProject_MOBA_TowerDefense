@@ -246,6 +246,8 @@ GameObject:
   - component: {fileID: 8948153421829927640}
   - component: {fileID: 2112213623}
   - component: {fileID: 8968241670288031559}
+  - component: {fileID: 3238898636947011599}
+  - component: {fileID: 5789350374423623994}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -265,8 +267,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 868267934895466008}
   - {fileID: 8390865104711620849}
+  - {fileID: 868267934895466008}
   m_Father: {fileID: 3960095213218978512}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -371,6 +373,8 @@ MonoBehaviour:
   Cam: {fileID: 6842666429008816854}
   targetedEnemy: {fileID: 0}
   perfomMeleeAttack: 0
+  EnemyTag: 
+  IsAttack: 0
 --- !u!114 &4689805732716184401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -383,12 +387,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6153a793d6f840c4798dc50935550758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
-  health: 100
+  StartHealth: 100
   attackDmg: 4
   attackSpeed: 1
   attackTime: 1
   attackRange: 2.5
+  MoveSpeed: 10
 --- !u!114 &5689224072657129041
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,6 +486,35 @@ CapsuleCollider:
   m_Height: 1.8
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &3238898636947011599
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154331253358847308}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 84
+  m_CollisionDetection: 0
+--- !u!114 &5789350374423623994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1154331253358847308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ce8974c1a223549b1452cae8fe44b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpSlider3D: {fileID: 3706070186879944762}
 --- !u!1 &1164865704398189914
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,7 +545,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7831451401597603356}
-  m_RootOrder: 1
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2350097381869866902
 MonoBehaviour:
@@ -872,7 +905,7 @@ Transform:
   - {fileID: 4301261235822455146}
   - {fileID: 7737958122555193859}
   m_Father: {fileID: 7831451401597603356}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1975079397881682167
 GameObject:
@@ -1265,8 +1298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1481369344733934609}
   - component: {fileID: 3706070186879944762}
-  - component: {fileID: 2378495824965305473}
-  - component: {fileID: 8777860807826433995}
   m_Layer: 0
   m_Name: Player Health Slider 3D
   m_TagString: Untagged
@@ -1347,45 +1378,6 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
---- !u!114 &2378495824965305473
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682343866267745629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 8777860807826433995}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
---- !u!114 &8777860807826433995
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3682343866267745629}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_SynchronizePosition: 1
-  m_SynchronizeRotation: 1
-  m_SynchronizeScale: 0
-  m_UseLocal: 1
 --- !u!1 &3842628812154442275
 GameObject:
   m_ObjectHideFlags: 0
@@ -1698,6 +1690,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _playerScript: {fileID: 8238942992231030104}
+  _playerHP: {fileID: 5789350374423623994}
+  _stat: {fileID: 4689805732716184401}
 --- !u!1 &4092090531622432961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,7 +2493,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06adff36b6f9f5140bde8d7386330ee5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 4689805732716184401}
 --- !u!114 &9144374597068194323
 MonoBehaviour:
   m_ObjectHideFlags: 0

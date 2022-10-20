@@ -41,10 +41,13 @@ public class PlayerBehaviour : MonoBehaviourPun
     public bool perfomMeleeAttack = false;
 
 
+    public string EnemyTag;
+    public bool IsAttack;
 
     #region Other Components
     NavMeshAgent _agent;
     Stats _statScript;
+  
 
     #endregion
 
@@ -56,17 +59,26 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void Start()
     {
-        if (photonView.IsMine)
-        {
-            gameObject.tag = "Player";
-            //gameObject.GetComponentInParent<Transform>().gameObject.tag = "Player";
-        }
-        else
-        {
-            gameObject.tag = "Enemy";
-            //gameObject.GetComponentInParent<Transform>().gameObject.tag = "Enemy";
+        //PhotonView photonView = PhotonView.Get(this);
+        //photonView.RPC("RPCStorageCaller", RpcTarget.MasterClient, playerStorage._id, playerStorage.session_id, playerStorage.userName, playerStorage.playerNumber, playerStorage.zera, playerStorage.ace, playerStorage.bet_id);
 
-        }
+        // 호스트에서만 Blue태그 할당
+        
+            gameObject.tag = "Blue";
+            EnemyTag = "Red";
+
+            // 다른 클라이언트 ChangeTag 실행
+            photonView.RPC("ChangeTag", RpcTarget.Others);
+        
+
+    }
+
+
+    [PunRPC]
+    private void ChangeTag()
+    {
+        gameObject.tag = "Red";
+        EnemyTag = "Blue";
     }
 
     private void Update()
@@ -75,7 +87,15 @@ public class PlayerBehaviour : MonoBehaviourPun
         if (photonView.IsMine)
         {
             CurrentPlayerPos = transform.position;
+            _agent.speed = _statScript.MoveSpeed;
             MoveTo();
+
+            // s키 누르면 멈춤
+            if (Input.GetKeyDown(KeyCode.S))
+            {
+                _agent.SetDestination(CurrentPlayerPos);
+                _agent.stoppingDistance = 0f;
+            }
         }
     }
 
@@ -178,40 +198,18 @@ public class PlayerBehaviour : MonoBehaviourPun
                 {
                     // 공격 수행 스위치를 true로 바꿈
                     perfomMeleeAttack = true;
+                    //photonView.RPC("IsAttack", RpcTarget.All);
                 }
             }
 
         }
     }
 
-    public void MeleeAttack()
-    {
-        if (targetedEnemy != null)
-        {
-            //Debug.Log("적에게 타격을 입힘");
-            _statScript.health -= _statScript.attackDmg;
-        }
-        else
-        {
-            return;
-        }
-    }
+
 
     private void GetTargetedObject()
     {
-
-        //if (Hit.collider.GetComponent<Targetable>() != null)
-        //{
-        //    if (Hit.collider.GetComponent<Targetable>().enemyType == Targetable.EnemyType.Minion)
-        //    {
-        //        targetedEnemy = Hit.collider.gameObject;
-        //    }
-        //}
-        //else
-        //{
-        //    targetedEnemy = null;
-        //}
-        if (Hit.collider.CompareTag("Enemy") && !Hit.collider.GetComponent<PhotonView>().IsMine)
+        if (Hit.collider.CompareTag(EnemyTag))
         {
             targetedEnemy = Hit.collider.gameObject;
         }
