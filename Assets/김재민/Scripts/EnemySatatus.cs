@@ -10,51 +10,51 @@ public class EnemySatatus : Enemybase
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
+    public Transform _target;
 
-    public Transform _target; // 타켓
-    private Transform _PrevTarget; //넥서스
-    Rigidbody _rigidbody;
+    private Transform _PrevTarget;
+
     enum ESTATE
     {
         move,
         attack
     }
     ESTATE _estate;
-    enum EMinionType
+    enum EMINIOMTYPE
     {
-        meele,
-        shot,
+        Nomal,
+        Shot,
     }
-    EMinionType _minionType;
-    public bool canAttack { get; private set; }
+    EMINIOMTYPE _eminiomtype;
+
     private NavMeshAgent _navMeshAgent;
     private Animator _animator;
-    private string _targetTag;
-    
+
     float distance;
 
     void Awake()
-    {   
+    {
         _estate = ESTATE.move;
-        _minionType = EMinionType.meele;
-           _animator = GetComponent<Animator>();
-        _rigidbody = GetComponent<Rigidbody>();
+        _eminiomtype = EMINIOMTYPE.Nomal;
+        _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _PrevTarget = _target;
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
-
 
     }
 
     private void Start()
     {
 
-        if(attackRange > 5f) // 근접 , 원거리 구분
+
+        if (gameObject.GetComponents<BulletSpawn>() != null)
         {
-            _minionType = EMinionType.shot;
+            _eminiomtype = EMINIOMTYPE.Shot;
+            attackRange = 10f;
         }
-       
+
+        //InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
         StartCoroutine(StateChange());
     }
 
@@ -66,14 +66,13 @@ public class EnemySatatus : Enemybase
             {
                 _target = _PrevTarget;
             }
-            _animator.SetBool("Attack",false);
+            _navMeshAgent.speed = 5f;
             _navMeshAgent.SetDestination(_target.position);
             transform.LookAt(_target.position);
             distance = Vector3.Distance(_target.position, transform.position);
-            if (distance <= attackRange) // 거리가 공격사거리보다 같거나적으면
+            if (distance <= attackRange)
             {
-                _estate = ESTATE.attack; // 공격상태
-              
+                _estate = ESTATE.attack;
 
                 break;
             }
@@ -85,7 +84,7 @@ public class EnemySatatus : Enemybase
     {
         while (true)
         {
-           float AttackDistance = Vector3.Distance(transform.position,_target.position); //공격중일때 사거리
+            float AttackDistance = Vector3.Distance(transform.position, _target.position);
             if (_navMeshAgent.enabled == false)
             {
                 break;
@@ -95,33 +94,34 @@ public class EnemySatatus : Enemybase
             {
                 _target = _PrevTarget;
             }
-            if(_minionType == EMinionType.shot)
+            if (_eminiomtype == EMINIOMTYPE.Shot)
             {
-                _navMeshAgent.stoppingDistance = AttackDistance;
-
+                _navMeshAgent.stoppingDistance = attackRange;
             }
             else
             {
                 _navMeshAgent.stoppingDistance = 0f;
             }
+            _navMeshAgent.speed = 1f;
             _navMeshAgent.isStopped = true;
-
-            _animator.SetBool("Attack",true); //공격모션
+            transform.LookAt(_target.position);
+            _animator.SetBool("Attack", true);
             // 애니메이션 추가 + 공격데미지 입히기
-            //yield return new WaitForSeconds(1f); //공격쿨타임
+            yield return new WaitForSeconds(AttackTime); //공격쿨타임
 
-                if (AttackDistance >= attackRange) //공격중일때 공격사거리 벗어나면 move상태로 전환
-                {
+            if (AttackDistance >= attackRange)
+            {
                 _navMeshAgent.isStopped = false;
+                _animator.SetBool("Attack", false);
                 _estate = ESTATE.move;
-                   
-                }                 
-        yield return null;
+
+            }
+            yield return null;
         }
     }
 
     private IEnumerator StateChange()
-    {     
+    {
         while (true)
         {
 
@@ -137,25 +137,26 @@ public class EnemySatatus : Enemybase
                     break;
 
             }
-        yield return null;
+            yield return null;
         }
 
     }
+    //private void UpdateEnemyTarget()
+    //{
+    //    GameObject[] Enemies = GameObject.FindGameObjectsWithTag(EnemyTag); //tag로 게임오브젝트를 찾고 에너미스에 넣어주고
+    //    float shortestDistance = Mathf.Infinity; //가장가까운 범위
+    //    foreach (GameObject enemy in Enemies) // 에너미들은 다 확인하면서
+    //    {
+    //         float NearDistance = Vector3.Distance(transform.position,enemy.transform.position); //거리를 구해주고
+    //        if (NearDistance < shortestDistance) // 가장
+    //        {
+    //            _target.position = enemy.transform.position; //타켓을 바꿔준다
 
-    private void UpdateTarget()
-    {
-        GameObject[] enemise = GameObject.FindGameObjectsWithTag(_targetTag);
-        foreach (GameObject enemy in enemise)
-        {
-            float NearEnemyDistance = Vector3.Distance(transform.position,enemy.transform.position);
-            if(NearEnemyDistance <= attackRange)
-            {
-                _target = enemy.transform;
-            }
-        }
-    
-    }
-    
+    //        }
+    //    }
+    //}
+
+
 
 
 }

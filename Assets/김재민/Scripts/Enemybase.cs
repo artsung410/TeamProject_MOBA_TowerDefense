@@ -11,7 +11,7 @@ public class Enemybase : MonoBehaviourPun
     // ###############################################
 
     // 이동속도
-   protected float moveSpeed;
+    protected float moveSpeed;
     // 공격사거리
     protected float attackRange;
     // 공격력
@@ -23,19 +23,41 @@ public class Enemybase : MonoBehaviourPun
 
     public string EnemyTag;
 
-    
 
-    void Start()
+
+    protected void OnEnable()
     {
-        
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+            {
+                gameObject.tag = "Blue";
+                EnemyTag = "Red";
+            }
+
+            else
+            {
+                gameObject.tag = "Red";
+                EnemyTag = "Blue";
+            }
+        }
+
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+            {
+                gameObject.tag = "Red";
+                EnemyTag = "Blue";
+            }
+            else
+            {
+                gameObject.tag = "Blue";
+                EnemyTag = "Red";
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
 
 
-    }
 
-    
 }
