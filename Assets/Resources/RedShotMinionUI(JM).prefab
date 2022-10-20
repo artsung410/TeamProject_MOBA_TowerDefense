@@ -1692,13 +1692,12 @@ GameObject:
   - component: {fileID: 1067032674008029113}
   - component: {fileID: 1067032673998682619}
   - component: {fileID: 7403754812174817509}
-  - component: {fileID: 8294985723528800555}
   - component: {fileID: 5106345303155424071}
-  - component: {fileID: 6357451384839487254}
   - component: {fileID: 3745807338781687717}
   - component: {fileID: 596248909128392252}
   - component: {fileID: 397021229807052122}
   - component: {fileID: 3839293809356801517}
+  - component: {fileID: 490978171603196189}
   m_Layer: 0
   m_Name: RedShotMinion(JM)
   m_TagString: Red
@@ -1817,20 +1816,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &8294985723528800555
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067032674008058641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e710354fe3615e64ba0d6c56fd2d1579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 3063582420797440947, guid: d2e6808fd6cac884fa3bd6b8408a4fea, type: 3}
-  _PrevTarget: {fileID: 0}
 --- !u!136 &5106345303155424071
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1845,18 +1830,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6357451384839487254
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067032674008058641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdd3a1e63eb76bd4c9b586eaed20ccdc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3745807338781687717
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1932,6 +1905,20 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &490978171603196189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1067032674008058641}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTag: 
+  _target: {fileID: 3063582420797440947, guid: d2e6808fd6cac884fa3bd6b8408a4fea, type: 3}
 --- !u!1 &1067032674008058643
 GameObject:
   m_ObjectHideFlags: 0

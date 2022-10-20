@@ -1,37 +1,58 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Enemybase : MonoBehaviour
+public class Enemybase : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
 
-    // ÀÌµ¿¼Óµµ
-    float moveSpeed;
-    // °ø°İ»ç°Å¸®
-    float attackRange;
-    // °ø°İ·Â
-    float Damage;
-    // Ã¼·Â
-    float HP = 100f;
-    // ¹æ¾î·Â
-    float Defence;
-    //°ø°İ ÄğÅ¸ÀÓ
-    float AttackTime;
+    // ì´ë™ì†ë„
+   protected float moveSpeed;
+    // ê³µê²©ì‚¬ê±°ë¦¬
+    protected float attackRange;
+    // ê³µê²©ë ¥
+    protected float Damage;
+    // ì²´ë ¥
+    protected float HP = 100f;
+    //ê³µê²© ì¿¨íƒ€ì„
+    protected float AttackTime;
 
-    
+    public string EnemyTag;
 
-    void Start()
+    protected void OnEnable()
     {
-        
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+            {
+                gameObject.tag = "Blue";
+                EnemyTag = "Red";
+            }
+
+            else
+            {
+                gameObject.tag = "Red";
+                EnemyTag = "Blue";
+            }
+        }
+
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+            {
+                gameObject.tag = "Red";
+                EnemyTag = "Blue";
+            }
+            else
+            {
+                gameObject.tag = "Blue";
+                EnemyTag = "Red";
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

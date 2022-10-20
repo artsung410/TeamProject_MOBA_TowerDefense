@@ -42,7 +42,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
 
     public string EnemyTag;
-
+    public bool IsAttack;
 
     #region Other Components
     NavMeshAgent _agent;
@@ -198,44 +198,14 @@ public class PlayerBehaviour : MonoBehaviourPun
                 {
                     // 공격 수행 스위치를 true로 바꿈
                     perfomMeleeAttack = true;
-                    photonView.RPC("IsAttack", RpcTarget.All);
+                    //photonView.RPC("IsAttack", RpcTarget.All);
                 }
             }
 
         }
     }
 
-    [PunRPC]
-    private void IsAttack()
-    {
-        perfomMeleeAttack = true;
-    }
 
-    //public void MeleeAttack()
-    //{
-    //    if (targetedEnemy != null)
-    //    {
-
-    //        TakeDamage(_statScript.attackDmg);
-    //    }
-    //    else
-    //    {
-    //        return;
-    //    }
-    //}
-
-
-    //// 직접적으로 체력을 감소시키는 부분
-    //[PunRPC]
-    //void TakeDamage(float damage)
-    //{
-    //    if (PhotonNetwork.IsMasterClient)
-    //    {
-    //        _statScript.health -= damage;
-
-    //        photonView.RPC("TakeDamage", RpcTarget.Others, _statScript.attackDmg);
-    //    }
-    //}
 
     private void GetTargetedObject()
     {
