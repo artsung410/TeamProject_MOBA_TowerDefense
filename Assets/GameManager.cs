@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SpawnEnemy()
     {
-        if(PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        if(PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
             for(int i = 0; i < 1; i++)
             {

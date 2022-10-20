@@ -21,6 +21,7 @@ public class GetAPICaller : MonoBehaviourPun
     [SerializeField]
     public PlayerStorage playerStorage;
 
+
     //public bool getAPIComplite = false;
 
     private void Awake()
@@ -182,6 +183,7 @@ public class GetAPICaller : MonoBehaviourPun
             // 데이터 저장
             //playerStorage.message = jsonPlayer["message"].ToString();
             playerStorage.zera = jsonPlayer["data"]["balance"].ToString();
+            GameObject.FindGameObjectWithTag("Zera").GetComponent<Text>().text = playerStorage.zera;
             /*GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             APIStorage aPIStorage = apiStorageObj.GetComponent<APIStorage>();
             aPIStorage.zera[playerStorage.playerNumber] = jsonPlayer["data"]["balance"].ToString();*/
@@ -209,6 +211,7 @@ public class GetAPICaller : MonoBehaviourPun
             // 데이터 저장
             //playerStorage.message = jsonPlayer["message"].ToString();
             playerStorage.ace = jsonPlayer["data"]["balance"].ToString();
+            GameObject.FindGameObjectWithTag("Dappx").GetComponent<Text>().text = playerStorage.ace;
 
             /*GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             APIStorage aPIStorage = apiStorageObj.GetComponent<APIStorage>();

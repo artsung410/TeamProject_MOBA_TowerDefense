@@ -29,13 +29,11 @@ public class Projectiles : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
-                gameObject.tag = "Blue";
                 enemyTag = "Red";
             }
 
             else
             {
-                gameObject.tag = "Red";
                 enemyTag = "Blue";
             }
         }
@@ -44,13 +42,11 @@ public class Projectiles : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
-                gameObject.tag = "Red";
                 enemyTag = "Blue";
             }
 
             else
             {
-                gameObject.tag = "Blue";
                 enemyTag = "Red";
             }
         }

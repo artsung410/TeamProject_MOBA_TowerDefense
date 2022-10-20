@@ -3823,13 +3823,13 @@ GameObject:
   - component: {fileID: 6607732890056490866}
   - component: {fileID: 6607732890063966512}
   - component: {fileID: 3729778032333058094}
-  - component: {fileID: 2765222320331964896}
   - component: {fileID: 1443065561000754666}
   - component: {fileID: 2507438092816306289}
   - component: {fileID: 3340509893186972674}
   - component: {fileID: 8958009462459397221}
   - component: {fileID: 4668862640441847331}
   - component: {fileID: 8905590139766054858}
+  - component: {fileID: 2367971786927999613}
   m_Layer: 0
   m_Name: BlueShotMinion(JM)
   m_TagString: Blue
@@ -3947,20 +3947,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2765222320331964896
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6607732890056582106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e710354fe3615e64ba0d6c56fd2d1579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
-  _PrevTarget: {fileID: 0}
 --- !u!136 &1443065561000754666
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -4062,6 +4048,20 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2367971786927999613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607732890056582106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  EnemyTag: 
+  _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
 --- !u!1 &6607732890056582108
 GameObject:
   m_ObjectHideFlags: 0

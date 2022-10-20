@@ -10,32 +10,49 @@ public class Enemybase : MonoBehaviourPun
     //             MAIL : woals1566@gmail.com         
     // ###############################################
 
-    // ÀÌµ¿¼Óµµ
+    // ì´ë™ì†ë„
    protected float moveSpeed;
-    // °ø°İ»ç°Å¸®
+    // ê³µê²©ì‚¬ê±°ë¦¬
     protected float attackRange;
-    // °ø°İ·Â
+    // ê³µê²©ë ¥
     protected float Damage;
-    // Ã¼·Â
+    // ì²´ë ¥
     protected float HP = 100f;
-    //°ø°İ ÄğÅ¸ÀÓ
+    //ê³µê²© ì¿¨íƒ€ì„
     protected float AttackTime;
 
     public string EnemyTag;
 
-    
-
-    void Start()
+    protected void OnEnable()
     {
-  
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+            {
+                gameObject.tag = "Blue";
+                EnemyTag = "Red";
+            }
+
+            else
+            {
+                gameObject.tag = "Red";
+                EnemyTag = "Blue";
+            }
+        }
+
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+            {
+                gameObject.tag = "Red";
+                EnemyTag = "Blue";
+            }
+            else
+            {
+                gameObject.tag = "Blue";
+                EnemyTag = "Red";
+            }
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-
-    }
-    
-    
 }

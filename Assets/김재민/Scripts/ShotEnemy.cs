@@ -22,6 +22,14 @@ public class ShotEnemy : MonoBehaviourPun
         attack
     }
     ESTATE _estate;
+
+    enum EMinionType
+    {
+      meele,
+      shot,
+    }
+    EMinionType _minionType;
+
     public bool canShot { get; private set; }
     private NavMeshAgent _navMeshAgent;
     private Animator _animator;
@@ -29,11 +37,13 @@ public class ShotEnemy : MonoBehaviourPun
 
     void Awake()
     {
+        _estate = ESTATE.move;
+        _minionType = EMinionType.meele;
         _rigidbody = GetComponent<Rigidbody>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _PrevTarget = _target;
         _animator = GetComponent<Animator>();
-
+        
     }
 
     private void Start()
@@ -41,6 +51,8 @@ public class ShotEnemy : MonoBehaviourPun
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
         StartCoroutine(StateChange());
+        
+    
     }
 
     private IEnumerator move() // 움직임
@@ -50,11 +62,6 @@ public class ShotEnemy : MonoBehaviourPun
             if (_navMeshAgent.enabled == false)
             {
                 break;
-            }
-            if (_target == null)
-            {
-                
-                _target = _PrevTarget;
             }
             _animator.SetBool("Attack",false);
             canShot = false;
@@ -78,7 +85,11 @@ public class ShotEnemy : MonoBehaviourPun
         while (true)
         {
             // 구분
+            if (_target == null)
+            {
 
+                _target = _PrevTarget;
+            }
             if (_navMeshAgent.enabled == false)
             {
                 break;

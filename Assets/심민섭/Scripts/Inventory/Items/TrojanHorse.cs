@@ -56,14 +56,6 @@ public class TrojanHorse: MonoBehaviour
     [SerializeField]
     private ItemDataBaseList itemDatabase;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            PlayerTrojanInfo();
-        }
-    }
-
     public void PlayerTrojanInfo()
     {
         // PlayerNumber 받기
