@@ -24,12 +24,14 @@ public class Turret_LaserRange : Turret
     [Header("회전속도")]
     public float turnSpeed = 10f;
 
-    [Header("====== 범위 레이저 속성======")]
-    private Animator Laser_Range_animator;
+    private Animator animator;
 
+    private void Awake()
+    {
+        animator = GetComponent<Animator>();
+    }
     private void Start()
     {
-        Laser_Range_animator = GetComponent<Animator>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
         StartCoroutine(Laser_Range());
     }
@@ -86,13 +88,13 @@ public class Turret_LaserRange : Turret
                 Vector3 dir_y = new Vector3(dir.x, 0f, dir.z);
                 partToRotate.transform.rotation = Quaternion.LookRotation(dir_y);
 
-                if(Laser_Range_animator.GetBool("onAttack") == false)
+                if(animator.GetBool("onAttack") == false)
                 {
-                    Laser_Range_animator.SetBool("onAttack", true);
+                    animator.SetBool("onAttack", true);
                 }
                 else
                 {
-                    Laser_Range_animator.SetBool("onAttack", false);
+                    animator.SetBool("onAttack", false);
                 }
             }
             yield return new WaitForSeconds(1f);
@@ -102,7 +104,7 @@ public class Turret_LaserRange : Turret
     IEnumerator DeactivationLaser()
     {
         yield return new WaitForSeconds(0.3f);
-        Laser_Range_animator.SetBool("onAttack", false);
+        animator.SetBool("onAttack", false);
     }
 
     // 범위 그리기
@@ -111,4 +113,5 @@ public class Turret_LaserRange : Turret
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, range);
     }
+
 }
