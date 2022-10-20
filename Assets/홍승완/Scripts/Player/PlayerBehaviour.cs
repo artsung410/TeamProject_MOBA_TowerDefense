@@ -55,6 +55,8 @@ public class PlayerBehaviour : MonoBehaviourPun
     {
         _agent = GetComponent<NavMeshAgent>();
         _statScript = GetComponent<Stats>();
+        _agent.enabled = false;
+        _agent.enabled = true;
     }
 
     private void Start()
@@ -69,7 +71,6 @@ public class PlayerBehaviour : MonoBehaviourPun
 
             // 다른 클라이언트 ChangeTag 실행
             photonView.RPC("ChangeTag", RpcTarget.Others);
-        
 
     }
 

@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Stats : MonoBehaviour
+public class Stats : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
@@ -39,6 +40,10 @@ public class Stats : MonoBehaviour
     private void Update()
     {
         //DieAndDestroy();
+        //if (Input.GetKey(KeyCode.Q))
+        //{
+        //    MoveSpeed = 3f;
+        //}
     }
 
 
@@ -54,6 +59,7 @@ public class Stats : MonoBehaviour
 
     private void StatInit()
     {
+        MoveSpeed = 20f;
         //health = StartHealth;
         //maxHealth = 100f;
         //attackDmg = 5f;
