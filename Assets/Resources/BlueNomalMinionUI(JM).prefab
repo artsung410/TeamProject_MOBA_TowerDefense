@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 727053806592155603}
+  - component: {fileID: 2322615986524694574}
   m_Layer: 0
   m_Name: BlueNomalMinionUI(JM)
   m_TagString: Untagged
@@ -33,6 +34,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2322615986524694574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 727053806592155602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5081353677534115411
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,10 +123,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -157,6 +180,8 @@ GameObject:
   - component: {fileID: 5081353677791587389}
   - component: {fileID: 5081353677791587363}
   - component: {fileID: 5081353677791587362}
+  - component: {fileID: 5235906842493671411}
+  - component: {fileID: 7293163996988897802}
   m_Layer: 5
   m_Name: Hpbar
   m_TagString: Untagged
@@ -250,7 +275,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 5222610333701107880}
-  AttackEnemy: {fileID: 0}
+  _slider: {fileID: 5081353677791587363}
+  Enemy1: {fileID: 5222610333701107883}
+--- !u!114 &5235906842493671411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5081353677791587388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &7293163996988897802
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5081353677791587388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 5235906842493671411}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &5081353677968879853
 GameObject:
   m_ObjectHideFlags: 0
@@ -318,10 +383,10 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -601,12 +666,11 @@ GameObject:
   - component: {fileID: 5222610333701107881}
   - component: {fileID: 5222610333701107882}
   - component: {fileID: 5222610333701107883}
-  - component: {fileID: 5222610333701107892}
   - component: {fileID: 5222610333701107893}
   - component: {fileID: 4979463151938437783}
   - component: {fileID: 8925003747582076198}
   - component: {fileID: 8903640491358757100}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueNomalMinion(JM)
   m_TagString: Blue
   m_Icon: {fileID: 0}
@@ -702,20 +766,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTag: 
+  HP: 100
+  CurrnetHP: 0
+  EnemyTag: Red
   _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
---- !u!114 &5222610333701107892
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5222610333701107894}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 61bd7d453ece415448f8e0d5c9165a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!136 &5222610333701107893
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6311,6 +6365,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5222610333701107880}
     m_Modifications:
+    - target: {fileID: 2288089165369752986, guid: bffdc9a05414faf428124df6d7a6aa23, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8235854432560990030, guid: bffdc9a05414faf428124df6d7a6aa23, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

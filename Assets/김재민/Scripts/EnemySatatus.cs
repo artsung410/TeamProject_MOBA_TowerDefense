@@ -46,15 +46,14 @@ public class EnemySatatus : Enemybase
 
     private void Start()
     {
-
-
+        CurrnetHP = HP;
         if (gameObject.GetComponents<BulletSpawn>() != null)
         {
             _eminiomtype = EMINIOMTYPE.Shot;
             attackRange = 10f;
         }
 
-        //InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
+        InvokeRepeating("UpdateEnemyTarget", 0f, 0.1f);
         StartCoroutine(StateChange());
     }
 
@@ -141,23 +140,18 @@ public class EnemySatatus : Enemybase
         }
 
     }
-    //private void UpdateEnemyTarget()
-    //{
-    //    GameObject[] Enemies = GameObject.FindGameObjectsWithTag(EnemyTag); //tag로 게임오브젝트를 찾고 에너미스에 넣어주고
-    //    float shortestDistance = Mathf.Infinity; //가장가까운 범위
-    //    foreach (GameObject enemy in Enemies) // 에너미들은 다 확인하면서
-    //    {
-    //         float NearDistance = Vector3.Distance(transform.position,enemy.transform.position); //거리를 구해주고
-    //        if (NearDistance < shortestDistance) // 가장
-    //        {
-    //            _target.position = enemy.transform.position; //타켓을 바꿔준다
-
-    //        }
-    //    }
-    //}
-
-
-
-
+    private void UpdateEnemyTarget()
+    {
+        GameObject[] Enemies = GameObject.FindGameObjectsWithTag(EnemyTag); //tag로 게임오브젝트를 찾고 에너미스에 넣어주고
+        float shortestDistance = Mathf.Infinity; //가장가까운 범위
+        foreach (GameObject enemy in Enemies) // 에너미들은 다 확인하면서
+        {
+            float NearDistance = Vector3.Distance(transform.position, enemy.transform.position); //거리를 구해주고
+            if (NearDistance < shortestDistance) // 가장
+            {
+                _target.position = enemy.transform.position; //타켓을 바꿔준다
+            }
+        }
+    }
 }
 

@@ -79,8 +79,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             for(int i = 0; i < 1; i++)
             {
-                GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name,spawnPositions[0].position,Quaternion.identity);
+                GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name, spawnPositions[0].position, Quaternion.identity);
                 GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
+
                 GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
                 GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
             }

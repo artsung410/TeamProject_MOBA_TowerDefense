@@ -3824,13 +3824,12 @@ GameObject:
   - component: {fileID: 6607732890063966512}
   - component: {fileID: 3729778032333058094}
   - component: {fileID: 1443065561000754666}
-  - component: {fileID: 2507438092816306289}
   - component: {fileID: 3340509893186972674}
   - component: {fileID: 8958009462459397221}
   - component: {fileID: 4668862640441847331}
   - component: {fileID: 8905590139766054858}
   - component: {fileID: 2367971786927999613}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: BlueShotMinion(JM)
   m_TagString: Blue
   m_Icon: {fileID: 0}
@@ -3961,18 +3960,6 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2507438092816306289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6607732890056582106}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e49e134e38881d45a838a2a5bfeb961, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3340509893186972674
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4060,7 +4047,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTag: 
+  HP: 100
+  CurrnetHP: 0
+  EnemyTag: Red
   _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
 --- !u!1 &6607732890056582108
 GameObject:
@@ -9226,6 +9215,8 @@ GameObject:
   - component: {fileID: 8574686292933716010}
   - component: {fileID: 8574686292933716020}
   - component: {fileID: 8574686292933716021}
+  - component: {fileID: 4093367831096896097}
+  - component: {fileID: 7283887004075965283}
   m_Layer: 5
   m_Name: Hpbar
   m_TagString: Untagged
@@ -9319,7 +9310,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 6607732890056490866}
-  AttackEnemy: {fileID: 0}
+  _slider: {fileID: 8574686292933716020}
+  Enemy1: {fileID: 2367971786927999613}
+--- !u!114 &4093367831096896097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574686292933716011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 7283887004075965283}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &7283887004075965283
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8574686292933716011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &8808627454346318819
 GameObject:
   m_ObjectHideFlags: 0
@@ -9329,6 +9360,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8808627454346318816}
+  - component: {fileID: 4380845544331289005}
   m_Layer: 0
   m_Name: BlueShootMinionUI(JM)
   m_TagString: Untagged
@@ -9353,3 +9385,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4380845544331289005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8808627454346318819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0

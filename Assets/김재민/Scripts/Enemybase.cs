@@ -17,7 +17,10 @@ public class Enemybase : MonoBehaviourPun
     // 공격력
     protected float Damage;
     // 체력
-    protected float HP = 100f;
+    public float HP = 100f;
+
+    public float CurrnetHP;
+
     //공격 쿨타임
     protected float AttackTime;
 
@@ -25,34 +28,52 @@ public class Enemybase : MonoBehaviourPun
 
     protected void OnEnable()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
-            {
-                gameObject.tag = "Blue";
-                EnemyTag = "Red";
-            }
 
-            else
-            {
-                gameObject.tag = "Red";
-                EnemyTag = "Blue";
-            }
-        }
+        if(photonView)
+        CurrnetHP = HP;
+    }
+    //protected void OnEnable()
+    //{
+    //    if (PhotonNetwork.IsMasterClient)
+    //    {
+    //        if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+    //        {
+    //            gameObject.tag = "Blue";
+    //            EnemyTag = "Red";
+    //        }
 
-        else
-        {
-            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
-            {
-                gameObject.tag = "Red";
-                EnemyTag = "Blue";
-            }
-            else
-            {
-                gameObject.tag = "Blue";
-                EnemyTag = "Red";
-            }
-        }
+    //        else
+    //        {
+    //            gameObject.tag = "Red";
+    //            EnemyTag = "Blue";
+    //        }
+    //    }
+
+    //    else
+    //    {
+    //        if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+    //        {
+    //            gameObject.tag = "Red";
+    //            EnemyTag = "Blue";
+    //        }
+    //        else
+    //        {
+    //            gameObject.tag = "Blue";
+    //            EnemyTag = "Red";
+    //        }
+    //    }
+    //}
+
+    public void TakeDamage(float Damage)
+    {
+        photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
+    }
+
+    [PunRPC]
+    public void RPC_TakeDamage(float Damage)
+    {
+        CurrnetHP -= Damage;
+       
     }
 
 }
