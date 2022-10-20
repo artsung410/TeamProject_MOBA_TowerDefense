@@ -40,24 +40,40 @@ public class HeroAbility : MonoBehaviourPun
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            if (AbilityPrefabs[0] == null)
+            {
+                return;
+            }
             //PhotonNetwork.Instantiate(AbilityPrefabs[0], skillSpawn);
-            PhotonNetwork.Instantiate(AbilityPrefabs[0].name, skillSpawn.position, Quaternion.identity);
+            GameObject go = PhotonNetwork.Instantiate(AbilityPrefabs[0].name, skillSpawn.position, Quaternion.identity);
 
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
+            if (AbilityPrefabs[1] == null)
+            {
+                return;
+            }
             //Instantiate(AbilityPrefabs[1], skillSpawn);
             PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);
 
         }
         if (Input.GetKeyDown(KeyCode.E))
         {
+            if (AbilityPrefabs[2] == null)
+            {
+                return;
+            }
             //Instantiate(AbilityPrefabs[2], skillSpawn);
             PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
 
         }
         if (Input.GetKeyDown(KeyCode.R))
         {
+            if (AbilityPrefabs[3] == null)
+            {
+                return;
+            }
             //Instantiate(AbilityPrefabs[3], skillSpawn);
             PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
 
