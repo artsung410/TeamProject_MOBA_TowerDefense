@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class Enemybase : MonoBehaviour
+public class Enemybase : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      
@@ -10,17 +11,17 @@ public class Enemybase : MonoBehaviour
     // ###############################################
 
     // 이동속도
-    float moveSpeed;
+   protected float moveSpeed;
     // 공격사거리
-    float attackRange;
+    protected float attackRange;
     // 공격력
-    float Damage;
+    protected float Damage;
     // 체력
-    float HP = 100f;
-    // 방어력
-    float Defence;
+    protected float HP = 100f;
     //공격 쿨타임
-    float AttackTime;
+    protected float AttackTime;
+
+    public string EnemyTag;
 
     
 
@@ -32,6 +33,9 @@ public class Enemybase : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
+
     }
+
+    
 }
