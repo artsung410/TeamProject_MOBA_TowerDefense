@@ -39,7 +39,6 @@ public class Health : MonoBehaviourPun
     [PunRPC]
     public void HealthUpdate(float damage)
     {
-        
         health = Mathf.Max(health - damage, 0);
         hpSlider3D.value = health;
     }
@@ -48,6 +47,6 @@ public class Health : MonoBehaviourPun
     //[PunRPC]
     public void OnDamage(float damage, Collider other)
     {
-        other.GetComponent<PhotonView>().RPC("HealthUpdate", RpcTarget.Others, damage);
+        other.GetComponent<PhotonView>().RPC("HealthUpdate", RpcTarget.AllBuffered, damage);
     }
 }

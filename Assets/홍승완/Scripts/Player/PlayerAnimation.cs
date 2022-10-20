@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Photon.Pun;
 
-public class PlayerAnimation : MonoBehaviour
+public class PlayerAnimation : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
@@ -54,10 +55,13 @@ public class PlayerAnimation : MonoBehaviour
             {
                 // 공격 모션 재생
                 animator.SetBool("Attack", true);
+                if (photonView.IsMine)
+                {
+                    _playerScript.IsAttack = true;  
 
+                }
                 // 무작위 공격 자세
                 //animator.SetFloat("AttackPose", attackAnimationPose);
-
                 // 공격 모션 재생 속도
                 animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
                 StartCoroutine(MeleeAttackInterval());
@@ -68,6 +72,11 @@ public class PlayerAnimation : MonoBehaviour
             if (_playerScript.perfomMeleeAttack == false)
             {
                 //Debug.Log("공격 취소");
+                if (photonView.IsMine)
+                {
+                    _playerScript.IsAttack = false;
+
+                }
                 animator.SetBool("Attack", false);
                 StopCoroutine(MeleeAttackInterval());
             }
