@@ -1698,7 +1698,7 @@ GameObject:
   - component: {fileID: 397021229807052122}
   - component: {fileID: 3839293809356801517}
   - component: {fileID: 490978171603196189}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: RedShotMinion(JM)
   m_TagString: Red
   m_Icon: {fileID: 0}
@@ -1917,7 +1917,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyTag: 
+  HP: 100
+  CurrnetHP: 0
+  EnemyTag: Blue
   _target: {fileID: 3063582420797440947, guid: d2e6808fd6cac884fa3bd6b8408a4fea, type: 3}
 --- !u!1 &1067032674008058643
 GameObject:
@@ -8968,9 +8970,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3405628836457899909}
+  - component: {fileID: 4511715821005176620}
   m_Layer: 0
   m_Name: RedShotMinionUI(JM)
-  m_TagString: Red
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8992,6 +8995,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4511715821005176620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405628836457899908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4557821517366525717
 GameObject:
   m_ObjectHideFlags: 0
@@ -9180,6 +9205,8 @@ GameObject:
   - component: {fileID: 4557821517627564997}
   - component: {fileID: 4557821517627565019}
   - component: {fileID: 4557821517627565018}
+  - component: {fileID: 4765234085888090594}
+  - component: {fileID: 656895732893037938}
   m_Layer: 5
   m_Name: Hpbar
   m_TagString: Untagged
@@ -9273,7 +9300,47 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1067032674008029113}
-  AttackEnemy: {fileID: 0}
+  _slider: {fileID: 4557821517627565019}
+  Enemy1: {fileID: 490978171603196189}
+--- !u!114 &4765234085888090594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557821517627564996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 656895732893037938}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &656895732893037938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4557821517627564996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &4557821517874393666
 GameObject:
   m_ObjectHideFlags: 0
