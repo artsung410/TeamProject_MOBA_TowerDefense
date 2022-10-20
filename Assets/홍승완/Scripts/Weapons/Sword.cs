@@ -25,12 +25,16 @@ public class Sword : MonoBehaviour
         //Debug.Log("접촉");
         // enemy에 닿았지만 targeted가 null일때 널오류 남
         
-        if (other.tag == _playerScript.EnemyTag && _playerScript.perfomMeleeAttack)
+        if (other.tag == _playerScript.EnemyTag)
         {
             if (_playerScript != null)
             {
+                    Debug.Log($"공격중? : {_playerScript.IsAttack}");
                 //_playerScript.MeleeAttack();
-                _playerHP.OnDamage(_stat.attackDmg, other);
+                if (_playerScript.IsAttack)
+                {
+                    _playerHP.OnDamage(_stat.attackDmg, other);
+                }
                 //Debug.Log("접촉함");
             }
             else
