@@ -121,16 +121,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnLeftRoom()
-    {
-        SceneManager.LoadScene("Lobby");
-    }
-
     public void FindBuffIcon()
     {
 
     }
-
 
     // 스코어 관련
     //private void Update()
