@@ -57,7 +57,17 @@ public class Projectiles : MonoBehaviourPun
         // 플레이어 데미지 적용
         if (enemy.gameObject.layer == 7)
         {
-            
+            Health player= enemy.GetComponent<Health>();
+
+            if (player != null)
+            {
+                if (player.hpSlider3D.value <= 0)
+                {
+                    player.transform.gameObject.SetActive(false);
+                }
+                player.OnDamage(damage);
+                
+            }
         }
 
         // 미니언 데미지 적용
