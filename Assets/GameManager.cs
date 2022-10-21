@@ -27,11 +27,15 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
     public GameObject[] EnemyPrefabs;
-    public List<GameObject> CurrentTowers;
-    public List<GameObject> CurrentPlayers;
+
+    // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
+    public List<GameObject> CurrentTurrets; // 각 월드에서 생성된 모든 터렛들.
+    public List<GameObject> CurrentPlayers; // 각 월드에서 생성된 모든 플레이어들.
+    public List<GameObject> CurrentMinions; // 각 월드에서 생성된 모든 미니언들.
 
     // 플레이어 미니맵에 띄우기
     public GameObject CharacterCircle;
+    public GameObject MinionCircle;
 
     private void Start()
     {
@@ -40,6 +44,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnEnemy();
     }
 
+    // 플레이어 생성
     private void SpawnPlayer()
     {
         var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
@@ -51,21 +56,16 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
+
+        // 플레이어 생성
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
 
+
+        // 미니맵 플레이어 캔버스 생성
         GameObject circle = PhotonNetwork.Instantiate(CharacterCircle.name, new Vector3(player.transform.position.x, player.transform.position.y + 30, player.transform.position.z), Quaternion.identity);
-
-
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
-        {
-            circle.transform.parent = player.transform.GetChild(2).transform;
-        }
-        else
-        {
-            circle.transform.parent = player.transform.GetChild(2).transform;
-        }
     }
 
+    // 타워 생성
     private void SpawnTower()
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
@@ -73,9 +73,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < 4; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                GameObject currentTower = PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
-                //currentTower.layer = 10;
-
+                PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
             }
         }
         else
@@ -83,24 +81,23 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < 4; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                GameObject currentTower = PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
-                //photonView.RPC("RPCUpdateLayer", RpcTarget.All, currentTower, 11);
+                PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
             }
         }
     }
 
+    // 미니언 생성
     private void SpawnEnemy()
     {
-        if(PhotonNetwork.LocalPlayer.ActorNumber == 2)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
-            for(int i = 0; i < 1; i++)
-            {
-                GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name, spawnPositions[0].position, Quaternion.identity);
-                GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
+            GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name, spawnPositions[0].position, Quaternion.identity);
 
-                GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
-                GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
-            }
+            GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
+
+            GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
+
+            GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
         }
     }
 
@@ -109,6 +106,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         SceneManager.LoadScene("Lobby");
     }
 
+    // 스코어 관련
     //private void Update()
     //{
     //}

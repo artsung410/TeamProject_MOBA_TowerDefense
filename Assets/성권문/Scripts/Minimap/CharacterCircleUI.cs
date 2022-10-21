@@ -6,6 +6,11 @@ using UnityEngine.UI;
 
 public class CharacterCircleUI : MonoBehaviourPun
 {
+    // ###############################################
+    //             NAME : ARTSUNG                      
+    //             MAIL : artsung410@gmail.com         
+    // ###############################################
+
     private void OnEnable()
     {
         transform.Rotate(-90, 0f, 0f);
@@ -15,13 +20,12 @@ public class CharacterCircleUI : MonoBehaviourPun
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
                 transform.GetChild(0).GetComponent<Image>().color = Color.blue;
-                Debug.Log("1");
+                transform.parent = GameManager.Instance.CurrentPlayers[0].transform;
             }
 
             else
             {
                 transform.GetChild(0).GetComponent<Image>().color = Color.red;
-                Debug.Log("2");
                 transform.parent = GameManager.Instance.CurrentPlayers[1].transform;
             }
         }
@@ -31,14 +35,13 @@ public class CharacterCircleUI : MonoBehaviourPun
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
                 transform.GetChild(0).GetComponent<Image>().color = Color.red;
-                Debug.Log("3");
                 transform.parent = GameManager.Instance.CurrentPlayers[0].transform;
             }
 
             else
             {
                 transform.GetChild(0).GetComponent<Image>().color = Color.blue;
-                Debug.Log("4");
+                transform.parent = GameManager.Instance.CurrentPlayers[1].transform;
             }
         }
     }
