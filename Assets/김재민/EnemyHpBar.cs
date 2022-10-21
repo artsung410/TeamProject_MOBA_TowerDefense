@@ -16,13 +16,26 @@ public class EnemyHpBar : MonoBehaviour
     Slider _slider;
     private void Awake()
     {
-        _slider = GetComponent<Slider>();   
+        _slider = GetComponent<Slider>();
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
-        
+        if (Enemy == null || AttackEnemy == null || _slider == null)
+        {
+            return;
+        }
+
+        if (transform == null || transform.gameObject == null || this == null)
+        {
+            return;
+        }
+
+        if(transform.parent == null)
+        {
+            Destroy(gameObject.GetComponent<RectTransform>());
+        }
         transform.position = new Vector3(Enemy.position.x, 3f, Enemy.position.z);
         
     }

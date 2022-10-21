@@ -87,11 +87,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public override void OnLeftRoom()
-    {
-        SceneManager.LoadScene("Lobby");
-    }
-
     //private void Update()
     //{
     //}
