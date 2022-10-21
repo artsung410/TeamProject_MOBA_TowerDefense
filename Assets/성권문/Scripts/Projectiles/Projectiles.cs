@@ -61,9 +61,10 @@ public class Projectiles : MonoBehaviourPun
 
             if (player != null)
             {
-                if (player.hpSlider3D.value <= 0)
+                if (player.hpSlider3D.value <= 5)
                 {
-                    player.transform.gameObject.SetActive(false);
+                    player.transform.parent.gameObject.SetActive(false);
+
                 }
                 player.OnDamage(damage);
                 
