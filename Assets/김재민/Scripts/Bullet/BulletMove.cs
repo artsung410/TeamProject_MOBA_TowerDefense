@@ -56,7 +56,10 @@ public class BulletMove : MonoBehaviourPun
         }
 
         // 鸥况老锭 贸府
-
+        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
+        {
+            other.gameObject.GetComponent<Turret>().TakeDamage(Damage);
+        }
         // 敲饭捞绢老锭 贸府
     }
 
