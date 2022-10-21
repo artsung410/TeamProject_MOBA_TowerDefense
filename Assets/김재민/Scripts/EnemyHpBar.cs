@@ -2,41 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Photon.Pun;
 
-public class EnemyHpBar : MonoBehaviour
+public class EnemyHpBar : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
+    // ±èÀç¹Î¹Ùº¸
     [SerializeField]
     private Transform Enemy;
-    [SerializeField]
-    private BlueAttackRange AttackEnemy;
-    Slider _slider;
+    
+    public Slider _slider;
+    public EnemySatatus Enemy1;
     private void Awake()
     {
-        _slider = GetComponent<Slider>();
+        _slider = GetComponent<Slider>();   
     }
 
     // Update is called once per frame
-    public void Update()
+    void Update()
     {
-        if (Enemy == null || AttackEnemy == null || _slider == null)
+        if (Enemy1 == null)
         {
             return;
         }
 
-        if (transform == null || transform.gameObject == null || this == null)
-        {
-            return;
-        }
-
-        if(transform.parent == null)
-        {
-            Destroy(gameObject.GetComponent<RectTransform>());
-        }
+        _slider.value = Enemy1.CurrnetHP / Enemy1.HP;
         transform.position = new Vector3(Enemy.position.x, 3f, Enemy.position.z);
-        
     }
 }
