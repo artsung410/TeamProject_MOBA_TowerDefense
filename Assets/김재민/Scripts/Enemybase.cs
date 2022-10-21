@@ -73,7 +73,8 @@ public class Enemybase : MonoBehaviourPun
     public void RPC_TakeDamage(float Damage)
     {
         CurrnetHP -= Damage;
-       
+        Destroy(transform.parent.gameObject);
+        
     }
 
 }
