@@ -10,6 +10,23 @@ using UnityEngine.UI;
 //             MAIL : artsung410@gmail.com         
 // ###############################################
 
+
+public enum Tower
+{
+    GuardTower = 4,
+    CannonTower,
+    MinionTower,
+    BuffTower
+}
+
+public enum Skill
+{
+    Sword = 8,
+    TakeDown,
+    WheelWind,
+    Wield
+}
+
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public static GameManager Instance
@@ -20,6 +37,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             return instance;
         }
     }
+
+    public Tower tower;
+    public Skill skill;
 
     public ItemDataBaseList itemDB;
     public Transform[] tiles;
@@ -105,6 +125,12 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         SceneManager.LoadScene("Lobby");
     }
+
+    public void FindBuffIcon()
+    {
+
+    }
+
 
     // 스코어 관련
     //private void Update()
