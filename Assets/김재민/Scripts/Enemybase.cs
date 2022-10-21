@@ -10,32 +10,71 @@ public class Enemybase : MonoBehaviourPun
     //             MAIL : woals1566@gmail.com         
     // ###############################################
 
-    // ¿Ãµøº”µµ
+    // Ïù¥ÎèôÏÜçÎèÑ
    protected float moveSpeed;
-    // ∞¯∞›ªÁ∞≈∏Æ
+    // Í≥µÍ≤©ÏÇ¨Í±∞Î¶¨
     protected float attackRange;
-    // ∞¯∞›∑¬
+    // Í≥µÍ≤©Î†•
     protected float Damage;
-    // √º∑¬
-    protected float HP = 100f;
-    //∞¯∞› ƒ≈∏¿”
+    // Ï≤¥Î†•
+    public float HP = 100f;
+
+    public float CurrnetHP;
+
+    //Í≥µÍ≤© Ïø®ÌÉÄÏûÑ
     protected float AttackTime;
 
     public string EnemyTag;
 
-    
-
-    void Start()
-    {
-  
-    }
-
-    // Update is called once per frame
-    void Update()
+    protected void OnEnable()
     {
 
-
+        if(photonView)
+        CurrnetHP = HP;
     }
-    
-    
+    //protected void OnEnable()
+    //{
+    //    if (PhotonNetwork.IsMasterClient)
+    //    {
+    //        if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+    //        {
+    //            gameObject.tag = "Blue";
+    //            EnemyTag = "Red";
+    //        }
+
+    //        else
+    //        {
+    //            gameObject.tag = "Red";
+    //            EnemyTag = "Blue";
+    //        }
+    //    }
+
+    //    else
+    //    {
+    //        if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+    //        {
+    //            gameObject.tag = "Red";
+    //            EnemyTag = "Blue";
+    //        }
+    //        else
+    //        {
+    //            gameObject.tag = "Blue";
+    //            EnemyTag = "Red";
+    //        }
+    //    }
+    //}
+
+    public void TakeDamage(float Damage)
+    {
+        photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
+    }
+
+    [PunRPC]
+    public void RPC_TakeDamage(float Damage)
+    {
+        CurrnetHP -= Damage;
+        Destroy(transform.parent.gameObject);
+        
+    }
+
 }

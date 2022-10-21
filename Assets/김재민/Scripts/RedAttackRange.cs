@@ -50,15 +50,15 @@ public class RedAttackRange : MonoBehaviourPun
         }
 
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("BlueBullet"))
-        {
-            currentHp -= other.GetComponent<BulletMove>().Damage;
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("BlueBullet"))
+    //    {
+    //        currentHp -= other.GetComponent<BulletMove>().Damage;
         
-            Destroy(other.gameObject);
-        }
-    }
+    //        Destroy(other.gameObject);
+    //    }
+    //}
   
 
 

@@ -17,7 +17,8 @@ public class BulletMove : MonoBehaviourPun
     new Rigidbody rigidbody;
     public float turn;
     public float ballVelocity;
-    public int Damage { get; set; }
+    public float Damage;
+    public string EnemyTag;
     // Update is called once per frame
     private void Awake()
     {
@@ -31,21 +32,35 @@ public class BulletMove : MonoBehaviourPun
         {
             return;
         }
+
         // 유도탄
         if(tg.position != null) //타켓이 있을때
         {
-            
             rigidbody.velocity = transform.forward * ballVelocity;
             var ballTargetRotation = Quaternion.LookRotation(tg.position + new Vector3(0, 0.8f) - transform.position);
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
-            
         }
-        else 
+
+        else
+        {
             Destroy(gameObject);
-        
+        }
     }
 
-   
+    private void OnTriggerEnter(Collider other)
+    {
+        // 미니언일 때 처리
+        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
+        {
+            other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+        }
 
+        // 타워일때 처리
+        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
+        {
+            other.gameObject.GetComponent<Turret>().TakeDamage(Damage);
+        }
+        // 플레이어일때 처리
+    }
 
 }

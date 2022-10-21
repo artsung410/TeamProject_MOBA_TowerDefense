@@ -33,7 +33,8 @@ public class Sword : MonoBehaviour
                 //_playerScript.MeleeAttack();
                 if (_playerScript.IsAttack)
                 {
-                    _playerHP.OnDamage(_stat.attackDmg, other);
+                    //_playerHP.OnDamage(_stat.attackDmg, other);
+                    other.GetComponent<Health>().OnDamage(_stat.attackDmg);
                 }
                 //Debug.Log("¡¢√À«‘");
             }

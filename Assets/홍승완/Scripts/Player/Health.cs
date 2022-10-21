@@ -45,8 +45,9 @@ public class Health : MonoBehaviourPun
 
 
     //[PunRPC]
-    public void OnDamage(float damage, Collider other)
+    public void OnDamage(float damage)
     {
-        other.GetComponent<PhotonView>().RPC("HealthUpdate", RpcTarget.AllBuffered, damage);
+        //other.GetComponent<PhotonView>().RPC("HealthUpdate", RpcTarget.AllBuffered, damage);
+        photonView.RPC(nameof(HealthUpdate), RpcTarget.All, damage);
     }
 }

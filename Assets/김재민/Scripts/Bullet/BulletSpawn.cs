@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class BulletSpawn : MonoBehaviour
 {
@@ -17,26 +18,27 @@ public class BulletSpawn : MonoBehaviour
     [SerializeField]
     Transform _gunPivot;
 
-    ShotEnemy ShotSatatus;
+    EnemySatatus Minion;
 
     
     private void Awake()
     {
-       ShotSatatus = GetComponent<ShotEnemy>();
+        Minion = GetComponent<EnemySatatus>();
 
     }    
 
-    
-
     public void Spawn()
-    {if(ShotSatatus._target == null)
-        {
-            ShotSatatus._target = ShotSatatus._PrevTarget;
-        }
+    {
+        GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, transform.rotation);
 
-        GameObject bullet = Instantiate(Prefab, _gunPivot.position, transform.rotation);
+        bullet.GetComponent<BulletMove>().tg = Minion._target;
+        StartCoroutine(DeactivationBullet(bullet));
+    }
 
-        bullet.GetComponent<BulletMove>().tg = ShotSatatus._target;
+    private IEnumerator DeactivationBullet(GameObject bullet)
+    {
+        yield return new WaitForSeconds(3f);
+        PhotonNetwork.Destroy(bullet);
     }
 
     //public void InsertQueue(GameObject P_object)

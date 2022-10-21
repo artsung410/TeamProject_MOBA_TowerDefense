@@ -48,16 +48,16 @@ public class BlueShotRange : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.CompareTag("RedBullet"))
-        {
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //    if(other.CompareTag("RedBullet"))
+    //    {
            
-            currentHp -= other.GetComponent<BulletMove>().Damage;
-            Destroy(other.gameObject);
+    //        currentHp -= other.GetComponent<BulletMove>().Damage;
+    //        Destroy(other.gameObject);
 
-        }
-    }
+    //    }
+    //}
 
    
 }

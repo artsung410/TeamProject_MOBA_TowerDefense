@@ -29,13 +29,11 @@ public class Projectiles : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
-                gameObject.tag = "Blue";
                 enemyTag = "Red";
             }
 
             else
             {
-                gameObject.tag = "Red";
                 enemyTag = "Blue";
             }
         }
@@ -44,13 +42,11 @@ public class Projectiles : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
-                gameObject.tag = "Red";
                 enemyTag = "Blue";
             }
 
             else
             {
-                gameObject.tag = "Blue";
                 enemyTag = "Red";
             }
         }
@@ -58,11 +54,21 @@ public class Projectiles : MonoBehaviourPun
 
     protected void Damage(Transform enemy)
     {
-        EnemyMinion e = enemy.GetComponent<EnemyMinion>();
-
-        if (e != null)
+        // 플레이어 데미지 적용
+        if (enemy.gameObject.layer == 7)
         {
-            e.TakeDamage(damage);
+            
+        }
+
+        // 미니언 데미지 적용
+        else if(enemy.gameObject.layer == 8)
+        {
+            Enemybase minion = enemy.GetComponent<Enemybase>();
+
+            if (minion != null)
+            {
+                minion.TakeDamage(damage);
+            }
         }
     }
 

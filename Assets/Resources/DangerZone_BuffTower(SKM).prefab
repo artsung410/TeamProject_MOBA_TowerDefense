@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 7135433005957414780}
   - component: {fileID: 321138449916129618}
   - component: {fileID: 3213426295276217152}
-  - component: {fileID: -5925211457762336105}
-  - component: {fileID: -5044769723804930686}
-  m_Layer: 0
-  m_Name: DangerZone_MissileTurret
+  - component: {fileID: 742212801128516710}
+  - component: {fileID: 57546179168440360}
+  - component: {fileID: -2622607689083775017}
+  m_Layer: 2
+  m_Name: DangerZone_BuffTower(SKM)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 216217715730466437}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 17, y: 0.02, z: 17}
+  m_LocalScale: {x: 7, y: 0.02, z: 7}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -63,7 +64,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2845a2b772d8c814c80183445a957a25, type: 2}
+  - {fileID: 2100000, guid: ce6a5030c62c27d4c8e681fa64e0aa9f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,7 +86,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &-5925211457762336105
+--- !u!136 &742212801128516710
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216217715730466437}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.5000001
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
+--- !u!114 &57546179168440360
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -104,11 +119,11 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: -5044769723804930686}
+  - {fileID: -2622607689083775017}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
---- !u!114 &-5044769723804930686
+--- !u!114 &-2622607689083775017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
