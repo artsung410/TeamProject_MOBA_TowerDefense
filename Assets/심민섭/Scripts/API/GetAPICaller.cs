@@ -21,11 +21,41 @@ public class GetAPICaller : MonoBehaviourPun
     [SerializeField]
     public PlayerStorage playerStorage;
 
+    private static GetAPICaller _instance;
 
+    public static GetAPICaller Instance
+    {
+        get
+        {
+            // 인스턴스가 없는 경우에 접근하려 하면 인스턴스를 할당해준다.
+            if (!_instance)
+            {
+                _instance = FindObjectOfType(typeof(GetAPICaller)) as GetAPICaller;
+
+                if (_instance == null)
+                    Debug.Log("no Singleton obj");
+            }
+            return _instance;
+        }
+    }
     //public bool getAPIComplite = false;
 
     private void Awake()
     {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+
+        // 인스턴스가 존재하는 경우 새로생기는 인스턴스를 삭제한다.
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        // 아래의 함수를 사용하여 씬이 전환되더라도 선언되었던 인스턴스가 파괴되지 않는다.
+        DontDestroyOnLoad(gameObject);
+
         // 플레이어 숫자가 1이면 자신이 1번플레이어가 되는 거지
         if (playerStorage.playerNumber == -1)
         {
@@ -35,11 +65,11 @@ public class GetAPICaller : MonoBehaviourPun
         StartCoroutine(getUserProfileCaller());
     }
 
-    private void Start()
-    {
-        DontDestroyOnLoad(gameObject);
-        //text = GameObject.FindGameObjectWithTag("TestText").GetComponent<Text>();
-    }
+    //private void Start()
+    //{
+    //    DontDestroyOnLoad(gameObject);
+    //    //text = GameObject.FindGameObjectWithTag("TestText").GetComponent<Text>();
+    //}
 
     private void Update()
     {
