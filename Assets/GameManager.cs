@@ -28,7 +28,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
     public GameObject[] EnemyPrefabs;
     public List<GameObject> CurrentTowers;
-    public int localPlayerIndex;
+    public List<GameObject> CurrentPlayers;
 
     // 플레이어 미니맵에 띄우기
     public GameObject CharacterCircle;
@@ -52,24 +52,18 @@ public class GameManager : MonoBehaviourPunCallbacks
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
         GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
+
         GameObject circle = PhotonNetwork.Instantiate(CharacterCircle.name, new Vector3(player.transform.position.x, player.transform.position.y + 30, player.transform.position.z), Quaternion.identity);
+
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            PlayerColorSetting(player, circle, Color.blue);
+            circle.transform.parent = player.transform.GetChild(2).transform;
         }
         else
         {
-            PlayerColorSetting(player, circle, Color.red);
+            circle.transform.parent = player.transform.GetChild(2).transform;
         }
-
-    }
-
-    private void PlayerColorSetting(GameObject p, GameObject c, Color color)
-    {
-        c.transform.Rotate(-90, 0f, 0f);
-        c.transform.GetChild(0).GetComponent<Image>().color = color;
-        c.transform.parent = p.transform.GetChild(2).transform;
     }
 
     private void SpawnTower()
