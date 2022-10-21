@@ -24,6 +24,7 @@ public class Turret : MonoBehaviourPun
     protected void OnEnable()
     {
         currentHealth = maxHealth;
+        GameManager.Instance.CurrentTurrets.Add(gameObject);
 
         if (PhotonNetwork.IsMasterClient)
         {

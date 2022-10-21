@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 8660604139201925292}
   - component: {fileID: 9176529624925685275}
   - component: {fileID: 7595986094289214826}
-  - component: {fileID: 4010651084495098521}
   m_Layer: 0
   m_Name: ArrowBody
   m_TagString: Untagged
@@ -84,19 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &4010651084495098521
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1159905558461240710}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4048302374760608932
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +95,7 @@ GameObject:
   - component: {fileID: 1970057854515634685}
   - component: {fileID: -3471310342743381772}
   - component: {fileID: 7350352553492665365}
+  - component: {fileID: 8861424972038310804}
   m_Layer: 0
   m_Name: Arrow(SKM)
   m_TagString: Arrow
@@ -145,9 +132,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 94bc9c8a731ae0e459bc7d8a7b02f07e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  projectileType: 0
+  projectileType: 3
   enemyTag: 
-  damage: 50
+  damage: 10
   speed: 70
   explosionRadius: 0
   ImpactEffect: {fileID: 6840403436888628754, guid: d900ab546d827de4bb6db0270668f234, type: 3}
@@ -190,6 +177,19 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!65 &8861424972038310804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4048302374760608932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.5323765, y: 0.51256, z: 0.6010525}
+  m_Center: {x: 0.009269953, y: 0.024539292, z: 0.94682777}
 --- !u!1 &4784118218290859527
 GameObject:
   m_ObjectHideFlags: 0
@@ -201,7 +201,6 @@ GameObject:
   - component: {fileID: 7414704554605464990}
   - component: {fileID: 1578964941411642163}
   - component: {fileID: 5297588159217345231}
-  - component: {fileID: 3829839905322159614}
   m_Layer: 0
   m_Name: ArrowTip
   m_TagString: Untagged
@@ -274,16 +273,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &3829839905322159614
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4784118218290859527}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
