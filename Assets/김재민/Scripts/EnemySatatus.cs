@@ -61,6 +61,10 @@ public class EnemySatatus : Enemybase
         while (true)
         {
             //UpdateEnemyTarget();
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
             if (_target == null)
             {
                 _target = _PrevTarget;
