@@ -12366,6 +12366,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b1167d4d738a9748a1f74411978b732, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDB: {fileID: 11400000, guid: 964f317a23cc9f0418bb3778fccd8ebb, type: 2}
   tiles:
   - {fileID: 1262351435}
   - {fileID: 1984740374}
@@ -12384,8 +12385,11 @@ MonoBehaviour:
   - {fileID: 8808627454346318819, guid: fd4b0ccf9421ead489ef23a221d9ef8c, type: 3}
   - {fileID: 7437779938411895516, guid: bfa11348a265b5d4aa279d1b14589986, type: 3}
   - {fileID: 3405628836457899908, guid: c4c91a6129acca14c98e1c97240e1b15, type: 3}
-  CurrentTowers: []
-  localPlayerIndex: 0
+  CurrentTurrets: []
+  CurrentPlayers: []
+  CurrentMinions: []
+  CharacterCircle: {fileID: 2618433544921571977, guid: d445f33420f061c43a6c63a26470e466, type: 3}
+  MinionCircle: {fileID: 2618433544921571977, guid: bae5468edbb09364c8a0a691402cc202, type: 3}
 --- !u!4 &1886247668
 Transform:
   m_ObjectHideFlags: 0
