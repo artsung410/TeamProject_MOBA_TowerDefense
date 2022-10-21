@@ -2,20 +2,34 @@
 using System.Collections;
 using System.Collections.Generic;
 
+// Master
+// ###############################################
+//             NAME : Simstealer                      
+//             MAIL : minsub4400@gmail.com         
+// ###############################################
+
+// Modify Member
+// 20221021-16:00 Item필드 추가.
+// ###############################################
+//             NAME : ARTSUNG                      
+//             MAIL : artsung410@gmail.com         
+// ###############################################
+
 [System.Serializable]
 public class Item
 {
-    public string itemName;                 // 아이템 이름
+    public string itemName;                     // 아이템 이름
     public int itemID;                          // 아이템의 만들어 진 순서 (Index)
-    public string itemDesc;                   // 아이템 설명
-    public Sprite itemIcon;                   // 아이템 이미지
-    public GameObject itemModel;        // 아이템 프리펩
-    public int itemValue = 1;                // 가지고 있는 아이템 갯수
-    public ItemType itemType;              // 아이템이 무슨 타입인지 정의
-    public float itemWeight;                 // 아이템의 무게
-    public int maxStack = 5;                 // 최대 소지 갯수
-    public int indexItemInList = 99;        // 인덱스
-    public int rarity;                            // 아이템 얻을 확률
+    public string itemDesc;                     // 아이템 설명
+    public Sprite itemIcon;                     // 아이템 이미지
+    public Sprite itemIcon_Image;               // 아이템, 버프 이미지
+    public GameObject itemModel;                // 아이템 프리펩
+    public int itemValue = 1;                   // 가지고 있는 아이템 갯수
+    public ItemType itemType;                   // 아이템이 무슨 타입인지 정의
+    public float itemWeight;                    // 아이템의 무게
+    public int maxStack = 5;                    // 최대 소지 갯수
+    public int indexItemInList = 99;            // 인덱스
+    public int rarity;                          // 아이템 얻을 확률
 
     // 아이템의 효과
     [SerializeField]
@@ -23,7 +37,6 @@ public class Item
 
     [SerializeField]
     public List<GameObject> specialPrefabs = new List<GameObject>();
-
 
     public Item(){}
 
