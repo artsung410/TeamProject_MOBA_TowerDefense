@@ -196,21 +196,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         UpdatePlayerCounts();
     }
 
-    // 임시 코드
-    //OnPhotonPlayerDisconnected 함수는 게임 도중 상대 플레이어가 접속이 끊어졌을 때 호출 됩니다.
-
-    /*public override void OnPhotonPlayerDisconnected(PhotonPlayer other)
-    {
-        if (PhotonNetwork.isMasterClient)
-        {
-            Debug.Log("other player disconnected");
-        }
-        else
-        {
-            Debug.Log("master disconnected");
-        }
-    }*/
-
     [ContextMenu("정보")]
     void Info()
     {

@@ -52,9 +52,9 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
         {
             deltaTime += Time.deltaTime;
             loadingGage = (int)deltaTime;
-            if (loadingGage == 2)
+            if (loadingGage == 21)
             {
-                loadingGage = 1;
+                loadingGage = 20;
                 ChangeMainScene();
             }
             loadingText.text = loadingGage.ToString() + "%";
@@ -72,7 +72,7 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
         Debug.Log(PhotonNetwork.IsConnected);
 
         // 마스터 서버와 연결이 되어있고 로딩 게이지가 100%면
-        if (PhotonNetwork.IsConnected && loadingGage == 1)
+        if (PhotonNetwork.IsConnected && loadingGage == 20)
         {
             SceneManager.LoadScene("Prototype_1");
         }
