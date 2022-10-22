@@ -22,7 +22,6 @@ public class Item
     public int itemID;                          // 아이템의 만들어 진 순서 (Index)
     public string itemDesc;                     // 아이템 설명
     public Sprite itemIcon;                     // 아이템 이미지
-    public Sprite itemIcon_Image;               // 아이템, 버프 이미지
     public GameObject itemModel;                // 아이템 프리펩
     public int itemValue = 1;                   // 가지고 있는 아이템 갯수
     public ItemType itemType;                   // 아이템이 무슨 타입인지 정의
@@ -37,6 +36,10 @@ public class Item
 
     [SerializeField]
     public List<GameObject> specialPrefabs = new List<GameObject>();
+
+    // 버프 효과
+    [SerializeField]
+    public List<BuffData> buffDatas = new List<BuffData>();
 
     public Item(){}
 

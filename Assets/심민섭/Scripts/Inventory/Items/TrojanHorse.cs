@@ -23,6 +23,9 @@ public class TrojanHorse: MonoBehaviour
     [Header("장착한 프리펩")]
     public List<GameObject> cardPrefab  = new List<GameObject>();
 
+    [Header("장착한 아이템")]
+    public List<Item> cardItems = new List<Item>();
+
     private ItemOnObject itemOnObject;
 
     private GameObject EquipmentItemInventory;
@@ -95,6 +98,7 @@ public class TrojanHorse: MonoBehaviour
                     cardId.Add(itemOnObject.item.itemID);
                     cardName.Add(itemOnObject.item.itemName);
                     cardPrefab.Add(itemOnObject.item.itemModel);
+                    cardItems.Add(itemOnObject.item);
                 }
             }
         }
