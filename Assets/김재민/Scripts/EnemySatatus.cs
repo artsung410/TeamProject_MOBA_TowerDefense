@@ -56,18 +56,15 @@ public class EnemySatatus : Enemybase
         StartCoroutine(StateChange());
     }
 
-    private IEnumerator move() // 움직임
+    private IEnumerator move() // 움직임  //목표지점까지 움직인다 . 타켓발견 -> 멈춰서 공격 -> 타켓 죽음 -> 타겟변경 -> 타
     {
         while (true)
         {
+           
             //UpdateEnemyTarget();
             if (_navMeshAgent.enabled == false)
             {
                 break;
-            }
-            if (_target == null)
-            {
-                _target = _PrevTarget;
             }
             _navMeshAgent.speed = 5f;
             _navMeshAgent.SetDestination(_target.position);
@@ -87,6 +84,11 @@ public class EnemySatatus : Enemybase
     {
         while (true)
         {
+            
+            if (_target == null)
+            {
+                _target = _PrevTarget;
+            }
             float AttackDistance = Vector3.Distance(transform.position, _target.position);
             if (_navMeshAgent.enabled == false)
             {
@@ -139,21 +141,19 @@ public class EnemySatatus : Enemybase
         }
 
     }
+    private void Update()
+    {
+        UpdateEnemyTarget();
+    }
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8
     {
         GameObject[] Enemies = GameObject.FindGameObjectsWithTag(EnemyTag); //tag로 게임오브젝트를 찾고 에너미스에 넣어주고
-        
-        
         float shortestDistance = Mathf.Infinity; //가장가까운 범위
 
         foreach (GameObject enemy in Enemies) // 에너미들은 다 확인하면서
-        {   if(!enemy.CompareTag(EnemyTag))
-            {
-                return;
-            }
+        {   
             float NearDistance = Vector3.Distance(transform.position, enemy.transform.position); //거리를 구해주고
-            if (NearDistance <= attackRange) // 공격사거리안에서
-            {
+           
                 if (NearDistance <= shortestDistance) // 가장 가까운 타켓
                 {
                     // 미니언 우선타격 -> 미니언 없으면 플레이어 -> 타워 때리는 조건은 미니언 없거나 플레이어가 없으면 감지범위안에
@@ -167,8 +167,6 @@ public class EnemySatatus : Enemybase
                         _target.position = enemy.transform.position;
                     }
                 }
-            }
-
 
         }
     }
