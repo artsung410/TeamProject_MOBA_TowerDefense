@@ -61,73 +61,17 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void OnEnable()
     {
-        // 태그처리하깅
-        // 맨처음 들어오는 플레이어 A = blue
-        // 리모트 a = blue
-        // 두번째 플레이어 B =  red
-        // 이때 a는 blue여야함
-        // 리모트 b = red
 
-        //if (PhotonNetwork.IsMasterClient && photonView.IsMine)
-        //{
-        //    gameObject.tag = "Blue";
-        //    EnemyTag = "Red";
-        //}
-        //else if(!PhotonNetwork.IsMasterClient)
-        //{
-        //    photonView.RPC(nameof(ClientTag), RpcTarget.o);
-        //}
-
-        //photonView.RPC(nameof(ClientTag), RpcTarget.All);
-        //if (PhotonNetwork.IsMasterClient)
-        //{
-        //    if (photonView.IsMine)
-        //    {
-        //        gameObject.tag = "Blue";
-        //        EnemyTag = "Red";
-        //    }
-        //}
-        //else
-        //{
-        //    if (photonView.IsMine)
-        //    {
-        //        gameObject.tag = "Red";
-        //        EnemyTag = "Blue";
-
-        //    }
-        //}
     }
 
 
-    
+
 
     private void Start()
     {
         //PhotonView photonView = PhotonView.Get(this);
         //photonView.RPC("RPCStorageCaller", RpcTarget.MasterClient, playerStorage._id, playerStorage.session_id, playerStorage.userName, playerStorage.playerNumber, playerStorage.zera, playerStorage.ace, playerStorage.bet_id);
 
-        //photonView.RPC(nameof(ChangeTag), RpcTarget.Others);
-
-        //if (PhotonNetwork.IsMasterClient)
-        //{
-        //    gameObject.tag = "Blue";
-        //    EnemyTag = "Red";
-        //    if (photonView.IsMine)
-        //    {
-        //        gameObject.tag = "Blue";
-        //        EnemyTag = "Red";
-        //    }
-        //}
-        //else
-        //{
-        //    gameObject.tag = "Red";
-        //    EnemyTag = "Blue";
-        //    if (photonView.IsMine)
-        //    {
-        //        gameObject.tag = "Red";
-        //        EnemyTag = "Blue";
-        //    }
-        //}
         if (PhotonNetwork.IsMasterClient)
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
@@ -159,10 +103,10 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
-   
 
 
-    
+
+
 
     private void Update()
     {
@@ -187,14 +131,18 @@ public class PlayerBehaviour : MonoBehaviourPun
 
         HeroAliveCheck();
 
+        // a + 좌클릭 이동
+        AutoTargetInput();
+
         // 우클릭시 이동
         if (Input.GetMouseButton(1))
         {
+            // 우클릭하면 좌클릭이동 스위치를 취소해줌
+            inputA = false;
+
             // 마우스위치에서 쏜 raycast가 물체에 맞는다면, 그곳이 navmesh도착지점
             if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out Hit, Mathf.Infinity))
             {
-                //Debug.DrawLine(Cam.ScreenPointToRay(Input.mousePosition).origin, Cam.ScreenPointToRay(Input.mousePosition).direction * Mathf.Infinity, Color.blue, 1f);
-
                 MoveOntheGround(Hit);
                 GetTargetedObject();
             }
@@ -224,7 +172,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     public void MoveOntheGround(RaycastHit hit)
     {
         // MOVEMENT
-        // 우클릭한 지점이 목적지
+        // 클릭한 지점이 목적지
         _agent.SetDestination(hit.point);
         targetedEnemy = null;
         _agent.stoppingDistance = 0;
@@ -301,5 +249,76 @@ public class PlayerBehaviour : MonoBehaviourPun
             targetedEnemy = null;
         }
     }
+
+
+    bool inputA = false;
+
+    private void AutoTargetInput()
+    {
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            inputA = true;
+            Debug.Log($"inputA : {inputA}");
+        }
+
+        if (Input.GetMouseButtonDown(0) && inputA)
+        {
+            inputA = false;
+            // 누른 위치로 이동한다
+            if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out Hit, Mathf.Infinity))
+            {
+                MoveOntheGround(Hit);
+            }
+            AutoTargetMove();
+
+        }
+
+
+    }
+
+    float detectiveRange = 8f;
+    private void AutoTargetMove()
+    {
+        
+        // 태그 달고있는 게임오브젝트로 찾기
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
+
+        // 터렛과 가장 가까운 대상 임시로 선언
+        //GameObject _shortTarget = null;
+
+        //콜라이더가 하나라도 검출되면 실행
+        if (enemies.Length > 0)
+        {
+
+            // 검출된 콜라이더만큼 반복해주기
+            foreach (GameObject _colTarget in enemies)
+            {
+
+                // 감지범위내에 적이 들어온다면 
+                // 그 적을 타겟에 넣어줌
+                float distance = Vector3.Distance(transform.position, _colTarget.transform.position);
+                if (distance <= detectiveRange)
+                {
+                    // 미니언과 플레이어가 같이 있을땐 플레이어를 넣어준다
+                    if (_colTarget.GetComponent<PlayerBehaviour>() != null)
+                    {
+                        GameObject enemyPlayer = _colTarget.GetComponent<PlayerBehaviour>().gameObject;
+                        Debug.Log($"enemyPlayer : {enemyPlayer}");
+                        targetedEnemy = enemyPlayer;
+                    }
+                    else
+                    {
+                        Debug.Log($"target : {_colTarget}");
+                        targetedEnemy = _colTarget;
+                    }
+
+                }
+            }
+        }
+
+    }
+
+
+
 
 }
