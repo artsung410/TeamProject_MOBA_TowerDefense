@@ -32,5 +32,14 @@ public class BuffTooltip : MonoBehaviour
     private void Update()
     {
         transform.position = Input.mousePosition;
+
+        //if (rt.anchoredPosition.x + rt.sizeDelta.x > halfwidth)
+        //{
+        //    rt.pivot = new Vector2(1, 1);
+        //}
+        //else
+        //{
+        //    rt.pivot = new Vector2(0, 1);
+        //}
     }
 }

@@ -10,14 +10,11 @@ using UnityEngine.UI;
 
 public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public int id;
     public BuffData buff;
     public BuffTooltip tooltip;
-
-    private void Start()
-    {
-        BuffManager.onBuffEvent += SetBuff;
-    }
+    public float coolTime;
+    private float elapsedTime;
+    public Image coolTimeImage;
 
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -26,26 +23,54 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             tooltip.gameObject.SetActive(true);
             tooltip.SetupTooltip(buff.Name, buff.Desc);
         }
-
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        tooltip.gameObject.SetActive(false);
+        if (buff != null)
+        {
+            tooltip.gameObject.SetActive(false);
+        }
     }
 
-    public void SetBuff(int inputId)
+    private void Update()
     {
-        if (inputId != id)
+        if (buff == null)
         {
             return;
         }
 
-        gameObject.GetComponent<Image>().sprite = buff.buffIcon;
-        Color color = gameObject.GetComponent<Image>().color;
-        color.a = 1f;
-        gameObject.GetComponent<Image>().color = color;
+        if (buff.Unlimited)
+        {
+            return;
+        }
+
+        ApplyCooldown();
     }
 
+    private void ApplyCooldown()
+    {
+        if (elapsedTime >= coolTime)
+        {
+            BuffManager.Instance.removeBuff(buff);
+            gameObject.GetComponent<Image>().sprite = null;
+            buff = null;
+            coolTime = 0;
+            elapsedTime = 0;
+            coolTimeImage.fillAmount = 0f;
+            StartCoroutine(AssemblyBuffAndApplyRandomDelay());
+            return;
+        }
 
+        elapsedTime += Time.deltaTime;
+        coolTimeImage.fillAmount = elapsedTime / coolTime;
+    }
+
+    // 쿨타임이 동시에 적용될 때 함수호출이 안되는 문제해결
+    IEnumerator AssemblyBuffAndApplyRandomDelay()
+    {
+        float randNum = Random.Range(0f, 0.3f);
+        yield return new WaitForSeconds(randNum);
+        BuffManager.Instance.AssemblyBuff();
+    }
 }

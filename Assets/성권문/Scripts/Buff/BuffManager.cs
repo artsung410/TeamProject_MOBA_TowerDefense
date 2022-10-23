@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using System;
 
     // ###############################################
@@ -10,34 +11,71 @@ using System;
 
 public class BuffManager : MonoBehaviour
 {
-    public static event Action<int> onBuffEvent = delegate { };
+    public List<BuffData> currentBuffDatas = new List<BuffData>(); // 각 월드에서 생성된 모든 버프들
+    public static BuffManager Instance;
 
-    public List<BuffIcon> buffs;
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
-        StartCoroutine(initBuff());
+        initBuff();
     }
 
-    IEnumerator initBuff()
+    public void initBuff()
     {
-        yield return new WaitForSeconds(0.1f);
-        int Buffcount = GameManager.Instance.currnetBuffDatas.Count;
+        TrojanHorse data = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
 
-        for (int i = 0; i < Buffcount; i++)
+        for (int item = 0; item < 4; item++)
         {
-            buffs[i].buff = GameManager.Instance.currnetBuffDatas[i];
-            onBuffEvent.Invoke(i);
+            if (data.cardId[item] == (int)Tower.BuffTower)
+            {
+                int buffCount = data.cardItems[item].buffDatas.Count;
+
+                if (buffCount == 0)
+                {
+                    return;
+                }
+
+                for (int buff = 0; buff < buffCount; buff++)
+                {
+                    currentBuffDatas.Add(data.cardItems[item].buffDatas[buff]);
+                }
+            }
         }
+
+        AssemblyBuff();
     }
 
-    void AddBuff(BuffData buff)
+    public void AddBuff(BuffData buff)
     {
-        GameManager.Instance.currnetBuffDatas.Add(buff);
+        currentBuffDatas.Add(buff);
     }
 
-    void UpdateBuff()
+    public void removeBuff(BuffData buff)
     {
-        int Buffcount = GameManager.Instance.currnetBuffDatas.Count;
-        onBuffEvent.Invoke(Buffcount - 1);
+        currentBuffDatas.Remove(buff);
+    }
+
+    public void AssemblyBuff()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(false);
+            transform.GetChild(i).GetComponent<BuffIcon>().buff = null;
+        }
+
+        for (int i = 0; i < currentBuffDatas.Count; i++)
+        {
+            transform.GetChild(i).gameObject.SetActive(true);
+            transform.GetChild(i).GetComponent<BuffIcon>().buff = currentBuffDatas[i]; // 슬롯마다 버프데이터 세팅
+            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].Effect_Duration; // 슬롯마다 버프쿨타임 세팅
+            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].buffIcon; // 슬롯 버프이미지 적용
+            Color color = transform.GetChild(i).GetComponent<Image>().color; 
+            color.a = 1f;
+            gameObject.transform.GetChild(i).GetComponent<Image>().color = color; // 슬롯 버프이미지 투명도 1로 적용
+        }
     }
 }
