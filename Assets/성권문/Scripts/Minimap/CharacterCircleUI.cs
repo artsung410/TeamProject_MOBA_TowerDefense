@@ -11,9 +11,12 @@ public class CharacterCircleUI : MonoBehaviourPun
     //             MAIL : artsung410@gmail.com         
     // ###############################################
 
+    Quaternion PrevRotation;
+
     private void OnEnable()
     {
-        transform.Rotate(-90, 0f, 0f);
+        transform.Rotate(-90, -135f, 0f);
+        PrevRotation = transform.rotation;
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -44,5 +47,10 @@ public class CharacterCircleUI : MonoBehaviourPun
                 transform.parent = GameManager.Instance.CurrentPlayers[1].transform;
             }
         }
+
+    }
+    private void Update()
+    {
+        transform.rotation = PrevRotation;
     }
 }
