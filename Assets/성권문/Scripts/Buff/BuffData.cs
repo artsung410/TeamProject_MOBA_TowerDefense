@@ -19,8 +19,9 @@ public class BuffData : ScriptableObject
         Tower
     }
 
+    public int id;
     public string Name;
-    public string Desc;
+    [TextArea] public string Desc;
     public int Effect_Type;
     public int Effect_Value;
     public bool Unlimited;

@@ -8,10 +8,11 @@ using UnityEngine.UI;
     //             MAIL : artsung410@gmail.com         
     // ###############################################
 
-public class BuffIcon : MonoBehaviour, IPointerEnterHandler
+public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public int id;
     public BuffData buff;
+    public BuffTooltip tooltip;
 
     private void Start()
     {
@@ -20,7 +21,17 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler
 
     public void OnPointerEnter(PointerEventData eventData)
     {
-        Debug.Log("Buff½½·Ô¿¡ °®´Ù´ï");
+        if (buff != null)
+        {
+            tooltip.gameObject.SetActive(true);
+            tooltip.SetupTooltip(buff.Name, buff.Desc);
+        }
+
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        tooltip.gameObject.SetActive(false);
     }
 
     public void SetBuff(int inputId)
@@ -35,4 +46,6 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler
         color.a = 1f;
         gameObject.GetComponent<Image>().color = color;
     }
+
+
 }

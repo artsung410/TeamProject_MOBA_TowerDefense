@@ -20,7 +20,7 @@ public class BuffManager : MonoBehaviour
 
     IEnumerator initBuff()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         int Buffcount = GameManager.Instance.currnetBuffDatas.Count;
 
         for (int i = 0; i < Buffcount; i++)
