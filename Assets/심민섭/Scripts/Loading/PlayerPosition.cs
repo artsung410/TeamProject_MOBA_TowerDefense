@@ -41,8 +41,7 @@ public class PlayerPosition : MonoBehaviourPun
             playerText.text = 22.ToString();
         }
     }
-
-    /*[PunRPC]
+/*[PunRPC]
     private void PlayerLoadingImagePositionFromMaster()
     {
         transform.position = new Vector2(0f, 4f);
@@ -55,5 +54,6 @@ public class PlayerPosition : MonoBehaviourPun
         transform.position = new Vector2(0f, -2.4f);
         playerText.text = 11.ToString();
     }*/
+    
 
 }
