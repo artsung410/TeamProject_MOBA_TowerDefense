@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Photon.Pun;
 
-public class PlayerHUD : MonoBehaviour
+public class PlayerHUD : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : ARTSUNG                      
@@ -14,6 +15,8 @@ public class PlayerHUD : MonoBehaviour
     [Header("PlayerStatusUI")]
     public Image playerHealthBar;
     public Image playerExperienceBar;
+    public TextMeshProUGUI playerHealthBarTMpro;
+    public TextMeshProUGUI playerExperienceBarTMpro;
     public TextMeshProUGUI playerInfoTMPro;
 
     [Header("InfoUI")]
@@ -25,12 +28,21 @@ public class PlayerHUD : MonoBehaviour
     [Header("ScoreUI")]
     public TextMeshProUGUI scoreTMPro;
     public TextMeshProUGUI timerTMPro;
-
     public static PlayerHUD Instance;
 
+    private Health playerHp;
     private void Awake()
     {
         Instance = this;
+        setHp();
+    }
+
+    private void setHp()
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        {
+            playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
+        }
     }
 
     private void Start()
@@ -58,6 +70,7 @@ public class PlayerHUD : MonoBehaviour
     void Update()
     {
         Timer();
+        UpdateHealthUI();
     }
 
     void Timer()
@@ -65,10 +78,27 @@ public class PlayerHUD : MonoBehaviour
         sec += Time.deltaTime;
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
 
-        if((int)sec > 59)
+        if ((int)sec > 59)
         {
             sec = 0;
             min++;
+        }
+    }
+
+    float hp;
+    void UpdateHealthUI()
+    {
+        if (playerHp == null)
+        {
+            return;
+        }
+
+        if (photonView.IsMine)
+        {
+            playerHealthBar.fillAmount = playerHp.hpSlider3D.value / 250f;
+            hp = (playerHp.hpSlider3D.value / 250f) * 100f;
+
+            playerHealthBarTMpro.text = hp.ToString() + " / 100";
         }
     }
 }
