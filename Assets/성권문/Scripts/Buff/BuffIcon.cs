@@ -13,7 +13,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public BuffData buff;
     public BuffTooltip tooltip;
     public float coolTime;
-    private float elapsedTime;
+    public float elapsedTime;
     public Image coolTimeImage;
 
     public void OnPointerEnter(PointerEventData eventData)
@@ -69,8 +69,16 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     // 쿨타임이 동시에 적용될 때 함수호출이 안되는 문제해결
     IEnumerator AssemblyBuffAndApplyRandomDelay()
     {
-        float randNum = Random.Range(0f, 0.3f);
+        float randNum = Random.Range(0.0f, 0.03f);
         yield return new WaitForSeconds(randNum);
         BuffManager.Instance.AssemblyBuff();
+    }
+
+    private void OnDisable()
+    {
+        if (!BuffManager.Instance.buffDic.ContainsKey(buff))
+        {
+            BuffManager.Instance.buffDic.Add(buff, elapsedTime);
+        }
     }
 }
