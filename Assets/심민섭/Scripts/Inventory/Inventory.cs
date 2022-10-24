@@ -96,7 +96,6 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         // 게임 시작 시 인벤토리 닫기
-        if (transform.GetComponent<Hotbar>() == null)
             this.gameObject.SetActive(false);
 
         updateItemList();
@@ -609,7 +608,7 @@ public class Inventory : MonoBehaviour
 
     public void setDefaultSettings()
     {
-        if (GetComponent<EquipmentSystem>() == null && GetComponent<Hotbar>() == null && GetComponent<CraftSystem>() == null)
+        if (GetComponent<EquipmentSystem>() == null && GetComponent<CraftSystem>() == null)
         {
             height = 5;
             width = 5;
@@ -620,21 +619,6 @@ public class Inventory : MonoBehaviour
             paddingBetweenX = 5;
             paddingBetweenY = 5;
             paddingTop = 35;
-            paddingBottom = 10;
-            paddingLeft = 10;
-            paddingRight = 10;
-        }
-        else if (GetComponent<Hotbar>() != null)
-        {
-            height = 1;
-            width = 9;
-
-            slotSize = 50;
-            iconSize = 45;
-
-            paddingBetweenX = 5;
-            paddingBetweenY = 5;
-            paddingTop = 10;
             paddingBottom = 10;
             paddingLeft = 10;
             paddingRight = 10;

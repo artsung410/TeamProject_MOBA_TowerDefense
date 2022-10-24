@@ -31,7 +31,7 @@ public class EquipmentSystem : MonoBehaviour
         slotsInTotal = inv.width * inv.height;
     }
 #if UNITY_EDITOR
-    [MenuItem("Master System/Create/Equipment")]        //creating the menu item
+    //[MenuItem("Master System/Create/Equipment")]        //creating the menu item
     public static void menuItemCreateInventory()       //create the inventory at start
     {
         GameObject Canvas = null;

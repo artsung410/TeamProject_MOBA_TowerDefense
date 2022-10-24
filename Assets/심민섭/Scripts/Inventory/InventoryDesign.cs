@@ -46,11 +46,6 @@ public class InventoryDesign : MonoBehaviour
         panelSizeY = (int)GetComponent<RectTransform>().sizeDelta.y;
         inventoryTitle = transform.GetChild(0).GetComponent<Text>().text;
         inventoryTitleText = transform.GetChild(0).GetComponent<Text>();
-        if (GetComponent<Hotbar>() == null)
-        {
-            inventoryCrossRectTransform = transform.GetChild(2).GetComponent<RectTransform>();
-            inventoryCrossImage = transform.GetChild(2).GetComponent<Image>();
-        }
         inventoryDesign = GetComponent<Image>();
         slotDesign = transform.GetChild(1).GetChild(0).GetComponent<Image>();
         slotDesignTemp = slotDesign;

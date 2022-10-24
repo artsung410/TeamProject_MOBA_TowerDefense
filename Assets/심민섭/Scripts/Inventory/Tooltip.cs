@@ -70,7 +70,7 @@ public class Tooltip : MonoBehaviour
     }
 
 #if UNITY_EDITOR
-    [MenuItem("Master System/Create/Tooltip")]        //creating the menu item
+    //[MenuItem("Master System/Create/Tooltip")]        //creating the menu item
     public static void menuItemCreateInventory()       //create the inventory at start
     {
         if (GameObject.FindGameObjectWithTag("Tooltip") == null)

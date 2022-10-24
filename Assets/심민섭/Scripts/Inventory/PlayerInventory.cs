@@ -73,21 +73,6 @@ public class PlayerInventory : MonoBehaviour
             }
         }
 
-        // InputManager¿« CharacterSystemKeyCode "C"
-        /*if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
-        {
-            if (!characterSystem.activeSelf)
-            {
-                characterSystemInventory.openInventory();
-            }
-            else
-            {
-                *//*if (toolTip != null)
-                    toolTip.deactivateTooltip();*//*
-                characterSystemInventory.closeInventory();
-            }
-        }*/
-
         // InputManager¿« CraftSystemKeyCode "K"
         if (Input.GetKeyDown(inputManagerDatabase.CraftSystemKeyCode))
         {
