@@ -60,7 +60,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnPlayer();
-        SpawnTower();
+        //SpawnTower();
         SpawnEnemy();
     }
 
@@ -109,7 +109,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 미니언 생성
     private void SpawnEnemy()
     {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name, spawnPositions[0].position, Quaternion.identity);
 
