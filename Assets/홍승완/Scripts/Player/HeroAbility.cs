@@ -54,7 +54,7 @@ public class HeroAbility : MonoBehaviourPun
                 return;
             }
             //Instantiate(AbilityPrefabs[1], skillSpawn);
-            PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);
+            GameObject go = PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);
 
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -64,7 +64,7 @@ public class HeroAbility : MonoBehaviourPun
                 return;
             }
             //Instantiate(AbilityPrefabs[2], skillSpawn);
-            PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
+            GameObject go = PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
 
         }
         if (Input.GetKeyDown(KeyCode.R))
@@ -74,7 +74,7 @@ public class HeroAbility : MonoBehaviourPun
                 return;
             }
             //Instantiate(AbilityPrefabs[3], skillSpawn);
-            PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
+            GameObject go = PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
 
         }
     }

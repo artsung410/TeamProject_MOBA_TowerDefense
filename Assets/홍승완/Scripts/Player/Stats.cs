@@ -32,9 +32,14 @@ public class Stats : MonoBehaviourPun
         _playerScript = GetComponent<PlayerBehaviour>();
     }
 
-    void Start()
+    private void OnEnable()
     {
         StatInit();
+        
+    }
+
+    void Start()
+    {
     }
 
     private void Update()
@@ -59,26 +64,10 @@ public class Stats : MonoBehaviourPun
 
     private void StatInit()
     {
-        MoveSpeed = 20f;
-        //health = StartHealth;
-        //maxHealth = 100f;
-        //attackDmg = 5f;
-        //attackSpeed = 1f;
-        //attackTime = 1.4f;
-        //if (gameObject.CompareTag("Player"))
-        //{
-        //    maxHealth = 100f;
-        //    health = maxHealth;
-        //    attackDmg = 5f;
-        //    attackSpeed = 1f;
-        //    attackTime = 1.4f;
-        //}
-
-        //if (gameObject.CompareTag("Enemy"))
-        //{
-        //    maxHealth = 50f;
-        //    health = maxHealth;
-
-        //}
+        MoveSpeed = 10f;
+        StartHealth = 250;
+        attackDmg = 2f;
+        attackRange = 3f;
+        
     }
 }

@@ -49,9 +49,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject[] EnemyPrefabs;
 
     // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
-    public List<GameObject> CurrentTurrets; // 각 월드에서 생성된 모든 터렛들.
-    public List<GameObject> CurrentPlayers; // 각 월드에서 생성된 모든 플레이어들.
-    public List<GameObject> CurrentMinions; // 각 월드에서 생성된 모든 미니언들.
+    public List<GameObject> CurrentTurrets = new List<GameObject>();// 각 월드에서 생성된 모든 터렛들.
+    public List<GameObject> CurrentPlayers = new List<GameObject>(); // 각 월드에서 생성된 모든 플레이어들.
+    public List<GameObject> CurrentMinions = new List<GameObject>(); // 각 월드에서 생성된 모든 미니언들.
 
     // 플레이어 미니맵에 띄우기
     public GameObject CharacterCircle;
@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnPlayer();
         //SpawnTower();
         SpawnEnemy();
+
     }
 
     // 플레이어 생성
@@ -121,10 +122,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    public void FindBuffIcon()
-    {
 
-    }
 
     // 스코어 관련
     //private void Update()
