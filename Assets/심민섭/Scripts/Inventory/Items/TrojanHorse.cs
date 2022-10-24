@@ -103,13 +103,19 @@ public class TrojanHorse: MonoBehaviour
             }
         }
 
+
+        if (skillId.Count == 0)
+        {
+            return;
+        }
+
         int count = TrojanDataList.Count / 2;
 
         for (int i = 0; i < count; i++) // 4
         {
             for (int j = 0; j < itemDatabase.itemList.Count; j++) // 100
             {
-                if (skillId[i] == itemDatabase.itemList[j].itemID) // 예외처리를 해라
+                if (skillId[i] == itemDatabase.itemList[j].itemID)
                 {
                     // 정보를 가져온다. Item Attributes
                     skillATK.Add(itemDatabase.itemList[j].itemAttributes[0].attributeValue);
