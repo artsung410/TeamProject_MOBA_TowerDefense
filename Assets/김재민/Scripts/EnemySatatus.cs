@@ -19,12 +19,12 @@ public class EnemySatatus : Enemybase
         attack
     }
     ESTATE _estate;
-    enum EMINIOMTYPE
+    public enum EMINIOMTYPE
     {
         Nomal,
         Shot,
     }
-    EMINIOMTYPE _eminiomtype;
+    public EMINIOMTYPE _eminiomtype;
 
     private NavMeshAgent _navMeshAgent;
     private Animator _animator;
@@ -34,34 +34,45 @@ public class EnemySatatus : Enemybase
     void Awake()
     {
         _estate = ESTATE.move;
-        _eminiomtype = EMINIOMTYPE.Nomal;
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _PrevTarget = _target;
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
         CurrnetHP = HP;
+
     }
 
     private void Start()
     {
-        
-        if (gameObject.GetComponents<BulletSpawn>() != null)
+        if (_eminiomtype == EMINIOMTYPE.Nomal)
         {
-            _eminiomtype = EMINIOMTYPE.Shot;
+            attackRange = 2f;
+        }
+        else if (_eminiomtype == EMINIOMTYPE.Shot)
+        {
             attackRange = 10f;
         }
 
-        
         StartCoroutine(StateChange());
+        InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
     }
 
     private IEnumerator move() // 움직임  //목표지점까지 움직인다 . 타켓발견 -> 멈춰서 공격 -> 타켓 죽음 -> 타겟변경 -> 타
     {
         while (true)
         {
-           
-            //UpdateEnemyTarget();
+            if (_target == null)
+            {
+                _target = _PrevTarget;
+            }
+            _animator.SetBool("Attack", false);
+            _navMeshAgent.isStopped = false;
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
+          
             if (_navMeshAgent.enabled == false)
             {
                 break;
@@ -73,6 +84,7 @@ public class EnemySatatus : Enemybase
             if (distance <= attackRange)
             {
                 _estate = ESTATE.attack;
+                Debug.Log($"{_estate}");
 
                 break;
             }
@@ -82,37 +94,28 @@ public class EnemySatatus : Enemybase
     }
     private IEnumerator Attack() // 공격
     {
-        while (true)
+        while (true) 
         {
-            
             if (_target == null)
             {
                 _target = _PrevTarget;
             }
-            float AttackDistance = Vector3.Distance(transform.position, _target.position);
+            float AttackDistance = Vector3.Distance(_target.position, transform.position);
+            Debug.Log($"{attackRange}");
             if (_navMeshAgent.enabled == false)
             {
                 break;
             }
             // 구분
-            if (_eminiomtype == EMINIOMTYPE.Shot)
-            {
-                _navMeshAgent.stoppingDistance = attackRange;
-            }
-            else
-            {
-                _navMeshAgent.stoppingDistance = 0f;
-            }
-            _navMeshAgent.speed = 1f;
-            transform.LookAt(_target.position);
+            _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
+            transform.LookAt(_target.position);
+            
             // 애니메이션 추가 + 공격데미지 입히기
             yield return new WaitForSeconds(AttackTime); //공격쿨타임
 
             if (AttackDistance >= attackRange)
             {
-                _navMeshAgent.isStopped = false;
-                _animator.SetBool("Attack", false);
                 _estate = ESTATE.move;
 
             }
@@ -124,7 +127,6 @@ public class EnemySatatus : Enemybase
     {
         while (true)
         {
-
             switch (_estate)
             {
                 case ESTATE.attack:
@@ -141,33 +143,32 @@ public class EnemySatatus : Enemybase
         }
 
     }
-    private void Update()
-    {
-        UpdateEnemyTarget();
-    }
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8
     {
-        GameObject[] Enemies = GameObject.FindGameObjectsWithTag(EnemyTag); //tag로 게임오브젝트를 찾고 에너미스에 넣어주고
-        float shortestDistance = Mathf.Infinity; //가장가까운 범위
-
-        foreach (GameObject enemy in Enemies) // 에너미들은 다 확인하면서
-        {   
-            float NearDistance = Vector3.Distance(transform.position, enemy.transform.position); //거리를 구해주고
-           
-                if (NearDistance <= shortestDistance) // 가장 가까운 타켓
+        if (_target == null)
+        {
+            _target = _PrevTarget;
+        }
+        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
+        foreach (Collider col in RangeTarget)
+        {
+            if (col.tag == myTag)
+            {
+                continue;
+            }
+            if (col.CompareTag(EnemyTag))
+            {
+                if (col.gameObject.layer == 8) //미니언 공격
                 {
-                    // 미니언 우선타격 -> 미니언 없으면 플레이어 -> 타워 때리는 조건은 미니언 없거나 플레이어가 없으면 감지범위안에
-                    if (enemy.layer == 8) //미니언
-                    {
-                        _target.position = enemy.transform.position;
-                        
-                    }
-                    else // 미니언이 죽으면 
-                    {
-                        _target.position = enemy.transform.position;
-                    }
+                    _target = col.transform;
                 }
-
+                else if (col.gameObject.layer == 7) // 플레이어 공격
+                {
+                    _target = col.transform;
+                }
+                else // 타워플레이어 공격
+                    _target = col.transform;
+            }
         }
     }
 }
