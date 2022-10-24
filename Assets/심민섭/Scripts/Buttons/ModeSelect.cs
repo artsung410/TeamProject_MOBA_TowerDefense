@@ -13,6 +13,6 @@ public class ModeSelect : MonoBehaviour
     public void ModeSelectOn()
     {
         // 
-        //gameObject.transform.GetChild(0).gameObject.SetActive(true);
+        gameObject.transform.GetChild(0).gameObject.SetActive(true);
     }
 }

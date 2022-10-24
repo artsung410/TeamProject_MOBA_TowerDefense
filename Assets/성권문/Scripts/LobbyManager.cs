@@ -47,7 +47,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // 매칭에 연결된 모든 플레이어들을 씬으로 같이 이동하기 위함.
         PhotonNetwork.AutomaticallySyncScene = true;
 
-        matChingObj.SetActive(false);
+        //matChingObj.SetActive(false);
     }
 
 
