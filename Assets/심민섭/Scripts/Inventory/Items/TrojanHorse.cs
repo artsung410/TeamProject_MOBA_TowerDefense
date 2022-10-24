@@ -55,6 +55,9 @@ public class TrojanHorse: MonoBehaviour
     [SerializeField]
     private List<int> skillCoolTime = new List<int>();
 
+    [Header("장착한 스킬아이템")]
+    public List<Item> skillItems = new List<Item>();
+
     // 공격력, 사거리, 쿨타임
     [SerializeField]
     private ItemDataBaseList itemDatabase;
@@ -88,6 +91,7 @@ public class TrojanHorse: MonoBehaviour
                     ItemOnObject itemOnObject = TrojanDataList[i].gameObject.transform.GetChild(0).GetComponent<ItemOnObject>();
                     skillId.Add(itemOnObject.item.itemID);
                     skillCName.Add(itemOnObject.item.itemName);
+                    skillItems.Add(itemOnObject.item);
                 }
 
                 if (i > 3) // 4, 5, 6, 7
