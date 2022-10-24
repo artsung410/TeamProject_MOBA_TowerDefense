@@ -66,7 +66,7 @@ public class InventoryEditor : Editor
         EditorGUILayout.PropertyField(mainInventory, new GUIContent("Player Inventory"));
         if (EditorGUI.EndChangeCheck())
         {
-            inv.setAsMain();
+            //inv.setAsMain();
         }
         GUILayout.EndVertical();
 
@@ -77,7 +77,7 @@ public class InventoryEditor : Editor
         showInventorySettings = EditorGUILayout.Foldout(showInventorySettings, "Inventory Settings");
         if (showInventorySettings)
         {
-            sizeOfInventoryGUI();
+            //sizeOfInventoryGUI();
         }
         GUILayout.EndVertical();
 
@@ -151,8 +151,8 @@ public class InventoryEditor : Editor
         {
             inv.setImportantVariables();
             inv.updateSlotAmount();
-            inv.adjustInventorySize();
-            inv.updatePadding(slotsPaddingBetweenX.intValue, slotsPaddingBetweenY.intValue);
+            //inv.adjustInventorySize();
+            //inv.updatePadding(slotsPaddingBetweenX.intValue, slotsPaddingBetweenY.intValue);
             inv.updateSlotSize(inventorySlotSize.intValue);
             inv.stackableSettings();
         }
@@ -189,8 +189,8 @@ public class InventoryEditor : Editor
             EditorGUI.indentLevel--;
             if (EditorGUI.EndChangeCheck())
             {
-                inv.adjustInventorySize();
-                inv.updatePadding(slotsPaddingBetweenX.intValue, slotsPaddingBetweenY.intValue);
+                //inv.adjustInventorySize();
+                //inv.updatePadding(slotsPaddingBetweenX.intValue, slotsPaddingBetweenY.intValue);
             }
 
         }

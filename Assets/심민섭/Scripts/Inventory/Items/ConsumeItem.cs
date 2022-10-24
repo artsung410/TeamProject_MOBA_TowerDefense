@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class ConsumeItem : MonoBehaviour, IPointerDownHandler
+public class ConsumeItem : MonoBehaviour//, IPointerDownHandler
 {
     public Item item;
     private static Tooltip tooltip;
@@ -37,7 +37,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
     }
 
     // 포인터가 다운되었을 때
-    public void OnPointerDown(PointerEventData data)
+    /*public void OnPointerDown(PointerEventData data)
     {
         // EquipmentSystem(케릭터 장비 창) 컴포넌트가 null이면
         if (this.gameObject.transform.parent.parent.parent.parent.parent.GetComponent<EquipmentSystem>() == null)
@@ -202,7 +202,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
             
 
         } // 큰 if 문 끝.
-    }    
+    }*/    
 
     public void consumeIt()
     {

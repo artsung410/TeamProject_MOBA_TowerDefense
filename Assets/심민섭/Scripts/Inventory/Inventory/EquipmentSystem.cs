@@ -14,9 +14,9 @@ public class EquipmentSystem : MonoBehaviour
     [SerializeField]
     public int slotsInTotal;
 
-    // 아이템 타입 999공간의 배열을 생성
+    // 아이템 타입 99공간의 배열을 생성
     [SerializeField]
-    public ItemType[] itemTypeOfSlots = new ItemType[999];
+    public ItemType[] itemTypeOfSlots = new ItemType[99];
 
     void Start()
     {
@@ -32,7 +32,7 @@ public class EquipmentSystem : MonoBehaviour
     }
 #if UNITY_EDITOR
     //[MenuItem("Master System/Create/Equipment")]        //creating the menu item
-    public static void menuItemCreateInventory()       //create the inventory at start
+    /*public static void menuItemCreateInventory()       //create the inventory at start
     {
         GameObject Canvas = null;
         if (GameObject.FindGameObjectWithTag("Canvas") == null)
@@ -65,7 +65,7 @@ public class EquipmentSystem : MonoBehaviour
             draggingItem.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, true);
             inv.getPrefabs();
         }
-    }
+    }*/
 #endif
 
 }

@@ -310,16 +310,15 @@ public class Inventory : MonoBehaviour
             }
         }
         updateItemSize();
-
     }
 
-    public void setAsMain()
+    /*public void setAsMain()
     {
         if (mainInventory)
             this.gameObject.tag = "Untagged";
         else if (!mainInventory)
             this.gameObject.tag = "MainInventory";
-    }
+    }*/
 
 
     /// <summary>
@@ -510,28 +509,28 @@ public class Inventory : MonoBehaviour
 
         setImportantVariables();
         setDefaultSettings();
-        adjustInventorySize();
+        //adjustInventorySize();
         updateSlotAmount(width, height);
-        updateSlotSize();
-        updatePadding(paddingBetweenX, paddingBetweenY);
+        //updateSlotSize();
+        //updatePadding(paddingBetweenX, paddingBetweenY);
 
     }
 
-    public void updatePadding(int spacingBetweenX, int spacingBetweenY)
+    /*public void updatePadding(int spacingBetweenX, int spacingBetweenY)
     {
         SlotGridLayout.spacing = new Vector2(paddingBetweenX, paddingBetweenY);
         SlotGridLayout.padding.bottom = paddingBottom;
         SlotGridLayout.padding.right = paddingRight;
         SlotGridLayout.padding.left = paddingLeft;
         SlotGridLayout.padding.top = paddingTop;
-    }
+    }*/
 
-    public void updateSlotSize()
+    /*public void updateSlotSize()
     {
         SlotGridLayout.cellSize = new Vector2(slotSize, slotSize);
 
         updateItemSize();
-    }
+    }*/
     void updateItemSize()
     {
         for (int i = 0; i < SlotContainer.transform.childCount; i++)
@@ -541,7 +540,6 @@ public class Inventory : MonoBehaviour
                 SlotContainer.transform.GetChild(i).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(slotSize, slotSize + 40);
                 SlotContainer.transform.GetChild(i).GetChild(0).GetChild(2).GetComponent<RectTransform>().sizeDelta = new Vector2(slotSize, slotSize + 40);
             }
-
         }
     }
 
@@ -654,14 +652,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    public void adjustInventorySize()
+    /*public void adjustInventorySize()
     {
         int x = (((width * slotSize) + ((width - 1) * paddingBetweenX)) + paddingLeft + paddingRight);
         int y = (((height * slotSize) + ((height - 1) * paddingBetweenY)) + paddingTop + paddingBottom);
         PanelRectTransform.sizeDelta = new Vector2(x, y);
 
         SlotGridRectTransform.sizeDelta = new Vector2(x, y);
-    }
+    }*/
 
     /// <summary>
     /// 슬롯 컨테이너 오브젝트를 가져오고 Rect, GridLayoutGroup을 각 변수에 저장
@@ -674,7 +672,7 @@ public class Inventory : MonoBehaviour
         SlotGridRectTransform = SlotContainer.GetComponent<RectTransform>();
     }
 
-    public void stackableSettings(bool stackable, Vector3 posi)
+    /*public void stackableSettings(bool stackable, Vector3 posi)
     {
         for (int i = 0; i < SlotContainer.transform.childCount; i++)
         {
@@ -691,7 +689,7 @@ public class Inventory : MonoBehaviour
                 }
             }
         }
-    }
+    }*/
 
 
 }
