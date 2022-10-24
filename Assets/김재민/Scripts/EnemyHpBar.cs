@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-public class EnemyHpBar : MonoBehaviour
+using Photon.Pun;
+public class EnemyHpBar : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      
@@ -11,9 +11,9 @@ public class EnemyHpBar : MonoBehaviour
     // ###############################################
     [SerializeField]
     private Transform Enemy;
-    [SerializeField]
-    private BlueAttackRange AttackEnemy;
     Slider _slider;
+    [SerializeField]
+    Enemybase enemybase;
     private void Awake()
     {
         _slider = GetComponent<Slider>();
@@ -22,7 +22,8 @@ public class EnemyHpBar : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (Enemy == null || AttackEnemy == null || _slider == null)
+        _slider.value = enemybase.CurrnetHP / enemybase.HP;
+        if (Enemy == null || _slider == null)
         {
             return;
         }

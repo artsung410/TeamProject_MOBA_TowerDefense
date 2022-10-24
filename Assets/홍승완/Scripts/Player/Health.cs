@@ -22,18 +22,18 @@ public class Health : MonoBehaviourPun
         _stats = GetComponent<Stats>();
     }
 
-    private void Start()
+    private void OnEnable()
     {
-
     }
 
-    private void OnEnable()
+    private void Start()
     {
         health = _stats.StartHealth;
 
         hpSlider3D.maxValue = _stats.StartHealth;
 
         hpSlider3D.value = health;
+
     }
 
     [PunRPC]
