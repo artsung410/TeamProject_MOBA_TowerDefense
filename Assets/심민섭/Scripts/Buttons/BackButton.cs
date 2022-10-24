@@ -12,8 +12,10 @@ public class BackButton : MonoBehaviour
         selectMatch = gameObject.transform.parent.gameObject;
     }
 
+    // 대전하기 창 뒤로가기
     public void BackSpace()
     {
         selectMatch.SetActive(false);
     }
+
 }

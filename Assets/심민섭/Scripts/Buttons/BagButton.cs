@@ -12,10 +12,17 @@ public class BagButton : MonoBehaviour
 
     private bool openInven;
 
+
     public void InventoryOnpen()
     {
-        openInven = !openInven;
-        gameObject.SetActive(openInven);
-        
+        // LobbyCanvas Tag를 찾는다.
+        /*openInven = !openInven;
+        GameObject.FindGameObjectWithTag("LobbyCanvas").transform.GetChild(1).GetChild(0).gameObject.SetActive(openInven);*/
+        GameObject.FindGameObjectWithTag("LobbyCanvas").transform.GetChild(1).GetChild(0).gameObject.SetActive(true);
+    }
+
+    public void InventoryClose()
+    {
+        GameObject.FindGameObjectWithTag("LobbyCanvas").transform.GetChild(1).GetChild(0).gameObject.SetActive(false);
     }
 }
