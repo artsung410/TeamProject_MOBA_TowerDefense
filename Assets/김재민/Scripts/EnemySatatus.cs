@@ -166,7 +166,7 @@ public class EnemySatatus : Enemybase
                 {
                     _target = col.transform;
                 }
-                else // 타워플레이어 공격
+                else  // 타워플레이어 공격
                     _target = col.transform;
             }
         }

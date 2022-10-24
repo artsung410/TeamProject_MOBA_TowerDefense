@@ -23,7 +23,7 @@ public class BulletMove : MonoBehaviourPun
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        Damage = 10f;
+        Damage = 100f;
     }
 
     private void Start()
@@ -71,6 +71,11 @@ public class BulletMove : MonoBehaviourPun
         if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
         {
             other.gameObject.GetComponent<Health>().OnDamage(Damage);
+            Destroy(gameObject);
+        }
+        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
+        {
+            other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
             Destroy(gameObject);
         }
     }

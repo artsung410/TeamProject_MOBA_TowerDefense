@@ -37,6 +37,18 @@ public class MinionAttack : MonoBehaviour
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(PistonDamage);
             }
+            if (other.gameObject.layer == 7)
+            {
+                other.gameObject.GetComponent<Turret>().TakeDamage(PistonDamage);
+            }
+            if (other.gameObject.layer == 6)
+            {
+                other.gameObject.GetComponent<Health>().OnDamage(PistonDamage);
+            }
+            if (other.gameObject.layer == 12)
+            {
+                other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(PistonDamage);
+            }
         }
     }
 
