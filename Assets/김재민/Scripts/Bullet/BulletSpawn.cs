@@ -24,7 +24,6 @@ public class BulletSpawn : MonoBehaviour
     private void Awake()
     {
         Minion = GetComponent<EnemySatatus>();
-
     }    
 
     public void Spawn()
@@ -32,37 +31,5 @@ public class BulletSpawn : MonoBehaviour
         GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, transform.rotation);
 
         bullet.GetComponent<BulletMove>().tg = Minion._target;
-        StartCoroutine(DeactivationBullet(bullet));
     }
-
-    private IEnumerator DeactivationBullet(GameObject bullet)
-    {
-        yield return new WaitForSeconds(3f);
-        PhotonNetwork.Destroy(bullet);
-    }
-
-    //public void InsertQueue(GameObject P_object)
-    //{
-    //    spawnQueue.Enqueue(P_object);
-    //    P_object.SetActive(false);
-    //}
-
-    //public GameObject GetQueue()
-    //{
-    //    GameObject t_object = spawnQueue.Dequeue();
-    //    t_object.SetActive(true);
-    //    return t_object;
-    //}
-
-
-
-
-
-
-
-
-
-
-
-
 }

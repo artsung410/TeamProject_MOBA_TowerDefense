@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnPlayer();
-        //SpawnTower();
+        SpawnTower();
         SpawnEnemy();
 
     }
@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 미니언 생성
     private void SpawnEnemy()
     {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
             GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name, spawnPositions[0].position, Quaternion.identity);
 
@@ -125,8 +125,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
         }
     }
-
-
 
     // 스코어 관련
     //private void Update()

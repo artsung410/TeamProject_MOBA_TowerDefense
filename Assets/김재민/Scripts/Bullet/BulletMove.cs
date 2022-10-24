@@ -57,21 +57,21 @@ public class BulletMove : MonoBehaviourPun
         if(other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
         {
             other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-            PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
 
         // 鸥况老锭 贸府
         if(other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
         {
             other.gameObject.GetComponent<Turret>().TakeDamage(Damage);
-            PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
         // 敲饭捞绢老锭 贸府
 
         if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
         {
             other.gameObject.GetComponent<Health>().OnDamage(Damage);
-            PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
     }
 
