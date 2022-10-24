@@ -76,6 +76,11 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private void OnDisable()
     {
+        if (buff == null)
+        {
+            return;
+        }
+
         if (!BuffManager.Instance.buffDic.ContainsKey(buff))
         {
             BuffManager.Instance.buffDic.Add(buff, elapsedTime);
