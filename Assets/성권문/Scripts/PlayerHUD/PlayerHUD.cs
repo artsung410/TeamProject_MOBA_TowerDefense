@@ -20,7 +20,7 @@ public class PlayerHUD : MonoBehaviourPun
     public TextMeshProUGUI playerInfoTMPro;
 
     [Header("InfoUI")]
-    public GameObject EnemyStatusInfoUI;
+    public Image EnemyHealthBar;
 
     [Header("SkillUI")]
     public GameObject skillTable;
@@ -31,27 +31,26 @@ public class PlayerHUD : MonoBehaviourPun
     public static PlayerHUD Instance;
 
     private Health playerHp;
+    private Health enemyHp;
+
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void Start()
+    {
+        setSkill();
         setHp();
     }
 
     private void setHp()
     {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
-        {
-            playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
-        }
+        playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
+        enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
     }
 
-    private void Start()
-    {
-        SetSkill();
-        //Reset_Timer();
-    }
-
-    private void SetSkill()
+    private void setSkill()
     {
         int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count;
 
@@ -60,6 +59,7 @@ public class PlayerHUD : MonoBehaviourPun
             Item item = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i];
             skillTable.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
             skillTable.transform.GetChild(i).GetChild(0).GetComponent<Skillicon>().item = item;
+            skillTable.transform.GetChild(i).GetComponent<SkillButton>().item = item;
             skillTable.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
         }
     }
@@ -71,6 +71,7 @@ public class PlayerHUD : MonoBehaviourPun
     {
         Timer();
         UpdateHealthUI();
+        UpdateEnemyHealthUI();
     }
 
     void Timer()
@@ -88,17 +89,17 @@ public class PlayerHUD : MonoBehaviourPun
     float hp;
     void UpdateHealthUI()
     {
-        if (playerHp == null)
-        {
-            return;
-        }
+        //if (playerHp == null)
+        //{
+        //    return;
+        //}
+        playerHealthBar.fillAmount = playerHp.hpSlider3D.value / 250f;
+        hp = (playerHp.hpSlider3D.value / 250f) * 100f;
+        playerHealthBarTMpro.text = hp.ToString() + " / 100";
+    }
 
-        if (photonView.IsMine)
-        {
-            playerHealthBar.fillAmount = playerHp.hpSlider3D.value / 250f;
-            hp = (playerHp.hpSlider3D.value / 250f) * 100f;
-
-            playerHealthBarTMpro.text = hp.ToString() + " / 100";
-        }
+    void UpdateEnemyHealthUI()
+    {
+        EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / 250f;
     }
 }
