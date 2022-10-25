@@ -108,7 +108,7 @@ public class TrojanHorse: MonoBehaviour
         }
 
 
-        if (skillId.Count == 0)
+        /*if (skillId.Count == 0)
         {
             return;
         }
@@ -123,10 +123,10 @@ public class TrojanHorse: MonoBehaviour
                 {
                     // 정보를 가져온다. Item Attributes
                     skillATK.Add(itemDatabase.itemList[j].itemAttributes[0].attributeValue);
-                    skillCrossroad.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
-                    skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[2].attributeValue);
+                    //skillCrossroad.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
+                    skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
                 }
             }
-        }
+        }*/
     }
 }
