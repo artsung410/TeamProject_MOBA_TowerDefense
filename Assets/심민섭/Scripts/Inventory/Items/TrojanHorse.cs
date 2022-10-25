@@ -108,7 +108,7 @@ public class TrojanHorse: MonoBehaviour
         }
 
 
-        if (skillId.Count == 0)
+        /*if (skillId.Count == 0)
         {
             return;
         }
@@ -127,6 +127,6 @@ public class TrojanHorse: MonoBehaviour
                     skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
                 }
             }
-        }
+        }*/
     }
 }

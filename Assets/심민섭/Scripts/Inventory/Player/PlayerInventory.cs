@@ -26,6 +26,10 @@ public class PlayerInventory : MonoBehaviour
     public AudioClip clickSound;
     AudioSource audioSource;
 
+    [SerializeField]
+    private DragSlotsColorChange dragSlotsColorChange;
+
+
     void Start()
     {
         if (inventory != null)
@@ -69,6 +73,17 @@ public class PlayerInventory : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // 왼쪽 마우스 클릭 이벤트있으면 호출할 떄 사용할 거임
+        if (Input.GetMouseButton(0))
+        {
+            dragSlotsColorChange.SlotsColorChange();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            dragSlotsColorChange.SlotsWhiteColorChange();
+        }
+        
         // InputManager의 InventoryKeyCode "B"
         if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))
         {
