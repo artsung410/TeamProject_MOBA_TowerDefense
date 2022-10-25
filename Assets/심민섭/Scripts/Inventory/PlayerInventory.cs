@@ -37,27 +37,44 @@ public class PlayerInventory : MonoBehaviour
             cS = craftSystem.GetComponent<CraftSystem>();
     }
 
+    // 가방 클릭 할 때만 쓸거임
+    public void openInventory()
+    {
+        mainInventory.openInventory();
+        characterSystemInventory.openInventory();
+    }
+
+    // 인벤토리의 백버튼 눌렀을떄
+    public void closeInventory()
+    {
+        mainInventory.closeInventory();
+        characterSystemInventory.closeInventory();
+    }
+
+
     // Update is called once per frame
     void Update()
     {
-        // InputManager의 InventoryKeyCode "I"
+        // InputManager의 InventoryKeyCode "B"
         if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))
         {
             // 인벤토리가 닫혀있으면
-            if (!inventory.activeSelf)
+            if (!inventory.activeSelf && !characterSystem.activeSelf)
             {
                 // 인벤토리를 연다.
                 mainInventory.openInventory();
+                characterSystemInventory.openInventory();
             }
             else
             {
                 // 인벤토리를 닫는다.
                 mainInventory.closeInventory();
+                characterSystemInventory.closeInventory();
             }
         }
 
         // InputManager의 CharacterSystemKeyCode "C"
-        if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
+        /*if (Input.GetKeyDown(inputManagerDatabase.CharacterSystemKeyCode))
         {
             if (!characterSystem.activeSelf)
             {
@@ -65,11 +82,11 @@ public class PlayerInventory : MonoBehaviour
             }
             else
             {
-                /*if (toolTip != null)
-                    toolTip.deactivateTooltip();*/
+                *//*if (toolTip != null)
+                    toolTip.deactivateTooltip();*//*
                 characterSystemInventory.closeInventory();
             }
-        }
+        }*/
 
         // InputManager의 CraftSystemKeyCode "K"
         if (Input.GetKeyDown(inputManagerDatabase.CraftSystemKeyCode))

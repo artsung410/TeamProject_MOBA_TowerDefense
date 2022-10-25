@@ -58,11 +58,10 @@ public class Projectiles : MonoBehaviourPun
         if (enemy.gameObject.layer == 7)
         {
             Health player= enemy.GetComponent<Health>();
-
+             
             if (player != null)
             {
                 player.OnDamage(damage);
-                
             }
         }
 

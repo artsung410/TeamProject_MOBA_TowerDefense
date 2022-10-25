@@ -96,8 +96,8 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         // 게임 시작 시 인벤토리 닫기
-        /*if (transform.GetComponent<Hotbar>() == null)
-            this.gameObject.SetActive(false);*/
+        if (transform.GetComponent<Hotbar>() == null)
+            this.gameObject.SetActive(false);
 
         updateItemList();
 

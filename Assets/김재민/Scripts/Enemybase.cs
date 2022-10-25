@@ -16,15 +16,17 @@ public class Enemybase : MonoBehaviourPun
     protected float attackRange;
     // 공격력
     protected float Damage;
+    //공격 쿨타임
+    protected float AttackTime;
+    
     // 체력
     public float HP = 100f;
 
     public float CurrnetHP;
 
-    //공격 쿨타임
-    protected float AttackTime;
-
     public string EnemyTag;
+    public string myTag;
+
 
     protected void OnEnable()
     {

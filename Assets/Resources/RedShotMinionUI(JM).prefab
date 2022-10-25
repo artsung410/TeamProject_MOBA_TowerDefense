@@ -1885,7 +1885,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 10
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1997,7 +1997,9 @@ MonoBehaviour:
   HP: 100
   CurrnetHP: 0
   EnemyTag: Blue
+  myTag: Red
   _target: {fileID: 3063582420797440947, guid: d2e6808fd6cac884fa3bd6b8408a4fea, type: 3}
+  _eminiomtype: 1
 --- !u!1 &1067032674008058643
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,6 +4,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using System;
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -29,6 +31,8 @@ public enum Skill
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public static event Action<int> onHpEvent = delegate { };
+
     public static GameManager Instance
     {
         get
@@ -121,8 +125,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
         }
     }
-
-
 
     // 스코어 관련
     //private void Update()

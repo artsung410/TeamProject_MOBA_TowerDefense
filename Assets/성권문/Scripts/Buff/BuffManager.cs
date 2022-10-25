@@ -54,6 +54,7 @@ public class BuffManager : MonoBehaviour
     public void AddBuff(BuffData buff)
     {
         currentBuffDatas.Add(buff);
+        AssemblyBuff();
     }
 
     public void removeBuff(BuffData buff)
