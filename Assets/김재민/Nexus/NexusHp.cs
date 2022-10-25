@@ -10,14 +10,14 @@ public class NexusHp : MonoBehaviourPun
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
-   public float CurrentHp;
-    public float MaxHp = 1000;
+    public float CurrentHp;
+    public float MaxHp;
     [SerializeField]
     private Slider _slider;
     private void Awake()
     {
         CurrentHp = MaxHp;
-        _slider = GetComponentInChildren<Slider>();
+       
     }
  
 
@@ -49,7 +49,7 @@ public class NexusHp : MonoBehaviourPun
         CurrentHp -= Damage;
         if (CurrentHp <= 0)
         {
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
 
     }

@@ -30,7 +30,14 @@ public class BuffManager : MonoBehaviour
     {
         TrojanHorse data = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
 
-        for (int item = 0; item < 4; item++)
+        int count = data.cardId.Count;
+
+        if (count == 0)
+        {
+            return;
+        }
+
+        for (int item = 0; item < count; item++)
         {
             if (data.cardId[item] == (int)Tower.BuffTower)
             {

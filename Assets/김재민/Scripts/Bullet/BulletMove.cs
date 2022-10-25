@@ -37,7 +37,6 @@ public class BulletMove : MonoBehaviourPun
         {
             return;
         }
-
         // 유도탄
         if(tg.position != null) //타켓이 있을때
         {
@@ -59,20 +58,19 @@ public class BulletMove : MonoBehaviourPun
             other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
             Destroy(gameObject);
         }
-
         // 타워일때 처리
         if(other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
         {
             other.gameObject.GetComponent<Turret>().TakeDamage(Damage);
             Destroy(gameObject);
         }
-        // 플레이어일때 처리
-
+        // 플레이어일때 
         if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
         {
             other.gameObject.GetComponent<Health>().OnDamage(Damage);
             Destroy(gameObject);
         }
+        // 넥서스 일때
         if(other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
         {
             other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
