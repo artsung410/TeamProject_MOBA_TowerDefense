@@ -36,6 +36,11 @@ public class Health : MonoBehaviourPun
 
     }
 
+    private void Update()
+    {
+        
+    }
+
     [PunRPC]
     public void HealthUpdate(float damage)
     {

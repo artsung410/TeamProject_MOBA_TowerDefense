@@ -70,6 +70,7 @@ public class Projectiles : MonoBehaviourPun
         {
             Enemybase minion = enemy.GetComponent<Enemybase>();
 
+
             if (minion != null)
             {
                 minion.TakeDamage(damage);

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class ChainAttack : MonoBehaviourPun, IDamageable
+public class ChainAttack : SkillHandler
 {
 
     // ###############################################
@@ -11,80 +11,155 @@ public class ChainAttack : MonoBehaviourPun, IDamageable
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public float HoldingTime;
-
     public ParticleSystem effect;
 
-    Stats playerStats;
-
+    #region private 변수모음
     Quaternion quaternion;
     float elapsedTime;
+    string enemyTag;
+    Vector3 mouseDir;
 
+    #endregion
 
     private void Awake()
     {
-        
-        playerStats = GameObject.FindObjectOfType<Stats>();
         effect = gameObject.GetComponent<ParticleSystem>();
     }
 
     private void OnEnable()
     {
         elapsedTime = 0f;
-        quaternion = playerStats.gameObject.transform.localRotation;
-
+        Init();
     }
+
+    /// <summary>
+    /// 스킬 계수 초기화
+    /// </summary>
+    protected void Init()
+    {
+        Damage = 30f;
+        CoolTime = 3f;
+        Range = 8f;
+        HoldingTime = 2f;
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
+        if (_ability == null)
+        {
+            // 리모트 플레이어의 경우 _ability가 비어있다
+            // 로컬플레이어의 _ability를 가져오려면?
+            //Debug.Log("널");
+            return;
+        }
+
+        
+
+        // 마우스 방향에서 사용
+        RaycastHit hit;
+        if (Physics.Raycast(_behaviour.ray, out hit))
+        {
+            mouseDir = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z) - _ability.transform.position;
+
+            _ability.transform.forward = mouseDir;
+            // 스킬쓸때 플레이어 위치를 그곳으로 고정시키기 위해사용
+            quaternion = _ability.transform.localRotation;
+        }
+
+        //photonView.RPC(nameof(TagProcessing), RpcTarget.All);
+        TagProcessing(_ability);
 
     }
 
+    private void TagProcessing(HeroAbility ability)
+    {
+
+        if (ability.CompareTag("Blue"))
+        {
+            enemyTag = "Red";
+            //Debug.Log(enemyTag);
+        }
+        else if (ability.CompareTag("Red"))
+        {
+            enemyTag = "Blue";
+            //Debug.Log(enemyTag);
+
+        }
+    }
+
+    float dispersionTime = 0f;
+    bool isDamage = true;
     // Update is called once per frame
     void Update()
     {
+        if (_ability == null)
+        {
+            return;
+        }
 
-        // 내가 쓴 스킬이라는걸 어떻게 알지
 
-        // 현재 문제점
-        // 로컬플레이어가 스킬사용시 리모트 플레이어에게서 스킬이 나감
-        // 조종중인 플레이어가 스킬을 쓰면 내 화면에선 상대편위치에서 스킬나감
-        // 상대방 화면에선 내 위치에서 스킬이 나감
-        // 왜지?
-        transform.position = playerStats.gameObject.transform.position;
-        transform.rotation = quaternion;
+        SkillUpdatePosition();
+
         SkillHoldingTime(HoldingTime);
 
+        dispersionTime += Time.deltaTime;
+        float tickTime = HoldingTime / 10;
+        if (dispersionTime >= tickTime)
+        {
+            dispersionTime = 0f;
+            isDamage = true;
+        }
 
     }
 
-    public void TakeDamage(float damage)
+    /// <summary>
+    /// 스킬이 플레이어를 따라오게해줌
+    /// </summary>
+    private void SkillUpdatePosition()
     {
-
+        transform.position = _ability.transform.position;
+        transform.rotation = quaternion;
     }
 
-    private void OnTriggerEnter(Collider other)
+    int cnt;
+    // damage / 10 = 3 tickdamage
+    // hodingtime / 10 = 0.2 ticktime
+    private void OnTriggerStay(Collider other)
     {
+        // 데미지 두번들어가던부분 IsMine으로 처리
+        if (photonView.IsMine)
+        {
 
+            if (other.CompareTag(enemyTag))
+            {
+                if (isDamage)
+                {
+                    isDamage = false;
+                    float tickDamage = Damage / 10;
+                    SkillDamage(tickDamage, other.gameObject);
+                    //cnt++;
+                    //Debug.Log(cnt);
+                }
+            }
+        }
     }
 
-    //float debuffSpeed = 3f;
-    public void SkillHoldingTime(float time)
+    public override void SkillHoldingTime(float time)
     {
         elapsedTime += Time.deltaTime;
 
         // 지속시간동안 플레이어가 느려진다
-        playerStats.MoveSpeed = 3f;
+        _stat.MoveSpeed = 3f;
 
         // 지속시간동안 플레이어는 스킬방향만 바라본다
-        playerStats.gameObject.transform.rotation = quaternion;
+        _ability.transform.rotation = quaternion;
 
         // 지속시간이 끝나면 사라진다
         if (elapsedTime >= time)
         {
-            playerStats.MoveSpeed = 10f;
-
+            _stat.MoveSpeed = 10f;
             // Failed to 'network-remove' GameObject. Client is neither owner nor masterClient taking over for owner who left 오류발생
             // 해결법 : photonView.IsMine 조건 추가
             if (photonView.IsMine)
@@ -94,10 +169,29 @@ public class ChainAttack : MonoBehaviourPun, IDamageable
         }
     }
 
-    public void SkillCoolTime(float time)
+
+    public override void SkillDamage(float damage, GameObject target)
     {
+        if (target.gameObject.layer == 7)
+        {
+            Health player = target.GetComponent<Health>();
 
+            if (player != null)
+            {
+                player.OnDamage(damage);
+
+            }
+        }
+        else if (target.gameObject.layer == 8)
+        {
+            Enemybase minion = target.GetComponent<Enemybase>();
+
+
+            if (minion != null)
+            {
+                minion.TakeDamage(damage);
+            }
+        }
     }
-
 
 }

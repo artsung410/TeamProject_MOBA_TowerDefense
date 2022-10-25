@@ -34,18 +34,17 @@ public class HeroAbility : MonoBehaviourPun
         }
     }
 
-
+    GameObject go;
     private void AbilityInput()
     {
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            if (AbilityPrefabs[0] == null)
-            {
-                return;
-            }
+            //if (AbilityPrefabs[0] == null)
+            //{
+            //    return;
+            //}
             //PhotonNetwork.Instantiate(AbilityPrefabs[0], skillSpawn);
-            GameObject go = PhotonNetwork.Instantiate(AbilityPrefabs[0].name, skillSpawn.position, Quaternion.identity);
-
+            go = PhotonNetwork.Instantiate(AbilityPrefabs[0].name, skillSpawn.position, Quaternion.identity);
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -54,7 +53,7 @@ public class HeroAbility : MonoBehaviourPun
                 return;
             }
             //Instantiate(AbilityPrefabs[1], skillSpawn);
-            GameObject go = PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);
+            go = PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);
 
         }
         if (Input.GetKeyDown(KeyCode.E))
@@ -64,7 +63,7 @@ public class HeroAbility : MonoBehaviourPun
                 return;
             }
             //Instantiate(AbilityPrefabs[2], skillSpawn);
-            GameObject go = PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
+            go = PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
 
         }
         if (Input.GetKeyDown(KeyCode.R))
@@ -74,10 +73,29 @@ public class HeroAbility : MonoBehaviourPun
                 return;
             }
             //Instantiate(AbilityPrefabs[3], skillSpawn);
-            GameObject go = PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
+            go = PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
 
         }
+
+        if (go != null)
+        {
+            go.GetComponent<SkillHandler>().GetPlayerPos(this);
+            go.GetComponent<SkillHandler>().GetPlayerStatus(this.GetComponent<Stats>());
+            go.GetComponent<SkillHandler>().GetMousePos(this.GetComponent<PlayerBehaviour>());
+        }
+
+        //photonView.RPC(nameof(Test), RpcTarget.All);
     }
 
+    //[PunRPC]
+    //public void Test()
+    //{
+        
+    //    if (go != null)
+    //    {
+    //        go.GetComponent<SkillHandler>().GetPlayerPos(this);
+    //        go.GetComponent<SkillHandler>().GetPlayerStatus(this.GetComponent<Stats>());
+    //    }
+    //}
 
 }
