@@ -47,8 +47,8 @@ public class CharacterCircleUI : MonoBehaviourPun
                 transform.parent = GameManager.Instance.CurrentPlayers[1].transform;
             }
         }
-
     }
+
     private void Update()
     {
         transform.rotation = PrevRotation;
