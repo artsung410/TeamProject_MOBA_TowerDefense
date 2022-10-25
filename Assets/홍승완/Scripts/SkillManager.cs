@@ -24,20 +24,28 @@ public class SkillManager : MonoBehaviour
 
     }
 
-    private void Update()
+    private void Start()
     {
-        
-
-        for (int i = 0; i < 4; i++) // 4
+        if (GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count == 0)
         {
-            for (int j = 0; j < ItemDataBase.itemList.Count; j++) // 100
+            return;
+        }
+        else
+        {
+            for (int i = 0; i < 4; i++) // 4
             {
-                if (aa.skillId[i] == ItemDataBase.itemList[j].itemID)
+                for (int j = 0; j < ItemDataBase.itemList.Count; j++) // 100
                 {
-                    atk[i] = ItemDataBase.itemList[j].itemAttributes[0].attributeValue;
-                    time[i] = ItemDataBase.itemList[j].itemAttributes[1].attributeValue;
+                    if (aa.skillId[i] == ItemDataBase.itemList[j].itemID)
+                    {
+                        atk[i] = ItemDataBase.itemList[j].itemAttributes[0].attributeValue;
+                        time[i] = ItemDataBase.itemList[j].itemAttributes[1].attributeValue;
+                    }
                 }
             }
+        
+
         }
     }
+    
 }
