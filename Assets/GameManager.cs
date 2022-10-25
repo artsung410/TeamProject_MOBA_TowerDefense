@@ -51,6 +51,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
     public GameObject[] EnemyPrefabs;
+    private Transform[] minionTowerPos = new Transform[2];
 
     // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
     public List<GameObject> CurrentTurrets = new List<GameObject>();// 각 월드에서 생성된 모든 터렛들.
@@ -61,11 +62,13 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject CharacterCircle;
     public GameObject MinionCircle;
 
+    public GameObject specialPFs;
     private void Start()
     {
         SpawnPlayer();
         SpawnTower();
         SpawnEnemy();
+        SapwnSpecial();
 
     }
 
@@ -75,7 +78,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         var localPlayerIndex = PhotonNetwork.LocalPlayer.ActorNumber - 1;
 
         if (localPlayerIndex > 1)
-        { 
+        {
             OnLeftRoom();
         }
 
@@ -91,10 +94,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     // 타워 생성
+
+
     private void SpawnTower()
     {
         int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
-
         if (count == 0)
         {
             return;
@@ -106,6 +110,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
+                if(tower.GetComponent<Turret_LaserRange>() != null)
+                {
+                    
+                    minionTowerPos[0] = tiles[i];
+                }
             }
         }
         else
@@ -114,6 +123,11 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
+
+                if (tower.GetComponent<Turret_LaserRange>() != null)
+                {
+                minionTowerPos[1] = tiles[i+4];
+                }
             }
         }
     }
@@ -133,6 +147,22 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    private void SapwnSpecial()
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        {
+           
+            PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
+            specialPFs.tag = "Blue";
+        }
+         else
+        {
+            PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
+            specialPFs.tag = "Red";
+
+        }
+
+    }
     // 스코어 관련
     //private void Update()
     //{
