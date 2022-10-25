@@ -32,6 +32,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public Button joinButton;
     public GameObject playerStoragePre;
 
+    // 기획팀 사운드 작업본(매칭 효과음)
+    public AudioClip matchingCancleSound;
+    [SerializeField]
+    private AudioSource matchingAudio;
+
     private void Awake()
     {
         // 게임이 끝나고 로비로 돌아 올떄를 대비해서 이미 연결이 되어있는지 판단한다.
@@ -144,6 +149,10 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         matChingObj.SetActive(false);
         // 방을 떠남
         PhotonNetwork.LeaveRoom();
+
+        // 기획팀 사운드 작업본(매칭 효과음)
+        matchingAudio.clip = matchingCancleSound;
+        matchingAudio.Play();
     }
 
     // 매칭 인원수 텍스트
