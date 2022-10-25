@@ -83,6 +83,7 @@ public class PlayerBehaviour : MonoBehaviourPun
             else
             {
                 gameObject.tag = "Red";
+                //gameObject.layer = 8;
                 EnemyTag = "Blue";
             }
         }
@@ -98,13 +99,12 @@ public class PlayerBehaviour : MonoBehaviourPun
             else
             {
                 gameObject.tag = "Blue";
+                //gameObject.layer = 8;
+
                 EnemyTag = "Red";
             }
         }
     }
-
-
-
 
 
 
@@ -126,6 +126,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
+    public Ray ray;
     public void MoveTo()
     {
 
@@ -133,6 +134,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
         // a + 좌클릭 이동
         AutoTargetInput();
+            ray = Cam.ScreenPointToRay(Input.mousePosition);
 
         // 우클릭시 이동
         if (Input.GetMouseButton(1))
@@ -141,7 +143,7 @@ public class PlayerBehaviour : MonoBehaviourPun
             inputA = false;
 
             // 마우스위치에서 쏜 raycast가 물체에 맞는다면, 그곳이 navmesh도착지점
-            if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out Hit, Mathf.Infinity))
+            if (Physics.Raycast(ray, out Hit, Mathf.Infinity))
             {
                 MoveOntheGround(Hit);
                 GetTargetedObject();

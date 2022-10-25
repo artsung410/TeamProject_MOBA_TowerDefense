@@ -67,7 +67,7 @@ public class Turret_Single : Turret
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
         if (target == null)

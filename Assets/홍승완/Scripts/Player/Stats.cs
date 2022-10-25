@@ -52,6 +52,7 @@ public class Stats : MonoBehaviourPun
     }
 
 
+
     //private void DieAndDestroy()
     //{
     //    if (health <= 0)
@@ -65,7 +66,7 @@ public class Stats : MonoBehaviourPun
     private void StatInit()
     {
         MoveSpeed = 10f;
-        StartHealth = 250;
+        StartHealth = 2000f;
         attackDmg = 2f;
         attackRange = 3f;
         

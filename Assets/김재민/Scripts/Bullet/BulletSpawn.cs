@@ -28,7 +28,7 @@ public class BulletSpawn : MonoBehaviour
 
     public void Spawn()
     {
-        GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, transform.rotation);
+        GameObject bullet = Instantiate(Prefab, _gunPivot.position, transform.rotation);
 
         bullet.GetComponent<BulletMove>().tg = Minion._target;
     }
