@@ -57,7 +57,7 @@ public class HeroAbility : MonoBehaviourPun
         if (photonView.IsMine)
         {
             AbilityQ();
-            //AbilityW();
+            AbilityW();
             //AbilityE();
             //AbilityR();
 
@@ -116,9 +116,8 @@ public class HeroAbility : MonoBehaviourPun
             isCoolDown[1] = true;
             coolTimeImgs[1].fillAmount = 1;
 
-            // q의 데미지
             AbilityPrefabs[1].GetComponent<ChainAttack>().Damage = SkillManager.Instance.atk[1];
-            // q의 쿨타임
+
             skillCoolTimeArr[1] = SkillManager.Instance.time[1];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);

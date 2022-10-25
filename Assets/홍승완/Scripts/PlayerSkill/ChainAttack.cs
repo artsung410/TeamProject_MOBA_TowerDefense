@@ -14,6 +14,7 @@ public class ChainAttack : SkillHandler
     public ParticleSystem effect;
 
     #region private 변수모음
+
     Quaternion quaternion;
     float elapsedTime;
     string enemyTag;
@@ -49,9 +50,6 @@ public class ChainAttack : SkillHandler
     {
         if (_ability == null)
         {
-            // 리모트 플레이어의 경우 _ability가 비어있다
-            // 로컬플레이어의 _ability를 가져오려면?
-            //Debug.Log("널");
             return;
         }
 
