@@ -21,6 +21,10 @@ public class ChainAttack : SkillHandler
 
     #endregion
 
+    public float HoldingTime;
+    public float Damage;
+    public float Range;
+
     private void Awake()
     {
         effect = gameObject.GetComponent<ParticleSystem>();
@@ -29,18 +33,14 @@ public class ChainAttack : SkillHandler
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Init();
     }
 
-    /// <summary>
-    /// 스킬 계수 초기화
-    /// </summary>
+   
     protected void Init()
     {
-        Damage = 30f;
-        CoolTime = 3f;
+        //Damage = 0f;
         Range = 8f;
-        HoldingTime = 2f;
+        //HoldingTime = 2f;
     }
 
 
