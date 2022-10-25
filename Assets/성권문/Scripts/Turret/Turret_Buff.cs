@@ -72,8 +72,13 @@ public class Turret_Buff : Turret
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
         if (target == null)
         {
@@ -97,7 +102,6 @@ public class Turret_Buff : Turret
     void Fire()
     {
         GameObject newSkill = PhotonNetwork.Instantiate(SkillPrefab.name, target.position, Quaternion.identity);
-        Destroy(newSkill, 2f);
     }
 
     // 타겟 방향으로 회전하기
@@ -107,11 +111,5 @@ public class Turret_Buff : Turret
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

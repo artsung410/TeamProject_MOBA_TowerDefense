@@ -93,9 +93,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 타워 생성
     private void SpawnTower()
     {
+        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
+
+        if (count == 0)
+        {
+            return;
+        }
+
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < count; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
@@ -103,7 +110,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            for (int i = 0; i < 4; i++)
+            for (int i = 0; i < count; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);

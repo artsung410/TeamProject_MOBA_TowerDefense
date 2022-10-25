@@ -67,8 +67,13 @@ public class Turret_Laser : Turret
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
         if (target == null)
         {
