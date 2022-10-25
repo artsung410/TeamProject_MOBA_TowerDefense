@@ -41,13 +41,15 @@ public class PlayerHUD : MonoBehaviourPun
     private void Start()
     {
         setSkill();
-        setHp();
+        StartCoroutine(setHp());
     }
 
-    private void setHp()
+    private IEnumerator setHp()
     {
+        yield return new WaitForSeconds(0.5f);
         playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
         enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
+        StopCoroutine(setHp());
     }
 
     private void setSkill()
