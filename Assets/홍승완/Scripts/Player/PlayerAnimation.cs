@@ -26,6 +26,7 @@ public class PlayerAnimation : MonoBehaviourPun
         _playerScript = GetComponent<PlayerBehaviour>();
     }
 
+
     void Update()
     {
         MoveAniMotion();

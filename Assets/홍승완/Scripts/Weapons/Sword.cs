@@ -29,12 +29,17 @@ public class Sword : MonoBehaviour
         {
             if (_playerScript != null)
             {
-                    Debug.Log($"공격중? : {_playerScript.IsAttack}");
-                //_playerScript.MeleeAttack();
                 if (_playerScript.IsAttack)
                 {
                     //_playerHP.OnDamage(_stat.attackDmg, other);
-                    other.GetComponent<Health>().OnDamage(_stat.attackDmg);
+                    if (other.gameObject.layer == 7)
+                    {
+                        other.GetComponent<Health>().OnDamage(_stat.attackDmg);
+                    }
+                    else if (other.gameObject.layer == 8)
+                    {
+                        other.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
+                    }
                 }
                 //Debug.Log("접촉함");
             }

@@ -61,11 +61,6 @@ public class Projectiles : MonoBehaviourPun
 
             if (player != null)
             {
-                if (player.hpSlider3D.value <= 5)
-                {
-                    player.transform.parent.gameObject.SetActive(false);
-
-                }
                 player.OnDamage(damage);
                 
             }
@@ -75,6 +70,7 @@ public class Projectiles : MonoBehaviourPun
         else if(enemy.gameObject.layer == 8)
         {
             Enemybase minion = enemy.GetComponent<Enemybase>();
+
 
             if (minion != null)
             {
