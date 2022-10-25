@@ -21,6 +21,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     [Header("InfoUI")]
     public Image EnemyHealthBar;
+    public TextMeshProUGUI enemyHealthBarTMPro;
 
     [Header("SkillUI")]
     public GameObject skillTable;
@@ -32,6 +33,8 @@ public class PlayerHUD : MonoBehaviourPun
 
     private Health playerHp;
     private Health enemyHp;
+
+
 
     private void Awake()
     {
@@ -88,7 +91,7 @@ public class PlayerHUD : MonoBehaviourPun
         }
     }
 
-    float hp;
+    float playerHp2D; float EnemyHp2D;
     void UpdateHealthUI()
     {
         if (playerHp == null)
@@ -97,8 +100,8 @@ public class PlayerHUD : MonoBehaviourPun
         }
 
         playerHealthBar.fillAmount = playerHp.hpSlider3D.value / playerHp.hpSlider3D.maxValue;
-        hp = playerHp.hpSlider3D.value;
-        playerHealthBarTMpro.text = hp + " / " + playerHp.hpSlider3D.maxValue;
+        playerHp2D = playerHp.hpSlider3D.value;
+        playerHealthBarTMpro.text = playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
     }
 
     void UpdateEnemyHealthUI()
@@ -110,5 +113,7 @@ public class PlayerHUD : MonoBehaviourPun
         }
 
         EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
+        EnemyHp2D = enemyHp.hpSlider3D.value;
+        enemyHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
     }
 }
