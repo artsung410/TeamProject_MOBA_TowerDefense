@@ -96,7 +96,7 @@ public class Inventory : MonoBehaviour
     void Start()
     {
         // 게임 시작 시 인벤토리 닫기
-            this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);
 
         updateItemList();
 

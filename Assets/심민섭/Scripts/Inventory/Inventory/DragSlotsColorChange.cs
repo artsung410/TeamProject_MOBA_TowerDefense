@@ -14,17 +14,17 @@ public class DragSlotsColorChange : MonoBehaviour
     // towerÀÌ¸é 4567 ½½·ÔÀ» ÄÃ·¯ º¯°æÇÑ´Ù.
 
     // ÀåÂø ½½·Ô ÀúÀåÇÒ ¹è¿­
-    private GameObject[] EquipmentArr = new GameObject[8]; // 0 ~ 7
+    private GameObject[] EquipmentArr = new GameObject[8]; // 0 ~ 7*/
     private Color color;
 
-    // ÀåÂø ½½·ÔÀº ¹Ì¸® °¡Á®¿Â´Ù.
-    private void Start()
+    private void Awake()
     {
         for (int i = 0; i < EquipmentArr.Length; i++)
         {
             EquipmentArr[i] = GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).gameObject;
         }
     }
+
 
     public void SlotsColorChange()
     {
