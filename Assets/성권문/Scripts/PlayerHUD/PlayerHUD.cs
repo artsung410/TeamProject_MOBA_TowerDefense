@@ -91,10 +91,11 @@ public class PlayerHUD : MonoBehaviourPun
     float hp;
     void UpdateHealthUI()
     {
-        //if (playerHp == null)
-        //{
-        //    return;
-        //}
+        if (playerHp == null)
+        {
+            return;
+        }
+
         playerHealthBar.fillAmount = playerHp.hpSlider3D.value / 250f;
         hp = (playerHp.hpSlider3D.value / 250f) * 100f;
         playerHealthBarTMpro.text = hp.ToString() + " / 100";
@@ -102,6 +103,12 @@ public class PlayerHUD : MonoBehaviourPun
 
     void UpdateEnemyHealthUI()
     {
+
+        if (enemyHp == null)
+        {
+            return;
+        }
+
         EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / 250f;
     }
 }
