@@ -10,6 +10,7 @@ public class BackButton : MonoBehaviour
     void Start()
     {
         selectMatch = gameObject.transform.parent.gameObject;
+
     }
 
     // 대전하기 창 뒤로가기

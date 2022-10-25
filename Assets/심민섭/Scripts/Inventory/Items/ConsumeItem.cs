@@ -4,7 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System;
 
-public class ConsumeItem : MonoBehaviour//, IPointerDownHandler
+public class ConsumeItem : MonoBehaviour, IPointerDownHandler
 {
     public Item item;
     private static Tooltip tooltip;
@@ -37,7 +37,7 @@ public class ConsumeItem : MonoBehaviour//, IPointerDownHandler
     }
 
     // 포인터가 다운되었을 때
-    /*public void OnPointerDown(PointerEventData data)
+    public void OnPointerDown(PointerEventData data)
     {
         // EquipmentSystem(케릭터 장비 창) 컴포넌트가 null이면
         if (this.gameObject.transform.parent.parent.parent.parent.parent.GetComponent<EquipmentSystem>() == null)
@@ -152,8 +152,8 @@ public class ConsumeItem : MonoBehaviour//, IPointerDownHandler
                                                 // 장착 중인 아이템을 장착 해제
                                                 inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
                                             }
-                                        }                                                                          
-                                        gearable = true;                                        
+                                        }
+                                        gearable = true;
                                         if (duplication != null)
                                             Destroy(duplication.gameObject);
                                         eS.gameObject.GetComponent<Inventory>().updateItemList();
@@ -185,7 +185,7 @@ public class ConsumeItem : MonoBehaviour//, IPointerDownHandler
                             if (tooltip != null)
                                 tooltip.deactivateTooltip();
                             inventory.deleteItemFromInventory(item);
-                            Destroy(duplication.gameObject); 
+                            Destroy(duplication.gameObject);
                         }
                     }
                     if (item.itemValue <= 0)
@@ -193,16 +193,16 @@ public class ConsumeItem : MonoBehaviour//, IPointerDownHandler
                         if (tooltip != null)
                             tooltip.deactivateTooltip();
                         inventory.deleteItemFromInventory(item);
-                        Destroy(this.gameObject);                        
+                        Destroy(this.gameObject);
                     }
 
                 }
-                
+
             }
-            
+
 
         } // 큰 if 문 끝.
-    }*/    
+    }
 
     public void consumeIt()
     {

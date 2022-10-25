@@ -22,6 +22,10 @@ public class PlayerInventory : MonoBehaviour
     // 인벤토리 스크립트를 가져옴
     private Inventory mainInventory;
 
+    // 기획팀 사운드 작업본(인벤토리 클릭 효과음)
+    public AudioClip clickSound;
+    AudioSource audioSource;
+
     void Start()
     {
         if (inventory != null)
@@ -35,11 +39,17 @@ public class PlayerInventory : MonoBehaviour
 
         if (craftSystem != null)
             cS = craftSystem.GetComponent<CraftSystem>();
+
+        this.audioSource = GetComponent<AudioSource>();
     }
 
     // 가방 클릭 할 때만 쓸거임
     public void openInventory()
     {
+        // 기획팀 사운드 작업본(인벤토리 클릭 효과음)
+        audioSource.clip = clickSound;
+        audioSource.Play();
+
         mainInventory.openInventory();
         characterSystemInventory.openInventory();
     }
@@ -47,6 +57,10 @@ public class PlayerInventory : MonoBehaviour
     // 인벤토리의 백버튼 눌렀을떄
     public void closeInventory()
     {
+        // 기획팀 사운드 작업본(인벤토리 클릭 효과음)
+        audioSource.clip = clickSound;
+        audioSource.Play();
+
         mainInventory.closeInventory();
         characterSystemInventory.closeInventory();
     }
