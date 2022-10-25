@@ -33,9 +33,21 @@ public class MinionAttack : MonoBehaviour
         if(other.CompareTag(EnemyTag))
         {
             Debug.Log("여기들어오는건가?");
-            if(other.gameObject.layer == 8)
+            if(other.gameObject.layer == 8) // 미니언
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(PistonDamage);
+            }
+            if (other.gameObject.layer == 7) // 플레이어
+            {
+                other.gameObject.GetComponent<Health>().OnDamage(PistonDamage);
+            }
+            if (other.gameObject.layer == 6) // 타워
+            {
+                other.gameObject.GetComponent<Turret>().TakeDamage(PistonDamage);
+            }
+            if (other.gameObject.layer == 12) // 넥서스
+            {
+                other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(PistonDamage);
             }
         }
     }

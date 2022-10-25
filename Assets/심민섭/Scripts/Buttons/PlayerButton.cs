@@ -22,4 +22,19 @@ public class PlayerButton : MonoBehaviourPun
         selectMatch.SetActive(true);
     }
 
+
+    // 기획팀 사운드 작업본(매칭 효과음)
+    public AudioClip clickSound;
+    //public AudioClip clickCancleSound;
+
+    [SerializeField]
+    private AudioSource collectAudio;
+
+    // Collect 버튼 클릭 사운드
+    public void CollectButtonSound()
+    {
+        collectAudio.clip = clickSound;
+        collectAudio.Play();
+    }
+
 }

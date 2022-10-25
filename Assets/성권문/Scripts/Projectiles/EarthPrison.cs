@@ -10,4 +10,13 @@ using Photon.Pun;
 
 public class EarthPrison : Projectiles
 {
+    private void OnEnable()
+    {
+        if (gameObject == null)
+        {
+            return;
+        }
+
+        Destroy(gameObject, 3f);
+    }
 }

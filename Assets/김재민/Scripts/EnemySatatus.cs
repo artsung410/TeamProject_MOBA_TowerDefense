@@ -12,6 +12,7 @@ public class EnemySatatus : Enemybase
     // ###############################################
     public Transform _target;
     private Transform _PrevTarget;
+    private bool Targeton = false;
 
     enum ESTATE
     {
@@ -45,14 +46,7 @@ public class EnemySatatus : Enemybase
 
     private void Start()
     {
-        if (_eminiomtype == EMINIOMTYPE.Nomal)
-        {
-            attackRange = 2f;
-        }
-        else if (_eminiomtype == EMINIOMTYPE.Shot)
-        {
-            attackRange = 10f;
-        }
+        
 
         StartCoroutine(StateChange());
         InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
@@ -62,6 +56,14 @@ public class EnemySatatus : Enemybase
     {
         while (true)
         {
+            if (_eminiomtype == EMINIOMTYPE.Nomal)
+            {
+                attackRange = 2f;
+            }
+            else if (_eminiomtype == EMINIOMTYPE.Shot)
+            {
+                attackRange = 10f;
+            }
             if (_target == null)
             {
                 _target = _PrevTarget;
@@ -113,11 +115,11 @@ public class EnemySatatus : Enemybase
             
             // 애니메이션 추가 + 공격데미지 입히기
             yield return new WaitForSeconds(AttackTime); //공격쿨타임
-
+            Debug.Log($" 공격중 사거리:{AttackDistance}, 공격범위 : {attackRange}");
             if (AttackDistance >= attackRange)
             {
                 _estate = ESTATE.move;
-
+                Targeton = false;
             }
             yield return null;
         }
@@ -147,27 +149,44 @@ public class EnemySatatus : Enemybase
     {
         if (_target == null)
         {
+            Targeton = false;
             _target = _PrevTarget;
+
         }
         Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
-        foreach (Collider col in RangeTarget)
+        foreach (Collider collider in RangeTarget)
         {
-            if (col.tag == myTag)
+            if (collider.tag == myTag)
             {
                 continue;
+          
             }
-            if (col.CompareTag(EnemyTag))
+            if (collider.CompareTag(EnemyTag))
             {
-                if (col.gameObject.layer == 8) //미니언 공격
+                if (collider.gameObject.layer == 8 && Targeton == false) //미니언 공격
                 {
-                    _target = col.transform;
+                    Targeton = true;
+                    _target = collider.transform;
                 }
-                else if (col.gameObject.layer == 7) // 플레이어 공격
+                else if (collider.gameObject.layer == 7 && Targeton == false) // 플레이어 공격
                 {
-                    _target = col.transform;
+                    Targeton = true;
+                    _target = collider.transform;
                 }
-                else // 타워플레이어 공격
-                    _target = col.transform;
+                else if (collider.gameObject.layer == 6 && Targeton == false)// 타워플레이어 공격
+                {
+                    if(_eminiomtype == EMINIOMTYPE.Nomal)
+                    {
+                        attackRange = 6f;
+                    }
+                    Targeton = true;
+                    _target = collider.transform;
+                }
+                else if(collider.gameObject.layer == 5 && Targeton == false)
+                {
+                    _target = collider.transform;
+                    Targeton = true;
+                }
             }
         }
     }

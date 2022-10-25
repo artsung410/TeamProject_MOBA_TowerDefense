@@ -32,12 +32,12 @@ public class PlayerPosition : MonoBehaviourPun
     {
         if (photonView.IsMine)
         {
-            transform.position = new Vector2(0f, -2.4f);
+            transform.position = new Vector2(956.9f, 221.83f);
             playerText.text = 11.ToString();
         }
         else
         {
-            transform.position = new Vector2(0f, 4f);
+            transform.position = new Vector2(956.9f, 850.27f);
             playerText.text = 22.ToString();
         }
     }

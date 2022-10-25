@@ -20,7 +20,7 @@ public class Turret : MonoBehaviourPun
 
     [Header("Å¸°Ù TAG")]
     public string enemyTag;
-
+    private GameObject newDestroyParticle;
     protected void OnEnable()
     {
         currentHealth = maxHealth;
@@ -73,15 +73,17 @@ public class Turret : MonoBehaviourPun
 
         if (currentHealth <= 0)
         {
-            Destroy();
+            photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
     }
 
+    [PunRPC]
     public void Destroy()
     {
         StartCoroutine(Destructing());
-        StartCoroutine(Destruction(PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation)));
+        newDestroyParticle = PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+        StartCoroutine(Destruction(newDestroyParticle));
     }
 
     IEnumerator Destructing()
@@ -90,13 +92,24 @@ public class Turret : MonoBehaviourPun
         {
             yield return new WaitForSeconds(0.01f);
             transform.Translate(Vector3.down * Time.deltaTime * destorySpeed);
+
+            if (transform.position.y < -10)
+            {
+                StopCoroutine(Destructing());
+
+                if (newDestroyParticle != null)
+                {
+                    StopCoroutine(Destructing());
+                    StopCoroutine(Destruction(newDestroyParticle));
+                }
+            }
         }
     }
 
     IEnumerator Destruction(GameObject particle)
     {
         yield return new WaitForSeconds(1.5f);
-        PhotonNetwork.Destroy(particle);
-        PhotonNetwork.Destroy(gameObject);
+        Destroy(particle);
+        Destroy(gameObject);
     }
 }
