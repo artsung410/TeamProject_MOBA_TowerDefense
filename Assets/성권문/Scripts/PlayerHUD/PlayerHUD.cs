@@ -96,9 +96,9 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
 
-        playerHealthBar.fillAmount = playerHp.hpSlider3D.value / 250f;
-        hp = (playerHp.hpSlider3D.value / 250f) * 100f;
-        playerHealthBarTMpro.text = hp.ToString() + " / 100";
+        playerHealthBar.fillAmount = playerHp.hpSlider3D.value / playerHp.hpSlider3D.maxValue;
+        hp = playerHp.hpSlider3D.value;
+        playerHealthBarTMpro.text = hp + " / " + playerHp.hpSlider3D.maxValue;
     }
 
     void UpdateEnemyHealthUI()
@@ -109,6 +109,6 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
 
-        EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / 250f;
+        EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
     }
 }
