@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+
 // ###############################################
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com         
 // ###############################################
 
-public class Bullet : Projectiles
+public class Arrow : Projectiles
 {
-    
-    public Transform target;
+    private Transform target;
 
     public float speed = 70f;
 
@@ -19,20 +19,22 @@ public class Bullet : Projectiles
 
     public void Seek(Transform _target)
     {
+        Debug.Log("Arrow Seek�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�");
         target = _target;
     }
 
     private void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             Destroy(gameObject);
             return;
         }
 
-        Vector3 dir = target.position - transform.position;
+        Vector3 dir = target.position - transform.position; 
         float distanceThisFrame = speed * Time.deltaTime;
 
+        Debug.Log("Arrow Dir�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�" + dir);
         if (dir.magnitude <= distanceThisFrame)
         {
             HitTarget();
@@ -41,13 +43,16 @@ public class Bullet : Projectiles
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
+        Debug.Log("Arrow Translate�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�" + dir);
+
         transform.LookAt(target);
     }
 
     void HitTarget()
     {
+        Debug.Log("Arrow HitTarget�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�");
         GameObject effectIns = (GameObject)Instantiate(ImpactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 0.5f);
+        Destroy(effectIns, 2f);
 
         if (explosionRadius > 0f)
         {
@@ -57,6 +62,8 @@ public class Bullet : Projectiles
         {
             Damage(target);
         }
+
+        Destroy(gameObject);
     }
 
     void Explode()
@@ -67,7 +74,6 @@ public class Bullet : Projectiles
             if (collider.tag == enemyTag)
             {
                 Damage(collider.transform);
-                Destroy(gameObject);
             }
         }
     }

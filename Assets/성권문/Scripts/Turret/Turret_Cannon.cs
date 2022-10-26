@@ -22,8 +22,6 @@ public class Turret_Cannon : Turret
 
     [Header("공격범위 도형")]
     public GameObject dangerZonePrefab;
-    private GameObject dangerZone;
-    private bool isEnemyInRange;
 
     [Header("====== 투사체 ======")]
 
@@ -32,10 +30,12 @@ public class Turret_Cannon : Turret
 
     [Header("투사체 발사 위치")]
     public Transform firePoint;
+
+    public GameObject DangerZonePF;
+    private GameObject NewDangerZone;
+    private Transform shotTransform;
     private void Start()
     {
-        dangerZone = PhotonNetwork.Instantiate(dangerZonePrefab.name, transform.position, transform.rotation);
-        dangerZone.SetActive(false);
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -49,7 +49,7 @@ public class Turret_Cannon : Turret
 
         foreach (GameObject enemy in enemies)
         {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+            float distanceToEnemy = Vector3.Distance(transform.position ,enemy.transform.position);
 
             if (distanceToEnemy < shortestDistance)
             {
@@ -62,53 +62,56 @@ public class Turret_Cannon : Turret
         if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
-            isEnemyInRange = true;
         }
         else
         {
-            isEnemyInRange = false;
             target = null;
         }
     }
 
+    bool isLockOn;
     private void FixedUpdate()
     {
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
         if (target == null)
         {
-            if (dangerZone.activeSelf == true)
-            {
-                dangerZone.SetActive(false);
-            }
             return;
         }
 
-        // 적이 공격범위에 들어왔을때 도형을 생성한다.
-        if (isEnemyInRange == true)
+        if (isLockOn == false)
         {
-            dangerZone.transform.position = new Vector3(target.transform.position.x, target.transform.position.y - 0.3f, target.transform.position.z);
-            dangerZone.SetActive(true);
-            StartCoroutine(DeActivationDangerZone());
+            // 타겟을 찾는다.
+            LockOnTarget();
         }
-
-        // 타겟을 찾는다.
-        LockOnTarget();
 
         if (fireCountdown <= 0f)
         {
-            Shoot();
+            isLockOn = true;
+            makeDangerZone(); // 대포 위험범위 생성
+            LockOnTarget_dangerZone();
+            StartCoroutine(delayShoot()); // 대포 발사.
             fireCountdown = 1f / fireRate;
         }
 
         fireCountdown -= Time.deltaTime;
     }
 
-    private IEnumerator DeActivationDangerZone()
+    IEnumerator delayShoot()
     {
         yield return new WaitForSeconds(1f);
-        dangerZone.SetActive(false);
+        Shoot();
+        yield return new WaitForSeconds(0.5f);
+        isLockOn = false;
     }
 
+    void makeDangerZone()
+    {
+        NewDangerZone = Instantiate(DangerZonePF, firePoint.position, firePoint.rotation);
+        NewDangerZone.transform.position = new Vector3(target.position.x, 0.5f, target.position.z);
+        shotTransform = NewDangerZone.transform;
+    }
+
+    // 타겟 기준으로 설정
     void LockOnTarget()
     {
         Vector3 dir = target.position - transform.position;
@@ -117,17 +120,27 @@ public class Turret_Cannon : Turret
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
+    // dangerZone기준으로 설정
+    void LockOnTarget_dangerZone()
+    {
+        Vector3 dir = shotTransform.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
     // ★ 총알 / 미사일 발사
     void Shoot()
     {
-        GameObject bulletGO = PhotonNetwork.Instantiate(bulletPrefab.name, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)
         {
-            bullet.Seek(target);
+            bullet.Seek(shotTransform);
         }
+
         Debug.Log("SHOOT!");
     }
 

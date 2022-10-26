@@ -45,12 +45,7 @@ public class Health : MonoBehaviourPun
         hpSlider3D.value = health;
 
     }
-
-    private void Start()
-    {
-
-    }
-
+    
     [PunRPC]
     public void HealthUpdate(float damage)
     {
