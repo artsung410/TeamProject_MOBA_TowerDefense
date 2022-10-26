@@ -57,7 +57,7 @@ public class HeroAbility : MonoBehaviourPun
         if (photonView.IsMine)
         {
             AbilityQ();
-            AbilityW();
+            //AbilityW();
             //AbilityE();
             //AbilityR();
 
@@ -111,7 +111,7 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && isCoolDown[1] == false)
+        if (Input.GetKeyDown(KeyCode.W) && isCoolDown[1] == false)
         {
             isCoolDown[1] = true;
             coolTimeImgs[1].fillAmount = 1;
@@ -141,7 +141,7 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && isCoolDown[2] == false)
+        if (Input.GetKeyDown(KeyCode.E) && isCoolDown[2] == false)
         {
             isCoolDown[2] = true;
             coolTimeImgs[2].fillAmount = 1;
@@ -173,7 +173,7 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && isCoolDown[3] == false)
+        if (Input.GetKeyDown(KeyCode.R) && isCoolDown[3] == false)
         {
             isCoolDown[3] = true;
             coolTimeImgs[3].fillAmount = 1;

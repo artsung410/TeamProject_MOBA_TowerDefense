@@ -80,6 +80,11 @@ public class Projectiles : MonoBehaviourPun
 
     protected void OnTriggerEnter(Collider other)
     {
+        if (enemyTag == null)
+        {
+            return;
+        }
+
         if (projectileType == ProjectileType.Bullet)
         {
             return;
