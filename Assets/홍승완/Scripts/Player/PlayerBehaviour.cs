@@ -15,7 +15,8 @@ public class PlayerBehaviour : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
-    //             MAIL : gkenfktm@gmail.com         
+    //             MAIL : gkenfktm@gmail.com
+    //             MAIL : minsub4400@gmail.com   
     // ###############################################
 
     public static Vector3 CurrentPlayerPos;
@@ -44,6 +45,20 @@ public class PlayerBehaviour : MonoBehaviourPun
     public string EnemyTag;
     public bool IsAttack;
 
+    // SMS Start --------------------------------------------//
+    // A키 커서 관련 변수
+
+    public Texture2D cursorTextureOriginal;
+    public Texture2D cursorTexture;
+
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
+    public Canvas moveMouseCanvas;
+    public GameObject moveMouseObj;
+    public MousePointer moveMousePointer;
+    // SMS End --------------------------------------------//
+
     #region Other Components
     NavMeshAgent _agent;
     Stats _statScript;
@@ -63,7 +78,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void OnEnable()
     {
-
+        
     }
 
 
@@ -150,6 +165,12 @@ public class PlayerBehaviour : MonoBehaviourPun
             {
                 MoveOntheGround(Hit);
                 GetTargetedObject();
+
+                // SMS Start --------------------------------------//
+                moveMouseCanvas.transform.position = Hit.point;
+                moveMouseObj.gameObject.SetActive(true);
+                StartCoroutine(moveMousePointer.MoveMouseCursorPoint());
+                // SMS End --------------------------------------//
             }
         }
 
@@ -255,11 +276,20 @@ public class PlayerBehaviour : MonoBehaviourPun
         if (Input.GetKeyDown(KeyCode.A))
         {
             inputA = true;
+            // SMS Start ------------------------------------------------//
+            // 커서를 공격 커서로 바꾼다.
+            ChangeMouseAMode();
+            // SMS End ---------------------------------------------------//
             Debug.Log($"inputA : {inputA}");
         }
 
         if (Input.GetMouseButtonDown(0) && inputA)
         {
+            // SMS Start ------------------------------------------------//
+            // 커서를 일반 커서로 바꾼다.
+            Cursor.SetCursor(cursorTextureOriginal, hotSpot, cursorMode);
+            // SMS End ---------------------------------------------------//
+
             inputA = false;
             // 누른 위치로 이동한다
             if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out Hit, Mathf.Infinity))
@@ -272,6 +302,15 @@ public class PlayerBehaviour : MonoBehaviourPun
 
 
     }
+
+    // SMS Start-------------------------------------------//
+    public void ChangeMouseAMode()
+    {
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+    }
+    // SMS End-----------------------------------------------//
+
+
 
     float detectiveRange = 8f;
     private void AutoTargetMove()

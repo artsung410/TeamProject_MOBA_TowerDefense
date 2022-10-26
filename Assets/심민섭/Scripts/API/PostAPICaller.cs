@@ -37,7 +37,7 @@ public class PostAPICaller : MonoBehaviourPunCallbacks
         placeBet.players_session_id = new string[2];
         placeBet.players_session_id[0] = aPIStorage.session_id[0];
         placeBet.players_session_id[1] = aPIStorage.MetaMaskSessionID;
-        placeBet.bet_id = aPIStorage.bet_id[0]; // 일단은 0 값을 쓴다. 플레이어 1번
+        placeBet.bet_id = aPIStorage.bet_id[0];
 
         // 직렬화
         var serializeObject = JsonConvert.SerializeObject(placeBet);
