@@ -37,8 +37,11 @@ public class MinionAttack : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(EnemyTag))
+        EnemyTagNullCheck();
+
+        if (other.CompareTag(EnemyTag))
         {
+            EnemyTagNullCheck();
 
             Debug.Log("여기들어오는건가?");
             if(other.gameObject.layer == 8 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // 미니언 공격
@@ -61,6 +64,14 @@ public class MinionAttack : MonoBehaviour
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(PistonDamage);
             }
+        }
+    }
+
+    public void EnemyTagNullCheck()
+    {
+        if (EnemyTag == null)
+        {
+            return;
         }
     }
 

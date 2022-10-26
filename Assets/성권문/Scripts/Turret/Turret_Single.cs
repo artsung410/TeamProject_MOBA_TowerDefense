@@ -69,6 +69,7 @@ public class Turret_Single : Turret
 
     private void FixedUpdate()
     {
+        //Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
         if (target == null)
         {
@@ -77,7 +78,7 @@ public class Turret_Single : Turret
 
         // 타겟을 찾는다.
         LockOnTarget();
-
+        
 
         // 일정 주기로 총알 발사
         if (fireCountdown <= 0f)
@@ -99,13 +100,13 @@ public class Turret_Single : Turret
     // ★ 총알 / 미사일 발사
     void Shoot()
     {
-        GameObject bulletGO = PhotonNetwork.Instantiate(bulletPrefab.name, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
 
-        Bullet bullet = bulletGO.GetComponent<Bullet>();
+        Arrow arrow = bulletGO.GetComponent<Arrow>();
 
-        if (bullet != null)
+        if (arrow != null)
         {
-            bullet.Seek(target);
+            arrow.Seek(target);
         }
     }
 }

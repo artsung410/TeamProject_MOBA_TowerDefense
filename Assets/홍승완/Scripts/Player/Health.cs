@@ -22,10 +22,6 @@ public class Health : MonoBehaviourPun
         _stats = GetComponent<Stats>();
     }
 
-    private void OnEnable()
-    {
-    }
-
     private void Start()
     {
         health = _stats.StartHealth;
@@ -34,11 +30,6 @@ public class Health : MonoBehaviourPun
 
         hpSlider3D.value = health;
 
-    }
-
-    private void Update()
-    {
-        
     }
 
     [PunRPC]
