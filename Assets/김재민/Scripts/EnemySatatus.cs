@@ -61,6 +61,12 @@ public class EnemySatatus : Enemybase
             {
                 break;
             }
+            if (_target == null)
+            {
+                Targeton = false;
+                _target = _PrevTarget;
+
+            }
             if (_eminiomtype == EMINIOMTYPE.Nomal)
             {
                 attackRange = 2f;
@@ -91,6 +97,13 @@ public class EnemySatatus : Enemybase
     {
         while (_estate == ESTATE.attack) 
         {
+            
+            if (_target == null)
+            {
+                Targeton = false;
+                _target = _PrevTarget;
+
+            }
             Vector3 VceAtkdistance = _target.position - transform.position;
             float AtkDistance = Vector3.SqrMagnitude(VceAtkdistance);
             // ±¸ºÐ
