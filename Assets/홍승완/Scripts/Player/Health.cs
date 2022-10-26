@@ -67,6 +67,7 @@ public class Health : MonoBehaviourPun
             isDeath = true;
             ani.DieMotion();
             hpSlider3D.gameObject.SetActive(false);
+
             StartCoroutine(temp());
         }
     }

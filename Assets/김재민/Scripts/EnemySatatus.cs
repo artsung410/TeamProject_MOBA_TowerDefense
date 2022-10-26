@@ -107,6 +107,10 @@ public class EnemySatatus : Enemybase
     {
         while (_estate == ESTATE.attack)
         {
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
             if (_target == null)
             {
                 Targeton = false;

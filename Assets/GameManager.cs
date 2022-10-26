@@ -80,7 +80,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     //    if(elaspedTime >= minionSpawnTime)
     //    {
     //        elaspedTime = 0;
-         
+
 
     //    }
     //}
@@ -107,7 +107,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         // 미니맵 플레이어 캔버스 생성
         GameObject circle = PhotonNetwork.Instantiate(CharacterCircle.name, new Vector3(player.transform.position.x, player.transform.position.y + 30, player.transform.position.z), Quaternion.identity);
 
-        if(PhotonNetwork.LocalPlayer.ActorNumber >= 1)
+        if (PhotonNetwork.LocalPlayer.ActorNumber >= 1)
         {
             Debug.Log("이벤트 적용");
         }
@@ -130,9 +130,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
-                if(tower.GetComponent<Turret_LaserRange>() != null)
+                if (tower.GetComponent<Turret_LaserRange>() != null)
                 {
-                    
+
                     minionTowerPos[0] = tiles[i];
                 }
             }
@@ -146,7 +146,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 if (tower.GetComponent<Turret_LaserRange>() != null)
                 {
-                minionTowerPos[1] = tiles[i+4];
+                    minionTowerPos[1] = tiles[i + 4];
                 }
             }
         }
@@ -162,12 +162,12 @@ public class GameManager : MonoBehaviourPunCallbacks
             GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
         }
         else
-            {
+        {
 
             GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
 
             GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
-            }
+        }
     }
 
     private void SapwnSpecial()
@@ -177,9 +177,9 @@ public class GameManager : MonoBehaviourPunCallbacks
 
             GameObject specialminionBlue = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
         }
-         else
+        else
         {
-           GameObject specialminionRed = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
+            GameObject specialminionRed = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
 
 
         }

@@ -65,7 +65,7 @@ public class MinionAttack : MonoBehaviour
 
     public void EnemyTagNullCheck()
     {
-        if (EnemyTag == null)
+        if (satatus.EnemyTag == null)
         {
             return;
         }
