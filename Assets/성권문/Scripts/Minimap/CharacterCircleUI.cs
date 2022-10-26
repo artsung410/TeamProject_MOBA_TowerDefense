@@ -12,7 +12,7 @@ public class CharacterCircleUI : MonoBehaviourPun
     // ###############################################
 
     Quaternion PrevRotation;
-    GameObject player;
+
     private void OnEnable()
     {
         transform.Rotate(-90, -135f, 0f);
@@ -23,13 +23,13 @@ public class CharacterCircleUI : MonoBehaviourPun
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
                 transform.GetChild(0).GetComponent<Image>().color = Color.blue;
-                player = GameManager.Instance.CurrentPlayers[0];
+                transform.parent = GameManager.Instance.CurrentPlayers[0].transform;
             }
 
             else
             {
                 transform.GetChild(0).GetComponent<Image>().color = Color.red;
-                player = GameManager.Instance.CurrentPlayers[1];
+                transform.parent = GameManager.Instance.CurrentPlayers[1].transform;
             }
         }
 
@@ -38,19 +38,20 @@ public class CharacterCircleUI : MonoBehaviourPun
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
                 transform.GetChild(0).GetComponent<Image>().color = Color.red;
-                player = GameManager.Instance.CurrentPlayers[0];
+                transform.parent = GameManager.Instance.CurrentPlayers[0].transform;
             }
 
             else
             {
                 transform.GetChild(0).GetComponent<Image>().color = Color.blue;
-                player = GameManager.Instance.CurrentPlayers[1];
+                transform.parent = GameManager.Instance.CurrentPlayers[1].transform;
             }
         }
     }
 
     private void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 100, player.transform.position.z);
+        transform.rotation = PrevRotation;
     }
 }
+

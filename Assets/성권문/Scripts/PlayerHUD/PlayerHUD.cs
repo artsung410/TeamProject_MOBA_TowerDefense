@@ -39,6 +39,8 @@ public class PlayerHUD : MonoBehaviourPun
     public GameObject MousePositionImage;
     public MousePointer mousePointer;
 
+    private int[] playerScores = { 0, 0 };
+
     private void Awake()
     {
         Instance = this;
@@ -48,10 +50,8 @@ public class PlayerHUD : MonoBehaviourPun
     {
         setSkill();
         StartCoroutine(setHp());
-
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
+        setMouseCursor();
+        photonView.RPC("RPCInitScore", RpcTarget.All);
     }
 
     private IEnumerator setHp()
@@ -76,25 +76,42 @@ public class PlayerHUD : MonoBehaviourPun
         }
     }
 
-    float sec;
-    int min;
+    private void setMouseCursor()
+    {
+        GameManager.Instance.CurrentPlayers [0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
+    }
+
+    float sec = 1f;
+    int min = 10;
+
+    private void FixedUpdate()
+    {
+        Timer();
+    }
 
     void Update()
     {
-        Timer();
+
         UpdateHealthUI();
         UpdateEnemyHealthUI();
     }
 
     void Timer()
     {
-        sec += Time.deltaTime;
+        if ((int)sec < 0)
+        {
+            sec = 59;
+            min--;
+        }
+
+        sec -= Time.deltaTime;
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
 
-        if ((int)sec > 59)
+        if (min <= 0)
         {
-            sec = 0;
-            min++;
+            return;
         }
     }
 
@@ -113,7 +130,6 @@ public class PlayerHUD : MonoBehaviourPun
 
     void UpdateEnemyHealthUI()
     {
-
         if (enemyHp == null)
         {
             return;
@@ -122,5 +138,33 @@ public class PlayerHUD : MonoBehaviourPun
         EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
         EnemyHp2D = enemyHp.hpSlider3D.value;
         enemyHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
+    }
+
+    public void AddScoreToEnemy(string tag)
+    {
+        if (tag == "Red")
+        {
+            playerScores[0] += 1;
+        }
+        else
+        {
+            playerScores[1] += 1;
+        }
+
+        // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
+        photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
+    }
+
+
+    [PunRPC]
+    private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
+    {
+        scoreTMPro.text = $"{player1ScoreText}        {player2ScoreText}";
+    }
+
+    [PunRPC]
+    private void RPCInitScore()
+    {
+        scoreTMPro.text = $"0        0";
     }
 }

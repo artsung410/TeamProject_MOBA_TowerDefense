@@ -57,6 +57,11 @@ public class Health : MonoBehaviourPun
     //[PunRPC]
     public void OnDamage(float damage)
     {
+        if (isDeath)
+        {
+            return;
+        }
+
         photonView.RPC(nameof(HealthUpdate), RpcTarget.All, damage);
     }
 
@@ -64,9 +69,11 @@ public class Health : MonoBehaviourPun
     {
         if (health <= 0f)
         {
+            PlayerHUD.Instance.AddScoreToEnemy(gameObject.tag);
             isDeath = true;
             ani.DieMotion();
             hpSlider3D.gameObject.SetActive(false);
+
             StartCoroutine(temp());
         }
     }
