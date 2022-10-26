@@ -12,10 +12,17 @@ public class Health : MonoBehaviourPun
     // ###############################################
 
     public Slider hpSlider3D;
-
     Stats _stats;
 
+
     float health;
+    public bool isDeath
+    {
+        get;
+        private set;
+    }
+
+
 
     private void Awake()
     {
@@ -24,21 +31,30 @@ public class Health : MonoBehaviourPun
 
     private void OnEnable()
     {
-    }
+        isDeath = false;
 
-    private void Start()
-    {
         health = _stats.StartHealth;
 
         hpSlider3D.maxValue = _stats.StartHealth;
 
         hpSlider3D.value = health;
+    }
+
+    private void Start()
+    {
+
 
     }
 
+    
+
     private void Update()
     {
-        
+        //Debug.Log(respawnPosition);
+        if (photonView.IsMine)
+        {
+            Die();
+        }
     }
 
     [PunRPC]
@@ -48,11 +64,26 @@ public class Health : MonoBehaviourPun
         hpSlider3D.value = health;
     }
 
-
     //[PunRPC]
     public void OnDamage(float damage)
     {
         //other.GetComponent<PhotonView>().RPC("HealthUpdate", RpcTarget.AllBuffered, damage);
         photonView.RPC(nameof(HealthUpdate), RpcTarget.All, damage);
     }
+
+    public void Die()
+    {
+        if (health <= 0f)
+        {
+            isDeath = true;
+        }
+
+        // 죽어있으니까 일단 없어짐
+        if (isDeath)
+        {
+            gameObject.SetActive(false);
+            hpSlider3D.gameObject.SetActive(false);
+        }
+    }
+
 }
