@@ -63,7 +63,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     NavMeshAgent _agent;
     Stats _statScript;
     Health _playerHealth;
-
+    Rigidbody _rigid;
     #endregion
 
     private void Awake()
@@ -71,6 +71,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         _agent = GetComponent<NavMeshAgent>();
         _statScript = GetComponent<Stats>();
         _playerHealth = GetComponent<Health>();
+        _rigid = GetComponent<Rigidbody>();
 
         _agent.enabled = false;
         _agent.enabled = true;
@@ -78,11 +79,9 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void OnEnable()
     {
-        
+        // 되살아났을때 null
+        targetedEnemy = null;
     }
-
-
-
 
     private void Start()
     {
@@ -130,6 +129,9 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 플레이어 위치정보 카메라로 보냄
         if (photonView.IsMine)
         {
+            //_rigid.velocity = Vector3.zero;
+            _rigid.angularVelocity = Vector3.zero;
+
             CurrentPlayerPos = transform.position;
             _agent.speed = _statScript.MoveSpeed;
             // s키 누르면 멈춤
@@ -150,6 +152,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     public Ray ray;
     public void MoveTo()
     {
+        TargetRangeInterpolation();
         // a + 좌클릭 이동
         AutoTargetInput();
         ray = Cam.ScreenPointToRay(Input.mousePosition);
@@ -177,15 +180,6 @@ public class PlayerBehaviour : MonoBehaviourPun
         MoveEnemyPosition();
     }
 
-    public void RequestRespawn()
-    {
-        
-    }
-
-    public void Respawn()
-    {
-
-    }
 
     public void MoveOntheGround(RaycastHit hit)
     {
@@ -209,14 +203,14 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 타겟이 있을때
         if (targetedEnemy != null)
         {
-            float dist = Vector3.Distance(transform.position, targetedEnemy.transform.position) - 0.5f;
+            float dist = Vector3.Distance(transform.position, targetedEnemy.transform.position) - 0.5f - interpolationRange;
 
             // 타겟이 공격범위 밖일때
             if (dist > _statScript.attackRange)
             {
                 // 그 위치로 이동한다
                 _agent.SetDestination(targetedEnemy.transform.position);
-                _agent.stoppingDistance = _statScript.attackRange;
+                _agent.stoppingDistance = _statScript.attackRange + interpolationRange;
 
                 Quaternion rotationToLookAt = Quaternion.LookRotation(targetedEnemy.transform.position - transform.position);
 
@@ -230,7 +224,7 @@ public class PlayerBehaviour : MonoBehaviourPun
             else
             {
                 _agent.SetDestination(targetedEnemy.transform.position);
-                _agent.stoppingDistance = _statScript.attackRange;
+                _agent.stoppingDistance = _statScript.attackRange + interpolationRange;
 
                 // 타겟을 바라본다
                 Quaternion rotationToLookAt = Quaternion.LookRotation(targetedEnemy.transform.position - transform.position);
@@ -241,6 +235,7 @@ public class PlayerBehaviour : MonoBehaviourPun
                     RotateSpeed * (Time.deltaTime * 5));
 
                 transform.eulerAngles = new Vector3(0, rotationY, 0);
+
 
                 // 내가 근접캐라면
                 if (heroAttackType == HeroAttackType.Melee)
@@ -332,7 +327,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
                 // 감지범위내에 적이 들어온다면 
                 // 그 적을 타겟에 넣어줌
-                float distance = Vector3.Distance(transform.position, _colTarget.transform.position);
+                float distance = Vector3.Distance(transform.position, _colTarget.transform.position) - interpolationRange;
                 if (distance <= detectiveRange)
                 {
                     // 미니언과 플레이어가 같이 있을땐 플레이어를 넣어준다
@@ -352,8 +347,40 @@ public class PlayerBehaviour : MonoBehaviourPun
             }
         }
 
+        
+
     }
 
+    float interpolationRange;
+    private void TargetRangeInterpolation()
+    {
+        if (targetedEnemy == null)
+        {
+            return;
+        }
+
+        // 플레이어 보간
+        if (targetedEnemy.layer == 7)
+        {
+            interpolationRange = 0f;
+        }
+        // 미니언 보간
+        else if (targetedEnemy.layer == 8)
+        {
+            interpolationRange = 0f;
+        }
+        // 타워 보간
+        else if (targetedEnemy.layer == 6)
+        {
+            interpolationRange = 2f;
+
+        }
+        // 넥서스 보간
+        else if (targetedEnemy.layer == 12)
+        {
+            interpolationRange = 7f;
+        }
+    }
 
 
 

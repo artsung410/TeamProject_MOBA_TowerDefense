@@ -59,10 +59,12 @@ public class Health : MonoBehaviourPun
     {
         if (isDeath)
         {
+            StopCoroutine(temp());
             return;
         }
 
         photonView.RPC(nameof(HealthUpdate), RpcTarget.All, damage);
+
     }
 
     public void Die()

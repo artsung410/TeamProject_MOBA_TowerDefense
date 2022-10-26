@@ -22,9 +22,10 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("접촉");
-        // enemy에 닿았지만 targeted가 null일때 널오류 남
-        
+        if (other == null)
+        {
+            return;
+        }
         if (other.tag == _playerScript.EnemyTag)
         {
             if (_playerScript != null)
@@ -43,6 +44,12 @@ public class Sword : MonoBehaviour
                     else if (other.gameObject.layer == 6)
                     {
                         other.GetComponent<Turret>().TakeDamage(_stat.attackDmg);
+                    }
+                    else if (other.gameObject.layer == 12)
+                    {
+                        Debug.Log("넥서스 공격");
+                        //NexusHp temp = other.GetComponent<NexusHp>();
+                        //other.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);
                     }
                 }
                 //Debug.Log("접촉함");
