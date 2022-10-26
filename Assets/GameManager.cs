@@ -32,6 +32,7 @@ public enum Skill
 public class GameManager : MonoBehaviourPunCallbacks
 {
     public static event Action<int> onHpEvent = delegate { };
+    public event Action onPlayerEvnet = delegate { };
 
     public static GameManager Instance
     {
@@ -105,6 +106,11 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         // 미니맵 플레이어 캔버스 생성
         GameObject circle = PhotonNetwork.Instantiate(CharacterCircle.name, new Vector3(player.transform.position.x, player.transform.position.y + 30, player.transform.position.z), Quaternion.identity);
+
+        if(PhotonNetwork.LocalPlayer.ActorNumber >= 1)
+        {
+            Debug.Log("이벤트 적용");
+        }
     }
 
     // 타워 생성
