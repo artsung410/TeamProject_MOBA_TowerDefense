@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnPlayer();
         SpawnTower();
         SpawnEnemy();
-        //SapwnSpecial();
+        SapwnSpecial();
 
     }
     float elaspedTime;
