@@ -33,7 +33,7 @@ public class TrojanHorse: MonoBehaviour
     // ----------- 승완이 에게 보낼 추가 정보---------------
     [Header("스킬 카드 고유 ID")]
     [SerializeField]
-    private List<int> skillId = new List<int>();
+    public List<int> skillId = new List<int>();
 
     [Header("스킬 장착된 카드 인덱스")]
     [SerializeField]
@@ -108,7 +108,7 @@ public class TrojanHorse: MonoBehaviour
         }
 
 
-        if (skillId.Count == 0)
+        /*if (skillId.Count == 0)
         {
             return;
         }
@@ -123,10 +123,10 @@ public class TrojanHorse: MonoBehaviour
                 {
                     // 정보를 가져온다. Item Attributes
                     skillATK.Add(itemDatabase.itemList[j].itemAttributes[0].attributeValue);
-                    skillCrossroad.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
-                    skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[2].attributeValue);
+                    //skillCrossroad.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
+                    skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
                 }
             }
-        }
+        }*/
     }
 }

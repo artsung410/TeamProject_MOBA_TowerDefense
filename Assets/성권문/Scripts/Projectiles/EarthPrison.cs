@@ -10,7 +10,7 @@ using Photon.Pun;
 
 public class EarthPrison : Projectiles
 {
-    private void OnEnable()
+    private void Start()
     {
         if (gameObject == null)
         {

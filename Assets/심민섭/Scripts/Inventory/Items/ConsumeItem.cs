@@ -153,30 +153,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                                 inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
                                             }
                                         }
-
-
-                                        // 자기 자신이 null이면, 끼고 있던 아이템을 장착 해제한 상태
-                                        if (this == null)
-                                        {
-                                            // 해제한 아이템의 프리펩을 복제해서 dropItem에 넣음
-                                            GameObject dropItem = (GameObject)Instantiate(otherSlotItem.itemModel);
-                                            dropItem.AddComponent<PickUpItem>();
-                                            dropItem.GetComponent<PickUpItem>().item = otherSlotItem;
-                                            dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-                                            inventory.OnUpdateItemList();
-                                        }
-                                        else
-                                        {
-                                            otherItemFromCharacterSystem.transform.SetParent(this.transform.parent);
-                                            otherItemFromCharacterSystem.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                                            if (this.gameObject.transform.parent.parent.parent.parent.parent.GetComponent<Hotbar>() != null)
-                                                createDuplication(otherItemFromCharacterSystem);
-
-                                            this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i));
-                                            this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                                        }                                        
-                                        
-                                        gearable = true;                                        
+                                        gearable = true;
                                         if (duplication != null)
                                             Destroy(duplication.gameObject);
                                         eS.gameObject.GetComponent<Inventory>().updateItemList();
@@ -208,7 +185,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                             if (tooltip != null)
                                 tooltip.deactivateTooltip();
                             inventory.deleteItemFromInventory(item);
-                            Destroy(duplication.gameObject); 
+                            Destroy(duplication.gameObject);
                         }
                     }
                     if (item.itemValue <= 0)
@@ -216,16 +193,16 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         if (tooltip != null)
                             tooltip.deactivateTooltip();
                         inventory.deleteItemFromInventory(item);
-                        Destroy(this.gameObject);                        
+                        Destroy(this.gameObject);
                     }
 
                 }
-                
+
             }
-            
+
 
         } // 큰 if 문 끝.
-    }    
+    }
 
     public void consumeIt()
     {
@@ -288,25 +265,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                 if (item.itemType != ItemType.Backpack)
                                     inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
                             }
-                            if (this == null)
-                            {
-                                GameObject dropItem = (GameObject)Instantiate(otherSlotItem.itemModel);
-                                dropItem.AddComponent<PickUpItem>();
-                                dropItem.GetComponent<PickUpItem>().item = otherSlotItem;
-                                dropItem.transform.localPosition = GameObject.FindGameObjectWithTag("Player").transform.localPosition;
-                                inventory.OnUpdateItemList();
-                            }
-                            else
-                            {
-                                otherItemFromCharacterSystem.transform.SetParent(this.transform.parent);
-                                otherItemFromCharacterSystem.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                                if (this.gameObject.transform.parent.parent.parent.parent.parent.GetComponent<Hotbar>() != null)
-                                    createDuplication(otherItemFromCharacterSystem);
-
-                                this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i));
-                                this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                            }
-
                             gearable = true;
                             if (duplication != null)
                                 Destroy(duplication.gameObject);

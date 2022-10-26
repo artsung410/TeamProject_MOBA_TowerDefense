@@ -122,23 +122,19 @@ public class CameraHandler : MonoBehaviourPun
         if (Input.mousePosition.y <= _screenSizeThickness)
         {
             transform.Translate(_camMoveSpeed * Time.deltaTime * Vector3.back, Space.World);
-
         }
 
         // RIGHT
         if (Input.mousePosition.x >= Screen.width - _screenSizeThickness)
         {
             transform.Translate(_camMoveSpeed * Time.deltaTime * Vector3.right, Space.World);
-
         }
 
         // LEFT
         if (Input.mousePosition.x <= _screenSizeThickness)
         {
             transform.Translate(_camMoveSpeed * Time.deltaTime * Vector3.left, Space.World);
-
         }
-
 
     }
 
@@ -159,7 +155,7 @@ public class CameraHandler : MonoBehaviourPun
     private void CameraFollow()
     {
         //Vector3 newPos = Player.position + _cameraOffset;
-        Vector3 newPos = PlayerBehaviour.CurrentPlayerPos + new Vector3(0f, 15f, -10f);
+        Vector3 newPos = PlayerBehaviour.CurrentPlayerPos + new Vector3(0f, 30f, -20f);
         transform.position = Vector3.Slerp(transform.position, newPos, FollowSmoothness);
     }
 }

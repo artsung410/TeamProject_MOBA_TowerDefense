@@ -14,12 +14,17 @@ public class ChainAttack : SkillHandler
     public ParticleSystem effect;
 
     #region private 변수모음
+
     Quaternion quaternion;
     float elapsedTime;
     string enemyTag;
     Vector3 mouseDir;
 
     #endregion
+
+    public float HoldingTime;
+    public float Damage;
+    public float Range;
 
     private void Awake()
     {
@@ -29,18 +34,14 @@ public class ChainAttack : SkillHandler
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Init();
     }
 
-    /// <summary>
-    /// 스킬 계수 초기화
-    /// </summary>
+   
     protected void Init()
     {
-        Damage = 30f;
-        CoolTime = 3f;
+        //Damage = 0f;
         Range = 8f;
-        HoldingTime = 2f;
+        //HoldingTime = 2f;
     }
 
 
@@ -49,9 +50,6 @@ public class ChainAttack : SkillHandler
     {
         if (_ability == null)
         {
-            // 리모트 플레이어의 경우 _ability가 비어있다
-            // 로컬플레이어의 _ability를 가져오려면?
-            //Debug.Log("널");
             return;
         }
 

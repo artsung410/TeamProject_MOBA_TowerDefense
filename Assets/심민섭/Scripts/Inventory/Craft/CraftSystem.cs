@@ -32,7 +32,6 @@ public class CraftSystem : MonoBehaviour
     //List<CraftSlot> slots = new List<CraftSlot>();
     public List<Item> itemInCraftSystem = new List<Item>();
     public List<GameObject> itemInCraftSystemGameObject = new List<GameObject>();
-    BlueprintDatabase blueprintDatabase;
     public List<Item> possibleItems = new List<Item>();
     public List<bool> possibletoCreate = new List<bool>();
 
@@ -42,12 +41,11 @@ public class CraftSystem : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        blueprintDatabase = (BlueprintDatabase)Resources.Load("BlueprintDatabase");
         //playerStatsScript = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
     }
 
 #if UNITY_EDITOR
-    [MenuItem("Master System/Create/Craft System")]
+    //[MenuItem("Master System/Create/Craft System")]
     public static void menuItemCreateInventory()
     {
         GameObject Canvas = null;
@@ -163,64 +161,5 @@ public class CraftSystem : MonoBehaviour
                 itemInCraftSystemGameObject.Add(trans.GetChild(0).gameObject);
             }
         }
-
-        for (int k = 0; k < blueprintDatabase.blueprints.Count; k++)
-        {
-            int amountOfTrue = 0;
-            for (int z = 0; z < blueprintDatabase.blueprints[k].ingredients.Count; z++)
-            {
-                for (int d = 0; d < itemInCraftSystem.Count; d++)
-                {
-                    if (blueprintDatabase.blueprints[k].ingredients[z] == itemInCraftSystem[d].itemID && blueprintDatabase.blueprints[k].amount[z] <= itemInCraftSystem[d].itemValue)
-                    {
-                        amountOfTrue++;
-                        break;
-                    }
-                }
-                if (amountOfTrue == blueprintDatabase.blueprints[k].ingredients.Count)
-                {
-                    possibleItems.Add(blueprintDatabase.blueprints[k].finalItem);
-                    possibleItems[possibleItems.Count - 1].itemValue = blueprintDatabase.blueprints[k].amountOfFinalItem;
-                    possibletoCreate.Add(true);
-                }
-            }
-        }
-
     }
-
-    public void deleteItems(Item item)
-    {
-        for (int i = 0; i < blueprintDatabase.blueprints.Count; i++)
-        {
-            if (blueprintDatabase.blueprints[i].finalItem.Equals(item))
-            {
-                for (int k = 0; k < blueprintDatabase.blueprints[i].ingredients.Count; k++)
-                {
-                    for (int z = 0; z < itemInCraftSystem.Count; z++)
-                    {
-                        if (itemInCraftSystem[z].itemID == blueprintDatabase.blueprints[i].ingredients[k])
-                        {
-                            if (itemInCraftSystem[z].itemValue == blueprintDatabase.blueprints[i].amount[k])
-                            {
-                                itemInCraftSystem.RemoveAt(z);
-                                Destroy(itemInCraftSystemGameObject[z]);
-                                itemInCraftSystemGameObject.RemoveAt(z);
-                                ListWithItem();
-                                break;
-                            }
-                            else if (itemInCraftSystem[z].itemValue >= blueprintDatabase.blueprints[i].amount[k])
-                            {
-                                itemInCraftSystem[z].itemValue = itemInCraftSystem[z].itemValue - blueprintDatabase.blueprints[i].amount[k];
-                                ListWithItem();
-                                break;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-
-
 }
