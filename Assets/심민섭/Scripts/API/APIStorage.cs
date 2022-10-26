@@ -45,7 +45,7 @@ public class APIStorage : MonoBehaviour
 
     public int[] playerNumber = new int[2];
 
-    public string apiKey = "70pNqHWqzZ0DXwsIP0e0bA";
+    public string apiKey = "5hO4J33kQPhtHhq4e0F76V";
 
     // 유저 배팅 준비 상태
     public bool[] ready = new bool[2];
