@@ -71,6 +71,20 @@ public class GameManager : MonoBehaviourPunCallbacks
         //SapwnSpecial();
 
     }
+    float elaspedTime;
+    float minionSpawnTime = 5f;
+    //private void Update()
+    //{
+    //    elaspedTime += Time.deltaTime;
+    //    if(elaspedTime >= minionSpawnTime)
+    //    {
+    //        elaspedTime = 0;
+         
+
+    //    }
+    //}
+
+
 
     // 플레이어 생성
     private void SpawnPlayer()
@@ -135,30 +149,32 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 미니언 생성
     private void SpawnEnemy()
     {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name, spawnPositions[0].position, Quaternion.identity);
 
             GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
+        }
+        else
+            {
 
             GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
 
             GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
-        }
+            }
     }
 
     private void SapwnSpecial()
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-           
-            PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
-            specialPFs.tag = "Blue";
+
+            GameObject specialminionBlue = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
         }
          else
         {
-            PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
-            specialPFs.tag = "Red";
+           GameObject specialminionRed = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
+
 
         }
 

@@ -23,48 +23,52 @@ public class Enemybase : MonoBehaviourPun
     public float HP = 100f;
 
     public float CurrnetHP;
-
+    [HideInInspector]
     public string EnemyTag;
+    [HideInInspector]
     public string myTag;
 
 
-    protected void OnEnable()
+    protected virtual void OnEnable() // 생성
     {
-
-        if(photonView)
         CurrnetHP = HP;
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+            {
+                gameObject.tag = "Blue";
+                myTag = "Blue";
+                EnemyTag = "Red";
+                
+            }
+
+            else
+            {
+                gameObject.tag = "Red";
+                myTag = "Red";
+                EnemyTag = "Blue";
+            }
+        }
+
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+            {
+                gameObject.tag = "Red";
+                myTag = "Red";
+                EnemyTag = "Blue";
+            }
+
+            else
+            {
+                gameObject.tag = "Blue";
+                myTag = "Blue";
+                EnemyTag = "Red";
+            }
+        }
     }
-    //protected void OnEnable()
-    //{
-    //    if (PhotonNetwork.IsMasterClient)
-    //    {
-    //        if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
-    //        {
-    //            gameObject.tag = "Blue";
-    //            EnemyTag = "Red";
-    //        }
 
-    //        else
-    //        {
-    //            gameObject.tag = "Red";
-    //            EnemyTag = "Blue";
-    //        }
-    //    }
-
-    //    else
-    //    {
-    //        if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
-    //        {
-    //            gameObject.tag = "Red";
-    //            EnemyTag = "Blue";
-    //        }
-    //        else
-    //        {
-    //            gameObject.tag = "Blue";
-    //            EnemyTag = "Red";
-    //        }
-    //    }
-    //}
+  
 
     public void TakeDamage(float Damage)
     {
