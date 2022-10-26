@@ -44,8 +44,14 @@ public class ChainAttack : SkillHandler
             return;
         }
 
-        
+        //photonView.RPC(nameof(TagProcessing), RpcTarget.All);
+        LookMouseCursor();
+        TagProcessing(_ability);
 
+    }
+
+    public void LookMouseCursor()
+    {
         // 마우스 방향에서 사용
         RaycastHit hit;
         if (Physics.Raycast(_behaviour.ray, out hit))
@@ -56,9 +62,6 @@ public class ChainAttack : SkillHandler
             // 스킬쓸때 플레이어 위치를 그곳으로 고정시키기 위해사용
             quaternion = _ability.transform.localRotation;
         }
-
-        //photonView.RPC(nameof(TagProcessing), RpcTarget.All);
-        TagProcessing(_ability);
 
     }
 

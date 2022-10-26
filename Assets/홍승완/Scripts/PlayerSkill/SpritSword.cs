@@ -43,22 +43,6 @@ public class SpritSword : SkillHandler
         LookMouseCursor();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        SkillUpdatePosition();
-        SkillHoldingTime(HoldingTime);
-    }
-
-    public void SkillUpdatePosition()
-    {
-        // 발사체는 앞으로 날아가게끔 한다
-        transform.Translate(Time.deltaTime * Speed * Vector3.forward);
-
-        // 회전부분은 처음회전위치에서 날아간다
-        transform.rotation = quaternion;
-    }
-
     public void LookMouseCursor()
     {
         // 마우스 방향에서 사용
@@ -68,11 +52,9 @@ public class SpritSword : SkillHandler
             mouseDir = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z) - _ability.transform.position;
 
             _ability.transform.forward = mouseDir;
-            // 스킬쓸때 플레이어 위치를 그곳으로 고정시키기 위해사용
             quaternion = _ability.transform.localRotation;
         }
     }
-
     private void TagProcessing(HeroAbility ability)
     {
 
@@ -88,6 +70,30 @@ public class SpritSword : SkillHandler
 
         }
     }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (photonView.IsMine)
+        {
+            SkillUpdatePosition();
+            SkillHoldingTime(HoldingTime);
+
+        }
+    }
+
+    public void SkillUpdatePosition()
+    {
+        // 발사체는 앞으로 날아가게끔 한다
+        transform.Translate(Time.deltaTime * Speed * Vector3.forward);
+
+        // 회전부분은 처음회전위치에서 날아간다
+        transform.rotation = quaternion;
+    }
+
+
+
+
 
     public override void SkillDamage(float damage, GameObject target)
     {
