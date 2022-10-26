@@ -64,6 +64,7 @@ public class PlayerRespawn : MonoBehaviourPun
             elapsedTime += Time.deltaTime;
             if (elapsedTime >= respawnTime)
             {
+                health.Init();
                 elapsedTime = 0f;
                 health.gameObject.SetActive(true);
                 hpBar.gameObject.SetActive(true);
