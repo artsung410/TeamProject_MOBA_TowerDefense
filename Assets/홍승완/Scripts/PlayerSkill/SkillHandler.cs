@@ -14,7 +14,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected Stats _stat;
     protected PlayerBehaviour _behaviour;
 
-    
+    public float SetDamage;
 
     public abstract void SkillHoldingTime(float time);
 

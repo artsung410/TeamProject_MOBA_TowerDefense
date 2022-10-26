@@ -5,6 +5,7 @@ using UnityEngine.AI;
 using Photon.Pun;
 using System;
 
+
 public class PlayerAnimation : MonoBehaviourPun
 {
     // ###############################################
@@ -31,7 +32,7 @@ public class PlayerAnimation : MonoBehaviourPun
 
     private void OnEnable()
     {
-        //AliveMotion();
+        AliveMotion();
     }
 
     void Update()
@@ -44,7 +45,8 @@ public class PlayerAnimation : MonoBehaviourPun
     {
         if (hp.isDeath)
         {
-            animator.SetTrigger("Die");
+            animator.SetBool("Die", true);
+
         }
     }
 
@@ -52,7 +54,7 @@ public class PlayerAnimation : MonoBehaviourPun
     {
         if (hp.isDeath == false)
         {
-            animator.SetTrigger("Alive");
+            animator.SetBool("Die", false);
         }
     }
 

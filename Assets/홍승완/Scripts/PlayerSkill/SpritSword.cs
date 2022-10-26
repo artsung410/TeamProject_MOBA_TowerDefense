@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class SpritSword : SkillHandler
 {
@@ -22,26 +23,40 @@ public class SpritSword : SkillHandler
     public float Damage;
     public float Range;
 
-    private void Awake()
-    {
-        
-    }
+    public float Speed;
 
     private void OnEnable()
     {
         elapsedTime = 0f;
+        Damage = SetDamage;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (_ability == null)
+        {
+            return;
+        }
+
+        TagProcessing(_ability);
+        LookMouseCursor();
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        SkillUpdatePosition();
+        SkillHoldingTime(HoldingTime);
+    }
+
+    public void SkillUpdatePosition()
+    {
+        // 발사체는 앞으로 날아가게끔 한다
+        transform.Translate(Time.deltaTime * Speed * Vector3.forward);
+
+        // 회전부분은 처음회전위치에서 날아간다
+        transform.rotation = quaternion;
     }
 
     public void LookMouseCursor()
@@ -58,6 +73,22 @@ public class SpritSword : SkillHandler
         }
     }
 
+    private void TagProcessing(HeroAbility ability)
+    {
+
+        if (ability.CompareTag("Blue"))
+        {
+            enemyTag = "Red";
+            //Debug.Log(enemyTag);
+        }
+        else if (ability.CompareTag("Red"))
+        {
+            enemyTag = "Blue";
+            //Debug.Log(enemyTag);
+
+        }
+    }
+
     public override void SkillDamage(float damage, GameObject target)
     {
         if (target.gameObject.layer == 7)
@@ -67,13 +98,11 @@ public class SpritSword : SkillHandler
             if (player != null)
             {
                 player.OnDamage(damage);
-
             }
         }
         else if (target.gameObject.layer == 8)
         {
             Enemybase minion = target.GetComponent<Enemybase>();
-
 
             if (minion != null)
             {
@@ -84,6 +113,26 @@ public class SpritSword : SkillHandler
 
     public override void SkillHoldingTime(float time)
     {
+        elapsedTime += Time.deltaTime;
 
+        // 검기 지속시간이 끝나면 사라지게한다
+        if (elapsedTime >= time)
+        {
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (photonView.IsMine)
+        {
+            if (other.CompareTag(enemyTag))
+            {
+                SkillDamage(Damage, other.gameObject);
+            }
+        }
     }
 }

@@ -37,12 +37,12 @@ public class Stats : MonoBehaviourPun
 
     private void StatInit()
     {
-        StartHealth = 50f;
+        StartHealth = 250f;
 
         attackDmg = 35f;
         attackRange = 3f;
         attackSpeed = 1.2f;
 
-        MoveSpeed = 10f;
+        MoveSpeed = 15f;
     }
 }

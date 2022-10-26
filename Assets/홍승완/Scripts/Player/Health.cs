@@ -70,15 +70,16 @@ public class Health : MonoBehaviourPun
         if (health <= 0f)
         {
             isDeath = true;
-        }
-
-        // 죽어있으니까 일단 없어짐
-        if (isDeath)
-        {
-            //ani.DieMotion();
-            gameObject.SetActive(false);
+            ani.DieMotion();
             hpSlider3D.gameObject.SetActive(false);
+            StartCoroutine(temp());
         }
+    }
+
+    IEnumerator temp()
+    {
+        yield return new WaitForSeconds(1.5f);
+        gameObject.SetActive(false);
     }
 
 }

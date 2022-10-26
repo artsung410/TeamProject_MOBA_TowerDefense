@@ -57,9 +57,9 @@ public class HeroAbility : MonoBehaviourPun
         if (photonView.IsMine)
         {
             AbilityQ();
-            //AbilityW();
-            //AbilityE();
-            //AbilityR();
+            AbilityW();
+            AbilityE();
+            AbilityR();
 
             if (go != null)
             {
@@ -73,7 +73,7 @@ public class HeroAbility : MonoBehaviourPun
 
     private void AbilityQ()
     {
-        if (AbilityPrefabs[0] == null)
+        if (AbilityPrefabs[0] == null || AbilityPrefabs[0].GetComponent<SkillHandler>() == null)
         {
             return;
         }
@@ -84,7 +84,9 @@ public class HeroAbility : MonoBehaviourPun
             coolTimeImgs[0].fillAmount = 1;
 
             // q의 데미지
-            AbilityPrefabs[0].GetComponent<ChainAttack>().Damage = SkillManager.Instance.atk[0];
+            //AbilityPrefabs[0].GetComponent<ChainAttack>().Damage = SkillManager.Instance.atk[0];
+            AbilityPrefabs[0].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[0];
+
             // q의 쿨타임
             skillCoolTimeArr[0] = SkillManager.Instance.time[0];
 
@@ -106,7 +108,7 @@ public class HeroAbility : MonoBehaviourPun
 
     private void AbilityW()
     {
-        if (AbilityPrefabs[1] == null)
+        if (AbilityPrefabs[1] == null || AbilityPrefabs[1].GetComponent<SkillHandler>() == null)
         {
             return;
         }
@@ -116,7 +118,7 @@ public class HeroAbility : MonoBehaviourPun
             isCoolDown[1] = true;
             coolTimeImgs[1].fillAmount = 1;
 
-            AbilityPrefabs[1].GetComponent<SpritSword>().Damage = SkillManager.Instance.atk[1];
+            AbilityPrefabs[1].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[1];
 
             skillCoolTimeArr[1] = SkillManager.Instance.time[1];
 
@@ -136,7 +138,7 @@ public class HeroAbility : MonoBehaviourPun
 
     private void AbilityE()
     {
-        if (AbilityPrefabs[2] == null)
+        if (AbilityPrefabs[2] == null || AbilityPrefabs[2].GetComponent<SkillHandler>() == null)
         {
             return;
         }
@@ -146,7 +148,7 @@ public class HeroAbility : MonoBehaviourPun
             isCoolDown[2] = true;
             coolTimeImgs[2].fillAmount = 1;
 
-            //AbilityPrefabs[2].GetComponent<>().Damage = SkillManager.Instance.atk[2];
+            AbilityPrefabs[2].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[2];
             skillCoolTimeArr[2] = SkillManager.Instance.time[2];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
@@ -166,7 +168,7 @@ public class HeroAbility : MonoBehaviourPun
 
     private void AbilityR()
     {
-        if (AbilityPrefabs[3] == null)
+        if (AbilityPrefabs[3] == null || AbilityPrefabs[3].GetComponent<SkillHandler>() == null)
         {
             return;
         }
@@ -176,7 +178,7 @@ public class HeroAbility : MonoBehaviourPun
             isCoolDown[3] = true;
             coolTimeImgs[3].fillAmount = 1;
 
-            //AbilityPrefabs[3].GetComponent<>().Damage = SkillManager.Instance.atk[3];
+            AbilityPrefabs[3].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[3];
             skillCoolTimeArr[3] = SkillManager.Instance.time[3];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
