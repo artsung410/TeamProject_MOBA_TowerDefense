@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
+using System;
 
 public class PlayerAnimation : MonoBehaviourPun
 {
@@ -15,6 +16,7 @@ public class PlayerAnimation : MonoBehaviourPun
     Animator animator;
     Stats playerStats;
     PlayerBehaviour _playerScript;
+    Health hp;
 
     float motionSmoothTime = 0.1f;
     
@@ -24,13 +26,34 @@ public class PlayerAnimation : MonoBehaviourPun
         animator = GetComponent<Animator>();
         playerStats = GetComponent<Stats>();
         _playerScript = GetComponent<PlayerBehaviour>();
+        hp = GetComponent<Health>();
     }
 
+    private void OnEnable()
+    {
+        //AliveMotion();
+    }
 
     void Update()
     {
         MoveAniMotion();
         CombatMotion();
+    }
+
+    public void DieMotion()
+    {
+        if (hp.isDeath)
+        {
+            animator.SetTrigger("Die");
+        }
+    }
+
+    private void AliveMotion()
+    {
+        if (hp.isDeath == false)
+        {
+            animator.SetTrigger("Alive");
+        }
     }
 
     private void MoveAniMotion()
