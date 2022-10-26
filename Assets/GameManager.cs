@@ -185,23 +185,5 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
 
     }
-    // 스코어 관련
-    //private void Update()
-    //{
-    //}
 
-    //public void AddScore(int playerNumber, int score)
-    //{
-    //    playerScores[playerNumber - 1] += score;
-
-    //    // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
-    //    photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
-    //}
-
-
-    //[PunRPC]
-    //private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
-    //{
-    //    scoreText.text = $"{player1ScoreText} : {player2ScoreText}";
-    //}
 }

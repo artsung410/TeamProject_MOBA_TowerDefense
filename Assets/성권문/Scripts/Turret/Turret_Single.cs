@@ -30,9 +30,11 @@ public class Turret_Single : Turret
 
     [Header("투사체 발사 위치")]
     public Transform firePoint;
+    private AudioSource audioSource;
 
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -84,6 +86,7 @@ public class Turret_Single : Turret
         if (fireCountdown <= 0f)
         {
             Shoot();
+            audioSource.Play();
             fireCountdown = 1f / fireRate;
         }
         fireCountdown -= Time.deltaTime;

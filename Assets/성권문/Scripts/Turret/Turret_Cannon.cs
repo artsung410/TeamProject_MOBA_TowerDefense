@@ -34,8 +34,12 @@ public class Turret_Cannon : Turret
     public GameObject DangerZonePF;
     private GameObject NewDangerZone;
     private Transform shotTransform;
+
+    private AudioSource audioSource;
+
     private void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
@@ -100,6 +104,7 @@ public class Turret_Cannon : Turret
     {
         yield return new WaitForSeconds(1f);
         Shoot();
+        audioSource.Play();
         yield return new WaitForSeconds(0.5f);
         isLockOn = false;
     }
