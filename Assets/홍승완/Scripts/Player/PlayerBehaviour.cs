@@ -47,7 +47,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     #region Other Components
     NavMeshAgent _agent;
     Stats _statScript;
-
+    Health _playerHealth;
 
     #endregion
 
@@ -55,6 +55,8 @@ public class PlayerBehaviour : MonoBehaviourPun
     {
         _agent = GetComponent<NavMeshAgent>();
         _statScript = GetComponent<Stats>();
+        _playerHealth = GetComponent<Health>();
+
         _agent.enabled = false;
         _agent.enabled = true;
     }
@@ -115,26 +117,27 @@ public class PlayerBehaviour : MonoBehaviourPun
         {
             CurrentPlayerPos = transform.position;
             _agent.speed = _statScript.MoveSpeed;
-            MoveTo();
-
             // s키 누르면 멈춤
             if (Input.GetKeyDown(KeyCode.S))
             {
                 _agent.SetDestination(CurrentPlayerPos);
                 _agent.stoppingDistance = 0f;
             }
+
+            if (_playerHealth.isDeath == false)
+            {
+                MoveTo();
+            }
+
         }
     }
 
     public Ray ray;
     public void MoveTo()
     {
-
-        HeroAliveCheck();
-
         // a + 좌클릭 이동
         AutoTargetInput();
-            ray = Cam.ScreenPointToRay(Input.mousePosition);
+        ray = Cam.ScreenPointToRay(Input.mousePosition);
 
         // 우클릭시 이동
         if (Input.GetMouseButton(1))
@@ -153,22 +156,14 @@ public class PlayerBehaviour : MonoBehaviourPun
         MoveEnemyPosition();
     }
 
-
-    /// <summary>
-    /// 적이 살아있는지 확인하는 메서드
-    /// </summary>
-    public void HeroAliveCheck()
+    public void RequestRespawn()
     {
-        //if (targetedEnemy != null)
-        //{
-        //    if (targetedEnemy.GetComponent<HeroCombat>() != null)
-        //    {
-        //        if (targetedEnemy.GetComponent<HeroCombat>().isHeroAlive)
-        //        {
-        //            targetedEnemy = null;
-        //        }
-        //    }
-        //}
+        
+    }
+
+    public void Respawn()
+    {
+
     }
 
     public void MoveOntheGround(RaycastHit hit)
@@ -281,7 +276,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     float detectiveRange = 8f;
     private void AutoTargetMove()
     {
-        
+
         // 태그 달고있는 게임오브젝트로 찾기
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
 

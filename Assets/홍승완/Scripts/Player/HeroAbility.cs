@@ -57,7 +57,7 @@ public class HeroAbility : MonoBehaviourPun
         if (photonView.IsMine)
         {
             AbilityQ();
-            AbilityW();
+            //AbilityW();
             //AbilityE();
             //AbilityR();
 
@@ -111,12 +111,12 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && isCoolDown[1] == false)
+        if (Input.GetKeyDown(KeyCode.W) && isCoolDown[1] == false)
         {
             isCoolDown[1] = true;
             coolTimeImgs[1].fillAmount = 1;
 
-            AbilityPrefabs[1].GetComponent<ChainAttack>().Damage = SkillManager.Instance.atk[1];
+            AbilityPrefabs[1].GetComponent<SpritSword>().Damage = SkillManager.Instance.atk[1];
 
             skillCoolTimeArr[1] = SkillManager.Instance.time[1];
 
@@ -141,14 +141,12 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && isCoolDown[2] == false)
+        if (Input.GetKeyDown(KeyCode.E) && isCoolDown[2] == false)
         {
             isCoolDown[2] = true;
             coolTimeImgs[2].fillAmount = 1;
 
-            // q의 데미지
-            AbilityPrefabs[2].GetComponent<ChainAttack>().Damage = SkillManager.Instance.atk[2];
-            // q의 쿨타임
+            //AbilityPrefabs[2].GetComponent<>().Damage = SkillManager.Instance.atk[2];
             skillCoolTimeArr[2] = SkillManager.Instance.time[2];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
@@ -173,14 +171,12 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && isCoolDown[3] == false)
+        if (Input.GetKeyDown(KeyCode.R) && isCoolDown[3] == false)
         {
             isCoolDown[3] = true;
             coolTimeImgs[3].fillAmount = 1;
 
-            // q의 데미지
-            AbilityPrefabs[3].GetComponent<ChainAttack>().Damage = SkillManager.Instance.atk[3];
-            // q의 쿨타임
+            //AbilityPrefabs[3].GetComponent<>().Damage = SkillManager.Instance.atk[3];
             skillCoolTimeArr[3] = SkillManager.Instance.time[3];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);

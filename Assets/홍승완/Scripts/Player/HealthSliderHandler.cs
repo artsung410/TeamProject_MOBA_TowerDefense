@@ -11,6 +11,7 @@ public class HealthSliderHandler : MonoBehaviourPun
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+
     private void Awake()
     {
     }
@@ -29,12 +30,7 @@ public class HealthSliderHandler : MonoBehaviourPun
             // 체력바 위치 업데이트
             transform.position = PlayerBehaviour.CurrentPlayerPos + new Vector3(0, 3, 0);
             transform.Rotate(0, 0, 0);
-
-
         }
-            
-        
-       
 
     }
 
