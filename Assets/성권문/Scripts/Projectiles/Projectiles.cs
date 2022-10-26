@@ -59,10 +59,15 @@ public class Projectiles : MonoBehaviourPun
         {
             Health player= enemy.GetComponent<Health>();
              
-            if (player != null)
+            if (player != null && player.gameObject.activeSelf)
             {
                 player.OnDamage(damage);
             }
+            else
+            {
+                return;
+            }
+            
         }
 
         // 미니언 데미지 적용
@@ -90,7 +95,7 @@ public class Projectiles : MonoBehaviourPun
             return;
         }
 
-        if (other.CompareTag(enemyTag))
+        if (other.tag == enemyTag)
         {
             Damage(other.gameObject.transform);
         }

@@ -45,12 +45,7 @@ public class Health : MonoBehaviourPun
         hpSlider3D.value = health;
 
     }
-
-    private void Start()
-    {
-
-    }
-
+    
     [PunRPC]
     public void HealthUpdate(float damage)
     {
@@ -76,9 +71,11 @@ public class Health : MonoBehaviourPun
     {
         if (health <= 0f)
         {
+            PlayerHUD.Instance.AddScoreToEnemy(gameObject.tag);
             isDeath = true;
             ani.DieMotion();
             hpSlider3D.gameObject.SetActive(false);
+
             StartCoroutine(temp());
         }
     }

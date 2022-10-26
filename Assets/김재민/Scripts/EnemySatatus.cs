@@ -36,18 +36,19 @@ public class EnemySatatus : Enemybase
 
     void Awake()
     {
-  
+
         _estate = ESTATE.move;
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
-       
+
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
         CurrnetHP = HP;
 
     }
     protected override void OnEnable()
-    {     base.OnEnable();
+    {
+        base.OnEnable();
         GameObject[] Enemys = GameObject.FindGameObjectsWithTag(EnemyTag);
         foreach (GameObject Enemy in Enemys)
         {
@@ -64,7 +65,7 @@ public class EnemySatatus : Enemybase
 
         StartCoroutine(StateChange());
         InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
-        if (_eminiomtype == EMINIOMTYPE.Nomal)
+        if (_eminiomtype == EMINIOMTYPE.Nomal && _eminiomtype == EMINIOMTYPE.Special) 
         {
             attackRange = 2f;
         }
@@ -72,6 +73,7 @@ public class EnemySatatus : Enemybase
         {
             attackRange = 10f;
         }
+        
         _navMeshAgent.speed = 5f;
     }
 
@@ -79,6 +81,11 @@ public class EnemySatatus : Enemybase
     {
         while (_estate == ESTATE.move)
         {
+            if (_target == null)
+            {
+                Targeton = false;
+                _target = _PrevTarget;
+            }
             if (_navMeshAgent.enabled == false)
             {
                 break;
@@ -100,6 +107,10 @@ public class EnemySatatus : Enemybase
     {
         while (_estate == ESTATE.attack)
         {
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
             if (_target == null)
             {
                 Targeton = false;
@@ -113,7 +124,7 @@ public class EnemySatatus : Enemybase
             transform.LookAt(_target.position);
             // 애니메이션 추가 + 공격데미지 입히기
             //공격쿨타임
-            if (AtkDistance >= attackRange* attackRange)
+            if (AtkDistance >= attackRange * attackRange)
             {
                 _estate = ESTATE.move;
                 _animator.SetBool("Attack", false);
