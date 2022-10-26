@@ -83,25 +83,35 @@ public class PlayerHUD : MonoBehaviourPun
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
-    float sec;
-    int min;
+    float sec = 1f;
+    int min = 10;
+
+    private void FixedUpdate()
+    {
+        Timer();
+    }
 
     void Update()
     {
-        Timer();
+
         UpdateHealthUI();
         UpdateEnemyHealthUI();
     }
 
     void Timer()
     {
-        sec += Time.deltaTime;
+        if ((int)sec < 0)
+        {
+            sec = 59;
+            min--;
+        }
+
+        sec -= Time.deltaTime;
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
 
-        if ((int)sec > 59)
+        if (min <= 0)
         {
-            sec = 0;
-            min++;
+            return;
         }
     }
 
@@ -120,7 +130,6 @@ public class PlayerHUD : MonoBehaviourPun
 
     void UpdateEnemyHealthUI()
     {
-
         if (enemyHp == null)
         {
             return;
