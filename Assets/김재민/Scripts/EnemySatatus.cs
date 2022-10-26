@@ -57,6 +57,10 @@ public class EnemySatatus : Enemybase
     {
         while (_estate == ESTATE.move)
         {
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
             if (_eminiomtype == EMINIOMTYPE.Nomal)
             {
                 attackRange = 2f;
@@ -67,15 +71,6 @@ public class EnemySatatus : Enemybase
             } 
             _animator.SetBool("Attack", false);
             _navMeshAgent.isStopped = false;
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
-          
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
             _navMeshAgent.speed = 5f;
             _navMeshAgent.SetDestination(_target.position);
             transform.LookAt(_target.position);
@@ -84,7 +79,7 @@ public class EnemySatatus : Enemybase
             if (distance <= attackRange)
             {
                 _estate = ESTATE.attack;
-                Debug.Log($"{_estate}");
+              
 
                 break;
             }
@@ -98,11 +93,6 @@ public class EnemySatatus : Enemybase
         {
             Vector3 VceAtkdistance = _target.position - transform.position;
             float AtkDistance = Vector3.SqrMagnitude(VceAtkdistance);
- 
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
             // ±¸ºÐ
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
