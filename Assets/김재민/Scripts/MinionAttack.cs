@@ -10,7 +10,6 @@ public class MinionAttack : MonoBehaviour
     // ###############################################
     [SerializeField]
     float PistonDamage = 5f;
-    public string EnemyTag;
     BoxCollider boxColider;
     EnemySatatus satatus;
     private void Awake()
@@ -24,20 +23,19 @@ public class MinionAttack : MonoBehaviour
         if(satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Special)
         {
             PistonDamage += 15f;
-            EnemyTag = null;
+            
         }
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag(EnemyTag))
+        if(other.CompareTag(satatus.EnemyTag) == false)
+        {
+            return;
+        }
+
+        if(other.CompareTag(satatus.EnemyTag))
         {
 
             Debug.Log("여기들어오는건가?");

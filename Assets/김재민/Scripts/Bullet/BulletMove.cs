@@ -23,7 +23,6 @@ public class BulletMove : MonoBehaviourPun
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-        Damage = 100f;
     }
 
     private void Start()

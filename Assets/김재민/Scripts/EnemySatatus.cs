@@ -10,6 +10,7 @@ public class EnemySatatus : Enemybase
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
+    [HideInInspector]
     public Transform _target;
     private Transform _PrevTarget;
     private bool Targeton = false;
@@ -35,19 +36,31 @@ public class EnemySatatus : Enemybase
 
     void Awake()
     {
+  
         _estate = ESTATE.move;
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
-        _PrevTarget = _target;
+       
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
         CurrnetHP = HP;
 
     }
+    protected override void OnEnable()
+    {     base.OnEnable();
+        GameObject[] Enemys = GameObject.FindGameObjectsWithTag(EnemyTag);
+        foreach (GameObject Enemy in Enemys)
+        {
+            if (Enemy.layer == 12)
+            {
+                _target = Enemy.transform;
+                _PrevTarget = _target;
+            }
+        }
+    }
 
     private void Start()
     {
-
 
         StartCoroutine(StateChange());
         InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
@@ -69,12 +82,6 @@ public class EnemySatatus : Enemybase
             if (_navMeshAgent.enabled == false)
             {
                 break;
-            }
-            if (_target == null)
-            {
-                Targeton = false;
-                _target = _PrevTarget;
-
             }
             _navMeshAgent.SetDestination(_target.position);
             transform.LookAt(_target.position);
@@ -132,13 +139,14 @@ public class EnemySatatus : Enemybase
                     break;
 
             }
+            Debug.Log($"{_estate}");
             yield return null; ;
         }
 
     }
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8
     {
-
+        Targeton = false;
         Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
         foreach (Collider collider in RangeTarget)
         {
