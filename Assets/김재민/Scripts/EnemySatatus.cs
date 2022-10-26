@@ -13,7 +13,6 @@ public class EnemySatatus : Enemybase
     public Transform _target;
     private Transform _PrevTarget;
     private bool Targeton = false;
-
     enum ESTATE
     {
         move,
@@ -24,12 +23,14 @@ public class EnemySatatus : Enemybase
     {
         Nomal,
         Shot,
+        Special,
     }
     public EMINIOMTYPE _eminiomtype;
 
     private NavMeshAgent _navMeshAgent;
     private Animator _animator;
 
+       
     float distance;
 
     void Awake()
@@ -54,8 +55,12 @@ public class EnemySatatus : Enemybase
 
     private IEnumerator move() // 움직임  //목표지점까지 움직인다 . 타켓발견 -> 멈춰서 공격 -> 타켓 죽음 -> 타겟변경 -> 타
     {
-        while (true)
+        while (_estate == ESTATE.move)
         {
+            if (_navMeshAgent.enabled == false)
+            {
+                break;
+            }
             if (_eminiomtype == EMINIOMTYPE.Nomal)
             {
                 attackRange = 2f;
@@ -63,30 +68,18 @@ public class EnemySatatus : Enemybase
             else if (_eminiomtype == EMINIOMTYPE.Shot)
             {
                 attackRange = 10f;
-            }
-            if (_target == null)
-            {
-                _target = _PrevTarget;
-            }
+            } 
             _animator.SetBool("Attack", false);
             _navMeshAgent.isStopped = false;
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
-          
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
             _navMeshAgent.speed = 5f;
             _navMeshAgent.SetDestination(_target.position);
             transform.LookAt(_target.position);
-            distance = Vector3.Distance(_target.position, transform.position);
+            Vector3 Vecdistance = _target.position - transform.position;
+            float distance = Vecdistance.sqrMagnitude;
             if (distance <= attackRange)
             {
                 _estate = ESTATE.attack;
-                Debug.Log($"{_estate}");
+              
 
                 break;
             }
@@ -96,27 +89,17 @@ public class EnemySatatus : Enemybase
     }
     private IEnumerator Attack() // 공격
     {
-        while (true) 
+        while (_estate == ESTATE.attack) 
         {
-            if (_target == null)
-            {
-                _target = _PrevTarget;
-            }
-            float AttackDistance = Vector3.Distance(_target.position, transform.position);
-            Debug.Log($"{attackRange}");
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
+            Vector3 VceAtkdistance = _target.position - transform.position;
+            float AtkDistance = Vector3.SqrMagnitude(VceAtkdistance);
             // 구분
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
-            transform.LookAt(_target.position);
-            
+            transform.LookAt(_target.position);     
             // 애니메이션 추가 + 공격데미지 입히기
-            yield return new WaitForSeconds(AttackTime); //공격쿨타임
-            Debug.Log($" 공격중 사거리:{AttackDistance}, 공격범위 : {attackRange}");
-            if (AttackDistance >= attackRange)
+           //공격쿨타임
+            if (AtkDistance >= attackRange)
             {
                 _estate = ESTATE.move;
                 Targeton = false;
@@ -124,7 +107,6 @@ public class EnemySatatus : Enemybase
             yield return null;
         }
     }
-
     private IEnumerator StateChange()
     {
         while (true)
@@ -141,7 +123,7 @@ public class EnemySatatus : Enemybase
                     break;
 
             }
-            yield return null;
+            yield return null; ;
         }
 
     }
@@ -163,26 +145,31 @@ public class EnemySatatus : Enemybase
             }
             if (collider.CompareTag(EnemyTag))
             {
-                if (collider.gameObject.layer == 8 && Targeton == false) //미니언 공격
+                if (collider.gameObject.layer == 8 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special) //미니언 공격 특수미니언 아닐때
                 {
                     Targeton = true;
                     _target = collider.transform;
                 }
-                else if (collider.gameObject.layer == 7 && Targeton == false) // 플레이어 공격
+                else if (collider.gameObject.layer == 7 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special) // 플레이어 공격 특수 미니언 아닐때
                 {
                     Targeton = true;
                     _target = collider.transform;
                 }
                 else if (collider.gameObject.layer == 6 && Targeton == false)// 타워플레이어 공격
                 {
-                    if(_eminiomtype == EMINIOMTYPE.Nomal)
+                    if(_eminiomtype == EMINIOMTYPE.Nomal || _eminiomtype == EMINIOMTYPE.Special) //특수 미니언이나 노멀미니언만
                     {
                         attackRange = 6f;
                     }
                     Targeton = true;
                     _target = collider.transform;
                 }
-                else if(collider.gameObject.layer == 5 && Targeton == false)
+                else if(collider.gameObject.layer == 13 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special)  //특수무니언 공격
+                {
+                    _target = collider.transform;
+                    Targeton = true;
+                }
+                else if (collider.gameObject.layer == 12 && Targeton == false ) // 넥서스
                 {
                     _target = collider.transform;
                     Targeton = true;
