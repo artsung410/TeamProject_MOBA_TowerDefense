@@ -59,11 +59,15 @@ public class PlayerRespawn : MonoBehaviourPun
     {
         if (health.isDeath)
         {
-            // 리스폰위치 할당
-            health.gameObject.transform.position = playerRespawnPosition;
             elapsedTime += Time.deltaTime;
+            //if (elapsedTime >= 1.5f)
+            //{
+            //    health.gameObject.SetActive(false);
+            //}
             if (elapsedTime >= respawnTime)
             {
+                // 리스폰위치 할당
+                health.gameObject.transform.position = playerRespawnPosition;
                 health.Init();
                 elapsedTime = 0f;
                 health.gameObject.SetActive(true);

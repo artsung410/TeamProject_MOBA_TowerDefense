@@ -36,15 +36,6 @@ public class ChainAttack : SkillHandler
         elapsedTime = 0f;
     }
 
-   
-    protected void Init()
-    {
-        //Damage = 0f;
-        Range = 8f;
-        //HoldingTime = 2f;
-    }
-
-
     // Start is called before the first frame update
     void Start()
     {
@@ -121,9 +112,6 @@ public class ChainAttack : SkillHandler
         transform.rotation = quaternion;
     }
 
-    int cnt;
-    // damage / 10 = 3 tickdamage
-    // hodingtime / 10 = 0.2 ticktime
     private void OnTriggerStay(Collider other)
     {
         // 데미지 두번들어가던부분 IsMine으로 처리
