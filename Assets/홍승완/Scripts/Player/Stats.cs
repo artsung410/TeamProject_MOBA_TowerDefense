@@ -27,48 +27,22 @@ public class Stats : MonoBehaviourPun
 
     private void Awake()
     {
-        //_heroCombatScripts = GameObject.FindGameObjectWithTag("Player").GetComponent<HeroCombat>();
-
         _playerScript = GetComponent<PlayerBehaviour>();
     }
 
     private void OnEnable()
     {
         StatInit();
-        
     }
-
-    void Start()
-    {
-    }
-
-    private void Update()
-    {
-        //DieAndDestroy();
-        //if (Input.GetKey(KeyCode.Q))
-        //{
-        //    MoveSpeed = 3f;
-        //}
-    }
-
-
-
-    //private void DieAndDestroy()
-    //{
-    //    if (health <= 0)
-    //    {
-    //        Destroy(gameObject);
-    //        _playerScript.targetedEnemy = null;
-    //        _playerScript.perfomMeleeAttack = false;
-    //    }
-    //}
 
     private void StatInit()
     {
-        MoveSpeed = 10f;
-        StartHealth = 2000f;
-        attackDmg = 2f;
+        StartHealth = 250f;
+
+        attackDmg = 35f;
         attackRange = 3f;
-        
+        attackSpeed = 1.2f;
+
+        MoveSpeed = 15f;
     }
 }

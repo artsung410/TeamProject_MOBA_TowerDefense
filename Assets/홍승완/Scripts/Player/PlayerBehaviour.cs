@@ -15,7 +15,8 @@ public class PlayerBehaviour : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
-    //             MAIL : gkenfktm@gmail.com         
+    //             MAIL : gkenfktm@gmail.com
+    //             MAIL : minsub4400@gmail.com   
     // ###############################################
 
     public static Vector3 CurrentPlayerPos;
@@ -44,10 +45,24 @@ public class PlayerBehaviour : MonoBehaviourPun
     public string EnemyTag;
     public bool IsAttack;
 
+    // SMS Start --------------------------------------------//
+    // A키 커서 관련 변수
+
+    public Texture2D cursorTextureOriginal;
+    public Texture2D cursorTexture;
+
+    public CursorMode cursorMode = CursorMode.Auto;
+    public Vector2 hotSpot = Vector2.zero;
+
+    public Canvas moveMouseCanvas;
+    public GameObject moveMouseObj;
+    public MousePointer moveMousePointer;
+    // SMS End --------------------------------------------//
+
     #region Other Components
     NavMeshAgent _agent;
     Stats _statScript;
-
+    Health _playerHealth;
 
     #endregion
 
@@ -55,13 +70,15 @@ public class PlayerBehaviour : MonoBehaviourPun
     {
         _agent = GetComponent<NavMeshAgent>();
         _statScript = GetComponent<Stats>();
+        _playerHealth = GetComponent<Health>();
+
         _agent.enabled = false;
         _agent.enabled = true;
     }
 
     private void OnEnable()
     {
-
+        
     }
 
 
@@ -115,26 +132,27 @@ public class PlayerBehaviour : MonoBehaviourPun
         {
             CurrentPlayerPos = transform.position;
             _agent.speed = _statScript.MoveSpeed;
-            MoveTo();
-
             // s키 누르면 멈춤
             if (Input.GetKeyDown(KeyCode.S))
             {
                 _agent.SetDestination(CurrentPlayerPos);
                 _agent.stoppingDistance = 0f;
             }
+
+            if (_playerHealth.isDeath == false)
+            {
+                MoveTo();
+            }
+
         }
     }
 
     public Ray ray;
     public void MoveTo()
     {
-
-        HeroAliveCheck();
-
         // a + 좌클릭 이동
         AutoTargetInput();
-            ray = Cam.ScreenPointToRay(Input.mousePosition);
+        ray = Cam.ScreenPointToRay(Input.mousePosition);
 
         // 우클릭시 이동
         if (Input.GetMouseButton(1))
@@ -147,28 +165,26 @@ public class PlayerBehaviour : MonoBehaviourPun
             {
                 MoveOntheGround(Hit);
                 GetTargetedObject();
+
+                // SMS Start --------------------------------------//
+                moveMouseCanvas.transform.position = Hit.point;
+                moveMouseObj.gameObject.SetActive(true);
+                StartCoroutine(moveMousePointer.MoveMouseCursorPoint());
+                // SMS End --------------------------------------//
             }
         }
 
         MoveEnemyPosition();
     }
 
-
-    /// <summary>
-    /// 적이 살아있는지 확인하는 메서드
-    /// </summary>
-    public void HeroAliveCheck()
+    public void RequestRespawn()
     {
-        //if (targetedEnemy != null)
-        //{
-        //    if (targetedEnemy.GetComponent<HeroCombat>() != null)
-        //    {
-        //        if (targetedEnemy.GetComponent<HeroCombat>().isHeroAlive)
-        //        {
-        //            targetedEnemy = null;
-        //        }
-        //    }
-        //}
+        
+    }
+
+    public void Respawn()
+    {
+
     }
 
     public void MoveOntheGround(RaycastHit hit)
@@ -260,11 +276,20 @@ public class PlayerBehaviour : MonoBehaviourPun
         if (Input.GetKeyDown(KeyCode.A))
         {
             inputA = true;
+            // SMS Start ------------------------------------------------//
+            // 커서를 공격 커서로 바꾼다.
+            ChangeMouseAMode();
+            // SMS End ---------------------------------------------------//
             Debug.Log($"inputA : {inputA}");
         }
 
         if (Input.GetMouseButtonDown(0) && inputA)
         {
+            // SMS Start ------------------------------------------------//
+            // 커서를 일반 커서로 바꾼다.
+            Cursor.SetCursor(cursorTextureOriginal, hotSpot, cursorMode);
+            // SMS End ---------------------------------------------------//
+
             inputA = false;
             // 누른 위치로 이동한다
             if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out Hit, Mathf.Infinity))
@@ -278,10 +303,19 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     }
 
+    // SMS Start-------------------------------------------//
+    public void ChangeMouseAMode()
+    {
+        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+    }
+    // SMS End-----------------------------------------------//
+
+
+
     float detectiveRange = 8f;
     private void AutoTargetMove()
     {
-        
+
         // 태그 달고있는 게임오브젝트로 찾기
         GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
 

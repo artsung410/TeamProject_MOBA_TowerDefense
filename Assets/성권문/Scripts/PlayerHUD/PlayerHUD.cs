@@ -34,7 +34,10 @@ public class PlayerHUD : MonoBehaviourPun
     private Health playerHp;
     private Health enemyHp;
 
-
+    [Header("MousePointer")]
+    public Canvas MousePointerCanvas;
+    public GameObject MousePositionImage;
+    public MousePointer mousePointer;
 
     private void Awake()
     {
@@ -45,6 +48,10 @@ public class PlayerHUD : MonoBehaviourPun
     {
         setSkill();
         StartCoroutine(setHp());
+
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
     private IEnumerator setHp()

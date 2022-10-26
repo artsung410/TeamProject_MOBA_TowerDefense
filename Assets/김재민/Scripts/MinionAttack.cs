@@ -10,7 +10,6 @@ public class MinionAttack : MonoBehaviour
     // ###############################################
     [SerializeField]
     float PistonDamage = 5f;
-    public string EnemyTag;
     BoxCollider boxColider;
     EnemySatatus satatus;
     private void Awake()
@@ -24,43 +23,40 @@ public class MinionAttack : MonoBehaviour
         if(satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Special)
         {
             PistonDamage += 15f;
-            EnemyTag = null;
+            
         }
     }
 
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        EnemyTagNullCheck();
+        if(other.CompareTag(satatus.EnemyTag) == false)
+        {
+            return;
+        }
 
-        if (other.CompareTag(EnemyTag))
+        if(other.CompareTag(satatus.EnemyTag))
         {
             EnemyTagNullCheck();
 
-            Debug.Log("¿©±âµé¾î¿À´Â°Ç°¡?");
-            if(other.gameObject.layer == 8 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // ¹Ì´Ï¾ğ °ø°İ
+            Debug.Log("ì—¬ê¸°ë“¤ì–´ì˜¤ëŠ”ê±´ê°€?");
+            if(other.gameObject.layer == 8 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // ë¯¸ë‹ˆì–¸ ê³µê²©
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(PistonDamage);
             }
-            if (other.gameObject.layer == 7 &&  satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // ÇÃ·¹ÀÌ¾î °ø°İ
+            if (other.gameObject.layer == 7 &&  satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // í”Œë ˆì´ì–´ ê³µê²©
             {
                 other.gameObject.GetComponent<Health>().OnDamage(PistonDamage);
             }
-            if (other.gameObject.layer == 6) // Å¸¿ö
+            if (other.gameObject.layer == 6) // íƒ€ì›Œ
             {
                 other.gameObject.GetComponent<Turret>().TakeDamage(PistonDamage);
             }
-            if (other.gameObject.layer == 12) // ³Ø¼­½º
+            if (other.gameObject.layer == 12) // ë„¥ì„œìŠ¤
             {
                 other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(PistonDamage);
             }
-            if (other.gameObject.layer == 13 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // Æ¯¼ö¹Ì´Ï¾ğ
+            if (other.gameObject.layer == 13 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // íŠ¹ìˆ˜ë¯¸ë‹ˆì–¸
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(PistonDamage);
             }

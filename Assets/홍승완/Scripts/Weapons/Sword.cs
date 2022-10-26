@@ -40,6 +40,10 @@ public class Sword : MonoBehaviour
                     {
                         other.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
                     }
+                    else if (other.gameObject.layer == 6)
+                    {
+                        other.GetComponent<Turret>().TakeDamage(_stat.attackDmg);
+                    }
                 }
                 //Debug.Log("¡¢√À«‘");
             }

@@ -78,9 +78,9 @@ public class APIStorage : MonoBehaviour
     public string betting_id;
 
     // 우승자 id
-    public string winner_id = "633b86420e028f7ecb10fd09";
+    public string winner_id = "633b86ba896992306aa8764b";
 
     // (임시) MetaMask _id(테스트 용도)
-    public string MetaMaskSessionID = "eiry4c7tix9T06Q2yObbrghBrQTETTTeorDSAv2R";
+    public string MetaMaskSessionID = "BZzdZUHXgnpUVHogHz5TpVfKf0OTqCTUuAEQBdeP";
 
 }

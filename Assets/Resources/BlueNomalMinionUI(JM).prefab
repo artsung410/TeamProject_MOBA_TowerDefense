@@ -429,7 +429,7 @@ RectTransform:
   m_GameObject: {fileID: 5222610333701107894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5222610333516242322}
@@ -489,7 +489,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -509,10 +509,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 10000
+  HP: 100
   CurrnetHP: 0
   EnemyTag: Red
-  myTag: Blue
+  myTag: 
   _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
   _eminiomtype: 0
 --- !u!136 &5222610333701107893
@@ -602,8 +602,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395d688b175fdbb45b971953df67c0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PistonDamage: 100
-  EnemyTag: Red
+  PistonDamage: 10
 --- !u!65 &54847594693648339
 BoxCollider:
   m_ObjectHideFlags: 0
