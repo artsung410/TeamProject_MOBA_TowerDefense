@@ -12,7 +12,9 @@ public class SMS_Player_API_INFO : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            Instantiate(APIStoragePre, Vector3.zero, Quaternion.identity);
+            // 저장소 호출
+            PhotonNetwork.Instantiate(APIStoragePre.name, Vector3.zero, Quaternion.identity);
+            // 승자 호출
             Instantiate(PostAPICallerPre, Vector3.zero, Quaternion.identity);
             apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             aPIStorage = apiStorageObj.GetComponent<APIStorage>();
@@ -44,7 +46,7 @@ public class SMS_Player_API_INFO : MonoBehaviourPun
     private void RPCStorageCaller(string id, string session_id, string userName, int playerNumber, string zera, string ace, string bet_id)
     {
         //text.text = $"id : {id}\nsession_id : {session_id}\nuserName : {userName}\nplayerNumber : {playerNumber}\nzera : {zera}\nace : {ace}\nbet_id : {bet_id}";
-        apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
+        apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject; 
         aPIStorage = apiStorageObj.GetComponent<APIStorage>();
         aPIStorage._id[1] = id;
         aPIStorage.session_id[1] = session_id;
