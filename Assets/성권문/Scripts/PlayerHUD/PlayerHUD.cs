@@ -49,13 +49,35 @@ public class PlayerHUD : MonoBehaviourPun
     public GameObject MousePositionImage;
     public MousePointer mousePointer;
 
+    //[Header("WinnerResultImage")]
+    //public GameObject gameWinImagePanel;
+    //public Image blueWinImage;
+    //public Image redWinImage;
+
     private int[] playerScores = { 0, 0 };
-    bool isGameEnd;
+    public bool isGameEnd;
     public string winner;
+    float sec = 0;
+    int min = 0;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void OnEnable()
+    {
+        // 게임 제한 시간 관련 코드
+        TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        int time = tro.limitedTime;
+        //시, 분, 초 선언
+        int hours, minute, second;
+        //시간공식
+        hours = time / 3600;
+        minute = time % 3600 / 60;
+        second = time % 3600 % 60;
+        min = minute;
+        sec = second;
     }
 
     private void Start()
@@ -95,8 +117,7 @@ public class PlayerHUD : MonoBehaviourPun
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
-    float sec = 10f;
-    int min = 0;
+
 
     private void FixedUpdate()
     {
@@ -125,7 +146,6 @@ public class PlayerHUD : MonoBehaviourPun
 
         if (min < 0)
         {
-            isGameEnd = true;
             string gameWinMessage = "";
 
             if (playerScores[(int)Player.Blue] > playerScores[(int)Player.Red])
@@ -151,7 +171,7 @@ public class PlayerHUD : MonoBehaviourPun
             min = 0;
             sec = 0;
             timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-            
+            isGameEnd = true;
             return;
         }
     }
@@ -224,7 +244,7 @@ public class PlayerHUD : MonoBehaviourPun
     private IEnumerator DelayToTimeScale()
     {
         yield return new WaitForSeconds(1.5f);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     private void DeActivationGameWinUI()

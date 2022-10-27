@@ -37,7 +37,7 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
     private float deltaTime;
 
     // 기달리 시간
-    private float waitTime = 0.5f;
+    private float waitTime = 20f;
 
     private void Start()
     {
@@ -50,11 +50,11 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
         // 내가 있는 곳이 로딩씬이면
         if (SceneManager.GetActiveScene().name == "Loading")
         {
-            deltaTime += Time.deltaTime;
+            deltaTime += Time.deltaTime * waitTime;
             loadingGage = (int)deltaTime;
-            if (loadingGage == 3)
+            if (loadingGage == 101)
             {
-                loadingGage = 2;
+                loadingGage = 100;
                 ChangeMainScene();
             }
             loadingText.text = loadingGage.ToString() + "%";
@@ -72,7 +72,7 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
         Debug.Log(PhotonNetwork.IsConnected);
 
         // 마스터 서버와 연결이 되어있고 로딩 게이지가 100%면
-        if (PhotonNetwork.IsConnected && loadingGage == 2)
+        if (PhotonNetwork.IsConnected && loadingGage == 100)
         {
             SceneManager.LoadScene("Prototype_1");
         }

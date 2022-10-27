@@ -8,6 +8,9 @@ public class TrojanHorse: MonoBehaviour
     //             NAME : Simstealer                      
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
+    [Header("제한 시간")]
+    public int limitedTime;
+
     [Header("플레이어 번호 (마스터 서버 들어온 순서)")]
     public int playerNumber;
 

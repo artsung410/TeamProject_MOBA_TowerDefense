@@ -17,10 +17,13 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
     // ###############################################
     private GameObject apiStorageObj;
     private APIStorage aPIStorage;
+    private PlayerHUD playerHUD;
+
     private void Awake()
     {
         apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
         aPIStorage = apiStorageObj.GetComponent<APIStorage>();
+        playerHUD = PlayerHUD.Instance.GetComponent<PlayerHUD>();
     }
 
     private void Start()
@@ -28,7 +31,7 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
         StartCoroutine(WinnerAPICaller_S());
     }
     // 로딩에서 호출
-   
+
     // 이긴 사람이 나오면 이긴 사람의 id를 가지고 호출
     public IEnumerator WinnerAPICaller_S()
     {
@@ -39,7 +42,15 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
 
         winner winnerBet = new winner();
         winnerBet.betting_id = aPIStorage.betting_id;
-        winnerBet.winner_player_id = aPIStorage.winner_id;
+        if (playerHUD.winner == "Blue")
+        {
+            winnerBet.winner_player_id = aPIStorage._id[0];
+        }
+        else // Red
+        {
+            winnerBet.winner_player_id = aPIStorage._id[1];
+        }
+        //winnerBet.winner_player_id = aPIStorage.winner_id;
         winnerBet.match_details = new MatchDetails();
 
         // 직렬화
