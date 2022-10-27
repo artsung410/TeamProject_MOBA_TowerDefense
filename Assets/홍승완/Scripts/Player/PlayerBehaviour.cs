@@ -66,6 +66,8 @@ public class PlayerBehaviour : MonoBehaviourPun
     Rigidbody _rigid;
     #endregion
 
+    public Collider enemyCol;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -336,7 +338,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     }
     // SMS End-----------------------------------------------//
 
-    float detectiveRange = 20f;
+    float detectiveRange = 5f;
 
     private void AutoSearchTarget()
     {
@@ -449,12 +451,39 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 타워 보간
         else if (targetedEnemy.layer == 6)
         {
-            interpolationRange = 2f;
+            interpolationRange = 1f;
         }
         // 넥서스 보간
         else if (targetedEnemy.layer == 12)
         {
-            interpolationRange = 7f;
+            interpolationRange = 6f;
+        }
+    }
+
+    // 애니메이션 이벤트 관련 메소드
+    public void SwordSwingAtTheEnemy()
+    {
+        if (enemyCol == null)
+        {
+            return;
+        }
+
+        if (enemyCol.gameObject.layer == 7)
+        {
+            enemyCol.GetComponent<Health>().OnDamage(_statScript.attackDmg);
+        }
+        else if (enemyCol.gameObject.layer == 8 || enemyCol.gameObject.layer == 13)
+        {
+            enemyCol.GetComponent<Enemybase>().TakeDamage(_statScript.attackDmg);
+        }
+        else if (enemyCol.gameObject.layer == 6)
+        {
+            enemyCol.GetComponent<Turret>().Damage(_statScript.attackDmg);
+        }
+        else if (enemyCol.gameObject.layer == 12)
+        {
+            NexusHp temp = enemyCol.GetComponent<NexusHp>();
+            enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_statScript.attackDmg);
         }
     }
 
