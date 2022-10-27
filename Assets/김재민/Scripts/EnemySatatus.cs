@@ -10,7 +10,7 @@ public class EnemySatatus : Enemybase
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
-    [HideInInspector]
+    
     public Transform _target;
     private Transform _PrevTarget;
     private bool Targeton = false;
@@ -66,7 +66,7 @@ public class EnemySatatus : Enemybase
         InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
         if (_eminiomtype == EMINIOMTYPE.Nomal || _eminiomtype == EMINIOMTYPE.Special) 
         {
-            attackRange = 2f;
+            attackRange = 3f;
         }
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
@@ -84,10 +84,6 @@ public class EnemySatatus : Enemybase
                 Targeton = false;
                 _target = _PrevTarget;
             }
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
             _navMeshAgent.SetDestination(_target.position);
             transform.LookAt(_target.position);
             Vector3 vecDistance = _target.position - transform.position;
@@ -96,6 +92,7 @@ public class EnemySatatus : Enemybase
             {
                 _estate = ESTATE.attack;
                 break;
+                
             }
             yield return null;
         }
@@ -104,10 +101,6 @@ public class EnemySatatus : Enemybase
     {
         while (_estate == ESTATE.attack)
         {
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
             if (_target == null)
             {
                 Targeton = false;

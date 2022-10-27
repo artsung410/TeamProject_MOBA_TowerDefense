@@ -64,21 +64,24 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject MinionCircle;
 
     public GameObject specialPFs;
+    private bool MinionTowerOn;
 
     private void Start()
     {
-        
+
         SpawnPlayer();
         SpawnTower();
         SpawnEnemy();
         SapwnSpecial();
-    
+
     }
     float elaspedTime;
     float minionSpawnTime = 10f;
-    private void Update()
+
+    private void FixedUpdate()
     {
-        elaspedTime += Time.deltaTime;
+        
+    elaspedTime += Time.deltaTime;
         if (elaspedTime >= minionSpawnTime)
         {
             elaspedTime = 0;
@@ -87,6 +90,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         }
     }
+    
 
 
 
@@ -135,7 +139,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
                 if (tower.GetComponent<Turret_LaserRange>() != null)
                 {
-
+                    MinionTowerOn = true;
                     minionTowerPos[0] = tiles[i];
                 }
             }
@@ -149,6 +153,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 if (tower.GetComponent<Turret_LaserRange>() != null)
                 {
+                    MinionTowerOn = true;
                     minionTowerPos[1] = tiles[i + 4];
                 }
             }
@@ -175,17 +180,21 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SapwnSpecial()
     {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        if (MinionTowerOn)
         {
-             
-            GameObject specialminionBlue = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
 
-        }
-        else
-        {
-            GameObject specialminionRed = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+            {
+
+                GameObject specialminionBlue = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
+
+            }
+            else
+            {
+                GameObject specialminionRed = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
 
 
+            }
         }
 
     }
