@@ -18,7 +18,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     // 최대 인원 수
     private int roomMaxPlayers = 2;
     // 게임 진행 시간
-    private int maxTime = 600; // 10분
+    public TMP_Dropdown dropdown_MaxTime;
     // 매칭 중.. 인원수 나타낼 텍스트
     [SerializeField]
     private Text currentPlayerCount;
@@ -131,11 +131,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         tro.PlayerTrojanInfo();
 
+        int maxTime = int.Parse(dropdown_MaxTime.options[dropdown_MaxTime.value].text);
+        //Debug.Log(maxTime);
+
         RoomOptions roomOptions = new RoomOptions();
         roomOptions.MaxPlayers = (byte)roomMaxPlayers; // 인원 지정.
         roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "maxTime", maxTime } }; // 게임 시간 지정.
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "maxTime" }; // 여기에 키 값을 등록해야, 필터링이 가능하다.
 
+        Debug.Log(roomOptions.CustomRoomPropertiesForLobby[0]);
         // 방 참가를 시도하고, 실패하면 생성해서 참가함.
         connectionInfoText.text = "Connecting to Random Room...";
         PhotonNetwork.JoinRandomOrCreateRoom(
