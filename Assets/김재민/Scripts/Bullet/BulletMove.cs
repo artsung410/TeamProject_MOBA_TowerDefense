@@ -52,7 +52,7 @@ public class BulletMove : MonoBehaviourPun
     private void OnTriggerEnter(Collider other)
     {
         // 미니언일 때 처리
-        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
+        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 8 )
         {
             other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
             Destroy(gameObject);
@@ -75,6 +75,12 @@ public class BulletMove : MonoBehaviourPun
             other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
             Destroy(gameObject);
         }
+        if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
+        {
+            other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+            Destroy(gameObject);
+        }
+
     }
 
 }

@@ -4547,7 +4547,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Attack
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &8905590139766054858
 MonoBehaviour:
@@ -4585,11 +4585,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 80
+  attackRange: 0
+  HP: 100
   CurrnetHP: 0
   EnemyTag: Red
   myTag: 
   _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
+  Targeton: 0
+  _estate: 0
   _eminiomtype: 1
 --- !u!1 &6607732890056582108
 GameObject:

@@ -10,16 +10,16 @@ public class EnemySatatus : Enemybase
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
-    
+
     public Transform _target;
     private Transform _PrevTarget;
-    private bool Targeton = false;
-    enum ESTATE
+    public bool Targeton = false;
+     enum ESTATE
     {
         move,
         attack
     }
-    ESTATE _estate;
+   ESTATE _estate;
     public enum EMINIOMTYPE
     {
         Nomal,
@@ -31,7 +31,6 @@ public class EnemySatatus : Enemybase
     private NavMeshAgent _navMeshAgent;
     private Animator _animator;
 
-
     float distance;
 
     void Awake()
@@ -40,7 +39,6 @@ public class EnemySatatus : Enemybase
         _estate = ESTATE.move;
         _animator = GetComponent<Animator>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
-
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
         CurrnetHP = HP;
@@ -55,7 +53,7 @@ public class EnemySatatus : Enemybase
             if (Enemy.layer == 12)
             {
                 _target = Enemy.transform;
-                _PrevTarget = _target;
+                _PrevTarget = _target; // 
             }
         }
     }
@@ -63,62 +61,87 @@ public class EnemySatatus : Enemybase
     {
 
         StartCoroutine(StateChange());
-        InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
-        if (_eminiomtype == EMINIOMTYPE.Nomal || _eminiomtype == EMINIOMTYPE.Special) 
+        InvokeRepeating("UpdateEnemyTarget", 0f, 0.5f);
+        if(_eminiomtype == EMINIOMTYPE.Nomal)
         {
+            Debug.Log("ë…¸ë©€");
             attackRange = 3f;
         }
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
+            Debug.Log("ì›ê±°ë¦¬");
             attackRange = 10f;
         }
-        
+        else
+        {
+            Debug.Log("íŠ¹ìˆ˜");
+            attackRange = 6f;
+        }
+       
+        _navMeshAgent.SetDestination(_target.position); // ë„¥ì„œìŠ¤ ì¢Œí‘œ
         _navMeshAgent.speed = 5f;
     }
-    private IEnumerator move() // ¿òÁ÷ÀÓ  //¸ñÇ¥ÁöÁ¡±îÁö ¿òÁ÷ÀÎ´Ù . Å¸ÄÏ¹ß°ß -> ¸ØÃç¼­ °ø°İ -> Å¸ÄÏ Á×À½ -> Å¸°Ùº¯°æ -> Å¸
+    private IEnumerator move() // ì›€ì§ì„  //ëª©í‘œì§€ì ê¹Œì§€ ì›€ì§ì¸ë‹¤ . íƒ€ì¼“ë°œê²¬ -> ë©ˆì¶°ì„œ ê³µê²© -> íƒ€ì¼“ ì£½ìŒ -> íƒ€ê²Ÿë³€ê²½ -> íƒ€
     {
         while (_estate == ESTATE.move)
         {
-            if (_target == null)
+            if (_target == null) //íƒ€ì¼“ì´ ì£½ì—‡ì„ë•Œ ê³µê²©ë²”ìœ„ ì´ˆê¸°í™” 
             {
+                if (_eminiomtype == EMINIOMTYPE.Nomal) //ê³µê²©ë²”ìœ„ ì´ˆê¸°í™”
+                {
+                    attackRange = 3f;
+                }
+                if (_eminiomtype == EMINIOMTYPE.Special)
+                {
+                    attackRange = 6f;
+                }
                 Targeton = false;
                 _target = _PrevTarget;
+                _navMeshAgent.SetDestination(_target.position);
             }
-            _navMeshAgent.SetDestination(_target.position);
-            transform.LookAt(_target.position);
-            Vector3 vecDistance = _target.position - transform.position;
-            float distance = vecDistance.sqrMagnitude;
-            if (distance <= attackRange * attackRange)
+            transform.LookAt(_target.position); // íƒ€ì¼“ì„ ë°”ë¼ë´„
+            Vector3 vecDistance = _target.position - transform.position; //ê±°ë¦¬ê³„ì‚°
+            float distance = vecDistance.sqrMagnitude; // ìµœì í™”
+            if (distance <= attackRange * attackRange) //ìµœì í™” ê³µê²©ë²”ìœ„ ì•ˆì—ìˆì„ë•Œ
             {
-                _estate = ESTATE.attack;
+                _estate = ESTATE.attack; // ì–´íƒìœ¼ë¡œ ì „í™˜
                 break;
-                
             }
             yield return null;
         }
     }
-    private IEnumerator Attack() // °ø°İ
+    private IEnumerator Attack() // ê³µê²©
     {
         while (_estate == ESTATE.attack)
         {
             if (_target == null)
             {
+                if (_eminiomtype == EMINIOMTYPE.Nomal) //ê³µê²©ë²”ìœ„ ì´ˆê¸°í™”
+                {
+                    attackRange = 3f;
+                }
+                if (_eminiomtype == EMINIOMTYPE.Special)
+                {
+                    attackRange = 6f;
+                }
                 Targeton = false;
                 _target = _PrevTarget;
+                _navMeshAgent.SetDestination(_target.position);
             }
+
             Vector3 vceAtkDistance = _target.position - transform.position;
             float AtkDistance = Vector3.SqrMagnitude(vceAtkDistance);
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
             transform.LookAt(_target.position);
-            // ¾Ö´Ï¸ŞÀÌ¼Ç Ãß°¡ + °ø°İµ¥¹ÌÁö ÀÔÈ÷±â
-            //°ø°İÄğÅ¸ÀÓ
+            // ì• ë‹ˆë©”ì´ì…˜ ì¶”ê°€ + ê³µê²©ë°ë¯¸ì§€ ì…íˆê¸°
+            //ê³µê²©ì¿¨íƒ€ì„
             if (AtkDistance >= attackRange * attackRange)
             {
                 _estate = ESTATE.move;
                 _animator.SetBool("Attack", false);
                 _navMeshAgent.isStopped = false;
-                Targeton = false;
+                break;
             }
             yield return null;
         }
@@ -143,54 +166,52 @@ public class EnemySatatus : Enemybase
         }
 
     }
-    private void UpdateEnemyTarget() // Å¸¿ö 6 ÇÃ·¹ÀÌ¾î 7 ¹Ì´Ï¾ğ 8
+    private void UpdateEnemyTarget() // íƒ€ì›Œ 6 í”Œë ˆì´ì–´ 7 ë¯¸ë‹ˆì–¸ 8 12 ë„¥ì„œìŠ¤ 13 ìŠ¤í˜ì…œ
     {
-        Targeton = false;
-        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 15f);
+
+        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
         foreach (Collider collider in RangeTarget)
         {
             if (collider.tag == myTag)
             {
                 continue;
+            }
+            if (collider.CompareTag(EnemyTag)) // ë²”ìœ„ì•ˆì— ì  ë°œê²¬
+            {
+
+                if (_eminiomtype == EMINIOMTYPE.Special) //íŠ¹ìˆ˜ë¯¸ë‹ˆì–¸ì¼ë•Œ
+                {
+                    if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 12) //íƒ€ì›Œë‘ ë„¥ì„œìŠ¤ë§Œ ê³µê²©ê°€ëŠ¥
+                    {
+                        if (collider.gameObject.layer == 12 && _eminiomtype == EMINIOMTYPE.Special)
+                        {
+                            attackRange = 13f;
+                        }
+                        Targeton = true;
+                        _target = collider.transform;
+                        _navMeshAgent.SetDestination(_target.position);
+                    }
+                }
+                else //ë‚˜ë¨¸ì§€ ë¯¸ë‹ˆì–¸ì¼ë•Œ
+                {
+                    if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 7 || collider.gameObject.layer == 8 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
+                    {
+                        if (collider.gameObject.layer == 12 && _eminiomtype == EMINIOMTYPE.Nomal)
+                        {
+                            attackRange = 13f;
+                        }
+                        Targeton = true;
+                        _target = collider.transform;
+                        _navMeshAgent.SetDestination(_target.position);
+                    }
+                }
+
 
             }
-            if (collider.CompareTag(EnemyTag))
-            {
-                if (collider.gameObject.layer == 8 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special) //¹Ì´Ï¾ğ °ø°İ Æ¯¼ö¹Ì´Ï¾ğ ¾Æ´Ò¶§
-                {
-                    Targeton = true;
-                    _target = collider.transform;
-                }
-                else if (collider.gameObject.layer == 7 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special) // ÇÃ·¹ÀÌ¾î °ø°İ Æ¯¼ö ¹Ì´Ï¾ğ ¾Æ´Ò¶§
-                {
-                    Targeton = true;
-                    _target = collider.transform;
-                }
-                else if (collider.gameObject.layer == 6 && Targeton == false)// Å¸¿öÇÃ·¹ÀÌ¾î °ø°İ
-                {
-                    if (_eminiomtype == EMINIOMTYPE.Nomal || _eminiomtype == EMINIOMTYPE.Special) //Æ¯¼ö ¹Ì´Ï¾ğÀÌ³ª ³ë¸Ö¹Ì´Ï¾ğ¸¸
-                    {
-                        attackRange = 6f;
-                    }
-                    Targeton = true;
-                    _target = collider.transform;
-                }
-                else if (collider.gameObject.layer == 13 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special)  //Æ¯¼ö¹«´Ï¾ğ °ø°İ
-                {
-                    _target = collider.transform;
-                    Targeton = true;
-                }
-                else if (collider.gameObject.layer == 12 && Targeton == false) // ³Ø¼­½º
-                {
-                    if (_eminiomtype == EMINIOMTYPE.Nomal || _eminiomtype == EMINIOMTYPE.Special) //Æ¯¼ö ¹Ì´Ï¾ğÀÌ³ª ³ë¸Ö¹Ì´Ï¾ğ¸¸
-                    {
-                        attackRange = 13f;
-                    }
-                    _target = collider.transform;
-                    Targeton = true;
-                }
-            }
+            //ë ˆì´ì–´ë¡œ í™•ì¸í•´ì„œ ê³µê²©íƒ€ì¼“ ì„¤ì •
+
         }
     }
 }
+
 

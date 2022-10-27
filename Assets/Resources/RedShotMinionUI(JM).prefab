@@ -1964,7 +1964,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Attack
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &3839293809356801517
 MonoBehaviour:
@@ -1994,11 +1994,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HP: 80
+  attackRange: 0
+  HP: 100
   CurrnetHP: 0
   EnemyTag: Blue
   myTag: 
   _target: {fileID: 3063582420797440947, guid: d2e6808fd6cac884fa3bd6b8408a4fea, type: 3}
+  Targeton: 0
+  _estate: 0
   _eminiomtype: 1
 --- !u!1 &1067032674008058643
 GameObject:
