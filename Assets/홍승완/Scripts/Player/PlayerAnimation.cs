@@ -68,7 +68,6 @@ public class PlayerAnimation : MonoBehaviourPun
     {
         yield return new WaitForSeconds(2f);
         _playerScript.perfomMeleeAttack = false;
-        //Debug.Log("check");
     }
 
     //float attackAnimationPose = 0;

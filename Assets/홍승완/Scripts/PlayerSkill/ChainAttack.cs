@@ -171,7 +171,7 @@ public class ChainAttack : SkillHandler
 
             }
         }
-        else if (target.gameObject.layer == 8)
+        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
         {
             Enemybase minion = target.GetComponent<Enemybase>();
 

@@ -64,30 +64,30 @@ public class EnemySatatus : Enemybase
         InvokeRepeating("UpdateEnemyTarget", 0f, 0.5f);
         if(_eminiomtype == EMINIOMTYPE.Nomal)
         {
-            Debug.Log("³ë¸Ö");
+            Debug.Log("ë…¸ë©€");
             attackRange = 3f;
         }
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
-            Debug.Log("¿ø°Å¸®");
+            Debug.Log("ì›ê±°ë¦¬");
             attackRange = 10f;
         }
         else
         {
-            Debug.Log("Æ¯¼ö");
+            Debug.Log("íŠ¹ìˆ˜");
             attackRange = 6f;
         }
        
-        _navMeshAgent.SetDestination(_target.position); // ³Ø¼­½º ÁÂÇ¥
+        _navMeshAgent.SetDestination(_target.position); // ë„¥ì„œìŠ¤ ì¢Œí‘œ
         _navMeshAgent.speed = 5f;
     }
-    private IEnumerator move() // ¿òÁ÷ÀÓ  //¸ñÇ¥ÁöÁ¡±îÁö ¿òÁ÷ÀÎ´Ù . Å¸ÄÏ¹ß°ß -> ¸ØÃç¼­ °ø°İ -> Å¸ÄÏ Á×À½ -> Å¸°Ùº¯°æ -> Å¸
+    private IEnumerator move() // ì›€ì§ì„  //ëª©í‘œì§€ì ê¹Œì§€ ì›€ì§ì¸ë‹¤ . íƒ€ì¼“ë°œê²¬ -> ë©ˆì¶°ì„œ ê³µê²© -> íƒ€ì¼“ ì£½ìŒ -> íƒ€ê²Ÿë³€ê²½ -> íƒ€
     {
         while (_estate == ESTATE.move)
         {
-            if (_target == null) //Å¸ÄÏÀÌ Á×¾ùÀ»¶§ °ø°İ¹üÀ§ ÃÊ±âÈ­ 
+            if (_target == null) //íƒ€ì¼“ì´ ì£½ì—‡ì„ë•Œ ê³µê²©ë²”ìœ„ ì´ˆê¸°í™” 
             {
-                if (_eminiomtype == EMINIOMTYPE.Nomal) //°ø°İ¹üÀ§ ÃÊ±âÈ­
+                if (_eminiomtype == EMINIOMTYPE.Nomal) //ê³µê²©ë²”ìœ„ ì´ˆê¸°í™”
                 {
                     attackRange = 3f;
                 }
@@ -99,24 +99,24 @@ public class EnemySatatus : Enemybase
                 _target = _PrevTarget;
                 _navMeshAgent.SetDestination(_target.position);
             }
-            transform.LookAt(_target.position); // Å¸ÄÏÀ» ¹Ù¶óº½
-            Vector3 vecDistance = _target.position - transform.position; //°Å¸®°è»ê
-            float distance = vecDistance.sqrMagnitude; // ÃÖÀûÈ­
-            if (distance <= attackRange * attackRange) //ÃÖÀûÈ­ °ø°İ¹üÀ§ ¾È¿¡ÀÖÀ»¶§
+            transform.LookAt(_target.position); // íƒ€ì¼“ì„ ë°”ë¼ë´„
+            Vector3 vecDistance = _target.position - transform.position; //ê±°ë¦¬ê³„ì‚°
+            float distance = vecDistance.sqrMagnitude; // ìµœì í™”
+            if (distance <= attackRange * attackRange) //ìµœì í™” ê³µê²©ë²”ìœ„ ì•ˆì—ìˆì„ë•Œ
             {
-                _estate = ESTATE.attack; // ¾îÅÃÀ¸·Î ÀüÈ¯
+                _estate = ESTATE.attack; // ì–´íƒìœ¼ë¡œ ì „í™˜
                 break;
             }
             yield return null;
         }
     }
-    private IEnumerator Attack() // °ø°İ
+    private IEnumerator Attack() // ê³µê²©
     {
         while (_estate == ESTATE.attack)
         {
             if (_target == null)
             {
-                if (_eminiomtype == EMINIOMTYPE.Nomal) //°ø°İ¹üÀ§ ÃÊ±âÈ­
+                if (_eminiomtype == EMINIOMTYPE.Nomal) //ê³µê²©ë²”ìœ„ ì´ˆê¸°í™”
                 {
                     attackRange = 3f;
                 }
@@ -134,8 +134,8 @@ public class EnemySatatus : Enemybase
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
             transform.LookAt(_target.position);
-            // ¾Ö´Ï¸ŞÀÌ¼Ç Ãß°¡ + °ø°İµ¥¹ÌÁö ÀÔÈ÷±â
-            //°ø°İÄğÅ¸ÀÓ
+            // ì• ë‹ˆë©”ì´ì…˜ ì¶”ê°€ + ê³µê²©ë°ë¯¸ì§€ ì…íˆê¸°
+            //ê³µê²©ì¿¨íƒ€ì„
             if (AtkDistance >= attackRange * attackRange)
             {
                 _estate = ESTATE.move;
@@ -166,7 +166,7 @@ public class EnemySatatus : Enemybase
         }
 
     }
-    private void UpdateEnemyTarget() // Å¸¿ö 6 ÇÃ·¹ÀÌ¾î 7 ¹Ì´Ï¾ğ 8 12 ³Ø¼­½º 13 ½ºÆä¼È
+    private void UpdateEnemyTarget() // íƒ€ì›Œ 6 í”Œë ˆì´ì–´ 7 ë¯¸ë‹ˆì–¸ 8 12 ë„¥ì„œìŠ¤ 13 ìŠ¤í˜ì…œ
     {
 
         Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
@@ -176,12 +176,12 @@ public class EnemySatatus : Enemybase
             {
                 continue;
             }
-            if (collider.CompareTag(EnemyTag)) // ¹üÀ§¾È¿¡ Àû ¹ß°ß
+            if (collider.CompareTag(EnemyTag)) // ë²”ìœ„ì•ˆì— ì  ë°œê²¬
             {
 
-                if (_eminiomtype == EMINIOMTYPE.Special) //Æ¯¼ö¹Ì´Ï¾ğÀÏ¶§
+                if (_eminiomtype == EMINIOMTYPE.Special) //íŠ¹ìˆ˜ë¯¸ë‹ˆì–¸ì¼ë•Œ
                 {
-                    if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 12) //Å¸¿ö¶û ³Ø¼­½º¸¸ °ø°İ°¡´É
+                    if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 12) //íƒ€ì›Œë‘ ë„¥ì„œìŠ¤ë§Œ ê³µê²©ê°€ëŠ¥
                     {
                         if (collider.gameObject.layer == 12 && _eminiomtype == EMINIOMTYPE.Special)
                         {
@@ -192,7 +192,7 @@ public class EnemySatatus : Enemybase
                         _navMeshAgent.SetDestination(_target.position);
                     }
                 }
-                else //³ª¸ÓÁö ¹Ì´Ï¾ğÀÏ¶§
+                else //ë‚˜ë¨¸ì§€ ë¯¸ë‹ˆì–¸ì¼ë•Œ
                 {
                     if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 7 || collider.gameObject.layer == 8 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
                     {
@@ -208,7 +208,7 @@ public class EnemySatatus : Enemybase
 
 
             }
-            //·¹ÀÌ¾î·Î È®ÀÎÇØ¼­ °ø°İÅ¸ÄÏ ¼³Á¤
+            //ë ˆì´ì–´ë¡œ í™•ì¸í•´ì„œ ê³µê²©íƒ€ì¼“ ì„¤ì •
 
         }
     }

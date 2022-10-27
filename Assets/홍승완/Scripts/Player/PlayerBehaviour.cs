@@ -66,6 +66,8 @@ public class PlayerBehaviour : MonoBehaviourPun
     Rigidbody _rigid;
     #endregion
 
+    public Collider enemyCol;
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -120,8 +122,38 @@ public class PlayerBehaviour : MonoBehaviourPun
                 EnemyTag = "Red";
             }
         }
+
+        StartCoroutine(DetectEnemyRange());
     }
 
+    IEnumerator DetectEnemyRange()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.1f);
+            Collider[] enemies = Physics.OverlapSphere(this.transform.position, detectiveRange);
+            if (enemies.Length > 0)
+            {
+                foreach (var _col in enemies)
+                {
+                    if (_col.tag == EnemyTag && _col.gameObject.layer == 7)
+                    {
+                        if (_col.gameObject.GetComponent<Health>() != null)
+                        {
+                            if (_col.gameObject.GetComponent<Health>().isDeath == true)
+                            {
+                                targetedEnemy = null;
+                                AutoSearchTarget();
+                            }
+
+                        }
+
+                    }
+                }
+
+            }
+        }
+    }
 
 
     private void Update()
@@ -129,16 +161,19 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 플레이어 위치정보 카메라로 보냄
         if (photonView.IsMine)
         {
-            //_rigid.velocity = Vector3.zero;
+            _rigid.velocity = Vector3.zero;
             _rigid.angularVelocity = Vector3.zero;
 
             CurrentPlayerPos = transform.position;
             _agent.speed = _statScript.MoveSpeed;
-            // s키 누르면 멈춤
+            // s키 누르면 행동 멈춤
             if (Input.GetKeyDown(KeyCode.S))
             {
                 _agent.SetDestination(CurrentPlayerPos);
                 _agent.stoppingDistance = 0f;
+
+                CancelInvoke(nameof(AutoSearchTarget));
+
             }
 
             if (_playerHealth.isDeath == false)
@@ -162,6 +197,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         {
             // 우클릭하면 좌클릭이동 스위치를 취소해줌
             inputA = false;
+            CancelInvoke(nameof(AutoSearchTarget));
 
             // 마우스위치에서 쏜 raycast가 물체에 맞는다면, 그곳이 navmesh도착지점
             if (Physics.Raycast(ray, out Hit, Mathf.Infinity))
@@ -265,7 +301,6 @@ public class PlayerBehaviour : MonoBehaviourPun
 
 
     bool inputA = false;
-
     private void AutoTargetInput()
     {
         if (Input.GetKeyDown(KeyCode.A))
@@ -291,11 +326,9 @@ public class PlayerBehaviour : MonoBehaviourPun
             {
                 MoveOntheGround(Hit);
             }
-            AutoTargetMove();
 
+            InvokeRepeating(nameof(AutoSearchTarget), 0, 0.5f);
         }
-
-
     }
 
     // SMS Start-------------------------------------------//
@@ -305,49 +338,95 @@ public class PlayerBehaviour : MonoBehaviourPun
     }
     // SMS End-----------------------------------------------//
 
+    float detectiveRange = 5f;
 
-
-    float detectiveRange = 8f;
-    private void AutoTargetMove()
+    private void AutoSearchTarget()
     {
-
-        // 태그 달고있는 게임오브젝트로 찾기
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
-
-        // 터렛과 가장 가까운 대상 임시로 선언
-        //GameObject _shortTarget = null;
-
-        //콜라이더가 하나라도 검출되면 실행
-        if (enemies.Length > 0)
+        Collider[] colliders = Physics.OverlapSphere(this.transform.position, detectiveRange);
+        GameObject shortTarget = null;
+        if (colliders.Length > 0)
         {
-
-            // 검출된 콜라이더만큼 반복해주기
-            foreach (GameObject _colTarget in enemies)
+            // 짧은거리를 비교하려면 가장 긴 객체가 기준
+            // 무한대 길이 생성
+            float _shortTempDistance = Mathf.Infinity; 
+            foreach (Collider colTarget in colliders)
             {
-
-                // 감지범위내에 적이 들어온다면 
-                // 그 적을 타겟에 넣어줌
-                float distance = Vector3.Distance(transform.position, _colTarget.transform.position) - interpolationRange;
-                if (distance <= detectiveRange)
+                // 범위내 적 플레이어는 무조건 1순위 검출
+                if (colTarget.tag == EnemyTag && colTarget.gameObject.layer == 7)
                 {
-                    // 미니언과 플레이어가 같이 있을땐 플레이어를 넣어준다
-                    if (_colTarget.GetComponent<PlayerBehaviour>() != null)
-                    {
-                        GameObject enemyPlayer = _colTarget.GetComponent<PlayerBehaviour>().gameObject;
-                        Debug.Log($"enemyPlayer : {enemyPlayer}");
-                        targetedEnemy = enemyPlayer;
-                    }
-                    else
-                    {
-                        Debug.Log($"target : {_colTarget}");
-                        targetedEnemy = _colTarget;
-                    }
+                    targetedEnemy = colTarget.gameObject;
+                    return;
+                }
+                // 그외(미니언, 타워, 넥서스)거리순 검출
+                else if (colTarget.tag == EnemyTag)
+                {
+                    float colDist = Vector3.Distance(this.transform.position, colTarget.gameObject.transform.position);
 
+                    if (_shortTempDistance > colDist)
+                    {
+                        _shortTempDistance = colDist;
+
+                        // 가장 가까운 대상
+                        shortTarget = colTarget.gameObject;
+                    }
+                }
+                // 예외부분(땅, 기타등등) 건너뛰기
+                else
+                {
+                    continue;
                 }
             }
+
+        }
+        else
+        {
+            // 주변에 적이없으면 null
+            targetedEnemy = null;
         }
 
-        
+        if (shortTarget != null)
+        {
+            // 반복문 완료시 가장 가까운 대상 검출
+            targetedEnemy = shortTarget.gameObject;
+        }
+
+    }
+
+    #region 주석처리
+    //GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
+
+    //Debug.Log($"주변 적들있음? : {enemies}");
+    //if (enemies.Length > 0)
+    //{
+    //    foreach (var detectTarget in enemies)
+    //    {
+    //        float dist = Vector3.Distance(transform.position, detectTarget.transform.position) - interpolationRange;
+
+    //        if (dist <= detectiveRange)
+    //        {
+    //            // 플레이어 우선타겟
+    //            if (detectTarget.GetComponent<PlayerBehaviour>() != null)
+    //            {
+    //                var enemyPlayer = detectTarget.GetComponent<PlayerBehaviour>().gameObject;
+    //                targetedEnemy = enemyPlayer;
+    //            }
+
+    //            else
+    //            {
+    //                targetedEnemy = detectTarget;
+    //            }
+    //        }
+    //    }
+    //}
+
+    #endregion
+
+
+    private void OnDrawGizmos()
+    {
+
+        Gizmos.color = new Color(1, 0, 0, 0.5f);
+        Gizmos.DrawSphere(transform.position, detectiveRange);
 
     }
 
@@ -372,16 +451,45 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 타워 보간
         else if (targetedEnemy.layer == 6)
         {
-            interpolationRange = 2f;
-
+            interpolationRange = 1f;
         }
         // 넥서스 보간
         else if (targetedEnemy.layer == 12)
         {
-            interpolationRange = 7f;
+            interpolationRange = 6f;
         }
     }
 
+    // 애니메이션 이벤트 관련 메소드
+    public void SwordSwingAtTheEnemy()
+    {
+        if (enemyCol == null)
+        {
+            return;
+        }
 
+        if (enemyCol.gameObject.layer == 7)
+        {
+            enemyCol.GetComponent<Health>().OnDamage(_statScript.attackDmg);
+        }
+        else if (enemyCol.gameObject.layer == 8 || enemyCol.gameObject.layer == 13)
+        {
+            enemyCol.GetComponent<Enemybase>().TakeDamage(_statScript.attackDmg);
+        }
+        else if (enemyCol.gameObject.layer == 6)
+        {
+            enemyCol.GetComponent<Turret>().Damage(_statScript.attackDmg);
+        }
+        else if (enemyCol.gameObject.layer == 12)
+        {
+            NexusHp temp = enemyCol.GetComponent<NexusHp>();
+            enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_statScript.attackDmg);
+        }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 
 }

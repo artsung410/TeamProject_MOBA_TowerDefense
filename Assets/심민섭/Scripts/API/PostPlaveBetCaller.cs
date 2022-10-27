@@ -1,5 +1,6 @@
 using LitJson;
 using Newtonsoft.Json;
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,13 +13,20 @@ public class PostPlaveBetCaller : MonoBehaviour
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
 
-    [SerializeField]
     private APIStorage aPIStorage;
 
     // 배팅 API 매칭
     private void Start()
     {
-        StartCoroutine(PostPlaveBetCaller_S());
+        if (PhotonNetwork.IsMasterClient)
+        {
+            aPIStorage = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>();
+            StartCoroutine(PostPlaveBetCaller_S());
+        }
+        else
+        {
+            return;
+        }
     }
 
     // 호출 정보 : message, betting_id
@@ -32,7 +40,7 @@ public class PostPlaveBetCaller : MonoBehaviour
         placeBet placeBet = new placeBet();
         placeBet.players_session_id = new string[2];
         placeBet.players_session_id[0] = aPIStorage.session_id[0];
-        placeBet.players_session_id[1] = aPIStorage.MetaMaskSessionID;
+        placeBet.players_session_id[1] = aPIStorage.session_id[1];
         placeBet.bet_id = aPIStorage.bet_id[0];
 
         // 직렬화

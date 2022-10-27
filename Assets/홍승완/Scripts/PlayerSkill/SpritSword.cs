@@ -106,12 +106,15 @@ public class SpritSword : SkillHandler
                 player.OnDamage(damage);
             }
         }
-        else if (target.gameObject.layer == 8)
+        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
         {
+            Debug.Log("1. µé¾î¿Ó");
             Enemybase minion = target.GetComponent<Enemybase>();
 
             if (minion != null)
             {
+                Debug.Log("2. º¸³»ÀÕ@");
+
                 minion.TakeDamage(damage);
             }
         }
@@ -137,6 +140,7 @@ public class SpritSword : SkillHandler
         {
             if (other.CompareTag(enemyTag))
             {
+                Debug.Log("¸î¹øÈ£Ãâ?");
                 SkillDamage(Damage, other.gameObject);
             }
         }

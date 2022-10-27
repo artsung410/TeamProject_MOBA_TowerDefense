@@ -14,6 +14,7 @@ public class Sword : MonoBehaviour
     [SerializeField] PlayerBehaviour _playerScript;
     [SerializeField] Health _playerHP;
     [SerializeField] Stats _stat;
+    Collider enemyCol;
 
     private void Awake()
     {
@@ -22,6 +23,8 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        _playerScript.enemyCol = null;
+        //enemyCol = null;
         if (other == null)
         {
             return;
@@ -32,34 +35,33 @@ public class Sword : MonoBehaviour
             {
                 if (_playerScript.IsAttack)
                 {
-                    //_playerHP.OnDamage(_stat.attackDmg, other);
-                    if (other.gameObject.layer == 7)
-                    {
-                        other.GetComponent<Health>().OnDamage(_stat.attackDmg);
-                    }
-                    else if (other.gameObject.layer == 8)
-                    {
-                        other.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
-                    }
-                    else if (other.gameObject.layer == 6)
-                    {
-                        other.GetComponent<Turret>().TakeDamage(_stat.attackDmg);
-                    }
-                    else if (other.gameObject.layer == 12)
-                    {
-                        Debug.Log("³Ø¼­½º °ø°Ý");
-                        //NexusHp temp = other.GetComponent<NexusHp>();
-                        //other.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);
-                    }
+                    //enemyCol = other;
+                    _playerScript.enemyCol = other;
+
+                    //if (enemyCol.gameObject.layer == 7)
+                    //{
+                    //    enemyCol.GetComponent<Health>().OnDamage(_stat.attackDmg);
+                    //}
+                    //else if (enemyCol.gameObject.layer == 8 || enemyCol.gameObject.layer == 13)
+                    //{
+                    //    enemyCol.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
+                    //}
+                    //else if (enemyCol.gameObject.layer == 6)
+                    //{
+                    //    enemyCol.GetComponent<Turret>().Damage(_stat.attackDmg);
+                    //}
+                    //else if (enemyCol.gameObject.layer == 12)
+                    //{
+                    //    NexusHp temp = enemyCol.GetComponent<NexusHp>();
+                    //    enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);
+                    //}
+
                 }
-                //Debug.Log("Á¢ÃËÇÔ");
             }
             else
             {
-                //Debug.Log("no Á¢ÃË");
                 return;
             }
         }
-
     }
 }
