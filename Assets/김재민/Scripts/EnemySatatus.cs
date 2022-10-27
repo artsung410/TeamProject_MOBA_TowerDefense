@@ -72,7 +72,7 @@ public class EnemySatatus : Enemybase
         {
             attackRange = 10f;
         }
-        _navMeshAgent.SetDestination(_target.position);
+        
         _navMeshAgent.speed = 5f;
     }
     private IEnumerator move() // 움직임  //목표지점까지 움직인다 . 타켓발견 -> 멈춰서 공격 -> 타켓 죽음 -> 타겟변경 -> 타
@@ -84,7 +84,7 @@ public class EnemySatatus : Enemybase
                 Targeton = false;
                 _target = _PrevTarget;
             }
-            
+            _navMeshAgent.SetDestination(_target.position);
             transform.LookAt(_target.position);
             Vector3 vecDistance = _target.position - transform.position;
             float distance = vecDistance.sqrMagnitude;
@@ -159,13 +159,11 @@ public class EnemySatatus : Enemybase
                 if (collider.gameObject.layer == 8 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special) //미니언 공격 특수미니언 아닐때
                 {
                     Targeton = true;
-                    _navMeshAgent.SetDestination(_target.position);
                     _target = collider.transform;
                 }
                 else if (collider.gameObject.layer == 7 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special) // 플레이어 공격 특수 미니언 아닐때
                 {
                     Targeton = true;
-                    _navMeshAgent.SetDestination(_target.position);
                     _target = collider.transform;
                 }
                 else if (collider.gameObject.layer == 6 && Targeton == false)// 타워플레이어 공격
@@ -175,13 +173,11 @@ public class EnemySatatus : Enemybase
                         attackRange = 6f;
                     }
                     Targeton = true;
-                    _navMeshAgent.SetDestination(_target.position);
                     _target = collider.transform;
                 }
                 else if (collider.gameObject.layer == 13 && Targeton == false && _eminiomtype != EMINIOMTYPE.Special)  //특수무니언 공격
                 {
                     _target = collider.transform;
-                    _navMeshAgent.SetDestination(_target.position);
                     Targeton = true;
                 }
                 else if (collider.gameObject.layer == 12 && Targeton == false) // 넥서스
@@ -191,7 +187,6 @@ public class EnemySatatus : Enemybase
                         attackRange = 13f;
                     }
                     _target = collider.transform;
-                    _navMeshAgent.SetDestination(_target.position);
                     Targeton = true;
                 }
             }
