@@ -37,7 +37,7 @@ public class EnemyHpBar : MonoBehaviourPun
         {
             Destroy(gameObject.GetComponent<RectTransform>());
         }
-        transform.position = new Vector3(Enemy.position.x, 3f, Enemy.position.z);
+        transform.position = new Vector3(Enemy.position.x, 5f, Enemy.position.z);
         
     }
 }
