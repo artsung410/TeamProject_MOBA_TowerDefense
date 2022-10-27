@@ -60,7 +60,7 @@ public class BulletMove : MonoBehaviourPun
         // 타워일때 처리
         if(other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
         {
-            other.gameObject.GetComponent<Turret>().TakeDamage(Damage);
+            other.gameObject.GetComponent<Turret>().Damage(Damage);
             Destroy(gameObject);
         }
         // 플레이어일때 
