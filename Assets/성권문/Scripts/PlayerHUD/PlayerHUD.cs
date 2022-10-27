@@ -149,20 +149,17 @@ public class PlayerHUD : MonoBehaviourPun
             if (playerScores[(int)Player.Blue] > playerScores[(int)Player.Red])
             {
                 winner = "Blue";
-                gameWinMessage = "Blue Team Win!";
-                StartCoroutine(DelayToTimeScale());
+                gameWinMessage = winner;
             }
             else if ((playerScores[(int)Player.Blue] < playerScores[(int)Player.Red]))
             {
                 winner = "Red";
-                gameWinMessage = "Red Team Win!";
-                StartCoroutine(DelayToTimeScale());
+                gameWinMessage = winner;
             }
             else
             {
-                gameWinMessage = "Draw!";
+                gameWinMessage = "Draw";
                 photonView.RPC("RPCInitScore", RpcTarget.All);
-                DelayDeActivationGameWinUI();
             }
 
             photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
@@ -234,40 +231,30 @@ public class PlayerHUD : MonoBehaviourPun
         if (tag == "Red")
         {
             winner = "Blue";
-            gameWinMessage = "Blue Team Win!";
+            gameWinMessage = winner;
         }
         else
         {
             winner = "Red";
-            gameWinMessage = "Red Team Win!";
+            gameWinMessage = winner;
         }
 
-        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
-        StartCoroutine(DelayToTimeScale());
+        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, winner);
     }
 
     [PunRPC]
     private void RPC_ActivationGameWinUI(string message)
     {
-        GameWinText.text = message;
+        if (message == "Draw")
+        {
+            GameWinText.text = "Draw!";
+        }
+        else
+        {
+            GameWinText.text = $"{message} Team Game Win!";
+        }
+
         GameWinPanel.SetActive(true);
-    }
-
-    private IEnumerator DelayDeActivationGameWinUI()
-    {
-        yield return new WaitForSeconds(2f);
-        GameWinPanel.SetActive(false);
-    }
-
-    private IEnumerator DelayToTimeScale()
-    {
-        yield return new WaitForSeconds(1.5f);
-        Time.timeScale = 0;
-    }
-
-    private void DeActivationGameWinUI()
-    {
-        GameWinPanel.SetActive(false);
     }
 
 }

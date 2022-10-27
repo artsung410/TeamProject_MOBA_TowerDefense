@@ -65,15 +65,18 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     public GameObject specialPFs;
 
+    private void Awake()
+    {
+        SpawnPlayer();
+    }
+
     private void Start()
     {
-        
-        SpawnPlayer();
         SpawnTower();
         SpawnEnemy();
         SapwnSpecial();
-    
     }
+
     float elaspedTime;
     float minionSpawnTime = 20f;
     private void Update()
@@ -173,17 +176,26 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SapwnSpecial()
     {
+
+
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-             
+            if (minionTowerPos[0] == null)
+            {
+                return;
+            }
+
             GameObject specialminionBlue = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
 
         }
         else
         {
+            if (minionTowerPos[1] == null)
+            {
+                return;
+            }
+
             GameObject specialminionRed = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
-
-
         }
 
     }
