@@ -1,12 +1,18 @@
+using Photon.Pun;
 using System.Collections;
-using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
-using Photon.Pun;
+
 
 public class PlayerHUD : MonoBehaviourPun
 {
+    enum Player
+    {
+        Blue,
+        Red,
+    }
+
     // ###############################################
     //             NAME : ARTSUNG                      
     //             MAIL : artsung410@gmail.com         
@@ -31,6 +37,10 @@ public class PlayerHUD : MonoBehaviourPun
     public TextMeshProUGUI timerTMPro;
     public static PlayerHUD Instance;
 
+    [Header("GameWinUI")]
+    public GameObject GameWinPanel;
+    public TextMeshProUGUI GameWinText;
+
     private Health playerHp;
     private Health enemyHp;
 
@@ -40,6 +50,8 @@ public class PlayerHUD : MonoBehaviourPun
     public MousePointer mousePointer;
 
     private int[] playerScores = { 0, 0 };
+    bool isGameEnd;
+    public string winner;
 
     private void Awake()
     {
@@ -78,22 +90,24 @@ public class PlayerHUD : MonoBehaviourPun
 
     private void setMouseCursor()
     {
-        GameManager.Instance.CurrentPlayers [0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
-    float sec = 1f;
-    int min = 10;
+    float sec = 10f;
+    int min = 0;
 
     private void FixedUpdate()
     {
-        Timer();
+        if (isGameEnd == false)
+        {
+            Timer();
+        }
     }
 
     void Update()
     {
-
         UpdateHealthUI();
         UpdateEnemyHealthUI();
     }
@@ -109,8 +123,35 @@ public class PlayerHUD : MonoBehaviourPun
         sec -= Time.deltaTime;
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
 
-        if (min <= 0)
+        if (min < 0)
         {
+            isGameEnd = true;
+            string gameWinMessage = "";
+
+            if (playerScores[(int)Player.Blue] > playerScores[(int)Player.Red])
+            {
+                winner = "Blue";
+                gameWinMessage = "Blue Team Win!";
+                StartCoroutine(DelayToTimeScale());
+            }
+            else if ((playerScores[(int)Player.Blue] < playerScores[(int)Player.Red]))
+            {
+                winner = "Red";
+                gameWinMessage = "Red Team Win!";
+                StartCoroutine(DelayToTimeScale());
+            }
+            else
+            {
+                gameWinMessage = "Draw!";
+                photonView.RPC("RPCInitScore", RpcTarget.All);
+                DelayDeActivationGameWinUI();
+            }
+
+            photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
+            min = 0;
+            sec = 0;
+            timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+            
             return;
         }
     }
@@ -144,17 +185,16 @@ public class PlayerHUD : MonoBehaviourPun
     {
         if (tag == "Red")
         {
-            playerScores[0] += 1;
+            playerScores[(int)Player.Blue] += 1;
         }
         else
         {
-            playerScores[1] += 1;
+            playerScores[(int)Player.Red] += 1;
         }
 
         // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
         photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
     }
-
 
     [PunRPC]
     private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
@@ -167,4 +207,29 @@ public class PlayerHUD : MonoBehaviourPun
     {
         scoreTMPro.text = $"0        0";
     }
+
+    [PunRPC]
+    private void RPC_ActivationGameWinUI(string message)
+    {
+        GameWinText.text = message;
+        GameWinPanel.SetActive(true);
+    }
+
+    private IEnumerator DelayDeActivationGameWinUI()
+    {
+        yield return new WaitForSeconds(2f);
+        GameWinPanel.SetActive(false);
+    }
+
+    private IEnumerator DelayToTimeScale()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Time.timeScale = 0;
+    }
+
+    private void DeActivationGameWinUI()
+    {
+        GameWinPanel.SetActive(false);
+    }
+
 }
