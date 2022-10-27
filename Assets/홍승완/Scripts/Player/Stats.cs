@@ -41,8 +41,10 @@ public class Stats : MonoBehaviourPun
 
         attackDmg = 35f;
         attackRange = 6f;
-        attackSpeed = 1.2f;
+        attackSpeed = 1f;
 
         MoveSpeed = 15f;
     }
 }
+
+
