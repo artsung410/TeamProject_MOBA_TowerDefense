@@ -92,8 +92,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
     
 
-
-
     // 플레이어 생성
     private void SpawnPlayer()
     {
@@ -172,7 +170,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         else
         {
 
-            GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
+            //GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
 
             GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
         }

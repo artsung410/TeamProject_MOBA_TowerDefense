@@ -108,10 +108,13 @@ public class SpritSword : SkillHandler
         }
         else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
         {
+            Debug.Log("1. 들어왓");
             Enemybase minion = target.GetComponent<Enemybase>();
 
             if (minion != null)
             {
+                Debug.Log("2. 보내잇@");
+
                 minion.TakeDamage(damage);
             }
         }
@@ -137,6 +140,7 @@ public class SpritSword : SkillHandler
         {
             if (other.CompareTag(enemyTag))
             {
+                Debug.Log("몇번호출?");
                 SkillDamage(Damage, other.gameObject);
             }
         }
