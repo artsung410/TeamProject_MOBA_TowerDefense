@@ -262,7 +262,7 @@ public class PlayerHUD : MonoBehaviourPun
     private IEnumerator DelayToTimeScale()
     {
         yield return new WaitForSeconds(1.5f);
-        //Time.timeScale = 0;
+        Time.timeScale = 0;
     }
 
     private void DeActivationGameWinUI()

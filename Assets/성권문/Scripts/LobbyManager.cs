@@ -32,6 +32,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public TextMeshProUGUI connectionInfoText; // 네트워크 상태 텍스트
     public Button joinButton;
+    public Button playButton;
     public GameObject playerStoragePre;
 
     // 기획팀 사운드 작업본(매칭 효과음)
@@ -129,6 +130,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         //print($"{nick} 랜덤 매칭 시작.");
         //PhotonNetwork.LocalPlayer.NickName = nick; // 현재 플레이어 닉네임 설정하기.
 
+        joinButton.interactable = false;
+        playButton.interactable = false;
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         tro.PlayerTrojanInfo();
 
@@ -148,6 +151,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             expectedCustomRoomProperties: new ExitGames.Client.Photon.Hashtable() { { "maxTime", maxTime } }, expectedMaxPlayers: (byte)roomMaxPlayers, // 참가할 때의 기준.
             roomOptions: roomOptions // 생성할 때의 기준.
         );
+
     }
 
     // 매칭 메소드
