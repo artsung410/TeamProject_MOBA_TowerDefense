@@ -7,15 +7,17 @@ public class SMS_Player_API_INFO : MonoBehaviourPun
     private GameObject apiStorageObj;
     private APIStorage aPIStorage;
     public GameObject APIStoragePre;
+    // 배팅 호출 프리펩
     public GameObject PostAPICallerPre;
-    private void Start()
+
+    private void Awake()
     {
         if (PhotonNetwork.IsMasterClient)
         {
             // 저장소 호출
             PhotonNetwork.Instantiate(APIStoragePre.name, Vector3.zero, Quaternion.identity);
-            // 승자 호출
             Instantiate(PostAPICallerPre, Vector3.zero, Quaternion.identity);
+            //Instantiate(PostAPICallerPre, Vector3.zero, Quaternion.identity);
             apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             aPIStorage = apiStorageObj.GetComponent<APIStorage>();
             GameObject getCallerObj = GameObject.FindGameObjectWithTag("GetCaller").gameObject;
@@ -38,9 +40,6 @@ public class SMS_Player_API_INFO : MonoBehaviourPun
             photonView.RPC("RPCStorageCaller", RpcTarget.MasterClient, playerStorage._id, playerStorage.session_id, playerStorage.userName, playerStorage.playerNumber, playerStorage.zera, playerStorage.ace, playerStorage.bet_id);
         }
     }
-
-    /*[SerializeField]
-    private Text text;*/
 
     [PunRPC]
     private void RPCStorageCaller(string id, string session_id, string userName, int playerNumber, string zera, string ace, string bet_id)

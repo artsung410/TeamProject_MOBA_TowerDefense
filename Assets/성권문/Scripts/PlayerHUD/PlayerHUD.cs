@@ -49,13 +49,35 @@ public class PlayerHUD : MonoBehaviourPun
     public GameObject MousePositionImage;
     public MousePointer mousePointer;
 
+    //[Header("WinnerResultImage")]
+    //public GameObject gameWinImagePanel;
+    //public Image blueWinImage;
+    //public Image redWinImage;
+
     private int[] playerScores = { 0, 0 };
-    bool isGameEnd;
+    public bool isGameEnd;
     public string winner;
+    float sec = 0;
+    int min = 0;
 
     private void Awake()
     {
         Instance = this;
+    }
+
+    private void OnEnable()
+    {
+        // ê²Œì„ ì œí•œ ì‹œê°„ ê´€ë ¨ ì½”ë“œ
+        TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        int time = tro.limitedTime;
+        //ì‹œ, ë¶„, ì´ˆ ì„ ì–¸
+        int hours, minute, second;
+        //ì‹œê°„ê³µì‹
+        hours = time / 3600;
+        minute = time % 3600 / 60;
+        second = time % 3600 % 60;
+        min = minute;
+        sec = second;
     }
 
     private void Start()
@@ -95,6 +117,7 @@ public class PlayerHUD : MonoBehaviourPun
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
+
     float sec = 0f;
     int min = 1;
 
@@ -125,7 +148,6 @@ public class PlayerHUD : MonoBehaviourPun
 
         if (min < 0)
         {
-            isGameEnd = true;
             string gameWinMessage = "";
 
             if (playerScores[(int)Player.Blue] > playerScores[(int)Player.Red])
@@ -151,7 +173,7 @@ public class PlayerHUD : MonoBehaviourPun
             min = 0;
             sec = 0;
             timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-            
+            isGameEnd = true;
             return;
         }
     }
@@ -192,7 +214,7 @@ public class PlayerHUD : MonoBehaviourPun
             playerScores[(int)Player.Red] += 1;
         }
 
-        // RpcTarget : ¾î¶² Å¬¶óÀÌ¾ğÆ®¿¡°Ô µ¿±âÈ­¸¦ Â¡ÇàÇÒ °ÍÀÎÁö, AllÀÌ¸é ¸ğµç Å¬¶óÀÌ¾ğÆ®µé¿¡°Ô µ¿±âÈ­ ÁøÇà.
+        // RpcTarget : ì–´ë–¤ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë™ê¸°í™”ë¥¼ ì§•í–‰í•  ê²ƒì¸ì§€, Allì´ë©´ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ë“¤ì—ê²Œ ë™ê¸°í™” ì§„í–‰.
         photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
     }
 
@@ -244,7 +266,7 @@ public class PlayerHUD : MonoBehaviourPun
     private IEnumerator DelayToTimeScale()
     {
         yield return new WaitForSeconds(1.5f);
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
     }
 
     private void DeActivationGameWinUI()
