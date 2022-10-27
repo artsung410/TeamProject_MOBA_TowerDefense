@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 using Photon.Pun;
+using System;
 
 public class GetAPICaller : MonoBehaviourPun
 {
@@ -16,7 +17,7 @@ public class GetAPICaller : MonoBehaviourPun
     // ------- 텍스트 출력 --------
     //private Text text;
 
-    private string apiKey = "70pNqHWqzZ0DXwsIP0e0bA";
+    private string apiKey = "5hO4J33kQPhtHhq4e0F76V";
 
     [SerializeField]
     public PlayerStorage playerStorage;
@@ -213,7 +214,8 @@ public class GetAPICaller : MonoBehaviourPun
             // 데이터 저장
             //playerStorage.message = jsonPlayer["message"].ToString();
             playerStorage.zera = jsonPlayer["data"]["balance"].ToString();
-            GameObject.FindGameObjectWithTag("Zera").GetComponent<Text>().text = playerStorage.zera;
+            string zeraValue = $"{float.Parse(playerStorage.zera): 0.0000}";
+            GameObject.FindGameObjectWithTag("Zera").GetComponent<Text>().text = zeraValue;
             /*GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             APIStorage aPIStorage = apiStorageObj.GetComponent<APIStorage>();
             aPIStorage.zera[playerStorage.playerNumber] = jsonPlayer["data"]["balance"].ToString();*/
@@ -239,9 +241,9 @@ public class GetAPICaller : MonoBehaviourPun
             JsonData jsonPlayer = JsonMapper.ToObject(jsonResult);
 
             // 데이터 저장
-            //playerStorage.message = jsonPlayer["message"].ToString();
             playerStorage.ace = jsonPlayer["data"]["balance"].ToString();
-            GameObject.FindGameObjectWithTag("Dappx").GetComponent<Text>().text = playerStorage.ace;
+            string aceValue = $"{float.Parse(playerStorage.ace): 0.0000}";
+            GameObject.FindGameObjectWithTag("Dappx").GetComponent<Text>().text = aceValue;
 
             /*GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             APIStorage aPIStorage = apiStorageObj.GetComponent<APIStorage>();
