@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     
     }
     float elaspedTime;
-    float minionSpawnTime = 10f;
+    float minionSpawnTime = 20f;
     private void Update()
     {
         elaspedTime += Time.deltaTime;

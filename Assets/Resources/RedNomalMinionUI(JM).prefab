@@ -236,7 +236,7 @@ Transform:
   m_GameObject: {fileID: 5267451455832373777}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5267451455832794693}
@@ -311,11 +311,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRange: 0
   HP: 100
   CurrnetHP: 0
   EnemyTag: Blue
   myTag: 
   _target: {fileID: 3063582420797440947, guid: d2e6808fd6cac884fa3bd6b8408a4fea, type: 3}
+  Targeton: 0
+  _estate: 0
   _eminiomtype: 0
 --- !u!136 &7338123734904209476
 CapsuleCollider:
@@ -350,7 +353,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Attack
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &3743644269620019485
 MonoBehaviour:

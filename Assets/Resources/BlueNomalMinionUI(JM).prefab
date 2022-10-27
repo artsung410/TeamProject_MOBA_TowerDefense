@@ -26,9 +26,9 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181309626593357008}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0.7071068, w: 0}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: -0.6}
-  m_LocalScale: {x: 0.085493, y: 0.07615821, z: 1}
+  m_LocalScale: {x: 0.085493006, y: 0.07615822, z: 0.9999999}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 154257311592109954}
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 50.124588, y: 100}
+  m_AnchoredPosition: {x: 50.12459, y: 100}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &2721991990034980623
@@ -429,7 +429,7 @@ RectTransform:
   m_GameObject: {fileID: 5222610333701107894}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5222610333516242322}
@@ -509,11 +509,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackRange: 0
   HP: 100
   CurrnetHP: 0
   EnemyTag: Red
   myTag: 
   _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
+  Targeton: 0
   _eminiomtype: 0
 --- !u!136 &5222610333701107893
 CapsuleCollider:
@@ -548,7 +550,7 @@ MonoBehaviour:
     SynchronizeType: 2
     Name: Attack
   m_SynchronizeLayers:
-  - SynchronizeType: 0
+  - SynchronizeType: 2
     LayerIndex: 0
 --- !u!114 &8925003747582076198
 MonoBehaviour:

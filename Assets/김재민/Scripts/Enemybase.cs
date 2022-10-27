@@ -13,6 +13,7 @@ public class Enemybase : MonoBehaviourPun
     // 이동속도
    protected float moveSpeed;
     // 공격사거리
+    [SerializeField]
     protected float attackRange;
     // 공격력
     protected float Damage;
