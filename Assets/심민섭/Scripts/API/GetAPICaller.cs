@@ -253,8 +253,6 @@ public class GetAPICaller : MonoBehaviourPun
         }
     }
 
-
-    // 임시로 여기있는 것이고 나중엔 이동될 예정
     // 호출 정보 : message, data{balance}
     public IEnumerator getSettingsCaller()
     {
@@ -262,7 +260,6 @@ public class GetAPICaller : MonoBehaviourPun
         using (UnityWebRequest www = UnityWebRequest.Get(getbettingCurrency))
         {
             www.SetRequestHeader("api-key", apiKey);
-
             yield return www.SendWebRequest();
 
             // HTTP 에러 디버그

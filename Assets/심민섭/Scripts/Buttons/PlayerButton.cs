@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.Networking;
+using LitJson;
 
 // 버튼이 눌리면 Select Match화면이 활성화 된다.
 public class PlayerButton : MonoBehaviourPun
@@ -22,7 +24,6 @@ public class PlayerButton : MonoBehaviourPun
         selectMatch.SetActive(true);
     }
 
-
     // 기획팀 사운드 작업본(매칭 효과음)
     public AudioClip clickSound;
     //public AudioClip clickCancleSound;
@@ -36,5 +37,4 @@ public class PlayerButton : MonoBehaviourPun
         collectAudio.clip = clickSound;
         collectAudio.Play();
     }
-
 }

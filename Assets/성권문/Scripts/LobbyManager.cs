@@ -27,6 +27,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     // 매칭 시 보여줄 텍스트
     public GameObject matChingObj;
     // SMS end -------------------------------------------------------
+    
+    public string apiKey = "5hO4J33kQPhtHhq4e0F76V";
 
     public TextMeshProUGUI connectionInfoText; // 네트워크 상태 텍스트
     public Button joinButton;
