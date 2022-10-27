@@ -64,23 +64,26 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject MinionCircle;
 
     public GameObject specialPFs;
+
     private void Start()
     {
+        
         SpawnPlayer();
         SpawnTower();
-        SpawnEnemy();
-        //SapwnSpecial();
-
+        //SpawnEnemy();
+        SapwnSpecial();
+    
     }
     float elaspedTime;
-    float minionSpawnTime = 5f;
+    float minionSpawnTime = 10f;
     //private void Update()
     //{
     //    elaspedTime += Time.deltaTime;
-    //    if(elaspedTime >= minionSpawnTime)
+    //    if (elaspedTime >= minionSpawnTime)
     //    {
     //        elaspedTime = 0;
-
+    //        //SpawnEnemy();
+    //        SapwnSpecial();
 
     //    }
     //}
@@ -174,8 +177,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-
+             
             GameObject specialminionBlue = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
+
         }
         else
         {
