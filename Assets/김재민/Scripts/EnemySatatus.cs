@@ -70,12 +70,12 @@ public class EnemySatatus : Enemybase
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
             Debug.Log("원거리");
-            attackRange = 10f;
+            attackRange = 11f;
         }
         else
         {
             Debug.Log("특수");
-            attackRange = 6f;
+            attackRange = 7f;
         }
        
         _navMeshAgent.SetDestination(_target.position); // 넥서스 좌표
@@ -93,7 +93,7 @@ public class EnemySatatus : Enemybase
                 }
                 if (_eminiomtype == EMINIOMTYPE.Special)
                 {
-                    attackRange = 6f;
+                    attackRange = 7f;
                 }
                 Targeton = false;
                 _target = _PrevTarget;
@@ -102,6 +102,7 @@ public class EnemySatatus : Enemybase
             transform.LookAt(_target.position); // 타켓을 바라봄
             Vector3 vecDistance = _target.position - transform.position; //거리계산
             float distance = vecDistance.sqrMagnitude; // 최적화
+            Debug.Log($"{_estate} : {distance} :{attackRange * attackRange}");
             if (distance <= attackRange * attackRange) //최적화 공격범위 안에있을때
             {
                 _estate = ESTATE.attack; // 어택으로 전환
@@ -122,7 +123,7 @@ public class EnemySatatus : Enemybase
                 }
                 if (_eminiomtype == EMINIOMTYPE.Special)
                 {
-                    attackRange = 6f;
+                    attackRange = 7f;
                 }
                 Targeton = false;
                 _target = _PrevTarget;
@@ -136,6 +137,7 @@ public class EnemySatatus : Enemybase
             transform.LookAt(_target.position);
             // 애니메이션 추가 + 공격데미지 입히기
             //공격쿨타임
+            
             if (AtkDistance >= attackRange * attackRange)
             {
                 _estate = ESTATE.move;
@@ -169,7 +171,7 @@ public class EnemySatatus : Enemybase
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8 12 넥서스 13 스페셜
     {
 
-        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
+        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 11f);
         foreach (Collider collider in RangeTarget)
         {
             if (collider.tag == myTag)
@@ -196,6 +198,11 @@ public class EnemySatatus : Enemybase
                 {
                     if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 7 || collider.gameObject.layer == 8 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
                     {
+                        if (collider.gameObject.layer == 6 && _eminiomtype == EMINIOMTYPE.Nomal)
+                        {
+                            attackRange = 7f;
+                        }
+
                         if (collider.gameObject.layer == 12 && _eminiomtype == EMINIOMTYPE.Nomal)
                         {
                             attackRange = 13f;

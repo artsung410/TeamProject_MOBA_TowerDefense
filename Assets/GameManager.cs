@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnPlayer();
         SpawnTower();
         SpawnEnemy();
-        SapwnSpecial();
+        //SapwnSpecial();
     
     }
     float elaspedTime;
@@ -83,7 +83,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             elaspedTime = 0;
             SpawnEnemy();
-            SapwnSpecial();
+            //SapwnSpecial();
 
         }
     }
@@ -165,7 +165,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         else
         {
 
-            //GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
+            GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
 
             GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
         }
