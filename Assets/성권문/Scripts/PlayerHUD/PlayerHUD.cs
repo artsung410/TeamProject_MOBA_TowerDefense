@@ -117,10 +117,6 @@ public class PlayerHUD : MonoBehaviourPun
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
-
-    float sec = 0f;
-    int min = 1;
-
     private void FixedUpdate()
     {
         if (isGameEnd == false)

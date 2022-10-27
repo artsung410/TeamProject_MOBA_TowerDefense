@@ -37,7 +37,7 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
     private float deltaTime;
 
     // 기달리 시간
-    private float waitTime = 20f;
+    private float waitTime = 30f;
 
     private void Start()
     {
