@@ -26,16 +26,18 @@ public class HeroAbility : MonoBehaviourPun
 
     void Awake()
     {
-        if (GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count == 0)
+        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count;
+
+        if (count == 0)
         {
             return;
         }
-        for (int i = 0; i < AbilityPrefabs.Length; i++)
+
+        for (int i = 0; i < count; i++)
         {
             // 트로이목마 안에 있는 아이템 프리팹 게임상에서 가져오기
             AbilityPrefabs[i] = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i].itemModel;
         }
-
     }
 
     void Start()

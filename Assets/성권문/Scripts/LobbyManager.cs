@@ -129,8 +129,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         //print($"{nick} 랜덤 매칭 시작.");
         //PhotonNetwork.LocalPlayer.NickName = nick; // 현재 플레이어 닉네임 설정하기.
-
-        joinButton.interactable = false;
         playButton.interactable = false;
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         tro.PlayerTrojanInfo();

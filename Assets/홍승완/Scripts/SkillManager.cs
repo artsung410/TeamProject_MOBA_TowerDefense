@@ -26,13 +26,16 @@ public class SkillManager : MonoBehaviour
 
     private void Start()
     {
-        if (GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count == 0)
+        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count;
+
+        if (count == 0)
         {
             return;
         }
+
         else
         {
-            for (int i = 0; i < 4; i++) // 4
+            for (int i = 0; i < count; i++) // 4
             {
                 for (int j = 0; j < ItemDataBase.itemList.Count; j++) // 100
                 {

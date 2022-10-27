@@ -36,6 +36,7 @@ public class GameExitButton : MonoBehaviourPunCallbacks
     [PunRPC]
     public void PlayerLeaveGameRoom()
     {
+        
         PhotonNetwork.LeaveRoom();
     }
 
