@@ -37,7 +37,7 @@ public class Sword : MonoBehaviour
                     {
                         other.GetComponent<Health>().OnDamage(_stat.attackDmg);
                     }
-                    else if (other.gameObject.layer == 8)
+                    else if (other.gameObject.layer == 8 || other.gameObject.layer == 13)
                     {
                         other.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
                     }
@@ -47,10 +47,10 @@ public class Sword : MonoBehaviour
                     }
                     else if (other.gameObject.layer == 12)
                     {
-                        Debug.Log("³Ø¼­½º °ø°Ý");
-                        //NexusHp temp = other.GetComponent<NexusHp>();
-                        //other.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);
+                        NexusHp temp = other.GetComponent<NexusHp>();
+                        other.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);
                     }
+                    
                 }
                 //Debug.Log("Á¢ÃËÇÔ");
             }
