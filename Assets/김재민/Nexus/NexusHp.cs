@@ -24,6 +24,10 @@ public class NexusHp : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
+        if(gameObject.activeSelf == false)
+        {
+            return;
+        }
         _slider.value = CurrentHp / MaxHp;
         if (_slider == null)
         {
@@ -49,7 +53,10 @@ public class NexusHp : MonoBehaviourPun
         CurrentHp -= Damage;
         if (CurrentHp <= 0)
         {
-            Destroy(transform.parent.gameObject);
+            PlayerHUD.Instance.ActivationGameWinUI_Nexus(gameObject.tag);
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            transform.GetChild(0).gameObject.SetActive(false);
+            
         }
 
     }
