@@ -95,8 +95,8 @@ public class PlayerHUD : MonoBehaviourPun
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
-    float sec = 10f;
-    int min = 0;
+    float sec = 0f;
+    int min = 1;
 
     private void FixedUpdate()
     {
@@ -206,6 +206,26 @@ public class PlayerHUD : MonoBehaviourPun
     private void RPCInitScore()
     {
         scoreTMPro.text = $"0        0";
+    }
+
+    public void ActivationGameWinUI_Nexus(string tag)
+    {
+        isGameEnd = true;
+        string gameWinMessage = "";
+
+        if (tag == "Red")
+        {
+            winner = "Blue";
+            gameWinMessage = "Blue Team Win!";
+        }
+        else
+        {
+            winner = "Red";
+            gameWinMessage = "Red Team Win!";
+        }
+
+        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
+        StartCoroutine(DelayToTimeScale());
     }
 
     [PunRPC]

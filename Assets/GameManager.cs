@@ -70,23 +70,23 @@ public class GameManager : MonoBehaviourPunCallbacks
         
         SpawnPlayer();
         SpawnTower();
-        //SpawnEnemy();
+        SpawnEnemy();
         SapwnSpecial();
     
     }
     float elaspedTime;
     float minionSpawnTime = 10f;
-    //private void Update()
-    //{
-    //    elaspedTime += Time.deltaTime;
-    //    if (elaspedTime >= minionSpawnTime)
-    //    {
-    //        elaspedTime = 0;
-    //        //SpawnEnemy();
-    //        SapwnSpecial();
+    private void Update()
+    {
+        elaspedTime += Time.deltaTime;
+        if (elaspedTime >= minionSpawnTime)
+        {
+            elaspedTime = 0;
+            SpawnEnemy();
+            SapwnSpecial();
 
-    //    }
-    //}
+        }
+    }
 
 
 
