@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.AI;
 
 public class Enemybase : MonoBehaviourPun
 {
@@ -68,8 +69,6 @@ public class Enemybase : MonoBehaviourPun
         }
     }
 
-  
-
     public void TakeDamage(float Damage)
     {
         photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
@@ -81,6 +80,7 @@ public class Enemybase : MonoBehaviourPun
         CurrnetHP -= Damage;
         if(CurrnetHP <= 0)
         {
+        gameObject.GetComponent<NavMeshAgent>().enabled = false;
         Destroy(transform.parent.gameObject);
         }
         

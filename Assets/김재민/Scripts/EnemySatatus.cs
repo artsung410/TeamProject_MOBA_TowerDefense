@@ -10,7 +10,7 @@ public class EnemySatatus : Enemybase
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
-    [HideInInspector]
+    
     public Transform _target;
     private Transform _PrevTarget;
     private bool Targeton = false;
@@ -59,15 +59,14 @@ public class EnemySatatus : Enemybase
             }
         }
     }
-
     private void Start()
     {
 
         StartCoroutine(StateChange());
         InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
-        if (_eminiomtype == EMINIOMTYPE.Nomal && _eminiomtype == EMINIOMTYPE.Special) 
+        if (_eminiomtype == EMINIOMTYPE.Nomal || _eminiomtype == EMINIOMTYPE.Special) 
         {
-            attackRange = 2f;
+            attackRange = 3f;
         }
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
@@ -76,7 +75,6 @@ public class EnemySatatus : Enemybase
         
         _navMeshAgent.speed = 5f;
     }
-
     private IEnumerator move() // 움직임  //목표지점까지 움직인다 . 타켓발견 -> 멈춰서 공격 -> 타켓 죽음 -> 타겟변경 -> 타
     {
         while (_estate == ESTATE.move)
@@ -86,10 +84,6 @@ public class EnemySatatus : Enemybase
                 Targeton = false;
                 _target = _PrevTarget;
             }
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
             _navMeshAgent.SetDestination(_target.position);
             transform.LookAt(_target.position);
             Vector3 vecDistance = _target.position - transform.position;
@@ -97,8 +91,8 @@ public class EnemySatatus : Enemybase
             if (distance <= attackRange * attackRange)
             {
                 _estate = ESTATE.attack;
-
                 break;
+                
             }
             yield return null;
         }
@@ -107,18 +101,13 @@ public class EnemySatatus : Enemybase
     {
         while (_estate == ESTATE.attack)
         {
-            if (_navMeshAgent.enabled == false)
-            {
-                break;
-            }
             if (_target == null)
             {
                 Targeton = false;
                 _target = _PrevTarget;
             }
-            Vector3 VceAtkdistance = _target.position - transform.position;
-            float AtkDistance = Vector3.SqrMagnitude(VceAtkdistance);
-            // 구분
+            Vector3 vceAtkDistance = _target.position - transform.position;
+            float AtkDistance = Vector3.SqrMagnitude(vceAtkDistance);
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
             transform.LookAt(_target.position);
@@ -150,7 +139,6 @@ public class EnemySatatus : Enemybase
                     break;
 
             }
-            Debug.Log($"{_estate}");
             yield return null; ;
         }
 
@@ -158,7 +146,7 @@ public class EnemySatatus : Enemybase
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8
     {
         Targeton = false;
-        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
+        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 15f);
         foreach (Collider collider in RangeTarget)
         {
             if (collider.tag == myTag)
@@ -194,6 +182,10 @@ public class EnemySatatus : Enemybase
                 }
                 else if (collider.gameObject.layer == 12 && Targeton == false) // 넥서스
                 {
+                    if (_eminiomtype == EMINIOMTYPE.Nomal || _eminiomtype == EMINIOMTYPE.Special) //특수 미니언이나 노멀미니언만
+                    {
+                        attackRange = 13f;
+                    }
                     _target = collider.transform;
                     Targeton = true;
                 }

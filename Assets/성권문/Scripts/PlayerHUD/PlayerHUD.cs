@@ -67,12 +67,12 @@ public class PlayerHUD : MonoBehaviourPun
 
     private void OnEnable()
     {
-        // °ÔÀÓ Á¦ÇÑ ½Ã°£ °ü·Ã ÄÚµå
+        // ê²Œì„ ì œí•œ ì‹œê°„ ê´€ë ¨ ì½”ë“œ
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         int time = tro.limitedTime;
-        //½Ã, ºĞ, ÃÊ ¼±¾ğ
+        //ì‹œ, ë¶„, ì´ˆ ì„ ì–¸
         int hours, minute, second;
-        //½Ã°£°ø½Ä
+        //ì‹œê°„ê³µì‹
         hours = time / 3600;
         minute = time % 3600 / 60;
         second = time % 3600 % 60;
@@ -118,6 +118,8 @@ public class PlayerHUD : MonoBehaviourPun
     }
 
 
+    float sec = 0f;
+    int min = 1;
 
     private void FixedUpdate()
     {
@@ -212,7 +214,7 @@ public class PlayerHUD : MonoBehaviourPun
             playerScores[(int)Player.Red] += 1;
         }
 
-        // RpcTarget : ¾î¶² Å¬¶óÀÌ¾ğÆ®¿¡°Ô µ¿±âÈ­¸¦ Â¡ÇàÇÒ °ÍÀÎÁö, AllÀÌ¸é ¸ğµç Å¬¶óÀÌ¾ğÆ®µé¿¡°Ô µ¿±âÈ­ ÁøÇà.
+        // RpcTarget : ì–´ë–¤ í´ë¼ì´ì–¸íŠ¸ì—ê²Œ ë™ê¸°í™”ë¥¼ ì§•í–‰í•  ê²ƒì¸ì§€, Allì´ë©´ ëª¨ë“  í´ë¼ì´ì–¸íŠ¸ë“¤ì—ê²Œ ë™ê¸°í™” ì§„í–‰.
         photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
     }
 
@@ -226,6 +228,26 @@ public class PlayerHUD : MonoBehaviourPun
     private void RPCInitScore()
     {
         scoreTMPro.text = $"0        0";
+    }
+
+    public void ActivationGameWinUI_Nexus(string tag)
+    {
+        isGameEnd = true;
+        string gameWinMessage = "";
+
+        if (tag == "Red")
+        {
+            winner = "Blue";
+            gameWinMessage = "Blue Team Win!";
+        }
+        else
+        {
+            winner = "Red";
+            gameWinMessage = "Red Team Win!";
+        }
+
+        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
+        StartCoroutine(DelayToTimeScale());
     }
 
     [PunRPC]
