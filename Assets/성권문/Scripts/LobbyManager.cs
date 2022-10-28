@@ -157,6 +157,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         // 매칭 취소
         matChingObj.SetActive(false);
+        playButton.interactable = true;
         // 방을 떠남
         PhotonNetwork.LeaveRoom();
 
