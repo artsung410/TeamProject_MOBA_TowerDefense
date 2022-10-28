@@ -65,7 +65,7 @@ public class EnemySatatus : Enemybase
         if(_eminiomtype == EMINIOMTYPE.Nomal)
         {
             Debug.Log("노멀");
-            attackRange = 3f;
+            attackRange = 4f;
         }
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
@@ -89,7 +89,7 @@ public class EnemySatatus : Enemybase
             {
                 if (_eminiomtype == EMINIOMTYPE.Nomal) //공격범위 초기화
                 {
-                    attackRange = 3f;
+                    attackRange = 4f;
                 }
                 if (_eminiomtype == EMINIOMTYPE.Special)
                 {
@@ -118,7 +118,7 @@ public class EnemySatatus : Enemybase
             {
                 if (_eminiomtype == EMINIOMTYPE.Nomal) //공격범위 초기화
                 {
-                    attackRange = 3f;
+                    attackRange = 4f;
                 }
                 if (_eminiomtype == EMINIOMTYPE.Special)
                 {
@@ -141,6 +141,7 @@ public class EnemySatatus : Enemybase
                 _estate = ESTATE.move;
                 _animator.SetBool("Attack", false);
                 _navMeshAgent.isStopped = false;
+                Targeton = false;
                 break;
             }
             yield return null;
@@ -183,9 +184,9 @@ public class EnemySatatus : Enemybase
                 {
                     if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 12) //타워랑 넥서스만 공격가능
                     {
-                        if (collider.gameObject.layer == 12 && _eminiomtype == EMINIOMTYPE.Special)
+                        if (collider.gameObject.layer == 12)
                         {
-                            attackRange = 13f;
+                            attackRange = 12f;
                         }
                         Targeton = true;
                         _target = collider.transform;
@@ -196,9 +197,14 @@ public class EnemySatatus : Enemybase
                 {
                     if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 7 || collider.gameObject.layer == 8 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
                     {
-                        if (collider.gameObject.layer == 12 && _eminiomtype == EMINIOMTYPE.Nomal)
+                        if (_eminiomtype == EMINIOMTYPE.Nomal && collider.gameObject.layer == 6)
                         {
-                            attackRange = 13f;
+                            attackRange = 6f;
+                        }
+
+                            if (collider.gameObject.layer == 12)
+                        {
+                            attackRange = 12f;
                         }
                         Targeton = true;
                         _target = collider.transform;
