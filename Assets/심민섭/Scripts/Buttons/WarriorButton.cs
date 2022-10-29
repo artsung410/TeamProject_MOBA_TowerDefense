@@ -14,7 +14,7 @@ public class WarriorButton : MonoBehaviour
 
     public void OpenWarriorTab()
     {
-        openWarriorTab = !openWarriorTab;
+        openWarriorTab = true;
         gameObject.SetActive(openWarriorTab);
 
         // ¥Ÿ∏• ≈‹¿∫ ¥Ÿ ¥›±‚
