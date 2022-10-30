@@ -13,7 +13,7 @@ public class AssassinButton : MonoBehaviour
 
     public void OpenAssassTab()
     {
-        openAssassinTab = !openAssassinTab;
+        openAssassinTab = true;
         gameObject.SetActive(openAssassinTab);
 
         // ¥Ÿ∏• ≈‹¿∫ ¥Ÿ ¥›±‚

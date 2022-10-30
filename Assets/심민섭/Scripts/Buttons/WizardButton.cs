@@ -13,7 +13,7 @@ public class WizardButton : MonoBehaviour
 
     public void OpenWizardTab()
     {
-        openWizardTab = !openWizardTab;
+        openWizardTab = true;
         gameObject.SetActive(openWizardTab);
 
         // ¥Ÿ∏• ≈‹¿∫ ¥Ÿ ¥›±‚

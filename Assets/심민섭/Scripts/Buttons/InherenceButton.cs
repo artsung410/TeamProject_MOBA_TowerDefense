@@ -13,7 +13,7 @@ public class InherenceButton : MonoBehaviour
 
     public void OpenInherenceTab()
     {
-        openInherenceTab = !openInherenceTab;
+        openInherenceTab = true;
         gameObject.SetActive(openInherenceTab);
 
         // ¥Ÿ∏• ≈‹¿∫ ¥Ÿ ¥›±‚
