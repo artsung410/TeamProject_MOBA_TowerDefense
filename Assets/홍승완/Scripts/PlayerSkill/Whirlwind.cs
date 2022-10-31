@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class SpritSword : SkillHandler
+public class Whirlwind : SkillHandler
 {
     // ###############################################
     //             NAME : HongSW                      
@@ -11,7 +11,7 @@ public class SpritSword : SkillHandler
     // ###############################################
 
     #region Private 변수들
-    
+
     Quaternion quaternion;
     float elapsedTime;
     string enemyTag;
@@ -30,8 +30,7 @@ public class SpritSword : SkillHandler
         Damage = SetDamage;
     }
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         if (_ability == null)
         {
@@ -70,29 +69,19 @@ public class SpritSword : SkillHandler
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
             SkillHoldingTime(HoldingTime);
-
         }
     }
 
     public void SkillUpdatePosition()
     {
-        // 발사체는 앞으로 날아가게끔 한다
-        transform.Translate(Time.deltaTime * Speed * Vector3.forward);
 
-        // 회전부분은 처음회전위치에서 날아간다
-        transform.rotation = quaternion;
     }
-
-
-
-
 
     public override void SkillDamage(float damage, GameObject target)
     {
@@ -107,13 +96,10 @@ public class SpritSword : SkillHandler
         }
         else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
         {
-            Debug.Log("1. 들어왓");
             Enemybase minion = target.GetComponent<Enemybase>();
 
             if (minion != null)
             {
-                Debug.Log("2. 보내잇@");
-
                 minion.TakeDamage(damage);
             }
         }
@@ -129,17 +115,6 @@ public class SpritSword : SkillHandler
             if (photonView.IsMine)
             {
                 PhotonNetwork.Destroy(gameObject);
-            }
-        }
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (photonView.IsMine)
-        {
-            if (other.CompareTag(enemyTag))
-            {
-                SkillDamage(Damage, other.gameObject);
             }
         }
     }

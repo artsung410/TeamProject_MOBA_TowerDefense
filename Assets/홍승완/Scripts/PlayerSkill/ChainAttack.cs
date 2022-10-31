@@ -34,6 +34,7 @@ public class ChainAttack : SkillHandler
     private void OnEnable()
     {
         elapsedTime = 0f;
+        Damage = SetDamage;
     }
 
     // Start is called before the first frame update
@@ -91,6 +92,13 @@ public class ChainAttack : SkillHandler
             return;
         }
 
+        if (_ability.gameObject.GetComponent<Health>().isDeath == true)
+        {
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
+        }
 
         SkillUpdatePosition();
 
@@ -128,8 +136,6 @@ public class ChainAttack : SkillHandler
                     isDamage = false;
                     float tickDamage = Damage / 10;
                     SkillDamage(tickDamage, other.gameObject);
-                    //cnt++;
-                    //Debug.Log(cnt);
                 }
             }
         }
