@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using Photon.Pun;
 
     // ###############################################
     //             NAME : ARTSUNG                      
     //             MAIL : artsung410@gmail.com         
     // ###############################################
 
-public class BuffManager : MonoBehaviour
+public class BuffManager : MonoBehaviourPun
 {
     public List<BuffData> currentBuffDatas = new List<BuffData>(); // 각 월드에서 생성된 모든 버프들
     public static BuffManager Instance;
@@ -69,6 +70,14 @@ public class BuffManager : MonoBehaviour
         currentBuffDatas.Remove(buff);
     }
 
+    public void removeBuff_All()
+    {
+        for (int i = currentBuffDatas.Count - 1; i >= 0; i--)
+        {
+            currentBuffDatas.Remove(currentBuffDatas[i]);
+        }
+    }
+
     public void AssemblyBuff()
     {
         for (int i = 0; i < transform.childCount; i++)
@@ -89,7 +98,6 @@ public class BuffManager : MonoBehaviour
             {
                 if (buffDic.ContainsKey(currentBuffDatas[i]))
                 {
-                    Debug.Log("여긴 cool");
                     transform.GetChild(i).GetComponent<BuffIcon>().elapsedTime = buffDic[currentBuffDatas[i]];
                     buffDic.Remove(currentBuffDatas[i]);
                 }

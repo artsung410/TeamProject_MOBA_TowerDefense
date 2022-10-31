@@ -13,6 +13,13 @@ public class GameExitButton : MonoBehaviourPunCallbacks
     // ###############################################
 
     // 정상적인 게임에서 나가기 설정 (한명이 탈주하면 같은 방 사람들 모두 나가짐)
+    public static GameExitButton Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     public void LeaveRoom()
     {
         photonView.RPC("PlayerLeaveGameRoom", RpcTarget.All);

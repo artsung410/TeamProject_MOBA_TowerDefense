@@ -78,6 +78,7 @@ public class PlayerHUD : MonoBehaviourPun
         second = time % 3600 % 60;
         min = minute;
         sec = second;
+        resetPlayerUI();
     }
 
     private void Start()
@@ -167,6 +168,7 @@ public class PlayerHUD : MonoBehaviourPun
             sec = 0;
             timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
             isGameEnd = true;
+            StartCoroutine(DelayLeaveRoom());
             return;
         }
     }
@@ -240,6 +242,7 @@ public class PlayerHUD : MonoBehaviourPun
         }
 
         photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, winner);
+        StartCoroutine(DelayLeaveRoom());
     }
 
     [PunRPC]
@@ -255,6 +258,21 @@ public class PlayerHUD : MonoBehaviourPun
         }
 
         GameWinPanel.SetActive(true);
+    }
+
+    private IEnumerator DelayLeaveRoom()
+    {
+        yield return new WaitForSeconds(5f);
+        GameExitButton.Instance.LeaveRoom();
+    }
+
+    public void resetPlayerUI()
+    {
+        playerScores[0] = 0;
+        playerScores[1] = 0;
+        photonView.RPC("RPCInitScore", RpcTarget.All);
+        isGameEnd = false;
+        winner = "";
     }
 
 }
