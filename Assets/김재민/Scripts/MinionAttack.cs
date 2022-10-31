@@ -39,7 +39,7 @@ public class MinionAttack : MonoBehaviour
         {
             EnemyTagNullCheck();
 
-            Debug.Log("여기들어오는건가?");
+            //Debug.Log("여기들어오는건가?");
             if(other.gameObject.layer == 8 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // 미니언 공격
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(PistonDamage);

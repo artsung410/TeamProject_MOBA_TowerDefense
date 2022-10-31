@@ -89,7 +89,7 @@ public class BuffManager : MonoBehaviour
             {
                 if (buffDic.ContainsKey(currentBuffDatas[i]))
                 {
-                    Debug.Log("여긴 cool");
+                    //Debug.Log("여긴 cool");
                     transform.GetChild(i).GetComponent<BuffIcon>().elapsedTime = buffDic[currentBuffDatas[i]];
                     buffDic.Remove(currentBuffDatas[i]);
                 }

@@ -48,6 +48,7 @@ public class HeroAbility : MonoBehaviourPun
         yield return new WaitForSeconds(0.5f);
         for (int i = 0; i < 4; i++)
         {
+            Debug.Log(PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>());
             coolTimeImgs[i] = PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>();
         }
     }

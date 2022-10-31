@@ -59,14 +59,14 @@ public class Turret : MonoBehaviourPun
 
     public void Damage(float damage)
     {
-        Debug.Log("Damage 利侩");
+        //Debug.Log("Damage 利侩");
         photonView.RPC("TakeDamage", RpcTarget.All, damage);
     }
 
     [PunRPC]
     public void TakeDamage(float damage)
     {
-        Debug.Log("Damage RPC利侩");
+        //Debug.Log("Damage RPC利侩");
 
         currentHealth -= damage;
         healthbarImage.fillAmount = currentHealth / maxHealth;

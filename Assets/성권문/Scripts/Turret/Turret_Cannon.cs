@@ -146,7 +146,7 @@ public class Turret_Cannon : Turret
             bullet.Seek(shotTransform);
         }
 
-        Debug.Log("SHOOT!");
+        //Debug.Log("SHOOT!");
     }
 
     // 범위 그리기
