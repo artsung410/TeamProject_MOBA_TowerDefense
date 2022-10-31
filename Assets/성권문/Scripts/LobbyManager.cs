@@ -79,7 +79,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             // 서버에 접속이 되어있다면
             OnConnectedToMaster();
         }
-        
     }
 
     // 마스터 서버에 접속 시도 / 자동실행
