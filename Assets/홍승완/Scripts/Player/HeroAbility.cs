@@ -14,13 +14,14 @@ public class HeroAbility : MonoBehaviourPun
 
     public GameObject[] AbilityPrefabs;
     public Transform skillSpawn;
-    public Image[] coolTimeImgs;
+    //public Image[] coolTimeImgs;
+    public SkillCoolTimeManager coolTimeManager;
 
     GameObject go;
 
     #region private 변수들
-    bool[] isCoolDown = new bool[4];
-    float[] skillCoolTimeArr = new float[4];
+    //bool[] isCoolDown = new bool[4];
+    //float[] skillCoolTimeArr = new float[4];
 
     #endregion
 
@@ -33,6 +34,7 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
+        AbilityPrefabs = new GameObject[count];
         for (int i = 0; i < count; i++)
         {
             // 트로이목마 안에 있는 아이템 프리팹 게임상에서 가져오기
@@ -40,20 +42,20 @@ public class HeroAbility : MonoBehaviourPun
         }
     }
 
-    void Start()
-    {
-        StartCoroutine(Init());
-    }
+    //void Start()
+    //{
+    //    StartCoroutine(Init());
+    //}
 
-    IEnumerator Init()
-    {
-        yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < 4; i++)
-        {
-            Debug.Log(PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>());
-            coolTimeImgs[i] = PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>();
-        }
-    }
+    //IEnumerator Init()
+    //{
+    //    coolTimeImgs = new Image[AbilityPrefabs.Length];
+    //    yield return new WaitForSeconds(0.5f);
+    //    for (int i = 0; i < 4; i++)
+    //    {
+    //        coolTimeImgs[i] = PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>();
+    //    }
+    //}
 
     void Update()
     {
@@ -81,30 +83,17 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Q) && isCoolDown[0] == false)
+        if (Input.GetKeyDown(KeyCode.Q) && coolTimeManager.isCoolDown[0] == false)
         {
-            isCoolDown[0] = true;
-            coolTimeImgs[0].fillAmount = 1;
+            coolTimeManager.isCoolDown[0] = true;
+            coolTimeManager.coolTimeImgs[0].fillAmount = 1;
 
-            // q의 데미지
-            //AbilityPrefabs[0].GetComponent<ChainAttack>().Damage = SkillManager.Instance.atk[0];
             AbilityPrefabs[0].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[0];
 
-            // q의 쿨타임
-            skillCoolTimeArr[0] = SkillManager.Instance.time[0];
-
             go = PhotonNetwork.Instantiate(AbilityPrefabs[0].name, skillSpawn.position, Quaternion.identity);
+
         }
 
-        if (isCoolDown[0])
-        {
-            coolTimeImgs[0].fillAmount -= 1 / skillCoolTimeArr[0] * Time.deltaTime;
-            if (coolTimeImgs[0].fillAmount <= 0f)
-            {
-                coolTimeImgs[0].fillAmount = 0f;
-                isCoolDown[0] = false;
-            }
-        }
 
     }
 
@@ -116,27 +105,28 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.W) && isCoolDown[1] == false)
+        if (Input.GetKeyDown(KeyCode.W) && coolTimeManager.isCoolDown[1] == false)
         {
-            isCoolDown[1] = true;
-            coolTimeImgs[1].fillAmount = 1;
+            coolTimeManager.isCoolDown[1] = true;
+            coolTimeManager.coolTimeImgs[1].fillAmount = 1;
+
 
             AbilityPrefabs[1].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[1];
 
-            skillCoolTimeArr[1] = SkillManager.Instance.time[1];
+            //skillCoolTimeArr[1] = SkillManager.Instance.time[1];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);
         }
 
-        if (isCoolDown[1])
-        {
-            coolTimeImgs[1].fillAmount -= 1 / skillCoolTimeArr[1] * Time.deltaTime;
-            if (coolTimeImgs[1].fillAmount <= 0f)
-            {
-                coolTimeImgs[1].fillAmount = 0f;
-                isCoolDown[1] = false;
-            }
-        }
+        //if (isCoolDown[1])
+        //{
+        //    coolTimeImgs[1].fillAmount -= 1 / skillCoolTimeArr[1] * Time.deltaTime;
+        //    if (coolTimeImgs[1].fillAmount <= 0f)
+        //    {
+        //        coolTimeImgs[1].fillAmount = 0f;
+        //        isCoolDown[1] = false;
+        //    }
+        //}
     }
 
     private void AbilityE()
@@ -146,26 +136,27 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && isCoolDown[2] == false)
+        if (Input.GetKeyDown(KeyCode.E) && coolTimeManager.isCoolDown[2] == false)
         {
-            isCoolDown[2] = true;
-            coolTimeImgs[2].fillAmount = 1;
+            coolTimeManager.isCoolDown[2] = true;
+            coolTimeManager.coolTimeImgs[2].fillAmount = 1;
+
 
             AbilityPrefabs[2].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[2];
-            skillCoolTimeArr[2] = SkillManager.Instance.time[2];
+            //skillCoolTimeArr[2] = SkillManager.Instance.time[2];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
         }
 
-        if (isCoolDown[2])
-        {
-            coolTimeImgs[2].fillAmount -= 1 / skillCoolTimeArr[2] * Time.deltaTime;
-            if (coolTimeImgs[2].fillAmount <= 0f)
-            {
-                coolTimeImgs[2].fillAmount = 0f;
-                isCoolDown[2] = false;
-            }
-        }
+        //if (isCoolDown[2])
+        //{
+        //    coolTimeImgs[2].fillAmount -= 1 / skillCoolTimeArr[2] * Time.deltaTime;
+        //    if (coolTimeImgs[2].fillAmount <= 0f)
+        //    {
+        //        coolTimeImgs[2].fillAmount = 0f;
+        //        isCoolDown[2] = false;
+        //    }
+        //}
     }
 
 
@@ -176,27 +167,29 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.R) && isCoolDown[3] == false)
+        if (Input.GetKeyDown(KeyCode.R) && coolTimeManager.isCoolDown[3] == false)
         {
-            isCoolDown[3] = true;
-            coolTimeImgs[3].fillAmount = 1;
+            coolTimeManager.isCoolDown[3] = true;
+            coolTimeManager.coolTimeImgs[3].fillAmount = 1;
+            coolTimeManager.CoolTimeCheckR();
+
 
             AbilityPrefabs[3].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[3];
-            skillCoolTimeArr[3] = SkillManager.Instance.time[3];
+            //skillCoolTimeArr[3] = SkillManager.Instance.time[3];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
         }
 
-        if (isCoolDown[3])
-        {
-            coolTimeImgs[3].fillAmount -= 1 / skillCoolTimeArr[3] * Time.deltaTime;
+        //if (isCoolDown[3])
+        //{
+        //    coolTimeImgs[3].fillAmount -= 1 / skillCoolTimeArr[3] * Time.deltaTime;
 
-            if (coolTimeImgs[3].fillAmount <= 0f)
-            {
-                coolTimeImgs[3].fillAmount = 0f;
-                isCoolDown[3] = false;
-            }
-        }
+        //    if (coolTimeImgs[3].fillAmount <= 0f)
+        //    {
+        //        coolTimeImgs[3].fillAmount = 0f;
+        //        isCoolDown[3] = false;
+        //    }
+        //}
     }
 
 
