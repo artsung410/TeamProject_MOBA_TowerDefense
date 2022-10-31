@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.AI;
 
 public class Enemybase : MonoBehaviourPun
 {
@@ -29,6 +30,20 @@ public class Enemybase : MonoBehaviourPun
     [HideInInspector]
     public string myTag;
 
+    protected NavMeshAgent _navMeshAgent;
+    protected Animator _animator;
+    private CapsuleCollider _capsuleCollider;
+    protected Transform Diepos;
+   
+
+    
+    protected virtual void Awake()
+    {
+        _navMeshAgent = GetComponent<NavMeshAgent>();
+           _animator = GetComponent<Animator>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();   
+
+    }
 
     protected virtual void OnEnable() // 생성
     {
@@ -80,11 +95,18 @@ public class Enemybase : MonoBehaviourPun
     public void RPC_TakeDamage(float Damage)
     {
         CurrnetHP -= Damage;
-        if(CurrnetHP <= 0)
+        if (CurrnetHP <= 0)
         {
-        Destroy(transform.parent.gameObject);
+            gameObject.GetComponent<EnemySatatus>().enabled = false;
+            _capsuleCollider.enabled = false;
+            _navMeshAgent.isStopped = true;
+            _animator.SetTrigger("Die");
         }
-        
+
+    }
+    public void Death()
+    {
+        Destroy(transform.parent.gameObject);
     }
 
 }

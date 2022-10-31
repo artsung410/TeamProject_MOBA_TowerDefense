@@ -109,7 +109,7 @@ RectTransform:
   m_Children:
   - {fileID: 1951989515682195527}
   m_Father: {fileID: 8808627454346318816}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -448,6 +448,9 @@ GameObject:
   - component: {fileID: 45674186977567958}
   - component: {fileID: 7399838752102529427}
   - component: {fileID: 8137558571576216322}
+  - component: {fileID: 3445444363541170869}
+  - component: {fileID: 5572962301733146602}
+  - component: {fileID: 1241559810845846547}
   m_Layer: 5
   m_Name: Circle
   m_TagString: Untagged
@@ -463,17 +466,17 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2873319653520250633}
   m_LocalRotation: {x: -0, y: 0.7071068, z: 0.7071068, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: -0.6}
-  m_LocalScale: {x: 0.085493006, y: 0.07615821, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1.5}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2828323308753775707}
-  m_Father: {fileID: 6607732890056490866}
-  m_RootOrder: 53
+  m_Father: {fileID: 8808627454346318816}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 180, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.02, y: 100}
+  m_AnchoredPosition: {x: -0.049999997, y: 250}
   m_SizeDelta: {x: 5, y: 5}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &45674186977567958
@@ -537,6 +540,58 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &3445444363541170869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873319653520250633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29921b7f378712c4fb4056dd45a3a77f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minionPosUi: {fileID: 6607732890056490866}
+--- !u!114 &5572962301733146602
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873319653520250633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 1241559810845846547}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &1241559810845846547
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2873319653520250633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &6607732890056581760
 GameObject:
   m_ObjectHideFlags: 0
@@ -4438,7 +4493,6 @@ Transform:
   - {fileID: 6607732890056490804}
   - {fileID: 6607732890056490846}
   - {fileID: 6607732890056490812}
-  - {fileID: 7697878585470449523}
   m_Father: {fileID: 8808627454346318816}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4546,6 +4600,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: Attack
+  - Type: 9
+    SynchronizeType: 0
+    Name: Die
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -9562,6 +9619,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6607732890056490866}
+  - {fileID: 7697878585470449523}
   - {fileID: 1951989515303424479}
   m_Father: {fileID: 0}
   m_RootOrder: 0
