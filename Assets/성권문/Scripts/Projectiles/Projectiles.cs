@@ -75,10 +75,20 @@ public class Projectiles : MonoBehaviourPun
         {
             Enemybase minion = enemy.GetComponent<Enemybase>();
 
-
             if (minion != null)
             {
                 minion.TakeDamage(damage);
+            }
+        }
+
+        // 스페셜 미니언 데미지 적용
+        else if (enemy.gameObject.layer == 13)
+        {
+            Enemybase special_minion = enemy.GetComponent<Enemybase>();
+
+            if (special_minion != null)
+            {
+                special_minion.TakeDamage(damage);
             }
         }
     }

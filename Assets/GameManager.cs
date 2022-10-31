@@ -62,7 +62,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 플레이어 미니맵에 띄우기
     public GameObject CharacterCircle;
     public GameObject MinionCircle;
-
     public GameObject specialPFs;
 
     private void Awake()
@@ -118,8 +117,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     // 타워 생성
-
-
     private void SpawnTower()
     {
         int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
@@ -176,8 +173,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SapwnSpecial()
     {
-
-
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             if (minionTowerPos[0] == null)
