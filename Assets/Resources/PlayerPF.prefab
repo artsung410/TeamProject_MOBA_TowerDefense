@@ -321,6 +321,7 @@ Transform:
   - {fileID: 2271650960913031959}
   - {fileID: 7970178343526229964}
   - {fileID: 2126209294873041885}
+  - {fileID: 7535818404989782620}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2804,13 +2805,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 032be4a37d7b7f34e832c42ac5e7be81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  AbilityPrefabs:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  AbilityPrefabs: []
   skillSpawn: {fileID: 386571534135840048}
   coolTimeImgs: []
+  coolTimeManager: {fileID: 5572691436845342093}
 --- !u!136 &962274781265193606
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3330,6 +3328,52 @@ Transform:
   m_Father: {fileID: 3088219797240152257}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8843973709334073287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7535818404989782620}
+  - component: {fileID: 5572691436845342093}
+  m_Layer: 0
+  m_Name: SkillCoolTimeManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7535818404989782620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843973709334073287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3960095213218978512}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5572691436845342093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843973709334073287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2281c1051d734a64b8e6d5dfba394b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coolTimeImgs: []
+  isCoolDown: 
 --- !u!1 &8851591303645017170
 GameObject:
   m_ObjectHideFlags: 0
