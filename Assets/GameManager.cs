@@ -31,8 +31,10 @@ public enum Skill
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public static event Action onGameEndEvent = delegate { };
     public static event Action<int> onHpEvent = delegate { };
     public event Action onPlayerEvnet = delegate { };
+
 
     public static GameManager Instance
     {
@@ -64,6 +66,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     public GameObject MinionCircle;
     public GameObject specialPFs;
 
+    public bool isGameEnd;
+    public string winner;
+
     private void Awake()
     {
         SpawnPlayer();
@@ -80,13 +85,17 @@ public class GameManager : MonoBehaviourPunCallbacks
     float minionSpawnTime = 20f;
     private void Update()
     {
+        if (GameManager.Instance.isGameEnd == true)
+        {
+            return;
+        }
+
         elaspedTime += Time.deltaTime;
         if (elaspedTime >= minionSpawnTime)
         {
             elaspedTime = 0;
             SpawnEnemy();
             SapwnSpecial();
-
         }
     }
 

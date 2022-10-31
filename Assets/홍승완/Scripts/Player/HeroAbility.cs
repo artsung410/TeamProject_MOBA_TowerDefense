@@ -59,6 +59,12 @@ public class HeroAbility : MonoBehaviourPun
 
     void Update()
     {
+        // 게임 끝나면 정지
+        if (GameManager.Instance.isGameEnd == true)
+        {
+            return;
+        }
+
         if (photonView.IsMine)
         {
             AbilityQ();
@@ -73,7 +79,6 @@ public class HeroAbility : MonoBehaviourPun
                 go.GetComponent<SkillHandler>().GetMousePos(this.GetComponent<PlayerBehaviour>());
             }
         }
-
     }
 
     private void AbilityQ()

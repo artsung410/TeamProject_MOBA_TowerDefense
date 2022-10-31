@@ -14,7 +14,7 @@ public class WinnerManager : MonoBehaviour
 
     private void Update()
     {
-        if (PlayerHUD.Instance.isGameEnd)
+        if (GameManager.Instance.isGameEnd)
         {
             Instantiate(WinPostAPICallerPre, Vector3.zero, Quaternion.identity);
             Destroy(gameObject);

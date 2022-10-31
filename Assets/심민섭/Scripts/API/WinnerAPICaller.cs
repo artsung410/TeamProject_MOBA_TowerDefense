@@ -17,13 +17,11 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
     // ###############################################
     private GameObject apiStorageObj;
     private APIStorage aPIStorage;
-    private PlayerHUD playerHUD;
 
     private void Awake()
     {
         apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
         aPIStorage = apiStorageObj.GetComponent<APIStorage>();
-        playerHUD = PlayerHUD.Instance.GetComponent<PlayerHUD>();
     }
 
     private void Start()
@@ -42,7 +40,7 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
 
         winner winnerBet = new winner();
         winnerBet.betting_id = aPIStorage.betting_id;
-        if (playerHUD.winner == "Blue")
+        if (GameManager.Instance.winner == "Blue")
         {
             winnerBet.winner_player_id = aPIStorage._id[0];
         }

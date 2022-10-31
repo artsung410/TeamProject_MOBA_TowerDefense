@@ -21,6 +21,12 @@ public class Turret : MonoBehaviourPun
     [Header("타겟 TAG")]
     public string enemyTag;
     private GameObject newDestroyParticle;
+
+    protected void Awake()
+    {
+        PlayerHUD.onGameEnd += Destroy_gameEnd;
+    }
+
     protected void OnEnable()
     {
         currentHealth = maxHealth;
@@ -60,6 +66,13 @@ public class Turret : MonoBehaviourPun
     public void Damage(float damage)
     {
         //Debug.Log("Damage 적용");
+
+        // 게임 끝나면 정지
+        if (GameManager.Instance.isGameEnd == true)
+        {
+            return;
+        }
+
         photonView.RPC("TakeDamage", RpcTarget.All, damage);
     }
 
@@ -76,6 +89,16 @@ public class Turret : MonoBehaviourPun
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
+    }
+
+    public void Destroy_gameEnd()
+    {
+        if (this == null)
+        {
+            return;
+        }
+
+        photonView.RPC("Destroy", RpcTarget.All);
     }
 
     [PunRPC]
@@ -110,6 +133,6 @@ public class Turret : MonoBehaviourPun
     {
         yield return new WaitForSeconds(1.5f);
         Destroy(particle);
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

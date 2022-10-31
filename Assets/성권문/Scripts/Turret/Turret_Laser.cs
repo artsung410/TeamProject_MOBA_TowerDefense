@@ -12,7 +12,6 @@ public class Turret_Laser : Turret
 
     [Header("공격주기(초당 n번 발사)")]
     public float fireRate = 1f;
-    private float fireCountdown = 0f;
 
     [Header("회전체")]
     public Transform partToRotate;
