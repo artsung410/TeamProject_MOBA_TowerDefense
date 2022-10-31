@@ -12,7 +12,7 @@ using Photon.Pun;
 
 public class BuffManager : MonoBehaviourPun
 {
-    public List<BuffData> currentBuffDatas = new List<BuffData>(); // °¢ ¿ùµå¿¡¼­ »ı¼ºµÈ ¸ğµç ¹öÇÁµé
+    public List<BuffData> currentBuffDatas = new List<BuffData>(); // ê° ì›”ë“œì—ì„œ ìƒì„±ëœ ëª¨ë“  ë²„í”„ë“¤
     public static BuffManager Instance;
     public Dictionary<BuffData, float> buffDic = new Dictionary<BuffData, float>();
 
@@ -92,7 +92,7 @@ public class BuffManager : MonoBehaviourPun
         for (int i = 0; i < currentBuffDatas.Count; i++)
         {
             transform.GetChild(i).gameObject.SetActive(true);
-            transform.GetChild(i).GetComponent<BuffIcon>().buff = currentBuffDatas[i]; // ½½·Ô¸¶´Ù ¹öÇÁµ¥ÀÌÅÍ ¼¼ÆÃ
+            transform.GetChild(i).GetComponent<BuffIcon>().buff = currentBuffDatas[i]; // ìŠ¬ë¡¯ë§ˆë‹¤ ë²„í”„ë°ì´í„° ì„¸íŒ…
 
             if (buffDic.Count > 0)
             {
@@ -103,11 +103,11 @@ public class BuffManager : MonoBehaviourPun
                 }
             }
 
-            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].Effect_Duration; // ½½·Ô¸¶´Ù ¹öÇÁÄğÅ¸ÀÓ ¼¼ÆÃ
-            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].buffIcon; // ½½·Ô ¹öÇÁÀÌ¹ÌÁö Àû¿ë
+            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].Effect_Duration; // ìŠ¬ë¡¯ë§ˆë‹¤ ë²„í”„ì¿¨íƒ€ì„ ì„¸íŒ…
+            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].buffIcon; // ìŠ¬ë¡¯ ë²„í”„ì´ë¯¸ì§€ ì ìš©
             Color color = transform.GetChild(i).GetComponent<Image>().color; 
             color.a = 1f;
-            gameObject.transform.GetChild(i).GetComponent<Image>().color = color; // ½½·Ô ¹öÇÁÀÌ¹ÌÁö Åõ¸íµµ 1·Î Àû¿ë
+            gameObject.transform.GetChild(i).GetComponent<Image>().color = color; // ìŠ¬ë¡¯ ë²„í”„ì´ë¯¸ì§€ íˆ¬ëª…ë„ 1ë¡œ ì ìš©
         }
     }
 }

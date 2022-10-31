@@ -83,6 +83,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     {
         // 되살아났을때 null
         targetedEnemy = null;
+        StartCoroutine(DetectEnemyRange());
     }
 
     private void Start()
@@ -123,9 +124,13 @@ public class PlayerBehaviour : MonoBehaviourPun
             }
         }
 
-        StartCoroutine(DetectEnemyRange());
+        
     }
 
+    /// <summary>
+    /// 주변의 적군 플레이어 감지
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DetectEnemyRange()
     {
         while (true)
@@ -140,10 +145,10 @@ public class PlayerBehaviour : MonoBehaviourPun
                     {
                         if (_col.gameObject.GetComponent<Health>() != null)
                         {
+                            // 적이 죽은 상태라면 더이상 공격하지 않는다
                             if (_col.gameObject.GetComponent<Health>().isDeath == true)
                             {
                                 targetedEnemy = null;
-                                AutoSearchTarget();
                             }
 
                         }
@@ -173,7 +178,6 @@ public class PlayerBehaviour : MonoBehaviourPun
                 _agent.stoppingDistance = 0f;
 
                 CancelInvoke(nameof(AutoSearchTarget));
-
             }
 
             if (_playerHealth.isDeath == false)
@@ -182,6 +186,16 @@ public class PlayerBehaviour : MonoBehaviourPun
             }
 
         }
+    }
+
+    private void IsPlayerDie()
+    {
+        // 그자리에서 죽음
+        _agent.SetDestination(CurrentPlayerPos);
+        _agent.stoppingDistance = 0f;
+
+        // 적 찾기 멈춤
+        CancelInvoke(nameof(AutoSearchTarget));
     }
 
     public Ray ray;
@@ -460,7 +474,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
-    // 애니메이션 이벤트 관련 메소드
+    #region Animation Event
     public void SwordSwingAtTheEnemy()
     {
         if (enemyCol == null)
@@ -486,6 +500,8 @@ public class PlayerBehaviour : MonoBehaviourPun
             enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_statScript.attackDmg);
         }
     }
+
+    #endregion
 
     private void OnDisable()
     {

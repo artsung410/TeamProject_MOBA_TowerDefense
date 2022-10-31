@@ -19,7 +19,7 @@ public class Arrow : Projectiles
 
     public void Seek(Transform _target)
     {
-        Debug.Log("Arrow Seek�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�");
+        //Debug.Log("Arrow Seek�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�");
         target = _target;
     }
 
@@ -34,7 +34,7 @@ public class Arrow : Projectiles
         Vector3 dir = target.position - transform.position; 
         float distanceThisFrame = speed * Time.deltaTime;
 
-        Debug.Log("Arrow Dir�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�" + dir);
+        //Debug.Log("Arrow Dir�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�" + dir);
         if (dir.magnitude <= distanceThisFrame)
         {
             HitTarget();
@@ -43,14 +43,14 @@ public class Arrow : Projectiles
 
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
-        Debug.Log("Arrow Translate�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�" + dir);
+        //Debug.Log("Arrow Translate�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�" + dir);
 
         transform.LookAt(target);
     }
 
     void HitTarget()
     {
-        Debug.Log("Arrow HitTarget�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�");
+        //Debug.Log("Arrow HitTarget�ڡڡڡڡڡڡڡڡڡڡڡڡڡڡ�");
         GameObject effectIns = (GameObject)Instantiate(ImpactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 2f);
 
