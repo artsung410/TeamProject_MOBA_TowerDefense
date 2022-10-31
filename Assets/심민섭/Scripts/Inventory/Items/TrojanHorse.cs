@@ -67,6 +67,17 @@ public class TrojanHorse: MonoBehaviour
 
     public void PlayerTrojanInfo()
     {
+        skillIndex.Clear();
+        skillId.Clear();
+        skillCName.Clear();
+        skillItems.Clear();
+
+        cardIndex.Clear();
+        cardId.Clear();
+        cardName.Clear();
+        cardPrefab.Clear();
+        cardItems.Clear();
+
         // PlayerNumber 받기
         playerNumber = GetComponent<PlayerStorage>().playerNumber;
 
