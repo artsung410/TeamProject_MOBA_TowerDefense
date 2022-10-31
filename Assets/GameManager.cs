@@ -161,13 +161,21 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
+            if (EnemyPrefabs[0] == null || EnemyPrefabs[1] == null)
+            {
+                return;
+            }
+
             GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name, spawnPositions[0].position, Quaternion.identity);
 
             GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
         }
-        else
+        else if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
-
+            if (EnemyPrefabs[2] == null || EnemyPrefabs[3] == null)
+            {
+                return ;
+            }
             GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
 
             GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
@@ -188,7 +196,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             GameObject specialminionBlue = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
 
         }
-        else
+        else if(PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
             if (minionTowerPos[1] == null)
             {
