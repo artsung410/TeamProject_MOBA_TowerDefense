@@ -31,8 +31,10 @@ public enum Skill
 
 public class GameManager : MonoBehaviourPunCallbacks
 {
+    public static event Action onGameEndEvent = delegate { };
     public static event Action<int> onHpEvent = delegate { };
     public event Action onPlayerEvnet = delegate { };
+
 
     public static GameManager Instance
     {
@@ -55,14 +57,17 @@ public class GameManager : MonoBehaviourPunCallbacks
     private Transform[] minionTowerPos = new Transform[2];
 
     // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
-    public List<GameObject> CurrentTurrets = new List<GameObject>();// 각 월드에서 생성된 모든 터렛들.
-    public List<GameObject> CurrentPlayers = new List<GameObject>(); // 각 월드에서 생성된 모든 플레이어들.
-    public List<GameObject> CurrentMinions = new List<GameObject>(); // 각 월드에서 생성된 모든 미니언들.
+    public List<GameObject> CurrentTurrets = new List<GameObject>(8);// 각 월드에서 생성된 모든 터렛들.
+    public List<GameObject> CurrentPlayers = new List<GameObject>(2); // 각 월드에서 생성된 모든 플레이어들.
+    //public List<GameObject> CurrentMinions = new List<GameObject>(); // 각 월드에서 생성된 모든 미니언들.
 
     // 플레이어 미니맵에 띄우기
     public GameObject CharacterCircle;
     public GameObject MinionCircle;
     public GameObject specialPFs;
+
+    public bool isGameEnd;
+    public string winner;
 
     private void Awake()
     {
@@ -80,13 +85,17 @@ public class GameManager : MonoBehaviourPunCallbacks
     float minionSpawnTime = 20f;
     private void Update()
     {
+        if (GameManager.Instance.isGameEnd == true)
+        {
+            return;
+        }
+
         elaspedTime += Time.deltaTime;
         if (elaspedTime >= minionSpawnTime)
         {
             elaspedTime = 0;
             SpawnEnemy();
             SapwnSpecial();
-
         }
     }
 

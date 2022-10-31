@@ -12,6 +12,7 @@ public class NexusHp : MonoBehaviourPun
     // ###############################################
     public float CurrentHp;
     public float MaxHp;
+    public GameObject destroyParticle;
     [SerializeField]
     private Slider _slider;
     private void Awake()
@@ -43,7 +44,6 @@ public class NexusHp : MonoBehaviourPun
 
     public void TakeOnDagmage(float Damage)
     {
-
         photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
     }
 
@@ -54,6 +54,7 @@ public class NexusHp : MonoBehaviourPun
         if (CurrentHp <= 0)
         {
             PlayerHUD.Instance.ActivationGameWinUI_Nexus(gameObject.tag);
+            PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
             gameObject.GetComponent<MeshRenderer>().enabled = false;
             transform.GetChild(0).gameObject.SetActive(false);
             

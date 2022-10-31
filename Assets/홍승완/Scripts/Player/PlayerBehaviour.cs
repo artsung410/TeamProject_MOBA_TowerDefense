@@ -163,6 +163,12 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void Update()
     {
+        // 게임 끝나면 정지
+        if (GameManager.Instance.isGameEnd == true)
+        {
+            return;
+        }
+
         // 플레이어 위치정보 카메라로 보냄
         if (photonView.IsMine)
         {

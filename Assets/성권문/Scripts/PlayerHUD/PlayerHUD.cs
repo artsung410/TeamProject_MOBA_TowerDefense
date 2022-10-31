@@ -3,10 +3,11 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-
+using System;
 
 public class PlayerHUD : MonoBehaviourPun
 {
+    public static event Action onGameEnd = delegate { };
     enum Player
     {
         Blue,
@@ -55,8 +56,7 @@ public class PlayerHUD : MonoBehaviourPun
     //public Image redWinImage;
 
     private int[] playerScores = { 0, 0 };
-    public bool isGameEnd;
-    public string winner;
+
     float sec = 0;
     int min = 0;
 
@@ -70,15 +70,16 @@ public class PlayerHUD : MonoBehaviourPun
         // 게임 제한 시간 관련 코드
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         int time = tro.limitedTime;
+
         //시, 분, 초 선언
         int hours, minute, second;
+
         //시간공식
         hours = time / 3600;
         minute = time % 3600 / 60;
         second = time % 3600 % 60;
         min = minute;
         sec = second;
-        resetPlayerUI();
     }
 
     private void Start()
@@ -120,14 +121,21 @@ public class PlayerHUD : MonoBehaviourPun
 
     private void FixedUpdate()
     {
-        if (isGameEnd == false)
+        if (GameManager.Instance.isGameEnd == true)
         {
-            Timer();
+            return;
         }
+        
+        Timer();
     }
 
     void Update()
     {
+        if (GameManager.Instance.isGameEnd == true)
+        {
+            return;
+        }
+
         UpdateHealthUI();
         UpdateEnemyHealthUI();
     }
@@ -136,7 +144,7 @@ public class PlayerHUD : MonoBehaviourPun
     {
         if ((int)sec < 0)
         {
-            sec = 59;
+            sec = 60;
             min--;
         }
 
@@ -149,13 +157,13 @@ public class PlayerHUD : MonoBehaviourPun
 
             if (playerScores[(int)Player.Blue] > playerScores[(int)Player.Red])
             {
-                winner = "Blue";
-                gameWinMessage = winner;
+                GameManager.Instance.winner = "Blue";
+                gameWinMessage = GameManager.Instance.winner;
             }
             else if ((playerScores[(int)Player.Blue] < playerScores[(int)Player.Red]))
             {
-                winner = "Red";
-                gameWinMessage = winner;
+                GameManager.Instance.winner = "Red";
+                gameWinMessage = GameManager.Instance.winner;
             }
             else
             {
@@ -167,7 +175,8 @@ public class PlayerHUD : MonoBehaviourPun
             min = 0;
             sec = 0;
             timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-            isGameEnd = true;
+            GameManager.Instance.isGameEnd = true;
+            onGameEnd.Invoke();
             StartCoroutine(DelayLeaveRoom());
             return;
         }
@@ -227,21 +236,28 @@ public class PlayerHUD : MonoBehaviourPun
 
     public void ActivationGameWinUI_Nexus(string tag)
     {
-        isGameEnd = true;
+        if (GameManager.Instance.isGameEnd == true)
+        {
+            return;
+        }
+
+        GameManager.Instance.isGameEnd = true;
+        onGameEnd.Invoke();
+
         string gameWinMessage = "";
 
         if (tag == "Red")
         {
-            winner = "Blue";
-            gameWinMessage = winner;
+            GameManager.Instance.winner = "Blue";
+            gameWinMessage = GameManager.Instance.winner;
         }
         else
         {
-            winner = "Red";
-            gameWinMessage = winner;
+            GameManager.Instance.winner = "Red";
+            gameWinMessage = GameManager.Instance.winner;
         }
 
-        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, winner);
+        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, GameManager.Instance.winner);
         StartCoroutine(DelayLeaveRoom());
     }
 
@@ -262,17 +278,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     private IEnumerator DelayLeaveRoom()
     {
-        yield return new WaitForSeconds(5f);
-        GameExitButton.Instance.LeaveRoom();
+        yield return new WaitForSeconds(3.5f);
+        PhotonNetwork.LeaveRoom();
     }
-
-    public void resetPlayerUI()
-    {
-        playerScores[0] = 0;
-        playerScores[1] = 0;
-        photonView.RPC("RPCInitScore", RpcTarget.All);
-        isGameEnd = false;
-        winner = "";
-    }
-
 }
