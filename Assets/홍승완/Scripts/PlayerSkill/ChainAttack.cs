@@ -117,7 +117,7 @@ public class ChainAttack : SkillHandler
     /// <summary>
     /// 스킬이 플레이어를 따라오게해줌
     /// </summary>
-    private void SkillUpdatePosition()
+    public override void SkillUpdatePosition()
     {
         transform.position = _ability.transform.position;
         transform.rotation = quaternion;

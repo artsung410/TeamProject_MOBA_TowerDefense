@@ -18,9 +18,6 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     public float SetHodingTime;
     public float SetRange;
 
-    public abstract void SkillHoldingTime(float time);
-
-
     // 플레이어 HeroAbility를 받아옴
     public void GetPlayerPos(HeroAbility heroAbility)
     {
@@ -40,4 +37,9 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     }
 
     public abstract void SkillDamage(float damage, GameObject target);
+
+    public abstract void SkillHoldingTime(float time);
+
+    public abstract void SkillUpdatePosition();
+    
 }

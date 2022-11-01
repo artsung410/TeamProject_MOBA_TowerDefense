@@ -32,14 +32,17 @@ public class HeroAbility : MonoBehaviourPun
             return;
         }
 
-        AbilityPrefabs = new GameObject[count];
-        for (int i = 0; i < count; i++)
+        AbilityPrefabs = new GameObject[4];
+        for (int i = 0; i < 4; i++)
         {
+            // TODO : 스킬을 장착하지않으면 장착하지 않은 위치는 빈칸으로 게임시작하기
+
             // 트로이목마 안에 있는 아이템 프리팹 게임상에서 가져오기
             AbilityPrefabs[i] = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i].itemModel;
         }
     }
 
+    // TODO : 스킬발동중 다른 스킬을 쓰면 쓰던스킬이 취소됨
 
     void Update()
     {
