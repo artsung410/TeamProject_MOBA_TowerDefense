@@ -17,6 +17,8 @@ public class WinnerManager : MonoBehaviour
         if (GameManager.Instance.isGameEnd)
         {
             Instantiate(WinPostAPICallerPre, Vector3.zero, Quaternion.identity);
+            Destroy(GameObject.FindGameObjectWithTag("APIStorage").gameObject);
+            Destroy(GameObject.FindGameObjectWithTag("GetCaller").gameObject);
             Destroy(gameObject);
         }
         /*if (Input.GetKeyDown(KeyCode.T))
