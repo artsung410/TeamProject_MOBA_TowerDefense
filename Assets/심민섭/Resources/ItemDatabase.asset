@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemList:
   - itemName: 
+    ClassType: 
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
@@ -27,56 +28,9 @@ MonoBehaviour:
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Apple
-    itemID: 1
-    itemDesc: This apple could be good for applejuice.
-    itemIcon: {fileID: 21300000, guid: a4d3f378d1a88f346af15ee906321f2a, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 2
-    itemWeight: 0
-    maxStack: 5
-    indexItemInList: 99
-    rarity: 100
-    itemAttributes:
-    - attributeName: Health
-      attributeValue: 10
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: Iron Chest
-    itemID: 2
-    itemDesc: This chest is created out of iron.
-    itemIcon: {fileID: 21300000, guid: d13012f4abce7b241900001bf716f66e, type: 3}
-    itemModel: {fileID: 100000, guid: 40da790cc27843b45b9c255c8d996b43, type: 3}
-    itemValue: 1
-    itemType: 12
-    itemWeight: 0
-    maxStack: 1
-    indexItemInList: 99
-    rarity: 70
-    itemAttributes:
-    - attributeName: Health
-      attributeValue: 10
-    - attributeName: Armor
-      attributeValue: 20
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: Applejuice
-    itemID: 3
-    itemDesc: This applejuice gives you alot of health back.
-    itemIcon: {fileID: 21300000, guid: 6dc5762501dd2df4da399f6c16a85907, type: 3}
-    itemModel: {fileID: 0}
-    itemValue: 0
-    itemType: 0
-    itemWeight: 0
-    maxStack: 0
-    indexItemInList: 0
-    rarity: 0
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
   - itemName: Guard_Tower
-    itemID: 4
+    ClassType: 
+    itemID: 1
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: c51f4ee40eac21346b6ea34182cf3465, type: 3}
     itemModel: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
@@ -96,7 +50,8 @@ MonoBehaviour:
     specialPrefabs: []
     buffDatas: []
   - itemName: Cannon_Tower
-    itemID: 5
+    ClassType: 
+    itemID: 2
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: 725f10fa9ac647d49a51f7de95f02b3d, type: 3}
     itemModel: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
@@ -116,7 +71,8 @@ MonoBehaviour:
     specialPrefabs: []
     buffDatas: []
   - itemName: Minion_Tower
-    itemID: 6
+    ClassType: 
+    itemID: 3
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: 127205e58a99ce04cab49b7eebb3f43b, type: 3}
     itemModel: {fileID: 8910650605806270272, guid: 6637d58b99c0eb747b6fc6af434505c8, type: 3}
@@ -139,7 +95,8 @@ MonoBehaviour:
     - {fileID: 0}
     buffDatas: []
   - itemName: Buff_Tower
-    itemID: 7
+    ClassType: 
+    itemID: 4
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: 3815db486757d6f419874d58bb1f364b, type: 3}
     itemModel: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
@@ -165,7 +122,8 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 01a591c01b353e94fb2982a91654c574, type: 2}
     - {fileID: 11400000, guid: 2a07d552522405747b505f2351bfbfc0, type: 2}
   - itemName: "\uB9C8\uAD6C\uD718\uB450\uB974\uAE30"
-    itemID: 8
+    ClassType: Warrior
+    itemID: 5
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: a49d70bc38fde7a4f95890a7ca766ef1, type: 3}
     itemModel: {fileID: 5184541198715492353, guid: af5d35f732b8aae4d8eefafd65b3078e, type: 3}
@@ -183,7 +141,8 @@ MonoBehaviour:
     specialPrefabs: []
     buffDatas: []
   - itemName: "\uB0B4\uB824\uCC0D\uAE30"
-    itemID: 9
+    ClassType: Warrior
+    itemID: 6
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: 58e81ff14ea6c254db47989f2da77323, type: 3}
     itemModel: {fileID: 7570805014596217275, guid: ae48745f78ef46b478a6e9debebf5e0e, type: 3}
@@ -201,7 +160,8 @@ MonoBehaviour:
     specialPrefabs: []
     buffDatas: []
   - itemName: "\uD720\uC708\uB4DC"
-    itemID: 10
+    ClassType: Warrior
+    itemID: 7
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: 49b1324fe9983f44382c52acd0d35f20, type: 3}
     itemModel: {fileID: 3005192478522135544, guid: 1ff6e38d24d9fb74dbbca9b9d3c25117, type: 3}
@@ -219,7 +179,8 @@ MonoBehaviour:
     specialPrefabs: []
     buffDatas: []
   - itemName: "\uAC80\uAE30"
-    itemID: 11
+    ClassType: Warrior
+    itemID: 8
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: ff81aacd3eb896d419ddf5171547b453, type: 3}
     itemModel: {fileID: 8936188002352116344, guid: 005bc3c502863684e85138a865b0ae55, type: 3}
@@ -234,5 +195,24 @@ MonoBehaviour:
       attributeValue: 150
     - attributeName: CoolTime
       attributeValue: 8
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: "\uACE0\uC720 \uC2A4\uD0AC"
+    ClassType: 
+    itemID: 9
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: c2986e027f97f284dbe90a522238b6ea, type: 3}
+    itemModel: {fileID: 8936188002352116344, guid: 005bc3c502863684e85138a865b0ae55, type: 3}
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 80
+    - attributeName: CoolTime
+      attributeValue: 6
     specialPrefabs: []
     buffDatas: []

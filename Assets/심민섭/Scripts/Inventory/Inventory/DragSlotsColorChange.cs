@@ -68,6 +68,21 @@ public class DragSlotsColorChange : MonoBehaviour
             EquipmentArr[2].GetComponent<Image>().color = color;
             EquipmentArr[3].GetComponent<Image>().color = color;
         }
+        else if (itemOnObject.item.itemType.ToString() == "uniqueSkill")
+        {
+            // 스킬 타입이면 0 슬롯 변경
+            color = Color.yellow;
+            EquipmentArr[0].GetComponent<Image>().color = color;
+
+            color = Color.white;
+            EquipmentArr[1].GetComponent<Image>().color = color;
+            EquipmentArr[2].GetComponent<Image>().color = color;
+            EquipmentArr[3].GetComponent<Image>().color = color;
+            EquipmentArr[4].GetComponent<Image>().color = color;
+            EquipmentArr[5].GetComponent<Image>().color = color;
+            EquipmentArr[6].GetComponent<Image>().color = color;
+            EquipmentArr[7].GetComponent<Image>().color = color;
+        }
         else
         {
             return;

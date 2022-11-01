@@ -84,7 +84,7 @@ public class TrojanHorse: MonoBehaviour
         //ItemOnObject에서 가져온다.
 
         // 장착 슬롯 오브젝트 가져오기
-        EquipmentItemInventory = GameObject.FindGameObjectWithTag("Inventory").transform.GetChild(0).GetChild(1).GetChild(1).GetChild(1).GetChild(1).GetChild(1).gameObject;
+        EquipmentItemInventory = GameObject.FindGameObjectWithTag("Inventory").transform.GetChild(0).GetChild(2).GetChild(1).GetChild(1).GetChild(1).GetChild(1).gameObject;
 
         // 하위 오브젝트들을 리스트에 넣는다.
         List<GameObject> TrojanDataList= new List<GameObject>();

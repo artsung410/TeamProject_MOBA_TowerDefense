@@ -67,8 +67,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         inventory.OnUpdateItemList();
     }
 
-
-
     public void OnPointerDown(PointerEventData data)
     {
         if (data.button == PointerEventData.InputButton.Left)
@@ -100,33 +98,47 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
             if (newSlot != null)
             {
-                //getting the items from the slots, GameObjects and RectTransform
+                // 내 게임 오브젝트(Slot)
                 GameObject firstItemGameObject = this.gameObject;
+                // 마우스 포인터의 상위 게임 오브젝트(Slots)
                 GameObject secondItemGameObject = newSlot.parent.gameObject;
+                // 내 게임 오브젝트 위치
                 RectTransform firstItemRectTransform = this.gameObject.GetComponent<RectTransform>();
+                // 마우스 포인터의 상위 게임 오브젝트 위치
                 RectTransform secondItemRectTransform = newSlot.parent.GetComponent<RectTransform>();
+                // 들고 있는 아이템의 정보
                 Item firstItem = rectTransform.GetComponent<ItemOnObject>().item;
+                // 새로운 곳에 만들 아이템 공간
                 Item secondItem = new Item();
+                // 새로운 곳에 만들 아이템 공간에 이미 아이템이 존재하다면 아이템을 서로 바꿔치기한다.
                 if (newSlot.parent.GetComponent<ItemOnObject>() != null)
                     secondItem = newSlot.parent.GetComponent<ItemOnObject>().item;
 
-                //get some informations about the two items
+                //Debug.Log($"newSlot : {newSlot.tag}");
+                //Debug.Log($"oldSlot : {oldSlot.tag}");
+
+                // 현재 아이템과 타겟 아이템의 이름이 같은가?
                 bool sameItem = firstItem.itemName == secondItem.itemName;
+                // 참조를 제외하고 값만을 다시 비교한다.
                 bool sameItemRerferenced = firstItem.Equals(secondItem);
                 bool secondItemStack = false;
                 bool firstItemStack = false;
+                // 이름이 같다면
                 if (sameItem)
                 {
+                    // 아이템의 수를 비교 (1 < 99)
                     firstItemStack = firstItem.itemValue < firstItem.maxStack;
                     secondItemStack = secondItem.itemValue < secondItem.maxStack;
                 }
 
+                // 마우스 포인터의 상위 게임 오브젝트 위치에서 상위 오브젝트를 저장
+                // 일반적으로 Viewport, Equipment - panel
                 GameObject Inventory = secondItemRectTransform.parent.gameObject;
-                if (Inventory.tag == "Slot")
-                    Inventory = secondItemRectTransform.parent.parent.parent.gameObject;
+                if (Inventory.tag == "Slot" || newSlot.tag == oldSlot.tag)
+                    Inventory = secondItemRectTransform.parent.parent.parent.gameObject; // Panel - Card
 
-                if (Inventory.tag.Equals("Slot"))
-                    Inventory = Inventory.transform.parent.parent.gameObject;
+                if (Inventory.tag.Equals("Slot") || oldSlot.tag.Equals(newSlot.tag))
+                    Inventory = Inventory.transform.parent.parent.gameObject; // Panel - Card
 
                 //dragging in an Inventory      
                 if (Inventory.GetComponent<EquipmentSystem>() == null && Inventory.GetComponent<CraftSystem>() == null)
@@ -244,11 +256,9 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             }
 
                         }
-
-                        //empty slot
                         else
                         {
-                            if (newSlot.tag != "Slot" && newSlot.tag != "ItemIcon")
+                            if (newSlot.tag != "Slot" && newSlot.tag != "ItemIcon" && oldSlot.tag != newSlot.tag || newSlot.tag != firstItem.ClassType + "Slot")
                             {
                                 firstItemGameObject.transform.SetParent(oldSlot.transform);
                                 firstItemRectTransform.localPosition = Vector3.zero;
