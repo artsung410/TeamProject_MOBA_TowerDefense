@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using System;
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -11,12 +12,16 @@ using UnityEngine.UI;
 
 public class Turret : MonoBehaviourPun
 {
+    public static event Action<Item, string> turretMouseDownEvent = delegate { };
     public float currentHealth;
     public float maxHealth;
     public Image healthbarImage;
     public GameObject ui;
     public GameObject destroyParticle;
     public float destorySpeed;
+
+    [Header("타워DB")]
+    public Item towerItem;
 
     [Header("타겟 TAG")]
     public string enemyTag;
@@ -134,5 +139,12 @@ public class Turret : MonoBehaviourPun
         yield return new WaitForSeconds(1.5f);
         Destroy(particle);
         gameObject.SetActive(false);
+    }
+
+
+    // 타워 클릭했을 때 툴팁뜨게하기
+    private void OnMouseDown()
+    {
+        turretMouseDownEvent.Invoke(towerItem, gameObject.tag);
     }
 }
