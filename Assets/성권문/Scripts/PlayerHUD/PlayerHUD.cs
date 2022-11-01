@@ -14,6 +14,14 @@ public class PlayerHUD : MonoBehaviourPun
         Red,
     }
 
+    enum InfoState
+    {
+        Player,
+        Tower,
+        Minion,
+        Nexus,
+    }
+
     // ###############################################
     //             NAME : ARTSUNG                      
     //             MAIL : artsung410@gmail.com         
@@ -61,6 +69,7 @@ public class PlayerHUD : MonoBehaviourPun
     float sec = 0;
     int min = 0;
 
+    InfoState INFO;
     private void Awake()
     {
         Instance = this;
@@ -200,6 +209,10 @@ public class PlayerHUD : MonoBehaviourPun
 
     void UpdateEnemyHealthUI()
     {
+        if (INFO == InfoState.Player)
+        {
+
+        }
         if (enemyHp == null)
         {
             return;
@@ -287,6 +300,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     public void ActivationEnemyInfoUI(Stats st, Sprite icon)
     {
+        INFO = InfoState.Player;
         InfoPanel.SetActive(true);
 
         float dmg = st.attackDmg;
@@ -301,6 +315,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     public void ActivationTowerInfoUI(Item item, string tag)
     {
+        INFO = InfoState.Tower;
         InfoPanel.SetActive(true);
 
         // 이벤트로 들어온 매개변수 세팅(Item class)
