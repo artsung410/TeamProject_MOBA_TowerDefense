@@ -1,6 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 using System;
+using UnityEngine.UI;
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -9,8 +10,10 @@ using System;
 
 public class Player : MonoBehaviourPun
 {
-    public static event Action<Stats> PlayerMouseDownEvent = delegate { };
+    public static event Action<Stats, Sprite> PlayerMouseDownEvent = delegate { };
     public Stats playerStats;
+    public Sprite playerIcon;
+
     private void OnEnable()
     {
         GameManager.Instance.CurrentPlayers.Add(gameObject);
@@ -23,7 +26,7 @@ public class Player : MonoBehaviourPun
             return;
         }
 
-        PlayerMouseDownEvent.Invoke(playerStats);
+        PlayerMouseDownEvent.Invoke(playerStats, playerIcon);
         //PlayerHUD.Instance.ActivationEnemyInfoUI();
     }
 }
