@@ -40,6 +40,7 @@ public class PostPlaveBetCaller : MonoBehaviour
         placeBet placeBet = new placeBet();
         placeBet.players_session_id = new string[2];
         placeBet.players_session_id[0] = aPIStorage.session_id[0];
+        //placeBet.players_session_id[1] = aPIStorage.MetaMaskSessionID;
         placeBet.players_session_id[1] = aPIStorage.session_id[1];
         placeBet.bet_id = aPIStorage.bet_id[0];
 

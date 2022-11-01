@@ -19,5 +19,10 @@ public class WinnerManager : MonoBehaviour
             Instantiate(WinPostAPICallerPre, Vector3.zero, Quaternion.identity);
             Destroy(gameObject);
         }
+        /*if (Input.GetKeyDown(KeyCode.T))
+        {
+            Instantiate(WinPostAPICallerPre, Vector3.zero, Quaternion.identity);
+            Destroy(gameObject);
+        }*/
     }
 }

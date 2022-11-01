@@ -130,7 +130,7 @@ public class EnemySatatus : Enemybase
             float AtkDistance = Vector3.SqrMagnitude(vecAtkDistance);
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
-            Debug.Log($"{AtkDistance},{attackRange * attackRange}");
+            //Debug.Log($"{AtkDistance},{attackRange * attackRange}");
             transform.LookAt(new Vector3(_target.position.x, 0, _target.position.z));
             // 애니메이션 추가 + 공격데미지 입히기
             //공격쿨타임
