@@ -59,17 +59,17 @@ public class EnemySatatus : Enemybase
         InvokeRepeating("UpdateEnemyTarget", 0f, 0.5f);
         if (_eminiomtype == EMINIOMTYPE.Nomal)
         {
-            Debug.Log("노멀");
+            //Debug.Log("노멀");
             attackRange = 4f;
         }
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
-            Debug.Log("원거리");
+            //Debug.Log("원거리");
             attackRange = 10f;
         }
         else
         {
-            Debug.Log("특수");
+            //Debug.Log("특수");
             attackRange = 6f;
         }
 

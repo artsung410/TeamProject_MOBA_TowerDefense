@@ -19,15 +19,17 @@ public class SpritSword : SkillHandler
 
     #endregion
 
-    public float HoldingTime;
-    public float Damage;
-    public float Range;
+    private float HoldingTime;
+    private float Damage;
+    private float Range;
     public float Speed;
 
     private void OnEnable()
     {
         elapsedTime = 0f;
         Damage = SetDamage;
+        HoldingTime = SetHodingTime;
+        Range = SetRange;
     }
 
     // Start is called before the first frame update
@@ -73,11 +75,15 @@ public class SpritSword : SkillHandler
     // Update is called once per frame
     void Update()
     {
+        if (_ability == null)
+        {
+            return;
+        }
+
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
             SkillHoldingTime(HoldingTime);
-
         }
     }
 

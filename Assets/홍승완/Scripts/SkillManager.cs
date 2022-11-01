@@ -14,8 +14,10 @@ public class SkillManager : MonoBehaviour
     ItemDataBaseList ItemDataBase;
     TrojanHorse aa;
 
-    public float[] atk = new float[4];
-    public float[] time = new float[4];
+    public float[] Atk = new float[4];
+    public float[] CoolTime = new float[4];
+    public float[] HoldingTime = new float[4];
+    public float[] Range = new float[4];
 
     private void Awake()
     {
@@ -41,8 +43,10 @@ public class SkillManager : MonoBehaviour
                 {
                     if (aa.skillId[i] == ItemDataBase.itemList[j].itemID)
                     {
-                        atk[i] = ItemDataBase.itemList[j].itemAttributes[0].attributeValue;
-                        time[i] = ItemDataBase.itemList[j].itemAttributes[1].attributeValue;
+                        Atk[i] = ItemDataBase.itemList[j].itemAttributes[0].attributeValue;
+                        CoolTime[i] = ItemDataBase.itemList[j].itemAttributes[1].attributeValue;
+                        HoldingTime[i] = ItemDataBase.itemList[j].itemAttributes[2].attributeValue;
+                        Range[i] = ItemDataBase.itemList[j].itemAttributes[3].attributeValue;
                     }
                 }
             }
