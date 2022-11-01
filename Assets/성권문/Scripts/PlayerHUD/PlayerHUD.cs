@@ -306,11 +306,13 @@ public class PlayerHUD : MonoBehaviourPun
         float dmg = st.attackDmg;
         float atkSpeed = st.attackSpeed;
         float range = st.attackRange;
+        float spd = st.MoveSpeed;
 
         InfoIcon.sprite = icon;
         InfoAtkTMpro.text = dmg.ToString();
         InfoAtkSpdTMpro.text = atkSpeed.ToString();
         InfoArTMpro.text = range.ToString();
+        InfoSpdMpro.text = spd.ToString();
     }
 
     public void ActivationTowerInfoUI(Item item, string tag)
@@ -327,6 +329,7 @@ public class PlayerHUD : MonoBehaviourPun
         InfoAtkTMpro.text = dmg.ToString();
         InfoAtkSpdTMpro.text = "";
         InfoArTMpro.text = range.ToString();
+        InfoSpdMpro.text = 0.ToString();
     }
 
 }
