@@ -19,6 +19,7 @@ using System.Collections.Generic;
 public class Item
 {
     public string itemName;                     // 아이템 이름
+    public string ClassType;                    // 직업 타입
     public int itemID;                          // 아이템의 만들어 진 순서 (Index)
     public string itemDesc;                     // 아이템 설명
     public Sprite itemIcon;                     // 아이템 이미지
