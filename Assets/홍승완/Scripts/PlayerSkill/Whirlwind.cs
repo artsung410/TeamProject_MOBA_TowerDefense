@@ -93,7 +93,7 @@ public class Whirlwind : SkillHandler
             SkillHoldingTime(HoldingTime);
         }
     }
-    public void SkillUpdatePosition()
+    public override void SkillUpdatePosition()
     {
         // 스킬은 플레이어 주변에 있다
         transform.position = _ability.gameObject.transform.position;

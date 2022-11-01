@@ -38,7 +38,7 @@ public class SkillCoolTimeManager : MonoBehaviour
 
     private void Update()
     {
-        // 이벤트 함수로 만들면 좋을것같다
+        //TODO : 이벤트함수로 만들어 호출하기
         CoolTimeCheckQ();
         CoolTimeCheckW();
         CoolTimeCheckE();

@@ -23,5 +23,8 @@ public interface IDamageable
     /// <param name="damage">스킬의 데미지</param>
     /// <param name="target">데미지 줄 타겟, 해당 타겟에겐 체력이 존재해야한다</param>
     void SkillDamage(float damage, GameObject target);
-   
+
+    void SkillUpdatePosition();
+
+
 }
