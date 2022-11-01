@@ -12,7 +12,7 @@ public class Enemybase : MonoBehaviourPun
     // ###############################################
 
     // 이동속도
-   protected float moveSpeed;
+    protected float moveSpeed;
     // 공격사거리
     [SerializeField]
     protected float attackRange;
@@ -20,7 +20,7 @@ public class Enemybase : MonoBehaviourPun
     protected float Damage;
     //공격 쿨타임
     protected float AttackTime;
-    
+
     // 체력
     public float HP = 100f;
 
@@ -32,16 +32,16 @@ public class Enemybase : MonoBehaviourPun
 
     protected NavMeshAgent _navMeshAgent;
     protected Animator _animator;
-    private CapsuleCollider _capsuleCollider;
     protected Transform Diepos;
-   
 
-    
+    private CapsuleCollider _capsuleCollider;
+    private bool Die = false;
+
     protected virtual void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-           _animator = GetComponent<Animator>();
-        _capsuleCollider = GetComponent<CapsuleCollider>();   
+        _animator = GetComponent<Animator>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
 
     }
 
@@ -55,7 +55,7 @@ public class Enemybase : MonoBehaviourPun
                 gameObject.tag = "Blue";
                 myTag = "Blue";
                 EnemyTag = "Red";
-                
+
             }
 
             else
@@ -84,7 +84,7 @@ public class Enemybase : MonoBehaviourPun
         }
     }
 
-  
+
 
     public void TakeDamage(float Damage)
     {
@@ -94,13 +94,18 @@ public class Enemybase : MonoBehaviourPun
     [PunRPC]
     public void RPC_TakeDamage(float Damage)
     {
-        CurrnetHP -= Damage;
-        if (CurrnetHP <= 0)
+        if (Die == false)
         {
-            gameObject.GetComponent<EnemySatatus>().enabled = false;
-            _capsuleCollider.enabled = false;
-            _navMeshAgent.isStopped = true;
-            _animator.SetTrigger("Die");
+
+            CurrnetHP -= Damage;
+            if (CurrnetHP <= 0)
+            {
+                Die = true;
+                gameObject.GetComponent<EnemySatatus>().enabled = false;
+                _capsuleCollider.enabled = false;
+                _navMeshAgent.isStopped = true;
+                _animator.SetTrigger("Die");
+            }
         }
 
     }

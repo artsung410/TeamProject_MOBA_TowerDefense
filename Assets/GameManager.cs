@@ -77,7 +77,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnTower();
-        SpawnEnemy();
+        //SpawnEnemy();
         SapwnSpecial();
     }
 
@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (elaspedTime >= minionSpawnTime)
         {
             elaspedTime = 0;
-            SpawnEnemy();
+            //SpawnEnemy();
             SapwnSpecial();
         }
     }
