@@ -59,17 +59,17 @@ public class EnemySatatus : Enemybase
         InvokeRepeating("UpdateEnemyTarget", 0f, 0.5f);
         if (_eminiomtype == EMINIOMTYPE.Nomal)
         {
-            Debug.Log("노멀");
+            //Debug.Log("노멀");
             attackRange = 4f;
         }
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
-            Debug.Log("원거리");
+            //Debug.Log("원거리");
             attackRange = 10f;
         }
         else
         {
-            Debug.Log("특수");
+            //Debug.Log("특수");
             attackRange = 6f;
         }
 
@@ -130,7 +130,7 @@ public class EnemySatatus : Enemybase
             float AtkDistance = Vector3.SqrMagnitude(vecAtkDistance);
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
-            Debug.Log($"{AtkDistance},{attackRange * attackRange}");
+            //Debug.Log($"{AtkDistance},{attackRange * attackRange}");
             transform.LookAt(new Vector3(_target.position.x, 0, _target.position.z));
             // 애니메이션 추가 + 공격데미지 입히기
             //공격쿨타임

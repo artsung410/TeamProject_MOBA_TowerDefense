@@ -32,12 +32,13 @@ public class SkillCoolTimeManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             coolTimeImgs[i] = PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>();
-            skillCoolTimeArr[i] = SkillManager.Instance.time[i];
+            skillCoolTimeArr[i] = SkillManager.Instance.CoolTime[i];
         }
     }
 
     private void Update()
     {
+        // 이벤트 함수로 만들면 좋을것같다
         CoolTimeCheckQ();
         CoolTimeCheckW();
         CoolTimeCheckE();
@@ -57,7 +58,6 @@ public class SkillCoolTimeManager : MonoBehaviour
             }
 
         }
-
 
     }
 

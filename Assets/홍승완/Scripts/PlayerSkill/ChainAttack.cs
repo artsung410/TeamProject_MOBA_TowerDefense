@@ -22,9 +22,9 @@ public class ChainAttack : SkillHandler
 
     #endregion
 
-    public float HoldingTime;
-    public float Damage;
-    public float Range;
+    private float HoldingTime;
+    private float Damage;
+    private float Range;
 
     private void Awake()
     {
@@ -35,6 +35,8 @@ public class ChainAttack : SkillHandler
     {
         elapsedTime = 0f;
         Damage = SetDamage;
+        HoldingTime = SetHodingTime;
+        Range = SetRange;
     }
 
     // Start is called before the first frame update
@@ -101,7 +103,6 @@ public class ChainAttack : SkillHandler
         }
 
         SkillUpdatePosition();
-
         SkillHoldingTime(HoldingTime);
 
         dispersionTime += Time.deltaTime;
@@ -111,7 +112,6 @@ public class ChainAttack : SkillHandler
             dispersionTime = 0f;
             isDamage = true;
         }
-
     }
 
     /// <summary>
@@ -148,13 +148,17 @@ public class ChainAttack : SkillHandler
         // 지속시간동안 플레이어가 느려진다
         _stat.MoveSpeed = 3f;
 
+        // 지속시간동안 플레이어가 공격하지 못한다
+        _behaviour.targetedEnemy = null;
+        _behaviour.perfomMeleeAttack = false;
+
         // 지속시간동안 플레이어는 스킬방향만 바라본다
         _ability.transform.rotation = quaternion;
 
         // 지속시간이 끝나면 사라진다
         if (elapsedTime >= time)
         {
-            _stat.MoveSpeed = 10f;
+            _stat.MoveSpeed = 15f;
             // Failed to 'network-remove' GameObject. Client is neither owner nor masterClient taking over for owner who left 오류발생
             // 해결법 : photonView.IsMine 조건 추가
             if (photonView.IsMine)

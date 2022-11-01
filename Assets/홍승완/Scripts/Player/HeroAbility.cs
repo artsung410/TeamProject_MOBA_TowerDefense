@@ -14,14 +14,12 @@ public class HeroAbility : MonoBehaviourPun
 
     public GameObject[] AbilityPrefabs;
     public Transform skillSpawn;
-    //public Image[] coolTimeImgs;
     public SkillCoolTimeManager coolTimeManager;
 
     GameObject go;
 
     #region private º¯¼öµé
-    //bool[] isCoolDown = new bool[4];
-    //float[] skillCoolTimeArr = new float[4];
+
 
     #endregion
 
@@ -42,20 +40,6 @@ public class HeroAbility : MonoBehaviourPun
         }
     }
 
-    //void Start()
-    //{
-    //    StartCoroutine(Init());
-    //}
-
-    //IEnumerator Init()
-    //{
-    //    coolTimeImgs = new Image[AbilityPrefabs.Length];
-    //    yield return new WaitForSeconds(0.5f);
-    //    for (int i = 0; i < 4; i++)
-    //    {
-    //        coolTimeImgs[i] = PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>();
-    //    }
-    //}
 
     void Update()
     {
@@ -93,7 +77,9 @@ public class HeroAbility : MonoBehaviourPun
             coolTimeManager.isCoolDown[0] = true;
             coolTimeManager.coolTimeImgs[0].fillAmount = 1;
 
-            AbilityPrefabs[0].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[0];
+            AbilityPrefabs[0].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.Atk[0];
+            AbilityPrefabs[0].GetComponent<SkillHandler>().SetHodingTime = SkillManager.Instance.HoldingTime[0];
+            AbilityPrefabs[0].GetComponent<SkillHandler>().SetRange = SkillManager.Instance.Range[0];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[0].name, skillSpawn.position, Quaternion.identity);
 
@@ -116,22 +102,14 @@ public class HeroAbility : MonoBehaviourPun
             coolTimeManager.coolTimeImgs[1].fillAmount = 1;
 
 
-            AbilityPrefabs[1].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[1];
+            AbilityPrefabs[1].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.Atk[1];
+            AbilityPrefabs[1].GetComponent<SkillHandler>().SetHodingTime = SkillManager.Instance.HoldingTime[1];
+            AbilityPrefabs[1].GetComponent<SkillHandler>().SetRange = SkillManager.Instance.Range[1];
 
-            //skillCoolTimeArr[1] = SkillManager.Instance.time[1];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);
         }
 
-        //if (isCoolDown[1])
-        //{
-        //    coolTimeImgs[1].fillAmount -= 1 / skillCoolTimeArr[1] * Time.deltaTime;
-        //    if (coolTimeImgs[1].fillAmount <= 0f)
-        //    {
-        //        coolTimeImgs[1].fillAmount = 0f;
-        //        isCoolDown[1] = false;
-        //    }
-        //}
     }
 
     private void AbilityE()
@@ -147,21 +125,13 @@ public class HeroAbility : MonoBehaviourPun
             coolTimeManager.coolTimeImgs[2].fillAmount = 1;
 
 
-            AbilityPrefabs[2].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[2];
-            //skillCoolTimeArr[2] = SkillManager.Instance.time[2];
+            AbilityPrefabs[2].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.Atk[2];
+            AbilityPrefabs[2].GetComponent<SkillHandler>().SetHodingTime = SkillManager.Instance.HoldingTime[2];
+            AbilityPrefabs[2].GetComponent<SkillHandler>().SetRange = SkillManager.Instance.Range[2];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
         }
 
-        //if (isCoolDown[2])
-        //{
-        //    coolTimeImgs[2].fillAmount -= 1 / skillCoolTimeArr[2] * Time.deltaTime;
-        //    if (coolTimeImgs[2].fillAmount <= 0f)
-        //    {
-        //        coolTimeImgs[2].fillAmount = 0f;
-        //        isCoolDown[2] = false;
-        //    }
-        //}
     }
 
 
@@ -179,22 +149,13 @@ public class HeroAbility : MonoBehaviourPun
             coolTimeManager.CoolTimeCheckR();
 
 
-            AbilityPrefabs[3].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.atk[3];
-            //skillCoolTimeArr[3] = SkillManager.Instance.time[3];
+            AbilityPrefabs[3].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.Atk[3];
+            AbilityPrefabs[3].GetComponent<SkillHandler>().SetHodingTime = SkillManager.Instance.HoldingTime[3];
+            AbilityPrefabs[3].GetComponent<SkillHandler>().SetRange = SkillManager.Instance.Range[3];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
         }
 
-        //if (isCoolDown[3])
-        //{
-        //    coolTimeImgs[3].fillAmount -= 1 / skillCoolTimeArr[3] * Time.deltaTime;
-
-        //    if (coolTimeImgs[3].fillAmount <= 0f)
-        //    {
-        //        coolTimeImgs[3].fillAmount = 0f;
-        //        isCoolDown[3] = false;
-        //    }
-        //}
     }
 
 
