@@ -8,7 +8,7 @@ using System;
 public class PlayerHUD : MonoBehaviourPun
 {
     public static event Action onGameEnd = delegate { };
-    enum Player
+    enum PlayerColor
     {
         Blue,
         Red,
@@ -25,10 +25,23 @@ public class PlayerHUD : MonoBehaviourPun
     public TextMeshProUGUI playerHealthBarTMpro;
     public TextMeshProUGUI playerExperienceBarTMpro;
     public TextMeshProUGUI playerInfoTMPro;
-
-    [Header("InfoUI")]
-    public Image EnemyHealthBar;
+                
+    [Header("EnemyInfoUI")]
+    public GameObject enemyInfoPanel;
+    public Image enemyHealthBar;
     public TextMeshProUGUI enemyHealthBarTMPro;
+    public TextMeshProUGUI enemyInfoTMPro;
+    public TextMeshProUGUI enemyAtkTMpro;
+    public TextMeshProUGUI enemyAtkSpdTMpro;
+    public TextMeshProUGUI enemyArTMpro;
+    public TextMeshProUGUI enemySpdMpro;
+
+
+    [Header("TowerInfoUI")]
+    public GameObject towerInfoPanel;
+    public Image towerImage;
+    public TextMeshProUGUI towerLevelTMPro;
+    public TextMeshProUGUI towerInfoTMPro;
 
     [Header("SkillUI")]
     public GameObject skillTable;
@@ -50,11 +63,6 @@ public class PlayerHUD : MonoBehaviourPun
     public GameObject MousePositionImage;
     public MousePointer mousePointer;
 
-    //[Header("WinnerResultImage")]
-    //public GameObject gameWinImagePanel;
-    //public Image blueWinImage;
-    //public Image redWinImage;
-
     private int[] playerScores = { 0, 0 };
 
     float sec = 0;
@@ -63,6 +71,8 @@ public class PlayerHUD : MonoBehaviourPun
     private void Awake()
     {
         Instance = this;
+        Turret.turretMouseDownEvent += ActivationTowerInfoUI;
+        Player.PlayerMouseDownEvent += ActivationEnemyInfoUI;
     }
 
     private void OnEnable()
@@ -155,12 +165,12 @@ public class PlayerHUD : MonoBehaviourPun
         {
             string gameWinMessage = "";
 
-            if (playerScores[(int)Player.Blue] > playerScores[(int)Player.Red])
+            if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
             {
                 GameManager.Instance.winner = "Blue";
                 gameWinMessage = GameManager.Instance.winner;
             }
-            else if ((playerScores[(int)Player.Blue] < playerScores[(int)Player.Red]))
+            else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
             {
                 GameManager.Instance.winner = "Red";
                 gameWinMessage = GameManager.Instance.winner;
@@ -202,7 +212,7 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
 
-        EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
+        enemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
         EnemyHp2D = enemyHp.hpSlider3D.value;
         enemyHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
     }
@@ -211,11 +221,11 @@ public class PlayerHUD : MonoBehaviourPun
     {
         if (tag == "Red")
         {
-            playerScores[(int)Player.Blue] += 1;
+            playerScores[(int)PlayerColor.Blue] += 1;
         }
         else
         {
-            playerScores[(int)Player.Red] += 1;
+            playerScores[(int)PlayerColor.Red] += 1;
         }
 
         // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
@@ -280,5 +290,48 @@ public class PlayerHUD : MonoBehaviourPun
     {
         yield return new WaitForSeconds(7f);
         PhotonNetwork.LeaveRoom();
+    }
+
+    public void ActivationEnemyInfoUI(Stats st)
+    {
+        DeActivationInfoUI_All();
+        enemyInfoPanel.SetActive(true);
+
+        float dmg = st.attackDmg;
+        float atkSpeed = st.attackSpeed;
+        float range = st.attackRange;
+
+        enemyAtkTMpro.text = dmg.ToString();
+        enemyAtkSpdTMpro.text = atkSpeed.ToString();
+        enemyArTMpro.text = range.ToString();
+    }
+
+    public void ActivationTowerInfoUI(Item item, string tag)
+    {
+        DeActivationInfoUI_All();
+        towerInfoPanel.SetActive(true);
+
+        // 태그에 따라 색상 설정
+        if (tag == "Blue")
+        {
+            towerInfoPanel.GetComponent<Image>().color = new Color(0f, 0f, 255f, 0.7f);
+        }
+        else
+        {
+            towerInfoPanel.GetComponent<Image>().color = new Color(255f, 0f, 0f, 0.7f);
+        }
+
+        // 이벤트로 들어온 매개변수 세팅(Item class)
+        float hp = item.itemAttributes[0].attributeValue;
+        float dmg = item.itemAttributes[1].attributeValue;
+        float range = item.itemAttributes[2].attributeValue;
+        towerImage.sprite = item.itemIcon;
+        towerInfoTMPro.text = $"HP : {hp} / ATK : {dmg} / AR : {range}";
+    }
+
+    public void DeActivationInfoUI_All()
+    {
+        enemyInfoPanel.SetActive(false);
+        towerInfoPanel.SetActive(false);
     }
 }
