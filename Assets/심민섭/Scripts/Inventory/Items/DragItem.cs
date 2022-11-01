@@ -225,7 +225,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     //if you are dragging an item from equipmentsystem to the inventory and try to swap it with the same itemtype
                                     if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
                                     {
-                                        newSlot.transform.parent.parent.parent.parent.GetComponent<Inventory>().UnEquipItem1(firstItem);
+                                        //Debug.Log($"7 : {newSlot.transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject.name}");
+                                        newSlot.transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.GetComponent<Inventory>().UnEquipItem1(firstItem);
                                         oldSlot.transform.parent.parent.GetComponent<Inventory>().EquiptItem(secondItem);
 
                                         firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);

@@ -8,10 +8,18 @@ using System;
 public class PlayerHUD : MonoBehaviourPun
 {
     public static event Action onGameEnd = delegate { };
-    enum Player
+    enum PlayerColor
     {
         Blue,
         Red,
+    }
+
+    enum InfoState
+    {
+        Player,
+        Tower,
+        Minion,
+        Nexus,
     }
 
     // ###############################################
@@ -25,10 +33,16 @@ public class PlayerHUD : MonoBehaviourPun
     public TextMeshProUGUI playerHealthBarTMpro;
     public TextMeshProUGUI playerExperienceBarTMpro;
     public TextMeshProUGUI playerInfoTMPro;
-
+                
     [Header("InfoUI")]
-    public Image EnemyHealthBar;
-    public TextMeshProUGUI enemyHealthBarTMPro;
+    public GameObject InfoPanel;
+    public Image InfoIcon;
+    public Image InfoHealthBar;
+    public TextMeshProUGUI InfoHealthBarTMPro;
+    public TextMeshProUGUI InfoAtkTMpro;
+    public TextMeshProUGUI InfoAtkSpdTMpro;
+    public TextMeshProUGUI InfoArTMpro;
+    public TextMeshProUGUI InfoSpdMpro;
 
     [Header("SkillUI")]
     public GameObject skillTable;
@@ -50,19 +64,17 @@ public class PlayerHUD : MonoBehaviourPun
     public GameObject MousePositionImage;
     public MousePointer mousePointer;
 
-    //[Header("WinnerResultImage")]
-    //public GameObject gameWinImagePanel;
-    //public Image blueWinImage;
-    //public Image redWinImage;
-
     private int[] playerScores = { 0, 0 };
 
     float sec = 0;
     int min = 0;
 
+    InfoState INFO;
     private void Awake()
     {
         Instance = this;
+        Turret.turretMouseDownEvent += ActivationTowerInfoUI;
+        Player.PlayerMouseDownEvent += ActivationEnemyInfoUI;
     }
 
     private void OnEnable()
@@ -155,12 +167,12 @@ public class PlayerHUD : MonoBehaviourPun
         {
             string gameWinMessage = "";
 
-            if (playerScores[(int)Player.Blue] > playerScores[(int)Player.Red])
+            if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
             {
                 GameManager.Instance.winner = "Blue";
                 gameWinMessage = GameManager.Instance.winner;
             }
-            else if ((playerScores[(int)Player.Blue] < playerScores[(int)Player.Red]))
+            else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
             {
                 GameManager.Instance.winner = "Red";
                 gameWinMessage = GameManager.Instance.winner;
@@ -197,25 +209,29 @@ public class PlayerHUD : MonoBehaviourPun
 
     void UpdateEnemyHealthUI()
     {
+        if (INFO == InfoState.Player)
+        {
+
+        }
         if (enemyHp == null)
         {
             return;
         }
 
-        EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
+        InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
         EnemyHp2D = enemyHp.hpSlider3D.value;
-        enemyHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
+        InfoHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
     }
 
     public void AddScoreToEnemy(string tag)
     {
         if (tag == "Red")
         {
-            playerScores[(int)Player.Blue] += 1;
+            playerScores[(int)PlayerColor.Blue] += 1;
         }
         else
         {
-            playerScores[(int)Player.Red] += 1;
+            playerScores[(int)PlayerColor.Red] += 1;
         }
 
         // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
@@ -281,4 +297,36 @@ public class PlayerHUD : MonoBehaviourPun
         yield return new WaitForSeconds(7f);
         PhotonNetwork.LeaveRoom();
     }
+
+    public void ActivationEnemyInfoUI(Stats st, Sprite icon)
+    {
+        INFO = InfoState.Player;
+        InfoPanel.SetActive(true);
+
+        float dmg = st.attackDmg;
+        float atkSpeed = st.attackSpeed;
+        float range = st.attackRange;
+
+        InfoIcon.sprite = icon;
+        InfoAtkTMpro.text = dmg.ToString();
+        InfoAtkSpdTMpro.text = atkSpeed.ToString();
+        InfoArTMpro.text = range.ToString();
+    }
+
+    public void ActivationTowerInfoUI(Item item, string tag)
+    {
+        INFO = InfoState.Tower;
+        InfoPanel.SetActive(true);
+
+        // 이벤트로 들어온 매개변수 세팅(Item class)
+        float hp = item.itemAttributes[0].attributeValue;
+        float dmg = item.itemAttributes[1].attributeValue;
+        float range = item.itemAttributes[2].attributeValue;
+
+        InfoIcon.sprite = item.itemIcon;
+        InfoAtkTMpro.text = dmg.ToString();
+        InfoAtkSpdTMpro.text = "";
+        InfoArTMpro.text = range.ToString();
+    }
+
 }

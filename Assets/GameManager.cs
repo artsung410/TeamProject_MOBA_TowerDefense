@@ -139,10 +139,12 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < count; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
+                tower.GetComponent<Turret>().towerItem = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardItems[i];
+                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
+                //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
+
                 if (tower.GetComponent<Turret_LaserRange>() != null)
                 {
-
                     minionTowerPos[0] = tiles[i];
                 }
             }
@@ -152,7 +154,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < count; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
+                tower.GetComponent<Turret>().towerItem = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardItems[i];
+                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
+                //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
 
                 if (tower.GetComponent<Turret_LaserRange>() != null)
                 {
@@ -161,7 +165,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
     }
-
+ 
     // 미니언 생성
     private void SpawnEnemy()
     {
