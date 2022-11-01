@@ -278,7 +278,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     private IEnumerator DelayLeaveRoom()
     {
-        yield return new WaitForSeconds(3.5f);
+        yield return new WaitForSeconds(7f);
         PhotonNetwork.LeaveRoom();
     }
 }
