@@ -266,7 +266,7 @@ public class PlayerHUD : MonoBehaviourPun
         // 오브젝트 활성화
         GameWinPanel.SetActive(true);
 
-        GameManager.Instance.winner = "Blue";
+        //GameManager.Instance.winner = "Blue";
 
         // 승자가 블루면
         if (GameManager.Instance.winner == "Blue")
