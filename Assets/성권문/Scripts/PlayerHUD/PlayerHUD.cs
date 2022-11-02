@@ -39,9 +39,7 @@ public class PlayerHUD : MonoBehaviourPun
     public Image InfoIcon;
     public Image InfoHealthBar;
     public TextMeshProUGUI InfoHealthBarTMPro;
-    public TextMeshProUGUI InfoAtkTMpro;
-    public TextMeshProUGUI InfoAtkSpdTMpro;
-    public TextMeshProUGUI InfoArTMpro;
+    public TextMeshProUGUI InfoDpsTMpro;
     public TextMeshProUGUI InfoSpdMpro;
 
     [Header("SkillUI")]
@@ -310,9 +308,9 @@ public class PlayerHUD : MonoBehaviourPun
         float spd = st.MoveSpeed;
 
         InfoIcon.sprite = icon;
-        InfoAtkTMpro.text = dmg.ToString();
-        InfoAtkSpdTMpro.text = atkSpeed.ToString();
-        InfoArTMpro.text = range.ToString();
+
+        float dps = dmg * atkSpeed;
+        InfoDpsTMpro.text = dps.ToString();
         InfoSpdMpro.text = spd.ToString();
     }
 
@@ -327,9 +325,9 @@ public class PlayerHUD : MonoBehaviourPun
         float range = item.itemAttributes[2].attributeValue;
 
         InfoIcon.sprite = item.itemIcon;
-        InfoAtkTMpro.text = dmg.ToString();
-        InfoAtkSpdTMpro.text = "";
-        InfoArTMpro.text = range.ToString();
+        //InfoAtkTMpro.text = dmg.ToString();
+        //InfoAtkSpdTMpro.text = "";
+        //InfoArTMpro.text = range.ToString();
         InfoSpdMpro.text = 0.ToString();
     }
 
