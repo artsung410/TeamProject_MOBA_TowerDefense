@@ -50,9 +50,16 @@ public class PlayerHUD : MonoBehaviourPun
     public TextMeshProUGUI timerTMPro;
     public static PlayerHUD Instance;
 
-    [Header("GameWinUI")]
+    [Header("GameResultUI")]
     public GameObject GameWinPanel;
-    public TextMeshProUGUI GameWinText;
+    public Sprite GameWinSprite;
+    public Sprite GameDefeatSprite;
+    public GameObject GameResultImage;
+    public Sprite GameResultWin;
+    public Sprite GameResultDef;
+
+    [Header("GameESCUI")]
+    public GameObject ESCButton;
 
     private Health playerHp;
     private Health enemyHp;
@@ -149,6 +156,12 @@ public class PlayerHUD : MonoBehaviourPun
 
         UpdateHealthUI();
         UpdateEnemyHealthUI();
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            ESCButton_S();
+        }
+
     }
 
     void Timer()
@@ -182,13 +195,17 @@ public class PlayerHUD : MonoBehaviourPun
                 photonView.RPC("RPCInitScore", RpcTarget.All);
             }
 
-            photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
+            //photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
             min = 0;
             sec = 0;
             timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
             GameManager.Instance.isGameEnd = true;
             onGameEnd.Invoke();
-            StartCoroutine(DelayLeaveRoom());
+
+            // 승패 이미지 호출
+            StartCoroutine(ResultImagePopUp());
+
+            //StartCoroutine(DelayLeaveRoom());
             return;
         }
     }
@@ -222,6 +239,12 @@ public class PlayerHUD : MonoBehaviourPun
         InfoHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
     }
 
+    // ESC 버튼을 누르면 창이 켜진다.
+    private void ESCButton_S()
+    {
+        ESCButton.SetActive(true);
+    }
+
     public void AddScoreToEnemy(string tag)
     {
         if (tag == "Red")
@@ -235,6 +258,81 @@ public class PlayerHUD : MonoBehaviourPun
 
         // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
         photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
+    }
+
+    // 승패 결과 이미지 팝업 함수
+    private IEnumerator ResultImagePopUp()
+    {
+        // 오브젝트 활성화
+        GameWinPanel.SetActive(true);
+
+        GameManager.Instance.winner = "Blue";
+
+        // 승자가 블루면
+        if (GameManager.Instance.winner == "Blue")
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
+                StartCoroutine(ImageFadeIn());
+
+                yield return new WaitForSeconds(5f);
+                GameWinPanel.SetActive(false);
+                GameResultImage.SetActive(true);
+                GameResultImage.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = GameResultWin;
+            }
+            else
+            {
+                GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
+                StartCoroutine(ImageFadeIn());
+
+                yield return new WaitForSeconds(5f);
+                GameWinPanel.SetActive(false);
+                GameResultImage.SetActive(true);
+                GameResultImage.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = GameResultDef;
+            }
+        }
+        else
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
+                StartCoroutine(ImageFadeIn());
+
+                yield return new WaitForSeconds(5f);
+                GameWinPanel.SetActive(false);
+                GameResultImage.SetActive(true);
+                GameResultImage.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = GameResultDef;
+            }
+            else
+            {
+                GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
+                StartCoroutine(ImageFadeIn());
+
+                yield return new WaitForSeconds(5f);
+                GameWinPanel.SetActive(false);
+                GameResultImage.SetActive(true);
+                GameResultImage.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = GameResultWin;
+            }
+        }
+    }
+
+
+    // 페이드 인 함수
+    private IEnumerator ImageFadeIn()
+    {
+        float fadeValue = 0;
+
+        Image gameWinPanel = GameWinPanel.GetComponent<Image>();
+
+        while (fadeValue < 1.0f)
+        {
+            fadeValue += 0.01f;
+
+            yield return new WaitForSeconds(0.01f);
+
+            gameWinPanel.color = new Color(255, 255, 255, fadeValue);
+        }
     }
 
     [PunRPC]
@@ -261,6 +359,8 @@ public class PlayerHUD : MonoBehaviourPun
 
         string gameWinMessage = "";
 
+        GameManager.Instance.winner = "Blue";
+
         if (tag == "Red")
         {
             GameManager.Instance.winner = "Blue";
@@ -272,23 +372,10 @@ public class PlayerHUD : MonoBehaviourPun
             gameWinMessage = GameManager.Instance.winner;
         }
 
-        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, GameManager.Instance.winner);
-        StartCoroutine(DelayLeaveRoom());
-    }
+        // 승패 이미지 호출
+        StartCoroutine(ResultImagePopUp());
 
-    [PunRPC]
-    private void RPC_ActivationGameWinUI(string message)
-    {
-        if (message == "Draw")
-        {
-            GameWinText.text = "Draw!";
-        }
-        else
-        {
-            GameWinText.text = $"{message} Team Game Win!";
-        }
-
-        GameWinPanel.SetActive(true);
+        //StartCoroutine(DelayLeaveRoom());
     }
 
     private IEnumerator DelayLeaveRoom()
