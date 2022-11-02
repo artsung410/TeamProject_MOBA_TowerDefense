@@ -40,16 +40,15 @@ public class Enemybase : MonoBehaviourPun
     protected Animator _animator;
     private CapsuleCollider _capsuleCollider;
     protected Transform Diepos;
+    bool isDead = false;
 
 
 
-
-    
     protected virtual void Awake()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
-           _animator = GetComponent<Animator>();
-        _capsuleCollider = GetComponent<CapsuleCollider>();   
+        _animator = GetComponent<Animator>();
+        _capsuleCollider = GetComponent<CapsuleCollider>();
 
     }
 
@@ -63,7 +62,7 @@ public class Enemybase : MonoBehaviourPun
                 gameObject.tag = "Blue";
                 myTag = "Blue";
                 EnemyTag = "Red";
-                
+
             }
 
             else
@@ -92,7 +91,7 @@ public class Enemybase : MonoBehaviourPun
         }
     }
 
-  
+
 
     public void TakeDamage(float Damage)
     {
@@ -102,13 +101,18 @@ public class Enemybase : MonoBehaviourPun
     [PunRPC]
     public void RPC_TakeDamage(float Damage)
     {
-        CurrnetHP -= Damage;
-        if (CurrnetHP <= 0)
+        if (isDead == false)
         {
-            gameObject.GetComponent<EnemySatatus>().enabled = false;
-            _capsuleCollider.enabled = false;
-            _navMeshAgent.isStopped = true;
-            _animator.SetTrigger("Die");
+            CurrnetHP -= Damage;
+            if (CurrnetHP <= 0)
+            {
+                isDead = true;
+                gameObject.GetComponent<EnemySatatus>().enabled = false;
+                _capsuleCollider.enabled = false;
+                _navMeshAgent.isStopped = true;
+                _animator.SetTrigger("Die");
+            }
+
         }
 
     }
