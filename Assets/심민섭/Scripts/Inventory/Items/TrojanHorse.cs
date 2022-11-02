@@ -40,7 +40,7 @@ public class TrojanHorse: MonoBehaviour
 
     [Header("스킬 장착된 카드 인덱스")]
     [SerializeField]
-    private List<int> skillIndex = new List<int>();
+    public List<int> skillIndex = new List<int>();
 
     [Header("스킬 장착한 카드 명")]
     [SerializeField]
