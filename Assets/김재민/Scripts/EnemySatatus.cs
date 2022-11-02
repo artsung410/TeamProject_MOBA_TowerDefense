@@ -67,11 +67,6 @@ public class EnemySatatus : Enemybase
             Debug.Log("원거리");
             attackRange = 10f;
         }
-        else
-        {
-            Debug.Log("특수");
-            attackRange = 6f;
-        }
 
         _navMeshAgent.SetDestination(_target.position); // 넥서스 좌표
         _navMeshAgent.speed = 5f;

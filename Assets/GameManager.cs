@@ -61,10 +61,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     public List<GameObject> CurrentPlayers = new List<GameObject>(2); // 각 월드에서 생성된 모든 플레이어들.
     //public List<GameObject> CurrentMinions = new List<GameObject>(); // 각 월드에서 생성된 모든 미니언들.
 
+    private GameObject blueNomalMinion;
+    private GameObject blueShotMinion;
+    private GameObject redNomalMinion;
+    private GameObject redShotMinion;
+
     // 플레이어 미니맵에 띄우기
     public GameObject CharacterCircle;
     public GameObject MinionCircle;
-    public GameObject specialPFs;
 
     public bool isGameEnd;
     public string winner;
@@ -77,8 +81,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnTower();
-        //SpawnEnemy();
-        SapwnSpecial();
+        SpawnEnemy();
     }
 
     float elaspedTime;
@@ -94,8 +97,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (elaspedTime >= minionSpawnTime)
         {
             elaspedTime = 0;
-            //SpawnEnemy();
-            SapwnSpecial();
+            SpawnEnemy();
         }
     }
 
@@ -143,8 +145,19 @@ public class GameManager : MonoBehaviourPunCallbacks
                 if (tower.GetComponent<Turret_LaserRange>() != null)
                 {
 
-                    minionTowerPos[0] = tiles[i];
+
+                    if (tower.GetComponent<Turret_LaserRange>().Minion.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // <- 미니언이 들어있음 이친구가 타입 뭔지 알아야 함
+                    {
+                        blueNomalMinion = tower.GetComponent<Turret_LaserRange>().Minion;
+                        blueShotMinion = EnemyPrefabs[1];
+                    }
+                    else
+                    {
+                        blueNomalMinion = EnemyPrefabs[0];
+                        blueShotMinion = tower.GetComponent<Turret_LaserRange>().Minion;
+                    }
                 }
+
             }
         }
         else
@@ -156,7 +169,17 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 if (tower.GetComponent<Turret_LaserRange>() != null)
                 {
-                    minionTowerPos[1] = tiles[i + 4];
+                    if (tower.GetComponent<Turret_LaserRange>().Minion.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // <- 미니언이 들어있음 이친구가 타입 뭔지 알아야 함
+                    {
+                        redNomalMinion = tower.GetComponent<Turret_LaserRange>().Minion;
+                        redShotMinion = EnemyPrefabs[1];
+                    }
+                    else
+                    {
+                        redNomalMinion = EnemyPrefabs[0];
+                        redShotMinion = tower.GetComponent<Turret_LaserRange>().Minion;
+                    }
+
                 }
             }
         }
@@ -167,49 +190,25 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            if (EnemyPrefabs[0] == null || EnemyPrefabs[1] == null)
+            if (blueNomalMinion == null || blueShotMinion == null)
             {
                 return;
             }
 
-            GameObject NomalMinion = PhotonNetwork.Instantiate(EnemyPrefabs[0].name, spawnPositions[0].position, Quaternion.identity);
+            GameObject NomalMinion = PhotonNetwork.Instantiate(blueNomalMinion.name, spawnPositions[0].position, Quaternion.identity);
 
-            GameObject ShotMinion = PhotonNetwork.Instantiate(EnemyPrefabs[1].name, spawnPositions[0].position, Quaternion.identity);
+            GameObject ShotMinion = PhotonNetwork.Instantiate(blueShotMinion.name, spawnPositions[0].position, Quaternion.identity);
         }
         else if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
-            if (EnemyPrefabs[2] == null || EnemyPrefabs[3] == null)
-            {
-                return ;
-            }
-            GameObject NomalMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[2].name, spawnPositions[1].position, Quaternion.identity);
-
-            GameObject shotMinion1 = PhotonNetwork.Instantiate(EnemyPrefabs[3].name, spawnPositions[1].position, Quaternion.identity);
-        }
-    }
-
-    private void SapwnSpecial()
-    {
-        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
-        {
-            if (minionTowerPos[0] == null)
+            if (redNomalMinion == null || redShotMinion == null)
             {
                 return;
             }
+            GameObject NomalMinion1 = PhotonNetwork.Instantiate(redNomalMinion.name, spawnPositions[1].position, Quaternion.identity);
 
-            GameObject specialminionBlue = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[0].transform.position, Quaternion.identity);
-
+            GameObject shotMinion1 = PhotonNetwork.Instantiate(redShotMinion.name, spawnPositions[1].position, Quaternion.identity);
         }
-        else if(PhotonNetwork.LocalPlayer.ActorNumber == 2)
-        {
-            if (minionTowerPos[1] == null)
-            {
-                return;
-            }
-
-            GameObject specialminionRed = PhotonNetwork.Instantiate(specialPFs.name, minionTowerPos[1].transform.position, Quaternion.identity);
-        }
-
     }
 
 }

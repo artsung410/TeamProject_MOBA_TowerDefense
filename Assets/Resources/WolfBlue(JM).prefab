@@ -1211,15 +1211,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
   attackRange: 0
-  HP: 100
+  Damage: 0
   CurrnetHP: 0
+  HP: 100
   EnemyTag: 
   myTag: 
   _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
   Targeton: 0
   _estate: 0
-  _eminiomtype: 2
+  _eminiomtype: 0
 --- !u!65 &5664799570988408538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1267,7 +1269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395d688b175fdbb45b971953df67c0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PistonDamage: 5
+  boxColider: {fileID: 0}
 --- !u!54 &7128323917923024365
 Rigidbody:
   m_ObjectHideFlags: 0

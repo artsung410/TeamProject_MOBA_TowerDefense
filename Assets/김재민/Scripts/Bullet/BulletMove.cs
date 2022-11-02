@@ -13,10 +13,10 @@ public class BulletMove : MonoBehaviourPun
    
     
     public Transform tg { get;  set; }
-
     new Rigidbody rigidbody;
     public float turn;
     public float ballVelocity;
+    [HideInInspector]
     public float Damage;
     public string EnemyTag;
     // Update is called once per frame
@@ -51,34 +51,33 @@ public class BulletMove : MonoBehaviourPun
 
     private void OnTriggerEnter(Collider other)
     {
-        // 미니언일 때 처리
-        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 8 )
+        if(other.CompareTag(EnemyTag))
         {
-            other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-            Destroy(gameObject);
-        }
-        // 타워일때 처리
-        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
-        {
-            other.gameObject.GetComponent<Turret>().Damage(Damage);
-            Destroy(gameObject);
-        }
-        // 플레이어일때 
-        if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
-        {
-            other.gameObject.GetComponent<Health>().OnDamage(Damage);
-            Destroy(gameObject);
-        }
-        // 넥서스 일때
-        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
-        {
-            other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
-            Destroy(gameObject);
-        }
-        if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
-        {
-            other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-            Destroy(gameObject);
+            if(other.gameObject.layer == 6) // 타워
+            {
+                other.gameObject.GetComponent<Turret>().Damage(Damage);
+                Destroy(gameObject);
+            }
+            if (other.gameObject.layer == 7) // 플레이어
+            {
+                other.gameObject.GetComponent<Health>().OnDamage(Damage);
+                Destroy(gameObject);
+            }
+            if (other.gameObject.layer == 8) // 미니언
+            {
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                Destroy(gameObject);
+            }
+            if (other.gameObject.layer == 12) // 넥서스
+            {
+                other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
+                Destroy(gameObject);
+            }
+            if (other.gameObject.layer == 13) // 특수미니언
+            {
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                Destroy(gameObject);
+            }
         }
 
     }

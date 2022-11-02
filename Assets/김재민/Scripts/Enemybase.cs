@@ -10,21 +10,14 @@ public class Enemybase : MonoBehaviourPun
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
-
-    // 이동속도
-    protected float moveSpeed;
-    // 공격사거리
-    [SerializeField]
-    protected float attackRange;
-    // 공격력
-    protected float Damage;
-    //공격 쿨타임
-    protected float AttackTime;
-
-    // 체력
-    public float HP = 100f;
-
+    [Header("스텟")]
+    public float moveSpeed;
+    public float attackRange;
+    public float Damage; 
     public float CurrnetHP;
+    public float HP = 100f;
+    // 체력
+
     [HideInInspector]
     public string EnemyTag;
     [HideInInspector]
@@ -44,7 +37,6 @@ public class Enemybase : MonoBehaviourPun
         _capsuleCollider = GetComponent<CapsuleCollider>();
 
     }
-
     protected virtual void OnEnable() // 생성
     {
         CurrnetHP = HP;
@@ -65,7 +57,6 @@ public class Enemybase : MonoBehaviourPun
                 EnemyTag = "Blue";
             }
         }
-
         else
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
@@ -83,9 +74,6 @@ public class Enemybase : MonoBehaviourPun
             }
         }
     }
-
-
-
     public void TakeDamage(float Damage)
     {
         photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);

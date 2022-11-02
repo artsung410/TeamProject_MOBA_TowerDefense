@@ -23,9 +23,12 @@ public class Turret_LaserRange : Turret
     [Header("회전속도")]
     public float turnSpeed = 10f;
 
+    [Header("미니언")]
+    public GameObject Minion;
+    
     private Animator animator;
 
-    private void Start()
+     void Start()
     {
         animator = GetComponent<Animator>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);

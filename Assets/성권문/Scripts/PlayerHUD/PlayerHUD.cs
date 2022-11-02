@@ -49,9 +49,7 @@ public class PlayerHUD : MonoBehaviourPun
     public TMP_InputField ChatInput;
     public GameObject ChatPanel;
     public TextMeshProUGUI[] ChatText;
-    
-
-
+    private bool Chating = false;
 
     [Header("MousePointer")]
     public Canvas MousePointerCanvas;
@@ -68,7 +66,6 @@ public class PlayerHUD : MonoBehaviourPun
     float sec = 0;
     int min = 0;
 
-    private bool Chating = false;
 
     private void Awake()
     {
@@ -151,13 +148,14 @@ public class PlayerHUD : MonoBehaviourPun
         {
             return;
         }
-        if(Input.GetKeyDown(KeyCode.Return))
+        if(false == Chating && Input.GetKeyDown(KeyCode.Return))
         {
-
-            ChatOn(); //채팅창온 
-          
+            ChatOn(); //채팅창온 오프
         }
-
+        if(ChatInput.text == "")
+        {
+            Chating = false;
+        }
         UpdateHealthUI();
         UpdateEnemyHealthUI();
     }

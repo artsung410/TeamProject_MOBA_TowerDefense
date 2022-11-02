@@ -564,13 +564,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 0
-  HP: 100
+  Damage: 10
   CurrnetHP: 0
+  HP: 100
   EnemyTag: Red
   myTag: 
   _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
   Targeton: 0
+  _estate: 0
   _eminiomtype: 0
 --- !u!136 &5222610333701107893
 CapsuleCollider:
@@ -662,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 395d688b175fdbb45b971953df67c0d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PistonDamage: 10
+  boxColider: {fileID: 0}
 --- !u!65 &54847594693648339
 BoxCollider:
   m_ObjectHideFlags: 0
