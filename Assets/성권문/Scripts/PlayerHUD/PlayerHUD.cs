@@ -57,6 +57,14 @@ public class PlayerHUD : MonoBehaviourPun
     private Health playerHp;
     private Health enemyHp;
 
+    [Header("ChatUI")]
+    public TMP_InputField ChatInput;
+    public GameObject ChatPanel;
+    public TextMeshProUGUI[] ChatText;
+    private bool ChatingUi = false;
+    private bool Chating = false;
+
+
     [Header("MousePointer")]
     public Canvas MousePointerCanvas;
     public GameObject MousePositionImage;
@@ -98,6 +106,10 @@ public class PlayerHUD : MonoBehaviourPun
         StartCoroutine(setHp());
         setMouseCursor();
         photonView.RPC("RPCInitScore", RpcTarget.All);
+        for (int i = 0; i < ChatText.Length; i++)
+        {
+            ChatText[i].text = "";
+        }
     }
 
     private IEnumerator setHp()
@@ -149,6 +161,19 @@ public class PlayerHUD : MonoBehaviourPun
 
         UpdateHealthUI();
         UpdateEnemyHealthUI();
+        
+
+        if( false == Chating && Input.GetKeyDown(KeyCode.Return))
+        {
+            ChatingUi = !ChatingUi; //온오프
+            ChatPanel.SetActive(Chating); // 채팅창온
+            if(ChatingUi && ChatInput.text == "")
+            {
+                ChatingUi = false;
+            }
+
+
+        }
     }
 
     void Timer()
@@ -330,5 +355,33 @@ public class PlayerHUD : MonoBehaviourPun
         //InfoArTMpro.text = range.ToString();
         InfoSpdMpro.text = 0.ToString();
     }
+    #region 채팅
+    public void Sned()
+    {
+        string msg = PhotonNetwork.LocalPlayer.ActorNumber + " : " + ChatInput.text;
+        photonView.RPC("ChatRPC", RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber + " : " + ChatInput.text);
+        ChatInput.text = "";
+    }
 
+    [PunRPC]
+    void ChatRPC(string msg)
+    {
+        bool isInput = false;
+        for (int i = 0; i < ChatText.Length; i++)
+
+            if (ChatText[i].text == "")
+            {
+                isInput = true;
+                ChatText[i].text = msg;
+                break;
+
+            }
+
+        if (!isInput)
+        {
+            for (int i = 1; i < ChatText.Length; i++) ChatText[i - 1].text = ChatText[i].text;
+            ChatText[ChatText.Length - 1].text = msg;
+        }
+    }
+    #endregion 
 }
