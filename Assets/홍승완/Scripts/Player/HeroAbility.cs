@@ -18,6 +18,8 @@ public class HeroAbility : MonoBehaviourPun
 
     GameObject go;
 
+    TrojanHorse _trojan;
+
     #region private 변수들
 
 
@@ -25,20 +27,23 @@ public class HeroAbility : MonoBehaviourPun
 
     void Awake()
     {
-        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count;
+        AbilityPrefabs = new GameObject[4];
+        _trojan = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
 
+        int count = _trojan.skillIndex.Count;
         if (count == 0)
         {
             return;
         }
 
-        AbilityPrefabs = new GameObject[4];
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < count; i++)
         {
-            // TODO : 스킬을 장착하지않으면 장착하지 않은 위치는 빈칸으로 게임시작하기
+
+            int idx = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillIndex[i];
 
             // 트로이목마 안에 있는 아이템 프리팹 게임상에서 가져오기
-            AbilityPrefabs[i] = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i].itemModel;
+            AbilityPrefabs[idx] = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i].itemModel;
+             
         }
     }
 
@@ -66,6 +71,8 @@ public class HeroAbility : MonoBehaviourPun
                 go.GetComponent<SkillHandler>().GetMousePos(this.GetComponent<PlayerBehaviour>());
             }
         }
+
+        //Debug.Log($"{}");
     }
 
     private void AbilityQ()

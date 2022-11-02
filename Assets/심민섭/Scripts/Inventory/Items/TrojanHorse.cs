@@ -40,7 +40,7 @@ public class TrojanHorse: MonoBehaviour
 
     [Header("스킬 장착된 카드 인덱스")]
     [SerializeField]
-    private List<int> skillIndex = new List<int>();
+    public List<int> skillIndex = new List<int>();
 
     [Header("스킬 장착한 카드 명")]
     [SerializeField]
@@ -60,6 +60,7 @@ public class TrojanHorse: MonoBehaviour
 
     [Header("장착한 스킬아이템")]
     public List<Item> skillItems = new List<Item>();
+
 
     // 공격력, 사거리, 쿨타임
     [SerializeField]
