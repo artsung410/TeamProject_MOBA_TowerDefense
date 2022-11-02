@@ -155,7 +155,7 @@ public class PlayerHUD : MonoBehaviourPun
         {
 
             ChatOn(); //채팅창온 
-            Debug.Log("키입력받나요??");
+          
         }
 
         UpdateHealthUI();
