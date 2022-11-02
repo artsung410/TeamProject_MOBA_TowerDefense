@@ -12,7 +12,7 @@ public class SkillManager : MonoBehaviour
     public static SkillManager Instance;
     [SerializeField]
     ItemDataBaseList ItemDataBase;
-    TrojanHorse aa;
+    TrojanHorse horse;
 
     public float[] Atk = new float[4];
     public float[] CoolTime = new float[4];
@@ -22,36 +22,31 @@ public class SkillManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        aa = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        horse = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
 
     }
 
     private void Start()
     {
-        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count;
-
+        int count = horse.skillIndex.Count;
         if (count == 0)
         {
             return;
         }
 
-        else
+        for (int i = 0; i < count; i++)
         {
-            for (int i = 0; i < count; i++) // 4
+            int idx = horse.skillIndex[i];
+            for (int j = 0; j < ItemDataBase.itemList.Count; j++)
             {
-                for (int j = 0; j < ItemDataBase.itemList.Count; j++) // 100
+                if (horse.skillId[i] == ItemDataBase.itemList[j].itemID)
                 {
-                    if (aa.skillId[i] == ItemDataBase.itemList[j].itemID)
-                    {
-                        Atk[i] = ItemDataBase.itemList[j].itemAttributes[0].attributeValue;
-                        CoolTime[i] = ItemDataBase.itemList[j].itemAttributes[1].attributeValue;
-                        HoldingTime[i] = ItemDataBase.itemList[j].itemAttributes[2].attributeValue;
-                        Range[i] = ItemDataBase.itemList[j].itemAttributes[3].attributeValue;
-                    }
+                    Atk[idx] = ItemDataBase.itemList[j].itemAttributes[0].attributeValue;
+                    CoolTime[idx] = ItemDataBase.itemList[j].itemAttributes[1].attributeValue;
+                    HoldingTime[idx] = ItemDataBase.itemList[j].itemAttributes[2].attributeValue;
+                    Range[idx] = ItemDataBase.itemList[j].itemAttributes[3].attributeValue;
                 }
             }
-        
-
         }
     }
     

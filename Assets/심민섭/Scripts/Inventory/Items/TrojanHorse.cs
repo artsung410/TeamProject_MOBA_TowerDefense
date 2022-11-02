@@ -61,6 +61,7 @@ public class TrojanHorse: MonoBehaviour
     [Header("장착한 스킬아이템")]
     public List<Item> skillItems = new List<Item>();
 
+
     // 공격력, 사거리, 쿨타임
     [SerializeField]
     private ItemDataBaseList itemDatabase;
