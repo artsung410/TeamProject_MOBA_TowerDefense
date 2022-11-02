@@ -8,10 +8,18 @@ using System;
 public class PlayerHUD : MonoBehaviourPun
 {
     public static event Action onGameEnd = delegate { };
-    enum Player
+    enum PlayerColor
     {
         Blue,
         Red,
+    }
+
+    enum InfoState
+    {
+        Player,
+        Tower,
+        Minion,
+        Nexus,
     }
 
     // ###############################################
@@ -27,8 +35,12 @@ public class PlayerHUD : MonoBehaviourPun
     public TextMeshProUGUI playerInfoTMPro;
 
     [Header("InfoUI")]
-    public Image EnemyHealthBar;
-    public TextMeshProUGUI enemyHealthBarTMPro;
+    public GameObject InfoPanel;
+    public Image InfoIcon;
+    public Image InfoHealthBar;
+    public TextMeshProUGUI InfoHealthBarTMPro;
+    public TextMeshProUGUI InfoDpsTMpro;
+    public TextMeshProUGUI InfoSpdMpro;
 
     [Header("SkillUI")]
     public GameObject skillTable;
@@ -45,33 +57,22 @@ public class PlayerHUD : MonoBehaviourPun
     private Health playerHp;
     private Health enemyHp;
 
-    [Header("ChatUI")]
-    public TMP_InputField ChatInput;
-    public GameObject ChatPanel;
-    public TextMeshProUGUI[] ChatText;
-    private bool Chating = false;
-
     [Header("MousePointer")]
     public Canvas MousePointerCanvas;
     public GameObject MousePositionImage;
     public MousePointer mousePointer;
-
-    //[Header("WinnerResultImage")]
-    //public GameObject gameWinImagePanel;
-    //public Image blueWinImage;
-    //public Image redWinImage;
 
     private int[] playerScores = { 0, 0 };
 
     float sec = 0;
     int min = 0;
 
-
+    InfoState INFO;
     private void Awake()
     {
         Instance = this;
-
-        ChatPanel.SetActive(false);
+        Turret.turretMouseDownEvent += ActivationTowerInfoUI;
+        Player.PlayerMouseDownEvent += ActivationEnemyInfoUI;
     }
 
     private void OnEnable()
@@ -97,10 +98,6 @@ public class PlayerHUD : MonoBehaviourPun
         StartCoroutine(setHp());
         setMouseCursor();
         photonView.RPC("RPCInitScore", RpcTarget.All);
-        for (int i = 0;  i < ChatText.Length; i++)
-        {
-            ChatText[i].text = "";
-        }
     }
 
     private IEnumerator setHp()
@@ -118,10 +115,11 @@ public class PlayerHUD : MonoBehaviourPun
         for (int i = 0; i < count; i++)
         {
             Item item = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i];
-            skillTable.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
-            skillTable.transform.GetChild(i).GetChild(0).GetComponent<Skillicon>().item = item;
-            skillTable.transform.GetChild(i).GetComponent<SkillButton>().item = item;
-            skillTable.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
+            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillIndex[i];
+            skillTable.transform.GetChild(slotIndex).GetChild(0).gameObject.SetActive(true);
+            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Skillicon>().item = item;
+            skillTable.transform.GetChild(slotIndex).GetComponent<SkillButton>().item = item;
+            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
         }
     }
 
@@ -138,7 +136,7 @@ public class PlayerHUD : MonoBehaviourPun
         {
             return;
         }
-        
+
         Timer();
     }
 
@@ -148,25 +146,10 @@ public class PlayerHUD : MonoBehaviourPun
         {
             return;
         }
-        if(false == Chating && Input.GetKeyDown(KeyCode.Return))
-        {
-            ChatOn(); //채팅창온 오프
-        }
-        if(ChatInput.text == "")
-        {
-            Chating = false;
-        }
+
         UpdateHealthUI();
         UpdateEnemyHealthUI();
     }
-    
-
-   public void ChatOn()
-    {
-        Chating = !Chating;
-        ChatPanel.SetActive(Chating);
-    }
-
 
     void Timer()
     {
@@ -183,12 +166,12 @@ public class PlayerHUD : MonoBehaviourPun
         {
             string gameWinMessage = "";
 
-            if (playerScores[(int)Player.Blue] > playerScores[(int)Player.Red])
+            if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
             {
                 GameManager.Instance.winner = "Blue";
                 gameWinMessage = GameManager.Instance.winner;
             }
-            else if ((playerScores[(int)Player.Blue] < playerScores[(int)Player.Red]))
+            else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
             {
                 GameManager.Instance.winner = "Red";
                 gameWinMessage = GameManager.Instance.winner;
@@ -225,25 +208,29 @@ public class PlayerHUD : MonoBehaviourPun
 
     void UpdateEnemyHealthUI()
     {
+        if (INFO == InfoState.Player)
+        {
+
+        }
         if (enemyHp == null)
         {
             return;
         }
 
-        EnemyHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
+        InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
         EnemyHp2D = enemyHp.hpSlider3D.value;
-        enemyHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
+        InfoHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
     }
 
     public void AddScoreToEnemy(string tag)
     {
         if (tag == "Red")
         {
-            playerScores[(int)Player.Blue] += 1;
+            playerScores[(int)PlayerColor.Blue] += 1;
         }
         else
         {
-            playerScores[(int)Player.Red] += 1;
+            playerScores[(int)PlayerColor.Red] += 1;
         }
 
         // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
@@ -310,34 +297,38 @@ public class PlayerHUD : MonoBehaviourPun
         PhotonNetwork.LeaveRoom();
     }
 
-    #region 채팅
-    public void Sned()
+    public void ActivationEnemyInfoUI(Stats st, Sprite icon)
     {
-        string msg = PhotonNetwork.LocalPlayer.ActorNumber + " : " + ChatInput.text;
-        photonView.RPC("ChatRPC",RpcTarget.All, PhotonNetwork.LocalPlayer.ActorNumber + " : " + ChatInput.text);
-        ChatInput.text = "";
+        INFO = InfoState.Player;
+        InfoPanel.SetActive(true);
+
+        float dmg = st.attackDmg;
+        float atkSpeed = st.attackSpeed;
+        float range = st.attackRange;
+        float spd = st.MoveSpeed;
+
+        InfoIcon.sprite = icon;
+
+        float dps = dmg * atkSpeed;
+        InfoDpsTMpro.text = dps.ToString();
+        InfoSpdMpro.text = spd.ToString();
     }
 
-    [PunRPC]
-    void ChatRPC(string msg)
+    public void ActivationTowerInfoUI(Item item, string tag)
     {
-        bool isInput = false;
-        for (int i = 0; i <ChatText.Length; i++)
-        
-            if(ChatText[i].text == "")
-            {
-                isInput = true;
-                ChatText[i].text = msg;
-                break;
+        INFO = InfoState.Tower;
+        InfoPanel.SetActive(true);
 
-            }
-        
-        if (!isInput)
-            {
-            for (int i = 1; i < ChatText.Length; i++) ChatText[i - 1].text = ChatText[i].text;
-            ChatText[ChatText.Length - 1].text = msg;
-            }
+        // 이벤트로 들어온 매개변수 세팅(Item class)
+        float hp = item.itemAttributes[0].attributeValue;
+        float dmg = item.itemAttributes[1].attributeValue;
+        float range = item.itemAttributes[2].attributeValue;
+
+        InfoIcon.sprite = item.itemIcon;
+        //InfoAtkTMpro.text = dmg.ToString();
+        //InfoAtkSpdTMpro.text = "";
+        //InfoArTMpro.text = range.ToString();
+        InfoSpdMpro.text = 0.ToString();
     }
 
-    #endregion
 }
