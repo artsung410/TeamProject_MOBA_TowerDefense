@@ -109,6 +109,11 @@ public class Turret : MonoBehaviourPun
     [PunRPC]
     public void Destroy()
     {
+        if (gameObject.activeSelf == false)
+        {
+            return;
+        }
+
         StartCoroutine(Destructing());
         newDestroyParticle = PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
         StartCoroutine(Destruction(newDestroyParticle));
