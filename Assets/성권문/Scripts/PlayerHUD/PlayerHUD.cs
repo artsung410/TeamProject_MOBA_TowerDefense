@@ -117,10 +117,11 @@ public class PlayerHUD : MonoBehaviourPun
         for (int i = 0; i < count; i++)
         {
             Item item = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i];
-            skillTable.transform.GetChild(i).GetChild(0).gameObject.SetActive(true);
-            skillTable.transform.GetChild(i).GetChild(0).GetComponent<Skillicon>().item = item;
-            skillTable.transform.GetChild(i).GetComponent<SkillButton>().item = item;
-            skillTable.transform.GetChild(i).GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
+            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillIndex[i];
+            skillTable.transform.GetChild(slotIndex).GetChild(0).gameObject.SetActive(true);
+            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Skillicon>().item = item;
+            skillTable.transform.GetChild(slotIndex).GetComponent<SkillButton>().item = item;
+            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
         }
     }
 

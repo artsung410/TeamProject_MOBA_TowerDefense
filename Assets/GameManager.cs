@@ -140,7 +140,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 tower.GetComponent<Turret>().towerItem = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardItems[i];
-                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[i].position, Quaternion.identity);
+                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
+                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
                 //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
 
                 if (tower.GetComponent<Turret_LaserRange>() != null)
@@ -155,7 +156,8 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
                 tower.GetComponent<Turret>().towerItem = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardItems[i];
-                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[i + 4].position, Quaternion.identity);
+                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
+                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
                 //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
 
                 if (tower.GetComponent<Turret_LaserRange>() != null)
