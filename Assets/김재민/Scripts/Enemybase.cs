@@ -98,7 +98,6 @@ public class Enemybase : MonoBehaviourPun
     {
         if (isDead == false)
         {
-            Debug.Log($"{CurrnetHP}");
             CurrnetHP -= Damage;
             if (CurrnetHP <= 0)
             {

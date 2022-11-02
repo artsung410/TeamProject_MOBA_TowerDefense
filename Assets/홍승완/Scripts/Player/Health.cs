@@ -50,7 +50,6 @@ public class Health : MonoBehaviourPun
     public void HealthUpdate(float damage)
     {
         health = Mathf.Max(health - damage, 0);
-        Debug.Log($"{health}");
         hpSlider3D.value = health;
         Die();
     }

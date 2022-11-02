@@ -21,17 +21,14 @@ public class MinionAttack : MonoBehaviour
         boxColider.enabled = false;
     }
 
-    
+
     private void OnTriggerEnter(Collider other)
     {
         if(other.CompareTag(satatus.EnemyTag) == false)
         {
             return;
         }
-        if(other.CompareTag(satatus.myTag))
-        {
-            return;
-        }
+
         if(other.CompareTag(satatus.EnemyTag))
         {
             EnemyTagNullCheck();
@@ -70,15 +67,12 @@ public class MinionAttack : MonoBehaviour
 
     public void AttackboxOn()
     {
-        boxColider.enabled = true;
-        
+        boxColider.enabled = true; 
     }
 
-    public void AttackboxOff()
+
+    public void Attackboxoff()
     {
-       
         boxColider.enabled = false;
     }
-
-
 }
