@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.UI;
+using System;
 
 public class NexusHp : MonoBehaviourPun
 {
@@ -10,22 +11,25 @@ public class NexusHp : MonoBehaviourPun
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
+    public static event Action<NexusHp, Sprite> nexusMouseDownEvent = delegate { };
+
     public float CurrentHp;
     public float MaxHp;
+    private bool isDie;
     public GameObject destroyParticle;
     [SerializeField]
     private Slider _slider;
+    public Sprite nexusSprite;
     private void Awake()
     {
         CurrentHp = MaxHp;
-       
     }
- 
+
 
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.activeSelf == false)
+        if (gameObject.activeSelf == false)
         {
             return;
         }
@@ -50,16 +54,25 @@ public class NexusHp : MonoBehaviourPun
     [PunRPC]
     private void RPC_TakeDamage(float Damage)
     {
-        CurrentHp -= Damage;
-        if (CurrentHp <= 0)
+        if (isDie == false)
         {
-            PlayerHUD.Instance.ActivationGameWinUI_Nexus(gameObject.tag);
-            PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
-            gameObject.GetComponent<MeshRenderer>().enabled = false;
-            transform.GetChild(0).gameObject.SetActive(false);
-            
-        }
 
+            CurrentHp -= Damage;
+            if (CurrentHp <= 0)
+            {
+                isDie = true;
+                PlayerHUD.Instance.ActivationGameWinUI_Nexus(gameObject.tag);
+                PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+                gameObject.GetComponent<MeshRenderer>().enabled = false;
+                transform.GetChild(0).gameObject.SetActive(false);
+
+            }
+        }
+    }
+
+    private void OnMouseDown()
+    {
+        nexusMouseDownEvent.Invoke(this, nexusSprite);
     }
 
 }

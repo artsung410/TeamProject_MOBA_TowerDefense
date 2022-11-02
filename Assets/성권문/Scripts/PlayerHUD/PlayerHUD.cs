@@ -76,6 +76,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     Turret currentTurretforInfo;
     Enemybase currentMinionforInfo;
+    NexusHp currentNexusforInfo;
 
     InfoState INFO;
     private void Awake()
@@ -84,6 +85,7 @@ public class PlayerHUD : MonoBehaviourPun
         Turret.turretMouseDownEvent += ActivationTowerInfoUI;
         Player.PlayerMouseDownEvent += ActivationEnemyInfoUI;
         Enemybase.minionMouseDownEvent += ActivationMinionInfoUI;
+        NexusHp.nexusMouseDownEvent += ActivationNexusInfoUI;
     }
 
     private void OnEnable()
@@ -288,7 +290,19 @@ public class PlayerHUD : MonoBehaviourPun
 
         else if (INFO == InfoState.Nexus)
         {
+            if (currentNexusforInfo == null)
+            {
+                return;
+            }
 
+            if (currentNexusforInfo.CurrentHp <= 0)
+            {
+                InfoPanel.SetActive(false);
+            }
+
+            InfoHealthBar.fillAmount = currentNexusforInfo.CurrentHp / currentNexusforInfo.MaxHp;
+            Hp2D = currentNexusforInfo.CurrentHp;
+            InfoHealthBarTMPro.text = Hp2D + " / " + currentNexusforInfo.MaxHp;
         }
 
 
@@ -484,5 +498,16 @@ public class PlayerHUD : MonoBehaviourPun
         float dps = dmg * atkSpeed;
         InfoDpsTMpro.text = dps.ToString();
         InfoSpdMpro.text = spd.ToString();
+    }
+
+    public void ActivationNexusInfoUI(NexusHp nexus, Sprite icon)
+    {
+        INFO = InfoState.Nexus;
+        currentNexusforInfo = nexus;
+        InfoPanel.SetActive(true);
+
+        InfoIcon.sprite = icon;
+        InfoDpsTMpro.text = 0.ToString();
+        InfoSpdMpro.text = 0.ToString();
     }
 }
