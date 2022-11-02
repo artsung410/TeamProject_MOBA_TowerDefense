@@ -31,5 +31,7 @@ public class BulletSpawn : MonoBehaviour
         GameObject bullet = Instantiate(Prefab, _gunPivot.position, transform.rotation);
 
         bullet.GetComponent<BulletMove>().tg = Minion._target;
+        bullet.GetComponent<BulletMove>().Damage = Minion.Damage;
+
     }
 }
