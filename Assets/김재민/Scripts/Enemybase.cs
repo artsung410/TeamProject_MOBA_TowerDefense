@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using UnityEngine.AI;
+using System;
 
 public class Enemybase : MonoBehaviourPun
 {
@@ -11,16 +12,21 @@ public class Enemybase : MonoBehaviourPun
     //             MAIL : woals1566@gmail.com         
     // ###############################################
 
+    public static event Action<Enemybase, Sprite> minionMouseDownEvent = delegate { };
     // 이동속도
-   protected float moveSpeed;
+    public float moveSpeed;
     // 공격사거리
     [SerializeField]
-    protected float attackRange;
+    public float attackRange;
     // 공격력
-    protected float Damage;
+    public float Damage;
+    // 공격속도
+    public float AttackSpeed = 1f;
+    // 미니언 사진
+    public Sprite minionSprite;
     //공격 쿨타임
     protected float AttackTime;
-    
+
     // 체력
     public float HP = 100f;
 
@@ -34,7 +40,9 @@ public class Enemybase : MonoBehaviourPun
     protected Animator _animator;
     private CapsuleCollider _capsuleCollider;
     protected Transform Diepos;
-   
+
+
+
 
     
     protected virtual void Awake()
@@ -107,6 +115,11 @@ public class Enemybase : MonoBehaviourPun
     public void Death()
     {
         Destroy(transform.parent.gameObject);
+    }
+
+    private void OnMouseDown()
+    {
+        minionMouseDownEvent.Invoke(this, minionSprite);
     }
 
 }

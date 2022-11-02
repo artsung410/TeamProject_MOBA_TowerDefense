@@ -12,7 +12,7 @@ using System;
 
 public class Turret : MonoBehaviourPun
 {
-    public static event Action<Item, string> turretMouseDownEvent = delegate { };
+    public static event Action<Turret, Item, string> turretMouseDownEvent = delegate { };
     public float currentHealth;
     public float maxHealth;
     public Image healthbarImage;
@@ -26,6 +26,16 @@ public class Turret : MonoBehaviourPun
     [Header("타겟 TAG")]
     public string enemyTag;
     private GameObject newDestroyParticle;
+
+    [Header("데미지")]
+    public float damage;
+
+    [Header("사거리")]
+    public float range = 15f;
+
+    [Header("공격주기(초당 n번 발사)")]
+    public float fireRate = 1f;
+    public float fireCountdown = 0f;
 
     protected void Awake()
     {
@@ -86,7 +96,7 @@ public class Turret : MonoBehaviourPun
     {
         //Debug.Log("Damage RPC적용");
 
-        currentHealth -= damage;
+        currentHealth = Mathf.Max(currentHealth - damage, 0);
         healthbarImage.fillAmount = currentHealth / maxHealth;
 
         if (currentHealth <= 0)
@@ -150,6 +160,6 @@ public class Turret : MonoBehaviourPun
     // 타워 클릭했을 때 툴팁뜨게하기
     private void OnMouseDown()
     {
-        turretMouseDownEvent.Invoke(towerItem, gameObject.tag);
+        turretMouseDownEvent.Invoke(this, towerItem, gameObject.tag);
     }
 }

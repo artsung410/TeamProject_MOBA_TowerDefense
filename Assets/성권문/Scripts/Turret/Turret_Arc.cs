@@ -11,12 +11,6 @@ public class Turret_Arc : Turret
     private Transform target;
     private EnemyMinion targetEnemy;
 
-    [Header("사거리")]
-    public float range = 15f;
-
-    [Header("공격주기(초당 n번 발사)")]
-    public float fireRate = 1f;
-
     [Header("회전체")]
     public Transform partToRotate;
 

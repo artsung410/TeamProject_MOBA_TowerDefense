@@ -67,12 +67,16 @@ public class PlayerHUD : MonoBehaviourPun
     float sec = 0;
     int min = 0;
 
+    Turret currentTurretforInfo;
+    Enemybase currentMinionforInfo;
+
     InfoState INFO;
     private void Awake()
     {
         Instance = this;
         Turret.turretMouseDownEvent += ActivationTowerInfoUI;
         Player.PlayerMouseDownEvent += ActivationEnemyInfoUI;
+        Enemybase.minionMouseDownEvent += ActivationMinionInfoUI;
     }
 
     private void OnEnable()
@@ -193,7 +197,7 @@ public class PlayerHUD : MonoBehaviourPun
         }
     }
 
-    float playerHp2D; float EnemyHp2D;
+    float playerHp2D; float Hp2D;
     void UpdateHealthUI()
     {
         if (playerHp == null)
@@ -208,18 +212,69 @@ public class PlayerHUD : MonoBehaviourPun
 
     void UpdateEnemyHealthUI()
     {
+        UpdateHealthBar();
+    }
+
+    public void UpdateHealthBar()
+    {
+
         if (INFO == InfoState.Player)
         {
+            if (enemyHp == null)
+            {
+                return;
+            }
 
+            if (enemyHp.hpSlider3D.value <= 0)
+            {
+                InfoPanel.SetActive(false);
+            }
+
+            InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
+            Hp2D = enemyHp.hpSlider3D.value;
+            InfoHealthBarTMPro.text = Hp2D + " / " + enemyHp.hpSlider3D.maxValue;
         }
-        if (enemyHp == null)
+
+        else if (INFO == InfoState.Tower)
         {
-            return;
+            if (currentTurretforInfo == null)
+            {
+                return;
+            }
+
+            if (currentTurretforInfo.currentHealth <= 0)
+            {
+                InfoPanel.SetActive(false);
+            }
+
+            InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.maxHealth;
+            Hp2D = currentTurretforInfo.currentHealth;
+            InfoHealthBarTMPro.text = Hp2D + " / " + currentTurretforInfo.maxHealth;
         }
 
-        InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
-        EnemyHp2D = enemyHp.hpSlider3D.value;
-        InfoHealthBarTMPro.text = EnemyHp2D + " / " + enemyHp.hpSlider3D.maxValue;
+        else if (INFO == InfoState.Minion)
+        {
+            if (currentMinionforInfo == null)
+            {
+                return;
+            }
+
+            if (currentMinionforInfo.CurrnetHP <= 0)
+            {
+                InfoPanel.SetActive(false);
+            }
+
+            InfoHealthBar.fillAmount = currentMinionforInfo.CurrnetHP / currentMinionforInfo.HP;
+            Hp2D = currentMinionforInfo.CurrnetHP;
+            InfoHealthBarTMPro.text = Hp2D + " / " + currentMinionforInfo.HP;
+        }
+
+        else if (INFO == InfoState.Nexus)
+        {
+
+        }
+
+
     }
 
     public void AddScoreToEnemy(string tag)
@@ -302,33 +357,45 @@ public class PlayerHUD : MonoBehaviourPun
         INFO = InfoState.Player;
         InfoPanel.SetActive(true);
 
+        InfoIcon.sprite = icon;
         float dmg = st.attackDmg;
         float atkSpeed = st.attackSpeed;
-        float range = st.attackRange;
         float spd = st.MoveSpeed;
-
-        InfoIcon.sprite = icon;
 
         float dps = dmg * atkSpeed;
         InfoDpsTMpro.text = dps.ToString();
         InfoSpdMpro.text = spd.ToString();
     }
 
-    public void ActivationTowerInfoUI(Item item, string tag)
+    public void ActivationTowerInfoUI(Turret turret, Item item, string tag)
     {
         INFO = InfoState.Tower;
+        currentTurretforInfo = turret;
         InfoPanel.SetActive(true);
 
         // 이벤트로 들어온 매개변수 세팅(Item class)
-        float hp = item.itemAttributes[0].attributeValue;
-        float dmg = item.itemAttributes[1].attributeValue;
-        float range = item.itemAttributes[2].attributeValue;
-
         InfoIcon.sprite = item.itemIcon;
-        //InfoAtkTMpro.text = dmg.ToString();
-        //InfoAtkSpdTMpro.text = "";
-        //InfoArTMpro.text = range.ToString();
+        float dmg = turret.damage;
+        float atkSpeed = turret.fireRate;
+
+        float dps = dmg * atkSpeed;
+        InfoDpsTMpro.text = dps.ToString();
         InfoSpdMpro.text = 0.ToString();
     }
 
+    public void ActivationMinionInfoUI(Enemybase minion, Sprite icon)
+    {
+        INFO = InfoState.Minion;
+        currentMinionforInfo = minion;
+        InfoPanel.SetActive(true);
+
+        InfoIcon.sprite = icon;
+        float dmg = minion.Damage;
+        float atkSpeed = minion.AttackSpeed;
+        float spd = minion.moveSpeed;
+
+        float dps = dmg * atkSpeed;
+        InfoDpsTMpro.text = dps.ToString();
+        InfoSpdMpro.text = spd.ToString();
+    }
 }
