@@ -1049,7 +1049,6 @@ GameObject:
   - component: {fileID: 2182970372972455663}
   - component: {fileID: 477570206287748836}
   - component: {fileID: 578562929544001649}
-  - component: {fileID: 5664799570988408543}
   - component: {fileID: 5664799570988408537}
   - component: {fileID: 5664799570988408538}
   - component: {fileID: 8693555679262259341}
@@ -1142,7 +1141,7 @@ MonoBehaviour:
   ShowParameterInspector: 1
   m_SynchronizeParameters:
   - Type: 4
-    SynchronizeType: 2
+    SynchronizeType: 1
     Name: Attack
   - Type: 4
     SynchronizeType: 0
@@ -1175,30 +1174,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &5664799570988408543
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2182970372979741863}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 477570206287748836}
-  - {fileID: 578562929544001649}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &5664799570988408537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1211,12 +1186,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 0
-  attackRange: 0
-  Damage: 0
+
+  attackRange: 6
+  Damage: 10
+  attackRange: 6
   AttackSpeed: 1
   minionSprite: {fileID: 21300000, guid: 0da65d028b3f6bd4ca1053a1df6c72c3, type: 3}
   HP: 100
+  
   CurrnetHP: 0
   EnemyTag: 
   myTag: 
@@ -1233,10 +1210,10 @@ BoxCollider:
   m_GameObject: {fileID: 2182970372979741863}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 0.48, y: 1, z: 1}
-  m_Center: {x: 0, y: 0.65, z: 1.18}
+  m_Center: {x: 0, y: 0.65, z: 1.36}
 --- !u!195 &8693555679262259341
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1251,7 +1228,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1

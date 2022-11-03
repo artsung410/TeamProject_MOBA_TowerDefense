@@ -205,9 +205,9 @@ public class GameManager : MonoBehaviourPunCallbacks
                 return;
             }
 
-             PhotonNetwork.Instantiate(blueNomalMinion.name, spawnPositions[0].position, Quaternion.identity);
+            PhotonNetwork.Instantiate(blueNomalMinion.name, spawnPositions[0].position, Quaternion.identity);
 
-             PhotonNetwork.Instantiate(blueShotMinion.name, spawnPositions[0].position, Quaternion.identity);
+            PhotonNetwork.Instantiate(blueShotMinion.name, spawnPositions[0].position, Quaternion.identity);
         }
         else if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
@@ -215,9 +215,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 return ;
             }
-             PhotonNetwork.Instantiate(redNomalMinion.name, spawnPositions[1].position, Quaternion.identity);
+            PhotonNetwork.Instantiate(redNomalMinion.name, spawnPositions[1].position, Quaternion.identity);
 
-             PhotonNetwork.Instantiate(redShotMinion.name, spawnPositions[1].position, Quaternion.identity);
+            PhotonNetwork.Instantiate(redShotMinion.name, spawnPositions[1].position, Quaternion.identity);
         }
     }
 

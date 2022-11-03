@@ -56,21 +56,16 @@ public class EnemySatatus : Enemybase
     {
 
         StartCoroutine(StateChange());
-        InvokeRepeating("UpdateEnemyTarget", 0f, 0.5f);
+        InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
         if (_eminiomtype == EMINIOMTYPE.Nomal)
         {
             //Debug.Log("노멀");
-            attackRange = 4f;
+            attackRange = 6f;
         }
         else if (_eminiomtype == EMINIOMTYPE.Shot)
         {
             //Debug.Log("원거리");
             attackRange = 10f;
-        }
-        else
-        {
-            //Debug.Log("특수");
-            attackRange = 6f;
         }
 
         _navMeshAgent.SetDestination(_target.position); // 넥서스 좌표
@@ -86,12 +81,9 @@ public class EnemySatatus : Enemybase
             {
                 if (_eminiomtype == EMINIOMTYPE.Nomal) //공격범위 초기화
                 {
-                    attackRange = 4f;
-                }
-                if (_eminiomtype == EMINIOMTYPE.Special)
-                {
                     attackRange = 6f;
                 }
+
                 Targeton = false;
                 _target = _PrevTarget;
                 _navMeshAgent.SetDestination(_target.position);
@@ -116,15 +108,11 @@ public class EnemySatatus : Enemybase
             {
                 if (_eminiomtype == EMINIOMTYPE.Nomal) //공격범위 초기화
                 {
-                    attackRange = 4f;
-                }
-                if (_eminiomtype == EMINIOMTYPE.Special)
-                {
                     attackRange = 6f;
                 }
                 Targeton = false;
                 _target = _PrevTarget;
-                _navMeshAgent.SetDestination(new Vector3(_target.position.x, 0, _target.position.z));
+                _navMeshAgent.SetDestination(_target.position);
             }
 
             Vector3 vecAtkDistance = _target.position - transform.position;
@@ -139,7 +127,6 @@ public class EnemySatatus : Enemybase
             {
                 _animator.SetBool("Attack", false);
                 _navMeshAgent.isStopped = false;
-                Targeton = false;
                 _target = _PrevTarget;
                 _navMeshAgent.SetDestination(_target.position);
                 _estate = ESTATE.move;
