@@ -194,8 +194,6 @@ public class PlayerBehaviour : MonoBehaviourPun
                 MoveTo();
             }
         }
-
-        
     }
 
     public void ForLeapFuction(PlayerBehaviour player, float jumpForce, float fallMultiplier)

@@ -116,22 +116,20 @@ public class Leap : SkillHandler
     Vector3 end;
 
     // SMS -----------------------------------------------------------------
-    public Animator animator;
-    Vector3 velo = Vector3.forward; // юс╫ц
+    Vector3 velo = Vector3.forward;
 
     private IEnumerator LeapAttackAnimationStart()
     {
-        animator.SetBool("JumpAttack", true);
+        PlayerAnimation.instance.animator.SetBool("JumpAttack", true);
         yield return new WaitForSeconds(0.5f);
     }
     private IEnumerator LeapAttackAnimationEnd()
     {
-        yield return new WaitForSeconds(3f);
-        animator.SetBool("JumpAttack", false);
+        yield return new WaitForSeconds(1.5f);
+        PlayerAnimation.instance.animator.SetBool("JumpAttack", false);
     }
-
-
     // ---------------------------------------------------------------------
+
     public override void SkillUpdatePosition()
     {
         transform.position = leapPos;
