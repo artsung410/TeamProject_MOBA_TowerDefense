@@ -496,14 +496,14 @@ public class PlayerHUD : MonoBehaviourPun
         InfoSpdMpro.text = spd.ToString();
     }
 
-    public void ActivationTowerInfoUI(Turret turret, Item item, string tag)
+    public void ActivationTowerInfoUI(Turret turret)
     {
         INFO = InfoState.Tower;
         currentTurretforInfo = turret;
         InfoPanel.SetActive(true);
 
         // 이벤트로 들어온 매개변수 세팅(Item class)
-        InfoIcon.sprite = item.itemIcon;
+        InfoIcon.sprite = turret.towerData.Icon;
         float dmg = turret.towerData.Attack;
         float atkSpeed = turret.towerData.AttackSpeed;
 
