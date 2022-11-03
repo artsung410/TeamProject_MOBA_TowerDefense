@@ -20,28 +20,32 @@ public class BulletSpawn : MonoBehaviourPun
 
     EnemySatatus Minion;
 
-    
+
     private void Awake()
     {
-      
+
         Minion = GetComponent<EnemySatatus>();
-    }    
+    }
 
     public void Spawn()
     {
-       if(photonView.IsMine)
+        if (photonView.IsMine)
         {
-        GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, transform.rotation);
+            GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, transform.rotation);
+            bullet.GetComponent<BulletMove>().tg = Minion._target;
+            bullet.GetComponent<BulletMove>().Damage = Minion.Damage;
 
-        bullet.GetComponent<BulletMove>().tg = Minion._target;
-        bullet.GetComponent<BulletMove>().Damage = Minion.Damage;
+            if (bullet.GetComponent<BulletMove>().tg == Minion._PrevTarget)
+            {
+                PhotonNetwork.Destroy(bullet);
+            }
+
+
         }
-
     }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, 14f);
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, 14f);
+        }
     }
-}
