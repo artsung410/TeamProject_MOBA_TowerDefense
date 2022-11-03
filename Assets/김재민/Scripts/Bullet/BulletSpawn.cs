@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class BulletSpawn : MonoBehaviour
+public class BulletSpawn : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : KimJaeMin                      
@@ -23,13 +23,19 @@ public class BulletSpawn : MonoBehaviour
     
     private void Awake()
     {
+      
         Minion = GetComponent<EnemySatatus>();
     }    
 
     public void Spawn()
     {
-        GameObject bullet = Instantiate(Prefab, _gunPivot.position, transform.rotation);
+       if(photonView.IsMine)
+        {
+        GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, transform.rotation);
 
         bullet.GetComponent<BulletMove>().tg = Minion._target;
+        bullet.GetComponent<BulletMove>().Damage = Minion.Damage;
+        }
+
     }
 }

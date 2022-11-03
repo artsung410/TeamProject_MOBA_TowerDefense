@@ -268,7 +268,7 @@ MonoBehaviour:
     itemType: 10
     itemWeight: 0
     maxStack: 99
-    indexItemInList: 2
+    indexItemInList: 0
     rarity: 100
     itemAttributes:
     - attributeName: towerHP
@@ -280,8 +280,10 @@ MonoBehaviour:
     specialPrefabs: []
     buffDatas: []
   enemyTag: Untagged
+  damage: 5
   range: 25
   fireRate: 0.5
+  fireCountdown: 0
   partToRotate: {fileID: 5338223571047918177}
   turnSpeed: 10
   bulletPrefab: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
