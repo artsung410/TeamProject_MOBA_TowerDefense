@@ -70,6 +70,7 @@ public class EnemySatatus : Enemybase
 
         _navMeshAgent.SetDestination(_target.position); // 넥서스 좌표
         _navMeshAgent.speed = 5f;
+        moveSpeed = _navMeshAgent.speed;
     }
     private IEnumerator move() // 움직임  //목표지점까지 움직인다 . 타켓발견 -> 멈춰서 공격 -> 타켓 죽음 -> 타겟변경 -> 타
     {

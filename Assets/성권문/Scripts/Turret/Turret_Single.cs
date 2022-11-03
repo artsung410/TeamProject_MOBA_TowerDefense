@@ -10,13 +10,6 @@ public class Turret_Single : Turret
 {
     private Transform target;
 
-    [Header("사거리")]
-    public float range = 15f;
-
-    [Header("공격주기(초당 n번 발사)")]
-    public float fireRate = 1f;
-    private float fireCountdown = 0f;
-
     [Header("회전체")]
     public Transform partToRotate;
 
