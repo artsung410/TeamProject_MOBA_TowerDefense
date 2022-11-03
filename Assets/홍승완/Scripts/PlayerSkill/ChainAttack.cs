@@ -20,15 +20,16 @@ public class ChainAttack : SkillHandler
     string enemyTag;
     Vector3 mouseDir;
 
-    #endregion
-
     private float HoldingTime;
     private float Damage;
     private float Range;
 
+    #endregion
+
+
     private void Awake()
     {
-        effect = gameObject.GetComponent<ParticleSystem>();
+        //effect = gameObject.GetComponent<ParticleSystem>();
     }
 
     private void OnEnable()
@@ -123,24 +124,6 @@ public class ChainAttack : SkillHandler
         transform.rotation = quaternion;
     }
 
-    private void OnTriggerStay(Collider other)
-    {
-        // 데미지 두번들어가던부분 IsMine으로 처리
-        if (photonView.IsMine)
-        {
-
-            if (other.CompareTag(enemyTag))
-            {
-                if (isDamage)
-                {
-                    isDamage = false;
-                    float tickDamage = Damage / 10;
-                    SkillDamage(tickDamage, other.gameObject);
-                }
-            }
-        }
-    }
-
     public override void SkillHoldingTime(float time)
     {
         elapsedTime += Time.deltaTime;
@@ -168,29 +151,20 @@ public class ChainAttack : SkillHandler
         }
     }
 
-
-    public override void SkillDamage(float damage, GameObject target)
+    private void OnTriggerStay(Collider other)
     {
-        if (target.gameObject.layer == 7)
+        // 데미지 두번들어가던부분 IsMine으로 처리
+        if (photonView.IsMine)
         {
-            Health player = target.GetComponent<Health>();
-
-            if (player != null)
+            if (other.CompareTag(enemyTag))
             {
-                player.OnDamage(damage);
-
-            }
-        }
-        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
-        {
-            Enemybase minion = target.GetComponent<Enemybase>();
-
-
-            if (minion != null)
-            {
-                minion.TakeDamage(damage);
+                if (isDamage)
+                {
+                    isDamage = false;
+                    float tickDamage = Damage / 10;
+                    SkillDamage(tickDamage, other.gameObject);
+                }
             }
         }
     }
-
 }

@@ -18,7 +18,8 @@ public class Stats : MonoBehaviourPun
     public float attackSpeed;
     public float attackTime;
     public float attackRange;
-
+    
+    // TODO : 이동속도 버프, 디버프 관련해서 새로운 변수 추가할 필요있음
     [Header("이동 관련")]
     public float MoveSpeed;
 
@@ -41,7 +42,7 @@ public class Stats : MonoBehaviourPun
 
         attackDmg = 35f;
         attackRange = 6f;
-        attackSpeed = 1f;
+        attackSpeed = 2.5f;
 
         MoveSpeed = 15f;
     }

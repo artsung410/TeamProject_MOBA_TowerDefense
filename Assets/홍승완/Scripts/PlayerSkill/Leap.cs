@@ -10,6 +10,10 @@ public class Leap : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    // TODO : 착지한 지점에서 이펙트 동기화 문제(리모트캐릭터에선 이펙트 활성화 안되는중)
+
+    public GameObject effect;
+
     #region Private 변수들
 
     Quaternion quaternion;
@@ -23,6 +27,10 @@ public class Leap : SkillHandler
     private float Speed;
     #endregion
 
+    private void Awake()
+    {
+    }
+
     private void OnEnable()
     {
         elapsedTime = 0f;
@@ -30,6 +38,11 @@ public class Leap : SkillHandler
         HoldingTime = SetHodingTime;
         Range = SetRange;
 
+        isArive = false;
+        isAttack = false;
+
+        effect.SetActive(isArive);
+        
     }
 
     private void Start()
@@ -41,6 +54,24 @@ public class Leap : SkillHandler
 
         TagProcessing(_ability);
         LookMouseCursor();
+
+        CheckDist();
+    }
+
+    private void CheckDist()
+    {
+        mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
+
+        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Range)
+        {
+            start = _behaviour.transform.position;
+            end = _behaviour.transform.forward;
+            leapPos = (start + end.normalized * Range);
+        }
+        else
+        {
+            leapPos = mousePos;
+        }
     }
 
     RaycastHit hit;
@@ -70,27 +101,40 @@ public class Leap : SkillHandler
 
     private void Update()
     {
-        SkillUpdatePosition();
-        SkillHoldingTime(HoldingTime);
+        if (photonView.IsMine)
+        {
+            SkillUpdatePosition();
+            SkillHoldingTime(HoldingTime);
+            effect.SetActive(isArive);
+        }
     }
 
+    Vector3 mousePos;
+    Vector3 leapPos;
+
+    Vector3 start;
+    Vector3 end;
     public override void SkillUpdatePosition()
     {
-        // 마우스 위치에서 생성
-        transform.position = hit.point;
+        transform.position = leapPos;
     }
-
-    public override void SkillDamage(float damage, GameObject target)
-    {
-        throw new System.NotImplementedException();
-    }
-
 
     public override void SkillHoldingTime(float time)
     {
         elapsedTime += Time.deltaTime;
 
         // 지속시간동안 플레이어가 지정한 장소로 도약한다
+        _behaviour.transform.position = Vector3.Lerp(_behaviour.transform.position, leapPos, time);
+
+        // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
+        _behaviour.ForSkillAgent(leapPos);
+
+        // 착지시 주변에 데미지를 준다(한번만 호출)
+        if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
+        {
+            isArive = true;
+            StompDamage();
+        }
 
         if (elapsedTime >= time)
         {
@@ -101,5 +145,33 @@ public class Leap : SkillHandler
         }
     }
 
+    bool isArive;
+    bool isAttack;
+    Collider[] enemies;
+    public void StompDamage()
+    {
+        if (isArive == true && isAttack == false)
+        {
+            // 이 경우 데미지 처리
+            if (photonView.IsMine)
+            {
+                enemies = Physics.OverlapSphere(this.transform.position, 3f);
+                //Debug.Log($"배열의 길이 : {enemies.Length}");
+                if (enemies.Length > 0)
+                {
+                    foreach (Collider target in enemies)
+                    {
+                        if (target.CompareTag(enemyTag))
+                        {
+                            isAttack = true;
+                            SkillDamage(Damage, target.gameObject);
+                        }
+                    }
+                }
+
+            }
+        }
+        return;
+    }
 
 }

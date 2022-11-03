@@ -47,7 +47,8 @@ public class HeroAbility : MonoBehaviourPun
         }
     }
 
-    // TODO : 스킬발동중 다른 스킬을 쓰면 쓰던스킬이 취소됨
+    // TODO : 스킬발동중 다른 스킬을 쓰면 쓰던스킬이 취소되게한다(날리는 스킬 제외)
+    // TODO : 1/3/5/7 에서 스킬이 해금된다
 
     void Update()
     {
@@ -72,7 +73,6 @@ public class HeroAbility : MonoBehaviourPun
             }
         }
 
-        //Debug.Log($"{}");
     }
 
     private void AbilityQ()
