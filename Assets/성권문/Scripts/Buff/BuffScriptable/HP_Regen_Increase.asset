@@ -10,14 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d3c9c031197f714499b49259ff17f2a, type: 3}
-  m_Name: AttackSpeedUp
+  m_Name: HP_Regen_Increase
   m_EditorClassIdentifier: 
-  id: 15003
-  Name: AttackSpeedUp
-  Desc: "\"\uD50C\uB808\uC774\uC5B4 \uACF5\uACA9\uC18D\uB3C4 10\uC99D\uAC00\""
-  Effect_Type: 2
-  Effect_Value: 10
-  Unlimited: 1
-  Effect_Duration: 0
-  targetType: 0
-  buffIcon: {fileID: 21300000, guid: 2bbebcc9ca74c2c47bc5238486432710, type: 3}
+  _id: 15002
+  _name: HP_Regen_Increase
+  _effectType: 1
+  _target: 5
+  _effectValue: 5
+  _effectPosition: 0
+  _unlimited: 0
+  _effectDuration: 3
+  _desc: "\uCCB4\uB825 \uB9AC\uC820\uC5C5\uC744 \uD574\uC900\uB2E4."
+  _buffIcon: {fileID: 21300000, guid: bb67b03c2969d104caba950c446f8c8d, type: 3}

@@ -9,24 +9,71 @@ using UnityEngine;
 //             ±âÈ¹DB -> (4)Effect_Table Àû¿ë
 // ###############################################
 [System.Serializable]
-[CreateAssetMenu(fileName = "BuffName", menuName = "Buff/Create New Buff")]
+[CreateAssetMenu(fileName = "BuffName", menuName = "BuffData/Create New BuffData")]
 public class BuffData : ScriptableObject
 {
-    public enum TargetType
+    public enum Effect_Type
+    {
+        Damage,
+        Buff,
+        Debuff,
+        Minion,
+    }
+
+    public enum Target
     {
         Player,
-        Minion,
+        Enemy,
+        My_Minion,
+        Enemy_Minion,
+        While_Enemy,
         Tower
     }
 
-    public int id;
-    public string Name;
-    [TextArea] public string Desc;
-    public int Effect_Type;
-    public int Effect_Value;
-    public bool Unlimited;
-    public float Effect_Duration;
-    public TargetType targetType;
-    public Sprite buffIcon;
+    public enum Effect_Position
+    {
+        Player,
+        Enemy
+    }
+
+    [SerializeField]
+    private int _id;
+    public int Id { get { return _id; } }
+
+    [SerializeField]
+    private string _name;
+    public string Name { get { return _name; } }
+
+    [SerializeField]
+    private Effect_Type _effectType;
+    public Effect_Type EffectType { get { return _effectType; } }
+
+    [SerializeField]
+    private Target _target;
+    public Target TargetType { get { return _target; } }
+
+    [SerializeField]
+    private int _effectValue;
+    public int EffectValue { get { return _effectValue; } }
+
+    [SerializeField]
+    private Effect_Position _effectPosition;
+    public Effect_Position EffectPosition { get { return _effectPosition; } }
+
+    [SerializeField]
+    private bool _unlimited;
+    public bool Unlimited { get { return _unlimited; } }
+
+    [SerializeField]
+    private float _effectDuration;
+    public float EffectDuration { get { return _effectDuration; } }
+
+    [SerializeField]
+    [TextArea] private string _desc;
+    public string Desc { get { return _desc; } }
+
+    [SerializeField]
+    private Sprite _buffIcon;
+    public Sprite BuffIcon { get { return _buffIcon; } }
 }
 

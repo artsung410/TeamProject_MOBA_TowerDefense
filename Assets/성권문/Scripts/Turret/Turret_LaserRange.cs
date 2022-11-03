@@ -16,9 +16,6 @@ public class Turret_LaserRange : Turret
 
     [Header("회전속도")]
     public float turnSpeed = 10f;
-
-    [Header("미니언")]
-    public GameObject Minion;
     
     private Animator animator;
 
@@ -52,7 +49,7 @@ public class Turret_LaserRange : Turret
         }
 
         // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
-        if (nearestEnemy != null && shortestDistance <= range)
+        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
         {
             target = nearestEnemy.transform;
         }
@@ -105,7 +102,7 @@ public class Turret_LaserRange : Turret
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, towerData.AttackRange);
     }
 
 }
