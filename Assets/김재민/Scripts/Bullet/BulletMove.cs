@@ -25,28 +25,25 @@ public class BulletMove : MonoBehaviourPun
         rigidbody = GetComponent<Rigidbody>();
     }
 
-    private void Start()
-    {
-        Destroy(gameObject, 3f);
-    }
-
     private void FixedUpdate()
     {
         if (tg == null)
         {
             return;
         }
+
         // 유도탄
         if (tg.position != null) //타켓이 있을때
         {
-            rigidbody.velocity = transform.forward * ballVelocity;
+            rigidbody.velocity = transform.forward * ballVelocity; 
             var ballTargetRotation = Quaternion.LookRotation(tg.position + new Vector3(0, 0.8f) - transform.position);
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
         }
         else
         {
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
+
     }
 
     private void OnTriggerEnter(Collider other)
@@ -54,34 +51,35 @@ public class BulletMove : MonoBehaviourPun
         // 미니언일 때 처리
         if (photonView.IsMine)
         {
+         
 
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
             // 타워일때 처리
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
             {
                 other.gameObject.GetComponent<Turret>().Damage(Damage);
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
             // 플레이어일때 
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
             {
                 other.gameObject.GetComponent<Health>().OnDamage(Damage);
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
             // 넥서스 일때
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
             {
                 other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-                Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
         }
 

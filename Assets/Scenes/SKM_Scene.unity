@@ -3893,7 +3893,7 @@ RectTransform:
   - {fileID: 1390489366}
   - {fileID: 767416076}
   m_Father: {fileID: 1689808975}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -6350,7 +6350,6 @@ RectTransform:
   - {fileID: 8629818126868529695}
   - {fileID: 325668184}
   - {fileID: 295309235}
-  - {fileID: 837454404}
   - {fileID: 2598750147649098264}
   - {fileID: 1036385550}
   - {fileID: 1984170721}
@@ -6389,7 +6388,12 @@ MonoBehaviour:
   scoreTMPro: {fileID: 1794569779}
   timerTMPro: {fileID: 841012067}
   GameWinPanel: {fileID: 295309234}
-  GameWinText: {fileID: 1331006115}
+  GameWinSprite: {fileID: 21300000, guid: d48e401d9c31bff47b7a01fd97b57671, type: 3}
+  GameDefeatSprite: {fileID: 21300000, guid: 48f89c00c91866b428055840739ff2d3, type: 3}
+  GameResultImage: {fileID: 1036385549}
+  GameResultWin: {fileID: 21300000, guid: 0e225ae2ceb2b0e458920d139a04971f, type: 3}
+  GameResultDef: {fileID: 21300000, guid: 217593c2046add2468c0ec959a6f745b, type: 3}
+  ESCButton: {fileID: 1984170720}
   ChatInput: {fileID: 2598750149384521273}
   ChatPanel: {fileID: 2598750147649098267}
   ChatText:
@@ -6397,13 +6401,6 @@ MonoBehaviour:
   - {fileID: 2598750149269665157}
   - {fileID: 2598750148887525094}
   - {fileID: 2598750147636950292}
-
-  GameWinSprite: {fileID: 21300000, guid: d48e401d9c31bff47b7a01fd97b57671, type: 3}
-  GameDefeatSprite: {fileID: 21300000, guid: 48f89c00c91866b428055840739ff2d3, type: 3}
-  GameResultImage: {fileID: 1036385549}
-  GameResultWin: {fileID: 21300000, guid: 0e225ae2ceb2b0e458920d139a04971f, type: 3}
-  GameResultDef: {fileID: 21300000, guid: 217593c2046add2468c0ec959a6f745b, type: 3}
-  ESCButton: {fileID: 1984170720}
   MousePointerCanvas: {fileID: 1736184111}
   MousePositionImage: {fileID: 2134043698}
   mousePointer: {fileID: 2134043702}
@@ -8602,7 +8599,7 @@ RectTransform:
   - {fileID: 1077451209}
   - {fileID: 2019357285}
   m_Father: {fileID: 1689808975}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -9944,7 +9941,7 @@ RectTransform:
   m_Children:
   - {fileID: 2598750149192849530}
   m_Father: {fileID: 1689808975}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}

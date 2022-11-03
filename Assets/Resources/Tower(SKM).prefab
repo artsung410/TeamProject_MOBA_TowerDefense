@@ -251,8 +251,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b66552f381f9345418b290e5c1d11d44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: ffb5569bd9360014895ce4d6ce840d5c, type: 2}
   currentHealth: 0
-  maxHealth: 100
   healthbarImage: {fileID: 2679327279726133039}
   ui: {fileID: 8788238460778984583}
   destroyParticle: {fileID: 132198, guid: d41a0a47c0a989842a3b518745960048, type: 3}
@@ -280,13 +280,9 @@ MonoBehaviour:
     specialPrefabs: []
     buffDatas: []
   enemyTag: Untagged
-  damage: 5
-  range: 25
-  fireRate: 0.5
   fireCountdown: 0
   partToRotate: {fileID: 5338223571047918177}
   turnSpeed: 10
-  bulletPrefab: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
   firePoint: {fileID: 8789408762047325834}
 --- !u!114 &7168693877925787633
 MonoBehaviour:
@@ -350,7 +346,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 88b65f31ce660f948b1eb26a97bee0f2, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

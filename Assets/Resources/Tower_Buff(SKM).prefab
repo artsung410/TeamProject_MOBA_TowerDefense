@@ -516,8 +516,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f40312e0bc12546b1f66d2ba96b674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
   currentHealth: 0
-  maxHealth: 100
   healthbarImage: {fileID: 9142023263868245017}
   ui: {fileID: 907064859987261078}
   destroyParticle: {fileID: 132198, guid: d41a0a47c0a989842a3b518745960048, type: 3}
@@ -551,13 +551,9 @@ MonoBehaviour:
     - {fileID: 11400000, guid: 01a591c01b353e94fb2982a91654c574, type: 2}
     - {fileID: 11400000, guid: 2a07d552522405747b505f2351bfbfc0, type: 2}
   enemyTag: Untagged
-  damage: 5
-  range: 25
-  fireRate: 0.3
   fireCountdown: 0
   partToRotate: {fileID: 1093213912431874378}
   turnSpeed: 10
-  SkillPrefab: {fileID: 5335353134670440342, guid: fd270451738a31e46a5c9a61c0542116, type: 3}
 --- !u!114 &-2804497378658000812
 MonoBehaviour:
   m_ObjectHideFlags: 0

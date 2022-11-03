@@ -103,8 +103,8 @@ public class BuffManager : MonoBehaviourPun
                 }
             }
 
-            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].Effect_Duration; // 슬롯마다 버프쿨타임 세팅
-            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].buffIcon; // 슬롯 버프이미지 적용
+            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].EffectDuration; // 슬롯마다 버프쿨타임 세팅
+            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].BuffIcon; // 슬롯 버프이미지 적용
             Color color = transform.GetChild(i).GetComponent<Image>().color; 
             color.a = 1f;
             gameObject.transform.GetChild(i).GetComponent<Image>().color = color; // 슬롯 버프이미지 투명도 1로 적용

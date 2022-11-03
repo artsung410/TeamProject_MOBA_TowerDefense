@@ -12,7 +12,7 @@ public class EnemySatatus : Enemybase
     // ###############################################
 
     public Transform _target;
-    private Transform _PrevTarget;
+    public Transform _PrevTarget { get; private set; }
     public bool Targeton = false;
   public  enum ESTATE
     {
@@ -45,8 +45,9 @@ public class EnemySatatus : Enemybase
         GameObject[] Enemys = GameObject.FindGameObjectsWithTag(EnemyTag);
         foreach (GameObject Enemy in Enemys)
         {
-            if (Enemy.layer == 12)
+            if (Enemy.layer == 14)
             {
+
                 _target = Enemy.transform;
                 _PrevTarget = _target; // 
             }
@@ -57,16 +58,6 @@ public class EnemySatatus : Enemybase
 
         StartCoroutine(StateChange());
         InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
-        if (_eminiomtype == EMINIOMTYPE.Nomal)
-        {
-            //Debug.Log("노멀");
-            attackRange = 6f;
-        }
-        else if (_eminiomtype == EMINIOMTYPE.Shot)
-        {
-            //Debug.Log("원거리");
-            attackRange = 10f;
-        }
 
         _navMeshAgent.SetDestination(_target.position); // 넥서스 좌표
         _navMeshAgent.speed = 5f;
@@ -79,13 +70,9 @@ public class EnemySatatus : Enemybase
         {
             if (_target == null) //타켓이 죽엇을때 공격범위 초기화 
             {
-                if (_eminiomtype == EMINIOMTYPE.Nomal) //공격범위 초기화
-                {
-                    attackRange = 6f;
-                }
-
                 Targeton = false;
                 _target = _PrevTarget;
+                transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
                 _navMeshAgent.SetDestination(_target.position);
             }
             transform.LookAt(new Vector3(_target.position.x,0,_target.position.z)); // 타켓을 바라봄
@@ -106,12 +93,9 @@ public class EnemySatatus : Enemybase
             
             if (_target == null)
             {
-                if (_eminiomtype == EMINIOMTYPE.Nomal) //공격범위 초기화
-                {
-                    attackRange = 6f;
-                }
                 Targeton = false;
                 _target = _PrevTarget;
+                transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
                 _navMeshAgent.SetDestination(_target.position);
             }
 
@@ -120,7 +104,7 @@ public class EnemySatatus : Enemybase
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
             //Debug.Log($"{AtkDistance},{attackRange * attackRange}");
-            transform.LookAt(new Vector3(_target.position.x, 0, _target.position.z));
+            transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
             // 애니메이션 추가 + 공격데미지 입히기
             //공격쿨타임
             if (AtkDistance >= attackRange * attackRange)
@@ -159,7 +143,7 @@ public class EnemySatatus : Enemybase
     }
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8 12 넥서스 13 스페셜
     {
-        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
+        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 15f);
         foreach (Collider collider in RangeTarget)
         {
             if (collider.tag == myTag)
@@ -173,10 +157,7 @@ public class EnemySatatus : Enemybase
                 {
                     if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 12) //타워랑 넥서스만 공격가능
                     {
-                        if (collider.gameObject.layer == 12)
-                        {
-                            attackRange = 12f;
-                        }
+                        
                         Targeton = true;
                         _target = collider.transform;
                         _navMeshAgent.SetDestination(_target.position);
@@ -186,15 +167,7 @@ public class EnemySatatus : Enemybase
                 {
                     if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 7 || collider.gameObject.layer == 8 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
                     {
-                        if (_eminiomtype == EMINIOMTYPE.Nomal && collider.gameObject.layer == 6)
-                        {
-                            attackRange = 6f;
-                        }
-
-                        if (collider.gameObject.layer == 12)
-                        {
-                            attackRange = 12f;
-                        }
+                        
                         Targeton = true;
                         _target = collider.transform;
                         _navMeshAgent.SetDestination(_target.position);

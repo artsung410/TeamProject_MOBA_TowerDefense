@@ -149,16 +149,16 @@ public class GameManager : MonoBehaviourPunCallbacks
 
                 if (newTower.GetComponent<Turret_LaserRange>() != null)
                 {
-                    if (newTower.GetComponent<Turret_LaserRange>().Minion.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // <- 미니언이 들어있음 이친구가 타입 뭔지 알아야 함
+                    if (newTower.GetComponent<Turret>().towerData.ObjectPF.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // <- 미니언이 들어있음 이친구가 타입 뭔지 알아야 함
                     {
                        
-                        blueNomalMinion = newTower.GetComponent<Turret_LaserRange>().Minion;
+                        blueNomalMinion = newTower.GetComponent<Turret>().towerData.ObjectPF;
                         blueShotMinion = EnemyPrefabs[1];
                     }
-                    if (newTower.GetComponent<Turret_LaserRange>().Minion.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Shot)
+                    if (newTower.GetComponent<Turret>().towerData.ObjectPF.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Shot)
                     {
                         blueNomalMinion = EnemyPrefabs[0];
-                        blueShotMinion = newTower.GetComponent<Turret_LaserRange>().Minion;
+                        blueShotMinion = newTower.GetComponent<Turret>().towerData.ObjectPF;
                     }
 
                 }
@@ -177,16 +177,16 @@ public class GameManager : MonoBehaviourPunCallbacks
                 if (newTower.GetComponent<Turret_LaserRange>() != null)
                 {
 
-                    Debug.Log($"{newTower.GetComponent<Turret_LaserRange>().Minion.GetComponentInChildren<EnemySatatus>()._eminiomtype}");
-                    if (newTower.GetComponent<Turret_LaserRange>().Minion.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // <- 미니언이 들어있음 이친구가 타입 뭔지 알아야 함
+                    Debug.Log($"{newTower.GetComponent<Turret>().towerData.ObjectPF.GetComponentInChildren<EnemySatatus>()._eminiomtype}");
+                    if (newTower.GetComponent<Turret>().towerData.ObjectPF.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // <- 미니언이 들어있음 이친구가 타입 뭔지 알아야 함
                     {  
-                        redNomalMinion = newTower.GetComponent<Turret_LaserRange>().Minion;
+                        redNomalMinion = newTower.GetComponent<Turret>().towerData.ObjectPF;
                         redShotMinion = EnemyPrefabs[3];
                     }
-                    if(newTower.GetComponent<Turret_LaserRange>().Minion.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Shot)
+                    if(newTower.GetComponent<Turret>().towerData.ObjectPF.GetComponentInChildren<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Shot)
                     {
                         redNomalMinion = EnemyPrefabs[2];
-                        redShotMinion = newTower.GetComponent<Turret_LaserRange>().Minion;
+                        redShotMinion = newTower.GetComponent<Turret>().towerData.ObjectPF;
                     }
 
                 }
@@ -205,7 +205,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 return;
             }
 
-            PhotonNetwork.Instantiate(blueNomalMinion.name, spawnPositions[0].position, Quaternion.identity);
+            //PhotonNetwork.Instantiate(blueNomalMinion.name, spawnPositions[0].position, Quaternion.identity);
 
             PhotonNetwork.Instantiate(blueShotMinion.name, spawnPositions[0].position, Quaternion.identity);
         }
@@ -215,9 +215,9 @@ public class GameManager : MonoBehaviourPunCallbacks
             {
                 return ;
             }
-            PhotonNetwork.Instantiate(redNomalMinion.name, spawnPositions[1].position, Quaternion.identity);
+            //PhotonNetwork.Instantiate(redNomalMinion.name, spawnPositions[1].position, Quaternion.identity);
 
-            PhotonNetwork.Instantiate(redShotMinion.name, spawnPositions[1].position, Quaternion.identity);
+            //PhotonNetwork.Instantiate(redShotMinion.name, spawnPositions[1].position, Quaternion.identity);
         }
     }
 

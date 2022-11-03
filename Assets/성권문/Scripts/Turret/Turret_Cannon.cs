@@ -16,11 +16,6 @@ public class Turret_Cannon : Turret
     [Header("공격범위 도형")]
     public GameObject dangerZonePrefab;
 
-    [Header("====== 투사체 ======")]
-
-    [Header("투사체 프리팹")]
-    public GameObject bulletPrefab;
-
     [Header("투사체 발사 위치")]
     public Transform firePoint;
 
@@ -56,7 +51,7 @@ public class Turret_Cannon : Turret
         }
 
         // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
-        if (nearestEnemy != null && shortestDistance <= range)
+        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
         {
             target = nearestEnemy.transform;
         }
@@ -87,7 +82,7 @@ public class Turret_Cannon : Turret
             makeDangerZone(); // 대포 위험범위 생성
             LockOnTarget_dangerZone();
             StartCoroutine(delayShoot()); // 대포 발사.
-            fireCountdown = 1f / fireRate;
+            fireCountdown = 1f / towerData.AttackSpeed;
         }
 
         fireCountdown -= Time.deltaTime;
@@ -97,6 +92,7 @@ public class Turret_Cannon : Turret
     {
         yield return new WaitForSeconds(1f);
         Shoot();
+        audioSource.clip = towerData.SoundAttack;
         audioSource.Play();
         yield return new WaitForSeconds(0.5f);
         isLockOn = false;
@@ -130,7 +126,7 @@ public class Turret_Cannon : Turret
     // ★ 총알 / 미사일 발사
     void Shoot()
     {
-        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(towerData.ObjectPF, firePoint.position, firePoint.rotation);
 
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
@@ -146,6 +142,6 @@ public class Turret_Cannon : Turret
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, range);
+        Gizmos.DrawWireSphere(transform.position, towerData.AttackRange);
     }
 }

@@ -226,6 +226,13 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
                                     {
                                         //Debug.Log($"7 : {newSlot.transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject.name}");
+                                        if (oldSlot.tag == "WarriorSlot")
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
+
                                         newSlot.transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.GetComponent<Inventory>().UnEquipItem1(firstItem);
                                         oldSlot.transform.parent.parent.GetComponent<Inventory>().EquiptItem(secondItem);
 
