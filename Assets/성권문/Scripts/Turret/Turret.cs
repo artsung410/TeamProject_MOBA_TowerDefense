@@ -12,21 +12,17 @@ using System;
 
 public class Turret : MonoBehaviourPun
 {
-    public static event Action<Turret, Item, string> turretMouseDownEvent = delegate { };
+    public static event Action<Turret> turretMouseDownEvent = delegate { };
 
     [Header("인게임 DB")]
     [SerializeField]
     public TowerData towerData;
-
     public float currentHealth;
     public Image healthbarImage;
     public GameObject ui;
     public GameObject destroyParticle;
     private GameObject newDestroyParticle;
     public float destorySpeed;
-
-    [Header("타워카드 DB")]
-    public Item towerItem;
 
     [HideInInspector]
     public string enemyTag;
@@ -172,6 +168,6 @@ public class Turret : MonoBehaviourPun
     // 타워 클릭했을 때 툴팁뜨게하기
     private void OnMouseDown()
     {
-        turretMouseDownEvent.Invoke(this, towerItem, gameObject.tag);
+        turretMouseDownEvent.Invoke(this);
     }
 }

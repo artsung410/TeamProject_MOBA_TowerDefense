@@ -42,16 +42,18 @@ public class BuffManager : MonoBehaviourPun
         {
             if (data.cardId[item] == (int)Tower.BuffTower)
             {
-                int buffCount = data.cardItems[item].buffDatas.Count;
+                TowerData tower = (TowerData)data.ingameDatas[item];
+
+                int buffCount = tower.Scriptables.Count;
 
                 if (buffCount == 0)
                 {
                     return;
                 }
 
-                for (int buff = 0; buff < buffCount; buff++)
+                for (int i = 0; i < buffCount; i++)
                 {
-                    currentBuffDatas.Add(data.cardItems[item].buffDatas[buff]);
+                    currentBuffDatas.Add((BuffData)tower.Scriptables[i]);
                 }
             }
         }
