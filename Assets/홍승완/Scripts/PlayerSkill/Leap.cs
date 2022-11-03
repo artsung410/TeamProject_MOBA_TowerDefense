@@ -114,6 +114,22 @@ public class Leap : SkillHandler
 
     Vector3 start;
     Vector3 end;
+
+    // SMS -----------------------------------------------------------------
+    Vector3 velo = Vector3.forward;
+
+    private IEnumerator LeapAttackAnimationStart()
+    {
+        PlayerAnimation.instance.animator.SetBool("JumpAttack", true);
+        yield return new WaitForSeconds(0.5f);
+    }
+    private IEnumerator LeapAttackAnimationEnd()
+    {
+        yield return new WaitForSeconds(1.5f);
+        PlayerAnimation.instance.animator.SetBool("JumpAttack", false);
+    }
+    // ---------------------------------------------------------------------
+
     public override void SkillUpdatePosition()
     {
         transform.position = leapPos;
@@ -123,8 +139,12 @@ public class Leap : SkillHandler
     {
         elapsedTime += Time.deltaTime;
 
+        StartCoroutine(LeapAttackAnimationStart());
+
         // 지속시간동안 플레이어가 지정한 장소로 도약한다
         _behaviour.transform.position = Vector3.Lerp(_behaviour.transform.position, leapPos, time);
+
+        StartCoroutine(LeapAttackAnimationEnd());
 
         // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
         _behaviour.ForSkillAgent(leapPos);

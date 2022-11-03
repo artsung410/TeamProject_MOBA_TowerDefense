@@ -522,6 +522,34 @@ MonoBehaviour:
   ui: {fileID: 907064859987261078}
   destroyParticle: {fileID: 132198, guid: d41a0a47c0a989842a3b518745960048, type: 3}
   destorySpeed: 10
+  towerItem:
+    itemName: Buff_Tower
+    ClassType: 
+    itemID: 7
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3815db486757d6f419874d58bb1f364b, type: 3}
+    itemModel: {fileID: 7418510190786929041}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 1
+    rarity: 100
+    itemAttributes:
+    - attributeName: towerHP
+      attributeValue: 300
+    - attributeName: towerATK
+      attributeValue: 1
+    - attributeName: towerRange
+      attributeValue: 300
+    - attributeName: buffValue
+      attributeValue: 5
+    specialPrefabs: []
+    buffDatas:
+    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+    - {fileID: 11400000, guid: de8ce44b77cea7143821f6f4448b7570, type: 2}
+    - {fileID: 11400000, guid: 01a591c01b353e94fb2982a91654c574, type: 2}
+    - {fileID: 11400000, guid: 2a07d552522405747b505f2351bfbfc0, type: 2}
   enemyTag: Untagged
   fireCountdown: 0
   partToRotate: {fileID: 1093213912431874378}

@@ -257,6 +257,28 @@ MonoBehaviour:
   ui: {fileID: 8788238460778984583}
   destroyParticle: {fileID: 132198, guid: d41a0a47c0a989842a3b518745960048, type: 3}
   destorySpeed: 10
+  towerItem:
+    itemName: Guard_Tower
+    ClassType: 
+    itemID: 4
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: c51f4ee40eac21346b6ea34182cf3465, type: 3}
+    itemModel: {fileID: 165880}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 2
+    rarity: 100
+    itemAttributes:
+    - attributeName: towerHP
+      attributeValue: 100
+    - attributeName: towerATK
+      attributeValue: 10
+    - attributeName: towerRange
+      attributeValue: 100
+    specialPrefabs: []
+    buffDatas: []
   enemyTag: Untagged
   fireCountdown: 0
   partToRotate: {fileID: 5338223571047918177}

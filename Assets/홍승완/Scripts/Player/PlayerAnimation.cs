@@ -10,11 +10,14 @@ public class PlayerAnimation : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
-    //             MAIL : gkenfktm@gmail.com         
+    //             MAIL : gkenfktm@gmail.com
+    //             MAIL : minsub4400@gmail.com
     // ###############################################
 
+    public static PlayerAnimation instance;
+    public Animator animator;
+
     NavMeshAgent agent;
-    Animator animator;
     Stats playerStats;
     PlayerBehaviour _playerScript;
     Health hp;
@@ -23,6 +26,8 @@ public class PlayerAnimation : MonoBehaviourPun
     
     void Awake()
     {
+        instance = this;
+
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         playerStats = GetComponent<Stats>();
@@ -35,10 +40,41 @@ public class PlayerAnimation : MonoBehaviourPun
         AliveMotion();
     }
 
+    Vector3 AfterPos;
+    Vector3 velo = Vector3.forward;
+    public Vector3 TargetPos;
+
+    private IEnumerator LeapAttackAnimationStart()
+    {
+        animator.SetBool("JumpAttack", true);
+        yield return new WaitForSeconds(0.5f);
+    }
+    private IEnumerator LeapAttackAnimationEnd()
+    {
+        yield return new WaitForSeconds(3f);
+        animator.SetBool("JumpAttack", false);
+    }
+
+
     void Update()
     {
         MoveAniMotion();
         CombatMotion();
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            //animator.SetBool("JumpAttack", true);
+            //TargetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.5f);
+            StartCoroutine(LeapAttackAnimationStart());
+            //transform.position = Vector3.SmoothDamp(transform.position, TargetPos, ref velo, +0.1f);
+            //StartCoroutine(LeapAttackAnimationEnd());
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            //animator.SetBool("JumpAttack", false);
+            StartCoroutine(LeapAttackAnimationEnd());
+        }
+
     }
 
     public void DieMotion()
