@@ -120,7 +120,7 @@ public class EnemySatatus : Enemybase
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
             //Debug.Log($"{AtkDistance},{attackRange * attackRange}");
-            transform.LookAt(new Vector3(_target.position.x, 0, _target.position.z));
+            transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
             // 애니메이션 추가 + 공격데미지 입히기
             //공격쿨타임
             if (AtkDistance >= attackRange * attackRange)
@@ -159,7 +159,7 @@ public class EnemySatatus : Enemybase
     }
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8 12 넥서스 13 스페셜
     {
-        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 10f);
+        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 15f);
         foreach (Collider collider in RangeTarget)
         {
             if (collider.tag == myTag)
