@@ -13,38 +13,40 @@ using System;
 public class Turret : MonoBehaviourPun
 {
     public static event Action<Turret, Item, string> turretMouseDownEvent = delegate { };
+
+    [Header("인게임 DB")]
+    [SerializeField]
+    public TowerData towerData;
+
     public float currentHealth;
-    public float maxHealth;
     public Image healthbarImage;
     public GameObject ui;
     public GameObject destroyParticle;
+    private GameObject newDestroyParticle;
     public float destorySpeed;
 
-    [Header("타워DB")]
+    [Header("타워카드 DB")]
     public Item towerItem;
 
-    [Header("타겟 TAG")]
+    [HideInInspector]
     public string enemyTag;
-    private GameObject newDestroyParticle;
 
-    [Header("데미지")]
-    public float damage;
-
-    [Header("사거리")]
-    public float range = 15f;
-
-    [Header("공격주기(초당 n번 발사)")]
-    public float fireRate = 1f;
+    [HideInInspector]
     public float fireCountdown = 0f;
 
     protected void Awake()
     {
+        if (towerData.ObjectPF.layer == 14)
+        {
+            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
+        }
+
         PlayerHUD.onGameEnd += Destroy_gameEnd;
     }
 
     protected void OnEnable()
     {
-        currentHealth = maxHealth;
+        currentHealth = towerData.MaxHP;
         GameManager.Instance.CurrentTurrets.Add(gameObject);
 
         if (PhotonNetwork.IsMasterClient)
@@ -97,10 +99,11 @@ public class Turret : MonoBehaviourPun
         //Debug.Log("Damage RPC적용");
 
         currentHealth = Mathf.Max(currentHealth - damage, 0);
-        healthbarImage.fillAmount = currentHealth / maxHealth;
+        healthbarImage.fillAmount = currentHealth / towerData.MaxHP;
 
         if (currentHealth <= 0)
         {
+            Debug.Log("데미지 들어감!!!!");
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
@@ -156,6 +159,15 @@ public class Turret : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
+    public void additionalAtk(float addValue)
+    {
+        towerData.additional_Atk += addValue;
+    }
+
+    public void additionalAtkSpd(float addValue)
+    {
+        towerData.additional_AtkSpd += addValue;
+    }
 
     // 타워 클릭했을 때 툴팁뜨게하기
     private void OnMouseDown()

@@ -49,7 +49,7 @@ public class Turret_Laser : Turret
         }
 
         // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
-        if (nearestEnemy != null && shortestDistance <= range)
+        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
         {
             target = nearestEnemy.transform;
             targetEnemy = nearestEnemy.GetComponent<EnemyMinion>();

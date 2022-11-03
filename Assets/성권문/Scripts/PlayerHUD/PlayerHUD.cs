@@ -266,9 +266,9 @@ public class PlayerHUD : MonoBehaviourPun
                 InfoPanel.SetActive(false);
             }
 
-            InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.maxHealth;
+            InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
             Hp2D = currentTurretforInfo.currentHealth;
-            InfoHealthBarTMPro.text = Hp2D + " / " + currentTurretforInfo.maxHealth;
+            InfoHealthBarTMPro.text = Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
         }
 
         else if (INFO == InfoState.Minion)
@@ -476,8 +476,8 @@ public class PlayerHUD : MonoBehaviourPun
 
         // 이벤트로 들어온 매개변수 세팅(Item class)
         InfoIcon.sprite = item.itemIcon;
-        float dmg = turret.damage;
-        float atkSpeed = turret.fireRate;
+        float dmg = turret.towerData.Attack;
+        float atkSpeed = turret.towerData.AttackSpeed;
 
         float dps = dmg * atkSpeed;
         InfoDpsTMpro.text = dps.ToString();

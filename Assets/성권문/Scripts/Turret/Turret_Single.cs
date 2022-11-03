@@ -18,9 +18,6 @@ public class Turret_Single : Turret
 
     [Header("====== 투사체 ======")]
 
-    [Header("투사체 프리팹")]
-    public GameObject bulletPrefab;
-
     [Header("투사체 발사 위치")]
     public Transform firePoint;
     private AudioSource audioSource;
@@ -52,7 +49,7 @@ public class Turret_Single : Turret
         }
 
         // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
-        if (nearestEnemy != null && shortestDistance <= range)
+        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
         {
             target = nearestEnemy.transform;
         }
@@ -79,8 +76,9 @@ public class Turret_Single : Turret
         if (fireCountdown <= 0f)
         {
             Shoot();
+            audioSource.clip = towerData.SoundAttack;
             audioSource.Play();
-            fireCountdown = 1f / fireRate;
+            fireCountdown = 1f / towerData.AttackSpeed;
         }
         fireCountdown -= Time.deltaTime;
     }
@@ -96,7 +94,7 @@ public class Turret_Single : Turret
     // ★ 총알 / 미사일 발사
     void Shoot()
     {
-        GameObject bulletGO = Instantiate(bulletPrefab, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(towerData.ObjectPF, firePoint.position, firePoint.rotation);
 
         Arrow arrow = bulletGO.GetComponent<Arrow>();
 
