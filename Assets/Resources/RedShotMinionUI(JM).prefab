@@ -1964,12 +1964,12 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 10
+  m_StoppingDistance: 14
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 1.05
-  m_BaseOffset: 1
+  m_Height: 1
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!136 &5106345303155424071
@@ -2076,17 +2076,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-
-  attackRange: 10
+  moveSpeed: 1
+  attackRange: 15
   Damage: 10
-  moveSpeed: 0
   AttackSpeed: 1
-  minionSprite: {fileID: 21300000, guid: a57d5aa6f0602304982342980a082648, type: 3
+  minionSprite: {fileID: 0}
   HP: 100
   CurrnetHP: 0
-  EnemyTag: Blue
+  EnemyTag: 
   myTag: 
-  _target: {fileID: 3063582420797440947, guid: d2e6808fd6cac884fa3bd6b8408a4fea, type: 3}
+  _target: {fileID: 0}
   Targeton: 0
   _estate: 0
   _eminiomtype: 1
