@@ -10,19 +10,18 @@ public class Health : MonoBehaviourPun
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
-
+    
     public Slider hpSlider3D;
     Stats _stats;
     PlayerAnimation ani;
 
-    float health;
+    [HideInInspector]
+    public float health;
     public bool isDeath
     {
         get;
         private set;
     }
-
-
 
     private void Awake()
     {

@@ -534,15 +534,15 @@ public class PlayerHUD : MonoBehaviourPun
 
     }
 
-    public void ActivationEnemyInfoUI(Stats st, Sprite icon)
+    public void ActivationEnemyInfoUI(Player player)
     {
         INFO = InfoState.Player;
         InfoPanel.SetActive(true);
 
-        InfoIcon.sprite = icon;
-        float dmg = st.attackDmg;
-        float atkSpeed = st.attackSpeed;
-        float spd = st.MoveSpeed;
+        InfoIcon.sprite = player.playerIcon;
+        float dmg = player.playerStats.attackDmg;
+        float atkSpeed = player.playerStats.attackSpeed;
+        float spd = player.playerStats.MoveSpeed;
 
         float dps = dmg * atkSpeed;
         InfoDpsTMpro.text = dps.ToString();

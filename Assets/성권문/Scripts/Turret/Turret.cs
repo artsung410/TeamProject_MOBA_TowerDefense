@@ -162,48 +162,55 @@ public class Turret : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
+    // 타워 버프효과 발동
     public void incrementBuffValue(int id, float addValue, bool state)
+    {
+        photonView.RPC("RPC_ApplyTowerBuff", RpcTarget.All, id, addValue, state);
+    }
+
+    [PunRPC]
+    public void RPC_ApplyTowerBuff(int id, float value, bool st)
     {
         if (!photonView.IsMine)
         {
             return;
         }
 
-        if(id == (int)Buff_Effect.AtkUP)
+        if (id == (int)Buff_Effect.AtkUP)
         {
-            if (state)
+            if (st)
             {
                 Debug.Log("타워 공격력 증가!");
-                attack += addValue;
+                attack += value;
 
                 if (towerData.ObjectPF.layer == 14)
                 {
-                    towerData.ObjectPF.GetComponent<Projectiles>().damage += addValue;
+                    towerData.ObjectPF.GetComponent<Projectiles>().damage += value;
                 }
             }
             else
             {
                 Debug.Log("타워 공격력 증가 종료!");
-                attack -= addValue;
+                attack -= value;
 
                 if (towerData.ObjectPF.layer == 14)
                 {
-                    towerData.ObjectPF.GetComponent<Projectiles>().damage -= addValue;
+                    towerData.ObjectPF.GetComponent<Projectiles>().damage -= value;
                 }
             }
         }
 
         else if (id == (int)Buff_Effect.AtkSpeedUp)
         {
-            if (state)
+            if (st)
             {
                 Debug.Log("타워 공속 증가!");
-                attackSpeed += addValue;
+                attackSpeed += value;
             }
             else
             {
                 Debug.Log("타워 공속 증가 종료!");
-                attackSpeed -= addValue;
+                attackSpeed -= value;
             }
         }
     }

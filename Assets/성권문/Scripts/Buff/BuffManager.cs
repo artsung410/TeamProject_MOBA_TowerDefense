@@ -27,6 +27,8 @@ public enum Buff_Effect
 public class BuffManager : MonoBehaviourPun
 {
     public static event Action<int, float, bool> towerBuffAdditionEvent = delegate { };
+    public static event Action<int, float, bool> playerBuffAdditionEvent = delegate { };
+    public static event Action<int, float, bool> minionBuffAdditionEvent = delegate { };
     public List<BuffData> currentBuffDatas = new List<BuffData>(); // 각 월드에서 생성된 모든 버프들
     public static BuffManager Instance;
     public Dictionary<BuffData, float> buffDic = new Dictionary<BuffData, float>();
@@ -86,13 +88,12 @@ public class BuffManager : MonoBehaviourPun
         {
             towerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, true);
         }
-    }
 
-    //public void AddBuff(BuffData buff)
-    //{
-    //    currentBuffDatas.Add(buff);
-    //    AssemblyBuff();
-    //}
+        else if (buff.TargetType == Target.Player)
+        {
+            playerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, true);
+        }
+    }
 
     // 버프 종료
     public void removeBuff(BuffData buff)
@@ -102,6 +103,11 @@ public class BuffManager : MonoBehaviourPun
         if (buff.TargetType == Target.Tower)
         {
             towerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, false);
+        }
+
+        else if (buff.TargetType == Target.Player)
+        {
+            playerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, false);
         }
     }
 
