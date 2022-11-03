@@ -5,13 +5,28 @@ using UnityEngine.UI;
 using System;
 using Photon.Pun;
 
-    // ###############################################
-    //             NAME : ARTSUNG                      
-    //             MAIL : artsung410@gmail.com         
-    // ###############################################
+// ###############################################
+//             NAME : ARTSUNG                      
+//             MAIL : artsung410@gmail.com         
+// ###############################################
+public enum Buff_Effect
+{
+    AtkUP = 15001,
+    HpRegenUp,
+    MoveSpeedUp,
+    AtkSpeedUp,
+    HpUp,
+    CoolTimeDown,
+    AtkDown,
+    HpRegenDown,
+    MoveSpeedDown,
+    AtkSpeedDown,
+    HpDown,
+}
 
 public class BuffManager : MonoBehaviourPun
 {
+    public static event Action<int, float, bool> towerBuffAdditionEvent = delegate { };
     public List<BuffData> currentBuffDatas = new List<BuffData>(); // 각 월드에서 생성된 모든 버프들
     public static BuffManager Instance;
     public Dictionary<BuffData, float> buffDic = new Dictionary<BuffData, float>();
@@ -53,7 +68,8 @@ public class BuffManager : MonoBehaviourPun
 
                 for (int i = 0; i < buffCount; i++)
                 {
-                    currentBuffDatas.Add((BuffData)tower.Scriptables[i]);
+                    BuffData buff = (BuffData)tower.Scriptables[i];
+                    AddBuff(buff);
                 }
             }
         }
@@ -61,15 +77,32 @@ public class BuffManager : MonoBehaviourPun
         AssemblyBuff();
     }
 
+    // 버프 시작
     public void AddBuff(BuffData buff)
     {
         currentBuffDatas.Add(buff);
-        AssemblyBuff();
+
+        if (buff.TargetType == Target.Tower)
+        {
+            towerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, true);
+        }
     }
 
+    //public void AddBuff(BuffData buff)
+    //{
+    //    currentBuffDatas.Add(buff);
+    //    AssemblyBuff();
+    //}
+
+    // 버프 종료
     public void removeBuff(BuffData buff)
     {
         currentBuffDatas.Remove(buff);
+
+        if (buff.TargetType == Target.Tower)
+        {
+            towerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, false);
+        }
     }
 
     public void removeBuff_All()

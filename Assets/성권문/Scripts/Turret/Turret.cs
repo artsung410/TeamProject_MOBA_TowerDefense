@@ -30,13 +30,20 @@ public class Turret : MonoBehaviourPun
     [HideInInspector]
     public float fireCountdown = 0f;
 
-    protected void Awake()
+    public float attack;
+    public float attackSpeed;
+
+    void Awake()
     {
+        attack = towerData.Attack;
+        attackSpeed = towerData.AttackSpeed;
+
         if (towerData.ObjectPF.layer == 14)
         {
-            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
+            towerData.ObjectPF.GetComponent<Projectiles>().damage = attack;
         }
 
+        BuffManager.towerBuffAdditionEvent += incrementBuffValue;
         PlayerHUD.onGameEnd += Destroy_gameEnd;
     }
 
@@ -155,14 +162,50 @@ public class Turret : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
-    public void additionalAtk(float addValue)
+    public void incrementBuffValue(int id, float addValue, bool state)
     {
-        towerData.additional_Atk += addValue;
-    }
+        if (!photonView.IsMine)
+        {
+            return;
+        }
 
-    public void additionalAtkSpd(float addValue)
-    {
-        towerData.additional_AtkSpd += addValue;
+        if(id == (int)Buff_Effect.AtkUP)
+        {
+            if (state)
+            {
+                Debug.Log("타워 공격력 증가!");
+                attack += addValue;
+
+                if (towerData.ObjectPF.layer == 14)
+                {
+                    towerData.ObjectPF.GetComponent<Projectiles>().damage += addValue;
+                }
+            }
+            else
+            {
+                Debug.Log("타워 공격력 증가 종료!");
+                attack -= addValue;
+
+                if (towerData.ObjectPF.layer == 14)
+                {
+                    towerData.ObjectPF.GetComponent<Projectiles>().damage -= addValue;
+                }
+            }
+        }
+
+        else if (id == (int)Buff_Effect.AtkSpeedUp)
+        {
+            if (state)
+            {
+                Debug.Log("타워 공속 증가!");
+                attackSpeed += addValue;
+            }
+            else
+            {
+                Debug.Log("타워 공속 증가 종료!");
+                attackSpeed -= addValue;
+            }
+        }
     }
 
     // 타워 클릭했을 때 툴팁뜨게하기

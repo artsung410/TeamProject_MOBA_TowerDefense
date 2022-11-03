@@ -173,9 +173,7 @@ public class PlayerHUD : MonoBehaviourPun
         }
 
         UpdateHealthUI();
-        UpdateEnemyHealthUI();
-
-        
+        UpdateInfo();
 
         if( false == Chating && Input.GetKeyDown(KeyCode.Return))
         {
@@ -257,12 +255,7 @@ public class PlayerHUD : MonoBehaviourPun
         playerHealthBarTMpro.text = playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
     }
 
-    void UpdateEnemyHealthUI()
-    {
-        UpdateHealthBar();
-    }
-
-    public void UpdateHealthBar()
+    public void UpdateInfo()
     {
 
         if (INFO == InfoState.Player)
@@ -294,9 +287,17 @@ public class PlayerHUD : MonoBehaviourPun
                 InfoPanel.SetActive(false);
             }
 
+            // 실시간 체력 동기화
             InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
             Hp2D = currentTurretforInfo.currentHealth;
             InfoHealthBarTMPro.text = Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
+
+            // 실시간 dps / speed 동기화
+            float dmg = currentTurretforInfo.attack;
+            float atkSpeed = currentTurretforInfo.attackSpeed;
+            float dps = dmg * atkSpeed;
+            InfoDpsTMpro.text = dps.ToString();
+            InfoSpdMpro.text = 0.ToString();
         }
 
         else if (INFO == InfoState.Minion)
@@ -504,12 +505,6 @@ public class PlayerHUD : MonoBehaviourPun
 
         // 이벤트로 들어온 매개변수 세팅(Item class)
         InfoIcon.sprite = turret.towerData.Icon;
-        float dmg = turret.towerData.Attack;
-        float atkSpeed = turret.towerData.AttackSpeed;
-
-        float dps = dmg * atkSpeed;
-        InfoDpsTMpro.text = dps.ToString();
-        InfoSpdMpro.text = 0.ToString();
     }
     #region 채팅
     public void Sned()
