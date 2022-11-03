@@ -41,7 +41,7 @@ public class Leap : SkillHandler
         isArive = false;
         isAttack = false;
 
-        effect.SetActive(isArive);
+        effect.SetActive(false);
         
     }
 
@@ -56,6 +56,9 @@ public class Leap : SkillHandler
         LookMouseCursor();
 
         CheckDist();
+
+        _ani.animator.SetBool("JumpAttack", true);
+
     }
 
     private void CheckDist()
@@ -105,8 +108,11 @@ public class Leap : SkillHandler
         {
             SkillUpdatePosition();
             SkillHoldingTime(HoldingTime);
-            effect.SetActive(isArive);
         }
+
+        //rigidbody.isKinematic = false;
+        //rigidbody.useGravity = true;
+        //rigidbody.AddRelativeForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
     }
 
     Vector3 mousePos;
@@ -120,13 +126,18 @@ public class Leap : SkillHandler
 
     private IEnumerator LeapAttackAnimationStart()
     {
-        PlayerAnimation.instance.animator.SetBool("JumpAttack", true);
+        //PlayerAnimation.instance.animator.SetBool("JumpAttack", true);
+        Debug.Log("true");
+        _ani.animator.SetBool("JumpAttack", true);
         yield return new WaitForSeconds(0.5f);
     }
     private IEnumerator LeapAttackAnimationEnd()
     {
         yield return new WaitForSeconds(1.5f);
-        PlayerAnimation.instance.animator.SetBool("JumpAttack", false);
+        Debug.Log("false");
+        _ani.animator.SetBool("JumpAttack", false);
+
+        //PlayerAnimation.instance.animator.SetBool("JumpAttack", false);
     }
     // ---------------------------------------------------------------------
 
@@ -139,12 +150,11 @@ public class Leap : SkillHandler
     {
         elapsedTime += Time.deltaTime;
 
-        StartCoroutine(LeapAttackAnimationStart());
+        //StartCoroutine(LeapAttackAnimationStart());
 
         // 지속시간동안 플레이어가 지정한 장소로 도약한다
-        _behaviour.transform.position = Vector3.Lerp(_behaviour.transform.position, leapPos, time);
+        _behaviour.transform.position = Vector3.Slerp(_behaviour.transform.position, leapPos, Time.deltaTime);
 
-        StartCoroutine(LeapAttackAnimationEnd());
 
         // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
         _behaviour.ForSkillAgent(leapPos);
@@ -153,6 +163,8 @@ public class Leap : SkillHandler
         if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
         {
             isArive = true;
+            effect.SetActive(true);
+
             StompDamage();
         }
 
@@ -160,6 +172,7 @@ public class Leap : SkillHandler
         {
             if (photonView.IsMine)
             {
+                _ani.animator.SetBool("JumpAttack", false);
                 PhotonNetwork.Destroy(gameObject);
             }
         }
@@ -193,5 +206,6 @@ public class Leap : SkillHandler
         }
         return;
     }
+
 
 }

@@ -70,6 +70,7 @@ public class HeroAbility : MonoBehaviourPun
                 go.GetComponent<SkillHandler>().GetPlayerPos(this);
                 go.GetComponent<SkillHandler>().GetPlayerStatus(this.GetComponent<Stats>());
                 go.GetComponent<SkillHandler>().GetMousePos(this.GetComponent<PlayerBehaviour>());
+                go.GetComponent<SkillHandler>().GetAnimation(this.GetComponent<PlayerAnimation>());
             }
         }
 

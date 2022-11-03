@@ -129,7 +129,7 @@ public class Smash : SkillHandler
         {
             if (other.CompareTag(enemyTag))
             {
-                SkillDamage(Damage, other.gameObject);
+                SectorDamage(other);
             }
         }
     }
@@ -151,11 +151,5 @@ public class Smash : SkillHandler
             }
         }
     }
-    //private void OnDrawGizmos()
-    //{
-    //    Handles.color = isCollision ? Color.red : Color.blue;
-    //    // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
-    //    Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angle / 2, Range);
-    //    Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angle / 2, Range); 
-    //}
+
 }

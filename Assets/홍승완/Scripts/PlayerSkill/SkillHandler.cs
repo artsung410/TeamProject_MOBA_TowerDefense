@@ -13,6 +13,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected HeroAbility _ability;
     protected Stats _stat;
     protected PlayerBehaviour _behaviour;
+    protected PlayerAnimation _ani;
 
     public float SetDamage;
     public float SetHodingTime;
@@ -34,6 +35,12 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     public void GetMousePos(PlayerBehaviour behaviour)
     {
         _behaviour = behaviour;
+    }
+
+    // 플레이어 Animation 받아옴
+    public void GetAnimation(PlayerAnimation animation)
+    {
+        _ani = animation;
     }
 
     public void SkillDamage(float damage, GameObject target)
