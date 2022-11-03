@@ -36,7 +36,29 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
         _behaviour = behaviour;
     }
 
-    public abstract void SkillDamage(float damage, GameObject target);
+    public void SkillDamage(float damage, GameObject target)
+    {
+        if (target.gameObject.layer == 7)
+        {
+            Health player = target.GetComponent<Health>();
+
+            if (player != null)
+            {
+                player.OnDamage(damage);
+
+            }
+        }
+        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
+        {
+            Enemybase minion = target.GetComponent<Enemybase>();
+
+
+            if (minion != null)
+            {
+                minion.TakeDamage(damage);
+            }
+        }
+    }
 
     public abstract void SkillHoldingTime(float time);
 

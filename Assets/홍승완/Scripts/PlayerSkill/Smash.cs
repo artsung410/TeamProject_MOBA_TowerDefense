@@ -1,18 +1,18 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using Photon.Pun;
 
-public class Whirlwind : SkillHandler
+public class Smash : SkillHandler
 {
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public GameObject damageZone;
+    // TODO : 부채꼴 60도의 범위로 피해주기
 
-    #region Private 변수들
+    #region private 변수모음
 
     Quaternion quaternion;
     float elapsedTime;
@@ -22,10 +22,8 @@ public class Whirlwind : SkillHandler
     private float HoldingTime;
     private float Damage;
     private float Range;
-    private float Speed;
-    #endregion
 
-    // TODO : 휠윈드 이펙트부분 수정필요
+    #endregion
 
     private void OnEnable()
     {
@@ -33,19 +31,22 @@ public class Whirlwind : SkillHandler
         Damage = SetDamage;
         HoldingTime = SetHodingTime;
         Range = SetRange;
-        Speed = 1000f;
     }
 
-    private void Start()
+    void Start()
     {
         if (_ability == null)
         {
             return;
         }
 
+        LookMouseCursor();
         TagProcessing(_ability);
-        //LookMouseCursor();
     }
+
+
+
+
 
     public void LookMouseCursor()
     {
@@ -56,72 +57,47 @@ public class Whirlwind : SkillHandler
             mouseDir = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z) - _ability.transform.position;
 
             _ability.transform.forward = mouseDir;
+            // 스킬쓸때 플레이어 위치를 그곳으로 고정시키기 위해사용
             quaternion = _ability.transform.localRotation;
         }
+
     }
+
     private void TagProcessing(HeroAbility ability)
     {
 
         if (ability.CompareTag("Blue"))
         {
             enemyTag = "Red";
+            //Debug.Log(enemyTag);
         }
         else if (ability.CompareTag("Red"))
         {
             enemyTag = "Blue";
+            //Debug.Log(enemyTag);
+
         }
     }
 
     private void Update()
     {
-        if (_ability == null)
-        {
-            return;
-        }
-
-        if (_ability.gameObject.GetComponent<Health>().isDeath == true)
-        {
-            if (photonView.IsMine)
-            {
-                PhotonNetwork.Destroy(gameObject);
-            }
-        }
-
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
             SkillHoldingTime(HoldingTime);
         }
     }
-    public override void SkillUpdatePosition()
-    {
-        // 스킬은 플레이어 주변에 있다
-        transform.position = _ability.gameObject.transform.position;
-        // 회전을 한다
-        damageZone.transform.Rotate(Speed * Time.deltaTime * Vector3.up);
-
-        
-        
-    }
 
     public override void SkillHoldingTime(float time)
     {
         elapsedTime += Time.deltaTime;
 
-        // 지속시간동안 플레이어가 느려진다
-        _stat.MoveSpeed = 8f;
+        // 지속시간동안 플레이어는 못움직인다
+        _stat.MoveSpeed = 0f;
 
-        // TODO : 도는 모션은 애니메이션으로 처리할것
-        // 플레이어를 한번 돌려보자
-        _behaviour.gameObject.transform.Rotate(Vector3.up * 3000 * Time.deltaTime);
-
-        // 지속시간동안 플레이어가 공격하지 못한다
-        _behaviour.targetedEnemy = null;
-        _behaviour.perfomMeleeAttack = false;
-
-        // 검기 지속시간이 끝나면 사라지게한다
         if (elapsedTime >= time)
         {
+            // 사용하기전 이동속도로 돌아온다
             _stat.MoveSpeed = 15f;
 
             if (photonView.IsMine)
@@ -130,6 +106,12 @@ public class Whirlwind : SkillHandler
             }
         }
     }
+
+    public override void SkillUpdatePosition()
+    {
+        transform.position = _behaviour.transform.position;
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -140,5 +122,25 @@ public class Whirlwind : SkillHandler
                 SkillDamage(Damage, other.gameObject);
             }
         }
+    }
+
+    bool isCollision;
+    public void SectorCalc(Transform target, float radius, float angleRange)
+    {
+        Vector3 interV = target.position - transform.position;
+
+        if (interV.magnitude <= radius)
+        {
+            float dot = Vector3.Dot(interV.normalized, transform.forward);
+            float theta = Mathf.Acos(dot);
+            float degree = Mathf.Rad2Deg * theta;
+
+            if (degree <= angleRange / 2f)
+                isCollision = true;
+            else
+                isCollision = false;
+        }
+        else
+            isCollision = false;
     }
 }

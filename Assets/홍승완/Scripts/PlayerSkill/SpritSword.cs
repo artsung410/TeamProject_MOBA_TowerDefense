@@ -72,7 +72,6 @@ public class SpritSword : SkillHandler
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_ability == null)
@@ -96,34 +95,6 @@ public class SpritSword : SkillHandler
         transform.rotation = quaternion;
     }
 
-
-
-
-
-    public override void SkillDamage(float damage, GameObject target)
-    {
-        if (target.gameObject.layer == 7)
-        {
-            Health player = target.GetComponent<Health>();
-
-            if (player != null)
-            {
-                player.OnDamage(damage);
-            }
-        }
-        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
-        {
-            Debug.Log("1. µé¾î¿Ó");
-            Enemybase minion = target.GetComponent<Enemybase>();
-
-            if (minion != null)
-            {
-                Debug.Log("2. º¸³»ÀÕ@");
-
-                minion.TakeDamage(damage);
-            }
-        }
-    }
 
     public override void SkillHoldingTime(float time)
     {

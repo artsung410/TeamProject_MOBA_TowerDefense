@@ -68,6 +68,8 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     public Collider enemyCol;
 
+
+
     private void Awake()
     {
         _agent = GetComponent<NavMeshAgent>();
@@ -77,6 +79,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
         _agent.enabled = false;
         _agent.enabled = true;
+        
     }
 
     private void OnEnable()
@@ -190,7 +193,18 @@ public class PlayerBehaviour : MonoBehaviourPun
             {
                 MoveTo();
             }
+        }
 
+        
+    }
+
+    public void ForLeapFuction(PlayerBehaviour player, float jumpForce, float fallMultiplier)
+    {
+        player._rigid.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
+
+        if (player._rigid.velocity.y < 0)
+        {
+            player._rigid.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime;
         }
     }
 
@@ -292,13 +306,11 @@ public class PlayerBehaviour : MonoBehaviourPun
 
                 transform.eulerAngles = new Vector3(0, rotationY, 0);
 
-
                 // 내가 근접캐라면
                 if (heroAttackType == HeroAttackType.Melee)
                 {
                     // 공격 수행 스위치를 true로 바꿈
                     perfomMeleeAttack = true;
-                    //photonView.RPC("IsAttack", RpcTarget.All);
                 }
             }
 
@@ -502,12 +514,19 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
         else if (enemyCol.gameObject.layer == 12)
         {
-            NexusHp temp = enemyCol.GetComponent<NexusHp>();
             enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_statScript.attackDmg);
         }
+
     }
 
     #endregion
+
+    public void ForSkillAgent(Vector3 destination)
+    {
+        _agent.SetDestination(destination);
+    }
+
+
 
     private void OnDisable()
     {
