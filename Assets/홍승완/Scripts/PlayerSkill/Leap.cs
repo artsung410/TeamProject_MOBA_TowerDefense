@@ -42,7 +42,7 @@ public class Leap : SkillHandler
         isAttack = false;
 
         effect.SetActive(false);
-        
+
     }
 
     private void Start()
@@ -61,20 +61,33 @@ public class Leap : SkillHandler
 
     }
 
+    Vector3 startPos;
+    Vector3 endPos;
+    Vector3 mousePos;
+    Vector3 leapPos;
     private void CheckDist()
     {
         mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
 
         if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Range)
         {
-            start = _behaviour.transform.position;
-            end = _behaviour.transform.forward;
-            leapPos = (start + end.normalized * Range);
+            startPos = _behaviour.transform.position;
+            endPos = _behaviour.transform.forward;
+            leapPos = (startPos + endPos * Range);
         }
         else
         {
             leapPos = mousePos;
         }
+        Debug.Log($"startPos : {startPos}\n" +
+            $"startPos.normalized : {startPos.normalized} \n" +
+            $"startPos.normalized.magnitude : {startPos.normalized.magnitude}\n" +
+            $"startPos.normalized * Range : {startPos.normalized * Range}\n" +
+            $"endPos : {endPos}\n" +
+            $"endPos.magnitude : {endPos.magnitude}\n" +
+            $"leapPos : {leapPos}\n" +
+            $"(start - leap)크기 : {(startPos - leapPos).magnitude}\n" +
+            $"start와leap사이 거리 : {Vector3.Distance(startPos, leapPos)} \n");
     }
 
     RaycastHit hit;
@@ -107,43 +120,41 @@ public class Leap : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(HoldingTime);
+
+            // 지속시간동안 플레이어가 지정한 장소로 도약한다
+            _behaviour.transform.position = Vector3.Slerp(_behaviour.transform.position, leapPos, Time.deltaTime * 2f);
+
+            // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
+            _behaviour.ForSkillAgent(leapPos);
+
+            // 착지시 주변에 데미지를 준다(한번만 호출)
+            if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
+            {
+                Debug.Log($"거리 : {Vector3.Distance(_behaviour.transform.position, leapPos)}");
+                isArive = true;
+                effect.SetActive(true);
+                _ani.animator.SetBool("JumpAttack", false);
+
+                // TODO : 공중에서 안내려오는 버그 해결할것
+                Debug.Log($"_behaviour.transform.position : {_behaviour.transform.position}\n" +
+                    $"leapPos : {leapPos}\n" +
+                    $"Distance : {Vector3.Distance(_behaviour.transform.position, leapPos)}");
+                StompDamage();
+                SkillHoldingTime(HoldingTime);
+            }
+
         }
 
-        //rigidbody.isKinematic = false;
-        //rigidbody.useGravity = true;
-        //rigidbody.AddRelativeForce(new Vector3(0, 5f, 0), ForceMode.Impulse);
     }
 
-    Vector3 mousePos;
-    Vector3 leapPos;
 
-    Vector3 start;
-    Vector3 end;
 
-    // SMS -----------------------------------------------------------------
-    Vector3 velo = Vector3.forward;
 
-    private IEnumerator LeapAttackAnimationStart()
-    {
-        //PlayerAnimation.instance.animator.SetBool("JumpAttack", true);
-        Debug.Log("true");
-        _ani.animator.SetBool("JumpAttack", true);
-        yield return new WaitForSeconds(0.5f);
-    }
-    private IEnumerator LeapAttackAnimationEnd()
-    {
-        yield return new WaitForSeconds(1.5f);
-        Debug.Log("false");
-        _ani.animator.SetBool("JumpAttack", false);
 
-        //PlayerAnimation.instance.animator.SetBool("JumpAttack", false);
-    }
-    // ---------------------------------------------------------------------
 
     public override void SkillUpdatePosition()
     {
-        transform.position = leapPos;
+        this.transform.position = leapPos;
     }
 
     public override void SkillHoldingTime(float time)
@@ -152,27 +163,13 @@ public class Leap : SkillHandler
 
         //StartCoroutine(LeapAttackAnimationStart());
 
-        // 지속시간동안 플레이어가 지정한 장소로 도약한다
-        _behaviour.transform.position = Vector3.Slerp(_behaviour.transform.position, leapPos, Time.deltaTime);
 
-
-        // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
-        _behaviour.ForSkillAgent(leapPos);
-
-        // 착지시 주변에 데미지를 준다(한번만 호출)
-        if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
-        {
-            isArive = true;
-            effect.SetActive(true);
-
-            StompDamage();
-        }
 
         if (elapsedTime >= time)
         {
             if (photonView.IsMine)
             {
-                _ani.animator.SetBool("JumpAttack", false);
+
                 PhotonNetwork.Destroy(gameObject);
             }
         }
@@ -185,6 +182,7 @@ public class Leap : SkillHandler
     {
         if (isArive == true && isAttack == false)
         {
+            Debug.Log("check");
             // 이 경우 데미지 처리
             if (photonView.IsMine)
             {
