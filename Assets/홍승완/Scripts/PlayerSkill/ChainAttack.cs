@@ -87,7 +87,6 @@ public class ChainAttack : SkillHandler
 
     float dispersionTime = 0f;
     bool isDamage = true;
-    // Update is called once per frame
     void Update()
     {
         if (_ability == null)

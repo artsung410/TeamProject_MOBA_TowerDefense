@@ -1,6 +1,7 @@
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class Smash : SkillHandler
@@ -22,7 +23,7 @@ public class Smash : SkillHandler
     private float HoldingTime;
     private float Damage;
     private float Range;
-
+    float angle;
     #endregion
 
     private void OnEnable()
@@ -31,6 +32,8 @@ public class Smash : SkillHandler
         Damage = SetDamage;
         HoldingTime = SetHodingTime;
         Range = SetRange;
+
+        angle = 120f;
     }
 
     void Start()
@@ -43,9 +46,6 @@ public class Smash : SkillHandler
         LookMouseCursor();
         TagProcessing(_ability);
     }
-
-
-
 
 
     public void LookMouseCursor()
@@ -81,6 +81,11 @@ public class Smash : SkillHandler
 
     private void Update()
     {
+        if (_ability == null)
+        {
+            return;
+        }
+
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
@@ -92,13 +97,17 @@ public class Smash : SkillHandler
     {
         elapsedTime += Time.deltaTime;
 
-        // 지속시간동안 플레이어는 못움직인다
-        _stat.MoveSpeed = 0f;
+        // 지속시간동안 플레이어가 공격하지 못한다
+        _behaviour.targetedEnemy = null;
+        _behaviour.perfomMeleeAttack = false;
+
+        _ability.transform.rotation = quaternion;
+
+        // 스킬을 쓰면 플레이어는 그자리에서 멈춘다
+        _behaviour.ForSkillAgent(_behaviour.transform.position);
 
         if (elapsedTime >= time)
         {
-            // 사용하기전 이동속도로 돌아온다
-            _stat.MoveSpeed = 15f;
 
             if (photonView.IsMine)
             {
@@ -110,6 +119,7 @@ public class Smash : SkillHandler
     public override void SkillUpdatePosition()
     {
         transform.position = _behaviour.transform.position;
+        transform.rotation = quaternion;
     }
 
 
@@ -124,23 +134,28 @@ public class Smash : SkillHandler
         }
     }
 
-    bool isCollision;
-    public void SectorCalc(Transform target, float radius, float angleRange)
+    private void SectorDamage(Collider other)
     {
-        Vector3 interV = target.position - transform.position;
+        Vector3 interV = other.gameObject.transform.position - _behaviour.gameObject.transform.position;
 
-        if (interV.magnitude <= radius)
+        if (interV.magnitude <= Range)
         {
-            float dot = Vector3.Dot(interV.normalized, transform.forward);
+            float dot = Vector3.Dot(interV.normalized, _behaviour.gameObject.transform.forward);
             float theta = Mathf.Acos(dot);
+
             float degree = Mathf.Rad2Deg * theta;
 
-            if (degree <= angleRange / 2f)
-                isCollision = true;
-            else
-                isCollision = false;
+            if (degree <= angle / 2f)
+            {
+                SkillDamage(Damage, other.gameObject);
+            }
         }
-        else
-            isCollision = false;
     }
+    //private void OnDrawGizmos()
+    //{
+    //    Handles.color = isCollision ? Color.red : Color.blue;
+    //    // DrawSolidArc(시작점, 노멀벡터(법선벡터), 그려줄 방향 벡터, 각도, 반지름)
+    //    Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, angle / 2, Range);
+    //    Handles.DrawSolidArc(transform.position, Vector3.up, transform.forward, -angle / 2, Range); 
+    //}
 }
