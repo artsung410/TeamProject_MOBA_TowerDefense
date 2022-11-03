@@ -10,9 +10,9 @@ public class BulletMove : MonoBehaviourPun
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
-   
-    
-    public Transform tg { get;  set; }
+
+
+    public Transform tg { get; set; }
 
     new Rigidbody rigidbody;
     public float turn;
@@ -37,7 +37,7 @@ public class BulletMove : MonoBehaviourPun
             return;
         }
         // 유도탄
-        if(tg.position != null) //타켓이 있을때
+        if (tg.position != null) //타켓이 있을때
         {
             rigidbody.velocity = transform.forward * ballVelocity;
             var ballTargetRotation = Quaternion.LookRotation(tg.position + new Vector3(0, 0.8f) - transform.position);
@@ -52,35 +52,38 @@ public class BulletMove : MonoBehaviourPun
     private void OnTriggerEnter(Collider other)
     {
         // 미니언일 때 처리
-        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 8 )
+        if (photonView.IsMine)
         {
-            other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-            Destroy(gameObject);
-        }
-        // 타워일때 처리
-        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
-        {
-            other.gameObject.GetComponent<Turret>().Damage(Damage);
-            Destroy(gameObject);
-        }
-        // 플레이어일때 
-        if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
-        {
-            other.gameObject.GetComponent<Health>().OnDamage(Damage);
-            Destroy(gameObject);
-        }
-        // 넥서스 일때
-        if(other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
-        {
-            other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
-            Destroy(gameObject);
-        }
-        if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
-        {
-            other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-            Destroy(gameObject);
+
+            if (other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
+            {
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                Destroy(gameObject);
+            }
+            // 타워일때 처리
+            if (other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
+            {
+                other.gameObject.GetComponent<Turret>().Damage(Damage);
+                Destroy(gameObject);
+            }
+            // 플레이어일때 
+            if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
+            {
+                other.gameObject.GetComponent<Health>().OnDamage(Damage);
+                Destroy(gameObject);
+            }
+            // 넥서스 일때
+            if (other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
+            {
+                other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
+                Destroy(gameObject);
+            }
+            if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
+            {
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                Destroy(gameObject);
+            }
         }
 
     }
-
 }

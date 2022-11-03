@@ -85,12 +85,10 @@ public class Enemybase : MonoBehaviourPun
             }
         }
     }
-
-
-
     public void TakeDamage(float Damage)
     {
         photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
+       
     }
 
     [PunRPC]
@@ -98,20 +96,20 @@ public class Enemybase : MonoBehaviourPun
     {
         if (isDead == false)
         {
-            Debug.Log($"{CurrnetHP}");
             CurrnetHP -= Damage;
             if (CurrnetHP <= 0)
             {
-                isDead = true;
-                gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _capsuleCollider.enabled = false;
                 _navMeshAgent.isStopped = true;
+                gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
+                isDead = true;
             }
 
         }
 
     }
+
     public void Death()
     {
         Destroy(transform.parent.gameObject);
