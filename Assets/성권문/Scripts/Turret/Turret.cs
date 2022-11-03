@@ -13,6 +13,7 @@ using System;
 public class Turret : MonoBehaviourPun
 {
     public static event Action<Turret, Item, string> turretMouseDownEvent = delegate { };
+    public static event Action<GameObject,string> minionTowerEvent = delegate { };
 
     [Header("¿Œ∞‘¿” DB")]
     [SerializeField]
@@ -36,11 +37,6 @@ public class Turret : MonoBehaviourPun
 
     protected void Awake()
     {
-        if (towerData.ObjectPF.layer == 14)
-        {
-            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
-        }
-
         PlayerHUD.onGameEnd += Destroy_gameEnd;
     }
 
@@ -77,6 +73,17 @@ public class Turret : MonoBehaviourPun
                 gameObject.tag = "Blue";
                 enemyTag = "Red";
             }
+        }
+
+
+        if (towerData.ObjectPF.layer == 14)
+        {
+            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
+        }
+
+        else if (towerData.ObjectPF.layer == 13)
+        {
+            minionTowerEvent.Invoke(towerData.ObjectPF,gameObject.tag);
         }
     }
 
