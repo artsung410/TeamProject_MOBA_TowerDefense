@@ -1149,8 +1149,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c670c7e5afbe5fc4e89be07096be9b77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerData: {fileID: 11400000, guid: 2b752998d0516924796da2f27c9364c0, type: 2}
   currentHealth: 0
-  maxHealth: 100
   healthbarImage: {fileID: 3718863085342168367}
   ui: {fileID: 4039510485027841262}
   destroyParticle: {fileID: 132198, guid: d41a0a47c0a989842a3b518745960048, type: 3}
@@ -1166,7 +1166,7 @@ MonoBehaviour:
     itemType: 10
     itemWeight: 0
     maxStack: 99
-    indexItemInList: 2
+    indexItemInList: 7
     rarity: 100
     itemAttributes:
     - attributeName: towerHP
@@ -1181,9 +1181,6 @@ MonoBehaviour:
     - {fileID: 368105115533674831, guid: 3a6380e05735e7a45aa1b28bfd33e4dc, type: 3}
     buffDatas: []
   enemyTag: Untagged
-  damage: 20
-  range: 27
-  fireRate: 0.5
   fireCountdown: 0
   partToRotate: {fileID: 8910650605811023662}
   turnSpeed: 10

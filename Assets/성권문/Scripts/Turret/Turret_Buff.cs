@@ -19,12 +19,6 @@ public class Turret_Buff : Turret
     [Header("회전속도")]
     public float turnSpeed = 10f;
 
-    [Header("====== 투사체 ======")]
-
-    [Header("투사체 프리팹")]
-    public GameObject SkillPrefab;
-
-
     private void Start()
     {
         // 타겟을 수시로 찾을수있게 invoke를 한다.
@@ -52,7 +46,7 @@ public class Turret_Buff : Turret
         }
 
         // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
-        if (nearestEnemy != null && shortestDistance <= range)
+        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
         {
             target = nearestEnemy.transform;
             targetEnemy = nearestEnemy.GetComponent<EnemyMinion>();
@@ -85,7 +79,7 @@ public class Turret_Buff : Turret
         if (fireCountdown <= 0f)
         {
             Fire();
-            fireCountdown = 1f / fireRate;
+            fireCountdown = 1f / towerData.AttackSpeed;
         }
 
         fireCountdown -= Time.deltaTime;
@@ -94,7 +88,7 @@ public class Turret_Buff : Turret
     // ★ 총알 / 미사일 발사
     void Fire()
     {
-        GameObject newSkill = PhotonNetwork.Instantiate(SkillPrefab.name, target.position, Quaternion.identity);
+        GameObject newSkill = PhotonNetwork.Instantiate(towerData.ObjectPF.name, target.position, Quaternion.identity);
     }
 
     // 타겟 방향으로 회전하기
