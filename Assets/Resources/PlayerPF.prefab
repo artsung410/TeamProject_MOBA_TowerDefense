@@ -2746,6 +2746,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ea237c43c85084d9f63b74e8a3b6bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 1037791636690611819}
+  TargetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &3026606992103964819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2792,6 +2794,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: Die
+  - Type: 4
+    SynchronizeType: 0
+    Name: JumpAttack
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
