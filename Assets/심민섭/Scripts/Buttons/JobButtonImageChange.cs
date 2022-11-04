@@ -111,7 +111,7 @@ public class JobButtonImageChange : MonoBehaviour
         {
             GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).gameObject.tag = "WizardSlot";
         }
-        eSItemChecker();
+        //eSItemChecker();
     }
 
     public void assassinButtonImageChange()

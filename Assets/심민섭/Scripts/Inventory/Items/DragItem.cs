@@ -158,7 +158,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                 if (Inventory.tag.Equals("Slot") || oldSlot.tag.Equals(newSlot.tag))
                     Inventory = Inventory.transform.parent.parent.gameObject; // Panel - Card
 
-
                 //dragging in an Inventory      
                 if (Inventory.GetComponent<EquipmentSystem>() == null && Inventory.GetComponent<CraftSystem>() == null)
                 {
@@ -218,10 +217,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 }
 
                             }
-                            //if does not fit
                             else
                             {
-                                //creates the rest of the item
                                 int rest = 0;
                                 if (sameItem)
                                     rest = (firstItem.itemValue + secondItem.itemValue) % firstItem.maxStack;
@@ -238,10 +235,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     firstItemRectTransform.localPosition = Vector3.zero;
                                     secondItemRectTransform.localPosition = Vector3.zero;
                                 }
-                                //if they are different items or the stack is full, they get swapped
                                 else if (!fitsIntoStack && rest == 0)
                                 {
-                                    //if you are dragging an item from equipmentsystem to the inventory and try to swap it with the same itemtype
                                     if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
                                     {
                                         //Debug.Log($"7 : {newSlot.transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject.name}");
@@ -287,8 +282,14 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                         firstItemGameObject.transform.SetParent(oldSlot.transform);
                                         firstItemRectTransform.localPosition = Vector3.zero;
                                     }
-                                    else if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() == null)
+                                    else if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() == null) //< ---이놈 이거 문제임
                                     {
+                                        if (firstItem.ClassType != secondItem.ClassType)
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
                                         firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                         secondItemGameObject.transform.SetParent(oldSlot.transform);
                                         secondItemRectTransform.localPosition = Vector3.zero;
