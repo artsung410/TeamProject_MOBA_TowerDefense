@@ -12,9 +12,13 @@ using System;
 
 public class Turret : MonoBehaviourPun
 {
+    public static event Action<Turret, Item, string> turretMouseDownEvent = delegate { };
+    public static event Action<GameObject,string> minionTowerEvent = delegate { };
+
     public static event Action<Turret> turretMouseDownEvent = delegate { };
 
-    [Header("ÀÎ°ÔÀÓ DB")]
+
+    [Header("ì¸ê²Œì„ DB")]
     [SerializeField]
     public TowerData towerData;
     public float currentHealth;
@@ -81,13 +85,24 @@ public class Turret : MonoBehaviourPun
                 enemyTag = "Red";
             }
         }
+
+
+        if (towerData.ObjectPF.layer == 14)
+        {
+            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
+        }
+
+        else if (towerData.ObjectPF.layer == 13)
+        {
+            minionTowerEvent.Invoke(towerData.ObjectPF,gameObject.tag);
+        }
     }
 
     public void Damage(float damage)
     {
-        //Debug.Log("Damage Àû¿ë");
+        //Debug.Log("Damage ì ìš©");
 
-        // °ÔÀÓ ³¡³ª¸é Á¤Áö
+        // ê²Œì„ ëë‚˜ë©´ ì •ì§€
         if (GameManager.Instance.isGameEnd == true)
         {
             return;
@@ -99,14 +114,14 @@ public class Turret : MonoBehaviourPun
     [PunRPC]
     public void TakeDamage(float damage)
     {
-        //Debug.Log("Damage RPCÀû¿ë");
+        //Debug.Log("Damage RPCì ìš©");
 
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         healthbarImage.fillAmount = currentHealth / towerData.MaxHP;
 
         if (currentHealth <= 0)
         {
-            Debug.Log("µ¥¹ÌÁö µé¾î°¨!!!!");
+            Debug.Log("ë°ë¯¸ì§€ ë“¤ì–´ê°!!!!");
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
@@ -162,7 +177,7 @@ public class Turret : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
-    // Å¸¿ö ¹öÇÁÈ¿°ú ¹ßµ¿
+    // íƒ€ì›Œ ë²„í”„íš¨ê³¼ ë°œë™
     public void incrementBuffValue(int id, float addValue, bool state)
     {
         if (!photonView.IsMine)
@@ -180,7 +195,7 @@ public class Turret : MonoBehaviourPun
         {
             if (st)
             {
-                Debug.Log("Å¸¿ö °ø°İ·Â Áõ°¡!");
+                Debug.Log("íƒ€ì›Œ ê³µê²©ë ¥ ì¦ê°€!");
                 attack += value;
 
                 if (towerData.ObjectPF.layer == 14)
@@ -190,7 +205,7 @@ public class Turret : MonoBehaviourPun
             }
             else
             {
-                Debug.Log("Å¸¿ö °ø°İ·Â Áõ°¡ Á¾·á!");
+                Debug.Log("íƒ€ì›Œ ê³µê²©ë ¥ ì¦ê°€ ì¢…ë£Œ!");
                 attack -= value;
 
                 if (towerData.ObjectPF.layer == 14)
@@ -204,18 +219,18 @@ public class Turret : MonoBehaviourPun
         {
             if (st)
             {
-                Debug.Log("Å¸¿ö °ø¼Ó Áõ°¡!");
+                Debug.Log("íƒ€ì›Œ ê³µì† ì¦ê°€!");
                 attackSpeed += value;
             }
             else
             {
-                Debug.Log("Å¸¿ö °ø¼Ó Áõ°¡ Á¾·á!");
+                Debug.Log("íƒ€ì›Œ ê³µì† ì¦ê°€ ì¢…ë£Œ!");
                 attackSpeed -= value;
             }
         }
     }
 
-    // Å¸¿ö Å¬¸¯ÇßÀ» ¶§ ÅøÆÁ¶ß°ÔÇÏ±â
+    // íƒ€ì›Œ í´ë¦­í–ˆì„ ë•Œ íˆ´íŒëœ¨ê²Œí•˜ê¸°
     private void OnMouseDown()
     {
         turretMouseDownEvent.Invoke(this);
