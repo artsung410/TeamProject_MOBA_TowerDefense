@@ -12,9 +12,7 @@ using System;
 
 public class Turret : MonoBehaviourPun
 {
-    public static event Action<Turret, Item, string> turretMouseDownEvent = delegate { };
     public static event Action<GameObject,string> minionTowerEvent = delegate { };
-
     public static event Action<Turret> turretMouseDownEvent = delegate { };
 
 
