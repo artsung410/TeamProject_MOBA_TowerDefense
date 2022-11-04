@@ -15,7 +15,7 @@ using System;
 
 public enum Tower
 {
-    GuardTower = 4,
+    GuardTower = 1,
     CannonTower,
     MinionTower,
     BuffTower
@@ -23,7 +23,7 @@ public enum Tower
 
 public enum Skill
 {
-    Sword = 8,
+    Sword = 5,
     TakeDown,
     WheelWind,
     Wield
@@ -126,7 +126,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < count; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                tower.GetComponent<Turret>().towerItem = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardItems[i];
                 int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
                 //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
@@ -138,7 +137,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             for (int i = 0; i < count; i++)
             {
                 GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                tower.GetComponent<Turret>().towerItem = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardItems[i];
                 int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
                 //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
