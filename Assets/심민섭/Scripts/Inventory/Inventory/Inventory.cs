@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject prefabSlotContainer;
     [SerializeField]
-    private GameObject prefabItem;
+    public GameObject prefabItem;
     [SerializeField]
     private GameObject prefabDraggingItemContainer;
     [SerializeField]
@@ -111,6 +111,17 @@ public class Inventory : MonoBehaviour
         /*foreach (var item in ItemsInInventory)
         {
             Debug.Log(item.itemName);
+        }*/
+
+        /*if (Input.GetKeyDown(KeyCode.T))
+        {
+            foreach (var item in ItemsInInventory)
+            {
+                Debug.Log(item);
+                Debug.Log($"item.itemName : {item.itemName}");
+                Debug.Log($"item.itemValue : {item.itemValue}");
+            }
+            updateItemList();
         }*/
     }
 
@@ -509,21 +520,21 @@ public class Inventory : MonoBehaviour
 
         setImportantVariables();
         setDefaultSettings();
-        //adjustInventorySize();
+        adjustInventorySize();
         updateSlotAmount(width, height);
         //updateSlotSize();
         //updatePadding(paddingBetweenX, paddingBetweenY);
 
     }
 
-    /*public void updatePadding(int spacingBetweenX, int spacingBetweenY)
+    public void updatePadding(int spacingBetweenX, int spacingBetweenY)
     {
         SlotGridLayout.spacing = new Vector2(paddingBetweenX, paddingBetweenY);
         SlotGridLayout.padding.bottom = paddingBottom;
         SlotGridLayout.padding.right = paddingRight;
         SlotGridLayout.padding.left = paddingLeft;
         SlotGridLayout.padding.top = paddingTop;
-    }*/
+    }
 
     /*public void updateSlotSize()
     {
@@ -652,14 +663,14 @@ public class Inventory : MonoBehaviour
         }
     }
 
-    /*public void adjustInventorySize()
+    public void adjustInventorySize()
     {
         int x = (((width * slotSize) + ((width - 1) * paddingBetweenX)) + paddingLeft + paddingRight);
         int y = (((height * slotSize) + ((height - 1) * paddingBetweenY)) + paddingTop + paddingBottom);
         PanelRectTransform.sizeDelta = new Vector2(x, y);
 
         SlotGridRectTransform.sizeDelta = new Vector2(x, y);
-    }*/
+    }
 
     /// <summary>
     /// 슬롯 컨테이너 오브젝트를 가져오고 Rect, GridLayoutGroup을 각 변수에 저장
