@@ -2,11 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
+public enum Target
+{
+    Player,
+    Enemy,
+    My_Minion,
+    Enemy_Minion,
+    Whole_Enemy,
+    Tower
+}
 // ###############################################
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com
-//             ±âÈ¹DB -> (4)Effect_Table Àû¿ë
+//             ±âÈ¹DB -> Effect_Table Àû¿ë
 // ###############################################
 [System.Serializable]
 [CreateAssetMenu(fileName = "BuffName", menuName = "BuffData/Create New BuffData")]
@@ -18,16 +26,6 @@ public class BuffData : ScriptableObject
         Buff,
         Debuff,
         Minion,
-    }
-
-    public enum Target
-    {
-        Player,
-        Enemy,
-        My_Minion,
-        Enemy_Minion,
-        While_Enemy,
-        Tower
     }
 
     public enum Effect_Position
@@ -53,8 +51,8 @@ public class BuffData : ScriptableObject
     public Target TargetType { get { return _target; } }
 
     [SerializeField]
-    private int _effectValue;
-    public int EffectValue { get { return _effectValue; } }
+    private float _effectValue;
+    public float EffectValue { get { return _effectValue; } }
 
     [SerializeField]
     private Effect_Position _effectPosition;

@@ -79,7 +79,7 @@ public class Turret_Buff : Turret
         if (fireCountdown <= 0f)
         {
             Fire();
-            fireCountdown = 1f / towerData.AttackSpeed;
+            fireCountdown = 1f / attackSpeed;
         }
 
         fireCountdown -= Time.deltaTime;

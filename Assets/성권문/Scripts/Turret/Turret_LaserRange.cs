@@ -88,7 +88,8 @@ public class Turret_LaserRange : Turret
                     animator.SetBool("onAttack", false);
                 }
             }
-            yield return new WaitForSeconds(1f);
+
+            yield return new WaitForSeconds(1f / attackSpeed);
         }
     }
 

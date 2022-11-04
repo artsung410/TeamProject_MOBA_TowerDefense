@@ -82,7 +82,7 @@ public class Turret_Cannon : Turret
             makeDangerZone(); // 대포 위험범위 생성
             LockOnTarget_dangerZone();
             StartCoroutine(delayShoot()); // 대포 발사.
-            fireCountdown = 1f / towerData.AttackSpeed;
+            fireCountdown = 1f / attackSpeed;
         }
 
         fireCountdown -= Time.deltaTime;
