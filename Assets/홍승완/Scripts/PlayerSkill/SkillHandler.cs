@@ -13,28 +13,36 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected HeroAbility _ability;
     protected Stats _stat;
     protected PlayerBehaviour _behaviour;
+    protected PlayerAnimation _ani;
     protected string _myTag;
+
 
     public float SetDamage;
     public float SetHodingTime;
     public float SetRange;
 
-    // ÇÃ·¹ÀÌ¾î HeroAbility¸¦ ¹Ş¾Æ¿È
+    // í”Œë ˆì´ì–´ HeroAbilityë¥¼ ë°›ì•„ì˜´
     public void GetPlayerPos(HeroAbility heroAbility)
     {
         _ability = heroAbility;
     }
 
-    // ÇÃ·¹ÀÌ¾î StatsÀ» ¹Ş¾Æ¿È
+    // í”Œë ˆì´ì–´ Statsì„ ë°›ì•„ì˜´
     public void GetPlayerStatus(Stats stats)
     {
         _stat = stats;
     }
 
-    // ÇÃ·¹ÀÌ¾î PlayerBehaviour¸¦ ¹Ş¾Æ¿È
+    // í”Œë ˆì´ì–´ PlayerBehaviourë¥¼ ë°›ì•„ì˜´
     public void GetMousePos(PlayerBehaviour behaviour)
     {
         _behaviour = behaviour;
+    }
+
+    // í”Œë ˆì´ì–´ Animation ë°›ì•„ì˜´
+    public void GetAnimation(PlayerAnimation animation)
+    {
+        _ani = animation;
     }
 
     public void SkillDamage(float damage, GameObject target)
