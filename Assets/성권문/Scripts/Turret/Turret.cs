@@ -12,12 +12,13 @@ using System;
 
 public class Turret : MonoBehaviourPun
 {
-    public static event Action<Turret, Item, string> turretMouseDownEvent = delegate { };
+    public static event Action<GameObject,string> minionTowerEvent = delegate { };
+    public static event Action<Turret> turretMouseDownEvent = delegate { };
 
-    [Header("ÀÎ°ÔÀÓ DB")]
+
+    [Header("ì¸ê²Œì„ DB")]
     [SerializeField]
     public TowerData towerData;
-
     public float currentHealth;
     public Image healthbarImage;
     public GameObject ui;
@@ -25,22 +26,26 @@ public class Turret : MonoBehaviourPun
     private GameObject newDestroyParticle;
     public float destorySpeed;
 
-    [Header("Å¸¿öÄ«µå DB")]
-    public Item towerItem;
-
     [HideInInspector]
     public string enemyTag;
 
     [HideInInspector]
     public float fireCountdown = 0f;
 
-    protected void Awake()
+    public float attack;
+    public float attackSpeed;
+
+    void Awake()
     {
+        attack = towerData.Attack;
+        attackSpeed = towerData.AttackSpeed;
+
         if (towerData.ObjectPF.layer == 14)
         {
-            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
+            towerData.ObjectPF.GetComponent<Projectiles>().damage = attack;
         }
 
+        BuffManager.towerBuffAdditionEvent += incrementBuffValue;
         PlayerHUD.onGameEnd += Destroy_gameEnd;
     }
 
@@ -78,13 +83,24 @@ public class Turret : MonoBehaviourPun
                 enemyTag = "Red";
             }
         }
+
+
+        if (towerData.ObjectPF.layer == 14)
+        {
+            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
+        }
+
+        else if (towerData.ObjectPF.layer == 13)
+        {
+            minionTowerEvent.Invoke(towerData.ObjectPF,gameObject.tag);
+        }
     }
 
     public void Damage(float damage)
     {
-        //Debug.Log("Damage Àû¿ë");
+        //Debug.Log("Damage ì ìš©");
 
-        // °ÔÀÓ ³¡³ª¸é Á¤Áö
+        // ê²Œì„ ëë‚˜ë©´ ì •ì§€
         if (GameManager.Instance.isGameEnd == true)
         {
             return;
@@ -96,14 +112,14 @@ public class Turret : MonoBehaviourPun
     [PunRPC]
     public void TakeDamage(float damage)
     {
-        //Debug.Log("Damage RPCÀû¿ë");
+        //Debug.Log("Damage RPCì ìš©");
 
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         healthbarImage.fillAmount = currentHealth / towerData.MaxHP;
 
         if (currentHealth <= 0)
         {
-            Debug.Log("µ¥¹ÌÁö µé¾î°¨!!!!");
+            Debug.Log("ë°ë¯¸ì§€ ë“¤ì–´ê°!!!!");
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
@@ -159,19 +175,62 @@ public class Turret : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
-    public void additionalAtk(float addValue)
+    // íƒ€ì›Œ ë²„í”„íš¨ê³¼ ë°œë™
+    public void incrementBuffValue(int id, float addValue, bool state)
     {
-        towerData.additional_Atk += addValue;
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        photonView.RPC("RPC_ApplyTowerBuff", RpcTarget.All, id, addValue, state);
     }
 
-    public void additionalAtkSpd(float addValue)
+    [PunRPC]
+    public void RPC_ApplyTowerBuff(int id, float value, bool st)
     {
-        towerData.additional_AtkSpd += addValue;
+        if (id == (int)Buff_Effect.AtkUP)
+        {
+            if (st)
+            {
+                Debug.Log("íƒ€ì›Œ ê³µê²©ë ¥ ì¦ê°€!");
+                attack += value;
+
+                if (towerData.ObjectPF.layer == 14)
+                {
+                    towerData.ObjectPF.GetComponent<Projectiles>().damage += value;
+                }
+            }
+            else
+            {
+                Debug.Log("íƒ€ì›Œ ê³µê²©ë ¥ ì¦ê°€ ì¢…ë£Œ!");
+                attack -= value;
+
+                if (towerData.ObjectPF.layer == 14)
+                {
+                    towerData.ObjectPF.GetComponent<Projectiles>().damage -= value;
+                }
+            }
+        }
+
+        else if (id == (int)Buff_Effect.AtkSpeedUp)
+        {
+            if (st)
+            {
+                Debug.Log("íƒ€ì›Œ ê³µì† ì¦ê°€!");
+                attackSpeed += value;
+            }
+            else
+            {
+                Debug.Log("íƒ€ì›Œ ê³µì† ì¦ê°€ ì¢…ë£Œ!");
+                attackSpeed -= value;
+            }
+        }
     }
 
-    // Å¸¿ö Å¬¸¯ÇßÀ» ¶§ ÅøÆÁ¶ß°ÔÇÏ±â
+    // íƒ€ì›Œ í´ë¦­í–ˆì„ ë•Œ íˆ´íŒëœ¨ê²Œí•˜ê¸°
     private void OnMouseDown()
     {
-        turretMouseDownEvent.Invoke(this, towerItem, gameObject.tag);
+        turretMouseDownEvent.Invoke(this);
     }
 }

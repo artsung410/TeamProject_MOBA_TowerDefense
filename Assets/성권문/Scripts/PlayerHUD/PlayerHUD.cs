@@ -125,35 +125,7 @@ public class PlayerHUD : MonoBehaviourPun
         }
     }
 
-    private IEnumerator setHp()
-    {
-        yield return new WaitForSeconds(0.5f);
-        playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
-        enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
-        StopCoroutine(setHp());
-    }
 
-    private void setSkill()
-    {
-        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count;
-
-        for (int i = 0; i < count; i++)
-        {
-            Item item = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i];
-            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillIndex[i];
-            skillTable.transform.GetChild(slotIndex).GetChild(0).gameObject.SetActive(true);
-            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Skillicon>().item = item;
-            skillTable.transform.GetChild(slotIndex).GetComponent<SkillButton>().item = item;
-            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
-        }
-    }
-
-    private void setMouseCursor()
-    {
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
-    }
 
     private void FixedUpdate()
     {
@@ -173,9 +145,7 @@ public class PlayerHUD : MonoBehaviourPun
         }
 
         UpdateHealthUI();
-        UpdateEnemyHealthUI();
-
-        
+        UpdateInfo();
 
         if( false == Chating && Input.GetKeyDown(KeyCode.Return))
         {
@@ -189,14 +159,34 @@ public class PlayerHUD : MonoBehaviourPun
 
         }
 
-
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             ESCButton_S();
         }
-
-
     }
+
+
+    #region ⋆⁺₊⋆ Skill Panel ⋆⁺₊⋆
+
+    private void setSkill()
+    {
+        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems.Count;
+
+        for (int i = 0; i < count; i++)
+        {
+            Item item = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i];
+            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillIndex[i];
+            skillTable.transform.GetChild(slotIndex).GetChild(0).gameObject.SetActive(true);
+            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Skillicon>().item = item;
+            skillTable.transform.GetChild(slotIndex).GetComponent<SkillButton>().item = item;
+            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
+        }
+    }
+
+    #endregion
+
+
+    #region 🕦 Timer & Scroe Panel 🕦
 
     void Timer()
     {
@@ -244,104 +234,6 @@ public class PlayerHUD : MonoBehaviourPun
         }
     }
 
-    float playerHp2D; float Hp2D;
-    void UpdateHealthUI()
-    {
-        if (playerHp == null)
-        {
-            return;
-        }
-
-        playerHealthBar.fillAmount = playerHp.hpSlider3D.value / playerHp.hpSlider3D.maxValue;
-        playerHp2D = playerHp.hpSlider3D.value;
-        playerHealthBarTMpro.text = playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
-    }
-
-    void UpdateEnemyHealthUI()
-    {
-        UpdateHealthBar();
-    }
-
-    public void UpdateHealthBar()
-    {
-
-        if (INFO == InfoState.Player)
-        {
-            if (enemyHp == null)
-            {
-                return;
-            }
-
-            if (enemyHp.hpSlider3D.value <= 0)
-            {
-                InfoPanel.SetActive(false);
-            }
-
-            InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
-            Hp2D = enemyHp.hpSlider3D.value;
-            InfoHealthBarTMPro.text = Hp2D + " / " + enemyHp.hpSlider3D.maxValue;
-        }
-
-        else if (INFO == InfoState.Tower)
-        {
-            if (currentTurretforInfo == null)
-            {
-                return;
-            }
-
-            if (currentTurretforInfo.currentHealth <= 0)
-            {
-                InfoPanel.SetActive(false);
-            }
-
-            InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
-            Hp2D = currentTurretforInfo.currentHealth;
-            InfoHealthBarTMPro.text = Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
-        }
-
-        else if (INFO == InfoState.Minion)
-        {
-            if (currentMinionforInfo == null)
-            {
-                return;
-            }
-
-            if (currentMinionforInfo.CurrnetHP <= 0)
-            {
-                InfoPanel.SetActive(false);
-            }
-
-            InfoHealthBar.fillAmount = currentMinionforInfo.CurrnetHP / currentMinionforInfo.HP;
-            Hp2D = currentMinionforInfo.CurrnetHP;
-            InfoHealthBarTMPro.text = Hp2D + " / " + currentMinionforInfo.HP;
-        }
-
-        else if (INFO == InfoState.Nexus)
-        {
-            if (currentNexusforInfo == null)
-            {
-                return;
-            }
-
-            if (currentNexusforInfo.CurrentHp <= 0)
-            {
-                InfoPanel.SetActive(false);
-            }
-
-            InfoHealthBar.fillAmount = currentNexusforInfo.CurrentHp / currentNexusforInfo.MaxHp;
-            Hp2D = currentNexusforInfo.CurrentHp;
-            InfoHealthBarTMPro.text = Hp2D + " / " + currentNexusforInfo.MaxHp;
-        }
-
-
-    }
-
-    // ESC 버튼을 누르면 창이 켜진다.
-    private void ESCButton_S()
-    {
-        ESCButton.SetActive(true);
-    }
-
     public void AddScoreToEnemy(string tag)
     {
         if (tag == "Red")
@@ -356,6 +248,33 @@ public class PlayerHUD : MonoBehaviourPun
         // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
         photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
     }
+
+    [PunRPC]
+    private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
+    {
+        scoreTMPro.text = $"{player1ScoreText}        {player2ScoreText}";
+    }
+
+    [PunRPC]
+    private void RPCInitScore()
+    {
+        scoreTMPro.text = $"0        0";
+    }
+
+    #endregion
+
+
+    #region ⚙️ MainMenu Panel ⚙️
+
+    private void ESCButton_S()
+    {
+        ESCButton.SetActive(true);
+    }
+
+    #endregion
+
+
+    #region 🚩 GameResult Panel 🚩
 
     // 승패 결과 이미지 팝업 함수
     private IEnumerator ResultImagePopUp()
@@ -432,18 +351,6 @@ public class PlayerHUD : MonoBehaviourPun
         }
     }
 
-    [PunRPC]
-    private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
-    {
-        scoreTMPro.text = $"{player1ScoreText}        {player2ScoreText}";
-    }
-
-    [PunRPC]
-    private void RPCInitScore()
-    {
-        scoreTMPro.text = $"0        0";
-    }
-
     public void ActivationGameWinUI_Nexus(string tag)
     {
         if (GameManager.Instance.isGameEnd == true)
@@ -481,37 +388,10 @@ public class PlayerHUD : MonoBehaviourPun
         PhotonNetwork.LeaveRoom();
     }
 
-    public void ActivationEnemyInfoUI(Stats st, Sprite icon)
-    {
-        INFO = InfoState.Player;
-        InfoPanel.SetActive(true);
+    #endregion
 
-        InfoIcon.sprite = icon;
-        float dmg = st.attackDmg;
-        float atkSpeed = st.attackSpeed;
-        float spd = st.MoveSpeed;
 
-        float dps = dmg * atkSpeed;
-        InfoDpsTMpro.text = dps.ToString();
-        InfoSpdMpro.text = spd.ToString();
-    }
-
-    public void ActivationTowerInfoUI(Turret turret, Item item, string tag)
-    {
-        INFO = InfoState.Tower;
-        currentTurretforInfo = turret;
-        InfoPanel.SetActive(true);
-
-        // 이벤트로 들어온 매개변수 세팅(Item class)
-        InfoIcon.sprite = item.itemIcon;
-        float dmg = turret.towerData.Attack;
-        float atkSpeed = turret.towerData.AttackSpeed;
-
-        float dps = dmg * atkSpeed;
-        InfoDpsTMpro.text = dps.ToString();
-        InfoSpdMpro.text = 0.ToString();
-    }
-    #region 채팅
+    #region 📢 Chatting Panel 📢
     public void Sned()
     {
         string msg = PhotonNetwork.LocalPlayer.ActorNumber + " : " + ChatInput.text;
@@ -540,7 +420,144 @@ public class PlayerHUD : MonoBehaviourPun
             ChatText[ChatText.Length - 1].text = msg;
         }
     }
-    #endregion 
+    #endregion
+
+
+    #region 😁 Player Status Panel 😁
+
+    private IEnumerator setHp()
+    {
+        yield return new WaitForSeconds(0.5f);
+        playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
+        enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
+        StopCoroutine(setHp());
+    }
+
+    float playerHp2D;
+    void UpdateHealthUI()
+    {
+        if (playerHp == null)
+        {
+            return;
+        }
+
+        playerHealthBar.fillAmount = playerHp.hpSlider3D.value / playerHp.hpSlider3D.maxValue;
+        playerHp2D = playerHp.hpSlider3D.value;
+        playerHealthBarTMpro.text = playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
+    }
+
+    #endregion
+
+
+    #region 🕮 Info Panel 🕮
+
+    float Hp2D;
+    public void UpdateInfo()
+    {
+
+        if (INFO == InfoState.Player)
+        {
+            if (enemyHp == null)
+            {
+                return;
+            }
+
+            if (enemyHp.hpSlider3D.value <= 0)
+            {
+                InfoPanel.SetActive(false);
+            }
+
+            InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
+            Hp2D = enemyHp.hpSlider3D.value;
+            InfoHealthBarTMPro.text = Hp2D + " / " + enemyHp.hpSlider3D.maxValue;
+        }
+
+        else if (INFO == InfoState.Tower)
+        {
+            if (currentTurretforInfo == null)
+            {
+                return;
+            }
+
+            if (currentTurretforInfo.currentHealth <= 0)
+            {
+                InfoPanel.SetActive(false);
+            }
+
+            // 실시간 체력 동기화
+            InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
+            Hp2D = currentTurretforInfo.currentHealth;
+            InfoHealthBarTMPro.text = Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
+
+            // 실시간 dps / speed 동기화
+            float dmg = currentTurretforInfo.attack;
+            float atkSpeed = currentTurretforInfo.attackSpeed;
+            float dps = dmg * atkSpeed;
+            InfoDpsTMpro.text = dps.ToString();
+            InfoSpdMpro.text = 0.ToString();
+        }
+
+        else if (INFO == InfoState.Minion)
+        {
+            if (currentMinionforInfo == null)
+            {
+                return;
+            }
+
+            if (currentMinionforInfo.CurrnetHP <= 0)
+            {
+                InfoPanel.SetActive(false);
+            }
+
+            InfoHealthBar.fillAmount = currentMinionforInfo.CurrnetHP / currentMinionforInfo.HP;
+            Hp2D = currentMinionforInfo.CurrnetHP;
+            InfoHealthBarTMPro.text = Hp2D + " / " + currentMinionforInfo.HP;
+        }
+
+        else if (INFO == InfoState.Nexus)
+        {
+            if (currentNexusforInfo == null)
+            {
+                return;
+            }
+
+            if (currentNexusforInfo.CurrentHp <= 0)
+            {
+                InfoPanel.SetActive(false);
+            }
+
+            InfoHealthBar.fillAmount = currentNexusforInfo.CurrentHp / currentNexusforInfo.MaxHp;
+            Hp2D = currentNexusforInfo.CurrentHp;
+            InfoHealthBarTMPro.text = Hp2D + " / " + currentNexusforInfo.MaxHp;
+        }
+
+
+    }
+
+    public void ActivationEnemyInfoUI(Player player)
+    {
+        INFO = InfoState.Player;
+        InfoPanel.SetActive(true);
+
+        InfoIcon.sprite = player.playerIcon;
+        float dmg = player.playerStats.attackDmg;
+        float atkSpeed = player.playerStats.attackSpeed;
+        float spd = player.playerStats.MoveSpeed;
+
+        float dps = dmg * atkSpeed;
+        InfoDpsTMpro.text = dps.ToString();
+        InfoSpdMpro.text = spd.ToString();
+    }
+
+    public void ActivationTowerInfoUI(Turret turret)
+    {
+        INFO = InfoState.Tower;
+        currentTurretforInfo = turret;
+        InfoPanel.SetActive(true);
+
+        // 이벤트로 들어온 매개변수 세팅(Item class)
+        InfoIcon.sprite = turret.towerData.Icon;
+    }
 
     public void ActivationMinionInfoUI(Enemybase minion, Sprite icon)
     {
@@ -569,4 +586,17 @@ public class PlayerHUD : MonoBehaviourPun
         InfoSpdMpro.text = 0.ToString();
     }
 
+    #endregion
+
+
+    #region 🔑 InGame System 🔑
+
+    private void setMouseCursor()
+    {
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
+    }
+
+    #endregion
 }

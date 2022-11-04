@@ -27,7 +27,7 @@ public class TrojanHorse: MonoBehaviour
     public List<GameObject> cardPrefab  = new List<GameObject>();
 
     [Header("장착한 아이템")]
-    public List<Item> cardItems = new List<Item>();
+    public List<ScriptableObject> ingameDatas = new List<ScriptableObject>();
 
     private ItemOnObject itemOnObject;
 
@@ -77,7 +77,7 @@ public class TrojanHorse: MonoBehaviour
         cardId.Clear();
         cardName.Clear();
         cardPrefab.Clear();
-        cardItems.Clear();
+        ingameDatas.Clear();
 
         // PlayerNumber 받기
         playerNumber = GetComponent<PlayerStorage>().playerNumber;
@@ -117,7 +117,7 @@ public class TrojanHorse: MonoBehaviour
                     cardId.Add(itemOnObject.item.itemID);
                     cardName.Add(itemOnObject.item.itemName);
                     cardPrefab.Add(itemOnObject.item.itemModel);
-                    cardItems.Add(itemOnObject.item);
+                    ingameDatas.Add(itemOnObject.item.inGameData);
                 }
             }
         }
