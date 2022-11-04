@@ -40,9 +40,9 @@ public class Stats : MonoBehaviourPun
     {
         StartHealth = 250f;
 
-        attackDmg = 35f;
-        attackRange = 6f;
-        attackSpeed = 1.6f;
+        attackDmg = 10f;
+        attackRange = 5f;
+        attackSpeed = 1f;
 
         MoveSpeed = 15f;
     }
