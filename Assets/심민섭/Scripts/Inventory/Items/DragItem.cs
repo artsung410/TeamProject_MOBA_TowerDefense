@@ -319,20 +319,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                 }
 
                 if (newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WarriorSlot" || newSlot.tag == "WizardSlot" || newSlot.tag == "AssassinSlot"
-                    || newSlot.tag == "InherenceSlot" || newSlot.tag == "ItemIcon")
+                    || newSlot.tag == "InherenceSlot")
                 {
-                    if (newSlot.tag == "ItemIcon")
-                    {
-                        Debug.Log("들어오나");
-                        firstItemGameObject.transform.SetParent(oldSlot.transform);
-                        firstItemRectTransform.localPosition = Vector3.zero;
-                        Debug.Log(oldSlot.transform);
-                        Debug.Log(newSlot.transform);
-                        secondItemGameObject.transform.SetParent(newSlot.transform);
-                        secondItemRectTransform.localPosition = Vector3.zero;
-                        return;
-                    }
-
                     // 갯수가 1보다 크면
                     if (dragItem.item.itemValue > 1)
                     {
