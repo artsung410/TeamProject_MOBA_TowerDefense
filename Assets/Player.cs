@@ -39,17 +39,17 @@ public class Player : MonoBehaviourPun
     // 플레이어 버프효과 발동
     public void incrementBuffValue(int id, float addValue, bool state)
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         photonView.RPC("RPC_ApplyPlayerBuff", RpcTarget.All, id, addValue, state);
     }
 
     [PunRPC]
     public void RPC_ApplyPlayerBuff(int id, float value, bool st)
     {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
-
         if (id == (int)Buff_Effect.AtkUP)
         {
         }

@@ -165,17 +165,17 @@ public class Turret : MonoBehaviourPun
     // 타워 버프효과 발동
     public void incrementBuffValue(int id, float addValue, bool state)
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         photonView.RPC("RPC_ApplyTowerBuff", RpcTarget.All, id, addValue, state);
     }
 
     [PunRPC]
     public void RPC_ApplyTowerBuff(int id, float value, bool st)
     {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
-
         if (id == (int)Buff_Effect.AtkUP)
         {
             if (st)
