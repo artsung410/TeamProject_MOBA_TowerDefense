@@ -19,7 +19,8 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     void Start()
     {
         Turret.minionTowerEvent += ChangeMinion;
-        SpawnEnemy();
+        BlueSpawnMinion();
+        RedSpawnMinion();
     }
 
     // Update is called once per frame
@@ -29,13 +30,14 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
         if (elaspedTime >= minionSpawnTime)
         {
             elaspedTime = 0;
-            SpawnEnemy();
+            BlueSpawnMinion();
+            RedSpawnMinion();
         }
     }
 
     void ChangeMinion(GameObject transferedMinion, string tag)
     {
-        if(transferedMinion.transform.GetChild(0).GetComponent<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal)
+        if (transferedMinion.transform.GetChild(0).GetComponent<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal)
         {
             if (tag == "Blue")
             {
@@ -62,29 +64,34 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
 
     }
 
-    private void SpawnEnemy()
+    private void BlueSpawnMinion()
     {
+
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             if (EnemyPrefabs[0] == null || EnemyPrefabs[1] == null)
             {
                 return;
             }
-
             PhotonNetwork.Instantiate(EnemyPrefabs[0].name, GameManager.Instance.spawnPositions[0].position, Quaternion.identity); // ¿Ã∞‘ πŸ≤Ò
 
             PhotonNetwork.Instantiate(EnemyPrefabs[1].name, GameManager.Instance.spawnPositions[0].position, Quaternion.identity);
         }
-        else if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
+
+    }
+
+    private void RedSpawnMinion()
+    {
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 2)
         {
             if (EnemyPrefabs[2] == null || EnemyPrefabs[3] == null)
             {
                 return;
             }
+
             PhotonNetwork.Instantiate(EnemyPrefabs[2].name, GameManager.Instance.spawnPositions[1].position, Quaternion.identity); // ¿Ã∞‘ πŸ≤Ò
 
             PhotonNetwork.Instantiate(EnemyPrefabs[3].name, GameManager.Instance.spawnPositions[1].position, Quaternion.identity);
         }
     }
-
 }

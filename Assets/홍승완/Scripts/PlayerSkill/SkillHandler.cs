@@ -13,6 +13,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected HeroAbility _ability;
     protected Stats _stat;
     protected PlayerBehaviour _behaviour;
+    protected string _myTag;
 
     public float SetDamage;
     public float SetHodingTime;
@@ -59,6 +60,13 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
             }
         }
     }
+    protected string getMytag(HeroAbility ability)
+    {
+        _myTag = ability.tag;
+        return _myTag;
+
+    }
+
 
     public abstract void SkillHoldingTime(float time);
 

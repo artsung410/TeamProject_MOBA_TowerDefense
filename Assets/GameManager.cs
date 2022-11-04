@@ -146,8 +146,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
         }
     }
- 
-    // 미니언 생성
 
 
 }
