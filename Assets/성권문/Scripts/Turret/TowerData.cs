@@ -6,7 +6,7 @@ using UnityEngine;
 // ###############################################
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com
-//             ±âÈ¹DB -> (4)Effect_Table Àû¿ë
+//             ±âÈ¹DB -> Tower_Table Àû¿ë
 // ###############################################
 [System.Serializable]
 [CreateAssetMenu(fileName = "TowerName", menuName = "TowerData/Create New TowerData")]

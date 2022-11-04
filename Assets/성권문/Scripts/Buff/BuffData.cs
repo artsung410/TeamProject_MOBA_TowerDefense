@@ -14,7 +14,7 @@ public enum Target
 // ###############################################
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com
-//             ±âÈ¹DB -> (4)Effect_Table Àû¿ë
+//             ±âÈ¹DB -> Effect_Table Àû¿ë
 // ###############################################
 [System.Serializable]
 [CreateAssetMenu(fileName = "BuffName", menuName = "BuffData/Create New BuffData")]
