@@ -10225,7 +10225,7 @@ GameObject:
   - component: {fileID: 1735983640}
   m_Layer: 0
   m_Name: MinionSpawner
-  m_TagString: Untagged
+  m_TagString: MinionSpawner
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10242,11 +10242,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e551c5986e4e31499e5159a38d66927, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyPrefabs:
+  BasicMinion:
   - {fileID: 727053806592155602, guid: 020f063b3cc772140bcdc47d857f5505, type: 3}
   - {fileID: 8808627454346318819, guid: fd4b0ccf9421ead489ef23a221d9ef8c, type: 3}
   - {fileID: 7437779938411895516, guid: bfa11348a265b5d4aa279d1b14589986, type: 3}
   - {fileID: 3405628836457899908, guid: c4c91a6129acca14c98e1c97240e1b15, type: 3}
+  BlueSkillWave: 0
+  RedSkillWave: 0
+  skillOn: 0
+  tag: 
 --- !u!4 &1735983641
 Transform:
   m_ObjectHideFlags: 0
