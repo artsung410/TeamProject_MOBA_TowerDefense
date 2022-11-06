@@ -12,11 +12,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
     private GameObject oldSlot;
     private Inventory inventory;
     private Transform draggedItemBox;
-    private GameObject dragItemObj;
-    private ItemOnObject dragItem;
-
-    // 케릭터 장비창의 컴포넌트를 가져올 변수
-    public static EquipmentSystem eS;
 
     public delegate void ItemDelegate();
     public static event ItemDelegate updateInventoryList;
@@ -32,12 +27,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         inventory = GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>();
         // 드래그 아이템 박스 위치
         draggedItemBox = GameObject.FindGameObjectWithTag("DraggingItem").transform;
-
-        if (GameObject.FindGameObjectWithTag("EquipmentSystem") != null)
-        {
-            // "Player" 태그를 찾아서 PlayerInventory스크립트 안에 characterSystem 오브젝트의 EquipmentSystem스크립트를 가져온다.
-            eS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().characterSystem.GetComponent<EquipmentSystem>();
-        }
     }
 
 
@@ -47,13 +36,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         // Rect 위치가 null이면
         if (rectTransform == null)
             return;
-
-        // 드래그 아이템 정보 저장하기
-        if (draggedItemBox.childCount != 0)
-        {
-            dragItemObj = GameObject.FindGameObjectWithTag("DraggingItem").transform.GetChild(0).gameObject;
-            dragItem = dragItemObj.GetComponent<ItemOnObject>();
-        }
 
         // 왼 클릭이고 CraftResultSlot이 null이면
         if (data.button == PointerEventData.InputButton.Left && transform.parent.GetComponent<CraftResultSlot>() == null)
@@ -145,8 +127,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                 if (sameItem)
                 {
                     // 아이템의 수를 비교 (1 < 99)
-                    firstItemStack = firstItem.itemValue < firstItem.maxStack; // 99보다 작다면 true
-                    secondItemStack = secondItem.itemValue < secondItem.maxStack; // 99 보다 작다면 true
+                    firstItemStack = firstItem.itemValue < firstItem.maxStack;
+                    secondItemStack = secondItem.itemValue < secondItem.maxStack;
                 }
 
                 // 마우스 포인터의 상위 게임 오브젝트 위치에서 상위 오브젝트를 저장
@@ -217,8 +199,10 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 }
 
                             }
+                            //if does not fit
                             else
                             {
+                                //creates the rest of the item
                                 int rest = 0;
                                 if (sameItem)
                                     rest = (firstItem.itemValue + secondItem.itemValue) % firstItem.maxStack;
@@ -235,30 +219,14 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     firstItemRectTransform.localPosition = Vector3.zero;
                                     secondItemRectTransform.localPosition = Vector3.zero;
                                 }
+                                //if they are different items or the stack is full, they get swapped
                                 else if (!fitsIntoStack && rest == 0)
                                 {
+                                    //if you are dragging an item from equipmentsystem to the inventory and try to swap it with the same itemtype
                                     if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
                                     {
                                         //Debug.Log($"7 : {newSlot.transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject.name}");
                                         if (oldSlot.tag == "WarriorSlot")
-                                        {
-                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
-                                            firstItemRectTransform.localPosition = Vector3.zero;
-                                            return;
-                                        }
-                                        if (oldSlot.tag == "WizardSlot")
-                                        {
-                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
-                                            firstItemRectTransform.localPosition = Vector3.zero;
-                                            return;
-                                        }
-                                        if (oldSlot.tag == "AssassinSlot")
-                                        {
-                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
-                                            firstItemRectTransform.localPosition = Vector3.zero;
-                                            return;
-                                        }
-                                        if (oldSlot.tag == "InherenceSlot")
                                         {
                                             firstItemGameObject.transform.SetParent(oldSlot.transform);
                                             firstItemRectTransform.localPosition = Vector3.zero;
@@ -277,19 +245,15 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                             Destroy(secondItemGameObject.GetComponent<ConsumeItem>().duplication);
 
                                     }
+                                    //if you are dragging an item from the equipmentsystem to the inventory and they are not from the same itemtype they do not get swapped.                                    
                                     else if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType != secondItem.itemType)
                                     {
                                         firstItemGameObject.transform.SetParent(oldSlot.transform);
                                         firstItemRectTransform.localPosition = Vector3.zero;
                                     }
-                                    else if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() == null) //< ---이놈 이거 문제임
+                                    //swapping for the rest of the inventorys
+                                    else if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() == null)
                                     {
-                                        if (firstItem.ClassType != secondItem.ClassType)
-                                        {
-                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
-                                            firstItemRectTransform.localPosition = Vector3.zero;
-                                            return;
-                                        }
                                         firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                         secondItemGameObject.transform.SetParent(oldSlot.transform);
                                         secondItemRectTransform.localPosition = Vector3.zero;
@@ -308,7 +272,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 firstItemRectTransform.localPosition = Vector3.zero;
                             }
                             else
-                            {
+                            {                                
                                 firstItemGameObject.transform.SetParent(newSlot.transform);
                                 firstItemRectTransform.localPosition = Vector3.zero;
 
@@ -319,54 +283,23 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                     }
                 }
 
-                if (newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WarriorSlot" || newSlot.tag == "WizardSlot" || newSlot.tag == "AssassinSlot"
-                    || newSlot.tag == "InherenceSlot")
-                {
-                    // 갯수가 1보다 크면
-                    if (dragItem.item.itemValue > 1)
-                    {
-                        int itemValueCount;
-                        itemValueCount = dragItem.item.itemValue;
-                        // 수량을 1로 변화 시키고 장착 슬롯으로 복사
-                        GameObject item = (GameObject)Instantiate(inventory.prefabItem);
-                        ItemOnObject itemOnObject = item.GetComponent<ItemOnObject>();
-                        dragItem.item.itemValue = 1;
-                        itemOnObject.item = dragItem.item;
-                        Instantiate(item, newSlot);
-                        item.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                        eS.gameObject.GetComponent<Inventory>().updateItemList();
-
-
-                        // 남은 아이템은 -1를 시켜서 인벤토리로 이동
-                        dragItem.item.itemValue = itemValueCount - 1;
-                        firstItemGameObject.transform.SetParent(oldSlot.transform);
-                        firstItemRectTransform.localPosition = Vector3.zero;
-                    }
-                }
-
-
                 //dragging into a equipmentsystem/charactersystem
                 if (Inventory.GetComponent<EquipmentSystem>() != null)
                 {
                     ItemType[] itemTypeOfSlots = GameObject.FindGameObjectWithTag("EquipmentSystem").GetComponent<EquipmentSystem>().itemTypeOfSlots;
-                    // 목적지의 Slots 갯수
                     int newSlotChildCount = newSlot.transform.parent.childCount;
-                    // ItemIcon 테그가 있다는 것은 슬롯에 아이템이 들어 있다는 것
                     bool isOnSlot = newSlot.transform.parent.GetChild(0).tag == "ItemIcon";
-                    // 들고 있는 아이템 타입과 목적지의 아이템 타입 비교
                     bool sameItemType = firstItem.itemType == secondItem.itemType;
 
-                    // 슬롯이 0이 아니고 장착 슬롯에 아이템이 들어 있다면
+                    //dragging on a slot where allready is an item on
                     if (newSlotChildCount != 0 && isOnSlot)
                     {
-                        //아이템 타입이 같다면 교체 된다.
-                        if (sameItemType && !sameItemRerferenced)
+                        //items getting swapped if they are the same itemtype
+                        if (sameItemType && !sameItemRerferenced) //
                         {
                             Transform temp1 = secondItemGameObject.transform.parent.parent.parent;
-                            Transform temp2 = oldSlot.transform.parent.parent;
+                            Transform temp2 = oldSlot.transform.parent.parent;                            
 
-                            Debug.Log(temp1);
-                            Debug.Log(temp2);
                             firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                             secondItemGameObject.transform.SetParent(oldSlot.transform);
                             secondItemRectTransform.localPosition = Vector3.zero;
@@ -387,6 +320,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 }
                             }
                         }
+                        //if they are not from the same Itemtype the dragged one getting placed back
                         else
                         {
                             firstItemGameObject.transform.SetParent(oldSlot.transform);
@@ -394,12 +328,14 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         }
 
                     }
+                    //if the slot is empty
                     else
                     {
                         for (int i = 0; i < newSlot.parent.childCount; i++)
                         {
                             if (newSlot.Equals(newSlot.parent.GetChild(i)))
                             {
+                                //checking if it is the right slot for the item
                                 if (itemTypeOfSlots[i] == transform.GetComponent<ItemOnObject>().item.itemType)
                                 {
                                     transform.SetParent(newSlot);
@@ -409,6 +345,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                         Inventory.GetComponent<Inventory>().EquiptItem(firstItem);
 
                                 }
+                                //else it get back to the old slot
                                 else
                                 {
                                     transform.SetParent(oldSlot.transform);
@@ -506,7 +443,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             {
                                 //if you are dragging an item from equipmentsystem to the inventory and try to swap it with the same itemtype
                                 if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
-                                {
+                                {                                  
 
                                     firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                     secondItemGameObject.transform.SetParent(oldSlot.transform);
@@ -542,7 +479,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             firstItemRectTransform.localPosition = Vector3.zero;
                         }
                         else
-                        {
+                        {                            
                             firstItemGameObject.transform.SetParent(newSlot.transform);
                             firstItemRectTransform.localPosition = Vector3.zero;
 

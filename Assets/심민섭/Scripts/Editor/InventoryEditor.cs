@@ -77,7 +77,7 @@ public class InventoryEditor : Editor
         showInventorySettings = EditorGUILayout.Foldout(showInventorySettings, "Inventory Settings");
         if (showInventorySettings)
         {
-            sizeOfInventoryGUI();
+            //sizeOfInventoryGUI();
         }
         GUILayout.EndVertical();
 
@@ -87,7 +87,7 @@ public class InventoryEditor : Editor
             showStackableItemsSettings = EditorGUILayout.Foldout(showStackableItemsSettings, "Stacking/Splitting");
             if (showStackableItemsSettings)
             {
-                stackableItemsSettings();
+                //stackableItemsSettings();
                 GUILayout.Space(20);
             }
             GUILayout.EndVertical();
@@ -151,24 +151,24 @@ public class InventoryEditor : Editor
         {
             inv.setImportantVariables();
             inv.updateSlotAmount();
-            inv.adjustInventorySize();
-            inv.updatePadding(slotsPaddingBetweenX.intValue, slotsPaddingBetweenY.intValue);
+            //inv.adjustInventorySize();
+            //inv.updatePadding(slotsPaddingBetweenX.intValue, slotsPaddingBetweenY.intValue);
             inv.updateSlotSize(inventorySlotSize.intValue);
             inv.stackableSettings();
         }
 
-        EditorGUI.BeginChangeCheck();
-        EditorGUILayout.IntSlider(inventorySlotSize, 20, 100, new GUIContent("Slot Size"));
-        if (EditorGUI.EndChangeCheck())
+        /*EditorGUI.BeginChangeCheck();
+        EditorGUILayout.IntSlider(inventorySlotSize, 20, 100, new GUIContent("Slot Size"));                         
+        if (EditorGUI.EndChangeCheck())                                                                   
         {
             inv.setImportantVariables();
             inv.adjustInventorySize();
             inv.updateSlotSize(inventorySlotSize.intValue);
-        }
+        }*/
 
         EditorGUI.BeginChangeCheck();
         EditorGUILayout.IntSlider(inventoryIconSize, 20, 100, new GUIContent("Icon Size"));
-        if (EditorGUI.EndChangeCheck())
+        if (EditorGUI.EndChangeCheck())                                                     
         {
             inv.updateIconSize(inventoryIconSize.intValue);
         }
