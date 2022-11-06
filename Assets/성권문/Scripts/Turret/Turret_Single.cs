@@ -78,7 +78,7 @@ public class Turret_Single : Turret
             Shoot();
             audioSource.clip = towerData.SoundAttack;
             audioSource.Play();
-            fireCountdown = 1f / towerData.AttackSpeed;
+            fireCountdown = 1f / attackSpeed;
         }
         fireCountdown -= Time.deltaTime;
     }

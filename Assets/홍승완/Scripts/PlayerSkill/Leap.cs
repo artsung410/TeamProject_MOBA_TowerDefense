@@ -10,9 +10,9 @@ public class Leap : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    // TODO : 착지한 지점에서 이펙트 동기화 문제(리모트캐릭터에선 이펙트 활성화 안되는중)
 
-    public GameObject effect;
+    GameObject _damageZone;
+    GameObject _obstacleDetector;
 
     #region Private 변수들
 
@@ -29,6 +29,8 @@ public class Leap : SkillHandler
 
     private void Awake()
     {
+        _damageZone = GetComponentInChildren<SphereCollider>().gameObject;
+        _obstacleDetector = transform.GetChild(1).gameObject;
     }
 
     private void OnEnable()
@@ -38,11 +40,10 @@ public class Leap : SkillHandler
         HoldingTime = SetHodingTime;
         Range = SetRange;
 
-        isArive = false;
-        isAttack = false;
+        //isArive = false;
+        //isAttack = false;
 
-        effect.SetActive(isArive);
-        
+        _damageZone.SetActive(false);
     }
 
     private void Start()
@@ -56,22 +57,30 @@ public class Leap : SkillHandler
         LookMouseCursor();
 
         CheckDist();
+
+        _ani.animator.SetBool("JumpAttack", true);
+
     }
 
+    Vector3 startPos;
+    Vector3 endPos;
+    Vector3 mousePos;
+    Vector3 leapPos;
     private void CheckDist()
     {
         mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
 
         if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Range)
         {
-            start = _behaviour.transform.position;
-            end = _behaviour.transform.forward;
-            leapPos = (start + end.normalized * Range);
+            startPos = _behaviour.transform.position;
+            endPos = _behaviour.transform.forward;
+            leapPos = (startPos + endPos * Range);
         }
         else
         {
             leapPos = mousePos;
         }
+
     }
 
     RaycastHit hit;
@@ -99,62 +108,46 @@ public class Leap : SkillHandler
         }
     }
 
+    bool isArive;
     private void Update()
     {
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(HoldingTime);
-            effect.SetActive(isArive);
+
+            // 지속시간동안 플레이어가 지정한 장소로 이동한다 => 도약은 애니메이션 처리
+            _behaviour.transform.position = Vector3.Slerp(_behaviour.transform.position, leapPos, Time.deltaTime * 2.5f);
+
+            // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
+            _behaviour.ForSkillAgent(leapPos);
+
+            // 착지시 주변에 데미지를 준다(한번만 호출)
+            if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
+            {
+                //_damageZone.SetActive(true);
+                photonView.RPC(nameof(Activate), RpcTarget.All);
+                _ani.animator.SetBool("JumpAttack", false);
+                isArive = true;
+            }
+
+            if (isArive)
+            {
+                SkillHoldingTime(HoldingTime);
+            }
         }
+
     }
 
-    Vector3 mousePos;
-    Vector3 leapPos;
-
-    Vector3 start;
-    Vector3 end;
-
-    // SMS -----------------------------------------------------------------
-    Vector3 velo = Vector3.forward;
-
-    private IEnumerator LeapAttackAnimationStart()
-    {
-        PlayerAnimation.instance.animator.SetBool("JumpAttack", true);
-        yield return new WaitForSeconds(0.5f);
-    }
-    private IEnumerator LeapAttackAnimationEnd()
-    {
-        yield return new WaitForSeconds(1.5f);
-        PlayerAnimation.instance.animator.SetBool("JumpAttack", false);
-    }
-    // ---------------------------------------------------------------------
 
     public override void SkillUpdatePosition()
     {
-        transform.position = leapPos;
+        this.transform.position = _behaviour.transform.position;
+        transform.forward = _behaviour.transform.forward;
     }
 
     public override void SkillHoldingTime(float time)
     {
         elapsedTime += Time.deltaTime;
-
-        StartCoroutine(LeapAttackAnimationStart());
-
-        // 지속시간동안 플레이어가 지정한 장소로 도약한다
-        _behaviour.transform.position = Vector3.Lerp(_behaviour.transform.position, leapPos, time);
-
-        StartCoroutine(LeapAttackAnimationEnd());
-
-        // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
-        _behaviour.ForSkillAgent(leapPos);
-
-        // 착지시 주변에 데미지를 준다(한번만 호출)
-        if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
-        {
-            isArive = true;
-            StompDamage();
-        }
 
         if (elapsedTime >= time)
         {
@@ -165,33 +158,43 @@ public class Leap : SkillHandler
         }
     }
 
-    bool isArive;
-    bool isAttack;
-    Collider[] enemies;
-    public void StompDamage()
+    private void OnTriggerEnter(Collider other)
     {
-        if (isArive == true && isAttack == false)
+        if (photonView.IsMine)
         {
-            // 이 경우 데미지 처리
-            if (photonView.IsMine)
+            if (other.CompareTag(enemyTag))
             {
-                enemies = Physics.OverlapSphere(this.transform.position, 3f);
-                //Debug.Log($"배열의 길이 : {enemies.Length}");
-                if (enemies.Length > 0)
-                {
-                    foreach (Collider target in enemies)
-                    {
-                        if (target.CompareTag(enemyTag))
-                        {
-                            isAttack = true;
-                            SkillDamage(Damage, target.gameObject);
-                        }
-                    }
-                }
-
+                SkillDamage(Damage, other.gameObject);
             }
         }
-        return;
     }
 
+    // TODO : 충돌시 그자리에서 떨어지게 처리하였으나 좀더 나은 방법이 있는지 강구해볼것?
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (photonView.IsMine)
+        {
+            // 충돌하면 
+            // 바닥에 떨어짐(현재위치)
+
+            // 플레이어 자신이 감지되고있어서 예외처리해줌 ㅠ
+            if (collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7)
+            {
+                return;
+            }
+
+            isArive = true;
+            _behaviour.transform.position = transform.position;
+            photonView.RPC(nameof(Activate), RpcTarget.All);
+            _ani.animator.SetBool("JumpAttack", false);
+            _behaviour.ForSkillAgent(transform.position);
+        }
+    }
+
+    // 착지한 지점에서 이펙트 동기화 문제(리모트캐릭터에선 이펙트 활성화 안되는중) => RPC로 해결
+    [PunRPC]
+    public void Activate()
+    {
+        _damageZone.SetActive(true);
+    }
 }

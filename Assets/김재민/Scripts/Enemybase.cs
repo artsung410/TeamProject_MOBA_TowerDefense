@@ -90,6 +90,7 @@ public class Enemybase : MonoBehaviourPun
             }
         }
     }
+
     public void TakeDamage(float Damage)
     {
         photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
@@ -102,6 +103,7 @@ public class Enemybase : MonoBehaviourPun
         if (isDead == false)
         {
             CurrnetHP -= Damage;
+            
             if (CurrnetHP <= 0)
             {
                 _capsuleCollider.enabled = false;

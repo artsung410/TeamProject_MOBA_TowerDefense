@@ -6,7 +6,7 @@ using UnityEngine;
 // ###############################################
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com
-//             ±âÈ¹DB -> (4)Effect_Table Àû¿ë
+//             ±âÈ¹DB -> Tower_Table Àû¿ë
 // ###############################################
 [System.Serializable]
 [CreateAssetMenu(fileName = "TowerName", menuName = "TowerData/Create New TowerData")]
@@ -43,11 +43,11 @@ public class TowerData : ScriptableObject
 
     [SerializeField]
     private float _attack;
-    public float Attack { get { return _attack + additional_Atk; } }
+    public float Attack { get { return _attack; } }
 
     [SerializeField]
     private float _attackSpeed;
-    public float AttackSpeed { get { return _attackSpeed + additional_AtkSpd; } }
+    public float AttackSpeed { get { return _attackSpeed; } }
 
     [SerializeField]
     private float _attackRange;
@@ -94,8 +94,5 @@ public class TowerData : ScriptableObject
     private AudioClip _soundNormal;
     public AudioClip SoundNormal { get { return _soundNormal; } }
 
-
-    [HideInInspector] public float additional_Atk = 0;
-    [HideInInspector] public float additional_AtkSpd = 0;
 }
 
