@@ -125,8 +125,6 @@ public class PlayerHUD : MonoBehaviourPun
         }
     }
 
-
-
     private void FixedUpdate()
     {
         if (GameManager.Instance.isGameEnd == true)

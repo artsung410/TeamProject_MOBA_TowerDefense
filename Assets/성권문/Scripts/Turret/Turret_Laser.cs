@@ -4,14 +4,9 @@ using UnityEngine;
 
 public class Turret_Laser : Turret
 {
-    private Transform target;
-    private EnemyMinion targetEnemy;
-
-    [Header("투사체 발사 위치")]
-    public Transform firePoint;
+    [Header("레이저 타워 속성")]
     public int damageOverTime = 30;
     public float slowAmount = 0.5f;
-
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
     public Light impactLight;
@@ -76,14 +71,6 @@ public class Turret_Laser : Turret
         LockOnTarget();
         Laser();
 
-    }
-
-    void LockOnTarget()
-    {
-        Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 
     // ★ 단일 레이저 발사

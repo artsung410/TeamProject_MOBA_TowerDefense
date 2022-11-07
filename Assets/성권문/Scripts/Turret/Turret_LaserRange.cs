@@ -9,7 +9,6 @@ using Photon.Pun;
 // ###############################################
 public class Turret_LaserRange : Turret
 {
-    private Transform target;
     private Animator animator;
 
     private void Start()

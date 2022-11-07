@@ -8,8 +8,6 @@ using UnityEngine;
 // ###############################################
 public class Turret_Arc : Turret
 {
-    private Transform target;
-    private EnemyMinion targetEnemy;
     private Animator Arc_animator;
 
     private void Start()

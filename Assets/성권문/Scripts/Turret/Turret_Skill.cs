@@ -8,11 +8,8 @@ using Photon.Pun;
 //             MAIL : artsung410@gmail.com         
 // ###############################################
 
-public class Turret_Buff : Turret
+public class Turret_Skill : Turret
 {
-    private Transform target;
-    private EnemyMinion targetEnemy;
-
     private void Start()
     {
         // 타겟을 수시로 찾을수있게 invoke를 한다.
@@ -77,20 +74,5 @@ public class Turret_Buff : Turret
         }
 
         fireCountdown -= Time.deltaTime;
-    }
-
-    // ★ 총알 / 미사일 발사
-    void Fire()
-    {
-        PhotonNetwork.Instantiate(towerData.Projectiles.name, transform.position, transform.rotation);
-    }
-
-    // 타겟 방향으로 회전하기
-    void LockOnTarget()
-    {
-        Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
     }
 }
