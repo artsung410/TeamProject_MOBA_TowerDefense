@@ -16,38 +16,6 @@ public class Turret_Laser : Turret
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 
-    // 가장 가까운 적을 찾는다, 단 자주찾지는 않는다. 
-    void UpdateTarget()
-    {
-        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
-
-        // 가장 가까운 적과의 거리
-        float shortestDistance = Mathf.Infinity;
-        GameObject nearestEnemy = null;
-
-        foreach (GameObject enemy in enemies)
-        {
-            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
-
-            if (distanceToEnemy < shortestDistance)
-            {
-                shortestDistance = distanceToEnemy;
-                nearestEnemy = enemy;
-            }
-        }
-
-        // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
-        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
-        {
-            target = nearestEnemy.transform;
-            targetEnemy = nearestEnemy.GetComponent<EnemyMinion>();
-        }
-        else
-        {
-            target = null;
-        }
-    }
-
     private void FixedUpdate()
     {
         if (!photonView.IsMine)

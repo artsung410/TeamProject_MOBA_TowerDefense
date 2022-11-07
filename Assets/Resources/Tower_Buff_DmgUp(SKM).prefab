@@ -473,7 +473,8 @@ GameObject:
   - component: {fileID: 1501166072001648012}
   - component: {fileID: 7980552689237251785}
   - component: {fileID: 6441893006533428653}
-  m_Layer: 0
+  - component: {fileID: 2597433136553228611}
+  m_Layer: 6
   m_Name: Tower_Buff_DmgUp(SKM)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -514,12 +515,11 @@ MonoBehaviour:
   currentHealth: 0
   healthbarImage: {fileID: 5470771402708336332}
   ui: {fileID: 6295404809484922518}
-  enemyTag: 
-  fireCountdown: 0
   attack: 0
   attackSpeed: 0
   partToRotate: {fileID: 7439496289047064987}
-  turnSpeed: 10
+  firePoint: {fileID: 0}
+  DangerZonePF: {fileID: 0}
 --- !u!114 &7980552689237251785
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,3 +559,16 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!65 &2597433136553228611
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8588469063931012877}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 6, y: 11.05, z: 6}
+  m_Center: {x: 0, y: 5.45, z: 0}

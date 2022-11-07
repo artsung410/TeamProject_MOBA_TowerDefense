@@ -37,6 +37,7 @@ public class Turret_Arrow : Turret
         }
         fireCountdown -= Time.deltaTime;
     }
+
     protected override void Shoot()
     {
         GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);

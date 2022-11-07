@@ -143,7 +143,6 @@ public class Turret : MonoBehaviourPun
 
         if (currentHealth <= 0)
         {
-            Debug.Log("데미지 들어감!!!!");
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
@@ -285,9 +284,9 @@ public class Turret : MonoBehaviourPun
     }
 
     // =========================== 스킬타워 공격처리 ===========================
-    protected void Fire()
+    protected virtual void Fire()
     {
-        PhotonNetwork.Instantiate(towerData.Projectiles.name, transform.position, transform.rotation);
+        // 스킬 정의.
     }
 
     // =========================== 물리타워 공격처리 ===========================
