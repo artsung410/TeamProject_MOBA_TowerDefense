@@ -31,18 +31,34 @@ public class Health : MonoBehaviourPun
 
     private void OnEnable()
     {
-        Init();
+        //Init();
     }
 
-    public void Init()
+    private void Start()
     {
+        StartCoroutine(Init());
+    }
+
+    //public void Init()
+    //{
+    //    isDeath = false;
+
+    //    health = _stats.MaxHealth;
+
+    //    hpSlider3D.maxValue = _stats.MaxHealth;
+    //    hpSlider3D.value = health;
+    //}
+
+    IEnumerator Init()
+    {
+        
+            yield return new WaitForSeconds(1f);
         isDeath = false;
+        health = _stats.MaxHealth;
 
-        health = _stats.StartHealth;
-
-        hpSlider3D.maxValue = _stats.StartHealth;
-        hpSlider3D.value = health;
-
+            hpSlider3D.maxValue = _stats.MaxHealth;
+            hpSlider3D.value = health;
+        
     }
     
     [PunRPC]

@@ -69,7 +69,7 @@ public class PlayerRespawn : MonoBehaviourPun
                 // TODO : MissingReferenceException: The object of type 'Health' has been destroyed but you are still trying to access it.
                 // 리스폰위치 할당
                 health.gameObject.transform.position = playerRespawnPosition;
-                health.Init();
+                //health.Init();
                 elapsedTime = 0f;
                 health.gameObject.SetActive(true);
                 hpBar.gameObject.SetActive(true);
