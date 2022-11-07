@@ -10,12 +10,6 @@ public class Turret_Single : Turret
 {
     private Transform target;
 
-    [Header("회전체")]
-    public Transform partToRotate;
-
-    [Header("회전속도")]
-    public float turnSpeed = 10f;
-
     [Header("====== 투사체 ======")]
 
     [Header("투사체 발사 위치")]
@@ -70,7 +64,7 @@ public class Turret_Single : Turret
 
         // 타겟을 찾는다.
         LockOnTarget();
-        
+
 
         // 일정 주기로 총알 발사
         if (fireCountdown <= 0f)
@@ -94,7 +88,7 @@ public class Turret_Single : Turret
     // ★ 총알 / 미사일 발사
     void Shoot()
     {
-        GameObject bulletGO = Instantiate(towerData.ObjectPF, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(towerData.Projectiles, firePoint.position, firePoint.rotation);
 
         Arrow arrow = bulletGO.GetComponent<Arrow>();
 

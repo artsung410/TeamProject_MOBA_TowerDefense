@@ -10,14 +10,6 @@ public class Turret_Arc : Turret
 {
     private Transform target;
     private EnemyMinion targetEnemy;
-
-    [Header("회전체")]
-    public Transform partToRotate;
-
-    [Header("회전속도")]
-    public float turnSpeed = 10f;
-
-    [Header("====== 범위 레이저 속성======")]
     private Animator Arc_animator;
 
     private void Start()

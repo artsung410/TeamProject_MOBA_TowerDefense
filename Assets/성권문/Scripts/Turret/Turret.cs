@@ -15,16 +15,17 @@ public class Turret : MonoBehaviourPun
     public static event Action<GameObject,string> minionTowerEvent = delegate { };
     public static event Action<Turret> turretMouseDownEvent = delegate { };
 
-
     [Header("인게임 DB")]
-    [SerializeField]
     public TowerData towerData;
-    public float currentHealth;
-    public Image healthbarImage;
-    public GameObject ui;
-    public GameObject destroyParticle;
-    private GameObject newDestroyParticle;
-    public float destorySpeed;
+
+    [HideInInspector]
+    public float currentHealth; // 현재체력
+
+    [Header("Hp바")]
+    public Image healthbarImage; // hp바 
+    public GameObject ui; // Hp바 캔버스
+
+    private GameObject newDestroyParticle; // 타워 파괴효과를 담을 변수
 
     [HideInInspector]
     public string enemyTag;
@@ -32,28 +33,54 @@ public class Turret : MonoBehaviourPun
     [HideInInspector]
     public float fireCountdown = 0f;
 
-    public float attack;
-    public float attackSpeed;
+    [HideInInspector]
+    public float attack; // 공격력
+
+    [HideInInspector]
+    public float attackSpeed; // 공격속도
+
+    [Header("회전체")]
+    public Transform partToRotate;
+
+    [Header("회전속도")]
+    public float turnSpeed = 10f;
 
     void Awake()
     {
+        // 타워 데이터 -> 타워의 체력 적용
+        currentHealth = towerData.MaxHP;
+
+        // 타워 데이터 -> 투사체의 공격력 적용
         attack = towerData.Attack;
+
+        // 타워 데이터 -> 타워의 공격 주기 적용
         attackSpeed = towerData.AttackSpeed;
 
-        if (towerData.ObjectPF.layer == 14)
+        // 투사체의 공격력 처리
+        if (towerData.Projectiles != null)
         {
-            towerData.ObjectPF.GetComponent<Projectiles>().damage = attack;
+            towerData.Projectiles.GetComponent<Projectiles>().damage = attack;
         }
 
+        //// [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
+        //if (towerData.ObjectPF != null)
+        //{
+        //    minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
+        //}
+
+        // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
         BuffManager.towerBuffAdditionEvent += incrementBuffValue;
+
+        // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
         PlayerHUD.onGameEnd += Destroy_gameEnd;
     }
 
     protected void OnEnable()
     {
-        currentHealth = towerData.MaxHP;
+        // 게임매니저 상에 타워리스트 등록
         GameManager.Instance.CurrentTurrets.Add(gameObject);
 
+        // 피아식별
         if (PhotonNetwork.IsMasterClient)
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
@@ -83,23 +110,11 @@ public class Turret : MonoBehaviourPun
                 enemyTag = "Red";
             }
         }
-
-
-        if (towerData.ObjectPF.layer == 14)
-        {
-            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
-        }
-
-        else if (towerData.ObjectPF.layer == 13)
-        {
-            minionTowerEvent.Invoke(towerData.ObjectPF,gameObject.tag);
-        }
     }
 
+    // =========================== 타워 데미지 처리 ===========================
     public void Damage(float damage)
     {
-        //Debug.Log("Damage 적용");
-
         // 게임 끝나면 정지
         if (GameManager.Instance.isGameEnd == true)
         {
@@ -125,6 +140,7 @@ public class Turret : MonoBehaviourPun
         }
     }
 
+    // =========================== 타워 데미지 파괴 처리 ===========================
     public void Destroy_gameEnd()
     {
         if (this == null)
@@ -144,7 +160,7 @@ public class Turret : MonoBehaviourPun
         }
 
         StartCoroutine(Destructing());
-        newDestroyParticle = PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+        newDestroyParticle = PhotonNetwork.Instantiate(towerData.DestroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
         StartCoroutine(Destruction(newDestroyParticle));
     }
 
@@ -153,7 +169,7 @@ public class Turret : MonoBehaviourPun
         while(true)
         {
             yield return new WaitForSeconds(0.01f);
-            transform.Translate(Vector3.down * Time.deltaTime * destorySpeed);
+            transform.Translate(Vector3.down * Time.deltaTime * towerData.DestroySpeed);
 
             if (transform.position.y < -10)
             {
@@ -175,7 +191,7 @@ public class Turret : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
-    // 타워 버프효과 발동
+    // =========================== 타워 버프 적용 처리 ===========================
     public void incrementBuffValue(int id, float addValue, bool state)
     {
         if (!photonView.IsMine)
@@ -195,21 +211,14 @@ public class Turret : MonoBehaviourPun
             {
                 Debug.Log("타워 공격력 증가!");
                 attack += value;
+                towerData.Projectiles.GetComponent<Projectiles>().damage += value;
 
-                if (towerData.ObjectPF.layer == 14)
-                {
-                    towerData.ObjectPF.GetComponent<Projectiles>().damage += value;
-                }
             }
             else
             {
                 Debug.Log("타워 공격력 증가 종료!");
                 attack -= value;
-
-                if (towerData.ObjectPF.layer == 14)
-                {
-                    towerData.ObjectPF.GetComponent<Projectiles>().damage -= value;
-                }
+                towerData.Projectiles.GetComponent<Projectiles>().damage -= value;
             }
         }
 
@@ -228,7 +237,7 @@ public class Turret : MonoBehaviourPun
         }
     }
 
-    // 타워 클릭했을 때 툴팁뜨게하기
+    // =========================== 타워 툴팁 적용 ===========================
     private void OnMouseDown()
     {
         turretMouseDownEvent.Invoke(this);
