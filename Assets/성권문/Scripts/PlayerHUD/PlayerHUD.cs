@@ -82,6 +82,7 @@ public class PlayerHUD : MonoBehaviourPun
     float sec = 0;
     int min = 0;
 
+    Player currentPlayerforInfo;
     Turret currentTurretforInfo;
     Enemybase currentMinionforInfo;
     NexusHp currentNexusforInfo;
@@ -452,10 +453,14 @@ public class PlayerHUD : MonoBehaviourPun
     float Hp2D;
     public void UpdateInfo()
     {
-
         if (INFO == InfoState.Player)
         {
             if (enemyHp == null)
+            {
+                return;
+            }
+
+            if (currentPlayerforInfo == null)
             {
                 return;
             }
@@ -468,6 +473,14 @@ public class PlayerHUD : MonoBehaviourPun
             InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
             Hp2D = enemyHp.hpSlider3D.value;
             InfoHealthBarTMPro.text = Hp2D + " / " + enemyHp.hpSlider3D.maxValue;
+
+            float dmg = currentPlayerforInfo.playerStats.attackDmg;
+            float atkSpeed = currentPlayerforInfo.playerStats.attackSpeed;
+            float spd = currentPlayerforInfo.playerStats.MoveSpeed;
+
+            float dps = dmg * atkSpeed;
+            InfoDpsTMpro.text = dps.ToString();
+            InfoSpdMpro.text = spd.ToString();
         }
 
         else if (INFO == InfoState.Tower)
@@ -535,16 +548,10 @@ public class PlayerHUD : MonoBehaviourPun
     public void ActivationEnemyInfoUI(Player player)
     {
         INFO = InfoState.Player;
+        currentPlayerforInfo = player;
         InfoPanel.SetActive(true);
 
         InfoIcon.sprite = player.playerIcon;
-        float dmg = player.playerStats.attackDmg;
-        float atkSpeed = player.playerStats.attackSpeed;
-        float spd = player.playerStats.MoveSpeed;
-
-        float dps = dmg * atkSpeed;
-        InfoDpsTMpro.text = dps.ToString();
-        InfoSpdMpro.text = spd.ToString();
     }
 
     public void ActivationTowerInfoUI(Turret turret)

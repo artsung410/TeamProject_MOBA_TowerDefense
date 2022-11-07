@@ -211,7 +211,7 @@ public class Turret : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void RPC_ApplyTowerBuff(int id, float value, bool st)
+    public void RPC_ApplyBuff(int id, float value, bool st)
     {
         if (id == (int)Buff_Effect.AtkUP)
         {
