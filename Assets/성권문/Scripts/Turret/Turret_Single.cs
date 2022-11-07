@@ -87,8 +87,14 @@ public class Turret_Single : Turret
 
     // ★ 총알 / 미사일 발사
     void Shoot()
-    {
-        GameObject bulletGO = Instantiate(towerData.Projectiles, firePoint.position, firePoint.rotation);
+    { 
+        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
+
+        if (!photonView.IsMine)
+        {
+            Collider bulletCol = bulletGO.GetComponent<Collider>();
+            bulletCol.enabled = false;
+        }
 
         Arrow arrow = bulletGO.GetComponent<Arrow>();
 
