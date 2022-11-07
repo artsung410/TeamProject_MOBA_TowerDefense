@@ -261,6 +261,12 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     //swapping for the rest of the inventorys
                                     else if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() == null)
                                     {
+                                        if (firstItem.ClassType != secondItem.ClassType)
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
                                         firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                         secondItemGameObject.transform.SetParent(oldSlot.transform);
                                         secondItemRectTransform.localPosition = Vector3.zero;
