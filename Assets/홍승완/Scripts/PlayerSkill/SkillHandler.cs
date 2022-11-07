@@ -68,11 +68,16 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
             }
         }
     }
-    protected string getMytag(HeroAbility ability)
+    protected string GetMytag(HeroAbility ability)
     {
         _myTag = ability.tag;
         return _myTag;
 
+    }
+
+    protected void GetMyTransform(HeroAbility ability)
+    {
+           
     }
 
 

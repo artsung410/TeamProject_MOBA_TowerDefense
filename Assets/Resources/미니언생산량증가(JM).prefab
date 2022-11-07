@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4699022077222962073
+--- !u!1 &3776376177072238161
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,54 +8,56 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4699022077222962075}
-  - component: {fileID: 4699022077222962072}
-  - component: {fileID: 5525294786147496166}
+  - component: {fileID: 896723649981615273}
+  - component: {fileID: 7914932820364056442}
+  - component: {fileID: 4585944734574318429}
   m_Layer: 0
-  m_Name: "\uBBF8\uB2C8\uC5B8\uACF5\uACA9\uB825\uC99D\uAC00(JM)"
+  m_Name: "\uBBF8\uB2C8\uC5B8\uC0DD\uC0B0\uB7C9\uC99D\uAC00(JM)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4699022077222962075
+--- !u!4 &896723649981615273
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4699022077222962073}
+  m_GameObject: {fileID: 3776376177072238161}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.6366453, y: 0.28106403, z: 0.6509628}
+  m_LocalPosition: {x: 620.34375, y: 616.89044, z: -525.0194}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4699022077222962072
+--- !u!114 &7914932820364056442
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4699022077222962073}
+  m_GameObject: {fileID: 3776376177072238161}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 441b7e2e5536ac442a32b1eec0404ce7, type: 3}
+  m_Script: {fileID: 11500000, guid: 681a59d464d0a19449a16e8a4f70095a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SetDamage: 40
   SetHodingTime: 0.5
   SetRange: 12
-  buff: {fileID: 11400000, guid: a10e224e88cda564e9ef4a28d9e9ddca, type: 2}
---- !u!114 &5525294786147496166
+  SpawnSkillOn: 0
+  _waveCount: 3
+  buff: {fileID: 11400000, guid: c0e91426290fd25409ebdad2db68410a, type: 2}
+--- !u!114 &4585944734574318429
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4699022077222962073}
+  m_GameObject: {fileID: 3776376177072238161}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}

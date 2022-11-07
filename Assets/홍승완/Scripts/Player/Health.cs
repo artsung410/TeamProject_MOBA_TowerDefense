@@ -10,10 +10,14 @@ public class Health : MonoBehaviourPun
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
-    
+
     public Slider hpSlider3D;
     Stats _stats;
     PlayerAnimation ani;
+    WaitForSeconds Delay100 = new WaitForSeconds(1f);
+    float overhp;
+
+    private bool Maxhp = false;
 
     [HideInInspector]
     public float health;
@@ -44,7 +48,7 @@ public class Health : MonoBehaviourPun
         hpSlider3D.value = health;
 
     }
-    
+
     [PunRPC]
     public void HealthUpdate(float damage)
     {
@@ -85,4 +89,29 @@ public class Health : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
+    public void Regenation(float recovery)
+    {
+        photonView.RPC("PRC_regeneration", RpcTarget.All, recovery);
+
+    }
+    
+    
+    [PunRPC]
+    private void PRC_regeneration(float recovery)
+    { 
+
+        health += recovery; // health «ˆ¿Á √º∑¬
+        if (health >= _stats.StartHealth)
+        {
+            overhp = health - _stats.StartHealth;
+            health -= overhp; // ∏∆Ω∫ √º∑¬¿∏∑Œ πŸ≤„¡‹
+        }
+        hpSlider3D.value = health;
+        Debug.Log($"health : {health} ");
+    }
+
+
 }
+
+
+

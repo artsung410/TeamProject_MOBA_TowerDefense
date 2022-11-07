@@ -1,9 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using Photon.Pun;
-using UnityEngine.UI;
 using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 public class NexusHp : MonoBehaviourPun
 {
@@ -20,9 +18,20 @@ public class NexusHp : MonoBehaviourPun
     [SerializeField]
     private Slider _slider;
     public Sprite nexusSprite;
+    GameObject _player;
+    [SerializeField]
+    GameObject healthEffect;
+    WaitForSeconds Dealay100 = new WaitForSeconds(1);
     private void Awake()
     {
         CurrentHp = MaxHp;
+        _player = null;
+        healthEffect.SetActive(false);
+    }
+
+    private void Start()
+    {
+        InvokeRepeating("RegenerationSwich", 0, 1f);
     }
 
 
@@ -74,5 +83,55 @@ public class NexusHp : MonoBehaviourPun
     {
         nexusMouseDownEvent.Invoke(this, nexusSprite);
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(gameObject.transform.position, 15f);
+
+    }
+
+    private void RegenerationSwich()
+    {
+        Collider[] WeTeam = Physics.OverlapSphere(gameObject.transform.position, 15);
+
+        foreach (Collider col in WeTeam)
+        {
+            if (col.gameObject.layer == 12 && col.CompareTag(gameObject.tag)) // 자기 자신 제외
+            {
+                continue;
+            }
+
+            if (col.CompareTag(gameObject.tag) && col.gameObject.layer == 7 && photonView.IsMine) //우리팀이랑 태그 같고 플레이어 + 자기자신에게만 
+            {
+                _player = col.gameObject;
+                if (_player.GetComponent<Health>().health < _player.GetComponent<Stats>().StartHealth)
+                {
+                    photonView.RPC("effectSwich", RpcTarget.All, true);
+                   
+                 
+                    _player.GetComponent<Health>().Regenation(25f);
+              
+                }
+                else
+                {
+                    photonView.RPC("effectSwich", RpcTarget.All, false);
+                    
+                }
+            }
+            
+           
+        }
+    }
+
+
+
+    [PunRPC]
+    private void effectSwich(bool value)
+    {
+        healthEffect.SetActive(value);
+    }
+
+
 
 }
