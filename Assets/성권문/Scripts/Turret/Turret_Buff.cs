@@ -13,12 +13,6 @@ public class Turret_Buff : Turret
     private Transform target;
     private EnemyMinion targetEnemy;
 
-    [Header("회전체")]
-    public Transform partToRotate;
-
-    [Header("회전속도")]
-    public float turnSpeed = 10f;
-
     private void Start()
     {
         // 타겟을 수시로 찾을수있게 invoke를 한다.
@@ -88,7 +82,7 @@ public class Turret_Buff : Turret
     // ★ 총알 / 미사일 발사
     void Fire()
     {
-        GameObject newSkill = PhotonNetwork.Instantiate(towerData.ObjectPF.name, target.position, Quaternion.identity);
+        PhotonNetwork.Instantiate(towerData.Projectiles.name, transform.position, transform.rotation);
     }
 
     // 타겟 방향으로 회전하기

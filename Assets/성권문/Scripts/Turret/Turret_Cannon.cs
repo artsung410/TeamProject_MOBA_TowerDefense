@@ -7,15 +7,6 @@ public class Turret_Cannon : Turret
 {
     private Transform target;
 
-    [Header("회전체")]
-    public Transform partToRotate;
-
-    [Header("회전속도")]
-    public float turnSpeed = 10f;
-
-    [Header("공격범위 도형")]
-    public GameObject dangerZonePrefab;
-
     [Header("투사체 발사 위치")]
     public Transform firePoint;
 
@@ -126,7 +117,7 @@ public class Turret_Cannon : Turret
     // ★ 총알 / 미사일 발사
     void Shoot()
     {
-        GameObject bulletGO = Instantiate(towerData.ObjectPF, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = Instantiate(towerData.Projectiles, firePoint.position, firePoint.rotation);
 
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 

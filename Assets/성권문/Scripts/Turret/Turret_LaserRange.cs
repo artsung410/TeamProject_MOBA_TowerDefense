@@ -10,16 +10,7 @@ using Photon.Pun;
 public class Turret_LaserRange : Turret
 {
     private Transform target;
-
-    [Header("회전체")]
-    public Transform partToRotate;
-
-    [Header("회전속도")]
-    public float turnSpeed = 10f;
-    
     private Animator animator;
-
-
 
     private void Start()
     {

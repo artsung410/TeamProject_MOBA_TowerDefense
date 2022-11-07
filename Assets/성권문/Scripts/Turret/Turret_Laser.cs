@@ -7,14 +7,7 @@ public class Turret_Laser : Turret
     private Transform target;
     private EnemyMinion targetEnemy;
 
-    [Header("회전체")]
-    public Transform partToRotate;
-
-    [Header("회전속도")]
-    public float turnSpeed = 10f;
-
-    [Header("====== 단일 레이저 속성======")]
-
+    [Header("투사체 발사 위치")]
     public Transform firePoint;
     public int damageOverTime = 30;
     public float slowAmount = 0.5f;
