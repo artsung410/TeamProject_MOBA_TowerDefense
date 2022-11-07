@@ -15,4 +15,10 @@ public class Cancel : MonoBehaviour
     {
         cancelObj.SetActive(false);
     }
+
+    public void CancleDrawButton()
+    {
+        cancelObj.SetActive(false);
+        GameObject.FindGameObjectWithTag("DrawInventory").transform.GetChild(0).GetChild(1).gameObject.SetActive(false);
+    }
 }
