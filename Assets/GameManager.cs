@@ -74,6 +74,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnTower();
+
     }
 
     float elaspedTime;
@@ -123,26 +124,60 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            for (int i = 0; i < count; i++)
-            {
-                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
-                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
-                //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
-
-            }
+            //for (int i = 0; i < count; i++)
+            //{
+            //    GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
+            //    int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
+            //    //GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
+            //    //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
+            //}
+            GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[0];
+            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[0] - 4;
+            GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
         }
         else
         {
-            for (int i = 0; i < count; i++)
-            {
-                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
-                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
-                //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
+            //for (int i = 0; i < count; i++)
+            //{
+            //    GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
+            //    int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
+            //    GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
+            //    photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
 
-            }
+            //}
+            GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[0];
+            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[0] - 4;
+            GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
         }
+    }
+
+    int idx = 1;
+    public void UnlockTower(int level)
+    {
+        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
+        if (count == 0 || idx == count)
+        {
+            return;
+        }
+        // 자기 자신 기준 1 2 3만 호출
+        if (level == 3 || level == 5 || level == 7)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+            {
+                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[idx];
+                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[idx] - 4;
+                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
+            }
+            else
+            {
+                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[idx];
+                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[idx] - 4;
+                GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
+            }
+
+            idx++;
+        }
+        
     }
 
 

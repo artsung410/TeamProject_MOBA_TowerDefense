@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
+using UnityEngine.Networking;
 
 
-public class GoogleSheetManager : MonoBehaviour
+
+public class GoogleSheetManager : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : HongSW                      
@@ -18,7 +21,20 @@ public class GoogleSheetManager : MonoBehaviour
 
     protected Dictionary<int, List<string>> WarriorLevelData = new Dictionary<int, List<string>>();
 
-    List<List<string>> levelDatas = new List<List<string>>();
+    protected List<List<string>> levelDatas = new List<List<string>>();
+
+    private void Awake()
+    {
+        //StartCoroutine(GetLevelData());
+    }
+
+    IEnumerator GetLevelData()
+    {
+        UnityWebRequest requestWarriorData = UnityWebRequest.Get(WarriorURL);
+        yield return requestWarriorData.SendWebRequest();
+        SetWarriorStats(requestWarriorData.downloadHandler.text);
+    }
+
     public void SetWarriorStats(string tsv)
     {
         string[] row = tsv.Split('\n');
@@ -40,4 +56,6 @@ public class GoogleSheetManager : MonoBehaviour
         }
 
     }
+
+
 }

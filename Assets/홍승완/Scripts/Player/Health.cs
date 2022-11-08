@@ -15,8 +15,10 @@ public class Health : MonoBehaviourPun
     Stats _stats;
     PlayerAnimation ani;
 
-    [HideInInspector]
     public float health;
+
+    private float _maxHealth;
+    private float _prevMaxHealth;
     public bool isDeath
     {
         get;
@@ -31,38 +33,41 @@ public class Health : MonoBehaviourPun
 
     private void OnEnable()
     {
-        //Init();
+
     }
 
     private void Start()
     {
-        StartCoroutine(Init());
-    }
-
-    //public void Init()
-    //{
-    //    isDeath = false;
-
-    //    health = _stats.MaxHealth;
-
-    //    hpSlider3D.maxValue = _stats.MaxHealth;
-    //    hpSlider3D.value = health;
-    //}
-
-    IEnumerator Init()
-    {
-        
-            yield return new WaitForSeconds(1f);
         isDeath = false;
-        health = _stats.MaxHealth;
+        _maxHealth = _stats.MaxHealth;
+        _prevMaxHealth = _maxHealth;
 
-            hpSlider3D.maxValue = _stats.MaxHealth;
-            hpSlider3D.value = health;
-        
+        // 초기화 부분은 최대체력으로
+        health = _maxHealth;
+
+        hpSlider3D.maxValue = _maxHealth;
+        hpSlider3D.value = health;
     }
-    
+
+
     [PunRPC]
-    public void HealthUpdate(float damage)
+    public void HealthUpdate(float maxHP)
+    {
+        _maxHealth = maxHP;
+
+        // 현재 나의 체력에서 증가된 체력량 만큼 조금 채워준다
+        health += (_maxHealth - _prevMaxHealth);
+        hpSlider3D.value = health;
+
+        // 다시 preveMaxHealth를 최신화한다
+        _prevMaxHealth = _maxHealth;
+
+        hpSlider3D.maxValue = _maxHealth;
+    }
+
+    // 데미지를 입을때 hp가 감소되는 메서드
+    [PunRPC]
+    public void ReduceHealthPoint(float damage)
     {
         health = Mathf.Max(health - damage, 0);
         hpSlider3D.value = health;
@@ -74,11 +79,11 @@ public class Health : MonoBehaviourPun
     {
         if (isDeath)
         {
-            StopCoroutine(temp());
+            StopCoroutine(DelayDisapearBody());
             return;
         }
 
-        photonView.RPC(nameof(HealthUpdate), RpcTarget.All, damage);
+        photonView.RPC(nameof(ReduceHealthPoint), RpcTarget.All, damage);
 
     }
 
@@ -91,11 +96,11 @@ public class Health : MonoBehaviourPun
             ani.DieMotion();
             hpSlider3D.gameObject.SetActive(false);
 
-            StartCoroutine(temp());
+            StartCoroutine(DelayDisapearBody());
         }
     }
 
-    IEnumerator temp()
+    IEnumerator DelayDisapearBody()
     {
         yield return new WaitForSeconds(1.5f);
         gameObject.SetActive(false);
