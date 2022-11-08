@@ -20,10 +20,10 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
 
 
     [HideInInspector]
-   public bool skillOn;
+    public bool skillOn;
 
     [HideInInspector]
-   public string tag;
+    public string tag;
 
     
     float elaspedTime;

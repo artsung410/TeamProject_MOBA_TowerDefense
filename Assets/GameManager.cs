@@ -53,6 +53,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     private static GameManager instance;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
+    
+    [Header("Nexus")]
+    [SerializeField]
+    private GameObject[] NexusPrefab = new GameObject[2];
 
     // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
     public List<GameObject> CurrentTurrets = new List<GameObject>(8);// 각 월드에서 생성된 모든 터렛들.
@@ -61,7 +65,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     // 플레이어 미니맵에 띄우기
     public GameObject CharacterCircle;
-    public GameObject specialPFs;
 
     public bool isGameEnd;
     public string winner;
@@ -74,6 +77,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Start()
     {
         SpawnTower();
+        SpawnNexus();
     }
 
     float elaspedTime;
@@ -142,6 +146,23 @@ public class GameManager : MonoBehaviourPunCallbacks
                 //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
 
             }
+        }
+    }
+
+  private void SpawnNexus()
+    {
+
+        Debug.Log("됨?");
+        if(PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
+        {
+            Debug.Log("됨?1");
+            PhotonNetwork.Instantiate(NexusPrefab[0].name,spawnPositions[2].position,Quaternion.Euler(transform.position)); 
+            
+
+        }else // red
+        {
+            Debug.Log("됨?2");
+            PhotonNetwork.Instantiate(NexusPrefab[1].name, spawnPositions[3].position, Quaternion.Euler(transform.position));
         }
     }
 

@@ -1087,6 +1087,7 @@ GameObject:
   - component: {fileID: -2562176670870742062}
   - component: {fileID: 1113825279612971011}
   - component: {fileID: 8715963079066748734}
+  - component: {fileID: 3272036208434229853}
   m_Layer: 6
   m_Name: Tower_Minion(SKM)
   m_TagString: Untagged
@@ -1153,13 +1154,11 @@ MonoBehaviour:
   currentHealth: 0
   healthbarImage: {fileID: 3718863085342168367}
   ui: {fileID: 4039510485027841262}
-  destroyParticle: {fileID: 132198, guid: d41a0a47c0a989842a3b518745960048, type: 3}
-  destorySpeed: 10
   enemyTag: 
   fireCountdown: 0
   attack: 0
   attackSpeed: 0
-  partToRotate: {fileID: 0}
+  partToRotate: {fileID: 8910650605811023662}
   turnSpeed: 10
 --- !u!114 &-3171431299336625142
 MonoBehaviour:
@@ -1331,6 +1330,24 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &3272036208434229853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8910650605806270272}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &8910650605811023663
 GameObject:
   m_ObjectHideFlags: 0
