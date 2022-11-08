@@ -41,7 +41,7 @@ public class Health : MonoBehaviourPun
     private void OnEnable()
     {
         _outline.enabled = false;
-        Init();
+        //Init();
     }
 
     private void Start()
@@ -126,9 +126,9 @@ public class Health : MonoBehaviourPun
     { 
 
         health += recovery; // health 현재 체력
-        if (health >= _stats.StartHealth)
+        if (health >= _stats.MaxHealth)
         {
-            overhp = health - _stats.StartHealth;
+            overhp = health - _stats.MaxHealth;
             health -= overhp; // 맥스 체력으로 바꿔줌
         }
         hpSlider3D.value = health;

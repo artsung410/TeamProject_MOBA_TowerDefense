@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -11397,10 +11397,12 @@ MonoBehaviour:
   - {fileID: 1668485473}
   - {fileID: 41654625}
   playerPrefab: {fileID: 954630452188391103, guid: 2a70c51b010b7354f9338f6d55ad0608, type: 3}
+  NexusPrefab:
+  - {fileID: 0}
+  - {fileID: 0}
   CurrentTurrets: []
   CurrentPlayers: []
   CharacterCircle: {fileID: 2618433544921571977, guid: d445f33420f061c43a6c63a26470e466, type: 3}
-  specialPFs: {fileID: 439392703046423983, guid: 3a6380e05735e7a45aa1b28bfd33e4dc, type: 3}
   isGameEnd: 0
   winner: 
 --- !u!4 &1886247668
@@ -13527,6 +13529,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue_Nexus(JM)
       objectReference: {fileID: 0}
+    - target: {fileID: 8691216261088651717, guid: 56a6f5698f61e2f46a241c1954a8e314, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 56a6f5698f61e2f46a241c1954a8e314, type: 3}
 --- !u!1 &5197693533080694311 stripped
@@ -13619,6 +13625,10 @@ PrefabInstance:
     - target: {fileID: 8175645832440917110, guid: 62cea6ca589891545a7132cc38bac0b5, type: 3}
       propertyPath: m_Name
       value: Red_Nexus(JM)
+      objectReference: {fileID: 0}
+    - target: {fileID: 8175645832440917110, guid: 62cea6ca589891545a7132cc38bac0b5, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8409855071761180174, guid: 62cea6ca589891545a7132cc38bac0b5, type: 3}
       propertyPath: m_RootOrder

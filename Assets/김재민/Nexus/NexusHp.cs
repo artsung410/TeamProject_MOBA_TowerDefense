@@ -23,16 +23,16 @@ public class NexusHp : MonoBehaviourPun
     [SerializeField]
     GameObject healthEffect;
     WaitForSeconds Dealay100 = new WaitForSeconds(1);
-    Outline _outline;
+    //Outline _outline;
     string myTag;
     private void Awake()
     {
-        _outline = GetComponent<Outline>(); 
+        //_outline = GetComponent<Outline>(); 
         CurrentHp = MaxHp;
         _player = null;
         
-        _outline.enabled = false;
-        _outline.OutlineWidth = 8f;
+        //_outline.enabled = false;
+        //_outline.OutlineWidth = 8f;
         
     }
 
@@ -135,7 +135,7 @@ public class NexusHp : MonoBehaviourPun
             if (col.CompareTag(gameObject.tag) && col.gameObject.layer == 7 && photonView.IsMine) //우리팀이랑 태그 같고 플레이어 + 자기자신에게만 
             {
                 _player = col.gameObject;
-                if (_player.GetComponent<Health>().health < _player.GetComponent<Stats>().StartHealth)
+                if (_player.GetComponent<Health>().health < _player.GetComponent<Stats>().MaxHealth)
                 {
                     photonView.RPC("effectSwich", RpcTarget.All, true);
                    
@@ -166,21 +166,21 @@ public class NexusHp : MonoBehaviourPun
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
 
-            _outline.OutlineColor = Color.green;
-            _outline.enabled = true; // 켜주고
+            //_outline.OutlineColor = Color.green;
+           // _outline.enabled = true; // 켜주고
         }
         else
         {
 
-            _outline.OutlineColor = Color.red;
-            _outline.enabled = true;
+            //_outline.OutlineColor = Color.red;
+           // _outline.enabled = true;
         }
 
     }
 
     private void OnMouseExit()
     {
-        _outline.enabled = false;
+        //_outline.enabled = false;
     }
 
 
