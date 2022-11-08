@@ -478,7 +478,7 @@ GameObject:
   - component: {fileID: 8139676597243705964}
   - component: {fileID: 6463705527619982884}
   m_Layer: 6
-  m_Name: Tower_Buff(SKM)
+  m_Name: TB4_AtkSpdUp(SKM)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -520,12 +520,11 @@ MonoBehaviour:
   currentHealth: 0
   healthbarImage: {fileID: 9142023263868245017}
   ui: {fileID: 907064859987261078}
-  enemyTag: Untagged
-  fireCountdown: 0
   attack: 0
   attackSpeed: 0
   partToRotate: {fileID: 1093213912431874378}
-  turnSpeed: 10
+  firePoint: {fileID: 0}
+  DangerZonePF: {fileID: 0}
 --- !u!114 &-2804497378658000812
 MonoBehaviour:
   m_ObjectHideFlags: 0

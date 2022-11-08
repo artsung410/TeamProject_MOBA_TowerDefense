@@ -476,11 +476,11 @@ public class PlayerHUD : MonoBehaviourPun
 
             float dmg = currentPlayerforInfo.playerStats.attackDmg;
             float atkSpeed = currentPlayerforInfo.playerStats.attackSpeed;
-            float spd = currentPlayerforInfo.playerStats.MoveSpeed;
-
+            float moveSpeed = currentPlayerforInfo.playerStats.MoveSpeed;
             float dps = dmg * atkSpeed;
+
             InfoDpsTMpro.text = dps.ToString();
-            InfoSpdMpro.text = spd.ToString();
+            InfoSpdMpro.text = moveSpeed.ToString();
         }
 
         else if (INFO == InfoState.Tower)

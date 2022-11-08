@@ -28,15 +28,13 @@ public class BuffData : ScriptableObject
         Minion,
     }
 
-    public enum Effect_Position
-    {
-        Player,
-        Enemy
-    }
-
     [SerializeField]
     private int _id;
     public int Id { get { return _id; } }
+
+    [SerializeField]
+    private int _group_id;
+    public int Group_ID { get { return _group_id; } }
 
     [SerializeField]
     private string _name;
@@ -53,10 +51,6 @@ public class BuffData : ScriptableObject
     [SerializeField]
     private float _effectValue;
     public float EffectValue { get { return _effectValue; } }
-
-    [SerializeField]
-    private Effect_Position _effectPosition;
-    public Effect_Position EffectPosition { get { return _effectPosition; } }
 
     [SerializeField]
     private bool _unlimited;

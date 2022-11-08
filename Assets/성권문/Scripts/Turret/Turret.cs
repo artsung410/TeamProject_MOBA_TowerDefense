@@ -207,39 +207,39 @@ public class Turret : MonoBehaviourPun
             return;
         }
 
-        photonView.RPC("RPC_ApplyTowerBuff", RpcTarget.All, id, addValue, state);
+        //photonView.RPC("RPC_ApplyTowerBuff", RpcTarget.All, id, addValue, state);
     }
 
-    [PunRPC]
-    public void RPC_ApplyBuff(int id, float value, bool st)
-    {
-        if (id == (int)Buff_Effect.AtkUP)
-        {
-            if (st)
-            {
-                attack += value;
-                towerData.Projectiles.GetComponent<Projectiles>().damage += value;
+    //[PunRPC]
+    //public void RPC_ApplyBuff(int id, float value, bool st)
+    //{
+    //    if (id == (int)Buff_Effect_byTower.AtkUP)
+    //    {
+    //        if (st)
+    //        {
+    //            attack += value;
+    //            towerData.Projectiles.GetComponent<Projectiles>().damage += value;
 
-            }
-            else
-            {
-                attack -= value;
-                towerData.Projectiles.GetComponent<Projectiles>().damage -= value;
-            }
-        }
+    //        }
+    //        else
+    //        {
+    //            attack -= value;
+    //            towerData.Projectiles.GetComponent<Projectiles>().damage -= value;
+    //        }
+    //    }
 
-        else if (id == (int)Buff_Effect.AtkSpeedUp)
-        {
-            if (st)
-            {
-                attackSpeed += value;
-            }
-            else
-            {
-                attackSpeed -= value;
-            }
-        }
-    }
+    //    else if (id == (int)Buff_Effect_byTower.AtkSpeedUp)
+    //    {
+    //        if (st)
+    //        {
+    //            attackSpeed += value;
+    //        }
+    //        else
+    //        {
+    //            attackSpeed -= value;
+    //        }
+    //    }
+    //}
 
     // =========================== 타겟 추적 ===========================
 

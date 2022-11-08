@@ -9,19 +9,16 @@ using Photon.Pun;
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com         
 // ###############################################
-public enum Buff_Effect
+public enum Buff_Effect_byTower
 {
-    AtkUP = 15001,
+    AtkUP = 1,
     HpRegenUp,
     MoveSpeedUp,
     AtkSpeedUp,
-    HpUp,
-    CoolTimeDown,
     AtkDown,
     HpRegenDown,
     MoveSpeedDown,
     AtkSpeedDown,
-    HpDown,
 }
 
 public class BuffManager : MonoBehaviourPun
@@ -57,7 +54,9 @@ public class BuffManager : MonoBehaviourPun
 
         for (int item = 0; item < count; item++)
         {
-            if (data.cardId[item] == (int)Tower.BuffTower)
+            TowerData Towerdata = (TowerData)data.ingameDatas[item];
+
+            if (Towerdata.TowerType == Tower_Type.Buff_Tower || Towerdata.TowerType == Tower_Type.DeBuff_Tower)
             {
                 TowerData tower = (TowerData)data.ingameDatas[item];
 
@@ -86,12 +85,12 @@ public class BuffManager : MonoBehaviourPun
 
         if (buff.TargetType == Target.Tower)
         {
-            towerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, true);
+            towerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
         }
 
         else if (buff.TargetType == Target.Player)
         {
-            playerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, true);
+            playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
         }
     }
 
@@ -102,12 +101,12 @@ public class BuffManager : MonoBehaviourPun
 
         if (buff.TargetType == Target.Tower)
         {
-            towerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, false);
+            towerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, false);
         }
 
         else if (buff.TargetType == Target.Player)
         {
-            playerBuffAdditionEvent.Invoke(buff.Id, buff.EffectValue, false);
+            playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, false);
         }
     }
 
