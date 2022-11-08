@@ -15,7 +15,7 @@ public class MinionAtkUp : SkillHandler
     private float holdlingTime;
     private float prevDamage;
     private float atkBuff = 20f;
-
+    public ScriptableObject buff;
 
     // 버프지속시간
     public override void SkillHoldingTime(float time)
@@ -42,8 +42,9 @@ public class MinionAtkUp : SkillHandler
             return;
         }
         // 나의 태그 찾음
-        Debug.Log($"{getMytag(_ability)}");
         minionBuff(atkBuff); // 미니언 버프 적용
+        BuffManager.Instance.AddBuff((BuffData)buff);
+        BuffManager.Instance.AssemblyBuff();
 
     }
 
@@ -54,11 +55,6 @@ public class MinionAtkUp : SkillHandler
             return;
         }
         //플레이어 죽으면 삭제
-        if (_ability.gameObject.GetComponent<Health>().isDeath == true)
-        {
-                minionBuffReset();
-                PhotonNetwork.Destroy(gameObject);   
-        }
         SkillHoldingTime(20f);
     }
     // 태그 찾아줌 
@@ -80,7 +76,7 @@ public class MinionAtkUp : SkillHandler
     [PunRPC]
     private void RPC_MinionBuff(float attackUp)
     {
-        GameObject[] Minions = GameObject.FindGameObjectsWithTag(getMytag(_ability));
+        GameObject[] Minions = GameObject.FindGameObjectsWithTag(GetMytag(_ability));
         foreach (GameObject minion in Minions)
         {
             if (minion.layer == 8)
@@ -94,7 +90,7 @@ public class MinionAtkUp : SkillHandler
     [PunRPC]
     private void RPC_MinionDamageReset()
     {
-        GameObject[] Minions = GameObject.FindGameObjectsWithTag(getMytag(_ability));
+        GameObject[] Minions = GameObject.FindGameObjectsWithTag(GetMytag(_ability));
         foreach (GameObject minion in Minions)
         {
             if (minion.layer == 8)

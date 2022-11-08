@@ -68,13 +68,39 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
             }
         }
     }
-    protected string getMytag(HeroAbility ability)
+
+    public void SkillTimeDamage(float damage,float time ,GameObject target) // .데미지 지속시간 , 타켓
+    {
+        if (target.gameObject.layer == 7)
+        {
+            Health player = target.GetComponent<Health>();
+
+            if (player != null)
+            {
+                player.DamageOverTime(damage,time);
+
+            }
+        }
+        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
+        {
+            Enemybase minion = target.GetComponent<Enemybase>();
+
+
+            if (minion != null)
+            {
+                Debug.Log("input skillTimeDamage");
+                minion.DamageOverTime(damage,time);
+            }
+        }
+    }
+
+
+    protected string GetMytag(HeroAbility ability)
     {
         _myTag = ability.tag;
         return _myTag;
 
     }
-
 
     public abstract void SkillHoldingTime(float time);
 

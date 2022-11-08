@@ -10,10 +10,15 @@ public class Health : MonoBehaviourPun
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
-    
+
     public Slider hpSlider3D;
+    Outline _outline;
     Stats _stats;
     PlayerAnimation ani;
+    WaitForSeconds Delay100 = new WaitForSeconds(1f);
+    float overhp;
+
+    private bool Maxhp = false;
 
     public float health;
 
@@ -27,13 +32,16 @@ public class Health : MonoBehaviourPun
 
     private void Awake()
     {
+        _outline = GetComponent<Outline>();
         _stats = GetComponent<Stats>();
         ani = GetComponent<PlayerAnimation>();
+       
     }
 
     private void OnEnable()
     {
-
+        _outline.enabled = false;
+        Init();
     }
 
     private void Start()
@@ -42,7 +50,7 @@ public class Health : MonoBehaviourPun
         _maxHealth = _stats.MaxHealth;
         _prevMaxHealth = _maxHealth;
 
-        // ÃÊ±âÈ­ ºÎºÐÀº ÃÖ´ëÃ¼·ÂÀ¸·Î
+        // ì´ˆê¸°í™” ë¶€ë¶„ì€ ìµœëŒ€ì²´ë ¥ìœ¼ë¡œ
         health = _maxHealth;
 
         hpSlider3D.maxValue = _maxHealth;
@@ -55,17 +63,17 @@ public class Health : MonoBehaviourPun
     {
         _maxHealth = maxHP;
 
-        // ÇöÀç ³ªÀÇ Ã¼·Â¿¡¼­ Áõ°¡µÈ Ã¼·Â·® ¸¸Å­ Á¶±Ý Ã¤¿öÁØ´Ù
+        // í˜„ìž¬ ë‚˜ì˜ ì²´ë ¥ì—ì„œ ì¦ê°€ëœ ì²´ë ¥ëŸ‰ ë§Œí¼ ì¡°ê¸ˆ ì±„ì›Œì¤€ë‹¤
         health += (_maxHealth - _prevMaxHealth);
         hpSlider3D.value = health;
 
-        // ´Ù½Ã preveMaxHealth¸¦ ÃÖ½ÅÈ­ÇÑ´Ù
+        // ë‹¤ì‹œ preveMaxHealthë¥¼ ìµœì‹ í™”í•œë‹¤
         _prevMaxHealth = _maxHealth;
 
         hpSlider3D.maxValue = _maxHealth;
     }
 
-    // µ¥¹ÌÁö¸¦ ÀÔÀ»¶§ hp°¡ °¨¼ÒµÇ´Â ¸Þ¼­µå
+    // ë°ë¯¸ì§€ë¥¼ ìž…ì„ë•Œ hpê°€ ê°ì†Œë˜ëŠ” ë©”ì„œë“œ
     [PunRPC]
     public void ReduceHealthPoint(float damage)
     {
@@ -106,4 +114,73 @@ public class Health : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
+    public void Regenation(float recovery)
+    {
+        photonView.RPC("PRC_regeneration", RpcTarget.All, recovery);
+
+    }
+    
+    
+    [PunRPC]
+    private void PRC_regeneration(float recovery)
+    { 
+
+        health += recovery; // health í˜„ìž¬ ì²´ë ¥
+        if (health >= _stats.StartHealth)
+        {
+            overhp = health - _stats.StartHealth;
+            health -= overhp; // ë§¥ìŠ¤ ì²´ë ¥ìœ¼ë¡œ ë°”ê¿”ì¤Œ
+        }
+        hpSlider3D.value = health;
+        Debug.Log($"health : {health} ");
+    }
+
+
+    public void DamageOverTime(float Damage,float Time)
+    {
+        photonView.RPC("RPC_DamageOverTime",RpcTarget.All,Damage,Time);
+    }
+
+    [PunRPC]
+    private IEnumerator RPC_DamageOverTime(float Damage, float Time)
+    {
+        while (true)
+        {
+            if(Time <= 0)
+            {
+                yield  break;
+            }
+            health -= Damage;
+            yield return Delay100;
+            Time -= 1f;
+
+            yield return null;
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        if (photonView.IsMine) // ìžê¸° ìžì‹ ì´ë©´ ì¼œì£¼ê³   ìƒ‰ ê·¸ë¦°
+        {
+            _outline.enabled = true; // ì¼œì£¼ê³ 
+            _outline.OutlineColor = Color.blue;
+        }
+        else
+        {
+            _outline.enabled = true;
+            _outline.OutlineColor = Color.red;
+        }
+
+    }
+
+    private void OnMouseExit()
+    {
+        _outline.enabled = false;
+    }
+
+
+
 }
+
+
+

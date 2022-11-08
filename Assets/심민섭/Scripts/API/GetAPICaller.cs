@@ -214,7 +214,7 @@ public class GetAPICaller : MonoBehaviourPun
             // 데이터 저장
             //playerStorage.message = jsonPlayer["message"].ToString();
             playerStorage.zera = jsonPlayer["data"]["balance"].ToString();
-            string zeraValue = $"{float.Parse(playerStorage.zera): 0.0000}";
+            string zeraValue = $"{float.Parse(playerStorage.zera): 0}";
             GameObject.FindGameObjectWithTag("Zera").GetComponent<Text>().text = zeraValue;
             /*GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             APIStorage aPIStorage = apiStorageObj.GetComponent<APIStorage>();
@@ -242,7 +242,7 @@ public class GetAPICaller : MonoBehaviourPun
 
             // 데이터 저장
             playerStorage.ace = jsonPlayer["data"]["balance"].ToString();
-            string aceValue = $"{float.Parse(playerStorage.ace): 0.0000}";
+            string aceValue = $"{float.Parse(playerStorage.ace): 0}";
             GameObject.FindGameObjectWithTag("Dappx").GetComponent<Text>().text = aceValue;
 
             /*GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
