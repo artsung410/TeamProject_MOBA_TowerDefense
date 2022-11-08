@@ -2573,6 +2573,7 @@ GameObject:
   - component: {fileID: 1176584555469497926}
   - component: {fileID: 250421915684997273}
   - component: {fileID: 3475299997868414608}
+  - component: {fileID: 5113647028043652480}
   - component: {fileID: 4601298650804198288}
   - component: {fileID: 3026606992103964819}
   - component: {fileID: 937045283796231961}
@@ -2580,6 +2581,7 @@ GameObject:
   - component: {fileID: 962274781265193606}
   - component: {fileID: 6763798328628374990}
   - component: {fileID: 2411907287711231227}
+  - component: {fileID: 8725561513336734100}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -2729,12 +2731,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6153a793d6f840c4798dc50935550758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartHealth: 100
-  attackDmg: 4
-  attackSpeed: 1
-  attackTime: 1
-  attackRange: 2.5
+  MaxHealth: 0
+  AttackDmg: 0
+  AttackSpeed: 0
+  AttackRange: 0
   MoveSpeed: 1
+--- !u!114 &5113647028043652480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7001467603103953037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 585b1c39f8e941b40bc372fc4be3da8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Exp: 0
 --- !u!114 &4601298650804198288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2860,6 +2874,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpSlider3D: {fileID: 3706070186879944762}
   health: 0
+--- !u!114 &8725561513336734100
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7001467603103953037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 3.41
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
 --- !u!1 &7119751697922423965
 GameObject:
   m_ObjectHideFlags: 0

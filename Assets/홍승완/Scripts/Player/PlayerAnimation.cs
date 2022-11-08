@@ -44,37 +44,11 @@ public class PlayerAnimation : MonoBehaviourPun
     Vector3 velo = Vector3.forward;
     public Vector3 TargetPos;
 
-    private IEnumerator LeapAttackAnimationStart()
-    {
-        animator.SetBool("JumpAttack", true);
-        yield return new WaitForSeconds(0.5f);
-    }
-    private IEnumerator LeapAttackAnimationEnd()
-    {
-        yield return new WaitForSeconds(3f);
-        animator.SetBool("JumpAttack", false);
-    }
-
 
     void Update()
     {
         MoveAniMotion();
         CombatMotion();
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            //animator.SetBool("JumpAttack", true);
-            //TargetPos = new Vector3(transform.position.x, transform.position.y, transform.position.z + 1.5f);
-            StartCoroutine(LeapAttackAnimationStart());
-            //transform.position = Vector3.SmoothDamp(transform.position, TargetPos, ref velo, +0.1f);
-            //StartCoroutine(LeapAttackAnimationEnd());
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            //animator.SetBool("JumpAttack", false);
-            StartCoroutine(LeapAttackAnimationEnd());
-        }
-
     }
 
     public void DieMotion()
@@ -106,7 +80,6 @@ public class PlayerAnimation : MonoBehaviourPun
         _playerScript.perfomMeleeAttack = false;
     }
 
-    //float attackAnimationPose = 0;
     private void CombatMotion()
     {
         //Debug.Log(randomPose);
@@ -114,15 +87,14 @@ public class PlayerAnimation : MonoBehaviourPun
         {
             if (_playerScript.perfomMeleeAttack == true)
             {
-                // 공격 모션 재생
-                animator.SetBool("Attack", true);
                 if (photonView.IsMine)
                 {
                     _playerScript.IsAttack = true;  
 
                 }
-                // 무작위 공격 자세
-                //animator.SetFloat("AttackPose", attackAnimationPose);
+                // 공격 모션 재생
+                animator.SetBool("Attack", true);
+
                 // 공격 모션 재생 속도
                 animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
                 StartCoroutine(MeleeAttackInterval());

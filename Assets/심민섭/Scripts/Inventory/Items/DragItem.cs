@@ -24,7 +24,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         // 드래그아이템 Rect 위치
         rectTransformSlot = GameObject.FindGameObjectWithTag("DraggingItem").GetComponent<RectTransform>();
         // 인벤토리 컴포넌트
-        inventory = GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>();
+        inventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetComponent<Inventory>();
         // 드래그 아이템 박스 위치
         draggedItemBox = GameObject.FindGameObjectWithTag("DraggingItem").transform;
     }
@@ -233,6 +233,13 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                             return;
                                         }
 
+                                        if (oldSlot.tag != newSlot.tag)
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
+
                                         newSlot.transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.GetComponent<Inventory>().UnEquipItem1(firstItem);
                                         oldSlot.transform.parent.parent.GetComponent<Inventory>().EquiptItem(secondItem);
 
@@ -254,6 +261,12 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     //swapping for the rest of the inventorys
                                     else if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() == null)
                                     {
+                                        if (firstItem.ClassType != secondItem.ClassType)
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
                                         firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                         secondItemGameObject.transform.SetParent(oldSlot.transform);
                                         secondItemRectTransform.localPosition = Vector3.zero;

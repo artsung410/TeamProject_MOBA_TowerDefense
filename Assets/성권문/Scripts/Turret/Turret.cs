@@ -18,6 +18,9 @@ public class Turret : MonoBehaviourPun
     [Header("인게임 DB")]
     public TowerData towerData;
 
+    private Outline _outline;
+
+
     [HideInInspector]
     public float currentHealth; // 현재체력
 
@@ -67,8 +70,11 @@ public class Turret : MonoBehaviourPun
         // 타워 데이터 -> 타워의 공격 주기 적용
         attackSpeed = towerData.AttackSpeed;
 
+        _outline = GetComponent<Outline>();
+
         // 투사체의 공격력 처리
         if (towerData.Projectiles != null)
+
         {
             towerData.Projectiles.GetComponent<Projectiles>().damage = attack;
         }
@@ -88,6 +94,11 @@ public class Turret : MonoBehaviourPun
 
     protected void OnEnable()
     {
+
+        _outline.enabled = false;
+        _outline.OutlineWidth = 8f;
+
+
         // 게임매니저 상에 타워리스트 등록
         GameManager.Instance.CurrentTurrets.Add(gameObject);
 
@@ -300,4 +311,27 @@ public class Turret : MonoBehaviourPun
     {
         turretMouseDownEvent.Invoke(this);
     }
+
+    private void OnMouseEnter()
+    {
+        if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
+        {
+
+            _outline.OutlineColor = Color.green;
+            _outline.enabled = true; // 켜주고
+        }
+        else
+        {
+
+            _outline.OutlineColor = Color.red;
+            _outline.enabled = true;
+        }
+
+
+    }
+    private void OnMouseExit()
+    {
+        _outline.enabled = false;
+    }
+
 }

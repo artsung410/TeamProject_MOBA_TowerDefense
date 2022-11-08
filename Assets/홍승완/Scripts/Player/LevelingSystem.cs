@@ -2,22 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Targetable : MonoBehaviour
+public class LevelingSystem : GoogleSheetManager
 {
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public enum EnemyType
+    // Start is called before the first frame update
+    void Start()
     {
-        Minion,
-
+        
     }
 
-    public EnemyType enemyType;
-    
-    void Start()
+    // Update is called once per frame
+    void Update()
     {
         
     }

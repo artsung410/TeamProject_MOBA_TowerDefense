@@ -12,6 +12,7 @@ public class Health : MonoBehaviourPun
     // ###############################################
 
     public Slider hpSlider3D;
+    Outline _outline;
     Stats _stats;
     PlayerAnimation ani;
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
@@ -19,8 +20,10 @@ public class Health : MonoBehaviourPun
 
     private bool Maxhp = false;
 
-    [HideInInspector]
     public float health;
+
+    private float _maxHealth;
+    private float _prevMaxHealth;
     public bool isDeath
     {
         get;
@@ -29,28 +32,50 @@ public class Health : MonoBehaviourPun
 
     private void Awake()
     {
+        _outline = GetComponent<Outline>();
         _stats = GetComponent<Stats>();
         ani = GetComponent<PlayerAnimation>();
+       
     }
 
     private void OnEnable()
     {
+        _outline.enabled = false;
         Init();
     }
 
-    public void Init()
+    private void Start()
     {
         isDeath = false;
+        _maxHealth = _stats.MaxHealth;
+        _prevMaxHealth = _maxHealth;
 
-        health = _stats.StartHealth;
+        // 초기화 부분은 최대체력으로
+        health = _maxHealth;
 
-        hpSlider3D.maxValue = _stats.StartHealth;
+        hpSlider3D.maxValue = _maxHealth;
         hpSlider3D.value = health;
-
     }
 
+
     [PunRPC]
-    public void HealthUpdate(float damage)
+    public void HealthUpdate(float maxHP)
+    {
+        _maxHealth = maxHP;
+
+        // 현재 나의 체력에서 증가된 체력량 만큼 조금 채워준다
+        health += (_maxHealth - _prevMaxHealth);
+        hpSlider3D.value = health;
+
+        // 다시 preveMaxHealth를 최신화한다
+        _prevMaxHealth = _maxHealth;
+
+        hpSlider3D.maxValue = _maxHealth;
+    }
+
+    // 데미지를 입을때 hp가 감소되는 메서드
+    [PunRPC]
+    public void ReduceHealthPoint(float damage)
     {
         health = Mathf.Max(health - damage, 0);
         hpSlider3D.value = health;
@@ -62,11 +87,11 @@ public class Health : MonoBehaviourPun
     {
         if (isDeath)
         {
-            StopCoroutine(temp());
+            StopCoroutine(DelayDisapearBody());
             return;
         }
 
-        photonView.RPC(nameof(HealthUpdate), RpcTarget.All, damage);
+        photonView.RPC(nameof(ReduceHealthPoint), RpcTarget.All, damage);
 
     }
 
@@ -79,11 +104,11 @@ public class Health : MonoBehaviourPun
             ani.DieMotion();
             hpSlider3D.gameObject.SetActive(false);
 
-            StartCoroutine(temp());
+            StartCoroutine(DelayDisapearBody());
         }
     }
 
-    IEnumerator temp()
+    IEnumerator DelayDisapearBody()
     {
         yield return new WaitForSeconds(1.5f);
         gameObject.SetActive(false);
@@ -100,15 +125,59 @@ public class Health : MonoBehaviourPun
     private void PRC_regeneration(float recovery)
     { 
 
-        health += recovery; // health ���� ü��
+        health += recovery; // health 현재 체력
         if (health >= _stats.StartHealth)
         {
             overhp = health - _stats.StartHealth;
-            health -= overhp; // �ƽ� ü������ �ٲ���
+            health -= overhp; // 맥스 체력으로 바꿔줌
         }
         hpSlider3D.value = health;
         Debug.Log($"health : {health} ");
     }
+
+
+    public void DamageOverTime(float Damage,float Time)
+    {
+        photonView.RPC("RPC_DamageOverTime",RpcTarget.All,Damage,Time);
+    }
+
+    [PunRPC]
+    private IEnumerator RPC_DamageOverTime(float Damage, float Time)
+    {
+        while (true)
+        {
+            if(Time <= 0)
+            {
+                yield  break;
+            }
+            health -= Damage;
+            yield return Delay100;
+            Time -= 1f;
+
+            yield return null;
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
+        {
+            _outline.enabled = true; // 켜주고
+            _outline.OutlineColor = Color.blue;
+        }
+        else
+        {
+            _outline.enabled = true;
+            _outline.OutlineColor = Color.red;
+        }
+
+    }
+
+    private void OnMouseExit()
+    {
+        _outline.enabled = false;
+    }
+
 
 
 }
