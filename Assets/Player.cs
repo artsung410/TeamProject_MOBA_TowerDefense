@@ -44,14 +44,24 @@ public class Player : MonoBehaviourPun
             return;
         }
 
-        photonView.RPC("RPC_ApplyPlayerBuff", RpcTarget.All, id, addValue, state);
+        photonView.RPC("RPC_ApplyBuff", RpcTarget.All, id, addValue, state);
     }
 
     [PunRPC]
-    public void RPC_ApplyPlayerBuff(int id, float value, bool st)
+    public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
         if (id == (int)Buff_Effect.AtkUP)
         {
+            if (state)
+            {
+                Debug.Log("플레이어 공격력 증가!");
+                playerStats.attackDmg += addValue;
+            }
+            else
+            {
+                Debug.Log("플레이어 공격력 증가 종료!");
+                playerStats.attackDmg -= addValue;
+            }
         }
 
         else if (id == (int)Buff_Effect.AtkSpeedUp)
@@ -60,17 +70,17 @@ public class Player : MonoBehaviourPun
 
         else if (id == (int)Buff_Effect.HpUp)
         {
-            if (st)
+            if (state)
             {
                 Debug.Log("플레이어 최대 체력 증가!");
-                playerHealth.hpSlider3D.maxValue += value;
-                playerHealth.hpSlider3D.value += value;
+                playerHealth.hpSlider3D.maxValue += addValue;
+                playerHealth.hpSlider3D.value += addValue;
             }
             else
             {
                 Debug.Log("플레이어 최대 체력 증가 종료!");
-                playerHealth.hpSlider3D.maxValue -= value;
-                playerHealth.hpSlider3D.value += value;
+                playerHealth.hpSlider3D.maxValue -= addValue;
+                playerHealth.hpSlider3D.value += addValue;
             }
         }
     }

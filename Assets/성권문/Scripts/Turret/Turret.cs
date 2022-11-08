@@ -24,14 +24,7 @@ public class Turret : MonoBehaviourPun
     [Header("Hp바")]
     public Image healthbarImage; // hp바 
     public GameObject ui; // Hp바 캔버스
-
     private GameObject newDestroyParticle; // 타워 파괴효과를 담을 변수
-
-    [HideInInspector]
-    public string enemyTag;
-
-    [HideInInspector]
-    public float fireCountdown = 0f;
 
     [HideInInspector]
     public float attack; // 공격력
@@ -42,8 +35,26 @@ public class Turret : MonoBehaviourPun
     [Header("회전체")]
     public Transform partToRotate;
 
-    [Header("회전속도")]
-    public float turnSpeed = 10f;
+    [Header("투사체 발사 위치")]
+    public Transform firePoint;
+
+    // 타워헤드 회전속도
+    protected float turnSpeed = 10f;
+
+    // 타겟
+    protected string enemyTag;
+    protected Transform target;
+    protected EnemyMinion targetEnemy;
+    protected Transform shotTransform;
+    protected float fireCountdown = 0f;
+
+    // 공격범위 표시
+    [Header("공격 도형")]
+    public GameObject DangerZonePF;
+    protected GameObject NewDangerZone;
+
+    // 타워 효과음
+    protected private AudioSource audioSource;
 
     void Awake()
     {
@@ -127,20 +138,17 @@ public class Turret : MonoBehaviourPun
     [PunRPC]
     public void TakeDamage(float damage)
     {
-        //Debug.Log("Damage RPC적용");
-
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         healthbarImage.fillAmount = currentHealth / towerData.MaxHP;
 
         if (currentHealth <= 0)
         {
-            Debug.Log("데미지 들어감!!!!");
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
     }
 
-    // =========================== 타워 데미지 파괴 처리 ===========================
+    // =========================== 타워 파괴 처리 ===========================
     public void Destroy_gameEnd()
     {
         if (this == null)
@@ -203,20 +211,18 @@ public class Turret : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void RPC_ApplyTowerBuff(int id, float value, bool st)
+    public void RPC_ApplyBuff(int id, float value, bool st)
     {
         if (id == (int)Buff_Effect.AtkUP)
         {
             if (st)
             {
-                Debug.Log("타워 공격력 증가!");
                 attack += value;
                 towerData.Projectiles.GetComponent<Projectiles>().damage += value;
 
             }
             else
             {
-                Debug.Log("타워 공격력 증가 종료!");
                 attack -= value;
                 towerData.Projectiles.GetComponent<Projectiles>().damage -= value;
             }
@@ -226,15 +232,67 @@ public class Turret : MonoBehaviourPun
         {
             if (st)
             {
-                Debug.Log("타워 공속 증가!");
                 attackSpeed += value;
             }
             else
             {
-                Debug.Log("타워 공속 증가 종료!");
                 attackSpeed -= value;
             }
         }
+    }
+
+    // =========================== 타겟 추적 ===========================
+
+    // 가장 가까운 타겟 찾기.
+    protected void UpdateTarget()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+
+        // 가장 가까운 적과의 거리
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (distanceToEnemy < shortestDistance)
+            {
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
+            }
+        }
+
+        // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
+        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
+        {
+            target = nearestEnemy.transform;
+        }
+        else
+        {
+            target = null;
+        }
+    }
+
+    // 타겟방향으로 회전하기.
+    protected void LockOnTarget()
+    {
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
+    // =========================== 스킬타워 공격처리 ===========================
+    protected virtual void Fire()
+    {
+        // 스킬 정의.
+    }
+
+    // =========================== 물리타워 공격처리 ===========================
+    protected virtual void Shoot()
+    {
+        // 투사체 정의.
     }
 
     // =========================== 타워 툴팁 적용 ===========================
