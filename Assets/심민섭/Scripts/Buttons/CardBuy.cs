@@ -66,6 +66,7 @@ public class CardBuy : MonoBehaviour
                 buyItem = false;
             }
             DrawManager.instance.buyCount = buyCount.cardCount;
+            DrawManager.instance.PutCardItem_AfterBuy();
         }
         else if (DrawManager.instance.buyCurencyName == "Dappx")
         {
@@ -85,6 +86,7 @@ public class CardBuy : MonoBehaviour
                 buyItem = false;
             }
             DrawManager.instance.buyCount = buyCount.cardCount;
+            DrawManager.instance.PutCardItem_AfterBuy();
         }
         else
         {
