@@ -18,19 +18,49 @@ public class NexusHp : MonoBehaviourPun
     [SerializeField]
     private Slider _slider;
     public Sprite nexusSprite;
+  
     GameObject _player;
     [SerializeField]
     GameObject healthEffect;
     WaitForSeconds Dealay100 = new WaitForSeconds(1);
+    Outline _outline;
+    string myTag;
     private void Awake()
     {
+        _outline = GetComponent<Outline>(); 
         CurrentHp = MaxHp;
         _player = null;
-        healthEffect.SetActive(false);
+        
+        _outline.enabled = false;
+        _outline.OutlineWidth = 8f;
+        
+    }
+
+
+    private void OnEnable()
+    {
+        
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+            {
+                gameObject.tag = "Blue";
+
+            }
+        }
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+            {
+                gameObject.tag = "Red";
+            }
+        }
+        
     }
 
     private void Start()
     {
+        healthEffect.SetActive(false);
         InvokeRepeating("RegenerationSwich", 0, 1f);
     }
 
@@ -124,12 +154,33 @@ public class NexusHp : MonoBehaviourPun
         }
     }
 
-
-
     [PunRPC]
     private void effectSwich(bool value)
     {
         healthEffect.SetActive(value);
+    }
+
+    private void OnMouseEnter()
+    {
+
+        if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
+        {
+
+            _outline.OutlineColor = Color.green;
+            _outline.enabled = true; // 켜주고
+        }
+        else
+        {
+
+            _outline.OutlineColor = Color.red;
+            _outline.enabled = true;
+        }
+
+    }
+
+    private void OnMouseExit()
+    {
+        _outline.enabled = false;
     }
 
 
