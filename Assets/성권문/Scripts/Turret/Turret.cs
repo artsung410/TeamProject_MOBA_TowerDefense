@@ -15,49 +15,94 @@ public class Turret : MonoBehaviourPun
     public static event Action<GameObject,string> minionTowerEvent = delegate { };
     public static event Action<Turret> turretMouseDownEvent = delegate { };
 
-
     [Header("인게임 DB")]
-    [SerializeField]
     public TowerData towerData;
-    public float currentHealth;
-    public Image healthbarImage;
-    public GameObject ui;
-    public GameObject destroyParticle;
-    private GameObject newDestroyParticle;
+
     private Outline _outline;
-    public float destorySpeed;
+
 
     [HideInInspector]
-    public string enemyTag;
+    public float currentHealth; // 현재체력
+
+    [Header("Hp바")]
+    public Image healthbarImage; // hp바 
+    public GameObject ui; // Hp바 캔버스
+    private GameObject newDestroyParticle; // 타워 파괴효과를 담을 변수
 
     [HideInInspector]
-    public float fireCountdown = 0f;
+    public float attack; // 공격력
 
-    public float attack;
-    public float attackSpeed;
+    [HideInInspector]
+    public float attackSpeed; // 공격속도
+
+    [Header("회전체")]
+    public Transform partToRotate;
+
+    [Header("투사체 발사 위치")]
+    public Transform firePoint;
+
+    // 타워헤드 회전속도
+    protected float turnSpeed = 10f;
+
+    // 타겟
+    protected string enemyTag;
+    protected Transform target;
+    protected EnemyMinion targetEnemy;
+    protected Transform shotTransform;
+    protected float fireCountdown = 0f;
+
+    // 공격범위 표시
+    [Header("공격 도형")]
+    public GameObject DangerZonePF;
+    protected GameObject NewDangerZone;
+
+    // 타워 효과음
+    protected private AudioSource audioSource;
 
     void Awake()
     {
+        // 타워 데이터 -> 타워의 체력 적용
+        currentHealth = towerData.MaxHP;
 
+        // 타워 데이터 -> 투사체의 공격력 적용
         attack = towerData.Attack;
+
+        // 타워 데이터 -> 타워의 공격 주기 적용
         attackSpeed = towerData.AttackSpeed;
+
         _outline = GetComponent<Outline>();
-        if (towerData.ObjectPF.layer == 14)
+
+        // 투사체의 공격력 처리
+        if (towerData.Projectiles != null)
+
         {
-            towerData.ObjectPF.GetComponent<Projectiles>().damage = attack;
+            towerData.Projectiles.GetComponent<Projectiles>().damage = attack;
         }
 
+        //// [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
+        //if (towerData.ObjectPF != null)
+        //{
+        //    minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
+        //}
+
+        // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
         BuffManager.towerBuffAdditionEvent += incrementBuffValue;
+
+        // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
         PlayerHUD.onGameEnd += Destroy_gameEnd;
     }
 
     protected void OnEnable()
     {
+
         _outline.enabled = false;
         _outline.OutlineWidth = 8f;
-        currentHealth = towerData.MaxHP;
+
+
+        // 게임매니저 상에 타워리스트 등록
         GameManager.Instance.CurrentTurrets.Add(gameObject);
 
+        // 피아식별
         if (PhotonNetwork.IsMasterClient)
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
@@ -87,23 +132,11 @@ public class Turret : MonoBehaviourPun
                 enemyTag = "Red";
             }
         }
-
-
-        if (towerData.ObjectPF.layer == 14)
-        {
-            towerData.ObjectPF.GetComponent<Projectiles>().damage = towerData.Attack;
-        }
-
-        else if (towerData.ObjectPF.layer == 13)
-        {
-            minionTowerEvent.Invoke(towerData.ObjectPF,gameObject.tag);
-        }
     }
 
+    // =========================== 타워 데미지 처리 ===========================
     public void Damage(float damage)
     {
-        //Debug.Log("Damage 적용");
-
         // 게임 끝나면 정지
         if (GameManager.Instance.isGameEnd == true)
         {
@@ -116,19 +149,17 @@ public class Turret : MonoBehaviourPun
     [PunRPC]
     public void TakeDamage(float damage)
     {
-        //Debug.Log("Damage RPC적용");
-
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         healthbarImage.fillAmount = currentHealth / towerData.MaxHP;
 
         if (currentHealth <= 0)
         {
-            Debug.Log("데미지 들어감!!!!");
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
     }
 
+    // =========================== 타워 파괴 처리 ===========================
     public void Destroy_gameEnd()
     {
         if (this == null)
@@ -148,7 +179,7 @@ public class Turret : MonoBehaviourPun
         }
 
         StartCoroutine(Destructing());
-        newDestroyParticle = PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+        newDestroyParticle = PhotonNetwork.Instantiate(towerData.DestroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
         StartCoroutine(Destruction(newDestroyParticle));
     }
 
@@ -157,7 +188,7 @@ public class Turret : MonoBehaviourPun
         while(true)
         {
             yield return new WaitForSeconds(0.01f);
-            transform.Translate(Vector3.down * Time.deltaTime * destorySpeed);
+            transform.Translate(Vector3.down * Time.deltaTime * towerData.DestroySpeed);
 
             if (transform.position.y < -10)
             {
@@ -179,7 +210,7 @@ public class Turret : MonoBehaviourPun
         gameObject.SetActive(false);
     }
 
-    // 타워 버프효과 발동
+    // =========================== 타워 버프 적용 처리 ===========================
     public void incrementBuffValue(int id, float addValue, bool state)
     {
         if (!photonView.IsMine)
@@ -191,29 +222,20 @@ public class Turret : MonoBehaviourPun
     }
 
     [PunRPC]
-    public void RPC_ApplyTowerBuff(int id, float value, bool st)
+    public void RPC_ApplyBuff(int id, float value, bool st)
     {
         if (id == (int)Buff_Effect.AtkUP)
         {
             if (st)
             {
-                Debug.Log("타워 공격력 증가!");
                 attack += value;
+                towerData.Projectiles.GetComponent<Projectiles>().damage += value;
 
-                if (towerData.ObjectPF.layer == 14)
-                {
-                    towerData.ObjectPF.GetComponent<Projectiles>().damage += value;
-                }
             }
             else
             {
-                Debug.Log("타워 공격력 증가 종료!");
                 attack -= value;
-
-                if (towerData.ObjectPF.layer == 14)
-                {
-                    towerData.ObjectPF.GetComponent<Projectiles>().damage -= value;
-                }
+                towerData.Projectiles.GetComponent<Projectiles>().damage -= value;
             }
         }
 
@@ -221,18 +243,70 @@ public class Turret : MonoBehaviourPun
         {
             if (st)
             {
-                Debug.Log("타워 공속 증가!");
                 attackSpeed += value;
             }
             else
             {
-                Debug.Log("타워 공속 증가 종료!");
                 attackSpeed -= value;
             }
         }
     }
 
-    // 타워 클릭했을 때 툴팁뜨게하기
+    // =========================== 타겟 추적 ===========================
+
+    // 가장 가까운 타겟 찾기.
+    protected void UpdateTarget()
+    {
+        GameObject[] enemies = GameObject.FindGameObjectsWithTag(enemyTag);
+
+        // 가장 가까운 적과의 거리
+        float shortestDistance = Mathf.Infinity;
+        GameObject nearestEnemy = null;
+
+        foreach (GameObject enemy in enemies)
+        {
+            float distanceToEnemy = Vector3.Distance(transform.position, enemy.transform.position);
+
+            if (distanceToEnemy < shortestDistance)
+            {
+                shortestDistance = distanceToEnemy;
+                nearestEnemy = enemy;
+            }
+        }
+
+        // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
+        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
+        {
+            target = nearestEnemy.transform;
+        }
+        else
+        {
+            target = null;
+        }
+    }
+
+    // 타겟방향으로 회전하기.
+    protected void LockOnTarget()
+    {
+        Vector3 dir = target.position - transform.position;
+        Quaternion lookRotation = Quaternion.LookRotation(dir);
+        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+
+    // =========================== 스킬타워 공격처리 ===========================
+    protected virtual void Fire()
+    {
+        // 스킬 정의.
+    }
+
+    // =========================== 물리타워 공격처리 ===========================
+    protected virtual void Shoot()
+    {
+        // 투사체 정의.
+    }
+
+    // =========================== 타워 툴팁 적용 ===========================
     private void OnMouseDown()
     {
         turretMouseDownEvent.Invoke(this);

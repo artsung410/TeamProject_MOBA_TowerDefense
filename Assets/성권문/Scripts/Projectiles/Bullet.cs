@@ -9,7 +9,7 @@ using Photon.Pun;
 
 public class Bullet : Projectiles
 {
-    
+
     public Transform target;
 
     public float speed = 70f;
@@ -24,7 +24,7 @@ public class Bullet : Projectiles
 
     private void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             Destroy(gameObject);
             return;
@@ -46,7 +46,7 @@ public class Bullet : Projectiles
 
     void HitTarget()
     {
-        GameObject effectIns = (GameObject)Instantiate(ImpactEffect, transform.position, transform.rotation);
+        GameObject effectIns = Instantiate(ImpactEffect, transform.position, transform.rotation);
         Destroy(effectIns, 0.5f);
 
         if (explosionRadius > 0f)
