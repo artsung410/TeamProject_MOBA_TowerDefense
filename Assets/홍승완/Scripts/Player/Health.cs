@@ -12,6 +12,7 @@ public class Health : MonoBehaviourPun
     // ###############################################
 
     public Slider hpSlider3D;
+    Outline _outline;
     Stats _stats;
     PlayerAnimation ani;
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
@@ -29,12 +30,15 @@ public class Health : MonoBehaviourPun
 
     private void Awake()
     {
+        _outline = GetComponent<Outline>();
         _stats = GetComponent<Stats>();
         ani = GetComponent<PlayerAnimation>();
+       
     }
 
     private void OnEnable()
     {
+        _outline.enabled = false;
         Init();
     }
 
@@ -109,6 +113,50 @@ public class Health : MonoBehaviourPun
         hpSlider3D.value = health;
         Debug.Log($"health : {health} ");
     }
+
+
+    public void DamageOverTime(float Damage,float Time)
+    {
+        photonView.RPC("RPC_DamageOverTime",RpcTarget.All,Damage,Time);
+    }
+
+    [PunRPC]
+    private IEnumerator RPC_DamageOverTime(float Damage, float Time)
+    {
+        while (true)
+        {
+            if(Time <= 0)
+            {
+                yield  break;
+            }
+            health -= Damage;
+            yield return Delay100;
+            Time -= 1f;
+
+            yield return null;
+        }
+    }
+
+    private void OnMouseEnter()
+    {
+        if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
+        {
+            _outline.enabled = true; // 켜주고
+            _outline.OutlineColor = Color.blue;
+        }
+        else
+        {
+            _outline.enabled = true;
+            _outline.OutlineColor = Color.red;
+        }
+
+    }
+
+    private void OnMouseExit()
+    {
+        _outline.enabled = false;
+    }
+
 
 
 }

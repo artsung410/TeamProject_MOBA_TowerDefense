@@ -24,6 +24,7 @@ public class Turret : MonoBehaviourPun
     public GameObject ui;
     public GameObject destroyParticle;
     private GameObject newDestroyParticle;
+    private Outline _outline;
     public float destorySpeed;
 
     [HideInInspector]
@@ -37,9 +38,10 @@ public class Turret : MonoBehaviourPun
 
     void Awake()
     {
+
         attack = towerData.Attack;
         attackSpeed = towerData.AttackSpeed;
-
+        _outline = GetComponent<Outline>();
         if (towerData.ObjectPF.layer == 14)
         {
             towerData.ObjectPF.GetComponent<Projectiles>().damage = attack;
@@ -51,6 +53,8 @@ public class Turret : MonoBehaviourPun
 
     protected void OnEnable()
     {
+        _outline.enabled = false;
+        _outline.OutlineWidth = 8f;
         currentHealth = towerData.MaxHP;
         GameManager.Instance.CurrentTurrets.Add(gameObject);
 
@@ -233,4 +237,27 @@ public class Turret : MonoBehaviourPun
     {
         turretMouseDownEvent.Invoke(this);
     }
+
+    private void OnMouseEnter()
+    {
+        if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
+        {
+
+            _outline.OutlineColor = Color.green;
+            _outline.enabled = true; // 켜주고
+        }
+        else
+        {
+
+            _outline.OutlineColor = Color.red;
+            _outline.enabled = true;
+        }
+
+
+    }
+    private void OnMouseExit()
+    {
+        _outline.enabled = false;
+    }
+
 }
