@@ -11,8 +11,6 @@ public class Smash : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    // TODO : 부채꼴 60도의 범위로 피해주기
-
     #region private 변수모음
 
     Quaternion quaternion;

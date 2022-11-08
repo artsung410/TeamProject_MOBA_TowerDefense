@@ -18,13 +18,11 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // 애니메이션 이벤트 씹히는 원인
-        //_playerScript.enemyCol = null;
-
         if (other == null)
         {
             return;
         }
+
         if (other.tag == _playerScript.EnemyTag)
         {
             if (_playerScript != null)
