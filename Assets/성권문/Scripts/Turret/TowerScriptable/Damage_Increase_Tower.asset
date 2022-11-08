@@ -17,15 +17,20 @@ MonoBehaviour:
   _towerType: 1
   _attack: 1
   _attackSpeed: 0.3
-  _attackRange: 25
+  _attackRange: 12
   _attackRangeType: 0
   _attackRangeTypeRadius: 0
   _maxHP: 300
   _scriptables:
   - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
-  _objectPF: {fileID: 5335353134670440342, guid: 915462b57cab0574dbce7ce06b07a9ef, type: 3}
-  _icon: {fileID: 21300000, guid: 88f31f63ead71aa4bbd0700e4751380b, type: 3}
+  _objectPF: {fileID: 0}
+  _destroyPF: {fileID: 1705284682975132108, guid: 3f75fc8bc38c6f94e8e15864fdea9462, type: 3}
+  _destroySpeed: 10
+  _icon: {fileID: 21300000, guid: 324e15b61b81fd14481b922b487ba68b, type: 3}
   _desc: 
   _soundAttack: {fileID: 0}
   _soundHit: {fileID: 0}
   _soundNormal: {fileID: 0}
+  _projectiles: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
+  _projectiles_MoveSpeed: 10
+  _projectile_Attack_Type: 1
