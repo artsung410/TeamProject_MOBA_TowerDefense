@@ -13,8 +13,10 @@ public class DrawManager : MonoBehaviour
     public string selectNameText;
     public string selectExplanationText;
     public string buyCurencyName;
+
     // ±¸¸ÅÇÑ °¹¼ö
-    public int buyCount;
+    public int buyCount; // 0ÀÌ ¾Æ´Ï¸é µÊ
+
 
 
     public static DrawManager instance;
