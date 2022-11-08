@@ -121,7 +121,7 @@ public class NexusHp : MonoBehaviourPun
 
     }
 
-    private void RegenerationSwich()
+    private void RegenerationSwitch()
     {
         Collider[] WeTeam = Physics.OverlapSphere(gameObject.transform.position, 15);
 

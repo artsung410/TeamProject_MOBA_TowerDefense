@@ -36,7 +36,7 @@ public class Player : MonoBehaviourPun
         
     }
 
-    // 플레이어 버프효과 발동
+    // =========================== 타워 버프 적용 처리 ===========================
     public void incrementBuffValue(int id, float addValue, bool state)
     {
         if (!photonView.IsMine)
@@ -50,7 +50,8 @@ public class Player : MonoBehaviourPun
     [PunRPC]
     public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
-        if (id == (int)Buff_Effect.AtkUP)
+        // 플레이어 버프 적용
+        if (id == (int)Buff_Effect_byTower.AtkUP)
         {
             if (state)
             {
@@ -64,24 +65,54 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Effect.AtkSpeedUp)
+        else if (id == (int)Buff_Effect_byTower.HpRegenUp)
         {
+
         }
 
-        else if (id == (int)Buff_Effect.HpUp)
+        else if (id == (int)Buff_Effect_byTower.MoveSpeedUp)
         {
             if (state)
             {
-                Debug.Log("플레이어 최대 체력 증가!");
-                playerHealth.hpSlider3D.maxValue += addValue;
-                playerHealth.hpSlider3D.value += addValue;
+                Debug.Log("플레이어 이속 증가!");
+                playerStats.MoveSpeed += addValue;
             }
             else
             {
-                Debug.Log("플레이어 최대 체력 증가 종료!");
-                playerHealth.hpSlider3D.maxValue -= addValue;
-                playerHealth.hpSlider3D.value += addValue;
+                Debug.Log("플레이어 이속 증가 종료!");
+                playerStats.MoveSpeed -= addValue;
             }
+        }
+
+        else if (id == (int)Buff_Effect_byTower.AtkSpeedUp)
+        {
+            if (state)
+            {
+                Debug.Log("플레이어 공속 증가!");
+                playerStats.attackSpeed += addValue;
+            }
+            else
+            {
+                Debug.Log("플레이어 공속 증가 종료!");
+                playerStats.attackSpeed -= addValue;
+            }
+        }
+
+        // 플레이어 디버프 적용
+        else if (id == (int)Buff_Effect_byTower.AtkDown)
+        {
+        }
+
+        else if (id == (int)Buff_Effect_byTower.HpRegenDown)
+        {
+        }
+
+        else if (id == (int)Buff_Effect_byTower.MoveSpeedDown)
+        {
+        }
+
+        else if (id == (int)Buff_Effect_byTower.AtkSpeedDown)
+        {
         }
     }
 }
