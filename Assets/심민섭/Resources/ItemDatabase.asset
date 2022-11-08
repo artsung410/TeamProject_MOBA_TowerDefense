@@ -29,7 +29,7 @@ MonoBehaviour:
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Guard_Tower
+  - itemName: Tower_Attack_Guard
     ClassType: 
     itemID: 1
     itemDesc: Text
@@ -42,64 +42,12 @@ MonoBehaviour:
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes:
-    - attributeName: towerHP
-      attributeValue: 100
-    - attributeName: towerATK
-      attributeValue: 10
-    - attributeName: towerRange
-      attributeValue: 100
+    itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Cannon_Tower
+  - itemName: Tower_Buff_DmgUp
     ClassType: 
     itemID: 2
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 725f10fa9ac647d49a51f7de95f02b3d, type: 3}
-    itemModel: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
-    inGameData: {fileID: 11400000, guid: 763cdb3ab38a65249b1ad8dffc56475e, type: 2}
-    itemValue: 1
-    itemType: 10
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: 99
-    rarity: 100
-    itemAttributes:
-    - attributeName: towerHP
-      attributeValue: 150
-    - attributeName: towerATK
-      attributeValue: 10
-    - attributeName: towerRange
-      attributeValue: 150
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: Minion_Tower
-    ClassType: 
-    itemID: 3
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 127205e58a99ce04cab49b7eebb3f43b, type: 3}
-    itemModel: {fileID: 8910650605806270272, guid: 6637d58b99c0eb747b6fc6af434505c8, type: 3}
-    inGameData: {fileID: 11400000, guid: 2b752998d0516924796da2f27c9364c0, type: 2}
-    itemValue: 1
-    itemType: 10
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: 99
-    rarity: 100
-    itemAttributes:
-    - attributeName: towerHP
-      attributeValue: 200
-    - attributeName: towerATK
-      attributeValue: 1
-    - attributeName: towerRange
-      attributeValue: 200
-    - attributeName: towerMinionValue
-      attributeValue: 1
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: Buff_Tower
-    ClassType: 
-    itemID: 4
     itemDesc: Text
     itemIcon: {fileID: 21300000, guid: 324e15b61b81fd14481b922b487ba68b, type: 3}
     itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
@@ -122,6 +70,46 @@ MonoBehaviour:
     specialPrefabs: []
     buffDatas:
     - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+  - itemName: Tower_Attack_Cannon
+    ClassType: 
+    itemID: 3
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 725f10fa9ac647d49a51f7de95f02b3d, type: 3}
+    itemModel: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
+    inGameData: {fileID: 11400000, guid: 763cdb3ab38a65249b1ad8dffc56475e, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Minion_Tower
+    ClassType: 
+    itemID: 4
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 127205e58a99ce04cab49b7eebb3f43b, type: 3}
+    itemModel: {fileID: 8910650605806270272, guid: 6637d58b99c0eb747b6fc6af434505c8, type: 3}
+    inGameData: {fileID: 11400000, guid: 2b752998d0516924796da2f27c9364c0, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes:
+    - attributeName: towerHP
+      attributeValue: 200
+    - attributeName: towerATK
+      attributeValue: 1
+    - attributeName: towerRange
+      attributeValue: 200
+    - attributeName: towerMinionValue
+      attributeValue: 1
+    specialPrefabs: []
+    buffDatas: []
   - itemName: "\uB9C8\uAD6C\uD718\uB450\uB974\uAE30"
     ClassType: Warrior
     itemID: 5
@@ -336,5 +324,229 @@ MonoBehaviour:
       attributeValue: 0.5
     - attributeName: SkillRange
       attributeValue: 12
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Buff_HpRegenUp
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Buff_Speed_Increase
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Buff_Attack_Speed_Increase
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_DeBuff_Damage_Decrease
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_DeBuff_HpRegen_Decrease
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_DeBuff_Speed_Decrease
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_DeBuff_Attack_Speed_Decrease
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Minion_Wolf
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Minion_Golem
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Minion_Goblin
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Minion_Bee
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Minion_Mushroom
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Buff_HpRegenUp
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Buff_HpRegenUp
+    ClassType: 
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
+    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 100
+    itemAttributes: []
     specialPrefabs: []
     buffDatas: []
