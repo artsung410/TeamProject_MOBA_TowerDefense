@@ -60,6 +60,15 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 // 소비 타입과 같으면
                 if (this.gameObject.GetComponent<ItemOnObject>().item.itemType == ItemType.Consumable)
                 {
+                    // 가지고 있는 아이템의 갯수가 10개 이하면 DrawManager x10 비활성화 함수 호출
+                    if (this.gameObject.GetComponent<ItemOnObject>().item.itemValue < 10)
+                    {
+                        DrawManager.instance.ButtonDisable();
+                    }
+                    else
+                    {
+                        DrawManager.instance.ButtonEnable();
+                    }
                     // 뽑기창을 띄워준다.
                     GameObject.FindGameObjectWithTag("DrawInventory").transform.GetChild(4).gameObject.SetActive(true);
                     // 뽑고 있는 박스에 대한 정보 저장

@@ -12,6 +12,7 @@ public class DrawManager : MonoBehaviour
     // 버튼 정보 저장 변수
     public static DrawManager instance;
 
+    [Header("선택된 아이템 정보")]
     // 선택한 이미지
     public Sprite selectImage;
     // 선택한 아이템 명
@@ -19,7 +20,7 @@ public class DrawManager : MonoBehaviour
     // 선택한 아이템의 설명
     public string selectExplanationText;
 
-
+    [Header("구매한 아이템 정보")]
     // 구매한 아이템의 재화명
     public string buyCurencyName;
     // 구매한 카드 개수
@@ -40,9 +41,7 @@ public class DrawManager : MonoBehaviour
     public ItemOnObject boxItem;
     public Sprite boxImage;
     public string boxName;
-
-    // 획득한 아이템을 담을 공간
-    public List<GameObject> getItemList = new List<GameObject>();
+    public int boxCount; // 까버릴 갯수
 
     private void Awake()
     {
@@ -51,6 +50,8 @@ public class DrawManager : MonoBehaviour
 
     private void Start()
     {
+        buyCount = 1;
+        boxCount = 1;
         buyCurencyName = "Zera";
 
         // Other 인벤토리
@@ -102,13 +103,14 @@ public class DrawManager : MonoBehaviour
                         drawItem = drawItemObj.GetComponent<ItemOnObject>();
                         drawItem.item.itemIcon = buyItemImage.sprite; // 박스 이미지
                         drawItem.item.itemName = buyItemName; // 박스 명
+                        drawItem.item.itemValue = buyCount;
                         drawItem.item.itemType = ItemType.Consumable;
                         //drawItem.item.ClassType = "Box";
 
                         drawItemObj.transform.SetParent(otherInventory.transform.GetChild(i));
                         drawItemObj.transform.GetChild(0).GetComponent<Image>().sprite =
                             drawItemObj.GetComponent<ItemOnObject>().item.itemIcon;
-                        drawItemObj.transform.GetChild(1).GetComponent<Text>().text = buyCount.ToString();
+                        //drawItemObj.transform.GetChild(1).GetComponent<Text>().text = buyCount.ToString();
                         drawItemObj.transform.localPosition = Vector3.zero;
                         drawItemObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                     }
@@ -121,13 +123,14 @@ public class DrawManager : MonoBehaviour
                 drawItem = drawItemObj.GetComponent<ItemOnObject>();
                 drawItem.item.itemIcon = buyItemImage.sprite; // 박스 이미지
                 drawItem.item.itemName = buyItemName; // 박스 명
+                drawItem.item.itemValue = buyCount;
                 drawItem.item.itemType = ItemType.Consumable;
                 //drawItem.item.ClassType = "Box";
 
                 drawItemObj.transform.SetParent(otherInventory.transform.GetChild(i));
                 drawItemObj.transform.GetChild(0).GetComponent<Image>().sprite =
                     drawItemObj.GetComponent<ItemOnObject>().item.itemIcon;
-                drawItemObj.transform.GetChild(1).GetComponent<Text>().text = buyCount.ToString();
+                //drawItemObj.transform.GetChild(1).GetComponent<Text>().text = buyCount.ToString();
                 drawItemObj.transform.localPosition = Vector3.zero;
                 drawItemObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
                 // 아이템을 넣었다면 
@@ -147,13 +150,12 @@ public class DrawManager : MonoBehaviour
         }
         else
         {
-            boxItem.item.itemValue -= 1;
+            boxItem.item.itemValue -= boxCount;
             if (boxItem.item.itemValue == 0)
             {
                 Destroy(boxItem.gameObject);
             }
         }
-
 
         /*if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
         {
@@ -187,11 +189,47 @@ public class DrawManager : MonoBehaviour
         }*/
     }
 
-    // 카드 뽑기 함수
+    // 개수 10개 이하로 인해 버튼 비활성화 함수
+    [SerializeField]
+    private GameObject openCard_tenButton;
+    public void ButtonDisable()
+    {
+        openCard_tenButton.GetComponent<Button>().interactable = false;
+    }
+    public void ButtonEnable()
+    {
+        openCard_tenButton.GetComponent<Button>().interactable = true;
+    }
+
+    // 획득한 아이템을 담을 공간
+    public List<GameObject> getItemList = new List<GameObject>();
+
+    // 카드 오픈 시 아이템이 인벤토리로 들어간다.
+    // 1. 카드는 오픈 시 getItemList로 데이터를 넣는다.
+    // 2. 인벤토리에 같은 카드데이터가 있는지 확인 한다.
+    // 3. 같은 카드데이터가 있으면 Value만 올린다.
+    // 4. 같은 카드데이터가 없으면 빈 슬롯에 오브젝트를 생성한다.
+
+    [SerializeField]
+    private GameObject alreadyCardDraw;
+    // Back 버튼을 클릭 시 뽑기 카드 데이터 초기화와 함께 창이 닫힌다.
+    public void CardDataInit()
+    {
+        //Debug.Log(alreadyCardDraw.transform.childCount);
+        for (int i = 0; i < alreadyCardDraw.transform.childCount; i++)
+        {
+            //Debug.Log(alreadyCardDraw.transform.GetChild(i).name);
+            Destroy(alreadyCardDraw.transform.GetChild(i).gameObject);
+        }
+    }
+
+
+    // Retry 버튼을 클릭 시 다시 이전 갯수대로 뽑는다. 
     public void RandomCardDraw()
     {
 
     }
+
     // 카드 구매 후 재화 업데이트 예정 --------------------------------------------
 
     // ----------------------------------------------------------------------------

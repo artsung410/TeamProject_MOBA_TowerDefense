@@ -71,7 +71,7 @@ public class CardBuy : MonoBehaviour
                 buyCheckObj.SetActive(true);
                 buyItem = false;
             }
-            DrawManager.instance.buyCount = buyCount.cardCount;
+            //DrawManager.instance.buyCount = buyCount.cardCount;
             DrawManager.instance.buyItemImage = buyItemImage;
             DrawManager.instance.buyItemName = buyItemName.text;
             DrawManager.instance.PutCardItem_AfterBuy();
@@ -93,7 +93,9 @@ public class CardBuy : MonoBehaviour
                 buyCheckObj.SetActive(true);
                 buyItem = false;
             }
-            DrawManager.instance.buyCount = buyCount.cardCount;
+            //DrawManager.instance.buyCount = buyCount.cardCount;
+            DrawManager.instance.buyItemImage = buyItemImage;
+            DrawManager.instance.buyItemName = buyItemName.text;
             DrawManager.instance.PutCardItem_AfterBuy();
         }
         else
