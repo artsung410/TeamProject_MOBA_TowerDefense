@@ -118,10 +118,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    int count;
     // 타워 생성
     private void SpawnTower()
     {
-        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
+        count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
         if (count == 0)
         {
             return;
@@ -159,7 +160,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     int idx = 1;
     public void UnlockTower(int level)
     {
-        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
         if (count == 0 || idx == count)
         {
             return;
