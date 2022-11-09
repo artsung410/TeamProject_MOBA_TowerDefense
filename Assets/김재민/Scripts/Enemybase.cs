@@ -12,6 +12,9 @@ public class Enemybase : MonoBehaviourPun
     //             MAIL : woals1566@gmail.com         
     // ###############################################
 
+    // 경험치관련 이벤트
+    public static event Action<GameObject, float> OnMinionDieEvent = delegate { };
+
     public static event Action<Enemybase, Sprite> minionMouseDownEvent = delegate { };
     // 이동속도
     public float moveSpeed;
@@ -40,7 +43,7 @@ public class Enemybase : MonoBehaviourPun
     protected NavMeshAgent _navMeshAgent;
     protected Animator _animator;
     protected Transform Diepos;
-    bool isDead = false;
+    public bool isDead = false;
 
     private CapsuleCollider _capsuleCollider;
     private Outline _outline;
@@ -107,6 +110,7 @@ public class Enemybase : MonoBehaviourPun
        
     }
 
+    float exp = 30f;
     [PunRPC]
     public void RPC_TakeDamage(float Damage)
     {
@@ -121,10 +125,12 @@ public class Enemybase : MonoBehaviourPun
                 gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
+
+                OnMinionDieEvent.Invoke(this.gameObject, exp);
             }
-
+            
         }
-
+       
     }
 
 

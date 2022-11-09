@@ -28,7 +28,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     [SerializeField] float RotateSpeed = 0.5f;
     public float RotateVelocity;
 
-    [Header("레이어설정(확장성 고려하여 추가함)")]
+    [Header("레이어설정")]
     public LayerMask Layer;
     RaycastHit Hit;
 
@@ -452,13 +452,13 @@ public class PlayerBehaviour : MonoBehaviourPun
     #endregion
 
 
-    private void OnDrawGizmos()
-    {
+    //private void OnDrawGizmos()
+    //{
 
-        Gizmos.color = new Color(1, 0, 0, 0.5f);
-        Gizmos.DrawSphere(transform.position, detectiveRange);
+    //    Gizmos.color = new Color(1, 0, 0, 0.5f);
+    //    Gizmos.DrawSphere(transform.position, detectiveRange);
 
-    }
+    //}
 
     float interpolationRange;
     private void TargetRangeInterpolation()
