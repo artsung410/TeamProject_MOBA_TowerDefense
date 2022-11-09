@@ -8,6 +8,16 @@ public class TrojanHorse: MonoBehaviour
     //             NAME : Simstealer                      
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
+
+    // 플레이어 넘버 : ActorNumber
+    // 팀 색상 : 블루, 레드
+    // 직업 : 암살자, 전사, 마법사
+    // 플레이어 스폰 유무
+    // 타워 스폰 유무
+    // 미니언 정보
+    // 
+
+
     [Header("제한 시간")]
     public int limitedTime;
 
