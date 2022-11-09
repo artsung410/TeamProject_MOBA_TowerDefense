@@ -26,6 +26,7 @@ public class Turret : MonoBehaviourPun
 
     [Header("Hp바")]
     public Image healthbarImage; // hp바 
+    public Image hitbarImage; // hit바
     public GameObject ui; // Hp바 캔버스
     private GameObject newDestroyParticle; // 타워 파괴효과를 담을 변수
 
@@ -151,12 +152,18 @@ public class Turret : MonoBehaviourPun
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         healthbarImage.fillAmount = currentHealth / towerData.MaxHP;
-
+        StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
         if (currentHealth <= 0)
         {
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
+    }
+
+    private IEnumerator ApplyHitBar(float value)
+    {
+        yield return new WaitForSeconds(1f);
+        hitbarImage.fillAmount = value;
     }
 
     // =========================== 타워 파괴 처리 ===========================
