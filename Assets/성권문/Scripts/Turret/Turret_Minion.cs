@@ -10,10 +10,21 @@ using Photon.Pun;
 
 public class Turret_Minion : Turret
 {
+    public GameObject smokeParticles;
+
     private void Start()
     {
         // 타겟을 수시로 찾을수있게 invoke를 한다.
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
+
+        if(!photonView.IsMine)
+        {
+            return;
+        }
+
+        // 스모크 효과 생성
+        GameObject particle = PhotonNetwork.Instantiate(smokeParticles.name, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), Quaternion.identity);
+        particle.transform.Rotate(new Vector3(0, -90f, 0));
     }
 
     // 가장 가까운 적을 찾는다, 단 자주찾지는 않는다. 
