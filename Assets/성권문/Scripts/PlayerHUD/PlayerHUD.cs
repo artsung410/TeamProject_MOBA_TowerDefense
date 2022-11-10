@@ -57,6 +57,7 @@ public class PlayerHUD : MonoBehaviourPun
     public GameObject GameResultImage;
     public Sprite GameResultWin;
     public Sprite GameResultDef;
+    public Sprite GameResultDraw;
 
     [Header("GameESCUI")]
     public GameObject ESCButton;
@@ -214,7 +215,7 @@ public class PlayerHUD : MonoBehaviourPun
             }
             else
             {
-                gameWinMessage = "Draw";
+                GameManager.Instance.winner = "Draw";
                 photonView.RPC("RPCInitScore", RpcTarget.All);
             }
 
@@ -294,7 +295,7 @@ public class PlayerHUD : MonoBehaviourPun
                 yield return new WaitForSeconds(5f);
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = GameResultWin;
+                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
             }
             else
             {
@@ -304,7 +305,30 @@ public class PlayerHUD : MonoBehaviourPun
                 yield return new WaitForSeconds(5f);
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = GameResultDef;
+                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
+            }
+        }
+        else if (GameManager.Instance.winner == "Draw")
+        {
+            if (PhotonNetwork.IsMasterClient)
+            {
+                GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
+                StartCoroutine(ImageFadeIn());
+
+                yield return new WaitForSeconds(5f);
+                GameWinPanel.SetActive(false);
+                GameResultImage.SetActive(true);
+                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+            }
+            else
+            {
+                GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
+                StartCoroutine(ImageFadeIn());
+
+                yield return new WaitForSeconds(5f);
+                GameWinPanel.SetActive(false);
+                GameResultImage.SetActive(true);
+                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
             }
         }
         else
@@ -317,7 +341,7 @@ public class PlayerHUD : MonoBehaviourPun
                 yield return new WaitForSeconds(5f);
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = GameResultDef;
+                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
             }
             else
             {
@@ -327,7 +351,7 @@ public class PlayerHUD : MonoBehaviourPun
                 yield return new WaitForSeconds(5f);
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(0).GetComponent<Image>().sprite = GameResultWin;
+                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
             }
         }
     }
@@ -362,7 +386,7 @@ public class PlayerHUD : MonoBehaviourPun
 
         string gameWinMessage = "";
 
-        GameManager.Instance.winner = "Blue";
+        //GameManager.Instance.winner = "Blue";
 
         if (tag == "Red")
         {
