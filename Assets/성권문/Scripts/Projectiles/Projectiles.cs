@@ -57,6 +57,7 @@ public class Projectiles : MonoBehaviourPun
         // 플레이어 데미지 적용
         if (enemy.gameObject.layer == 7)
         {
+            Debug.Log("Player 데미지 적용");
             Health player= enemy.GetComponent<Health>();
              
             if (player != null && player.gameObject.activeSelf)
@@ -73,6 +74,7 @@ public class Projectiles : MonoBehaviourPun
         // 미니언 데미지 적용
         else if(enemy.gameObject.layer == 8)
         {
+            Debug.Log("미니언 데미지 적용");
             Enemybase minion = enemy.GetComponent<Enemybase>();
 
             if (minion != null)
@@ -84,6 +86,7 @@ public class Projectiles : MonoBehaviourPun
         // 스페셜 미니언 데미지 적용
         else if (enemy.gameObject.layer == 13)
         {
+            Debug.Log("스페셜 미니언 데미지 적용");
             Enemybase special_minion = enemy.GetComponent<Enemybase>();
 
             if (special_minion != null)
