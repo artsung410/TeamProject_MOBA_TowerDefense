@@ -27,6 +27,7 @@ public class Turret : MonoBehaviourPun
 
     [Header("Hp바")]
     public Image healthbarImage; // hp바 
+    public Image hitbarImage; // hit바
     public GameObject ui; // Hp바 캔버스
     private GameObject newDestroyParticle; // 타워 파괴효과를 담을 변수
 
@@ -80,12 +81,6 @@ public class Turret : MonoBehaviourPun
             towerData.Projectiles.GetComponent<Projectiles>().damage = attack;
         }
 
-        //// [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
-        //if (towerData.ObjectPF != null)
-        //{
-        //    minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
-        //}
-
         // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
         BuffManager.towerBuffAdditionEvent += incrementBuffValue;
 
@@ -95,17 +90,13 @@ public class Turret : MonoBehaviourPun
 
     protected void OnEnable()
     {
-
-        _outline.enabled = false;
-        _outline.OutlineWidth = 8f;
-
-
         // 게임매니저 상에 타워리스트 등록
         GameManager.Instance.CurrentTurrets.Add(gameObject);
 
         // 피아식별
         if (PhotonNetwork.IsMasterClient)
         {
+            Debug.Log("마스터 클라이언트 태그 적용");
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
                 gameObject.tag = "Blue";
@@ -121,6 +112,7 @@ public class Turret : MonoBehaviourPun
 
         else
         {
+            Debug.Log("일반 클라이언트 태그 적용");
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
                 gameObject.tag = "Red";
@@ -133,6 +125,15 @@ public class Turret : MonoBehaviourPun
                 enemyTag = "Red";
             }
         }
+
+        // [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
+        if (towerData.ObjectPF != null)
+        {
+            minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
+        }
+
+        _outline.enabled = false;
+        _outline.OutlineWidth = 8f;
     }
 
     // =========================== 타워 데미지 처리 ===========================
@@ -153,7 +154,7 @@ public class Turret : MonoBehaviourPun
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         healthbarImage.fillAmount = currentHealth / towerData.MaxHP;
-
+        StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
         if (currentHealth <= 0)
         {
             // 타워 파괴시 경험치
@@ -161,6 +162,25 @@ public class Turret : MonoBehaviourPun
 
             photonView.RPC("Destroy", RpcTarget.All);
             return;
+        }
+    }
+
+    // red_hitbar lerp 수동으로 적용
+    private IEnumerator ApplyHitBar(float value)
+    {
+        float prevValue = hitbarImage.fillAmount;
+        float delta = prevValue / 100f;
+
+        while(true)
+        {
+            yield return new WaitForSeconds(0.01f);
+            prevValue -= delta;
+            hitbarImage.fillAmount = prevValue;
+
+            if (prevValue - value < 0.001f)
+            {
+                break;
+            }
         }
     }
 
@@ -317,6 +337,7 @@ public class Turret : MonoBehaviourPun
         turretMouseDownEvent.Invoke(this);
     }
 
+    // =========================== 타워 아웃라인 적용 ===========================
     private void OnMouseEnter()
     {
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
@@ -331,8 +352,6 @@ public class Turret : MonoBehaviourPun
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }
-
-
     }
     private void OnMouseExit()
     {
