@@ -15,8 +15,6 @@ public class Turret : MonoBehaviourPun
     public static event Action<GameObject,string> minionTowerEvent = delegate { };
     public static event Action<Turret> turretMouseDownEvent = delegate { };
 
-    public Turret Instance;
-
     [Header("인게임 DB")]
     public TowerData towerData;
 
@@ -82,12 +80,6 @@ public class Turret : MonoBehaviourPun
             towerData.Projectiles.GetComponent<Projectiles>().damage = attack;
         }
 
-        //// [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
-        //if (towerData.ObjectPF != null)
-        //{
-        //    minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
-        //}
-
         // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
         BuffManager.towerBuffAdditionEvent += incrementBuffValue;
 
@@ -131,6 +123,12 @@ public class Turret : MonoBehaviourPun
                 gameObject.tag = "Blue";
                 enemyTag = "Red";
             }
+        }
+
+        // [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
+        if (towerData.ObjectPF != null)
+        {
+            minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
         }
 
         _outline.enabled = false;
