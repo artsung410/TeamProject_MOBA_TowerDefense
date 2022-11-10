@@ -6,7 +6,7 @@ public enum ItemType        //all ItemTypes...you can add some
     None = 0,
     Skill = 1,
     uniqueSkill = 2,
-    Quest = 3,
+    Consumable = 3,
     Head = 4,
     Shoe = 5,
     Chest = 6,

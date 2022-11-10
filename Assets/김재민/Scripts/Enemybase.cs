@@ -58,9 +58,6 @@ public class Enemybase : MonoBehaviourPun
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
-        
-
-
     }
 
     protected virtual void OnEnable() // 생성

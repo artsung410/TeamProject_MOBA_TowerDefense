@@ -24,4 +24,10 @@ public class Cancel : MonoBehaviour
         // 타워 카드 뽑기창
         GameObject.FindGameObjectWithTag("DrawInventory").transform.GetChild(0).GetChild(2).gameObject.SetActive(false);
     }
+
+    public void DrawComplitedBackButton()
+    {
+        DrawManager.instance.CardDataInit();
+        cancelObj.SetActive(false);
+    }
 }

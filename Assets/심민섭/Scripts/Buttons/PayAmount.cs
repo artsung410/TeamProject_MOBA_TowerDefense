@@ -32,15 +32,17 @@ public class PayAmount : MonoBehaviour
 
     public void AddPayAmount()
     {
-        payAmount.text = (int.Parse(payAmount.text) + 100).ToString();
-        cardCount += 1;
-        Debug.Log(cardCount);
+        payAmount.text = 100.ToString();// (int.Parse(payAmount.text) + 100).ToString();
+        cardCount = 1;
+        DrawManager.instance.buyCount = cardCount;
+        //Debug.Log(cardCount);
     }
 
     public void MulPayAmount()
     {
-        payAmount.text = (int.Parse(payAmount.text) + 1000).ToString();
-        cardCount += 10;
-        Debug.Log(cardCount);
+        payAmount.text = 1000.ToString(); //(int.Parse(payAmount.text) + 1000).ToString();
+        cardCount = 10;
+        DrawManager.instance.buyCount = cardCount;
+        //Debug.Log(cardCount);
     }
 }

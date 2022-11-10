@@ -35,6 +35,10 @@ public class TowerData : ScriptableObject
     }
 
     [SerializeField]
+    private int _group_id;
+    public int Group_ID { get { return _group_id; } }
+
+    [SerializeField]
     private int _id;
     public int Id { get { return _id; } }
 

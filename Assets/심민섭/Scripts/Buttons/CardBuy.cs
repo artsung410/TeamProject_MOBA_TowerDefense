@@ -35,6 +35,12 @@ public class CardBuy : MonoBehaviour
     // 구매한 갯수 스크립트
     [SerializeField]
     private PayAmount buyCount;
+    // 구매한 아이템의 이미지
+    [SerializeField]
+    public Image buyItemImage;
+    // 구매한 아이템 명
+    [SerializeField]
+    public Text buyItemName;
 
     // 구매 bool
     private bool buyItem;
@@ -65,7 +71,9 @@ public class CardBuy : MonoBehaviour
                 buyCheckObj.SetActive(true);
                 buyItem = false;
             }
-            DrawManager.instance.buyCount = buyCount.cardCount;
+            //DrawManager.instance.buyCount = buyCount.cardCount;
+            DrawManager.instance.buyItemImage = buyItemImage;
+            DrawManager.instance.buyItemName = buyItemName.text;
             DrawManager.instance.PutCardItem_AfterBuy();
         }
         else if (DrawManager.instance.buyCurencyName == "Dappx")
@@ -85,7 +93,9 @@ public class CardBuy : MonoBehaviour
                 buyCheckObj.SetActive(true);
                 buyItem = false;
             }
-            DrawManager.instance.buyCount = buyCount.cardCount;
+            //DrawManager.instance.buyCount = buyCount.cardCount;
+            DrawManager.instance.buyItemImage = buyItemImage;
+            DrawManager.instance.buyItemName = buyItemName.text;
             DrawManager.instance.PutCardItem_AfterBuy();
         }
         else
