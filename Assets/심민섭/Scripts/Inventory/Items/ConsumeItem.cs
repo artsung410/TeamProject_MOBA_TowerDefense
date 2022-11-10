@@ -57,6 +57,26 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
             // data가 오른쪽 클릭이면
             if (data.button == PointerEventData.InputButton.Right)
             {
+                // 소비 타입과 같으면
+                if (this.gameObject.GetComponent<ItemOnObject>().item.itemType == ItemType.Consumable)
+                {
+                    // 가지고 있는 아이템의 갯수가 10개 이하면 DrawManager x10 비활성화 함수 호출
+                    if (this.gameObject.GetComponent<ItemOnObject>().item.itemValue < 10)
+                    {
+                        DrawManager.instance.ButtonDisable();
+                    }
+                    else
+                    {
+                        DrawManager.instance.ButtonEnable();
+                    }
+                    // 뽑기창을 띄워준다.
+                    GameObject.FindGameObjectWithTag("DrawInventory").transform.GetChild(4).gameObject.SetActive(true);
+                    // 뽑고 있는 박스에 대한 정보 저장
+                    DrawManager.instance.boxItem = this.gameObject.GetComponent<ItemOnObject>();
+                    DrawManager.instance.boxImage = this.gameObject.GetComponent<ItemOnObject>().item.itemIcon;
+                    DrawManager.instance.boxName = this.gameObject.GetComponent<ItemOnObject>().item.itemName;
+                }
+
                 //item from craft system to inventory
                 if (transform.parent.GetComponent<CraftResultSlot>() != null)
                 {
@@ -83,7 +103,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 }
                 else // 아이템이 인벤토리에 업데이트가 되었다면
                 {
-                    bool stop = false;
+                    //bool stop = false;
                     // EquipmentSystem(케릭터 장비 창) 컴포넌트를 가져오는데 성공했다면
                     if (eS != null)
                     {
@@ -97,7 +117,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                 // 하위 오브젝트가 없으면, 0이면
                                 if (eS.transform.GetChild(1).GetChild(i).childCount == 0)
                                 {
-                                    stop = true;
+                                    //stop = true;
                                     if (eS.transform.GetChild(1).GetChild(i).parent.parent.GetComponent<EquipmentSystem>() != null && this.gameObject.transform.parent.parent.parent.parent.parent.GetComponent<EquipmentSystem>() != null) { }
                                     else
                                     {
@@ -118,7 +138,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         }
 
 
-                        if (!stop)
+                        /*if (!stop)
                         {
                             // eS.slotsInTotal 인벤토리 슬롯 갯수만큼 반복
                             for (int i = 0; i < eS.slotsInTotal; i++)
@@ -130,11 +150,11 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     if (eS.transform.GetChild(1).GetChild(i).childCount != 0)
                                     {
                                         // 장착중인 Item 오브젝트를 otherItemFromCharacterSystem에 저장한다.
-                                        GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
+                                        //GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
                                         // 장착한 아이템의 정보도 otherSlotItem에 저장한다.
-                                        Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
+                                        //Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
 
-                                        // 들어온 아이템의 타입이 UFPS_Weapon이면
+*//*                                        // 들어온 아이템의 타입이 UFPS_Weapon이면
                                         if (item.itemType == ItemType.UFPS_Weapon)
                                         {
                                             // 장착 중인 아이템을 장착 해제하고
@@ -152,22 +172,23 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                                 // 장착 중인 아이템을 장착 해제
                                                 inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
                                             }
-                                        }
-                                        gearable = true;
+                                        }*/
+                                        /*gearable = true;
                                         if (duplication != null)
                                             Destroy(duplication.gameObject);
                                         eS.gameObject.GetComponent<Inventory>().updateItemList();
                                         inventory.OnUpdateItemList();
-                                        break;
+                                        break;*//*
                                     }
                                 }
                             }
-                        }
+                        }*/
 
                     }
 
                 }
-                if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
+                // 아이템을 우클릭 했을때, 사용되는 부분이고 사라지게 만드는 코드임
+                /*if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
                 {
 
                     Item itemFromDup = null;
@@ -188,6 +209,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                             Destroy(duplication.gameObject);
                         }
                     }
+                    // 수량이 0보다 작으면 사라짐
                     if (item.itemValue <= 0)
                     {
                         if (tooltip != null)
@@ -195,8 +217,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         inventory.deleteItemFromInventory(item);
                         Destroy(this.gameObject);
                     }
-
-                }
+                }*/
 
             }
 

@@ -118,6 +118,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    int count;
     // 타워 생성
     //private void SpawnTower()
     //{
@@ -155,11 +156,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     //        GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
     //    }
     //}
-
+    
     int idx = 1;
     public void UnlockTower(int level)
     {
-        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
         if (count == 0 || idx == count)
         {
             return;

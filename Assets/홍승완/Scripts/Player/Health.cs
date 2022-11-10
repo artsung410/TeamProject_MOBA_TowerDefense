@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using System;
 
 public class Health : MonoBehaviourPun
 {
@@ -10,6 +11,8 @@ public class Health : MonoBehaviourPun
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
+
+    public static event Action<GameObject, float> OnPlayerDieEvent = delegate { }; // 구독자를 담을 배열?!
 
     public Slider hpSlider3D;
     Outline _outline;
@@ -41,7 +44,19 @@ public class Health : MonoBehaviourPun
     private void OnEnable()
     {
         _outline.enabled = false;
-        //Init();
+        Init();
+
+    }
+
+
+    private void Init()
+    {
+        isDeath = false;
+        _maxHealth = _stats.MaxHealth;
+        _prevMaxHealth = _maxHealth;
+        health = _maxHealth;
+        hpSlider3D.maxValue = _maxHealth;
+        hpSlider3D.value = health;
     }
 
     private void Start()
@@ -52,6 +67,7 @@ public class Health : MonoBehaviourPun
 
         // 초기화 부분은 최대체력으로
         health = _maxHealth;
+        Debug.Log("start호출");
 
         hpSlider3D.maxValue = _maxHealth;
         hpSlider3D.value = health;
@@ -64,7 +80,7 @@ public class Health : MonoBehaviourPun
         _maxHealth = maxHP;
 
         // 현재 나의 체력에서 증가된 체력량 만큼 조금 채워준다
-        health += (_maxHealth - _prevMaxHealth);
+        health += (_maxHealth - 0);
         hpSlider3D.value = health;
 
         // 다시 preveMaxHealth를 최신화한다
@@ -95,6 +111,7 @@ public class Health : MonoBehaviourPun
 
     }
 
+    float exp = 100f;
     public void Die()
     {
         if (health <= 0f)
@@ -105,6 +122,9 @@ public class Health : MonoBehaviourPun
             hpSlider3D.gameObject.SetActive(false);
 
             StartCoroutine(DelayDisapearBody());
+
+            // 죽었을때 Invoke => 실행이 된다
+            OnPlayerDieEvent.Invoke(this.gameObject, exp);
         }
     }
 
@@ -177,8 +197,6 @@ public class Health : MonoBehaviourPun
     {
         _outline.enabled = false;
     }
-
-
 
 }
 

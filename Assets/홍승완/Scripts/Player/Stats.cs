@@ -34,9 +34,12 @@ public class Stats : GoogleSheetManager
     [Header("이동 관련")]
     public float MoveSpeed = 1;
 
+    [Header("레벨")]
     public int Level;
 
+    [Header("경험치")]
     public float Exp;
+    public float ExpDetectRange;
 
     private float minExp;
     private float maxExp;
@@ -44,14 +47,17 @@ public class Stats : GoogleSheetManager
     PlayerBehaviour _playerScript;
     Health _health;
 
-    // dictinary를 사용한 stat설정 -> key값은 현재 레벨
-
     private void Awake()
     {
         _playerScript = GetComponent<PlayerBehaviour>();
         _health = GetComponent<Health>();
-
+        Debug.Log("Awake 켜짐");
         StartCoroutine(GetLevelData());
+
+        // 구독자 등록
+        Health.OnPlayerDieEvent += PlayerLevelUpFactory;
+        Enemybase.OnMinionDieEvent += PlayerLevelUpFactory;
+        Turret.OnTurretDestroyEvent += PlayerLevelUpFactory;
     }
 
     IEnumerator GetLevelData()
@@ -64,6 +70,10 @@ public class Stats : GoogleSheetManager
         StatInit();
     }
 
+    private void OnEnable()
+    {
+    }
+
     private void Start()
     {
         Level = 1;
@@ -74,6 +84,8 @@ public class Stats : GoogleSheetManager
         MoveSpeed = 15;
         minExp = 0;
         maxExp = 100;
+
+        ExpDetectRange = 20f;
     }
 
     public void StatInit()
@@ -81,7 +93,8 @@ public class Stats : GoogleSheetManager
         Level = 1;
 
         MaxHealth = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.HP]);
-        attackDmg = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Dmg]);
+        Debug.Log($"파싱한 체력 수치 : {MaxHealth}");
+        attackDmg = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Dmg]) + 100f;
         attackRange = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Range]);
         attackSpeed = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Atk_Speed]);
         MoveSpeed = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Move_Speed]);
@@ -96,27 +109,21 @@ public class Stats : GoogleSheetManager
 
         if (photonView.IsMine)
         {
-            if (Input.GetKeyDown(KeyCode.I))
-            {
-                int exp = 30;
-                Debug.Log($"얻은 경험치 : {exp}");
-                PlayerLevelUp(exp);
-                //photonView.RPC(nameof(PlayerLevelUp), RpcTarget.All, exp);
-            }
-            if (Input.GetKeyDown(KeyCode.L))
-            {
-                int exp = 3000;
-                Debug.Log($"얻은 경험치 : {exp}");
-                PlayerLevelUp(exp);
-                //photonView.RPC(nameof(PlayerLevelUp), RpcTarget.All, exp);
-            }
+            //if (Input.GetKeyDown(KeyCode.I))
+            //{
+            //    int exp = 30;
+            //    Debug.Log($"얻은 경험치 : {exp}");
+            //    PlayerLevelUpFactory(exp);
+            //    //photonView.RPC(nameof(PlayerLevelUp), RpcTarget.All, exp);
+            //}
+            //if (Input.GetKeyDown(KeyCode.L))
+            //{
+            //    int exp = 3000;
+            //    Debug.Log($"얻은 경험치 : {exp}");
+            //    PlayerLevelUpFactory(exp);
+            //    //photonView.RPC(nameof(PlayerLevelUp), RpcTarget.All, exp);
+            //}
         }
-
-        //if (Level == 1 || Level == 3 || Level == 5 || Level == 7)
-        //{
-        //    // 타워 하나씩 생성
-        //    GameManager.Instance.UnlockTower();
-        //}
     }
 
 
@@ -136,33 +143,114 @@ public class Stats : GoogleSheetManager
     }
 
     [PunRPC]
-    public void PlayerLevelUp(float exp)
+    public void PlayerLevelUpFactory(GameObject expBag, float exp)
     {
-        Exp += exp;
-
-        // 경험치가 최대 경험치보다 높으면 레벨업을 한다
-        while (Exp >= maxExp)
+        // expBag와 나의 tag가 같으면 같은팀이니까 return한다
+        if (expBag.tag == gameObject.tag)
         {
-            // 10레벨 달성시 레벨업하지않고 경험치바는 차되 최대치 이상으론 차지 않는다
-            if (WarriorLevelData.ContainsKey(Level + 1) == false)
-            {
-                Exp = Mathf.Clamp(Exp, minExp, maxExp);
-                return;
-            }
-            Level++;
-            GameManager.Instance.UnlockTower(Level);
-            SetStats(Level);
-            photonView.RPC(nameof(_health.HealthUpdate), RpcTarget.All, MaxHealth);
-            // Exp에서 maxExp만큼 뺀다 레벨업을 했으니까
-            Exp = Mathf.Max(Exp - maxExp, 0);
+            return;
         }
+
+        // expBag과 나와의 거리를 계산한다
+        float dist = Vector3.Distance(expBag.transform.position, this.transform.position);
+        Debug.Log($"죽은 {expBag.name}과 나와의 거리 : {dist}");
+        
+        // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
+        if (dist <= ExpDetectRange)
+        {
+            Exp += exp;
+            // 경험치가 최대 경험치보다 높으면 레벨업을 한다
+            while (Exp >= maxExp)
+            {
+                // 10레벨 달성시 레벨업하지않고 경험치바는 차되 최대치 이상으론 차지 않는다
+                if (WarriorLevelData.ContainsKey(Level + 1) == false)
+                {
+                    Exp = Mathf.Clamp(Exp, minExp, maxExp);
+                    return;
+                }
+                Level++;
+
+                // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
+                GameManager.Instance.UnlockTower(Level);
+                SetStats(Level);
+                photonView.RPC(nameof(_health.HealthUpdate), RpcTarget.All, MaxHealth);
+
+                // Exp에서 maxExp만큼 뺀다 레벨업을 했으니까
+                Exp = Mathf.Max(Exp - maxExp, 0);
+            }
+        }
+
 
     }
 
-    // TODO : 경험치 관리는 어떤식으로?
-    
-    // 일정범위내(overlapsphere)의 적이 사망(die호출시)할시 플레이어에게 경험치를준다(단, 같은팀 예외(tag처리할것))
+    // TODO : 일정범위내(overlapsphere)의 적이 사망(die호출시)할시 플레이어에게 경험치를준다(단, 같은팀 예외(tag처리할것))
 
-    // TODO : 1/3/5/7레벨에 타워가 하나씩 해금(?)된다
+    public float tempExp;
+    float rangeMinionExp = 30f;
+    float meleeMinionExp = 40f;
 
+    // 기각 이유 : 죽은 적 판별할때 연속해서 값이 들어옴
+    //IEnumerator ExpDetector()
+    //{
+    //    while (true)
+    //    {
+    //        yield return new WaitForSeconds(0.1f);
+    //        Collider[] expBag = Physics.OverlapSphere(transform.position, ExpDetectRange);
+    //        //Debug.Log($"주변 콜라이더들 : {expBag.Length}");
+    //        if (expBag.Length > 0)
+    //        {
+    //            foreach (Collider _exps in expBag)
+    //            {
+    //                // 검출된 콜라이더들중 죽은객체의 정보 받아오기
+    //                // 죽은 객체가 [플레이어]면 {100}
+    //                // 죽은 객체가 [근거리 미니언]이면 {40}
+    //                // 죽은 객체가 [원거리 미니언]이면 {30}
+    //                // 죽은 객체가 [특수 미니언]이면 {50}
+    //                // 죽은 객체가 [타워]면 {200}
+    //                //Debug.Log($"주변 콜라이더 : {_exps.gameObject.name}");
+
+    //                // 콜라이더중 적만 검색
+    //                if (_exps.gameObject.tag == _playerScript.EnemyTag)
+    //                {
+    //                    // 적 플레이어
+    //                    if (_exps.gameObject.GetComponent<Health>() != null)
+    //                    {
+    //                        Debug.Log("적 확인");
+    //                        Health enemyPlayer = _exps.gameObject.GetComponent<Health>();
+    //                        // 적이 죽었으면
+    //                        if (enemyPlayer.isDeath == true)
+    //                        {
+    //                            // 경험치를 얻는다
+    //                            tempExp += 30f;
+    //                        }
+    //                    }
+
+    //                    if (_exps.gameObject.GetComponent<Enemybase>() != null)
+    //                    {
+    //                        Debug.Log("적 미니언 확인");
+    //                        Enemybase enemyMinion = _exps.gameObject.GetComponent<Enemybase>();
+
+    //                        if (enemyMinion.isDead == true)
+    //                        {
+    //                            tempExp += 15f;
+    //                        }
+    //                    }
+    //                }
+    //            }
+    //        }
+    //    }
+    //}
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = new Color(1, 0, 0, 0.2f);
+        Gizmos.DrawSphere(transform.position, ExpDetectRange);
+    }
+
+
+    private void OnDisable()
+    {
+        //Debug.Log("Stats disable호출");
+        StopAllCoroutines();
+    }
 }

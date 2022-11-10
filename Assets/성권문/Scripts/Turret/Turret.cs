@@ -14,6 +14,7 @@ public class Turret : MonoBehaviourPun
 {
     public static event Action<GameObject,string> minionTowerEvent = delegate { };
     public static event Action<Turret> turretMouseDownEvent = delegate { };
+    public static event Action<GameObject, float> OnTurretDestroyEvent = delegate { };
 
     [Header("인게임 DB")]
     public TowerData towerData;
@@ -147,6 +148,7 @@ public class Turret : MonoBehaviourPun
         photonView.RPC("TakeDamage", RpcTarget.All, damage);
     }
 
+    float exp = 100f;
     [PunRPC]
     public void TakeDamage(float damage)
     {
@@ -155,6 +157,9 @@ public class Turret : MonoBehaviourPun
         StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
         if (currentHealth <= 0)
         {
+            // 타워 파괴시 경험치
+            OnTurretDestroyEvent.Invoke(gameObject, exp);
+
             photonView.RPC("Destroy", RpcTarget.All);
             return;
         }
