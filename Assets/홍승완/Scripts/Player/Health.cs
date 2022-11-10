@@ -111,7 +111,7 @@ public class Health : MonoBehaviourPun
 
     }
 
-    float exp = 100f;
+    float exp = 10000f;
     public void Die()
     {
         if (health <= 0f)
