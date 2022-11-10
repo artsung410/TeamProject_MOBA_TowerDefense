@@ -11,16 +11,6 @@ public class HealthSliderHandler : MonoBehaviourPun
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-
-    private void Awake()
-    {
-    }
-
-    private void Start()
-    {
-       
-    }
-
     // lateUpdate에서 처리할것
     private void LateUpdate()
     {

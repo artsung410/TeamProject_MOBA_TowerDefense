@@ -109,7 +109,6 @@ public class Stats : GoogleSheetManager
         yield return GetCharactorData.SendWebRequest();
         SetCharactorDatas(GetCharactorData.downloadHandler.text);
 
-        // 초기화가 너무 느림 => 처음 변수 초기화는 직접 값을 써야할까?
         StatInit();
     }
     public void StatInit()
@@ -163,7 +162,7 @@ public class Stats : GoogleSheetManager
     {
         MaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
 
-        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]) + 199;
+        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
         attackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
         attackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
 

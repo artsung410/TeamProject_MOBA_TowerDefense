@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Transform[] tiles;
     private static GameManager instance;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
+
+    // TODO : 생성할 플레이어 프리팹 정보를 캐릭터 선택단계에서 가져오기
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
     
     [Header("Nexus")]
@@ -76,7 +78,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        //SpawnTower();
+        SpawnTower();
 
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
         //SpawnNexus();

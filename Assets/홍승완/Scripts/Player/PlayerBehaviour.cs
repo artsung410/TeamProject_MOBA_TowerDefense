@@ -92,11 +92,9 @@ public class PlayerBehaviour : MonoBehaviourPun
                 gameObject.tag = "Blue";
                 EnemyTag = "Red";
             }
-
             else
             {
                 gameObject.tag = "Red";
-                //gameObject.layer = 8;
                 EnemyTag = "Blue";
             }
         }
@@ -183,6 +181,10 @@ public class PlayerBehaviour : MonoBehaviourPun
             if (_playerHealth.isDeath == false)
             {
                 MoveTo();
+            }
+            else
+            {
+                IsPlayerDie();
             }
         }
     }

@@ -11,6 +11,8 @@ public class PlayerRespawn : MonoBehaviourPun
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    public GameObject Renderer;
+
     Health health;
     Slider hpBar;
     [SerializeField] Transform[] respawnPosition;
@@ -51,7 +53,10 @@ public class PlayerRespawn : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        Respawn();
+        if (photonView.IsMine)
+        {
+            Respawn();
+        }
     }
 
     float elapsedTime;
@@ -69,6 +74,7 @@ public class PlayerRespawn : MonoBehaviourPun
                 elapsedTime = 0f;
                 health.gameObject.SetActive(true);
                 hpBar.gameObject.SetActive(true);
+                Renderer.SetActive(true);
             }
         }
     }

@@ -11,13 +11,14 @@ public class PlayerAnimation : MonoBehaviourPun
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com
-    //             MAIL : minsub4400@gmail.com
     // ###############################################
 
     // TODO : 공격방식에따라 재생되는 모션을 다르게할것
 
     public static PlayerAnimation instance;
     public Animator animator;
+
+    public GameObject Chractor;
 
     NavMeshAgent agent;
     Stats playerStats;
@@ -30,23 +31,37 @@ public class PlayerAnimation : MonoBehaviourPun
     {
         instance = this;
 
-        agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
-        playerStats = GetComponent<Stats>();
-        _playerScript = GetComponent<PlayerBehaviour>();
-        hp = GetComponent<Health>();
+        agent = Chractor.GetComponent<NavMeshAgent>();
+        //animator = GetComponent<Animator>();
+        playerStats = Chractor.GetComponent<Stats>();
+        _playerScript = Chractor.GetComponent<PlayerBehaviour>();
+        hp = Chractor.GetComponent<Health>();
     }
 
     private void OnEnable()
     {
-        AliveMotion();
+        //AliveMotion();
+        Debug.Log($"플레이어 랜더러 : {hp.isDeath}");
     }
 
-
+    float elapsedTime;
     void Update()
     {
-        MoveAniMotion();
-        CombatMotion();
+        if (photonView.IsMine)
+        {
+            MoveAniMotion();
+            CombatMotion();
+
+            if (hp.isDeath)
+            {
+                elapsedTime += Time.deltaTime;
+                if (elapsedTime >= 3f)
+                {
+                    elapsedTime = 0f;
+                    gameObject.SetActive(false);
+                }
+            }
+        }
     }
 
     public void DieMotion()
@@ -57,7 +72,7 @@ public class PlayerAnimation : MonoBehaviourPun
         }
     }
 
-    private void AliveMotion()
+    public void AliveMotion()
     {
         if (hp.isDeath == false)
         {
@@ -92,28 +107,42 @@ public class PlayerAnimation : MonoBehaviourPun
                 if (photonView.IsMine)
                 {
                     _playerScript.IsAttack = true;  
-
                 }
                 // 공격 모션 재생
                 animator.SetBool("Attack", true);
 
                 // 공격 모션 재생 속도
                 animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
-                StartCoroutine(MeleeAttackInterval());
+
+                if (playerStats.AttackType == HeroAttackType.Melee)
+                {
+                    StartCoroutine(MeleeAttackInterval());
+                }
+                else if (playerStats.AttackType == HeroAttackType.Ranged)
+                {
+                    StartCoroutine(RangeAttackInterval());
+                }
             }
         }
         else
         {
-            if (_playerScript.perfomMeleeAttack == false || _playerScript.perfomRangeAttack == true)
+            if (_playerScript.perfomMeleeAttack == false || _playerScript.perfomRangeAttack == false)
             {
-                //Debug.Log("공격 취소");
                 if (photonView.IsMine)
                 {
                     _playerScript.IsAttack = false;
-
                 }
+
                 animator.SetBool("Attack", false);
-                StopCoroutine(MeleeAttackInterval());
+
+                if (playerStats.AttackType == HeroAttackType.Melee)
+                {
+                    StopCoroutine(MeleeAttackInterval());
+                }
+                else if (playerStats.AttackType == HeroAttackType.Ranged)
+                {
+                    StopCoroutine(RangeAttackInterval());
+                }
             }
         }
     }

@@ -17,7 +17,7 @@ public class Health : MonoBehaviourPun
     public Slider hpSlider3D;
     Outline _outline;
     Stats _stats;
-    PlayerAnimation ani;
+    public PlayerAnimation ani;
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
     float overhp;
 
@@ -37,14 +37,17 @@ public class Health : MonoBehaviourPun
     {
         _outline = GetComponent<Outline>();
         _stats = GetComponent<Stats>();
-        ani = GetComponent<PlayerAnimation>();
+        //ani = GetComponent<PlayerAnimation>();
        
     }
 
     private void OnEnable()
     {
         _outline.enabled = false;
+
         Init();
+        //ani.AliveMotion();
+        //Debug.Log($"플레이어 죽어있는가? : {isDeath}");
     }
 
 
@@ -103,7 +106,7 @@ public class Health : MonoBehaviourPun
     {
         if (isDeath)
         {
-            StopCoroutine(DelayDisapearBody());
+            //StopCoroutine(DelayDisapearBody());
             return;
         }
 
@@ -113,6 +116,7 @@ public class Health : MonoBehaviourPun
 
     float exp = 10000f;
 
+
     public void Die()
     {
         if (health <= 0f)
@@ -121,19 +125,22 @@ public class Health : MonoBehaviourPun
             isDeath = true;
             ani.DieMotion();
             hpSlider3D.gameObject.SetActive(false);
-
-            StartCoroutine(DelayDisapearBody());
-
             // 죽었을때 Invoke => 실행이 된다
             OnPlayerDieEvent.Invoke(this.gameObject, _stats.enemyExp);
+            //StartCoroutine(DelayDisapearBody());
+            gameObject.SetActive(false);
         }
     }
 
-    IEnumerator DelayDisapearBody()
-    {
-        yield return new WaitForSeconds(1.5f);
-        gameObject.SetActive(false);
-    }
+    // TODO : 플레이어 콜라이더 제거부분과 렌더러 제거부분 시간 다르게 적용;
+    // 콜라이더 제거 => 렌더러 제거 => 게임 오브젝트 제거
+
+
+    //IEnumerator DelayDisapearBody()
+    //{
+    //    yield return new WaitForSeconds(1.5f);
+    //    gameObject.SetActive(false);
+    //}
 
     public void Regenation(float recovery)
     {
