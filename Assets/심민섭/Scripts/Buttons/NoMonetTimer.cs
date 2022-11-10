@@ -9,7 +9,7 @@ public class NoMonetTimer : MonoBehaviour
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
 
-    void Start()
+    private void OnEnable()
     {
         StartCoroutine(ShowImageTimer());
     }

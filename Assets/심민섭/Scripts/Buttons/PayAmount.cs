@@ -17,6 +17,9 @@ public class PayAmount : MonoBehaviour
     [SerializeField]
     private Text payAmount;
 
+    [SerializeField]
+    private GameObject oneButton;
+
     // ±¸¸Å °¹¼ö
     public int cardCount;
 
@@ -43,6 +46,9 @@ public class PayAmount : MonoBehaviour
         payAmount.text = 1000.ToString(); //(int.Parse(payAmount.text) + 1000).ToString();
         cardCount = 10;
         DrawManager.instance.buyCount = cardCount;
+        ColorBlock colorBlock = oneButton.GetComponent<Button>().colors;
+        colorBlock.normalColor = Color.white;
+        oneButton.GetComponent<Button>().colors = colorBlock;
         //Debug.Log(cardCount);
     }
 }
