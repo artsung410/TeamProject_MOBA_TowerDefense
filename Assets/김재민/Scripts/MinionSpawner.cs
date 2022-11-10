@@ -39,7 +39,7 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log($"{BlueSkillWave} {RedSkillWave}"); 
+        
         elaspedTime += Time.deltaTime;
         if (elaspedTime >= minionSpawnTime)
         {
