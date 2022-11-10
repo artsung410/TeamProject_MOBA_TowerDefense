@@ -14,6 +14,8 @@ public class PlayerAnimation : MonoBehaviourPun
     //             MAIL : minsub4400@gmail.com
     // ###############################################
 
+    // TODO : 공격방식에따라 재생되는 모션을 다르게할것
+
     public static PlayerAnimation instance;
     public Animator animator;
 
@@ -40,10 +42,6 @@ public class PlayerAnimation : MonoBehaviourPun
         AliveMotion();
     }
 
-    Vector3 AfterPos;
-    Vector3 velo = Vector3.forward;
-    public Vector3 TargetPos;
-
 
     void Update()
     {
@@ -56,7 +54,6 @@ public class PlayerAnimation : MonoBehaviourPun
         if (hp.isDeath)
         {
             animator.SetBool("Die", true);
-
         }
     }
 
@@ -80,12 +77,17 @@ public class PlayerAnimation : MonoBehaviourPun
         _playerScript.perfomMeleeAttack = false;
     }
 
+    IEnumerator RangeAttackInterval()
+    {
+        yield return new WaitForSeconds(2f);
+        _playerScript.perfomRangeAttack = false;
+    }
+
     private void CombatMotion()
     {
-        //Debug.Log(randomPose);
         if (_playerScript.targetedEnemy != null)
         {
-            if (_playerScript.perfomMeleeAttack == true)
+            if (_playerScript.perfomMeleeAttack == true || _playerScript.perfomRangeAttack == true)
             {
                 if (photonView.IsMine)
                 {
@@ -102,7 +104,7 @@ public class PlayerAnimation : MonoBehaviourPun
         }
         else
         {
-            if (_playerScript.perfomMeleeAttack == false)
+            if (_playerScript.perfomMeleeAttack == false || _playerScript.perfomRangeAttack == true)
             {
                 //Debug.Log("공격 취소");
                 if (photonView.IsMine)
