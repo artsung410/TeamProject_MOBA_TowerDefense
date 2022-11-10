@@ -56,7 +56,6 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
                 RedSpawnMinion();
                 RedSkillWave--;
             }
-
         }
     }
 
@@ -79,13 +78,15 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
         {
             if (tag == "Red")
             {
-                BasicMinion[1] = transferedMinion; // 레드 근접미니언
+                BasicMinion[1] = transferedMinion; // 블루 원거리 미니언
             }
             else
             {
-                BasicMinion[3] = transferedMinion; // 블루 근접미니언
+                BasicMinion[3] = transferedMinion; // 레드 원거리 미니언
             }
         }
+
+        Debug.Log(tag);
 
     }
 

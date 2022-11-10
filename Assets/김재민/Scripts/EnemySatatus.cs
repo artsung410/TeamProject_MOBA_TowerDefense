@@ -47,7 +47,7 @@ public class EnemySatatus : Enemybase
         {
             if (Enemy.layer == 14)
             {
-
+                
                 _target = Enemy.transform;
                 _PrevTarget = _target; // 
             }

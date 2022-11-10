@@ -76,7 +76,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        SpawnTower();
+        //SpawnTower();
 
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
         //SpawnNexus();
@@ -118,10 +118,10 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-    // 타워 생성
+    int count;
     private void SpawnTower()
     {
-        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
+        count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
         if (count == 0)
         {
             return;
@@ -129,27 +129,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            //for (int i = 0; i < count; i++)
-            //{
-            //    GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-            //    int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
-            //    //GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
-            //    //photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
-            //}
             GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[0];
             int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
         }
         else
         {
-            //for (int i = 0; i < count; i++)
-            //{
-            //    GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[i];
-            //    int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[i] - 4;
-            //    GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
-            //    photonView.RPC("setItemToTower", RpcTarget.All, newTower, i);
-
-            //}
             GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[0];
             int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
@@ -159,7 +144,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     int idx = 1;
     public void UnlockTower(int level)
     {
-        int count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
         if (count == 0 || idx == count)
         {
             return;
