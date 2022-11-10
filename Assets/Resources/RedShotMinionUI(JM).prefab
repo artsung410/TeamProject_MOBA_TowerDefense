@@ -1850,7 +1850,6 @@ GameObject:
   - component: {fileID: 7403754812174817509}
   - component: {fileID: 5106345303155424071}
   - component: {fileID: 3745807338781687717}
-  - component: {fileID: 596248909128392252}
   - component: {fileID: 397021229807052122}
   - component: {fileID: 3839293809356801517}
   - component: {fileID: 490978171603196189}
@@ -2001,30 +2000,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Prefab: {fileID: 7213562895213830546, guid: 8ef12c9fa8e03784cb1b3041a75d9882, type: 3}
   _gunPivot: {fileID: 1067032674008029151}
---- !u!114 &596248909128392252
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1067032674008058641}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 397021229807052122}
-  - {fileID: 3839293809356801517}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &397021229807052122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9160,7 +9135,6 @@ GameObject:
   - component: {fileID: 2196908439593368870}
   - component: {fileID: 4519716198138202155}
   - component: {fileID: 8249061260486079206}
-  - component: {fileID: 2735909313560979843}
   - component: {fileID: 5930304007616907006}
   m_Layer: 5
   m_Name: Hpbar
@@ -9256,29 +9230,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1067032674008029113}
   enemybase: {fileID: 490978171603196189}
---- !u!114 &2735909313560979843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3180409385983396234}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 5930304007616907006}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &5930304007616907006
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9348,7 +9299,9 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 397021229807052122}
+  - {fileID: 3839293809356801517}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

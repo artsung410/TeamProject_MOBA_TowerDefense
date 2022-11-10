@@ -22,6 +22,11 @@ public class EnemyHpBar : MonoBehaviourPun
     // Update is called once per frame
     public void Update()
     {
+        if(Enemy == null)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+
         _slider.value = enemybase.CurrnetHP / enemybase.HP;
         if (Enemy == null || _slider == null)
         {

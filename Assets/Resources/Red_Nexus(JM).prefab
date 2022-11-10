@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2551201962979307240}
+  - component: {fileID: 4388667939380931758}
   m_Layer: 0
   m_Name: Red_Nexus(JM)
   m_TagString: Untagged
@@ -33,6 +34,30 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4388667939380931758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78960193729479774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 9081135033727646137}
+  - {fileID: 4458051560651978847}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &237407664826382267
 GameObject:
   m_ObjectHideFlags: 0
@@ -10047,7 +10072,6 @@ GameObject:
   - component: {fileID: 3717854919454315718}
   - component: {fileID: 5716320643700282385}
   - component: {fileID: 4458051560651978847}
-  - component: {fileID: 2570284536619104275}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -10144,29 +10168,6 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
---- !u!114 &2570284536619104275
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3684677089846353081}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 4458051560651978847}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!1 &4917028438729263112
 GameObject:
   m_ObjectHideFlags: 0
@@ -10567,7 +10568,6 @@ GameObject:
   - component: {fileID: 2104133224831578549}
   - component: {fileID: 8387738775889888173}
   - component: {fileID: 8866098202215727322}
-  - component: {fileID: 6032862011938311032}
   - component: {fileID: 9081135033727646137}
   - component: {fileID: 3403123719203419336}
   m_Layer: 12
@@ -10691,29 +10691,6 @@ MonoBehaviour:
   _slider: {fileID: 5716320643700282385}
   nexusSprite: {fileID: 21300000, guid: 326d1298d78c99d4fb3e46671a1acf11, type: 3}
   healthEffect: {fileID: 510664135730535363}
---- !u!114 &6032862011938311032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7077885181604863955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ObservedComponentsFoldoutOpen: 1
-  Group: 0
-  prefixField: -1
-  Synchronization: 3
-  OwnershipTransfer: 0
-  observableSearch: 2
-  ObservedComponents:
-  - {fileID: 9081135033727646137}
-  sceneViewId: 0
-  InstantiationId: 0
-  isRuntimeInstantiated: 0
 --- !u!114 &9081135033727646137
 MonoBehaviour:
   m_ObjectHideFlags: 0
