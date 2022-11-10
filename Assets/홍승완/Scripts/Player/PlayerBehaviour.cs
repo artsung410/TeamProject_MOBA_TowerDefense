@@ -5,12 +5,6 @@ using UnityEngine.AI;
 using Photon.Pun;
 
 
-public enum HeroAttackType
-{
-    Melee,
-    Ranged,
-}
-
 public class PlayerBehaviour : MonoBehaviourPun
 {
     // ###############################################
@@ -20,9 +14,6 @@ public class PlayerBehaviour : MonoBehaviourPun
     // ###############################################
 
     public static Vector3 CurrentPlayerPos;
-
-    [Header("공격 방식")]
-    public HeroAttackType heroAttackType;
 
     [Header("회전 속도")]
     [SerializeField] float RotateSpeed = 0.5f;
@@ -40,7 +31,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     [Header("공격중인가")]
     public bool perfomMeleeAttack = false;
-
+    public bool perfomRangeAttack = false;
 
     public string EnemyTag;
     public bool IsAttack;
@@ -305,17 +296,22 @@ public class PlayerBehaviour : MonoBehaviourPun
                 transform.eulerAngles = new Vector3(0, rotationY, 0);
 
                 // 내가 근접캐라면
-                if (heroAttackType == HeroAttackType.Melee)
+                if (_statScript.AttackType == HeroAttackType.Melee)
                 {
                     // 공격 수행 스위치를 true로 바꿈
                     perfomMeleeAttack = true;
+                }
+                else if (_statScript.AttackType == HeroAttackType.Ranged)
+                {
+                    // 원거리 공격 수행 스위치 true바꿈
+                    perfomRangeAttack = true;
                 }
             }
 
         }
     }
 
-
+    // TODO : 공격 타입에 따른 공격방식 개선
 
     private void GetTargetedObject()
     {

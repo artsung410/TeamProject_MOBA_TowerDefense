@@ -45,7 +45,6 @@ public class Health : MonoBehaviourPun
     {
         _outline.enabled = false;
         Init();
-
     }
 
 
@@ -67,12 +66,13 @@ public class Health : MonoBehaviourPun
 
         // 초기화 부분은 최대체력으로
         health = _maxHealth;
-        Debug.Log("start호출");
+        //Debug.Log("start호출");
 
         hpSlider3D.maxValue = _maxHealth;
         hpSlider3D.value = health;
     }
 
+    // TODO : 레벨업한뒤 캐릭터가 한대 맞으면 피가 다시 최대체력으로 한번 채워짐(1400/1500 => 1500/1500 으로 한번 초기화 된다)
 
     [PunRPC]
     public void HealthUpdate(float maxHP)
@@ -80,7 +80,7 @@ public class Health : MonoBehaviourPun
         _maxHealth = maxHP;
 
         // 현재 나의 체력에서 증가된 체력량 만큼 조금 채워준다
-        health += (_maxHealth - 0);
+        health += (_maxHealth - _prevMaxHealth);
         hpSlider3D.value = health;
 
         // 다시 preveMaxHealth를 최신화한다
@@ -112,6 +112,7 @@ public class Health : MonoBehaviourPun
     }
 
     float exp = 10000f;
+
     public void Die()
     {
         if (health <= 0f)
@@ -124,7 +125,7 @@ public class Health : MonoBehaviourPun
             StartCoroutine(DelayDisapearBody());
 
             // 죽었을때 Invoke => 실행이 된다
-            OnPlayerDieEvent.Invoke(this.gameObject, exp);
+            OnPlayerDieEvent.Invoke(this.gameObject, _stats.enemyExp);
         }
     }
 
