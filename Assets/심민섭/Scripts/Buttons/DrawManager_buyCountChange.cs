@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class NoMonetTimer : MonoBehaviour
+public class DrawManager_buyCountChange : MonoBehaviour
 {
     // ###############################################
     //             NAME : Simstealer                      
@@ -11,13 +11,6 @@ public class NoMonetTimer : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(ShowImageTimer());
+        DrawManager.instance.buyCount = 1;
     }
-
-    IEnumerator ShowImageTimer()
-    {
-        yield return new WaitForSeconds(6f);
-        gameObject.SetActive(false);
-    }
-
 }

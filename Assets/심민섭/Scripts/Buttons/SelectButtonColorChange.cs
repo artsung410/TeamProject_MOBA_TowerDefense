@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class NoMonetTimer : MonoBehaviour
+public class SelectButtonColorChange : MonoBehaviour
 {
     // ###############################################
     //             NAME : Simstealer                      
@@ -11,13 +12,8 @@ public class NoMonetTimer : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(ShowImageTimer());
+        ColorBlock colorBlock = gameObject.GetComponent<Button>().colors;
+        colorBlock.normalColor = Color.yellow;
+        gameObject.GetComponent<Button>().colors = colorBlock;
     }
-
-    IEnumerator ShowImageTimer()
-    {
-        yield return new WaitForSeconds(6f);
-        gameObject.SetActive(false);
-    }
-
 }

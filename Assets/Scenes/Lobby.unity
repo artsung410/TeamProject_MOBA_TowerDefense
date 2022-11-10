@@ -8373,7 +8373,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.99215686, g: 1, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -11370,7 +11370,7 @@ MonoBehaviour:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.9490196, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -11453,6 +11453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   payAmount: {fileID: 1437345307}
+  oneButton: {fileID: 1579371690}
   cardCount: 1
 --- !u!1 &1007626746
 GameObject:
@@ -11620,7 +11621,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1012781603}
         m_TargetAssemblyTypeName: Cancel, Assembly-CSharp
-        m_MethodName: CancelButton
+        m_MethodName: alreadyBuyBackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12240,23 +12241,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a6acd6e1d24be34ab017d235bbcc2f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deck:
-  - cardName: "\uBE0C\uB860\uC988 \uC544\uBA38"
-    cardImage: {fileID: 21300000, guid: fcd8bd2db18e92d42a7d14fc0e395888, type: 3}
-    weight: 50
-  - cardName: "\uC2E4\uBC84 \uC544\uBA38"
-    cardImage: {fileID: 21300000, guid: f5e3bff24c9077445a126833256147bd, type: 3}
-    weight: 30
-  - cardName: "\uACE8\uB4DC \uC544\uBA38"
-    cardImage: {fileID: 21300000, guid: 22012799e7b2d3f41b2c05e0c71541f6, type: 3}
-    weight: 10
-  - cardName: "\uD50C\uB808\uD2F0\uB118 \uC544\uBA38"
-    cardImage: {fileID: 21300000, guid: 94feb6ac7e57fb34bb8d8f48f554ff82, type: 3}
-    weight: 1
-  - cardName: "\uB2E4\uC774\uC544 \uC544\uBA38"
-    cardImage: {fileID: 21300000, guid: 34ce9c8524e37f549bc4de2bbdd96429, type: 3}
-    weight: 1
   total: 0
+  itemDataBase: {fileID: 11400000, guid: 964f317a23cc9f0418bb3778fccd8ebb, type: 2}
   result: []
   parent: {fileID: 1190418674}
   cardprefab: {fileID: 6208505164956040481, guid: a8f4f71a28dffd54fa2a3e6864fac088, type: 3}
@@ -12952,7 +12938,7 @@ MonoBehaviour:
   boxName: 
   boxCount: 0
   openCard_tenButton: {fileID: 705200018}
-  getItemList: []
+  getDrawResult: 
   alreadyCardDraw: {fileID: 1190418673}
 --- !u!4 &1119231229
 Transform:
@@ -13213,6 +13199,7 @@ GameObject:
   - component: {fileID: 1135777672}
   - component: {fileID: 1135777671}
   - component: {fileID: 1135777674}
+  - component: {fileID: 1135777675}
   m_Layer: 0
   m_Name: ItemCount(1) - Button
   m_TagString: Untagged
@@ -13261,10 +13248,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 0.99215686, g: 1, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0.9926069, g: 1, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -13344,6 +13331,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a2e6949867ce7f46810855abd4ccf9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1135777675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1135777668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6115f87afce92044a9dfbb94ee60d467, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1135813443
@@ -19808,6 +19807,7 @@ GameObject:
   - component: {fileID: 1579371693}
   - component: {fileID: 1579371692}
   - component: {fileID: 1579371695}
+  - component: {fileID: 1579371696}
   m_Layer: 0
   m_Name: ItemCount(1) - Button
   m_TagString: Untagged
@@ -19856,10 +19856,10 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_NormalColor: {r: 1, g: 0.9864793, b: 0, a: 1}
     m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 1, g: 0.95084643, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -19942,7 +19942,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   payAmount: {fileID: 1437345307}
+  oneButton: {fileID: 1579371690}
   cardCount: 1
+--- !u!114 &1579371696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579371690}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6115f87afce92044a9dfbb94ee60d467, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1588316196
 GameObject:
   m_ObjectHideFlags: 0
@@ -22367,6 +22380,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1745975412}
   - component: {fileID: 1745975413}
+  - component: {fileID: 1745975414}
   m_Layer: 0
   m_Name: BuyerCardWindow - Obj
   m_TagString: Untagged
@@ -22403,6 +22417,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   payAmount: {fileID: 1437345307}
+--- !u!114 &1745975414
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745975411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6295feb3e566e849bb0eb5be355347c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1759154255
 GameObject:
   m_ObjectHideFlags: 0
@@ -23440,7 +23466,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1829330474}
         m_TargetAssemblyTypeName: Cancel, Assembly-CSharp
-        m_MethodName: CancelButton
+        m_MethodName: BuyBackButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -24613,6 +24639,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1879250480}
   - component: {fileID: 1879250481}
+  - component: {fileID: 1879250482}
   m_Layer: 0
   m_Name: OpenBoxWindow - Obj
   m_TagString: Untagged
@@ -24646,6 +24673,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e98f2c4bb53722244a503992186dc6a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1879250482
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1879250479}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18b181026f9963542aebdf00c35c43dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1880794650
