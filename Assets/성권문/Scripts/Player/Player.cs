@@ -43,76 +43,57 @@ public class Player : MonoBehaviourPun
         {
             return;
         }
-
-        photonView.RPC("RPC_ApplyBuff", RpcTarget.All, id, addValue, state);
+        
+        photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
     }
 
+    // TODO : 버프 상대편한테 적용하게 할것
+    // TODO : 캐릭터 setactive false되도 스크립트 유지하게함
     [PunRPC]
     public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
         // 플레이어 버프 적용
-        if (id == (int)Buff_Effect_byTower.AtkUP)
+        if (id == (int)Buff_Effect_byTower.AtkUP || id == (int)Buff_Effect_byTower.AtkDown)
         {
             if (state)
             {
-                Debug.Log("플레이어 공격력 증가!");
                 playerStats.attackDmg += addValue;
             }
             else
             {
-                Debug.Log("플레이어 공격력 증가 종료!");
                 playerStats.attackDmg -= addValue;
+
+
             }
         }
 
-        else if (id == (int)Buff_Effect_byTower.HpRegenUp)
+        else if (id == (int)Buff_Effect_byTower.HpRegenUp || id == (int)Buff_Effect_byTower.HpRegenDown)
         {
 
         }
 
-        else if (id == (int)Buff_Effect_byTower.MoveSpeedUp)
+        else if (id == (int)Buff_Effect_byTower.MoveSpeedUp || id == (int)Buff_Effect_byTower.MoveSpeedDown)
         {
             if (state)
             {
-                Debug.Log("플레이어 이속 증가!");
                 playerStats.MoveSpeed += addValue;
             }
             else
             {
-                Debug.Log("플레이어 이속 증가 종료!");
                 playerStats.MoveSpeed -= addValue;
             }
         }
 
-        else if (id == (int)Buff_Effect_byTower.AtkSpeedUp)
+        else if (id == (int)Buff_Effect_byTower.AtkSpeedUp || id == (int)Buff_Effect_byTower.AtkSpeedDown)
         {
             if (state)
             {
-                Debug.Log("플레이어 공속 증가!");
                 playerStats.attackSpeed += addValue;
             }
             else
             {
-                Debug.Log("플레이어 공속 증가 종료!");
                 playerStats.attackSpeed -= addValue;
             }
-        }
-
-        // 플레이어 디버프 적용
-        else if (id == (int)Buff_Effect_byTower.AtkDown)
-        {
-        }
-
-        else if (id == (int)Buff_Effect_byTower.HpRegenDown)
-        {
-        }
-
-        else if (id == (int)Buff_Effect_byTower.MoveSpeedDown)
-        {
-        }
-
-        else if (id == (int)Buff_Effect_byTower.AtkSpeedDown)
-        {
         }
     }
 }

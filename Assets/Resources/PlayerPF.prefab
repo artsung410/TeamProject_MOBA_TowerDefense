@@ -2700,7 +2700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63af9bffffaa28a41ad96eedaf0c8c99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  heroAttackType: 0
   RotateSpeed: 2.5
   RotateVelocity: 0
   Layer:
@@ -2709,6 +2708,7 @@ MonoBehaviour:
   Cam: {fileID: 6842666429008816854}
   targetedEnemy: {fileID: 0}
   perfomMeleeAttack: 0
+  perfomRangeAttack: 0
   EnemyTag: 
   IsAttack: 0
   cursorTextureOriginal: {fileID: 2800000, guid: 94645910bc2c50a41949356810b30d92, type: 3}
@@ -2735,6 +2735,7 @@ MonoBehaviour:
   attackDmg: 1
   attackSpeed: 1
   attackRange: 1
+  AttackType: 0
   MoveSpeed: 1
   Level: 0
   Exp: 0
@@ -2764,7 +2765,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 1037791636690611819}
-  TargetPos: {x: 0, y: 0, z: 0}
 --- !u!114 &3026606992103964819
 MonoBehaviour:
   m_ObjectHideFlags: 0

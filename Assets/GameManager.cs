@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     private void Awake()
     {
         SpawnPlayer();
+        SpawnTower();
     }
 
     private void Start()

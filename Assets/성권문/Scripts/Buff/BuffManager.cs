@@ -26,9 +26,11 @@ public class BuffManager : MonoBehaviourPun
     public static event Action<int, float, bool> towerBuffAdditionEvent = delegate { };
     public static event Action<int, float, bool> playerBuffAdditionEvent = delegate { };
     public static event Action<int, float, bool> minionBuffAdditionEvent = delegate { };
+    public List<BuffData> all_DeBuffDatass = new List<BuffData>();
     public List<BuffData> currentBuffDatas = new List<BuffData>(); // 각 월드에서 생성된 모든 버프들
     public static BuffManager Instance;
     public Dictionary<BuffData, float> buffDic = new Dictionary<BuffData, float>();
+
 
 
     private void Awake()
@@ -38,6 +40,20 @@ public class BuffManager : MonoBehaviourPun
 
     void Start()
     {
+        if(PhotonNetwork.IsMasterClient)
+        {
+            initBuff();
+        }
+        else
+        {
+            StartCoroutine(delayClientInitBuff());
+        }
+    }
+
+    float delayTime = 0.5f;
+    IEnumerator delayClientInitBuff()
+    {
+        yield return new WaitForSeconds(delayTime);
         initBuff();
     }
 
@@ -56,7 +72,7 @@ public class BuffManager : MonoBehaviourPun
         {
             TowerData Towerdata = (TowerData)data.ingameDatas[item];
 
-            if (Towerdata.TowerType == Tower_Type.Buff_Tower || Towerdata.TowerType == Tower_Type.DeBuff_Tower)
+            if (Towerdata.TowerType == Tower_Type.Buff_Tower)
             {
                 TowerData tower = (TowerData)data.ingameDatas[item];
 
@@ -71,10 +87,38 @@ public class BuffManager : MonoBehaviourPun
                 {
                     BuffData buff = (BuffData)tower.Scriptables[i];
                     AddBuff(buff);
+                    AssemblyBuff();
+                }
+            }
+
+            if (Towerdata.TowerType == Tower_Type.DeBuff_Tower)
+            {
+                TowerData tower = (TowerData)data.ingameDatas[item];
+
+                int buffCount = tower.Scriptables.Count;
+
+                if (buffCount == 0)
+                {
+                    return;
+                }
+
+                for (int i = 0; i < buffCount; i++)
+                {
+                    BuffData buff = (BuffData)tower.Scriptables[i];
+                    
+                    photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.Group_ID);
                 }
             }
         }
+    }
 
+    // 상대방에게 디버프 시전
+    [PunRPC]
+    private void RPC_AddDeBuff(int id)
+    {
+        Debug.Log("1to2 RPC^^^^^^");
+        currentBuffDatas.Add(all_DeBuffDatass[id - 5]);
+        playerBuffAdditionEvent.Invoke(id, all_DeBuffDatass[id - 5].EffectValue, false);
         AssemblyBuff();
     }
 
@@ -82,32 +126,14 @@ public class BuffManager : MonoBehaviourPun
     public void AddBuff(BuffData buff)
     {
         currentBuffDatas.Add(buff);
-
-        if (buff.TargetType == Target.Tower)
-        {
-            towerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
-        }
-
-        else if (buff.TargetType == Target.Player)
-        {
-            playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
-        }
+        playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
     }
 
     // 버프 종료
     public void removeBuff(BuffData buff)
     {
         currentBuffDatas.Remove(buff);
-
-        if (buff.TargetType == Target.Tower)
-        {
-            towerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, false);
-        }
-
-        else if (buff.TargetType == Target.Player)
-        {
-            playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, false);
-        }
+        playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, false);
     }
 
     public void removeBuff_All()
