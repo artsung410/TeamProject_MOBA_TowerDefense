@@ -38,6 +38,9 @@ public class Stats : GoogleSheetManager
     public float attackSpeed = 1;
     public float attackRange = 1;
 
+    [Header("공격 방식")]
+    public HeroAttackType AttackType;
+
     // TODO : 이동속도 버프, 디버프 관련해서 새로운 변수 추가할 필요있음
     [Header("이동 관련")]
     public float MoveSpeed = 1;
@@ -66,7 +69,15 @@ public class Stats : GoogleSheetManager
         _playerScript = GetComponent<PlayerBehaviour>();
         _health = GetComponent<Health>();
 
-        StartCoroutine(GetLevelData(warriorURL));
+        // 타입에 따라 가져오는 스탯이 다르다
+        if (AttackType == HeroAttackType.Melee)
+        {
+            StartCoroutine(GetLevelData(warriorURL));
+        }
+        else if(AttackType == HeroAttackType.Ranged)
+        {
+            StartCoroutine(GetLevelData(magicionURL));
+        }
 
         // 구독자 등록
         Health.OnPlayerDieEvent += PlayerLevelUpFactory;
@@ -99,21 +110,24 @@ public class Stats : GoogleSheetManager
         SetCharactorDatas(GetCharactorData.downloadHandler.text);
 
         // 초기화가 너무 느림 => 처음 변수 초기화는 직접 값을 써야할까?
-        //StatInit();
+        StatInit();
     }
-    //public void StatInit()
-    //{
-    //    //Level = 1;
+    public void StatInit()
+    {
+        //Level = 1;
 
-    //    MaxHealth = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.HP]);
-    //    attackDmg = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Dmg]);
-    //    attackRange = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Range]);
-    //    attackSpeed = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Atk_Speed]);
-    //    MoveSpeed = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Move_Speed]);
-    //    maxExp = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Max_Exp]);
-    //    charID = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Character_ID]);
-    //    enemyExp = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Exp_Enemy]);
-    //}
+        MaxHealth = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.HP]);
+        attackDmg = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Dmg]);
+        attackRange = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Range]);
+        attackSpeed = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Atk_Speed]);
+        MoveSpeed = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Move_Speed]);
+        maxExp = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Max_Exp]);
+        charID = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Character_ID]);
+        enemyExp = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Exp_Enemy]);
+
+        //Debug.Log("코루틴 부분 초기화 완료");
+        // 실험결과 코루틴 부분이 start보다 나중에 완료 되었다
+    }
 
 
 
@@ -136,6 +150,7 @@ public class Stats : GoogleSheetManager
         enemyExp = 100;
 
         ExpDetectRange = 20f;
+        //Debug.Log("start부분 초기화 완료");
     }
 
     private void Update()
@@ -148,7 +163,7 @@ public class Stats : GoogleSheetManager
     {
         MaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
 
-        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
+        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]) + 199;
         attackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
         attackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
 
@@ -170,7 +185,7 @@ public class Stats : GoogleSheetManager
 
         // expBag과 나와의 거리를 계산한다
         float dist = Vector3.Distance(expBag.transform.position, this.transform.position);
-        Debug.Log($"죽은 {expBag.name}과 나와의 거리 : {dist}");
+        //Debug.Log($"죽은 {expBag.name}과 나와의 거리 : {dist}");
         
         // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
         if (dist <= ExpDetectRange)

@@ -123,9 +123,7 @@ public class Health : MonoBehaviourPun
             StartCoroutine(DelayDisapearBody());
 
             // 죽었을때 Invoke => 실행이 된다
-            //OnPlayerDieEvent.Invoke(this.gameObject, _stats.enemyExp);
-            OnPlayerDieEvent.Invoke(this.gameObject, 3000);
-
+            OnPlayerDieEvent.Invoke(this.gameObject, _stats.enemyExp);
         }
     }
 
