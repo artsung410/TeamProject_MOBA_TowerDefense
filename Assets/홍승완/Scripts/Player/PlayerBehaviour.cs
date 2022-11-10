@@ -5,12 +5,6 @@ using UnityEngine.AI;
 using Photon.Pun;
 
 
-public enum HeroAttackType
-{
-    Melee,
-    Ranged,
-}
-
 public class PlayerBehaviour : MonoBehaviourPun
 {
     // ###############################################

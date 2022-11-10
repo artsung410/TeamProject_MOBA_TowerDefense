@@ -6,13 +6,20 @@ using UnityEngine.Networking;
 
 public enum Stat_Columns
 {
-    HP,
-    Dmg,
-    Range,
-    Atk_Speed,
-    Move_Speed,
-    Min_Exp,
-    Max_Exp,
+    HP,             // float
+    Dmg,            // float
+    Range,          // float
+    Atk_Speed,      // float
+    Move_Speed,     // float
+    Max_Exp,        // int
+    Character_ID,   // int
+    Exp_Enemy,      // int   
+}
+
+public enum HeroAttackType
+{
+    Melee,
+    Ranged,
 }
 
 public class Stats : GoogleSheetManager
@@ -21,6 +28,7 @@ public class Stats : GoogleSheetManager
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
+
     [Header("체력 스탯")]
     public float MaxHealth = 1;
     //public float health;
@@ -41,8 +49,14 @@ public class Stats : GoogleSheetManager
     public float Exp;
     public float ExpDetectRange;
 
-    private float minExp;
-    private float maxExp;
+    private int maxExp;
+    private int minExp;
+    private int charID;
+    public int enemyExp
+    {
+        get;
+        private set;
+    }
 
     PlayerBehaviour _playerScript;
     Health _health;
@@ -51,27 +65,61 @@ public class Stats : GoogleSheetManager
     {
         _playerScript = GetComponent<PlayerBehaviour>();
         _health = GetComponent<Health>();
-        Debug.Log("Awake 켜짐");
-        StartCoroutine(GetLevelData());
+
+        StartCoroutine(GetLevelData(warriorURL));
 
         // 구독자 등록
         Health.OnPlayerDieEvent += PlayerLevelUpFactory;
         Enemybase.OnMinionDieEvent += PlayerLevelUpFactory;
         Turret.OnTurretDestroyEvent += PlayerLevelUpFactory;
     }
-
-    IEnumerator GetLevelData()
+    public override void SetCharactorDatas(string tsv)
     {
-        UnityWebRequest GetWarriorData = UnityWebRequest.Get(WarriorURL);
-        yield return GetWarriorData.SendWebRequest();
-        SetWarriorStats(GetWarriorData.downloadHandler.text);
+        string[] row = tsv.Split('\n');
+        int rowSize = row.Length;
+        int columnSize = row[0].Split('\t').Length;
+
+        for (int i = 0; i < rowSize; i++)
+        {
+            levelDatas.Add(new List<string>());
+            string[] column = row[i].Split('\t');
+            for (int j = 0; j < columnSize; j++)
+            {
+                levelDatas[i].Add(column[j]);
+            }
+
+            CharactorLevelData.Add(i + 1, levelDatas[i]);
+        }
+    }
+
+    IEnumerator GetLevelData(string url)
+    {
+        UnityWebRequest GetCharactorData = UnityWebRequest.Get(url);
+        yield return GetCharactorData.SendWebRequest();
+        SetCharactorDatas(GetCharactorData.downloadHandler.text);
 
         // 초기화가 너무 느림 => 처음 변수 초기화는 직접 값을 써야할까?
-        StatInit();
+        //StatInit();
     }
+    //public void StatInit()
+    //{
+    //    //Level = 1;
+
+    //    MaxHealth = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.HP]);
+    //    attackDmg = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Dmg]);
+    //    attackRange = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Range]);
+    //    attackSpeed = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Atk_Speed]);
+    //    MoveSpeed = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Move_Speed]);
+    //    maxExp = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Max_Exp]);
+    //    charID = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Character_ID]);
+    //    enemyExp = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Exp_Enemy]);
+    //}
+
+
 
     private void OnEnable()
     {
+        
     }
 
     private void Start()
@@ -84,62 +132,31 @@ public class Stats : GoogleSheetManager
         MoveSpeed = 15;
         minExp = 0;
         maxExp = 100;
+        charID = 1;
+        enemyExp = 100;
 
         ExpDetectRange = 20f;
     }
 
-    public void StatInit()
-    {
-        Level = 1;
-
-        MaxHealth = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.HP]);
-        Debug.Log($"파싱한 체력 수치 : {MaxHealth}");
-        attackDmg = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Dmg]) + 100f;
-        attackRange = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Range]);
-        attackSpeed = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Atk_Speed]);
-        MoveSpeed = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Move_Speed]);
-        minExp = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Min_Exp]);
-        maxExp = float.Parse(WarriorLevelData[Level][(int)Stat_Columns.Max_Exp]);
-    }
-
-
-
     private void Update()
     {
-
-        if (photonView.IsMine)
-        {
-            //if (Input.GetKeyDown(KeyCode.I))
-            //{
-            //    int exp = 30;
-            //    Debug.Log($"얻은 경험치 : {exp}");
-            //    PlayerLevelUpFactory(exp);
-            //    //photonView.RPC(nameof(PlayerLevelUp), RpcTarget.All, exp);
-            //}
-            //if (Input.GetKeyDown(KeyCode.L))
-            //{
-            //    int exp = 3000;
-            //    Debug.Log($"얻은 경험치 : {exp}");
-            //    PlayerLevelUpFactory(exp);
-            //    //photonView.RPC(nameof(PlayerLevelUp), RpcTarget.All, exp);
-            //}
-        }
+        
     }
-
 
     // 레벨에 따른 스텟 증가
     public void SetStats(int level)
     {
-        MaxHealth = float.Parse(WarriorLevelData[level][(int)Stat_Columns.HP]);
+        MaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
 
-        attackDmg = float.Parse(WarriorLevelData[level][(int)Stat_Columns.Dmg]);
-        attackRange = float.Parse(WarriorLevelData[level][(int)Stat_Columns.Range]);
-        attackSpeed = float.Parse(WarriorLevelData[level][(int)Stat_Columns.Atk_Speed]);
+        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
+        attackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
+        attackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
 
-        MoveSpeed = float.Parse(WarriorLevelData[level][(int)Stat_Columns.Move_Speed]);
+        MoveSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Move_Speed]);
 
-        minExp = float.Parse(WarriorLevelData[level][(int)Stat_Columns.Min_Exp]);
-        maxExp = float.Parse(WarriorLevelData[level][(int)Stat_Columns.Max_Exp]);
+        maxExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Max_Exp]);
+        charID = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Character_ID]);
+        enemyExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Exp_Enemy]);
     }
 
     [PunRPC]
@@ -163,7 +180,7 @@ public class Stats : GoogleSheetManager
             while (Exp >= maxExp)
             {
                 // 10레벨 달성시 레벨업하지않고 경험치바는 차되 최대치 이상으론 차지 않는다
-                if (WarriorLevelData.ContainsKey(Level + 1) == false)
+                if (CharactorLevelData.ContainsKey(Level + 1) == false)
                 {
                     Exp = Mathf.Clamp(Exp, minExp, maxExp);
                     return;
@@ -180,66 +197,8 @@ public class Stats : GoogleSheetManager
             }
         }
 
-
     }
 
-    // TODO : 일정범위내(overlapsphere)의 적이 사망(die호출시)할시 플레이어에게 경험치를준다(단, 같은팀 예외(tag처리할것))
-
-    public float tempExp;
-    float rangeMinionExp = 30f;
-    float meleeMinionExp = 40f;
-
-    // 기각 이유 : 죽은 적 판별할때 연속해서 값이 들어옴
-    //IEnumerator ExpDetector()
-    //{
-    //    while (true)
-    //    {
-    //        yield return new WaitForSeconds(0.1f);
-    //        Collider[] expBag = Physics.OverlapSphere(transform.position, ExpDetectRange);
-    //        //Debug.Log($"주변 콜라이더들 : {expBag.Length}");
-    //        if (expBag.Length > 0)
-    //        {
-    //            foreach (Collider _exps in expBag)
-    //            {
-    //                // 검출된 콜라이더들중 죽은객체의 정보 받아오기
-    //                // 죽은 객체가 [플레이어]면 {100}
-    //                // 죽은 객체가 [근거리 미니언]이면 {40}
-    //                // 죽은 객체가 [원거리 미니언]이면 {30}
-    //                // 죽은 객체가 [특수 미니언]이면 {50}
-    //                // 죽은 객체가 [타워]면 {200}
-    //                //Debug.Log($"주변 콜라이더 : {_exps.gameObject.name}");
-
-    //                // 콜라이더중 적만 검색
-    //                if (_exps.gameObject.tag == _playerScript.EnemyTag)
-    //                {
-    //                    // 적 플레이어
-    //                    if (_exps.gameObject.GetComponent<Health>() != null)
-    //                    {
-    //                        Debug.Log("적 확인");
-    //                        Health enemyPlayer = _exps.gameObject.GetComponent<Health>();
-    //                        // 적이 죽었으면
-    //                        if (enemyPlayer.isDeath == true)
-    //                        {
-    //                            // 경험치를 얻는다
-    //                            tempExp += 30f;
-    //                        }
-    //                    }
-
-    //                    if (_exps.gameObject.GetComponent<Enemybase>() != null)
-    //                    {
-    //                        Debug.Log("적 미니언 확인");
-    //                        Enemybase enemyMinion = _exps.gameObject.GetComponent<Enemybase>();
-
-    //                        if (enemyMinion.isDead == true)
-    //                        {
-    //                            tempExp += 15f;
-    //                        }
-    //                    }
-    //                }
-    //            }
-    //        }
-    //    }
-    //}
 
     private void OnDrawGizmos()
     {
@@ -250,7 +209,8 @@ public class Stats : GoogleSheetManager
 
     private void OnDisable()
     {
-        //Debug.Log("Stats disable호출");
-        StopAllCoroutines();
+        //StopAllCoroutines();
     }
+
+
 }
