@@ -26,4 +26,9 @@ public class CardUI : MonoBehaviour, IPointerDownHandler
     {
         animator.SetTrigger("Flip");
     }
+
+    public void AllOpenAnimation()
+    {
+        animator.SetTrigger("Flip");
+    }
 }
