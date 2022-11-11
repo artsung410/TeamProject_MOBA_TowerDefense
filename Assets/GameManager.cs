@@ -120,6 +120,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     int count;
+
+    // TODO : 최적화, 파인드 오브젝트를 안쓰고 객체를 참조할수있는 방법은 없는지? 
     private void SpawnTower()
     {
         count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;

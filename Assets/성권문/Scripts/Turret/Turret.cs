@@ -232,7 +232,7 @@ public class Turret : MonoBehaviourPun
     {
         yield return new WaitForSeconds(1.5f);
         Destroy(particle);
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 
     // =========================== 타워 버프 적용 처리 ===========================

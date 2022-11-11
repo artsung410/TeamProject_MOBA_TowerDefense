@@ -1,5 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using System;
 using UnityEngine.UI;
 
@@ -15,16 +17,16 @@ public class Player : MonoBehaviourPun
     public Health playerHealth;
     public Sprite playerIcon;
 
+    private float defaultRecoveryValue = 1.5f;
+    private float addRecoveryValue = 0f;
     private void Awake()
     {
         BuffManager.playerBuffAdditionEvent += incrementBuffValue;
     }
-
     private void OnEnable()
     {
         GameManager.Instance.CurrentPlayers.Add(gameObject);
     }
-
     private void OnMouseDown()
     {
         if(photonView.IsMine)
@@ -36,14 +38,39 @@ public class Player : MonoBehaviourPun
         
     }
 
+    float elapsedTime;
+    private void Update()
+    {
+        if (photonView.IsMine)
+        {
+            return;
+        }
+
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime >= 1f)
+        {
+            playerHealth.Regenation(defaultRecoveryValue + addRecoveryValue);
+            elapsedTime = 0f;
+        }
+    }
+
     // =========================== 타워 버프 적용 처리 ===========================
     public void incrementBuffValue(int id, float addValue, bool state)
     {
         if (!photonView.IsMine)
         {
+            Debug.Log(gameObject.tag + "내꺼 아님");
             return;
         }
-        
+
+        Debug.Log(gameObject.tag + "내꺼 멎움");
+        StartCoroutine(delayApplyBuff(id, addValue, state));
+    }
+
+    // 플레이어 스탯 초기화가 이루어진 뒤에 디버프적용
+    IEnumerator delayApplyBuff(int id, float addValue, bool state)
+    {
+        yield return new WaitForSeconds(2f);
         photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
     }
 
@@ -62,14 +89,19 @@ public class Player : MonoBehaviourPun
             else
             {
                 playerStats.attackDmg -= addValue;
-
-
             }
         }
 
         else if (id == (int)Buff_Effect_byTower.HpRegenUp || id == (int)Buff_Effect_byTower.HpRegenDown)
         {
-
+            if (state)
+            {
+                addRecoveryValue += addValue;
+            }
+            else
+            {
+                addRecoveryValue -= addValue;
+            }
         }
 
         else if (id == (int)Buff_Effect_byTower.MoveSpeedUp || id == (int)Buff_Effect_byTower.MoveSpeedDown)
@@ -88,11 +120,11 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerStats.attackSpeed += addValue;
+                playerStats.attackSpeed *= addValue;
             }
             else
             {
-                playerStats.attackSpeed -= addValue;
+                playerStats.attackSpeed /= addValue;
             }
         }
     }

@@ -40,13 +40,15 @@ public class BuffManager : MonoBehaviourPun
 
     void Start()
     {
-        if(PhotonNetwork.IsMasterClient)
+        if(PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             initBuff();
+            Debug.Log("플레이어1 initBuff");
         }
         else
         {
             StartCoroutine(delayClientInitBuff());
+            Debug.Log("플레이어2 initBuff");
         }
     }
 
@@ -56,7 +58,6 @@ public class BuffManager : MonoBehaviourPun
         yield return new WaitForSeconds(delayTime);
         initBuff();
     }
-
     public void initBuff()
     {
         TrojanHorse data = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
@@ -118,7 +119,7 @@ public class BuffManager : MonoBehaviourPun
     {
         Debug.Log("1to2 RPC^^^^^^");
         currentBuffDatas.Add(all_DeBuffDatass[id - 5]);
-        playerBuffAdditionEvent.Invoke(id, all_DeBuffDatass[id - 5].EffectValue, false);
+        playerBuffAdditionEvent.Invoke(id, all_DeBuffDatass[id - 5].EffectValue, true);
         AssemblyBuff();
     }
 

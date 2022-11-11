@@ -111,6 +111,7 @@ public class Stats : GoogleSheetManager
 
         // 초기화가 너무 느림 => 처음 변수 초기화는 직접 값을 써야할까?
         StatInit();
+        Debug.Log("플레이어 스탯 초기화 ####");
     }
     public void StatInit()
     {
