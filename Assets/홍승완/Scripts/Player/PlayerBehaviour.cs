@@ -77,7 +77,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     {
         // 되살아났을때 null
         targetedEnemy = null;
-        StartCoroutine(DetectEnemyRange());
+        //StartCoroutine(DetectEnemyRange());
     }
 
     private void Start()
@@ -92,11 +92,9 @@ public class PlayerBehaviour : MonoBehaviourPun
                 gameObject.tag = "Blue";
                 EnemyTag = "Red";
             }
-
             else
             {
                 gameObject.tag = "Red";
-                //gameObject.layer = 8;
                 EnemyTag = "Blue";
             }
         }
@@ -118,8 +116,10 @@ public class PlayerBehaviour : MonoBehaviourPun
             }
         }
 
-        
+        //photonView.RPC(nameof(RPC_ApplyTargetNull), RpcTarget.All);
     }
+
+    // TODO : 죽은 캐릭터를 계속해서 공격한다.
 
     /// <summary>
     /// 주변의 적군 플레이어 감지
@@ -130,27 +130,6 @@ public class PlayerBehaviour : MonoBehaviourPun
         while (true)
         {
             yield return new WaitForSeconds(0.1f);
-            Collider[] enemies = Physics.OverlapSphere(this.transform.position, detectiveRange);
-            if (enemies.Length > 0)
-            {
-                foreach (var _col in enemies)
-                {
-                    if (_col.tag == EnemyTag && _col.gameObject.layer == 7)
-                    {
-                        if (_col.gameObject.GetComponent<Health>() != null)
-                        {
-                            // 적이 죽은 상태라면 더이상 공격하지 않는다
-                            if (_col.gameObject.GetComponent<Health>().isDeath == true)
-                            {
-                                targetedEnemy = null;
-                            }
-
-                        }
-
-                    }
-                }
-
-            }
         }
     }
 
@@ -183,6 +162,10 @@ public class PlayerBehaviour : MonoBehaviourPun
             if (_playerHealth.isDeath == false)
             {
                 MoveTo();
+            }
+            else
+            {
+                IsPlayerDie();
             }
         }
     }
@@ -280,10 +263,12 @@ public class PlayerBehaviour : MonoBehaviourPun
 
                 transform.eulerAngles = new Vector3(0, rotationY, 0);
             }
+            // 사거리 안으로 들어올땐
             else
             {
-                _agent.SetDestination(targetedEnemy.transform.position);
-                _agent.stoppingDistance = _statScript.attackRange + interpolationRange;
+                // 움직이지 않게 현재 위치로 고정
+                //_agent.SetDestination(transform.position);
+                _agent.stoppingDistance = _statScript.attackRange;
 
                 // 타겟을 바라본다
                 Quaternion rotationToLookAt = Quaternion.LookRotation(targetedEnemy.transform.position - transform.position);
@@ -364,10 +349,11 @@ public class PlayerBehaviour : MonoBehaviourPun
     }
     // SMS End-----------------------------------------------//
 
-    float detectiveRange = 5f;
+    float detectiveRange;
 
     private void AutoSearchTarget()
     {
+        detectiveRange = _statScript.attackRange;
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, detectiveRange);
         GameObject shortTarget = null;
         if (colliders.Length > 0)
@@ -418,44 +404,6 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     }
 
-    #region 주석처리
-    //GameObject[] enemies = GameObject.FindGameObjectsWithTag(EnemyTag);
-
-    //Debug.Log($"주변 적들있음? : {enemies}");
-    //if (enemies.Length > 0)
-    //{
-    //    foreach (var detectTarget in enemies)
-    //    {
-    //        float dist = Vector3.Distance(transform.position, detectTarget.transform.position) - interpolationRange;
-
-    //        if (dist <= detectiveRange)
-    //        {
-    //            // 플레이어 우선타겟
-    //            if (detectTarget.GetComponent<PlayerBehaviour>() != null)
-    //            {
-    //                var enemyPlayer = detectTarget.GetComponent<PlayerBehaviour>().gameObject;
-    //                targetedEnemy = enemyPlayer;
-    //            }
-
-    //            else
-    //            {
-    //                targetedEnemy = detectTarget;
-    //            }
-    //        }
-    //    }
-    //}
-
-    #endregion
-
-
-    //private void OnDrawGizmos()
-    //{
-
-    //    Gizmos.color = new Color(1, 0, 0, 0.5f);
-    //    Gizmos.DrawSphere(transform.position, detectiveRange);
-
-    //}
-
     float interpolationRange;
     private void TargetRangeInterpolation()
     {
@@ -467,7 +415,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 플레이어 보간
         if (targetedEnemy.layer == 7)
         {
-            interpolationRange = 0f;
+            interpolationRange = 1f;
         }
         // 미니언 보간
         else if (targetedEnemy.layer == 8)
@@ -486,45 +434,17 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
-    #region Animation Event
-    public void SwordSwingAtTheEnemy()
-    {
-        if (enemyCol == null)
-        {
-            return;
-        }
-
-        if (enemyCol.gameObject.layer == 7)
-        {
-            enemyCol.GetComponent<Health>().OnDamage(_statScript.attackDmg);
-        }
-        else if (enemyCol.gameObject.layer == 8 || enemyCol.gameObject.layer == 13)
-        {
-            enemyCol.GetComponent<Enemybase>().TakeDamage(_statScript.attackDmg);
-        }
-        else if (enemyCol.gameObject.layer == 6)
-        {
-            enemyCol.GetComponent<Turret>().Damage(_statScript.attackDmg);
-        }
-        else if (enemyCol.gameObject.layer == 12)
-        {
-            enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_statScript.attackDmg);
-        }
-
-    }
-
-    #endregion
-
     public void ForSkillAgent(Vector3 destination)
     {
         _agent.SetDestination(destination);
     }
 
 
-
+    // SetActive(false)되면 실행됨
     private void OnDisable()
     {
         StopAllCoroutines();
+
     }
 
 }

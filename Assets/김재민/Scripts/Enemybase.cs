@@ -117,6 +117,7 @@ public class Enemybase : MonoBehaviourPun
             
             if (CurrnetHP <= 0)
             {
+                OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 _navMeshAgent.isStopped = true;
                 OnMinionDieEvent.Invoke(this.gameObject, exp);

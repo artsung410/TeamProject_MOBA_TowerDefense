@@ -11,8 +11,10 @@ public class PlayerRespawn : MonoBehaviourPun
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    Health health;
-    Slider hpBar;
+    public GameObject Renderer;
+
+    public Health health;
+    public Slider hpBar;
     [SerializeField] Transform[] respawnPosition;
 
     [SerializeField] float respawnTime;
@@ -21,8 +23,8 @@ public class PlayerRespawn : MonoBehaviourPun
 
     private void Awake()
     {
-        health = transform.GetChild(2).GetComponent<Health>();
-        hpBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
+        //health = transform.GetChild(2).GetComponent<Health>();
+        //hpBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
     }
 
     // Start is called before the first frame update
@@ -51,7 +53,9 @@ public class PlayerRespawn : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        Respawn();
+
+            Respawn();
+        
     }
 
     float elapsedTime;
@@ -69,6 +73,7 @@ public class PlayerRespawn : MonoBehaviourPun
                 elapsedTime = 0f;
                 health.gameObject.SetActive(true);
                 hpBar.gameObject.SetActive(true);
+                Renderer.SetActive(true);
             }
         }
     }
