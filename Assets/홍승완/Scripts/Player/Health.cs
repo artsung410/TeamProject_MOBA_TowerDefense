@@ -75,8 +75,6 @@ public class Health : MonoBehaviourPun
         hpSlider3D.value = health;
     }
 
-    // TODO : 레벨업한뒤 캐릭터가 한대 맞으면 피가 다시 최대체력으로 한번 채워짐(1400/1500 => 1500/1500 으로 한번 초기화 된다)
-
     [PunRPC]
     public void HealthUpdate(float maxHP)
     {
@@ -134,13 +132,6 @@ public class Health : MonoBehaviourPun
 
     // TODO : 플레이어 콜라이더 제거부분과 렌더러 제거부분 시간 다르게 적용;
     // 콜라이더 제거 => 렌더러 제거 => 게임 오브젝트 제거
-
-
-    //IEnumerator DelayDisapearBody()
-    //{
-    //    yield return new WaitForSeconds(1.5f);
-    //    gameObject.SetActive(false);
-    //}
 
     public void Regenation(float recovery)
     {

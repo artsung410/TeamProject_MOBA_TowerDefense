@@ -184,8 +184,10 @@ public class Stats : GoogleSheetManager
 
         // expBag과 나와의 거리를 계산한다
         float dist = Vector3.Distance(expBag.transform.position, this.transform.position);
-        //Debug.Log($"죽은 {expBag.name}과 나와의 거리 : {dist}");
-        
+
+        // TODO : 상대방 죽음 이벤트에 넣어둠 추후 개선 사항
+        _playerScript.targetedEnemy = null;
+
         // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
         if (dist <= ExpDetectRange)
         {
@@ -199,6 +201,7 @@ public class Stats : GoogleSheetManager
                     Exp = Mathf.Clamp(Exp, minExp, maxExp);
                     return;
                 }
+
                 Level++;
 
                 // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
@@ -217,7 +220,7 @@ public class Stats : GoogleSheetManager
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.2f);
-        Gizmos.DrawSphere(transform.position, ExpDetectRange);
+        Gizmos.DrawSphere(transform.position, attackRange);
     }
 
 

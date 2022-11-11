@@ -68,8 +68,8 @@ public class SpritSword : SkillHandler
         {
             enemyTag = "Blue";
             //Debug.Log(enemyTag);
-
         }
+
     }
 
     void Update()

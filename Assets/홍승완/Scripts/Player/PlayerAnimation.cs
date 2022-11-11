@@ -26,7 +26,7 @@ public class PlayerAnimation : MonoBehaviourPun
     Health hp;
 
     float motionSmoothTime = 0.1f;
-    
+
     void Awake()
     {
         instance = this;
@@ -47,22 +47,26 @@ public class PlayerAnimation : MonoBehaviourPun
     float elapsedTime;
     void Update()
     {
-        if (photonView.IsMine)
-        {
-            MoveAniMotion();
-            CombatMotion();
 
-            if (hp.isDeath)
+        if (hp.isDeath)
+        {
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= 3f)
             {
-                elapsedTime += Time.deltaTime;
-                if (elapsedTime >= 3f)
-                {
-                    elapsedTime = 0f;
-                    gameObject.SetActive(false);
-                }
+                elapsedTime = 0f;
+                gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            if (photonView.IsMine)
+            {
+                MoveAniMotion();
+                CombatMotion();
             }
         }
     }
+
 
     public void DieMotion()
     {
@@ -106,7 +110,7 @@ public class PlayerAnimation : MonoBehaviourPun
             {
                 if (photonView.IsMine)
                 {
-                    _playerScript.IsAttack = true;  
+                    _playerScript.IsAttack = true;
                 }
                 // 공격 모션 재생
                 animator.SetBool("Attack", true);
@@ -147,5 +151,5 @@ public class PlayerAnimation : MonoBehaviourPun
         }
     }
 
-    
+
 }

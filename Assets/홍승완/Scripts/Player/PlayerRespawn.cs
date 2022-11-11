@@ -13,8 +13,8 @@ public class PlayerRespawn : MonoBehaviourPun
 
     public GameObject Renderer;
 
-    Health health;
-    Slider hpBar;
+    public Health health;
+    public Slider hpBar;
     [SerializeField] Transform[] respawnPosition;
 
     [SerializeField] float respawnTime;
@@ -23,8 +23,8 @@ public class PlayerRespawn : MonoBehaviourPun
 
     private void Awake()
     {
-        health = transform.GetChild(2).GetComponent<Health>();
-        hpBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
+        //health = transform.GetChild(2).GetComponent<Health>();
+        //hpBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
     }
 
     // Start is called before the first frame update
@@ -53,10 +53,9 @@ public class PlayerRespawn : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        if (photonView.IsMine)
-        {
+
             Respawn();
-        }
+        
     }
 
     float elapsedTime;
