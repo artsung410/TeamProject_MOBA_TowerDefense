@@ -71,15 +71,18 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        SpawnNexus();
         SpawnPlayer();
     }
+
+  
 
     private void Start()
     {
         //SpawnTower();
 
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
-        //SpawnNexus();
+       
     }
 
     float elaspedTime;

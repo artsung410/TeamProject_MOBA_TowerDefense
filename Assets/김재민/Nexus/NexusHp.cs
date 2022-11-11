@@ -18,22 +18,21 @@ public class NexusHp : MonoBehaviourPun
     [SerializeField]
     private Slider _slider;
     public Sprite nexusSprite;
-  
-    GameObject _player;
+ 
     [SerializeField]
     GameObject healthEffect;
     WaitForSeconds Dealay100 = new WaitForSeconds(1);
-    //Outline _outline;
+    Outline _outline;
     string myTag;
     private void Awake()
     {
-        //_outline = GetComponent<Outline>(); 
+        _outline = GetComponent<Outline>();
         CurrentHp = MaxHp;
-        _player = null;
-        
-        //_outline.enabled = false;
-        //_outline.OutlineWidth = 8f;
-        
+
+        _outline.enabled = false;
+        _outline.OutlineWidth = 8f;
+        healthEffect.SetActive(false);
+
     }
 
 
@@ -60,8 +59,7 @@ public class NexusHp : MonoBehaviourPun
 
     private void Start()
     {
-        healthEffect.SetActive(false);
-        InvokeRepeating("RegenerationSwich", 0, 1f);
+        InvokeRepeating(nameof(RegenerationSwitch), 0, 1f);
     }
 
 
@@ -91,7 +89,7 @@ public class NexusHp : MonoBehaviourPun
     }
 
     [PunRPC]
-    private void RPC_TakeDamage(float Damage)
+    public void RPC_TakeDamage(float Damage)
     {
         if (isDie == false)
         {
@@ -114,13 +112,6 @@ public class NexusHp : MonoBehaviourPun
         nexusMouseDownEvent.Invoke(this, nexusSprite);
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(gameObject.transform.position, 15f);
-
-    }
-
     private void RegenerationSwitch()
     {
         Collider[] WeTeam = Physics.OverlapSphere(gameObject.transform.position, 15);
@@ -134,13 +125,10 @@ public class NexusHp : MonoBehaviourPun
 
             if (col.CompareTag(gameObject.tag) && col.gameObject.layer == 7 && photonView.IsMine) //우리팀이랑 태그 같고 플레이어 + 자기자신에게만 
             {
-                _player = col.gameObject;
-                if (_player.GetComponent<Health>().health < _player.GetComponent<Stats>().MaxHealth)
+                if (col.GetComponent<Health>().health < col.GetComponent<Stats>().MaxHealth)
                 {
                     photonView.RPC("effectSwich", RpcTarget.All, true);
-                   
-                 
-                    _player.GetComponent<Health>().Regenation(25f);
+                    col.GetComponent<Health>().Regenation(25f);
               
                 }
                 else
@@ -166,21 +154,21 @@ public class NexusHp : MonoBehaviourPun
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
 
-            //_outline.OutlineColor = Color.green;
-           // _outline.enabled = true; // 켜주고
+            _outline.OutlineColor = Color.green;
+            _outline.enabled = true; // 켜주고
         }
         else
         {
 
-            //_outline.OutlineColor = Color.red;
-           // _outline.enabled = true;
+            _outline.OutlineColor = Color.red;
+            _outline.enabled = true;
         }
 
     }
 
     private void OnMouseExit()
     {
-        //_outline.enabled = false;
+        _outline.enabled = false;
     }
 
 

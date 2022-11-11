@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2551201962979307240}
   - component: {fileID: 4388667939380931758}
+  - component: {fileID: 2652423865080281213}
   m_Layer: 0
   m_Name: Red_Nexus(JM)
   m_TagString: Untagged
@@ -51,13 +52,30 @@ MonoBehaviour:
   prefixField: -1
   Synchronization: 3
   OwnershipTransfer: 0
-  observableSearch: 2
+  observableSearch: 0
   ObservedComponents:
   - {fileID: 9081135033727646137}
   - {fileID: 4458051560651978847}
+  - {fileID: 2652423865080281213}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!114 &2652423865080281213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78960193729479774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &237407664826382267
 GameObject:
   m_ObjectHideFlags: 0
@@ -10072,6 +10090,7 @@ GameObject:
   - component: {fileID: 3717854919454315718}
   - component: {fileID: 5716320643700282385}
   - component: {fileID: 4458051560651978847}
+  - component: {fileID: 7138417620734450304}
   m_Layer: 5
   m_Name: Slider
   m_TagString: Untagged
@@ -10087,7 +10106,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3684677089846353081}
   m_LocalRotation: {x: 0.70090926, y: 0, z: 0, w: 0.71325046}
-  m_LocalPosition: {x: 0, y: 0, z: 0.63}
+  m_LocalPosition: {x: 0, y: 0, z: -420.2}
   m_LocalScale: {x: 0.49939, y: 0.40577, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10098,7 +10117,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 89, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -895.04, y: -526.69}
+  m_AnchoredPosition: {x: -926.33, y: -924.56}
   m_SizeDelta: {x: 50, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &5716320643700282385
@@ -10168,6 +10187,29 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &7138417620734450304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3684677089846353081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 4458051560651978847}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &4917028438729263112
 GameObject:
   m_ObjectHideFlags: 0
@@ -10570,6 +10612,7 @@ GameObject:
   - component: {fileID: 8866098202215727322}
   - component: {fileID: 9081135033727646137}
   - component: {fileID: 3403123719203419336}
+  - component: {fileID: 7322070354624787680}
   m_Layer: 12
   m_Name: ZMOBA_Prop_ Birthplace_A (2)
   m_TagString: Red
@@ -10725,6 +10768,29 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &7322070354624787680
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7077885181604863955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 9081135033727646137}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &7162776961592197863
 GameObject:
   m_ObjectHideFlags: 0

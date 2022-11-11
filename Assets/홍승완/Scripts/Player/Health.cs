@@ -103,7 +103,7 @@ public class Health : MonoBehaviourPun
     {
         if (isDeath)
         {
-            StopCoroutine(DelayDisapearBody());
+            //StopCoroutine(DelayDisapearBody());
             return;
         }
 
@@ -121,11 +121,12 @@ public class Health : MonoBehaviourPun
             isDeath = true;
             ani.DieMotion();
             hpSlider3D.gameObject.SetActive(false);
-
-            StartCoroutine(DelayDisapearBody());
-
             // 죽었을때 Invoke => 실행이 된다
             OnPlayerDieEvent.Invoke(this.gameObject, _stats.enemyExp);
+
+            //StartCoroutine(DelayDisapearBody());
+            gameObject.SetActive(false);
+
         }
     }
 
