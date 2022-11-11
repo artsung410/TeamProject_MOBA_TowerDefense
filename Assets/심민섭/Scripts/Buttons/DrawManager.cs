@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,6 +37,8 @@ public class DrawManager : MonoBehaviour
 
     // Other 인벤토리
     private GameObject otherInventory;
+    // Warrior 인벤토리
+    private GameObject warriorInventory;
 
     // 현재 까고 있는 박스 정보 저장
     [Header("Box 정보")]
@@ -56,6 +60,8 @@ public class DrawManager : MonoBehaviour
 
         // Other 인벤토리
         otherInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject; // Slots
+        // Warrior 인벤토리
+        warriorInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
 
         // 아이템 DB에 들어온 id와 같은 아이템이 있으면 해당 아이템의 오브젝트를 복사해서 itemOnObject.item에 넣어 준다.
         //itemOnObject.item = itemDatabase.getItemByID(id);
@@ -201,8 +207,14 @@ public class DrawManager : MonoBehaviour
         openCard_tenButton.GetComponent<Button>().interactable = true;
     }
 
-    // 획득한 아이템을 담을 공간
+    // 획득한 아이템 인덱스을 담을 공간
     public List<int> getDrawResult = new List<int>();
+
+    // 획득한 아이템 오브젝트을 담을 공간(RandomSelect -> DrawManager)
+    public List<Item> getDrawResultItem = new List<Item>();
+
+    // 이게 진짜 진짜 드로우해서 뽑은 카드임!!
+    public List<Item> ResultItem = new List<Item>();
 
     // 카드 오픈 시 아이템이 인벤토리로 들어간다.
     // 1. 카드는 오픈 시 getItemList로 데이터를 넣는다.
@@ -223,6 +235,37 @@ public class DrawManager : MonoBehaviour
         }
     }
 
+    // 뽑은 카드 정리(자료구조에서 중복 값 찾기)
+    private void DrawCardOrganize_one()
+    {   
+        // 아이템이 없을 경우 실행
+        var duplicates = getDrawResultItem.GroupBy(x => x)
+                                        .SelectMany(g => g.Skip(1))
+                                        .Distinct()
+                                        .ToList();
+        var duplicatesCnt = duplicates.Count;
+
+        ResultItem = getDrawResultItem.Distinct().ToList();
+
+        for (int i = 0; i < duplicatesCnt; i++) // 2
+        {
+            for (int j = 0; j < ResultItem.Count; j++) // 8
+            {
+                if (duplicates[i].itemID == ResultItem[j].itemID) // 30, 37  == 30, 
+                {
+                    ResultItem[j].itemValue += 1;
+                    continue;
+                }
+            }
+        }
+        /*Debug.Log(duplicates.Count);
+        Debug.Log(duplicates[0].itemID);*/
+    }
+
+    private void DrawCardOrganize_two()
+    {
+        // 아이템이 이미 아이템에 존재할 경우 실행
+    }
 
     // Retry 버튼을 클릭 시 다시 이전 갯수대로 뽑는다. 
     public void RandomCardDraw()
@@ -230,8 +273,32 @@ public class DrawManager : MonoBehaviour
 
     }
 
+    private GameObject itemObjProduce;
+    private ItemOnObject itemProduce;
+    // 아이템 오브젝트 생성 및 이동 함수
+    public void ItemProduceAndIventoryMove()
+    {
+        DrawCardOrganize_one();
+        //Debug.Log($"getDrawResultItem.Count : {getDrawResultItem.Count}"); // OK
+        for (int i = 0; i < ResultItem.Count; i++) // 10
+        {
+            // 아이템 오브젝트를 복제한다.
+            itemObjProduce = (GameObject)Instantiate(prefabItem);
+            // ItemOnObject 스크립트를 가져온다.
+            itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
+            // 아이템 정보를 복사한다.
+            itemProduce.item = ResultItem[i];
+
+            itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(i));
+            itemObjProduce.transform.localPosition = Vector3.zero;
+            itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+        }
+    }
+
     // 카드 구매 후 재화 업데이트 예정 --------------------------------------------
 
     // ----------------------------------------------------------------------------
+
+
 }
 
