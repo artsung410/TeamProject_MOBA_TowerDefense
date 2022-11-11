@@ -145,8 +145,8 @@ public class InventoryEditor : Editor
 
         EditorGUI.indentLevel++;
         EditorGUI.BeginChangeCheck();
-        EditorGUILayout.IntSlider(inventoryHeight, 1, 10, new GUIContent("Height"));
-        EditorGUILayout.IntSlider(inventoryWidth, 1, 10, new GUIContent("Width"));
+        //EditorGUILayout.IntSlider(inventoryHeight, 1, 10, new GUIContent("Height"));
+        //EditorGUILayout.IntSlider(inventoryWidth, 1, 10, new GUIContent("Width"));
         if (EditorGUI.EndChangeCheck())
         {
             inv.setImportantVariables();
