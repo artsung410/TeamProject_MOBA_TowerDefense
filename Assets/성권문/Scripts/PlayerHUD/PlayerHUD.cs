@@ -466,7 +466,7 @@ public class PlayerHUD : MonoBehaviourPun
 
         playerHealthBar.fillAmount = playerHp.hpSlider3D.value / playerHp.hpSlider3D.maxValue;
         playerHp2D = playerHp.hpSlider3D.value;
-        playerHealthBarTMpro.text = playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
+        playerHealthBarTMpro.text = (int)playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
     }
 
     #endregion
@@ -496,7 +496,7 @@ public class PlayerHUD : MonoBehaviourPun
 
             InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
             Hp2D = enemyHp.hpSlider3D.value;
-            InfoHealthBarTMPro.text = Hp2D + " / " + enemyHp.hpSlider3D.maxValue;
+            InfoHealthBarTMPro.text = (int)Hp2D + " / " + enemyHp.hpSlider3D.maxValue;
 
             float dmg = currentPlayerforInfo.playerStats.attackDmg;
             float atkSpeed = currentPlayerforInfo.playerStats.attackSpeed;
@@ -522,7 +522,7 @@ public class PlayerHUD : MonoBehaviourPun
             // 실시간 체력 동기화
             InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
             Hp2D = currentTurretforInfo.currentHealth;
-            InfoHealthBarTMPro.text = Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
+            InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
 
             // 실시간 dps / speed 동기화
             float dmg = currentTurretforInfo.attack;
@@ -546,7 +546,7 @@ public class PlayerHUD : MonoBehaviourPun
 
             InfoHealthBar.fillAmount = currentMinionforInfo.CurrnetHP / currentMinionforInfo.HP;
             Hp2D = currentMinionforInfo.CurrnetHP;
-            InfoHealthBarTMPro.text = Hp2D + " / " + currentMinionforInfo.HP;
+            InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentMinionforInfo.HP;
         }
 
         else if (INFO == InfoState.Nexus)
@@ -563,7 +563,7 @@ public class PlayerHUD : MonoBehaviourPun
 
             InfoHealthBar.fillAmount = currentNexusforInfo.CurrentHp / currentNexusforInfo.MaxHp;
             Hp2D = currentNexusforInfo.CurrentHp;
-            InfoHealthBarTMPro.text = Hp2D + " / " + currentNexusforInfo.MaxHp;
+            InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentNexusforInfo.MaxHp;
         }
 
 
