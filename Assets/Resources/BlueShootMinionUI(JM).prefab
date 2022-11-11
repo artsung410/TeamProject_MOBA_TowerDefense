@@ -4397,6 +4397,7 @@ GameObject:
   - component: {fileID: 4668862640441847331}
   - component: {fileID: 2367971786927999613}
   - component: {fileID: 2644063976725451284}
+  - component: {fileID: 5735118018644390825}
   m_Layer: 8
   m_Name: BlueShotMinion(JM)
   m_TagString: Blue
@@ -4626,6 +4627,30 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &5735118018644390825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6607732890056582106}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 8958009462459397221}
+  - {fileID: 4668862640441847331}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &6607732890056582108
 GameObject:
   m_ObjectHideFlags: 0
@@ -9618,7 +9643,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1530073406299247497}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0

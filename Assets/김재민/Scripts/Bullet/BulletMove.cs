@@ -51,8 +51,7 @@ public class BulletMove : MonoBehaviourPun
         // 미니언일 때 처리
         if (photonView.IsMine)
         {
-         
-
+        
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
