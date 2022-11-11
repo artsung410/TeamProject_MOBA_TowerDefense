@@ -24,7 +24,7 @@ public class EnemyHpBar : MonoBehaviourPun
     {
         if(Enemy == null)
         {
-            PhotonNetwork.Destroy(gameObject);
+            Destroy(gameObject);
         }
 
         _slider.value = enemybase.CurrnetHP / enemybase.HP;

@@ -91,6 +91,11 @@ public class NexusHp : MonoBehaviourPun
     [PunRPC]
     public void RPC_TakeDamage(float Damage)
     {
+        if(isDie == true)
+        {
+            return;
+        }
+
         if (isDie == false)
         {
 

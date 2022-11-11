@@ -14,28 +14,19 @@ public class EnemySatatus : Enemybase
     public Transform _target;
     public Transform _PrevTarget { get; private set; }
     public bool Targeton = false;
-  public  enum ESTATE
+    public enum ESTATE
     {
         move,
         attack
     }
     public ESTATE _estate;
-    public enum EMINIOMTYPE
-    {
-        Nomal,
-        Shot,
-        Special,
-    }
-    public EMINIOMTYPE _eminiomtype;
 
     float distance;
 
     protected override void Awake()
     {
-        base.Awake();   
+        base.Awake();
         _estate = ESTATE.move;
-        _navMeshAgent.enabled = false;
-        _navMeshAgent.enabled = true;
         CurrnetHP = HP;
 
     }
@@ -47,7 +38,7 @@ public class EnemySatatus : Enemybase
         {
             if (Enemy.layer == 14)
             {
-                
+
                 _target = Enemy.transform; // 우물의 위치를 타켓으로 할당
                 Debug.Log($"{Enemy.transform.position}");
                 _PrevTarget = _target; // 
@@ -65,7 +56,7 @@ public class EnemySatatus : Enemybase
         moveSpeed = _navMeshAgent.speed;
     }
 
-    
+
     private IEnumerator move() // 움직임  //목표지점까지 움직인다 . 타켓발견 -> 멈춰서 공격 -> 타켓 죽음 -> 타겟변경 -> 타
     {
 
@@ -78,7 +69,7 @@ public class EnemySatatus : Enemybase
                 transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
                 _navMeshAgent.SetDestination(_target.position);
             }
-            transform.LookAt(new Vector3(_target.position.x,0,_target.position.z)); // 타켓을 바라봄
+            transform.LookAt(new Vector3(_target.position.x, 0, _target.position.z)); // 타켓을 바라봄
             Vector3 vecDistance = _target.position - transform.position; //거리계산
             float distance = vecDistance.sqrMagnitude; // 최적화
             if (distance <= attackRange * attackRange) //최적화 공격범위 안에있을때
@@ -93,7 +84,7 @@ public class EnemySatatus : Enemybase
     {
         while (_estate == ESTATE.attack)
         {
-            
+
             if (_target == null)
             {
                 Targeton = false;
@@ -122,7 +113,7 @@ public class EnemySatatus : Enemybase
     }
     private IEnumerator StateChange()
     {
-        
+
         while (true)
         {
 
@@ -154,33 +145,20 @@ public class EnemySatatus : Enemybase
             if (collider.CompareTag(EnemyTag)) // 범위안에 적 발견
             {
 
-                if (_eminiomtype == EMINIOMTYPE.Special) //특수미니언일때
+                if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 7 || collider.gameObject.layer == 8 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
                 {
-                    if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 12) //타워랑 넥서스만 공격가능
-                    {
-                        
-                        Targeton = true;
-                        _target = collider.transform;
-                        _navMeshAgent.SetDestination(_target.position);
-                    }
-                }
-                else //나머지 미니언일때
-                {
-                    if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 7 || collider.gameObject.layer == 8 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
-                    {
-                        
-                        Targeton = true;
-                        _target = collider.transform;
-                        _navMeshAgent.SetDestination(_target.position);
-                    }
 
-
+                    Targeton = true;
+                    _target = collider.transform;
+                    _navMeshAgent.SetDestination(_target.position);
                 }
-                //레이어로 확인해서 공격타켓 설정
 
             }
+            //레이어로 확인해서 공격타켓 설정
+
         }
     }
 }
+
 
 

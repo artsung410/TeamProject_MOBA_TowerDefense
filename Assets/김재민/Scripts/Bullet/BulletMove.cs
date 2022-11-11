@@ -12,7 +12,7 @@ public class BulletMove : MonoBehaviourPun
     // ###############################################
 
 
-    public Transform tg { get; set; }
+    public Transform tg;
 
     new Rigidbody rigidbody;
     public float turn;
@@ -27,10 +27,12 @@ public class BulletMove : MonoBehaviourPun
 
     private void FixedUpdate()
     {
-        if (tg == null)
+       
+        if(tg == null)
         {
             return;
         }
+        
 
         // 유도탄
         if (tg.position != null) //타켓이 있을때
@@ -42,6 +44,7 @@ public class BulletMove : MonoBehaviourPun
         else
         {
             PhotonNetwork.Destroy(gameObject);
+           
         }
 
     }
@@ -78,6 +81,7 @@ public class BulletMove : MonoBehaviourPun
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                Debug.Log($" 이름 : {other.gameObject}");
                 PhotonNetwork.Destroy(gameObject);
             }
         }

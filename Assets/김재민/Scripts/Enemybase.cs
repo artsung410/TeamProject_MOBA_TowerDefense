@@ -5,8 +5,16 @@ using Photon.Pun;
 using UnityEngine.AI;
 using System;
 
+public enum EMINIONTYPE
+{
+    Nomal,
+    Shot,
+    Special,
+}
+
 public class Enemybase : MonoBehaviourPun
 {
+    public EMINIONTYPE _eminontpye;
     // ###############################################
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
@@ -45,15 +53,16 @@ public class Enemybase : MonoBehaviourPun
     protected Transform Diepos;
     public bool isDead = false;
 
-    private CapsuleCollider _capsuleCollider;
+    public CapsuleCollider _capsuleCollider;
     private Outline _outline;
 
-    
+
 
 
 
     protected virtual void Awake()
     {
+        _eminontpye = EMINIONTYPE.Nomal;
         _outline = GetComponent<Outline>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
@@ -62,6 +71,13 @@ public class Enemybase : MonoBehaviourPun
 
     protected virtual void OnEnable() // 생성
     {
+        if (GetComponent<BulletSpawn>() != null) // 타입구분
+        {
+            _eminontpye = EMINIONTYPE.Shot;
+        }
+        _navMeshAgent.enabled = false;
+        _navMeshAgent.enabled = true;
+
         _outline.enabled = false;
         _outline.OutlineWidth = 8f;
         CurrnetHP = HP;
@@ -103,8 +119,9 @@ public class Enemybase : MonoBehaviourPun
 
     public void TakeDamage(float Damage)
     {
+
         photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
-       
+
     }
 
     float exp = 30f;
@@ -114,20 +131,22 @@ public class Enemybase : MonoBehaviourPun
         if (isDead == false)
         {
             CurrnetHP -= Damage;
-            
             if (CurrnetHP <= 0)
             {
                 _capsuleCollider.enabled = false;
-                _navMeshAgent.isStopped = true;
+                if (_navMeshAgent == true)
+                {
+                    _navMeshAgent.isStopped = true;
+
+                }
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
-                gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
 
             }
-            
+
         }
-       
+
     }
 
 
@@ -153,9 +172,12 @@ public class Enemybase : MonoBehaviourPun
         {
             if (CurrnetHP <= 0)
             {
-                Debug.Log("으앙 나죽어");
                 _capsuleCollider.enabled = false;
-                _navMeshAgent.isStopped = true;
+                if (_navMeshAgent.enabled == true)
+                {
+                    _navMeshAgent.isStopped = true;
+
+                }
                 gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
@@ -179,7 +201,7 @@ public class Enemybase : MonoBehaviourPun
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
 
-            _outline.OutlineColor = Color.green ;
+            _outline.OutlineColor = Color.green;
             _outline.enabled = true; // 켜주고
         }
         else
@@ -188,7 +210,7 @@ public class Enemybase : MonoBehaviourPun
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }
-        
+
 
     }
     private void OnMouseExit()

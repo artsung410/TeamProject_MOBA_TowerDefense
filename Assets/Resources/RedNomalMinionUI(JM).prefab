@@ -311,6 +311,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eminontpye: 0
   moveSpeed: 1
   attackRange: 6
   Damage: 10
@@ -321,10 +322,10 @@ MonoBehaviour:
   EnemyTag: 
   myTag: 
   isDead: 0
+  _capsuleCollider: {fileID: 0}
   _target: {fileID: 0}
   Targeton: 0
   _estate: 0
-  _eminiomtype: 0
 --- !u!136 &7338123734904209476
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -6518,8 +6519,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 1996252356843868544}
-  - {fileID: 3743644269620019485}
   - {fileID: 5443969764393613382}
   sceneViewId: 0
   InstantiationId: 0
