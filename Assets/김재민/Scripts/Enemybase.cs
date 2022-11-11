@@ -120,6 +120,7 @@ public class Enemybase : MonoBehaviourPun
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 _navMeshAgent.isStopped = true;
+                OnMinionDieEvent.Invoke(this.gameObject, exp);
                 gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;

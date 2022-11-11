@@ -48,7 +48,8 @@ public class EnemySatatus : Enemybase
             if (Enemy.layer == 14)
             {
                 
-                _target = Enemy.transform;
+                _target = Enemy.transform; // 우물의 위치를 타켓으로 할당
+                Debug.Log($"{Enemy.transform.position}");
                 _PrevTarget = _target; // 
             }
         }
@@ -59,7 +60,7 @@ public class EnemySatatus : Enemybase
         StartCoroutine(StateChange());
         InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
 
-        _navMeshAgent.SetDestination(_target.position); // 넥서스 좌표
+        _navMeshAgent.SetDestination(_PrevTarget.position); // 넥서스 좌표
         _navMeshAgent.speed = 5f;
         moveSpeed = _navMeshAgent.speed;
     }
@@ -105,7 +106,6 @@ public class EnemySatatus : Enemybase
             float AtkDistance = Vector3.SqrMagnitude(vecAtkDistance);
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
-            //Debug.Log($"{AtkDistance},{attackRange * attackRange}");
             transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
             // 애니메이션 추가 + 공격데미지 입히기
             //공격쿨타임
@@ -113,8 +113,7 @@ public class EnemySatatus : Enemybase
             {
                 _animator.SetBool("Attack", false);
                 _navMeshAgent.isStopped = false;
-                _target = _PrevTarget;
-                _navMeshAgent.SetDestination(_target.position);
+                _navMeshAgent.SetDestination(_PrevTarget.position);
                 _estate = ESTATE.move;
                 break;
             }

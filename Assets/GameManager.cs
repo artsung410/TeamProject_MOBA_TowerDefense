@@ -73,15 +73,19 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        SpawnNexus();
         SpawnPlayer();
+        SpawnTower();
     }
+
+  
 
     private void Start()
     {
         SpawnTower();
 
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
-        //SpawnNexus();
+       
     }
 
     float elaspedTime;
@@ -121,6 +125,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     int count;
+
+    // TODO : 최적화, 파인드 오브젝트를 안쓰고 객체를 참조할수있는 방법은 없는지? 
     private void SpawnTower()
     {
         count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;

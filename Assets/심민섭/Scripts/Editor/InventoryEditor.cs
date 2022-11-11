@@ -77,7 +77,7 @@ public class InventoryEditor : Editor
         showInventorySettings = EditorGUILayout.Foldout(showInventorySettings, "Inventory Settings");
         if (showInventorySettings)
         {
-            //sizeOfInventoryGUI();
+            sizeOfInventoryGUI();
         }
         GUILayout.EndVertical();
 
@@ -87,7 +87,7 @@ public class InventoryEditor : Editor
             showStackableItemsSettings = EditorGUILayout.Foldout(showStackableItemsSettings, "Stacking/Splitting");
             if (showStackableItemsSettings)
             {
-                //stackableItemsSettings();
+                stackableItemsSettings();
                 GUILayout.Space(20);
             }
             GUILayout.EndVertical();
@@ -145,8 +145,8 @@ public class InventoryEditor : Editor
 
         EditorGUI.indentLevel++;
         EditorGUI.BeginChangeCheck();
-        EditorGUILayout.IntSlider(inventoryHeight, 1, 10, new GUIContent("Height"));
-        EditorGUILayout.IntSlider(inventoryWidth, 1, 10, new GUIContent("Width"));
+        //EditorGUILayout.IntSlider(inventoryHeight, 1, 10, new GUIContent("Height"));
+        //EditorGUILayout.IntSlider(inventoryWidth, 1, 10, new GUIContent("Width"));
         if (EditorGUI.EndChangeCheck())
         {
             inv.setImportantVariables();
@@ -206,22 +206,50 @@ public class InventoryEditor : Editor
         if (!inv.characterSystem())
         {
             // 인스펙터의 라벨(명칭)을 Add an item으로 명명
-            GUILayout.Label("Add an item:");
+            GUILayout.Label("Add an Skill item: (스킬은 스킬만 Add 하세요!!)");
 
             //inv.setImportantVariables(); // 상단 GUI 요소에 공백
             EditorGUILayout.BeginHorizontal(); // 수평 GUI 요소 시작
             // 인스펙터가 가로로 생성된다.
 
             // 아이템 DB 오브젝트를 생성하고
-            ItemDataBaseList inventoryItemList = (ItemDataBaseList)Resources.Load("ItemDatabase");
+            ItemDataBaseList inventoryItemList_skill = (ItemDataBaseList)Resources.Load("SkillDatabase");
 
             // itemcount 길이의 문자열 배열 생성
-            string[] items = new string[inventoryItemList.itemList.Count];
-            for (int i = 1; i < items.Length; i++)
+            string[] items_skill = new string[inventoryItemList_skill.itemList.Count];
+            for (int i = 1; i < items_skill.Length; i++)
             {
-                items[i] = inventoryItemList.itemList[i].itemName;
+                items_skill[i] = inventoryItemList_skill.itemList[i].itemName;
             }
-            itemID = EditorGUILayout.Popup("", itemID, items, EditorStyles.popup);
+            itemID = EditorGUILayout.Popup("", itemID, items_skill, EditorStyles.popup);
+            itemValue = EditorGUILayout.IntField("", itemValue, GUILayout.Width(40));
+            GUI.color = Color.green;
+            if (GUILayout.Button("Add Item"))
+            {
+                inv.addItemToInventory(itemID, itemValue);
+                inv.stackableSettings();
+            }
+            inv.OnUpdateItemList();
+            EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료
+
+            GUI.color = Color.white;
+            //---------------------------------------------------------------------------------
+            GUILayout.Label("Add an Tower item: (타워는 'Panel_Inventor'에서 Add 하세요!!)");
+
+            //inv.setImportantVariables(); // 상단 GUI 요소에 공백
+            EditorGUILayout.BeginHorizontal(); // 수평 GUI 요소 시작
+            // 인스펙터가 가로로 생성된다.
+
+            // 아이템 DB 오브젝트를 생성하고
+            ItemDataBaseList inventoryItemList_tower = (ItemDataBaseList)Resources.Load("TowerDatabase");
+
+            // itemcount 길이의 문자열 배열 생성
+            string[] items_tower = new string[inventoryItemList_tower.itemList.Count];
+            for (int i = 1; i < items_tower.Length; i++)
+            {
+                items_tower[i] = inventoryItemList_tower.itemList[i].itemName;
+            }
+            itemID = EditorGUILayout.Popup("", itemID, items_tower, EditorStyles.popup);
             itemValue = EditorGUILayout.IntField("", itemValue, GUILayout.Width(40));
             GUI.color = Color.green;
             if (GUILayout.Button("Add Item"))

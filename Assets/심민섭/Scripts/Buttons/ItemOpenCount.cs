@@ -22,5 +22,8 @@ public class ItemOpenCount : MonoBehaviour
     public void MulPayAmount()
     {
         DrawManager.instance.boxCount = 10;
+        ColorBlock colorBlock = gameObject.transform.parent.GetChild(2).gameObject.GetComponent<Button>().colors;
+        colorBlock.normalColor = Color.white;
+        gameObject.transform.parent.GetChild(2).gameObject.GetComponent<Button>().colors = colorBlock;
     }
 }

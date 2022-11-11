@@ -136,7 +136,6 @@ public class Health : MonoBehaviourPun
     public void Regenation(float recovery)
     {
         photonView.RPC("PRC_regeneration", RpcTarget.All, recovery);
-
     }
     
     

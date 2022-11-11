@@ -110,6 +110,7 @@ public class Stats : GoogleSheetManager
         SetCharactorDatas(GetCharactorData.downloadHandler.text);
 
         StatInit();
+        Debug.Log("플레이어 스탯 초기화 ####");
     }
     public void StatInit()
     {

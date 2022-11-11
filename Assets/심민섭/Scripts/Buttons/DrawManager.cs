@@ -202,7 +202,7 @@ public class DrawManager : MonoBehaviour
     }
 
     // 획득한 아이템을 담을 공간
-    public List<GameObject> getItemList = new List<GameObject>();
+    public List<int> getDrawResult = new List<int>();
 
     // 카드 오픈 시 아이템이 인벤토리로 들어간다.
     // 1. 카드는 오픈 시 getItemList로 데이터를 넣는다.
