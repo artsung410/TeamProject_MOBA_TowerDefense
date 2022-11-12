@@ -69,8 +69,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool isGameEnd;
     public string winner;
 
+    public TrojanHorse myData;
+
     private void Awake()
     {
+        myData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         SpawnNexus();
         SpawnPlayer();
         SpawnTower();
@@ -127,7 +130,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // TODO : 최적화, 파인드 오브젝트를 안쓰고 객체를 참조할수있는 방법은 없는지? 
     private void SpawnTower()
     {
-        count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
+        count = myData.cardId.Count;
         if (count == 0)
         {
             return;
@@ -135,14 +138,14 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[0];
-            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[0] - 4;
+            GameObject tower = myData.cardPrefab[0];
+            int slotIndex = myData.cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
         }
         else
         {
-            GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[0];
-            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[0] - 4;
+            GameObject tower = myData.cardPrefab[0];
+            int slotIndex = myData.cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
         }
     }
@@ -159,20 +162,19 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
             {
-                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[idx];
-                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[idx] - 4;
+                GameObject tower = myData.cardPrefab[idx];
+                int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
             }
             else
             {
-                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[idx];
-                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[idx] - 4;
+                GameObject tower = myData.cardPrefab[idx];
+                int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
             }
 
             idx++;
         }
-        
     }
 
   private void SpawnNexus()
