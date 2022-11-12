@@ -112,9 +112,20 @@ public class BuffManager : MonoBehaviourPun
     //    }
     //}
 
-    public void AddDebuff(BuffData buff)
+    // 버프 시작
+    public void AddBuff(BuffData buff)
     {
-        photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.Group_ID);
+        if (buff.EffectType == Effect_Type.Buff)
+        {
+            currentBuffDatas.Add(buff);
+            playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
+        }
+        else
+        {
+            photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.Group_ID);
+        }
+
+        AssemblyBuff();
     }
 
     // 상대방에게 디버프 시전
@@ -125,13 +136,6 @@ public class BuffManager : MonoBehaviourPun
         currentBuffDatas.Add(all_DeBuffDatass[id - 5]);
         playerBuffAdditionEvent.Invoke(id, all_DeBuffDatass[id - 5].EffectValue, true);
         AssemblyBuff();
-    }
-
-    // 버프 시작
-    public void AddBuff(BuffData buff)
-    {
-        currentBuffDatas.Add(buff);
-        playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
     }
 
     // 버프 종료

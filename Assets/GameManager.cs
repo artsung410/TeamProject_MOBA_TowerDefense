@@ -179,12 +179,24 @@ public class GameManager : MonoBehaviourPunCallbacks
                 GameObject tower = myData.cardPrefab[idx];
                 int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
+
+                TowerData towerData = newTower.GetComponent<Turret>().towerData;
+                if(towerData.TowerType == Tower_Type.Buff_Tower || towerData.TowerType == Tower_Type.DeBuff_Tower)
+                {
+                    BuffManager.Instance.AddBuff((BuffData)towerData.Scriptables[0]);
+                }
             }
             else
             {
                 GameObject tower = myData.cardPrefab[idx];
                 int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
+
+                TowerData towerData = newTower.GetComponent<Turret>().towerData;
+                if (towerData.TowerType == Tower_Type.Buff_Tower || towerData.TowerType == Tower_Type.DeBuff_Tower)
+                {
+                    BuffManager.Instance.AddBuff((BuffData)towerData.Scriptables[0]);
+                }
             }
 
             idx++;
