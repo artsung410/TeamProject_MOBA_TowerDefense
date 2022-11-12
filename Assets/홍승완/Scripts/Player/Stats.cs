@@ -175,7 +175,7 @@ public class Stats : GoogleSheetManager
         enemyExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Exp_Enemy]);
     }
 
-    [PunRPC]
+    //[PunRPC]
     public void PlayerLevelUpFactory(GameObject expBag, float exp)
     {
         // expBag와 나의 tag가 같으면 같은팀이니까 return한다
@@ -204,7 +204,7 @@ public class Stats : GoogleSheetManager
                 Level++;
 
                 // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
-                GameManager.Instance.UnlockTower(Level);
+                GameManager.Instance.UnlockTower(gameObject.tag, Level);
                 SetStats(Level);
                 photonView.RPC(nameof(_health.HealthUpdate), RpcTarget.All, MaxHealth);
 

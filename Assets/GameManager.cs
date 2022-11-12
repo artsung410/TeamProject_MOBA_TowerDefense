@@ -79,14 +79,22 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnTower();
     }
 
-  
-
     private void Start()
     {
         //SpawnTower();
 
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
-       
+
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        {
+            gameObject.tag = "Blue";
+        }
+
+        else
+        {
+            gameObject.tag = "Red";
+        }
+
     }
 
     float elaspedTime;
@@ -151,12 +159,18 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     int idx = 1;
-    public void UnlockTower(int level)
+    public void UnlockTower(string tag, int level)
     {
         if (count == 0 || idx == count)
         {
             return;
         }
+
+        if (gameObject.tag != tag)
+        {
+            return;
+        }
+
         // 자기 자신 기준 1 2 3만 호출
         if (level == 3 || level == 5 || level == 7)
         {
