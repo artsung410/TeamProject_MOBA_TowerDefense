@@ -258,13 +258,30 @@ public class DrawManager : MonoBehaviour
                 }
             }
         }
-        /*Debug.Log(duplicates.Count);
-        Debug.Log(duplicates[0].itemID);*/
     }
 
     private void DrawCardOrganize_two()
     {
         // 아이템이 이미 아이템에 존재할 경우 실행
+
+        // 1. 같은 아이템이 존재하는지 판별
+        for (int i = 0; i < ResultItem.Count; i++)
+        {
+            if (warriorInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemID == ResultItem[i].itemID)
+            {
+                // 같은 아이템이 존재하면 value값을 더한다.
+                warriorInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemValue += ResultItem[i].itemValue;
+                ResultItem.RemoveAt(i);
+            }
+
+            // RemoveAt하고 남은 데이터는 생성을 해주면 되겠져?
+        }
+        
+
+        // 2. 존재하면 value만 올림
+        // 3. 존재하지 않으면 빈 슬롯을 찾아 아이템 생성
+
+
     }
 
     // Retry 버튼을 클릭 시 다시 이전 갯수대로 뽑는다. 
@@ -278,21 +295,37 @@ public class DrawManager : MonoBehaviour
     // 아이템 오브젝트 생성 및 이동 함수
     public void ItemProduceAndIventoryMove()
     {
-        DrawCardOrganize_one();
-        //Debug.Log($"getDrawResultItem.Count : {getDrawResultItem.Count}"); // OK
-        for (int i = 0; i < ResultItem.Count; i++) // 10
+        // 인벤토리에 아이템이 존재할 경우 실행
+        int count = 0;
+        for (int i = 0; i < warriorInventory.transform.childCount; i++)
         {
-            // 아이템 오브젝트를 복제한다.
-            itemObjProduce = (GameObject)Instantiate(prefabItem);
-            // ItemOnObject 스크립트를 가져온다.
-            itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
-            // 아이템 정보를 복사한다.
-            itemProduce.item = ResultItem[i];
+            if (warriorInventory.transform.GetChild(i).childCount == 0)
+            {
+                count += 1;
+            }
+            if (count == warriorInventory.transform.childCount)
+            {
+                DrawCardOrganize_one();
+                // 아이템 생성/이동
+                for (int j = 0; j < ResultItem.Count; j++) // 10
+                {
+                    // 아이템 오브젝트를 복제한다.
+                    itemObjProduce = (GameObject)Instantiate(prefabItem);
+                    // ItemOnObject 스크립트를 가져온다.
+                    itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
+                    // 아이템 정보를 복사한다.
+                    itemProduce.item = ResultItem[j];
 
-            itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(i));
-            itemObjProduce.transform.localPosition = Vector3.zero;
-            itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                    itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(j));
+                    itemObjProduce.transform.localPosition = Vector3.zero;
+                    itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                }
+            }
         }
+
+        //DrawCardOrganize_two();
+
+        
     }
 
     // 카드 구매 후 재화 업데이트 예정 --------------------------------------------
