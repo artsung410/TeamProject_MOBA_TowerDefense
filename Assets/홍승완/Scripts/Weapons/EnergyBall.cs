@@ -10,57 +10,105 @@ public class EnergyBall : MonoBehaviourPun
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    public GameObject Target; // 플레이어에게서 정보 받아옴
+    float _damage; // 파싱데이터 담을부분
+    public float EnergyBallSpeed; 
+    public bool StopEnergyBall;
+    //public string OwnerTag;
+
     PlayerBehaviour _behaviour;
-
-    public float BulletSpeed;
-
-    public GameObject Check;
+    Stats _stats;
 
     void Start()
     {
-        Debug.Log("EnergyBall Start");
+        if (_behaviour == null || !photonView.IsMine)
+        {
+            return;
+        }
+
+        Target = _behaviour.targetedEnemy;
+        _damage = _stats.attackDmg;
+        EnergyBallSpeed = 30f;
+        //OwnerTag = _behaviour.gameObject.tag;
+        //Debug.Log($"타겟의 이름 : {Target.name}");
     }
 
     void Update()
     {
-        Debug.Log("EnergyBall Update");
-        if (_behaviour == null)
+        if (!photonView.IsMine)
         {
-            Debug.Log("EnergyBall _behaviour is null");
+            //Debug.Log($"photonView가 내것이 아님");
             return;
         }
 
-        // target정보 받아오고 그 타겟을 따라 가게 한다
-        // target정보는 에너지볼을 생성한 플레이어에게서 가져온다 -> _behaviour.targetedEnemy.transform.position
-        //this.transform.Translate(Time.deltaTime * BulletSpeed * _behaviour.targetedEnemy.transform.position);
+        if (Target == null)
+        {
+            //Debug.Log($"Target이 null 총알 삭제");
+            PhotonNetwork.Destroy(gameObject);
+        }
+        else
+        {
+            // 총알의 목표는 Target이다 => 목적지가 정해져 있으므로 MoveToward사용할것
+            transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, EnergyBallSpeed * Time.deltaTime);
+            //Debug.Log($"에너지볼  속도 : {EnergyBallSpeed * Time.deltaTime}");
 
-        //transform.LookAt(_behaviour.targetedEnemy.transform);
+            // 목표지점 도달 여부 판단부분
+            if (StopEnergyBall == false)
+            {
+                float dist = Vector3.Distance(transform.position, Target.transform.position);
+                //Debug.Log($"실시간 목표위치와 총알의 거리 : {dist}");
+                if (dist < 0.5f)
+                {
+                    //Debug.Log($"타겟({Target})과 충돌");
+                    DamageTotheEnemy(Target);
+                    StopEnergyBall = true;
+                    PhotonNetwork.Destroy(gameObject);
+                }
+
+            }
+        }
+
     }
-
-    //public void HitTarget()
-    //{
-    //    float dist = Vector3.Distance(transform.position, _behaviour.targetedEnemy.transform.position);
-    //    if (dist <= )
-    //    {
-
-    //    }
-    //}
-
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    if (other.gameObject == _behaviour.targetedEnemy)
-    //    {
-    //        Debug.Log($"타겟에 맞음 : {other.gameObject.name}");
-    //        if (photonView.IsMine)
-    //        {
-    //            PhotonNetwork.Destroy(this.gameObject);
-    //        }
-    //    }
-    //}
-
 
     public void GetTargetObject(PlayerBehaviour behaviour)
     {
         _behaviour = behaviour;
+    }
+
+    public void GetStatData(Stats stats)
+    {
+        _stats = stats;
+    }
+
+    public void DamageTotheEnemy(GameObject target)
+    {
+        if (photonView.IsMine)
+        {
+            // 적태그는 기본전제조건
+            if (_behaviour.EnemyTag == target.tag)
+            {
+                // 플레이어
+                if (target.layer == 7 && _behaviour.EnemyTag == target.tag)
+                {
+                    target.GetComponent<Health>().OnDamage(_damage);
+                }
+                // 미니언 || 특수미니언
+                else if (target.layer == 8 || target.layer == 13)
+                {
+                    target.GetComponent<Enemybase>().TakeDamage(_damage);
+                }
+                // 터렛
+                else if (target.layer == 6)
+                {
+                    target.GetComponent<Turret>().Damage(_damage);
+                }
+                // 넥서스
+                else if (target.layer == 12)
+                {
+                    target.GetComponent<NexusHp>().TakeOnDagmage(_damage);
+                }
+
+            }
+        }
     }
 }
