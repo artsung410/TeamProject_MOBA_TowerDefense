@@ -76,7 +76,9 @@ public class GameManager : MonoBehaviourPunCallbacks
         myData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         SpawnNexus();
         SpawnPlayer();
-        SpawnTower();
+
+        // buffManager 인스턴스생성 속도 맞추기 위해서 invoke사용
+        Invoke("SpawnTower", 0.5f);
     }
 
     private void Start()
@@ -149,12 +151,15 @@ public class GameManager : MonoBehaviourPunCallbacks
             GameObject tower = myData.cardPrefab[0];
             int slotIndex = myData.cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
+            CheckandApplyBuffs(newTower);
+
         }
         else
         {
             GameObject tower = myData.cardPrefab[0];
             int slotIndex = myData.cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
+            CheckandApplyBuffs(newTower);
         }
     }
 
@@ -179,46 +184,42 @@ public class GameManager : MonoBehaviourPunCallbacks
                 GameObject tower = myData.cardPrefab[idx];
                 int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
-
-                TowerData towerData = newTower.GetComponent<Turret>().towerData;
-                if(towerData.TowerType == Tower_Type.Buff_Tower || towerData.TowerType == Tower_Type.DeBuff_Tower)
-                {
-                    BuffManager.Instance.AddBuff((BuffData)towerData.Scriptables[0]);
-                }
+                CheckandApplyBuffs(newTower);
             }
             else
             {
                 GameObject tower = myData.cardPrefab[idx];
                 int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
-
-                TowerData towerData = newTower.GetComponent<Turret>().towerData;
-                if (towerData.TowerType == Tower_Type.Buff_Tower || towerData.TowerType == Tower_Type.DeBuff_Tower)
-                {
-                    BuffManager.Instance.AddBuff((BuffData)towerData.Scriptables[0]);
-                }
+                CheckandApplyBuffs(newTower);
             }
-
             idx++;
         }
     }
 
-  private void SpawnNexus()
+    private void CheckandApplyBuffs(GameObject tower)
     {
+        TowerData towerData = tower.GetComponent<Turret>().towerData;
+        if (towerData.TowerType == Tower_Type.Buff_Tower || towerData.TowerType == Tower_Type.DeBuff_Tower)
+        {
+            BuffManager.Instance.AddBuff((BuffData)towerData.Scriptables[0]);
+        }
+    }
 
+    private void SpawnNexus()
+    {
         Debug.Log("됨?");
-        if(PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
         {
             Debug.Log("됨?1");
-            PhotonNetwork.Instantiate(NexusPrefab[0].name,spawnPositions[2].position,Quaternion.Euler(transform.position)); 
-            
+            PhotonNetwork.Instantiate(NexusPrefab[0].name, spawnPositions[2].position, Quaternion.Euler(transform.position));
+        }
 
-        }else // red
+        else // red
         {
             Debug.Log("됨?2");
             PhotonNetwork.Instantiate(NexusPrefab[1].name, spawnPositions[3].position, Quaternion.Euler(transform.position));
         }
     }
-
 
 }
