@@ -36,8 +36,11 @@ public class ChainAttack : SkillHandler
     {
         elapsedTime = 0f;
         Damage = SetDamage;
+        Debug.Log($"SetDamage : {SetDamage}");
         HoldingTime = SetHodingTime;
+        Debug.Log($"SetHodingTime : {SetHodingTime}");
         Range = SetRange;
+        Debug.Log($"SetRange : {SetRange}");
     }
 
     // Start is called before the first frame update
@@ -91,11 +94,13 @@ public class ChainAttack : SkillHandler
     {
         if (_ability == null)
         {
+            Debug.Log("abilty 없음");
             return;
         }
 
         if (_ability.gameObject.GetComponent<Health>().isDeath == true)
         {
+            Debug.Log("설마여기?");
             if (photonView.IsMine)
             {
                 PhotonNetwork.Destroy(gameObject);
@@ -119,6 +124,7 @@ public class ChainAttack : SkillHandler
     /// </summary>
     public override void SkillUpdatePosition()
     {
+        Debug.Log("위치 업데이트중");
         transform.position = _ability.transform.position;
         transform.rotation = quaternion;
     }

@@ -29,7 +29,7 @@ public class Sword : MonoBehaviour
                 if (_playerScript.IsAttack)
                 {
                     _playerScript.enemyCol = other;
-
+                    Debug.Log($"Ä®¿¡ ´êÀº °´Ã¼ : {other}");
                 }
             }
             else

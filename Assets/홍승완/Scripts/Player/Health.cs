@@ -27,17 +27,12 @@ public class Health : MonoBehaviourPun
 
     private float _maxHealth;
     private float _prevMaxHealth;
-    public bool isDeath
-    {
-        get;
-        private set;
-    }
+    public bool isDeath;
 
     private void Awake()
     {
         _outline = GetComponent<Outline>();
         _stats = GetComponent<Stats>();
-        //ani = GetComponent<PlayerAnimation>();
        
     }
 
@@ -46,8 +41,6 @@ public class Health : MonoBehaviourPun
         _outline.enabled = false;
 
         Init();
-        //ani.AliveMotion();
-        //Debug.Log($"플레이어 죽어있는가? : {isDeath}");
     }
 
 
@@ -150,7 +143,7 @@ public class Health : MonoBehaviourPun
             health -= overhp; // 맥스 체력으로 바꿔줌
         }
         hpSlider3D.value = health;
-        Debug.Log($"health : {health} ");
+        //Debug.Log($"health : {health} ");
     }
 
 

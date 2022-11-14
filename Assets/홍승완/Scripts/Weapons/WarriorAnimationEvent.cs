@@ -31,19 +31,24 @@ public class WarriorAnimationEvent : MonoBehaviourPun
             else if (_behaviour.enemyCol.gameObject.layer == 8 || _behaviour.enemyCol.gameObject.layer == 13)
             {
                 _behaviour.enemyCol.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
-                Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
+                //Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
 
             }
             else if (_behaviour.enemyCol.gameObject.layer == 6)
             {
                 _behaviour.enemyCol.GetComponent<Turret>().Damage(_stat.attackDmg);
-                Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
+                //Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
 
             }
             else if (_behaviour.enemyCol.gameObject.layer == 12)
             {
+                if (_behaviour.enemyCol.GetComponent<NexusHp>() == null)
+                {
+                    return;
+                }
+                // TODO : 2타에서 null오류 진상규명해야함
                 _behaviour.enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);
-                Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
+                //Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
 
             }
         }

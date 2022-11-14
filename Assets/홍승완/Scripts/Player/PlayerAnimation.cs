@@ -32,7 +32,6 @@ public class PlayerAnimation : MonoBehaviourPun
         instance = this;
 
         agent = Chractor.GetComponent<NavMeshAgent>();
-        //animator = GetComponent<Animator>();
         playerStats = Chractor.GetComponent<Stats>();
         _playerScript = Chractor.GetComponent<PlayerBehaviour>();
         hp = Chractor.GetComponent<Health>();
@@ -40,7 +39,6 @@ public class PlayerAnimation : MonoBehaviourPun
 
     private void OnEnable()
     {
-        //AliveMotion();
         Debug.Log($"플레이어 랜더러 : {hp.isDeath}");
     }
 
