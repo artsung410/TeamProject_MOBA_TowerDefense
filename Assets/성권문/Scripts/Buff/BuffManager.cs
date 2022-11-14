@@ -32,85 +32,100 @@ public class BuffManager : MonoBehaviourPun
     public Dictionary<BuffData, float> buffDic = new Dictionary<BuffData, float>();
 
 
-
     private void Awake()
     {
         Instance = this;
     }
 
-    void Start()
+    //void Start()
+    //{
+    //    if(PhotonNetwork.LocalPlayer.ActorNumber == 1)
+    //    {
+    //        initBuff();
+    //        Debug.Log("플레이어1 initBuff");
+    //    }
+    //    else
+    //    {
+    //        StartCoroutine(delayClientInitBuff());
+    //        Debug.Log("플레이어2 initBuff");
+    //    }
+    //}
+
+    //float delayTime = 0.5f;
+    //IEnumerator delayClientInitBuff()
+    //{
+    //    yield return new WaitForSeconds(delayTime);
+    //    initBuff();
+    //}
+
+    //public void initBuff()
+    //{
+    //    TrojanHorse data = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+
+    //    int count = data.cardId.Count;
+
+    //    if (count == 0)
+    //    {
+    //        return;
+    //    }
+
+    //    for (int item = 0; item < count; item++)
+    //    {
+    //        TowerData Towerdata = (TowerData)data.ingameDatas[item];
+
+    //        if (Towerdata.TowerType == Tower_Type.Buff_Tower)
+    //        {
+    //            TowerData tower = (TowerData)data.ingameDatas[item];
+
+    //            int buffCount = tower.Scriptables.Count;
+
+    //            if (buffCount == 0)
+    //            {
+    //                return;
+    //            }
+
+    //            for (int i = 0; i < buffCount; i++)
+    //            {
+    //                BuffData buff = (BuffData)tower.Scriptables[i];
+    //                AddBuff(buff);
+    //                AssemblyBuff();
+    //            }
+    //        }
+
+    //        if (Towerdata.TowerType == Tower_Type.DeBuff_Tower)
+    //        {
+    //            TowerData tower = (TowerData)data.ingameDatas[item];
+
+    //            int buffCount = tower.Scriptables.Count;
+
+    //            if (buffCount == 0)
+    //            {
+    //                return;
+    //            }
+
+    //            for (int i = 0; i < buffCount; i++)
+    //            {
+    //                BuffData buff = (BuffData)tower.Scriptables[i];
+    //                AddDebuff();
+    //            }
+    //        }
+    //    }
+    //}
+
+    // 버프 시작
+    public void AddBuff(BuffData buff)
     {
-        if(PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        if (buff.EffectType == Effect_Type.Buff)
         {
-            initBuff();
-            Debug.Log("플레이어1 initBuff");
+            currentBuffDatas.Add(buff);
+            playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
         }
         else
         {
-            StartCoroutine(delayClientInitBuff());
-            Debug.Log("플레이어2 initBuff");
-        }
-    }
-
-    float delayTime = 0.5f;
-    IEnumerator delayClientInitBuff()
-    {
-        yield return new WaitForSeconds(delayTime);
-        initBuff();
-    }
-    public void initBuff()
-    {
-        TrojanHorse data = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
-
-        int count = data.cardId.Count;
-
-        if (count == 0)
-        {
-            return;
+            photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.Group_ID);
         }
 
-        for (int item = 0; item < count; item++)
-        {
-            TowerData Towerdata = (TowerData)data.ingameDatas[item];
-
-            if (Towerdata.TowerType == Tower_Type.Buff_Tower)
-            {
-                TowerData tower = (TowerData)data.ingameDatas[item];
-
-                int buffCount = tower.Scriptables.Count;
-
-                if (buffCount == 0)
-                {
-                    return;
-                }
-
-                for (int i = 0; i < buffCount; i++)
-                {
-                    BuffData buff = (BuffData)tower.Scriptables[i];
-                    AddBuff(buff);
-                    AssemblyBuff();
-                }
-            }
-
-            if (Towerdata.TowerType == Tower_Type.DeBuff_Tower)
-            {
-                TowerData tower = (TowerData)data.ingameDatas[item];
-
-                int buffCount = tower.Scriptables.Count;
-
-                if (buffCount == 0)
-                {
-                    return;
-                }
-
-                for (int i = 0; i < buffCount; i++)
-                {
-                    BuffData buff = (BuffData)tower.Scriptables[i];
-                    
-                    photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.Group_ID);
-                }
-            }
-        }
+        AssemblyBuff();
     }
 
     // 상대방에게 디버프 시전
@@ -121,13 +136,6 @@ public class BuffManager : MonoBehaviourPun
         currentBuffDatas.Add(all_DeBuffDatass[id - 5]);
         playerBuffAdditionEvent.Invoke(id, all_DeBuffDatass[id - 5].EffectValue, true);
         AssemblyBuff();
-    }
-
-    // 버프 시작
-    public void AddBuff(BuffData buff)
-    {
-        currentBuffDatas.Add(buff);
-        playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
     }
 
     // 버프 종료

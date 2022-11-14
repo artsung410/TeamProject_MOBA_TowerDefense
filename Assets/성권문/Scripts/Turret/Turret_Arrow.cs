@@ -52,7 +52,8 @@ public class Turret_Arrow : Turret
 
         if (arrow != null)
         {
-            arrow.Seek(target);
+            arrow.enemyTag = enemyTag;
+            arrow.Seek(attack, target);
         }
     }
 }
