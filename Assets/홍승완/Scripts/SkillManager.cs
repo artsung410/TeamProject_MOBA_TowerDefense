@@ -10,10 +10,11 @@ public class SkillManager : MonoBehaviour
     // ###############################################
 
     public static SkillManager Instance;
-    [SerializeField]
-    ItemDataBaseList ItemDataBase;
-    TrojanHorse horse;
+    //[SerializeField]
+    //ItemDataBaseList ItemDataBase;
+    public TrojanHorse SkillData;
 
+    public GameObject[] SkillPF = new GameObject[4];
     public float[] Atk = new float[4];
     public float[] CoolTime = new float[4];
     public float[] HoldingTime = new float[4];
@@ -22,31 +23,32 @@ public class SkillManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        horse = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
-
+        SkillData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        Debug.Log("스킬매니저 awake실행");
     }
 
     private void Start()
     {
-        int count = horse.skillIndex.Count;
+        int count = SkillData.skillIndex.Count;
         if (count == 0)
         {
             return;
         }
-
+        //int idx = _skillManager.SkillData.skillIndex[i];
         for (int i = 0; i < count; i++)
         {
-            int idx = horse.skillIndex[i];
-            for (int j = 0; j < ItemDataBase.itemList.Count; j++)
-            {
-                if (horse.skillId[i] == ItemDataBase.itemList[j].itemID)
-                {
-                    Atk[idx] = ItemDataBase.itemList[j].itemAttributes[0].attributeValue;
-                    CoolTime[idx] = ItemDataBase.itemList[j].itemAttributes[1].attributeValue;
-                    HoldingTime[idx] = ItemDataBase.itemList[j].itemAttributes[2].attributeValue;
-                    Range[idx] = ItemDataBase.itemList[j].itemAttributes[3].attributeValue;
-                }
-            }
+            int idx = SkillData.skillIndex[i];
+
+            SkillPF[idx] = SkillData.skillItems[i].itemModel;
+            Atk[idx] = SkillData.skillItems[i].itemAttributes[0].attributeValue;
+            CoolTime[idx] = SkillData.skillItems[i].itemAttributes[1].attributeValue;
+            HoldingTime[idx] = SkillData.skillItems[i].itemAttributes[2].attributeValue;
+            Range[idx] = SkillData.skillItems[i].itemAttributes[3].attributeValue;
+
+            Debug.Log($"{SkillData.skillItems[i].itemAttributes[0].attributeName}의 값 : {Atk[idx]}\n" +
+                $"{SkillData.skillItems[i].itemAttributes[1].attributeName}의 값 : {CoolTime[idx]}\n" +
+                $"{SkillData.skillItems[i].itemAttributes[2].attributeName}의 값 : {HoldingTime[idx]}\n" +
+                $"{SkillData.skillItems[i].itemAttributes[3].attributeName}의 값 : {Range[idx]}\n");
         }
     }
     

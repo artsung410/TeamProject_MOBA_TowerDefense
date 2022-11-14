@@ -40,8 +40,9 @@ public class PlayerRespawn : MonoBehaviourPun
 
         if (health.gameObject.CompareTag("Blue"))
         {
-            respawnPosition[0] = GameManager.Instance.spawnPositions[0];
-            playerRespawnPosition = respawnPosition[0].position;
+    // TODO : 블루진영캐릭터 리스폰시 땅에 파묻힘 -> 리스폰장소 y축으로 2 올린상태 정확한원인은 잘 모르겠음
+            playerRespawnPosition = new Vector3(GameManager.Instance.spawnPositions[0].position.x, 2f, GameManager.Instance.spawnPositions[0].position.z);
+
         }
         else if (health.gameObject.CompareTag("Red"))
         {
@@ -50,12 +51,13 @@ public class PlayerRespawn : MonoBehaviourPun
         }
     }
 
-    // Update is called once per frame
+
     void Update()
     {
-
+        
             Respawn();
         
+
     }
 
     float elapsedTime;
@@ -74,6 +76,7 @@ public class PlayerRespawn : MonoBehaviourPun
                 health.gameObject.SetActive(true);
                 hpBar.gameObject.SetActive(true);
                 Renderer.SetActive(true);
+                health.isDeath = false;
             }
         }
     }

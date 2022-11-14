@@ -119,8 +119,6 @@ public class PlayerBehaviour : MonoBehaviourPun
         //photonView.RPC(nameof(RPC_ApplyTargetNull), RpcTarget.All);
     }
 
-    // TODO : 죽은 캐릭터를 계속해서 공격한다.
-
     /// <summary>
     /// 주변의 적군 플레이어 감지
     /// </summary>
@@ -167,16 +165,6 @@ public class PlayerBehaviour : MonoBehaviourPun
             {
                 IsPlayerDie();
             }
-        }
-    }
-
-    public void ForLeapFuction(PlayerBehaviour player, float jumpForce, float fallMultiplier)
-    {
-        player._rigid.AddForce(Vector3.up * jumpForce, ForceMode.VelocityChange);
-
-        if (player._rigid.velocity.y < 0)
-        {
-            player._rigid.velocity += Vector3.up * Physics.gravity.y * fallMultiplier * Time.deltaTime;
         }
     }
 
@@ -267,7 +255,7 @@ public class PlayerBehaviour : MonoBehaviourPun
             else
             {
                 // 움직이지 않게 현재 위치로 고정
-                //_agent.SetDestination(transform.position);
+                _agent.SetDestination(transform.position);
                 _agent.stoppingDistance = _statScript.attackRange;
 
                 // 타겟을 바라본다

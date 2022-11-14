@@ -1628,6 +1628,7 @@ GameObject:
   - component: {fileID: 3776502525626407149}
   - component: {fileID: 3483174330972525679}
   - component: {fileID: 1659931264251991040}
+  - component: {fileID: 9144677756653274395}
   m_Layer: 0
   m_Name: Sword
   m_TagString: Untagged
@@ -1727,6 +1728,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerScript: {fileID: 250421915684997273}
   _playerHP: {fileID: 2411907287711231227}
+--- !u!54 &9144677756653274395
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5101749426512507749}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &5130743274459782233
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,19 +2770,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 585b1c39f8e941b40bc372fc4be3da8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4601298650804198288
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7001467603103953037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 38ea237c43c85084d9f63b74e8a3b6bf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  animator: {fileID: 1037791636690611819}
 --- !u!114 &3026606992103964819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2797,6 +2801,7 @@ MonoBehaviour:
   AbilityPrefabs: []
   skillSpawn: {fileID: 386571534135840048}
   coolTimeManager: {fileID: 5572691436845342093}
+  skillMotion: {fileID: 7525234218252226827}
 --- !u!136 &962274781265193606
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2842,6 +2847,7 @@ MonoBehaviour:
   hpSlider3D: {fileID: 3706070186879944762}
   ani: {fileID: 7525234218252226827}
   health: 0
+  isDeath: 0
 --- !u!114 &8725561513336734100
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3223,6 +3229,7 @@ GameObject:
   - component: {fileID: 8433512375797226097}
   - component: {fileID: 1569033290566115509}
   - component: {fileID: 7525234218252226827}
+  - component: {fileID: 8808698123132653585}
   m_Layer: 0
   m_Name: DogPBR
   m_TagString: Untagged
@@ -3370,6 +3377,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8288105577297847703}
   Chractor: {fileID: 7001467603103953037}
+--- !u!114 &8808698123132653585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7714865301472228472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74ea18b151ef7ab4d9017adbbe1b3dfd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _behaviour: {fileID: 250421915684997273}
+  _stat: {fileID: 3475299997868414608}
 --- !u!1 &7948392662501938393
 GameObject:
   m_ObjectHideFlags: 0

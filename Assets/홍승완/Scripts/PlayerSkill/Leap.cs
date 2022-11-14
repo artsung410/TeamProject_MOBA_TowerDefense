@@ -125,7 +125,7 @@ public class Leap : SkillHandler
             if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
             {
                 //_damageZone.SetActive(true);
-                photonView.RPC(nameof(Activate), RpcTarget.All);
+                photonView.RPC(nameof(RPC_Activate), RpcTarget.All);
                 _ani.animator.SetBool("JumpAttack", false);
                 isArive = true;
             }
@@ -185,7 +185,7 @@ public class Leap : SkillHandler
 
             isArive = true;
             _behaviour.transform.position = transform.position;
-            photonView.RPC(nameof(Activate), RpcTarget.All);
+            photonView.RPC(nameof(RPC_Activate), RpcTarget.All);
             _ani.animator.SetBool("JumpAttack", false);
             _behaviour.ForSkillAgent(transform.position);
         }
@@ -193,7 +193,7 @@ public class Leap : SkillHandler
 
     // 착지한 지점에서 이펙트 동기화 문제(리모트캐릭터에선 이펙트 활성화 안되는중) => RPC로 해결
     [PunRPC]
-    public void Activate()
+    public void RPC_Activate()
     {
         _damageZone.SetActive(true);
     }

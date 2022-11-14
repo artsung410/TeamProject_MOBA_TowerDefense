@@ -15,6 +15,9 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected PlayerBehaviour _behaviour;
     protected PlayerAnimation _ani;
     protected string _myTag;
+    
+    // TODO : skilldata scriptableObj사용할수있게 개조하기
+    //protected ScriptableObject data;
 
 
     public float SetDamage;
