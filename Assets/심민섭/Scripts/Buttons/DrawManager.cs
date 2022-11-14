@@ -242,14 +242,14 @@ public class DrawManager : MonoBehaviour
     // 아이템이 없을 경우 실행
     private void DrawCardOrganize_one()
     {
-        var duplicates = getDrawResultItem.GroupBy(x => x)
+        /*var duplicates = getDrawResultItem.GroupBy(x => x)
                                         .SelectMany(g => g.Skip(1))
                                         .Distinct()
                                         .ToList();
         List<Item> dupleicatesList = new List<Item>();
-        dupleicatesList.AddRange(duplicates);
+        dupleicatesList.AddRange(duplicates);*/
 
-        var duplicatesCnt = dupleicatesList.Count;
+        //var duplicatesCnt = dupleicatesList.Count;
 
         ResultItem = getDrawResultItem.Distinct().ToList();
 
@@ -264,16 +264,16 @@ public class DrawManager : MonoBehaviour
             itemStruct.itemIcon = ResultItem[i].itemIcon;
             itemStruct.itemModel = ResultItem[i].itemModel;
             itemStruct.inGameData = ResultItem[i].inGameData;
-            itemStruct.itemValue = ResultItem[i].itemValue;
-            if (duplicatesCnt != 0)
+            itemStruct.itemValue = 0;
+            if (getDrawResultItem.Count != 0)
             {
-                for (int j = 0; j < duplicatesCnt; j++)
+                for (int j = 0; j < getDrawResultItem.Count; j++)
                 {
-                    if (dupleicatesList[j].itemID == ResultItem[i].itemID)
+                    if (ResultItem[i].itemID == getDrawResultItem[j].itemID)
                     {
                         itemStruct.itemValue += 1;
-                        dupleicatesList.RemoveAt(j);
-                        duplicatesCnt -= 1;
+                        getDrawResultItem.RemoveAt(j);
+                        j -= 1;
                     }
                 }
             }
@@ -286,7 +286,6 @@ public class DrawManager : MonoBehaviour
             itemStruct.specialPrefabs = ResultItem[i].specialPrefabs;
             itemStruct.buffDatas = ResultItem[i].buffDatas;
             StructResultItem.Add(itemStruct);
-            
         }
     }
 
@@ -307,29 +306,55 @@ public class DrawManager : MonoBehaviour
                 myInven_warrior.Add(warriorInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item);
             }
         }
-        //List<Item> duplicateList = new List<Item>();
-        // 중복아이템을 저장한다.
-        //duplicateList = myInven_warrior.Except(ResultItem).ToList();
-        for (int i = 0; i < ResultItem.Count; i++) // 무조건 10개 0 2 3
+
+        List<Item> sameItem = new List<Item>();
+        // 같은 아이템이 있는지 판별하고 value 값을 더한다.
+        for (int i = 0; i <= ResultItem.Count; i++) // 10번 반복 (뽑기한 아이템의 수만큼)
         {
-            for (int j = 0; j < myInven_warrior.Count; j++) // 1 ~ 
+            int stack = 0;
+            for (int j = 0; j < myInven_warrior.Count; j++) // 인벤토리에 있는 아이템의 수만큼 반복
             {
-                // 2. 같은 아이템이 존재하면
+                // 같은 아이템이 존재하면
                 if (ResultItem[i].itemID == myInven_warrior[j].itemID)
                 {
                     // value를 올린다.
                     myInven_warrior[j].itemValue += 1;
-                    /*ResultItem.RemoveAt(i);
-                    i--;*/
+                    ResultItem.RemoveAt(i);
+                    if (ResultItem.Count == 0)
+                        break;
+                    if (i == 0)
+                        continue;
+                    i--;
+                }
+                else
+                {
+                    // 다르면 스텍을 쌓는다.
+                    stack++;
+                    // 스텍이 myInven과 같으면
+                    if (stack == myInven_warrior.Count)
+                    {
+                        // Add 한다.
+                        sameItem.Add(ResultItem[i]);
+                        ResultItem.RemoveAt(i);
+                        if (i == 0)
+                            continue;
+                        i--;
+                    }
                 }
             }
+            if (ResultItem.Count <= 1)
+            {
+                if (ResultItem.Count == 0)
+                    break;
+                i = -1;
+            }
         }
-        // 3. 남은 아이템은 빈 슬롯을 찾아 아이템 생성
-        int putInItems = 0;
-        for (int i = 0; i < warriorInventory.transform.childCount; i++)
-        {
+
+
+        //int putInItems = 0;
+
             // 슬롯에 아이템이 존재하지 않으면
-            if (warriorInventory.transform.GetChild(i).childCount == 0)
+            /*if (warriorInventory.transform.GetChild(i).childCount == 0)
             {
                 if (ResultItem.Count == 0)
                 {
@@ -348,13 +373,16 @@ public class DrawManager : MonoBehaviour
                 itemObjProduce.transform.localPosition = Vector3.zero;
                 itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
-                /*ResultItem.RemoveAt(i);
+                ResultItem.RemoveAt(i);
                 if (ResultItem.Count == 0)
                 {
                     return;
-                }*/
-            }
-        }
+                }
+            }*/
+
+        
+
+
     }
 
     // Retry 버튼을 클릭 시 다시 이전 갯수대로 뽑는다. 
@@ -412,13 +440,13 @@ public class DrawManager : MonoBehaviour
             }
         }
         // 인벤토리에 아이템이 하나라도 있을 경우
-        /*if (count != 0)
+        if (count != 0)
         {
             // 같은 아이템이 있는지 확인한다.
             // 같은 아이템이 있으면 Value를 더한다.
             // 같은 아이템이 없으면 빈 슬롯에 아이템을 생성한다.
             DrawCardOrganize_two();
-        }*/
+        }
     }
 
     // 카드 구매 후 재화 업데이트 예정 --------------------------------------------
