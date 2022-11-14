@@ -216,6 +216,9 @@ public class DrawManager : MonoBehaviour
     // 이게 진짜 진짜 드로우해서 뽑은 카드임!!
     public List<Item> ResultItem = new List<Item>();
 
+    // List -> Struct 변환
+    public List<ItemStruct> StructResultItem = new List<ItemStruct>();
+
     // 카드 오픈 시 아이템이 인벤토리로 들어간다.
     // 1. 카드는 오픈 시 getItemList로 데이터를 넣는다.
     // 2. 인벤토리에 같은 카드데이터가 있는지 확인 한다.
@@ -236,52 +239,122 @@ public class DrawManager : MonoBehaviour
     }
 
     // 뽑은 카드 정리(자료구조에서 중복 값 찾기)
+    // 아이템이 없을 경우 실행
     private void DrawCardOrganize_one()
-    {   
-        // 아이템이 없을 경우 실행
+    {
         var duplicates = getDrawResultItem.GroupBy(x => x)
                                         .SelectMany(g => g.Skip(1))
                                         .Distinct()
                                         .ToList();
-        var duplicatesCnt = duplicates.Count;
+        List<Item> dupleicatesList = new List<Item>();
+        dupleicatesList.AddRange(duplicates);
+
+        var duplicatesCnt = dupleicatesList.Count;
 
         ResultItem = getDrawResultItem.Distinct().ToList();
 
-        for (int i = 0; i < duplicatesCnt; i++) // 2
+        // List -> Struct 변환
+        for (int i = 0; i < ResultItem.Count; i++)
         {
-            for (int j = 0; j < ResultItem.Count; j++) // 8
+            ItemStruct itemStruct = new ItemStruct();
+            itemStruct.itemName = ResultItem[i].itemName;
+            itemStruct.ClassType = ResultItem[i].ClassType;
+            itemStruct.itemID = ResultItem[i].itemID;
+            itemStruct.itemDesc = ResultItem[i].itemDesc;
+            itemStruct.itemIcon = ResultItem[i].itemIcon;
+            itemStruct.itemModel = ResultItem[i].itemModel;
+            itemStruct.inGameData = ResultItem[i].inGameData;
+            itemStruct.itemValue = ResultItem[i].itemValue;
+            if (duplicatesCnt != 0)
             {
-                if (duplicates[i].itemID == ResultItem[j].itemID) // 30, 37  == 30, 
+                for (int j = 0; j < duplicatesCnt; j++)
                 {
-                    ResultItem[j].itemValue += 1;
-                    continue;
+                    if (dupleicatesList[j].itemID == ResultItem[i].itemID)
+                    {
+                        itemStruct.itemValue += 1;
+                        dupleicatesList.RemoveAt(j);
+                        duplicatesCnt -= 1;
+                    }
                 }
             }
+            itemStruct.itemType = ResultItem[i].itemType;
+            itemStruct.itemWeight = ResultItem[i].itemWeight;
+            itemStruct.maxStack = ResultItem[i].maxStack;
+            itemStruct.indexItemInList = ResultItem[i].indexItemInList;
+            itemStruct.rarity = ResultItem[i].rarity;
+            itemStruct.itemAttributes = ResultItem[i].itemAttributes;
+            itemStruct.specialPrefabs = ResultItem[i].specialPrefabs;
+            itemStruct.buffDatas = ResultItem[i].buffDatas;
+            StructResultItem.Add(itemStruct);
+            
         }
     }
 
     private void DrawCardOrganize_two()
     {
-        // 아이템이 이미 아이템에 존재할 경우 실행
+        // 같은 아이템이 있는지 확인한다.
+        // 같은 아이템이 있으면 Value를 더한다.
+        // 같은 아이템이 없으면 빈 슬롯에 아이템을 생성한다.
+        ResultItem = getDrawResultItem;
 
-        // 1. 같은 아이템이 존재하는지 판별
-        for (int i = 0; i < ResultItem.Count; i++)
+        // 인벤토리에 있는 아이템을 저장한다.
+        List<Item> myInven_warrior = new List<Item>();
+        for (int i = 0; i < warriorInventory.transform.childCount; i++)
         {
-            if (warriorInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemID == ResultItem[i].itemID)
+            // 슬롯에 아이템이 있으면 접근 조건 추가
+            if (warriorInventory.transform.GetChild(i).childCount != 0)
             {
-                // 같은 아이템이 존재하면 value값을 더한다.
-                warriorInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemValue += ResultItem[i].itemValue;
-                ResultItem.RemoveAt(i);
+                myInven_warrior.Add(warriorInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item);
             }
-
-            // RemoveAt하고 남은 데이터는 생성을 해주면 되겠져?
         }
-        
+        //List<Item> duplicateList = new List<Item>();
+        // 중복아이템을 저장한다.
+        //duplicateList = myInven_warrior.Except(ResultItem).ToList();
+        for (int i = 0; i < ResultItem.Count; i++) // 무조건 10개 0 2 3
+        {
+            for (int j = 0; j < myInven_warrior.Count; j++) // 1 ~ 
+            {
+                // 2. 같은 아이템이 존재하면
+                if (ResultItem[i].itemID == myInven_warrior[j].itemID)
+                {
+                    // value를 올린다.
+                    myInven_warrior[j].itemValue += 1;
+                    /*ResultItem.RemoveAt(i);
+                    i--;*/
+                }
+            }
+        }
+        // 3. 남은 아이템은 빈 슬롯을 찾아 아이템 생성
+        int putInItems = 0;
+        for (int i = 0; i < warriorInventory.transform.childCount; i++)
+        {
+            // 슬롯에 아이템이 존재하지 않으면
+            if (warriorInventory.transform.GetChild(i).childCount == 0)
+            {
+                if (ResultItem.Count == 0)
+                {
+                    Debug.Log("ResultItem.Count : 0");
+                    return;
+                }
+                // 아이템을 생성해서 넣는다.
+                // 아이템 오브젝트를 복제한다.
+                GameObject itemObjProduce = (GameObject)Instantiate(prefabItem);
+                // ItemOnObject 스크립트를 가져온다.
+                ItemOnObject itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
+                itemProduce.item = ResultItem[putInItems];
+                ResultItem.RemoveAt(putInItems);
+                //putInItems++;
+                itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(i));
+                itemObjProduce.transform.localPosition = Vector3.zero;
+                itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
-        // 2. 존재하면 value만 올림
-        // 3. 존재하지 않으면 빈 슬롯을 찾아 아이템 생성
-
-
+                /*ResultItem.RemoveAt(i);
+                if (ResultItem.Count == 0)
+                {
+                    return;
+                }*/
+            }
+        }
     }
 
     // Retry 버튼을 클릭 시 다시 이전 갯수대로 뽑는다. 
@@ -290,42 +363,62 @@ public class DrawManager : MonoBehaviour
 
     }
 
-    private GameObject itemObjProduce;
-    private ItemOnObject itemProduce;
+
     // 아이템 오브젝트 생성 및 이동 함수
     public void ItemProduceAndIventoryMove()
     {
+
         // 인벤토리에 아이템이 존재할 경우 실행
-        int count = 0;
+        int count = warriorInventory.transform.childCount;
         for (int i = 0; i < warriorInventory.transform.childCount; i++)
         {
             if (warriorInventory.transform.GetChild(i).childCount == 0)
             {
-                count += 1;
+                count -= 1; // 빈 슬롯이 있으면 추가된다.
             }
-            if (count == warriorInventory.transform.childCount)
+            if (count == 0) // 아이템이 인벤토리에 하나도 없을 경우
             {
                 DrawCardOrganize_one();
                 // 아이템 생성/이동
-                for (int j = 0; j < ResultItem.Count; j++) // 10
+                for (int j = 0; j < StructResultItem.Count; j++) // 10
                 {
                     // 아이템 오브젝트를 복제한다.
-                    itemObjProduce = (GameObject)Instantiate(prefabItem);
+                    GameObject itemObjProduce = (GameObject)Instantiate(prefabItem);
                     // ItemOnObject 스크립트를 가져온다.
-                    itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
+                    ItemOnObject itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
                     // 아이템 정보를 복사한다.
-                    itemProduce.item = ResultItem[j];
+                    itemProduce.item.itemName = StructResultItem[j].itemName;
+                    itemProduce.item.ClassType = StructResultItem[j].ClassType;
+                    itemProduce.item.itemID = StructResultItem[j].itemID;
+                    itemProduce.item.itemDesc = StructResultItem[j].itemDesc;
+                    itemProduce.item.itemIcon = StructResultItem[j].itemIcon;
+                    itemProduce.item.itemModel = StructResultItem[j].itemModel;
+                    itemProduce.item.inGameData = StructResultItem[j].inGameData;
+                    itemProduce.item.itemValue = StructResultItem[j].itemValue;
+                    itemProduce.item.itemType = StructResultItem[j].itemType;
+                    itemProduce.item.itemWeight = StructResultItem[j].itemWeight;
+                    itemProduce.item.maxStack = StructResultItem[j].maxStack;
+                    itemProduce.item.indexItemInList = StructResultItem[j].indexItemInList;
+                    itemProduce.item.rarity = StructResultItem[j].rarity;
+                    itemProduce.item.itemAttributes = StructResultItem[j].itemAttributes;
+                    itemProduce.item.specialPrefabs = StructResultItem[j].specialPrefabs;
+                    itemProduce.item.buffDatas = StructResultItem[j].buffDatas;
 
                     itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(j));
                     itemObjProduce.transform.localPosition = Vector3.zero;
                     itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+
                 }
             }
         }
-
-        //DrawCardOrganize_two();
-
-        
+        // 인벤토리에 아이템이 하나라도 있을 경우
+        /*if (count != 0)
+        {
+            // 같은 아이템이 있는지 확인한다.
+            // 같은 아이템이 있으면 Value를 더한다.
+            // 같은 아이템이 없으면 빈 슬롯에 아이템을 생성한다.
+            DrawCardOrganize_two();
+        }*/
     }
 
     // 카드 구매 후 재화 업데이트 예정 --------------------------------------------

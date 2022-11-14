@@ -213,7 +213,7 @@ public class InventoryEditor : Editor
             // 인스펙터가 가로로 생성된다.
 
             // 아이템 DB 오브젝트를 생성하고
-            ItemDataBaseList inventoryItemList_skill = (ItemDataBaseList)Resources.Load("SkillDatabase");
+            ItemDataBaseList inventoryItemList_skill = (ItemDataBaseList)Resources.Load("WarriorSkillDatabase");
 
             // itemcount 길이의 문자열 배열 생성
             string[] items_skill = new string[inventoryItemList_skill.itemList.Count];
