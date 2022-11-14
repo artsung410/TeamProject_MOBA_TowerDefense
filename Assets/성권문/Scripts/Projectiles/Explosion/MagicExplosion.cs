@@ -14,7 +14,12 @@ public class MagicExplosion : MonoBehaviourPun
     public string enemyTag;
     public float damage;
 
-    protected void Damage(Transform enemy)
+    private void OnEnable()
+    {
+        Destroy(gameObject, 3f);
+    }
+
+    private void Damage(Transform enemy)
     {
         // 플레이어 데미지 적용
         if (enemy.gameObject.layer == 7)
@@ -58,14 +63,14 @@ public class MagicExplosion : MonoBehaviourPun
         }
     }
 
-    protected void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (enemyTag == null)
         {
             return;
         }
 
-        if (!photonView.IsMine)
+        if (!PhotonNetwork.IsMasterClient)
         {
             return;
         }

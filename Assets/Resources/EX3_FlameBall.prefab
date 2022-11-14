@@ -52494,6 +52494,7 @@ GameObject:
   - component: {fileID: 7495424244006364599}
   - component: {fileID: 5397874286392412486}
   - component: {fileID: 4308130344308160147}
+  - component: {fileID: 7022135069221764695}
   m_Layer: 0
   m_Name: EX3_FlameBall
   m_TagString: Untagged
@@ -52564,7 +52565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4db2e90e2db4740499a318969a0fe3ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyTag: Red
+  enemyTag: Blue
   damage: 10
 --- !u!114 &5397874286392412486
 MonoBehaviour:
@@ -52586,6 +52587,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 4308130344308160147}
+  - {fileID: 7022135069221764695}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -52605,6 +52607,24 @@ MonoBehaviour:
   m_SynchronizeRotation: 1
   m_SynchronizeScale: 0
   m_UseLocal: 1
+--- !u!114 &7022135069221764695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6037084504703337589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters: []
+  m_SynchronizeLayers:
+  - SynchronizeType: 2
+    LayerIndex: 0
 --- !u!1 &6779795395935284897
 GameObject:
   m_ObjectHideFlags: 0
