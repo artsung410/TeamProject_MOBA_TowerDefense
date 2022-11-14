@@ -14,10 +14,20 @@ public class EnergyBall : MonoBehaviourPun
     float _damage; // 파싱데이터 담을부분
     public float EnergyBallSpeed; 
     public bool StopEnergyBall;
-    //public string OwnerTag;
+
+    GameObject _missileVFX;
+    GameObject _hitVFX;
 
     PlayerBehaviour _behaviour;
     Stats _stats;
+
+    private void Awake()
+    {
+        _missileVFX = transform.GetChild(0).gameObject; // 미사일 효과
+        _hitVFX = transform.GetChild(1).gameObject; // 피격 효과
+
+        _hitVFX.SetActive(false);
+    }
 
     void Start()
     {
@@ -29,10 +39,11 @@ public class EnergyBall : MonoBehaviourPun
         Target = _behaviour.targetedEnemy;
         _damage = _stats.attackDmg;
         EnergyBallSpeed = 30f;
-        //OwnerTag = _behaviour.gameObject.tag;
-        //Debug.Log($"타겟의 이름 : {Target.name}");
+
+        myCoroutine = DeleteEnergyBall();
     }
 
+    float elapsedTime;
     void Update()
     {
         if (!photonView.IsMine)
@@ -50,24 +61,36 @@ public class EnergyBall : MonoBehaviourPun
         {
             // 총알의 목표는 Target이다 => 목적지가 정해져 있으므로 MoveToward사용할것
             transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, EnergyBallSpeed * Time.deltaTime);
-            //Debug.Log($"에너지볼  속도 : {EnergyBallSpeed * Time.deltaTime}");
 
             // 목표지점 도달 여부 판단부분
             if (StopEnergyBall == false)
             {
                 float dist = Vector3.Distance(transform.position, Target.transform.position);
-                //Debug.Log($"실시간 목표위치와 총알의 거리 : {dist}");
+
                 if (dist < 0.5f)
                 {
-                    //Debug.Log($"타겟({Target})과 충돌");
-                    DamageTotheEnemy(Target);
                     StopEnergyBall = true;
-                    PhotonNetwork.Destroy(gameObject);
+                    DamageTotheEnemy(Target);
+                    photonView.RPC(nameof(RPC_EnergyBallVfx), RpcTarget.All);
+                    StartCoroutine(myCoroutine);
                 }
 
             }
         }
+    }
 
+    [PunRPC]
+    public void RPC_EnergyBallVfx()
+    {
+        _hitVFX.SetActive(true);
+        _missileVFX.SetActive(false);
+    }
+
+    IEnumerator myCoroutine;
+    IEnumerator DeleteEnergyBall()
+    {
+        yield return new WaitForSeconds(1f);
+        PhotonNetwork.Destroy(gameObject);
     }
 
     public void GetTargetObject(PlayerBehaviour behaviour)
@@ -110,5 +133,10 @@ public class EnergyBall : MonoBehaviourPun
 
             }
         }
+    }
+
+    private void OnDisable()
+    {
+        StopAllCoroutines();
     }
 }
