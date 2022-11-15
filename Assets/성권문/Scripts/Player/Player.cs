@@ -40,7 +40,7 @@ public class Player : MonoBehaviourPun
 
     float elapsedTime;
     private void Update()
-    {
+    {     
         if (photonView.IsMine)
         {
             return;
@@ -127,10 +127,5 @@ public class Player : MonoBehaviourPun
                 playerStats.attackSpeed /= addValue;
             }
         }
-    }
-
-    public void Suck(Vector3 position)
-    {
-        transform.localPosition = position;
     }
 }

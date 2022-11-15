@@ -26,7 +26,6 @@ public class Projectiles : MonoBehaviourPun, ISeek
     [HideInInspector]
     public float speed;
 
-    [HideInInspector]
     public string enemyTag;
 
     [HideInInspector]

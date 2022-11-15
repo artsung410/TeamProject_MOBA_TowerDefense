@@ -11,7 +11,6 @@ public class BlackholeExplosion : MonoBehaviourPun
     // ###############################################
 
     [Header("타겟 TAG")]
-    [HideInInspector]
     public string enemyTag;
 
     [HideInInspector]
@@ -81,8 +80,8 @@ public class BlackholeExplosion : MonoBehaviourPun
     {
         if (other.gameObject.layer == 7)
         {
-            PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
-            player.ForSkillAgent(transform.position);
+            PlayerBehaviour playerBehaviour = other.GetComponent<PlayerBehaviour>();
+            playerBehaviour.ForSkillAgent(transform.position);
         }
 
         // 미니언 데미지 적용
@@ -112,8 +111,21 @@ public class BlackholeExplosion : MonoBehaviourPun
 
         if (other.tag == enemyTag)
         {
-            Suck(other);
             Damage(other.gameObject.transform);
+        }
+    }
+
+    float elapsedTime;
+    private void OnTriggerStay(Collider other)
+    {
+        elapsedTime += Time.deltaTime;
+        if (other.tag == enemyTag)
+        {
+            if (elapsedTime >= 0.55f)
+            {
+                Suck(other);
+                elapsedTime = 0f;
+            }
         }
     }
 }

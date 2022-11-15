@@ -42,17 +42,17 @@ public class BlackholeProjectiles : Projectiles
 
         transform.LookAt(target);
 
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         if (dir.magnitude <= distanceThisFrame + InterpolateValue || transform.position.y <= InterpolateValue)
         {
-            BlackholeExplosion blackholeExplosion = ImpactEffect.GetComponent<BlackholeExplosion>();
+            GameObject newBlackhole = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            BlackholeExplosion blackholeExplosion = newBlackhole.GetComponent<BlackholeExplosion>();
             blackholeExplosion.enemyTag = enemyTag;
             blackholeExplosion.damage = damage;
-
-            if (photonView.IsMine)
-            {
-                PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
-            }
-
             PhotonNetwork.Destroy(gameObject);
             return;
         }
