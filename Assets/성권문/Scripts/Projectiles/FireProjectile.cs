@@ -2,24 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-    
-    // ###############################################
-    //             NAME : ARTSUNG                      
-    //             MAIL : artsung410@gmail.com         
-    // ###############################################
 
-public class FireProjectile : Projectiles, ISeek
+// ###############################################
+//             NAME : ARTSUNG                      
+//             MAIL : artsung410@gmail.com         
+// ###############################################
+
+public class FireProjectile : Projectiles
 {
-    public Transform target;
-    public float speed = 70f;
-    public float explosionRadius = 0f;
-
-    public void Seek(float dmg, Transform tg)
-    {
-        target = tg;
-        damage = dmg;
-    }
-
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
     float maxHeight = 16f;
@@ -28,7 +18,10 @@ public class FireProjectile : Projectiles, ISeek
     {
         if (target == null)
         {
-            Destroy(gameObject);
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
             return;
         }
 
@@ -37,14 +30,15 @@ public class FireProjectile : Projectiles, ISeek
 
         elapsedTime += Time.deltaTime;
 
-        if (elapsedTime <= 0.3f)
-        {
-            transform.Translate(new Vector3(dir.x, maxHeight, dir.z).normalized * distanceThisFrame, Space.World);
-        }
-        else
-        {
-            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-        }
+        // °î»çÆ÷ ¹æ½Ä
+        //if (elapsedTime <= 0.3f)
+        //{
+        //    transform.Translate(new Vector3(dir.x, maxHeight, dir.z).normalized * distanceThisFrame, Space.World);
+        //}
+        //else
+        //{
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        //}
 
         transform.LookAt(target);
 
@@ -54,19 +48,13 @@ public class FireProjectile : Projectiles, ISeek
             magicExplosion.enemyTag = enemyTag;
             magicExplosion.damage = damage;
 
-            if(PhotonNetwork.IsMasterClient)
+            if(photonView.IsMine)
             {
                 PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
             }
 
-            Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
             return;
         }
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
 }

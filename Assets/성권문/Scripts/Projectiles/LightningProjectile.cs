@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class FrozenProjectile : Projectiles, ISeek
+public class LightningProjectile : Projectiles
 {
+    // ###############################################
+    //             NAME : ARTSUNG                      
+    //             MAIL : artsung410@gmail.com         
+    // ###############################################
+
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
     float maxHeight = 16f;
@@ -32,18 +37,18 @@ public class FrozenProjectile : Projectiles, ISeek
         //}
         //else
         //{
-            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         //}
 
         transform.LookAt(target);
 
         if (dir.magnitude <= distanceThisFrame + InterpolateValue || transform.position.y <= InterpolateValue)
         {
-            FrozenExplosion frozonExplosion = ImpactEffect.GetComponent<FrozenExplosion>();
-            frozonExplosion.enemyTag = enemyTag;
-            frozonExplosion.damage = damage;
+            MagicExplosion magicExplosion = ImpactEffect.GetComponent<MagicExplosion>();
+            magicExplosion.enemyTag = enemyTag;
+            magicExplosion.damage = damage;
 
-            if (photonView.IsMine)
+            if (PhotonNetwork.IsMasterClient)
             {
                 PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
             }

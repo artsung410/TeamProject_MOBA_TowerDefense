@@ -128,4 +128,9 @@ public class Player : MonoBehaviourPun
             }
         }
     }
+
+    public void Suck(Vector3 position)
+    {
+        transform.localPosition = position;
+    }
 }

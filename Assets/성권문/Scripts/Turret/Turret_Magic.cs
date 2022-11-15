@@ -11,13 +11,6 @@ using Photon.Pun;
 public class Turret_Magic : Turret
 {
     public GameObject smokeParticles;
-    public enum ParticleType
-    {
-        Fire,
-        Frozen,
-        Blackhole,
-    }
-    public ParticleType particleType;
 
     private void Start()
     {
@@ -64,28 +57,24 @@ public class Turret_Magic : Turret
 
     protected override void Shoot()
     {
-        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
-
-        if (particleType == ParticleType.Fire)
+        if (!photonView.IsMine)
         {
-            FireProjectile fire = bulletGO.GetComponent<FireProjectile>();
-
-            if (fire != null)
-            {
-                fire.enemyTag = enemyTag;
-                fire.Seek(attack, target);
-            }
+            return;
         }
 
-        else if (particleType == ParticleType.Frozen)
-        {
-            FrozenProjectile frozen = bulletGO.GetComponent<FrozenProjectile>();
+        makeMagicProjectile();
+    }
 
-            if (frozen != null)
-            {
-                frozen.enemyTag = enemyTag;
-                frozen.Seek(attack, target);
-            }
+    void makeMagicProjectile()
+    {
+        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
+        Projectiles projectile = bulletGO.GetComponent<Projectiles>();
+
+        if (projectile != null)
+        {
+            projectile.speed = towerData.Projectiles_MoveSpeed;
+            projectile.enemyTag = enemyTag;
+            projectile.Seek(attack, target);
         }
     }
 

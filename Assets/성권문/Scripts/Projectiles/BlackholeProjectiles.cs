@@ -3,8 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class FrozenProjectile : Projectiles, ISeek
+public class BlackholeProjectiles : Projectiles
 {
+    // ###############################################
+    //             NAME : ARTSUNG                      
+    //             MAIL : artsung410@gmail.com         
+    // ###############################################
+
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
     float maxHeight = 16f;
@@ -32,16 +37,16 @@ public class FrozenProjectile : Projectiles, ISeek
         //}
         //else
         //{
-            transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
         //}
 
         transform.LookAt(target);
 
         if (dir.magnitude <= distanceThisFrame + InterpolateValue || transform.position.y <= InterpolateValue)
         {
-            FrozenExplosion frozonExplosion = ImpactEffect.GetComponent<FrozenExplosion>();
-            frozonExplosion.enemyTag = enemyTag;
-            frozonExplosion.damage = damage;
+            BlackholeExplosion blackholeExplosion = ImpactEffect.GetComponent<BlackholeExplosion>();
+            blackholeExplosion.enemyTag = enemyTag;
+            blackholeExplosion.damage = damage;
 
             if (photonView.IsMine)
             {

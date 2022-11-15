@@ -3,14 +3,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public class PieceExplosion : MonoBehaviourPun
+public class BlackholeExplosion : MonoBehaviourPun
 {
+    // ###############################################
+    //             NAME : ARTSUNG                      
+    //             MAIL : artsung410@gmail.com         
+    // ###############################################
+
     [Header("타겟 TAG")]
     [HideInInspector]
     public string enemyTag;
 
     [HideInInspector]
     public float damage;
+    private void OnEnable()
+    {
+        StartCoroutine(Destruction());
+    }
+
+    private IEnumerator Destruction()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+
+        StopCoroutine(Destruction());
+    }
 
     private void Damage(Transform enemy)
     {
@@ -56,6 +77,27 @@ public class PieceExplosion : MonoBehaviourPun
         }
     }
 
+    private void Suck(Collider other)
+    {
+        if (other.gameObject.layer == 7)
+        {
+            PlayerBehaviour player = other.GetComponent<PlayerBehaviour>();
+            player.ForSkillAgent(transform.position);
+        }
+
+        // 미니언 데미지 적용
+        else if (other.gameObject.layer == 8)
+        {
+
+        }
+
+        // 스페셜 미니언 데미지 적용
+        else if (other.gameObject.layer == 13)
+        {
+
+        }
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (enemyTag == null)
@@ -70,8 +112,8 @@ public class PieceExplosion : MonoBehaviourPun
 
         if (other.tag == enemyTag)
         {
+            Suck(other);
             Damage(other.gameObject.transform);
-            Debug.Log("매직 익스플로젼");
         }
     }
 }
