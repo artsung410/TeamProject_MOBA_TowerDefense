@@ -36,6 +36,13 @@ public class Cancel : MonoBehaviour
         gameObject.transform.parent.GetChild(3).gameObject.GetComponent<Button>().colors = colorBlock;
     }
 
+    // 버튼을 누르면 카드/타워 선택 화면으로 돌아감
+    public void CardAndTowerDrawWindow()
+    {
+        cancelObj.SetActive(false);
+        GameObject.FindGameObjectWithTag("DrawInventory").transform.GetChild(0).GetChild(0).gameObject.SetActive(true);
+    }
+
     // 이미 구매한 후 체크 Back 버튼
     // 구매창도 함께 닫음
     public void alreadyBuyBackButton()

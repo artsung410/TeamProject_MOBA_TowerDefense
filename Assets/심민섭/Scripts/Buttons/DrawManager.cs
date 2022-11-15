@@ -118,7 +118,7 @@ public class DrawManager : MonoBehaviour
                             drawItemObj.GetComponent<ItemOnObject>().item.itemIcon;
                         //drawItemObj.transform.GetChild(1).GetComponent<Text>().text = buyCount.ToString();
                         drawItemObj.transform.localPosition = Vector3.zero;
-                        drawItemObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                        drawItemObj.transform.GetChild(0).localScale = new Vector3(2f, 2f, 2f);
                     }
                 }
             }
@@ -138,7 +138,7 @@ public class DrawManager : MonoBehaviour
                     drawItemObj.GetComponent<ItemOnObject>().item.itemIcon;
                 //drawItemObj.transform.GetChild(1).GetComponent<Text>().text = buyCount.ToString();
                 drawItemObj.transform.localPosition = Vector3.zero;
-                drawItemObj.transform.localScale = new Vector3(1.5f, 1.5f, 1.5f);
+                drawItemObj.transform.GetChild(0).localScale = new Vector3(2f, 2f, 2f);
                 // 아이템을 넣었다면 
                 return;
             }
@@ -294,6 +294,7 @@ public class DrawManager : MonoBehaviour
         // 같은 아이템이 있는지 확인한다.
         // 같은 아이템이 있으면 Value를 더한다.
         // 같은 아이템이 없으면 빈 슬롯에 아이템을 생성한다.
+        StructResultItem.Clear();
         ResultItem = getDrawResultItem;
 
         // 인벤토리에 있는 아이템을 저장한다.
@@ -350,39 +351,93 @@ public class DrawManager : MonoBehaviour
             }
         }
 
+        // 리스트 -> ID
+        List<int> idList = new List<int>();
+        for (int i = 0; i < sameItem.Count; i++)
+        {
+            idList.Add(sameItem[i].itemID);
+        }
+        // 리스트 -> 딕셔너리(id, count)
+        var idListDistinct = idList.GroupBy(x => x)
+                                      .Where(g => g.Count() > 1)
+                                      .ToDictionary(x => x.Key, x => x.Count());
 
-        //int putInItems = 0;
-
-            // 슬롯에 아이템이 존재하지 않으면
-            /*if (warriorInventory.transform.GetChild(i).childCount == 0)
+        // 아이템 생성하기
+        if (sameItem.Count != 0)
+        {
+            for (int j = 0; j < warriorInventory.transform.childCount; j++) // 인벤 슬롯 만큼 반복해서 빈 슬롯을 찾는다.
             {
-                if (ResultItem.Count == 0)
+                for (int i = 0; i <= idListDistinct.Count; i++) // 인벤토리 갯수 만큼 반복
                 {
-                    Debug.Log("ResultItem.Count : 0");
-                    return;
-                }
-                // 아이템을 생성해서 넣는다.
-                // 아이템 오브젝트를 복제한다.
-                GameObject itemObjProduce = (GameObject)Instantiate(prefabItem);
-                // ItemOnObject 스크립트를 가져온다.
-                ItemOnObject itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
-                itemProduce.item = ResultItem[putInItems];
-                ResultItem.RemoveAt(putInItems);
-                //putInItems++;
-                itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(i));
-                itemObjProduce.transform.localPosition = Vector3.zero;
-                itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                    // 빈 슬롯 찾기
+                    if (warriorInventory.transform.GetChild(j).childCount == 0)
+                    {
+                        ItemStruct itemStruct = new ItemStruct();
+                        itemStruct.itemName = sameItem[i].itemName;
+                        itemStruct.ClassType = sameItem[i].ClassType;
+                        itemStruct.itemID = sameItem[i].itemID;
+                        if (idListDistinct.ContainsKey(itemStruct.itemID))
+                        {
+                            // Key가 존재하면
+                            itemStruct.itemValue = idListDistinct[itemStruct.itemID];
+                        }
+                        else
+                        {
+                            itemStruct.itemValue = sameItem[i].itemValue;
+                        }
+                        itemStruct.itemDesc = sameItem[i].itemDesc;
+                        itemStruct.itemIcon = sameItem[i].itemIcon;
+                        itemStruct.itemModel = sameItem[i].itemModel;
+                        itemStruct.inGameData = sameItem[i].inGameData;
+                        itemStruct.itemType = sameItem[i].itemType;
+                        itemStruct.itemWeight = sameItem[i].itemWeight;
+                        itemStruct.maxStack = sameItem[i].maxStack;
+                        itemStruct.indexItemInList = sameItem[i].indexItemInList;
+                        itemStruct.rarity = sameItem[i].rarity;
+                        itemStruct.itemAttributes = sameItem[i].itemAttributes;
+                        itemStruct.specialPrefabs = sameItem[i].specialPrefabs;
+                        itemStruct.buffDatas = sameItem[i].buffDatas;
 
-                ResultItem.RemoveAt(i);
-                if (ResultItem.Count == 0)
-                {
-                    return;
-                }
-            }*/
+                        StructResultItem.Add(itemStruct);
 
+                        GameObject itemObjProduce = (GameObject)Instantiate(prefabItem);
+                        ItemOnObject itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
+                        itemProduce.item.itemName = StructResultItem[i].itemName;
+                        itemProduce.item.ClassType = StructResultItem[i].ClassType;
+                        itemProduce.item.itemID = StructResultItem[i].itemID;
+                        itemProduce.item.itemDesc = StructResultItem[i].itemDesc;
+                        itemProduce.item.itemIcon = StructResultItem[i].itemIcon;
+                        itemProduce.item.itemModel = StructResultItem[i].itemModel;
+                        itemProduce.item.inGameData = StructResultItem[i].inGameData;
+                        itemProduce.item.itemValue = StructResultItem[i].itemValue;
+                        itemProduce.item.itemType = StructResultItem[i].itemType;
+                        itemProduce.item.itemWeight = StructResultItem[i].itemWeight;
+                        itemProduce.item.maxStack = StructResultItem[i].maxStack;
+                        itemProduce.item.indexItemInList = StructResultItem[i].indexItemInList;
+                        itemProduce.item.rarity = StructResultItem[i].rarity;
+                        itemProduce.item.itemAttributes = StructResultItem[i].itemAttributes;
+                        itemProduce.item.specialPrefabs = StructResultItem[i].specialPrefabs;
+                        itemProduce.item.buffDatas = StructResultItem[i].buffDatas;
+
+                        itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(j));
+                        itemObjProduce.transform.localPosition = Vector3.zero;
+                        itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+
+                        // 넣었으면 아이템 삭제
+                        sameItem.RemoveAt(i);
+                        idListDistinct.Remove(itemStruct.itemID);
+                        if (idListDistinct.Count == 0)
+                            break;
+                    }
+                }
+                if (sameItem.Count == 0)
+                    break;
+            }
+            sameItem.Clear();
+            idList.Clear();
+            idListDistinct.Clear();
+        }
         
-
-
     }
 
     // Retry 버튼을 클릭 시 다시 이전 갯수대로 뽑는다. 
@@ -435,7 +490,6 @@ public class DrawManager : MonoBehaviour
                     itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(j));
                     itemObjProduce.transform.localPosition = Vector3.zero;
                     itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
-
                 }
             }
         }
