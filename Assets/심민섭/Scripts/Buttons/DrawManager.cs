@@ -518,6 +518,8 @@ public class DrawManager : MonoBehaviour
             // 같은 아이템이 없으면 빈 슬롯에 아이템을 생성한다.
             DrawCardOrganize_two();
         }
+
+        StructResultItem.Clear();
     }
 
     // 카드 구매 후 재화 업데이트 예정 --------------------------------------------
