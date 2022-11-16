@@ -17,6 +17,33 @@ public class BlackholeExplosion : MonoBehaviourPun
     public float damage;
     private void OnEnable()
     {
+        // 피아식별
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+            {
+                enemyTag = "Red";
+            }
+
+            else
+            {
+                enemyTag = "Blue";
+            }
+        }
+
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+            {
+                enemyTag = "Blue";
+            }
+
+            else
+            {
+                enemyTag = "Red";
+            }
+        }
+
         StartCoroutine(Destruction());
     }
 
@@ -78,22 +105,25 @@ public class BlackholeExplosion : MonoBehaviourPun
 
     private void Suck(Collider other)
     {
+        // 플레이어 빨아들이기
         if (other.gameObject.layer == 7)
         {
             PlayerBehaviour playerBehaviour = other.GetComponent<PlayerBehaviour>();
             playerBehaviour.ForSkillAgent(transform.position);
         }
 
-        // 미니언 데미지 적용
+        // 미니언 빨아들이기
         else if (other.gameObject.layer == 8)
         {
-
+            Enemybase minion = other.GetComponent<Enemybase>();
+            minion.ForSkillAgent(transform.position);
         }
 
-        // 스페셜 미니언 데미지 적용
+        // 스폐셜 미니언 빨아들이기
         else if (other.gameObject.layer == 13)
         {
-
+            Enemybase minion = other.GetComponent<Enemybase>();
+            minion.ForSkillAgent(transform.position);
         }
     }
 
@@ -121,7 +151,7 @@ public class BlackholeExplosion : MonoBehaviourPun
         elapsedTime += Time.deltaTime;
         if (other.tag == enemyTag)
         {
-            if (elapsedTime >= 0.55f)
+            if (elapsedTime >= 1f)
             {
                 Suck(other);
                 elapsedTime = 0f;
