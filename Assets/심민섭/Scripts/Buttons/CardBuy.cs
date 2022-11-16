@@ -32,6 +32,9 @@ public class CardBuy : MonoBehaviour
     [SerializeField]
     private GameObject buyCheckObj;
 
+    [SerializeField]
+    private GameObject buyWindow;
+
     // 구매한 갯수 스크립트
     [SerializeField]
     private PayAmount buyCount;
@@ -102,6 +105,8 @@ public class CardBuy : MonoBehaviour
         {
             Debug.LogError("재화 에러!!!");
         }
+        // Buy 버튼을 누르면 해당 창이 닫힌다.
+        buyWindow.SetActive(false);
     }
     
 }

@@ -45,13 +45,14 @@ public class Turret_Buff : Turret
 
     protected override void Fire()
     {
-        GameObject circleAttack = PhotonNetwork.Instantiate(towerData.Projectiles.name, transform.position, transform.rotation);
+        GameObject projectiles = PhotonNetwork.Instantiate(towerData.Projectiles.name, transform.position, transform.rotation);
+        CircleAttack magicCircle = projectiles.GetComponent<CircleAttack>();
+        magicCircle.enemyTag = enemyTag;
 
         if (!photonView.IsMine)
         {
-            Collider circleCol = circleAttack.GetComponent<Collider>();
+            Collider circleCol = projectiles.GetComponent<Collider>();
             circleCol.enabled = false;
         }
-
     }
 }

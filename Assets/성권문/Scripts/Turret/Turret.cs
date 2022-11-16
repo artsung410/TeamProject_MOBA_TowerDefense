@@ -74,13 +74,6 @@ public class Turret : MonoBehaviourPun
 
         _outline = GetComponent<Outline>();
 
-        // 투사체의 공격력 처리
-        if (towerData.Projectiles != null)
-
-        {
-            towerData.Projectiles.GetComponent<Projectiles>().damage = attack;
-        }
-
         // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
         BuffManager.towerBuffAdditionEvent += incrementBuffValue;
 

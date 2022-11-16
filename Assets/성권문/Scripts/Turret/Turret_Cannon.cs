@@ -5,10 +5,26 @@ using Photon.Pun;
 
 public class Turret_Cannon : Turret
 {
+    public GameObject smokeParticles;
+
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        if (smokeParticles == null)
+        {
+            return;
+        }
+
+        // 스모크 효과 생성
+        GameObject particle = PhotonNetwork.Instantiate(smokeParticles.name, firePoint.position, Quaternion.identity);
+        particle.transform.Rotate(new Vector3(0, -90f, 0));
     }
 
     bool isLockOn;
@@ -52,7 +68,9 @@ public class Turret_Cannon : Turret
 
         if (bullet != null)
         {
-            bullet.Seek(shotTransform);
+            // 투사체의 공격력을 적용하고, 타겟을 넘겨줌.
+            bullet.enemyTag = enemyTag;
+            bullet.Seek(attack, shotTransform);
         }
     }
 

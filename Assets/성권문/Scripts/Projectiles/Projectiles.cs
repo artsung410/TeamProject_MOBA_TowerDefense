@@ -22,35 +22,7 @@ public class Projectiles : MonoBehaviourPun
     [Header("Å¸°Ù TAG")]
     public string enemyTag;
     public float damage;
-
-    protected void OnEnable()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
-            {
-                enemyTag = "Red";
-            }
-
-            else
-            {
-                enemyTag = "Blue";
-            }
-        }
-
-        else
-        {
-            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
-            {
-                enemyTag = "Blue";
-            }
-
-            else
-            {
-                enemyTag = "Red";
-            }
-        }
-    }
+    public GameObject ImpactEffect;
 
     protected void Damage(Transform enemy)
     {
@@ -107,6 +79,7 @@ public class Projectiles : MonoBehaviourPun
         {
             return;
         }
+
 
         if (other.tag == enemyTag)
         {
