@@ -4811,7 +4811,7 @@ MonoBehaviour:
   paddingTop: 0
   positionNumberX: 5
   positionNumberY: 2
-  itemDatabase: {fileID: 11400000, guid: 964f317a23cc9f0418bb3778fccd8ebb, type: 2}
+  itemDatabase: {fileID: 11400000, guid: 0a43f7233ec0f9540a78993b9abe6e4c, type: 2}
   inventoryTitle: 
   PanelRectTransform: {fileID: 349912105}
   PanelImage: {fileID: 0}
@@ -4821,23 +4821,7 @@ MonoBehaviour:
   SlotGridLayout: {fileID: 135991938}
   SlotGridRectTransform: {fileID: 135991937}
   mainInventory: 1
-  ItemsInInventory:
-  - itemName: Apple
-    ClassType: Wizard
-    itemID: 11
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: a4d3f378d1a88f346af15ee906321f2a, type: 3}
-    itemModel: {fileID: 8911903397271815152, guid: d5b8cc9f692fdc446adcf89f09ed2d8b, type: 3}
-    inGameData: {fileID: 0}
-    itemValue: 1
-    itemType: 1
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: -1
-    rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+  ItemsInInventory: []
   height: 4
   width: 4
   stackable: 1
@@ -6393,7 +6377,7 @@ MonoBehaviour:
   paddingTop: 0
   positionNumberX: 5
   positionNumberY: 4
-  itemDatabase: {fileID: 11400000, guid: 964f317a23cc9f0418bb3778fccd8ebb, type: 2}
+  itemDatabase: {fileID: 11400000, guid: fce15b7de6026c248b77b0855e3fec2b, type: 2}
   inventoryTitle: 
   PanelRectTransform: {fileID: 485348091}
   PanelImage: {fileID: 0}
@@ -6565,6 +6549,50 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &522595141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 522595143}
+  - component: {fileID: 522595142}
+  m_Layer: 0
+  m_Name: MongoDB
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &522595142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522595141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a88cc0d04eece49977e505b1413a73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &522595143
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522595141}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 304.32568, y: 670.5368, z: 528.9901}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &525265255
 GameObject:
   m_ObjectHideFlags: 0
@@ -17921,7 +17949,7 @@ MonoBehaviour:
   paddingTop: 0
   positionNumberX: 5
   positionNumberY: 2
-  itemDatabase: {fileID: 11400000, guid: 964f317a23cc9f0418bb3778fccd8ebb, type: 2}
+  itemDatabase: {fileID: 11400000, guid: a6b634e63743c5b4fac4e21fece714aa, type: 2}
   inventoryTitle: 
   PanelRectTransform: {fileID: 1251542679}
   PanelImage: {fileID: 0}
@@ -32816,7 +32844,7 @@ MonoBehaviour:
   paddingTop: 0
   positionNumberX: 5
   positionNumberY: 2
-  itemDatabase: {fileID: 11400000, guid: 964f317a23cc9f0418bb3778fccd8ebb, type: 2}
+  itemDatabase: {fileID: 11400000, guid: a74b91c3d0f4dcb4298c4b0130d2d4e9, type: 2}
   inventoryTitle: 
   PanelRectTransform: {fileID: 4151785054912816565}
   PanelImage: {fileID: 0}

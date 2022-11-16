@@ -206,22 +206,22 @@ public class InventoryEditor : Editor
         if (!inv.characterSystem())
         {
             // 인스펙터의 라벨(명칭)을 Add an item으로 명명
-            GUILayout.Label("Add an Skill item: (스킬은 스킬만 Add 하세요!!)");
+            GUILayout.Label("Add an Skill item: (전사 스킬 추가)");
 
             //inv.setImportantVariables(); // 상단 GUI 요소에 공백
             EditorGUILayout.BeginHorizontal(); // 수평 GUI 요소 시작
             // 인스펙터가 가로로 생성된다.
 
             // 아이템 DB 오브젝트를 생성하고
-            ItemDataBaseList inventoryItemList_skill = (ItemDataBaseList)Resources.Load("ItemDatabase");
+            ItemDataBaseList inventoryItemList_warriorskill = (ItemDataBaseList)Resources.Load("WarriorSkillDatabase");
 
             // itemcount 길이의 문자열 배열 생성
-            string[] items_skill = new string[inventoryItemList_skill.itemList.Count];
-            for (int i = 1; i < items_skill.Length; i++)
+            string[] items_warriorskill = new string[inventoryItemList_warriorskill.itemList.Count];
+            for (int i = 1; i < items_warriorskill.Length; i++)
             {
-                items_skill[i] = inventoryItemList_skill.itemList[i].itemName;
+                items_warriorskill[i] = inventoryItemList_warriorskill.itemList[i].itemName;
             }
-            itemID = EditorGUILayout.Popup("", itemID, items_skill, EditorStyles.popup);
+            itemID = EditorGUILayout.Popup("", itemID, items_warriorskill, EditorStyles.popup);
             itemValue = EditorGUILayout.IntField("", itemValue, GUILayout.Width(40));
             GUI.color = Color.green;
             if (GUILayout.Button("Add Item"))
@@ -232,7 +232,62 @@ public class InventoryEditor : Editor
             inv.OnUpdateItemList();
             EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료
 
-            /*GUI.color = Color.white;
+            GUI.color = Color.white;
+            //-------------------------------------------------------------------------
+            GUILayout.Label("Add an Skill item: (마법사 스킬 추가)");
+
+            //inv.setImportantVariables(); // 상단 GUI 요소에 공백
+            EditorGUILayout.BeginHorizontal(); // 수평 GUI 요소 시작
+
+            // 아이템 DB 오브젝트를 생성하고
+            ItemDataBaseList inventoryItemList_wizardskill = (ItemDataBaseList)Resources.Load("WizardSkillDatabase");
+
+            // itemcount 길이의 문자열 배열 생성
+            string[] items_wizardskill = new string[inventoryItemList_wizardskill.itemList.Count];
+            for (int i = 1; i < items_wizardskill.Length; i++)
+            {
+                items_wizardskill[i] = inventoryItemList_wizardskill.itemList[i].itemName;
+            }
+            itemID = EditorGUILayout.Popup("", itemID, items_wizardskill, EditorStyles.popup);
+            itemValue = EditorGUILayout.IntField("", itemValue, GUILayout.Width(40));
+            GUI.color = Color.green;
+            if (GUILayout.Button("Add Item"))
+            {
+                inv.addItemToInventory(itemID, itemValue);
+                inv.stackableSettings();
+            }
+            inv.OnUpdateItemList();
+            EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료
+
+            GUI.color = Color.white;
+            //-----------------------------------------------------------------------------
+            GUILayout.Label("Add an Skill item: (공통 스킬 추가)");
+
+            //inv.setImportantVariables(); // 상단 GUI 요소에 공백
+            EditorGUILayout.BeginHorizontal(); // 수평 GUI 요소 시작
+
+            // 아이템 DB 오브젝트를 생성하고
+            ItemDataBaseList inventoryItemList_inherenceskill = (ItemDataBaseList)Resources.Load("InherenceSkillDatabase");
+
+            // itemcount 길이의 문자열 배열 생성
+            string[] items_inherenceskill = new string[inventoryItemList_inherenceskill.itemList.Count];
+            for (int i = 1; i < items_inherenceskill.Length; i++)
+            {
+                items_inherenceskill[i] = inventoryItemList_inherenceskill.itemList[i].itemName;
+            }
+            itemID = EditorGUILayout.Popup("", itemID, items_inherenceskill, EditorStyles.popup);
+            itemValue = EditorGUILayout.IntField("", itemValue, GUILayout.Width(40));
+            GUI.color = Color.green;
+            if (GUILayout.Button("Add Item"))
+            {
+                inv.addItemToInventory(itemID, itemValue);
+                inv.stackableSettings();
+            }
+            inv.OnUpdateItemList();
+            EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료
+
+            GUI.color = Color.white;
+
             //---------------------------------------------------------------------------------
             GUILayout.Label("Add an Tower item: (타워는 'Panel_Inventor'에서 Add 하세요!!)");
 
@@ -259,7 +314,7 @@ public class InventoryEditor : Editor
             }
             inv.OnUpdateItemList();
 
-            EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료*/
+            EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료
         }
     }
 }
