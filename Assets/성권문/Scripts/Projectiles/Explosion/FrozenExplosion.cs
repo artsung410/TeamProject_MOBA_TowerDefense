@@ -1,19 +1,35 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class FrozenExplosion : MonoBehaviour
+public class FrozenExplosion : MonoBehaviourPun
 {
     public GameObject shot1;
     public GameObject shot2;
     public GameObject pieceParticle;
 
+    [HideInInspector]
     public string enemyTag;
+
+    [HideInInspector]
     public float damage;
 
     private void OnEnable()
     {
-        Destroy(gameObject, 3f);
+        StartCoroutine(Destruction());
+    }
+
+    private IEnumerator Destruction()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+
+        StopCoroutine(Destruction());
     }
 
     private IEnumerator Start()
@@ -28,8 +44,11 @@ public class FrozenExplosion : MonoBehaviour
 
         for (int i = 0; i < pieceParticle.transform.childCount; i++)
         {
+            PieceExplosion snowflake = pieceParticle.transform.GetChild(i).GetComponent<PieceExplosion>();
+            snowflake.damage = 5f;
+            snowflake.enemyTag = enemyTag;
             pieceParticle.transform.GetChild(i).gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

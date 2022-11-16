@@ -40,7 +40,7 @@ public class Player : MonoBehaviourPun
 
     float elapsedTime;
     private void Update()
-    {
+    {     
         if (photonView.IsMine)
         {
             return;

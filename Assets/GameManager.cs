@@ -80,13 +80,11 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnPlayer();
 
         // buffManager 인스턴스생성 속도 맞추기 위해서 invoke사용
-        Invoke("SpawnTower", 0.5f);
+        Invoke(nameof(SpawnTower), 0.5f);
     }
 
     private void Start()
     {
-        SpawnTower();
-
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
@@ -98,7 +96,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             gameObject.tag = "Red";
         }
-
     }
 
     float elaspedTime;
@@ -148,6 +145,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             return;
         }
 
+        Debug.Log($"{gameObject.tag}, 호출");
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             GameObject tower = myData.cardPrefab[0];

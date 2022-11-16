@@ -11,7 +11,7 @@ public enum ProjectileType
     Bullet
 }
 
-public class Projectiles : MonoBehaviourPun
+public class Projectiles : MonoBehaviourPun, ISeek
 {
     // ###############################################
     //             NAME : ARTSUNG                      
@@ -20,8 +20,17 @@ public class Projectiles : MonoBehaviourPun
     public ProjectileType projectileType;
 
     [Header("Å¸°Ù TAG")]
-    public string enemyTag;
+    [HideInInspector]
     public float damage;
+
+    [HideInInspector]
+    public float speed;
+
+    public string enemyTag;
+
+    [HideInInspector]
+    public Transform target;
+
     public GameObject ImpactEffect;
 
     protected void Damage(Transform enemy)
@@ -66,6 +75,12 @@ public class Projectiles : MonoBehaviourPun
                 special_minion.TakeDamage(damage);
             }
         }
+    }
+
+    public void Seek(float dmg, Transform tg)
+    {
+        target = tg;
+        damage = dmg;
     }
 
     protected void OnTriggerEnter(Collider other)

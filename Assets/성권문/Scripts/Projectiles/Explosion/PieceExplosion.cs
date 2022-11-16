@@ -6,9 +6,40 @@ using Photon.Pun;
 public class PieceExplosion : MonoBehaviourPun
 {
     [Header("타겟 TAG")]
+    [HideInInspector]
     public string enemyTag;
+
     public float damage;
 
+    private void OnEnable()
+    {
+        // 피아식별
+        if (PhotonNetwork.IsMasterClient)
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
+            {
+                enemyTag = "Red";
+            }
+
+            else
+            {
+                enemyTag = "Blue";
+            }
+        }
+
+        else
+        {
+            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
+            {
+                enemyTag = "Blue";
+            }
+
+            else
+            {
+                enemyTag = "Red";
+            }
+        }
+    }
     private void Damage(Transform enemy)
     {
         // 플레이어 데미지 적용
@@ -31,7 +62,7 @@ public class PieceExplosion : MonoBehaviourPun
         // 미니언 데미지 적용
         else if (enemy.gameObject.layer == 8)
         {
-            Debug.Log("미니언 데미지 적용");
+            Debug.Log($"미니언 데미지 적용 {enemy.gameObject.name}");
             Enemybase minion = enemy.GetComponent<Enemybase>();
 
             if (minion != null)
@@ -60,7 +91,7 @@ public class PieceExplosion : MonoBehaviourPun
             return;
         }
 
-        if (!PhotonNetwork.IsMasterClient)
+        if (!photonView.IsMine)
         {
             return;
         }

@@ -197,6 +197,10 @@ public class Enemybase : MonoBehaviourPun
         _outline.enabled = false;
     }
 
-
+    public void ForSkillAgent(Vector3 destination)
+    {
+        _navMeshAgent.isStopped = false;
+        _navMeshAgent.SetDestination(destination);
+    }
 
 }

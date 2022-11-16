@@ -9,10 +9,6 @@ using Photon.Pun;
 
 public class Bullet : Projectiles, ISeek
 {
-    public Transform target;
-
-    public float speed = 70f;
-
     public float explosionRadius = 0f;
 
     private void Update()
@@ -35,12 +31,6 @@ public class Bullet : Projectiles, ISeek
         transform.Translate(dir.normalized * distanceThisFrame, Space.World);
 
         transform.LookAt(target);
-    }
-
-    public void Seek(float dmg, Transform tg)
-    {
-        target = tg;
-        damage = dmg;
     }
 
     void HitTarget()
