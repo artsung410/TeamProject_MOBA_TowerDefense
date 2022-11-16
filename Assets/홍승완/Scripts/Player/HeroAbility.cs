@@ -12,7 +12,14 @@ public class HeroAbility : MonoBehaviourPun
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    [Header("스킬PF")]
     public GameObject[] AbilityPrefabs;
+    [Header("스킬 테스트용")]
+    public GameObject TestAbilityPF;
+    public float TestDamage;
+    public float TestHoldingTime;
+    public float TestRange;
+    [Space]
     public Transform skillSpawn;
     public SkillCoolTimeManager coolTimeManager;
     public PlayerAnimation skillMotion;
@@ -84,6 +91,8 @@ public class HeroAbility : MonoBehaviourPun
             AbilityE();
             AbilityR();
 
+            AbilityTest();
+
             if (go != null)
             {
                 go.GetComponent<SkillHandler>().GetPlayerPos(this);
@@ -93,6 +102,24 @@ public class HeroAbility : MonoBehaviourPun
                 go.GetComponent<SkillHandler>().GetAnimation(skillMotion);
             }
         }
+    }
+    
+    private void AbilityTest()
+    {
+        if (TestAbilityPF == null)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TestAbilityPF.GetComponent<SkillHandler>().SetDamage = TestDamage;
+            TestAbilityPF.GetComponent<SkillHandler>().SetHodingTime = TestHoldingTime;
+            TestAbilityPF.GetComponent<SkillHandler>().SetRange = TestRange;
+
+            go = Instantiate(TestAbilityPF, skillSpawn);
+        }
+
     }
 
     private void AbilityQ()

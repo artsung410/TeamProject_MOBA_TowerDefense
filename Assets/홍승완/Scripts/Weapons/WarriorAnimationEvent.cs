@@ -28,7 +28,7 @@ public class WarriorAnimationEvent : MonoBehaviourPun
                 _behaviour.enemyCol.GetComponent<Health>().OnDamage(_stat.attackDmg);
                 //Debug.Log($"ÇöÀç Å¸°Ù :{_behaviour.enemyCol.gameObject.name}");
             }
-            else if (_behaviour.enemyCol.gameObject.layer == 8 || _behaviour.enemyCol.gameObject.layer == 13)
+            else if (_behaviour.enemyCol.gameObject.layer == 8 || _behaviour.enemyCol.gameObject.layer == 13 || _behaviour.enemyCol.gameObject.layer == 17)
             {
                 _behaviour.enemyCol.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
                 //Debug.Log($"ÇöÀç Å¸°Ù :{_behaviour.enemyCol.gameObject.name}");
