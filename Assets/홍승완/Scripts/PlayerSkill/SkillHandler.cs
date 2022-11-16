@@ -64,7 +64,6 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
         {
             Enemybase minion = target.GetComponent<Enemybase>();
 
-
             if (minion != null)
             {
                 minion.TakeDamage(damage);

@@ -75,7 +75,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     {
         SpawnNexus();
         SpawnPlayer();
-        SpawnTower();
+
     }
 
   

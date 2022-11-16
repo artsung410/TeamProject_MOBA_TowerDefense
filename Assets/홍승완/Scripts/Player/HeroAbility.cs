@@ -17,6 +17,12 @@ public class HeroAbility : MonoBehaviourPun
     public SkillCoolTimeManager coolTimeManager;
     public PlayerAnimation skillMotion;
 
+    [Header("캐릭터 모델링")]
+    public GameObject ChractorRenderer;
+    public GameObject ChractorHpBar;
+    public Collider ChractorCol;
+
+
     SkillManager _skillManager;
     GameObject go;
 
@@ -72,6 +78,7 @@ public class HeroAbility : MonoBehaviourPun
 
         if (photonView.IsMine)
         {
+
             AbilityQ();
             AbilityW();
             AbilityE();
@@ -86,7 +93,6 @@ public class HeroAbility : MonoBehaviourPun
                 go.GetComponent<SkillHandler>().GetAnimation(skillMotion);
             }
         }
-
     }
 
     private void AbilityQ()
@@ -182,6 +188,16 @@ public class HeroAbility : MonoBehaviourPun
 
     }
 
+    public void CharactorRenderEvent(bool check)
+    {
+        photonView.RPC(nameof(RendererActivate), RpcTarget.All, check);
+    }
 
-
+    [PunRPC]
+    public void RendererActivate(bool bb)
+    {
+        ChractorRenderer.SetActive(bb);
+        ChractorHpBar.SetActive(bb);
+        ChractorCol.enabled = bb;
+    }
 }

@@ -66,6 +66,39 @@ Transform:
   m_Father: {fileID: 1054424200760116617}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &275010276035042768
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6065990152427975895}
+  m_Layer: 0
+  m_Name: "\uAC1C\uAECD\uB370\uAE30"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6065990152427975895
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 275010276035042768}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5376754616881233067}
+  - {fileID: 1895321041488539586}
+  m_Father: {fileID: 9017194425820984281}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &360931446917422399
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,13 +1571,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4950108813553868136}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4602330257492642742}
-  m_Father: {fileID: 9017194425820984281}
+  m_Father: {fileID: 6065990152427975895}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5047823152300763095
@@ -2729,6 +2762,7 @@ MonoBehaviour:
   perfomRangeAttack: 0
   EnemyTag: 
   IsAttack: 0
+  enemyCol: {fileID: 0}
   cursorTextureOriginal: {fileID: 2800000, guid: 94645910bc2c50a41949356810b30d92, type: 3}
   cursorTexture: {fileID: 2800000, guid: d1bb6daee4b32a949b2faff52c72ab7a, type: 3}
   cursorMode: 0
@@ -2736,7 +2770,6 @@ MonoBehaviour:
   moveMouseCanvas: {fileID: 0}
   moveMouseObj: {fileID: 0}
   moveMousePointer: {fileID: 0}
-  enemyCol: {fileID: 0}
 --- !u!114 &3475299997868414608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2802,6 +2835,9 @@ MonoBehaviour:
   skillSpawn: {fileID: 386571534135840048}
   coolTimeManager: {fileID: 5572691436845342093}
   skillMotion: {fileID: 7525234218252226827}
+  ChractorRenderer: {fileID: 275010276035042768}
+  ChractorHpBar: {fileID: 5489203633437047593}
+  ChractorCol: {fileID: 962274781265193606}
 --- !u!136 &962274781265193606
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3016,12 +3052,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7402950667038590527}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 9017194425820984281}
+  m_Father: {fileID: 6065990152427975895}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!137 &2360748910861068533
@@ -3249,8 +3285,7 @@ Transform:
   m_LocalScale: {x: 3, y: 3, z: 3}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 5376754616881233067}
-  - {fileID: 1895321041488539586}
+  - {fileID: 6065990152427975895}
   m_Father: {fileID: 3960095213218978512}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

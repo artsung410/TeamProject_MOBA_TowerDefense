@@ -108,7 +108,7 @@ public class Leap : SkillHandler
         }
     }
 
-    bool isArive;
+    bool isArrive;
     private void Update()
     {
         if (photonView.IsMine)
@@ -127,10 +127,10 @@ public class Leap : SkillHandler
                 //_damageZone.SetActive(true);
                 photonView.RPC(nameof(RPC_Activate), RpcTarget.All);
                 _ani.animator.SetBool("JumpAttack", false);
-                isArive = true;
+                isArrive = true;
             }
 
-            if (isArive)
+            if (isArrive)
             {
                 SkillHoldingTime(HoldingTime);
             }
@@ -183,7 +183,7 @@ public class Leap : SkillHandler
                 return;
             }
 
-            isArive = true;
+            isArrive = true;
             _behaviour.transform.position = transform.position;
             photonView.RPC(nameof(RPC_Activate), RpcTarget.All);
             _ani.animator.SetBool("JumpAttack", false);
