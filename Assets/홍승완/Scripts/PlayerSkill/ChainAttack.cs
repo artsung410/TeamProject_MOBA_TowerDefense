@@ -11,7 +11,7 @@ public class ChainAttack : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public ParticleSystem effect;
+    public GameObject[] Effect;
 
     #region private 변수모음
 
@@ -30,17 +30,39 @@ public class ChainAttack : SkillHandler
     private void Awake()
     {
         //effect = gameObject.GetComponent<ParticleSystem>();
+        for (int i = 0; i < Effect.Length; i++)
+        {
+            Effect[i].SetActive(false);
+        }
+
     }
 
+    List<int> randomNum = new List<int>();    
     private void OnEnable()
     {
         elapsedTime = 0f;
         Damage = SetDamage;
-        Debug.Log($"SetDamage : {SetDamage}");
+        //Debug.Log($"SetDamage : {SetDamage}");
         HoldingTime = SetHodingTime;
-        Debug.Log($"SetHodingTime : {SetHodingTime}");
+        //Debug.Log($"SetHodingTime : {SetHodingTime}");
         Range = SetRange;
-        Debug.Log($"SetRange : {SetRange}");
+        //Debug.Log($"SetRange : {SetRange}");
+
+        int currentNumber = Random.Range(0, 4);
+
+        for (int i = 0; i < 4;)
+        {
+            if (randomNum.Contains(currentNumber))
+            {
+                currentNumber = Random.Range(0, 4);
+            }
+            else
+            {
+                randomNum.Add(currentNumber);
+                i++;
+            }
+        }
+
     }
 
     // Start is called before the first frame update
@@ -54,7 +76,6 @@ public class ChainAttack : SkillHandler
         //photonView.RPC(nameof(TagProcessing), RpcTarget.All);
         LookMouseCursor();
         TagProcessing(_ability);
-
     }
 
     public void LookMouseCursor()
@@ -94,16 +115,26 @@ public class ChainAttack : SkillHandler
     {
         if (_ability == null)
         {
-            Debug.Log("abilty 없음");
             return;
         }
 
         if (_ability.gameObject.GetComponent<Health>().isDeath == true)
         {
-            Debug.Log("설마여기?");
             if (photonView.IsMine)
             {
                 PhotonNetwork.Destroy(gameObject);
+            }
+        }
+
+        // 랜덤한 이펙트 4개 켜주는 부분(아주 엉망진창임 그냥)
+        if (testInt <= 3)
+        {
+            EnableTime += Time.deltaTime;
+            if (EnableTime >= 0.1f)
+            {
+                photonView.RPC(nameof(RPC_RandomVFX), RpcTarget.All, testInt);
+                testInt++;
+                EnableTime = 0f;
             }
         }
 
@@ -111,12 +142,22 @@ public class ChainAttack : SkillHandler
         SkillHoldingTime(HoldingTime);
 
         dispersionTime += Time.deltaTime;
+        
         float tickTime = HoldingTime / 10;
         if (dispersionTime >= tickTime)
         {
             dispersionTime = 0f;
             isDamage = true;
         }
+
+    }
+    float EnableTime;
+    int testInt;
+
+    [PunRPC]
+    public void RPC_RandomVFX(int idx)
+    {
+        Effect[randomNum[idx]].SetActive(true);
     }
 
     /// <summary>

@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     // TODO : 생성할 플레이어 프리팹 정보를 캐릭터 선택단계에서 가져오기
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
-    
+
     [Header("Nexus")]
     [SerializeField]
     private GameObject[] NexusPrefab = new GameObject[2];
@@ -225,3 +225,4 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
 }
+

@@ -32,10 +32,13 @@ public class PlayerBehaviour : MonoBehaviourPun
     [Header("공격중인가")]
     public bool perfomMeleeAttack = false;
     public bool perfomRangeAttack = false;
-
     public string EnemyTag;
     public bool IsAttack;
 
+    
+    [Space]
+    
+    public Collider enemyCol;
     // SMS Start --------------------------------------------//
     // A키 커서 관련 변수
 
@@ -57,7 +60,6 @@ public class PlayerBehaviour : MonoBehaviourPun
     Rigidbody _rigid;
     #endregion
 
-    public Collider enemyCol;
 
 
 
