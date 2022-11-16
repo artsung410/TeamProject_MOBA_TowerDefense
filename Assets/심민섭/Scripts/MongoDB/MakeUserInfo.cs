@@ -2,14 +2,13 @@ using UnityEngine;
 using MongoDB.Bson;
 
 // DB 정보를 만든다.
+// 1. InventoryGetData에서 데이터를 받아서 아래의 틀에 넣어준다.
 public class MakeUserInfo : MonoBehaviour
 {
     // ###############################################
     //             NAME : Simstealer                      
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
-
-    // user_info
 
     // 유저 고유 id
     private static string id;
@@ -202,6 +201,7 @@ public class MakeUserInfo : MonoBehaviour
 
     public BsonDocument User_minionTowerCardInfo = new BsonDocument()
     {
+        {"user_id", id},
         {"Tower_Minion_Wolf1", 1},
         {"Tower_Minion_Wolf2", 1},
         {"Tower_Minion_Wolf3", 1},
@@ -236,6 +236,7 @@ public class MakeUserInfo : MonoBehaviour
 
     public BsonDocument User_buffTowerCardInfo = new BsonDocument()
     {
+        {"user_id", id},
         {"Tower_Buff_Damage_Increase1", 1},
         {"Tower_Buff_Damage_Increase2", 1},
         {"Tower_Buff_Damage_Increase3", 1},
