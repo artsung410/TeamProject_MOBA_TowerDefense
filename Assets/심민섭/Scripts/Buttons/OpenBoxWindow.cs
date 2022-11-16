@@ -29,7 +29,6 @@ public class OpenBoxWindow : MonoBehaviour
     {
         yield return new WaitForSeconds(0.01f);
 
-        Debug.Log(DrawManager.instance.boxImage);
         Debug.Log(DrawManager.instance.boxName);
         drawImage.sprite = DrawManager.instance.boxImage;
         drawText.text = DrawManager.instance.boxName;

@@ -20,7 +20,50 @@ public class RandomSelect : MonoBehaviour
 
     public void SkillResultSelect()
     {
-        inventoryItemList_skill = (ItemDataBaseList)Resources.Load("WarriorSkillDatabase");
+        // 인벤토리 지정
+        DrawManager.instance.SelectInventory();
+
+        // 여기서 어떤 카드인지 카드 데이터베이스를 지정해준다.(어떤 카드를 오픈하는지 전달해주면됨)
+        if (DrawManager.instance.boxName == "Warrior Skill")
+        {
+            inventoryItemList_skill = (ItemDataBaseList)Resources.Load("WarriorSkillDatabase");
+            Debug.Log("전사 스킬");
+        }
+        else if (DrawManager.instance.boxName == "Wizard Skill")
+        {
+            inventoryItemList_skill = (ItemDataBaseList)Resources.Load("WizardSkillDatabase");
+            Debug.Log("마법사 스킬");
+        }
+        else if (DrawManager.instance.boxName == "Common Skill")
+        {
+            inventoryItemList_skill = (ItemDataBaseList)Resources.Load("InherenceSkillDatabase");
+            Debug.Log("공통 스킬");
+        }
+        else if (DrawManager.instance.boxName == "Attack Tower")
+        {
+            inventoryItemList_skill = (ItemDataBaseList)Resources.Load("AttackTowerDatabase");
+            Debug.Log("공격 타워");
+        }
+        else if (DrawManager.instance.boxName == "Minion Tower")
+        {
+            inventoryItemList_skill = (ItemDataBaseList)Resources.Load("MinionTowerDatabase");
+            Debug.Log("미니언 타워");
+        }
+        else if (DrawManager.instance.boxName == "Buff Tower")
+        {
+            inventoryItemList_skill = (ItemDataBaseList)Resources.Load("BuffTowerDatabase");
+            Debug.Log("버프 타워");
+        }
+        else if (DrawManager.instance.boxName == "Random Tower")
+        {
+            inventoryItemList_skill = (ItemDataBaseList)Resources.Load("TowerDatabase");
+            Debug.Log("랜덤 타워");
+        }
+        else
+        {
+            Debug.LogError("맞는 데이터베이스가 없습니다.");
+        }
+
 
         total = 0;
         for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)

@@ -213,7 +213,7 @@ public class InventoryEditor : Editor
             // 인스펙터가 가로로 생성된다.
 
             // 아이템 DB 오브젝트를 생성하고
-            ItemDataBaseList inventoryItemList_skill = (ItemDataBaseList)Resources.Load("WarriorSkillDatabase");
+            ItemDataBaseList inventoryItemList_skill = (ItemDataBaseList)Resources.Load("ItemDatabase");
 
             // itemcount 길이의 문자열 배열 생성
             string[] items_skill = new string[inventoryItemList_skill.itemList.Count];
@@ -232,7 +232,7 @@ public class InventoryEditor : Editor
             inv.OnUpdateItemList();
             EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료
 
-            GUI.color = Color.white;
+            /*GUI.color = Color.white;
             //---------------------------------------------------------------------------------
             GUILayout.Label("Add an Tower item: (타워는 'Panel_Inventor'에서 Add 하세요!!)");
 
@@ -259,7 +259,7 @@ public class InventoryEditor : Editor
             }
             inv.OnUpdateItemList();
 
-            EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료
+            EditorGUILayout.EndHorizontal(); // 수평 GUI 레이아웃 종료*/
         }
     }
 }

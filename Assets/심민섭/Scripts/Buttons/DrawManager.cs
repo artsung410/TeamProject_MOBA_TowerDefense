@@ -26,7 +26,7 @@ public class DrawManager : MonoBehaviour
     // 구매한 아이템의 재화명
     public string buyCurencyName;
     // 구매한 카드 개수
-    public int buyCount; // 0이 아니면 구매한 것 - 아이템 획득 처리 후 0으로 초기화\
+    public int buyCount; // 0이 아니면 구매한 것 - 아이템 획득 처리 후 0으로 초기화
     // 구매한 아이템의 이미지
     public Image buyItemImage;
     // 구매한 아이템 명
@@ -39,6 +39,12 @@ public class DrawManager : MonoBehaviour
     private GameObject otherInventory;
     // Warrior 인벤토리
     private GameObject warriorInventory;
+    // Wizard 인벤토리
+    private GameObject wizardInventory;
+    // Tower 인벤토리
+    private GameObject towerInventory;
+    // Inherence 인벤토리
+    private GameObject InherenceInventory;
 
     // 현재 까고 있는 박스 정보 저장
     [Header("Box 정보")]
@@ -52,6 +58,9 @@ public class DrawManager : MonoBehaviour
         instance = this;
     }
 
+    // 인벤토리 분류된 변수
+    private GameObject selectInventory;
+
     private void Start()
     {
         buyCount = 1;
@@ -62,9 +71,12 @@ public class DrawManager : MonoBehaviour
         otherInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject; // Slots
         // Warrior 인벤토리
         warriorInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-
-        // 아이템 DB에 들어온 id와 같은 아이템이 있으면 해당 아이템의 오브젝트를 복사해서 itemOnObject.item에 넣어 준다.
-        //itemOnObject.item = itemDatabase.getItemByID(id);
+        // Wizard 인벤토리
+        wizardInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        // Inherence 인벤토리
+        InherenceInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
+        // Tower 인벤토리
+        towerInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
     }
 
     // 이미 있는 아이템 아이템
@@ -162,37 +174,6 @@ public class DrawManager : MonoBehaviour
                 Destroy(boxItem.gameObject);
             }
         }
-
-        /*if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
-        {
-
-            Item itemFromDup = null;
-            if (duplication != null)
-                itemFromDup = duplication.GetComponent<ItemOnObject>().item;
-
-            inventory.ConsumeItem(item);
-
-            item.itemValue--;
-            if (itemFromDup != null)
-            {
-                duplication.GetComponent<ItemOnObject>().item.itemValue--;
-                if (itemFromDup.itemValue <= 0)
-                {
-                    if (tooltip != null)
-                        tooltip.deactivateTooltip();
-                    inventory.deleteItemFromInventory(item);
-                    Destroy(duplication.gameObject);
-                }
-            }
-            // 수량이 0보다 작으면 사라짐
-            if (item.itemValue <= 0)
-            {
-                if (tooltip != null)
-                    tooltip.deactivateTooltip();
-                inventory.deleteItemFromInventory(item);
-                Destroy(this.gameObject);
-            }
-        }*/
     }
 
     // 개수 10개 이하로 인해 버튼 비활성화 함수
@@ -237,6 +218,49 @@ public class DrawManager : MonoBehaviour
             Destroy(alreadyCardDraw.transform.GetChild(i).gameObject);
         }
     }
+
+
+    // 아주아주 중요한 인벤토리 분배 함수
+    public void SelectInventory()
+    {
+        // 여기선 어떤 인벤토리에 아이템을 넣을지 정한다.
+        // ex) 전사 카드 -> 전사 인벤토리
+        // 어떤 아이템을 오픈하는지 확인해서 인벤토리를 정하면 된다.
+
+        if (boxName == "Warrior Skill")
+        {
+            selectInventory = warriorInventory;
+        }
+        else if (boxName == "Wizard Skill")
+        {
+            selectInventory = wizardInventory;
+        }
+        else if (boxName == "Common Skill")
+        {
+            selectInventory = InherenceInventory;
+        }
+        else if (boxName == "Attack Tower")
+        {
+            selectInventory = towerInventory;
+        }
+        else if (boxName == "Minion Tower")
+        {
+            selectInventory = towerInventory;
+        }
+        else if (boxName == "Random Tower")
+        {
+            selectInventory = towerInventory;
+        }
+        else if (boxName == "Buff Tower")
+        {
+            selectInventory = towerInventory;
+        }
+        else
+        {
+            Debug.LogError("맞는 인벤토리가 없습니다.");
+        }
+    }
+
 
     // 뽑은 카드 정리(자료구조에서 중복 값 찾기)
     // 아이템이 없을 경우 실행
@@ -299,12 +323,12 @@ public class DrawManager : MonoBehaviour
 
         // 인벤토리에 있는 아이템을 저장한다.
         List<Item> myInven_warrior = new List<Item>();
-        for (int i = 0; i < warriorInventory.transform.childCount; i++)
+        for (int i = 0; i < selectInventory.transform.childCount; i++)
         {
             // 슬롯에 아이템이 있으면 접근 조건 추가
-            if (warriorInventory.transform.GetChild(i).childCount != 0)
+            if (selectInventory.transform.GetChild(i).childCount != 0)
             {
-                myInven_warrior.Add(warriorInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item);
+                myInven_warrior.Add(selectInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item);
             }
         }
 
@@ -365,12 +389,12 @@ public class DrawManager : MonoBehaviour
         // 아이템 생성하기
         if (sameItem.Count != 0)
         {
-            for (int j = 0; j < warriorInventory.transform.childCount; j++) // 인벤 슬롯 만큼 반복해서 빈 슬롯을 찾는다.
+            for (int j = 0; j < selectInventory.transform.childCount; j++) // 인벤 슬롯 만큼 반복해서 빈 슬롯을 찾는다.
             {
                 for (int i = 0; i <= idListDistinct.Count; i++) // 인벤토리 갯수 만큼 반복
                 {
                     // 빈 슬롯 찾기
-                    if (warriorInventory.transform.GetChild(j).childCount == 0)
+                    if (selectInventory.transform.GetChild(j).childCount == 0)
                     {
                         ItemStruct itemStruct = new ItemStruct();
                         itemStruct.itemName = sameItem[i].itemName;
@@ -419,7 +443,7 @@ public class DrawManager : MonoBehaviour
                         itemProduce.item.specialPrefabs = StructResultItem[i].specialPrefabs;
                         itemProduce.item.buffDatas = StructResultItem[i].buffDatas;
 
-                        itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(j));
+                        itemObjProduce.transform.SetParent(selectInventory.transform.GetChild(j));
                         itemObjProduce.transform.localPosition = Vector3.zero;
                         itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
 
@@ -440,22 +464,15 @@ public class DrawManager : MonoBehaviour
         
     }
 
-    // Retry 버튼을 클릭 시 다시 이전 갯수대로 뽑는다. 
-    public void RandomCardDraw()
-    {
-
-    }
-
-
     // 아이템 오브젝트 생성 및 이동 함수
     public void ItemProduceAndIventoryMove()
     {
 
         // 인벤토리에 아이템이 존재할 경우 실행
-        int count = warriorInventory.transform.childCount;
-        for (int i = 0; i < warriorInventory.transform.childCount; i++)
+        int count = selectInventory.transform.childCount;
+        for (int i = 0; i < selectInventory.transform.childCount; i++)
         {
-            if (warriorInventory.transform.GetChild(i).childCount == 0)
+            if (selectInventory.transform.GetChild(i).childCount == 0)
             {
                 count -= 1; // 빈 슬롯이 있으면 추가된다.
             }
@@ -487,7 +504,7 @@ public class DrawManager : MonoBehaviour
                     itemProduce.item.specialPrefabs = StructResultItem[j].specialPrefabs;
                     itemProduce.item.buffDatas = StructResultItem[j].buffDatas;
 
-                    itemObjProduce.transform.SetParent(warriorInventory.transform.GetChild(j));
+                    itemObjProduce.transform.SetParent(selectInventory.transform.GetChild(j));
                     itemObjProduce.transform.localPosition = Vector3.zero;
                     itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
                 }
@@ -501,6 +518,8 @@ public class DrawManager : MonoBehaviour
             // 같은 아이템이 없으면 빈 슬롯에 아이템을 생성한다.
             DrawCardOrganize_two();
         }
+
+        StructResultItem.Clear();
     }
 
     // 카드 구매 후 재화 업데이트 예정 --------------------------------------------

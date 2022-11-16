@@ -65,19 +65,19 @@ public class BuyComplited : MonoBehaviour
         {
             buyItemImage.sprite = assessinSkillCardImage;
         }
-        else if (buyItemName.text == "Random Skill")
+        else if (buyItemName.text == "Random Tower")
         {
             buyItemImage.sprite = randomTowerCardImage;
         }
-        else if (buyItemName.text == "Attack Skill")
+        else if (buyItemName.text == "Attack Tower")
         {
             buyItemImage.sprite = attackTowerCardImage;
         }
-        else if (buyItemName.text == "Minion Skill")
+        else if (buyItemName.text == "Minion Tower")
         {
             buyItemImage.sprite = minionTowerCardImage;
         }
-        else if (buyItemName.text == "Buff Skill")
+        else if (buyItemName.text == "Buff Tower")
         {
             buyItemImage.sprite = buffTowerCardImage;
         }
