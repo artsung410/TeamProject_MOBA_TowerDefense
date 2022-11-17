@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
-
-public class EarthProjectile : Projectiles
-{
+    
     // ###############################################
     //             NAME : ARTSUNG                      
     //             MAIL : artsung410@gmail.com         
     // ###############################################
 
+public class WindProjectile : Projectiles
+{
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
     //float maxHeight = 16f;
@@ -49,7 +49,10 @@ public class EarthProjectile : Projectiles
 
         if (dir.magnitude <= distanceThisFrame + InterpolateValue)
         {
-            GameObject newEarth = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            GameObject newWind = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            MagicExplosion magicExplosion = newWind.GetComponent<MagicExplosion>();
+            magicExplosion.damage = damage;
+            magicExplosion.enemyTag = enemyTag;
             PhotonNetwork.Destroy(gameObject);
             return;
         }
