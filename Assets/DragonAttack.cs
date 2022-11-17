@@ -15,14 +15,13 @@ public class DragonAttack : MonoBehaviourPun
     private void OnTriggerEnter(Collider other) // 데미지 처리 박스트리거 이용함
     {
 
-
-        if (other.CompareTag(EnemyTag))
+        if (photonView.IsMine)
         {
-            if (photonView.IsMine)
+            if (other.CompareTag(EnemyTag))
             {
-                if (other.gameObject.layer == 8  || other.gameObject.layer == 13) // 미니언 공격 원거리 미니언 공격이 안드감
+
+                if (other.gameObject.layer == 8 || other.gameObject.layer == 13) // 미니언 공격 원거리 미니언 공격이 안드감
                 {
-                    
                     other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
                 }
                 else if (other.gameObject.layer == 7) // 플레이어 공격
@@ -38,10 +37,14 @@ public class DragonAttack : MonoBehaviourPun
                     other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
                 }
                 // 특수미니언 // 14우물 
-                
-              
+
+
+            } else if (other.gameObject.layer == 17)
+            {
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
             }
 
         }
+        
     }
 }

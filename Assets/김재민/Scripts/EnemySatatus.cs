@@ -23,6 +23,9 @@ public class EnemySatatus : Enemybase
 
     float distance;
 
+    private IEnumerator Imove;
+    private IEnumerator Iattack;
+    private IEnumerator IstateChange;
     protected override void Awake()
     {
         base.Awake();
@@ -40,20 +43,18 @@ public class EnemySatatus : Enemybase
             {
 
                 _target = Enemy.transform; // 우물의 위치를 타켓으로 할당
-                Debug.Log($"{Enemy.transform.position}");
                 _PrevTarget = _target; // 
             }
         }
     }
     private void Start()
     {
-
-        StartCoroutine(StateChange());
         InvokeRepeating("UpdateEnemyTarget", 0f, 1f);
 
         _navMeshAgent.SetDestination(_PrevTarget.position); // 넥서스 좌표
         _navMeshAgent.speed = 5f;
         moveSpeed = _navMeshAgent.speed;
+        stateChange();
     }
 
 
@@ -66,21 +67,22 @@ public class EnemySatatus : Enemybase
             {
                 Targeton = false;
                 _target = _PrevTarget;
-                transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
+                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
                 _navMeshAgent.SetDestination(_target.position);
             }
-            transform.LookAt(new Vector3(_target.position.x, 0, _target.position.z)); // 타켓을 바라봄
+            transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z)); // 타켓을 바라봄
             Vector3 vecDistance = _target.position - transform.position; //거리계산
             float distance = vecDistance.sqrMagnitude; // 최적화
             if (distance <= attackRange * attackRange) //최적화 공격범위 안에있을때
             {
                 _estate = ESTATE.attack; // 어택으로 전환
+                stateChange();
                 break;
             }
             yield return null;
         }
     }
-    private IEnumerator Attack() // 공격
+    private IEnumerator attack() // 공격
     {
         while (_estate == ESTATE.attack)
         {
@@ -89,7 +91,7 @@ public class EnemySatatus : Enemybase
             {
                 Targeton = false;
                 _target = _PrevTarget;
-                transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
+                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
                 _navMeshAgent.SetDestination(_target.position);
             }
 
@@ -97,7 +99,7 @@ public class EnemySatatus : Enemybase
             float AtkDistance = Vector3.SqrMagnitude(vecAtkDistance);
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
-            transform.LookAt(new Vector3(_target.position.x, 1, _target.position.z));
+            transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
             // 애니메이션 추가 + 공격데미지 입히기
             //공격쿨타임
             if (AtkDistance >= attackRange * attackRange)
@@ -106,30 +108,30 @@ public class EnemySatatus : Enemybase
                 _navMeshAgent.isStopped = false;
                 _navMeshAgent.SetDestination(_PrevTarget.position);
                 _estate = ESTATE.move;
+                stateChange();
                 break;
             }
             yield return null;
         }
     }
-    private IEnumerator StateChange()
+    private void stateChange()
     {
 
-        while (true)
+        switch (_estate)
         {
-
-            switch (_estate)
-            {
-                case ESTATE.attack:
-                    StartCoroutine(Attack());
-                    StopCoroutine(move());
-                    break;
-                default:
-                    StartCoroutine(move());
-                    StopCoroutine(Attack());
-                    break;
-
-            }
-            yield return null; ;
+            case ESTATE.attack:
+                StartCoroutine(attack());
+                Iattack = attack();
+                StopCoroutine(Imove);
+                break;
+            default:
+                StartCoroutine(move());
+                Imove = move();
+                if (Iattack != null)
+                {
+                    StopCoroutine(Iattack);
+                }
+                break;
         }
 
     }
@@ -138,7 +140,7 @@ public class EnemySatatus : Enemybase
         Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 15f);
         foreach (Collider collider in RangeTarget)
         {
-            if (collider.tag == myTag)
+            if (collider.tag == myTag || collider.gameObject.layer == 0)
             {
                 continue;
             }
@@ -153,9 +155,16 @@ public class EnemySatatus : Enemybase
                     _navMeshAgent.SetDestination(_target.position);
                 }
 
-            }
-            //레이어로 확인해서 공격타켓 설정
+                //}else if  (collider.gameObject.layer == 17)
+                //{
+                //    Targeton = true;
+                //    _target = collider.transform;
+                //    _navMeshAgent.SetDestination(_target.position);
 
+                //}
+                //레이어로 확인해서 공격타켓 설정
+
+            }
         }
     }
 }

@@ -53,10 +53,14 @@ public class GameManager : MonoBehaviourPunCallbacks
     private static GameManager instance;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
-    
+
     [Header("Nexus")]
     [SerializeField]
     private GameObject[] NexusPrefab = new GameObject[2];
+
+    [Header("Boss")]
+    [SerializeField]
+    private GameObject BossPrefeb;
 
     // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
     public List<GameObject> CurrentTurrets = new List<GameObject>(8);// 각 월드에서 생성된 모든 터렛들.
@@ -75,14 +79,14 @@ public class GameManager : MonoBehaviourPunCallbacks
         SpawnPlayer();
     }
 
-  
+
 
     private void Start()
     {
         //SpawnTower();
 
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
-       
+
     }
 
     float elaspedTime;
@@ -169,25 +173,37 @@ public class GameManager : MonoBehaviourPunCallbacks
 
             idx++;
         }
-        
+
     }
 
-  private void SpawnNexus()
+    private void SpawnNexus()
     {
 
-        Debug.Log("됨?");
-        if(PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
-        {
-            Debug.Log("됨?1");
-            PhotonNetwork.Instantiate(NexusPrefab[0].name,spawnPositions[2].position,Quaternion.Euler(transform.position)); 
-            
 
-        }else // red
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
         {
-            Debug.Log("됨?2");
+
+            PhotonNetwork.Instantiate(NexusPrefab[0].name, spawnPositions[2].position, Quaternion.Euler(transform.position));
+
+
+        }
+        else // red
+        {
+
             PhotonNetwork.Instantiate(NexusPrefab[1].name, spawnPositions[3].position, Quaternion.Euler(transform.position));
         }
     }
+    // 중립몬스터 생성
+    public void bossMonsterSpawn()
+    {
+        if (PhotonNetwork.IsMasterClient && PlayerHUD.Instance.BossMonsterSpawnON)
+        {
+
+          PhotonNetwork.Instantiate(BossPrefeb.name,new Vector3(0,-1f,0f), Quaternion.identity);
+        }
 
 
+    }
 }
+
+

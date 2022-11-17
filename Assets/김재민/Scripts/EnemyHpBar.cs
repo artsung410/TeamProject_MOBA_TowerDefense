@@ -42,7 +42,14 @@ public class EnemyHpBar : MonoBehaviourPun
         {
             Destroy(gameObject.GetComponent<RectTransform>());
         }
-        transform.position = new Vector3(Enemy.position.x, 7f, Enemy.position.z);
         
+        if (enemybase._eminontpye != EMINIONTYPE.Netural)
+        {
+            transform.position = new Vector3(Enemy.position.x, 7f, Enemy.position.z);
+        }
+        else if(enemybase._eminontpye == EMINIONTYPE.Netural)
+        {
+            transform.position = new Vector3(Enemy.position.x,14f,Enemy.position.z);
+        }
     }
 }

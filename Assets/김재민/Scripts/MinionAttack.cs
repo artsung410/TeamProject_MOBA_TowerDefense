@@ -45,22 +45,27 @@ public class MinionAttack : MonoBehaviourPun
                 {
                    
                     other.gameObject.GetComponent<Enemybase>().TakeDamage(satatus.Damage);
+                    
                 }
                 else if (other.gameObject.layer == 7) // 플레이어 공격
                 {
                     other.gameObject.GetComponent<Health>().OnDamage(satatus.Damage);
+                    
                 }
                 else if (other.gameObject.layer == 6) // 타워
                 {
                     other.gameObject.GetComponent<Turret>().TakeDamage(satatus.Damage);
+                    
                 }
                 else if (other.gameObject.layer == 12) // 넥서스
                 {
                     other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(satatus.Damage);
+                    
                 }
                 else if (other.gameObject.layer == 13) // 특수미니언
                 {
                     other.gameObject.GetComponent<Enemybase>().TakeDamage(satatus.Damage);
+                    
                 }
             }
         }

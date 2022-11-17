@@ -18,7 +18,7 @@ public class NexusHp : MonoBehaviourPun
     [SerializeField]
     private Slider _slider;
     public Sprite nexusSprite;
- 
+
     [SerializeField]
     GameObject healthEffect;
     WaitForSeconds Dealay100 = new WaitForSeconds(1);
@@ -38,7 +38,7 @@ public class NexusHp : MonoBehaviourPun
 
     private void OnEnable()
     {
-        
+
         if (PhotonNetwork.IsMasterClient)
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
@@ -54,7 +54,7 @@ public class NexusHp : MonoBehaviourPun
                 gameObject.tag = "Red";
             }
         }
-        
+
     }
 
     private void Start()
@@ -85,13 +85,17 @@ public class NexusHp : MonoBehaviourPun
 
     public void TakeOnDagmage(float Damage)
     {
-        photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
+        if (PlayerHUD.Instance.BossMonsterSpawnON == false)
+        {
+            photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
+
+        }
     }
 
     [PunRPC]
     public void RPC_TakeDamage(float Damage)
     {
-        if(isDie == true)
+        if (isDie == true)
         {
             return;
         }
@@ -134,16 +138,16 @@ public class NexusHp : MonoBehaviourPun
                 {
                     photonView.RPC("effectSwich", RpcTarget.All, true);
                     col.GetComponent<Health>().Regenation(25f);
-              
+
                 }
                 else
                 {
                     photonView.RPC("effectSwich", RpcTarget.All, false);
-                    
+
                 }
             }
-            
-           
+
+
         }
     }
 
