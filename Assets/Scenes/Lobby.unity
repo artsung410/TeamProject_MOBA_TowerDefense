@@ -6559,6 +6559,10 @@ GameObject:
   m_Component:
   - component: {fileID: 522595143}
   - component: {fileID: 522595142}
+  - component: {fileID: 522595144}
+  - component: {fileID: 522595145}
+  - component: {fileID: 522595146}
+  - component: {fileID: 522595147}
   m_Layer: 0
   m_Name: MongoDB
   m_TagString: Untagged
@@ -6593,6 +6597,110 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &522595144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522595141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752e0075d6ff215448cc8f9e96486476, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherInventoryData: []
+  warriorInventoryData: []
+  wizardInventoryData: []
+  inherenceInventoryData: []
+  towerInventoryData: []
+  haveCardCnt: 0
+  warriorCardCnt: 0
+  wizardCardCnt: 0
+  inherenceCardCnt: 0
+  towerCardCnt: 0
+  otherItemCnt: 0
+--- !u!114 &522595145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522595141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d18a4ce9431f5c642bd4dc591f1bf014, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 
+  nickName: 
+  haveCardCnt: 0
+  warriorCardCnt: 0
+  wizardCardCnt: 0
+  inherenceCardCnt: 0
+  towerCardCnt: 0
+  otherItemCnt: 0
+  ChainAttack: 
+  Smash: 
+  Whirlwind: 
+  SpritSword: 
+  Leap: 
+  Blaze: 
+  Lightning: 
+  Blink: 
+  IceArrow: 
+  EnergyBolt: 
+  increasedMinionProduction: 
+  increasedMinionAttackPower: 
+  dragonSummon: 
+  towerAttackGuard: 
+  towerAttackCannon: 
+  towerAttackFlame: 
+  towerAttackFrozenOrb: 
+  towerAttackLightning: 
+  towerAttackBlackHall: 
+  towerAttack_7: 
+  towerAttack_8: 
+  towerAttack_9: 
+  towerAttack_10: 
+  towerMinionWolf: 
+  towerMinionGolem: 
+  towerMinionTreantGuard: 
+  towerMinionGoblin: 
+  towerMinionMonster_Bee: 
+  towerMinionMushroom: 
+  towerBuffDamageIncrease: 
+  towerBuffHp_RegenIncrease: 
+  towerBuffSpeedIncrease: 
+  towerBuffAttackSpeedIncrease: 
+  towerDeBuffDamageDecrease: 
+  towerDeBuffHpRegenDecrease: 
+  towerDeBuffMoveDecrease: 
+  towerDeBuffAttackSpeedDecrease: 
+--- !u!114 &522595146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522595141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df6781c6fe7ae3b4da7851582fd4bd2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &522595147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 522595141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb7a3e81dd9fa874fa1a4ab27f11b950, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &525265255
 GameObject:
   m_ObjectHideFlags: 0

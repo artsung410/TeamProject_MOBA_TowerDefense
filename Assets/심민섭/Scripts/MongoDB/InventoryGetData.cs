@@ -25,6 +25,14 @@ public class InventoryGetData : MonoBehaviour
     public List<GameObject> inherenceInventoryData = new List<GameObject>();
     public List<GameObject> towerInventoryData = new List<GameObject>();
 
+    public int haveCardCnt;
+    public int warriorCardCnt;
+    public int wizardCardCnt;
+    public int inherenceCardCnt;
+    public int towerCardCnt;
+    public int otherItemCnt;
+
+
 
     // Other 인벤토리
     private GameObject otherInventory;
@@ -59,12 +67,19 @@ public class InventoryGetData : MonoBehaviour
     // 함수를 호출하면 인벤토리 내에 있는 아이템을 리스트에 저장한다.
     public void GetItemInInventoryData()
     {
+        otherInventoryData.Clear();
+        warriorInventoryData.Clear();
+        wizardInventoryData.Clear();
+        inherenceInventoryData.Clear();
+        towerInventoryData.Clear();
+
         for (int i = 0; i < otherInventory.transform.childCount; i++)
         {
             Debug.Log("기타 아이템 저장 시작");
             if (otherInventory.transform.GetChild(i).childCount != 0)
             {
-                otherInventoryData.Add(otherInventory.transform.GetChild(i).gameObject);
+                otherInventoryData.Add(otherInventory.transform.GetChild(i).GetChild(0).gameObject);
+                otherItemCnt += otherInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
             }
             Debug.Log("기타 아이템 저장 완료");
         }
@@ -73,16 +88,19 @@ public class InventoryGetData : MonoBehaviour
             Debug.Log("전사 아이템 저장 시작");
             if (warriorInventory.transform.GetChild(i).childCount != 0)
             {
-                warriorInventoryData.Add(warriorInventory.transform.GetChild(i).gameObject);
+                warriorInventoryData.Add(warriorInventory.transform.GetChild(i).GetChild(0).gameObject);
+                warriorCardCnt += warriorInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
             }
             Debug.Log("전사 아이템 저장 완료");
         }
+        
         for (int i = 0; i < wizardInventory.transform.childCount; i++)
         {
             Debug.Log("마법사 아이템 저장 시작");
             if (wizardInventory.transform.GetChild(i).childCount != 0)
             {
-                wizardInventoryData.Add(wizardInventory.transform.GetChild(i).gameObject);
+                wizardInventoryData.Add(wizardInventory.transform.GetChild(i).GetChild(0).gameObject);
+                wizardCardCnt += wizardInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
             }
             Debug.Log("마법사 아이템 저장 완료");
         }
@@ -91,7 +109,8 @@ public class InventoryGetData : MonoBehaviour
             Debug.Log("공통 아이템 저장 시작");
             if (inherenceInventory.transform.GetChild(i).childCount != 0)
             {
-                inherenceInventoryData.Add(inherenceInventory.transform.GetChild(i).gameObject);
+                inherenceInventoryData.Add(inherenceInventory.transform.GetChild(i).GetChild(0).gameObject);
+                inherenceCardCnt += inherenceInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
             }
             Debug.Log("공통 아이템 저장 완료");
         }
@@ -100,7 +119,8 @@ public class InventoryGetData : MonoBehaviour
             Debug.Log("타워 아이템 저장 시작");
             if (towerInventory.transform.GetChild(i).childCount != 0)
             {
-                towerInventoryData.Add(towerInventory.transform.GetChild(i).gameObject);
+                towerInventoryData.Add(towerInventory.transform.GetChild(i).GetChild(0).gameObject);
+                towerCardCnt += towerInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
             }
             Debug.Log("타워 아이템 저장 완료");
         }

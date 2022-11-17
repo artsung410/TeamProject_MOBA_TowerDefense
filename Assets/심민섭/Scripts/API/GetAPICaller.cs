@@ -20,7 +20,7 @@ public class GetAPICaller : MonoBehaviourPun
     private string apiKey = "5hO4J33kQPhtHhq4e0F76V";
 
     [SerializeField]
-    public PlayerStorage playerStorage;
+    private PlayerStorage playerStorage;
 
     private static GetAPICaller _instance;
 
