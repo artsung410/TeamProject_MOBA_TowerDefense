@@ -11,6 +11,15 @@ public enum Target
     Whole_Enemy,
     Tower
 }
+
+public enum Effect_Type
+{
+    Damage,
+    Buff,
+    Debuff,
+    Minion,
+}
+
 // ###############################################
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com
@@ -20,14 +29,6 @@ public enum Target
 [CreateAssetMenu(fileName = "BuffName", menuName = "BuffData/Create New BuffData")]
 public class BuffData : ScriptableObject
 {
-    public enum Effect_Type
-    {
-        Damage,
-        Buff,
-        Debuff,
-        Minion,
-    }
-
     [SerializeField]
     private int _id;
     public int Id { get { return _id; } }

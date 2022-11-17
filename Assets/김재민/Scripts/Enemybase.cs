@@ -151,7 +151,7 @@ public class Enemybase : MonoBehaviourPun
             CurrnetHP -= Damage;
             if (CurrnetHP <= 0)
             {
-                 
+                OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent == true)
                 {
@@ -247,6 +247,10 @@ public class Enemybase : MonoBehaviourPun
         _outline.enabled = false;
     }
 
-
+    public void ForSkillAgent(Vector3 destination)
+    {
+        _navMeshAgent.isStopped = false;
+        _navMeshAgent.SetDestination(destination);
+    }
 
 }

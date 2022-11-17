@@ -109,8 +109,8 @@ public class Stats : GoogleSheetManager
         yield return GetCharactorData.SendWebRequest();
         SetCharactorDatas(GetCharactorData.downloadHandler.text);
 
-        // 초기화가 너무 느림 => 처음 변수 초기화는 직접 값을 써야할까?
         StatInit();
+        //Debug.Log("플레이어 스탯 초기화 ####");
     }
     public void StatInit()
     {
@@ -163,7 +163,7 @@ public class Stats : GoogleSheetManager
     {
         MaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
 
-        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]) + 199;
+        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
         attackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
         attackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
 
@@ -174,7 +174,7 @@ public class Stats : GoogleSheetManager
         enemyExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Exp_Enemy]);
     }
 
-    [PunRPC]
+    //[PunRPC]
     public void PlayerLevelUpFactory(GameObject expBag, float exp)
     {
         // expBag와 나의 tag가 같으면 같은팀이니까 return한다
@@ -185,8 +185,10 @@ public class Stats : GoogleSheetManager
 
         // expBag과 나와의 거리를 계산한다
         float dist = Vector3.Distance(expBag.transform.position, this.transform.position);
-        //Debug.Log($"죽은 {expBag.name}과 나와의 거리 : {dist}");
-        
+
+        // TODO : 상대방 죽음 이벤트에 넣어둠 추후 개선 사항
+        _playerScript.targetedEnemy = null;
+
         // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
         if (dist <= ExpDetectRange)
         {
@@ -200,10 +202,11 @@ public class Stats : GoogleSheetManager
                     Exp = Mathf.Clamp(Exp, minExp, maxExp);
                     return;
                 }
+
                 Level++;
 
                 // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
-                GameManager.Instance.UnlockTower(Level);
+                GameManager.Instance.UnlockTower(gameObject.tag, Level);
                 SetStats(Level);
                 photonView.RPC(nameof(_health.HealthUpdate), RpcTarget.All, MaxHealth);
 
@@ -218,7 +221,7 @@ public class Stats : GoogleSheetManager
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.2f);
-        Gizmos.DrawSphere(transform.position, ExpDetectRange);
+        Gizmos.DrawSphere(transform.position, attackRange);
     }
 
 

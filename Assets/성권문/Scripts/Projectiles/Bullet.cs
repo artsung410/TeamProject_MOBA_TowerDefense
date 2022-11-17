@@ -7,20 +7,9 @@ using Photon.Pun;
 //             MAIL : artsung410@gmail.com         
 // ###############################################
 
-public class Bullet : Projectiles
+public class Bullet : Projectiles, ISeek
 {
-
-    public Transform target;
-
-    public float speed = 70f;
-
     public float explosionRadius = 0f;
-    public GameObject ImpactEffect;
-
-    public void Seek(Transform _target)
-    {
-        target = _target;
-    }
 
     private void Update()
     {
@@ -46,8 +35,8 @@ public class Bullet : Projectiles
 
     void HitTarget()
     {
-        GameObject effectIns = Instantiate(ImpactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 0.5f);
+        GameObject effectIns = Instantiate(ImpactEffect, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+        Destroy(effectIns, 7.5f);
 
         if (explosionRadius > 0f)
         {

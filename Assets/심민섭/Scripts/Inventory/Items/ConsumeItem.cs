@@ -54,7 +54,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 itemTypeOfSlot = eS.itemTypeOfSlots;
             }
 
-            // data가 오른쪽 클릭이면
+            // data(pointer)가 오른쪽 클릭이면
             if (data.button == PointerEventData.InputButton.Right)
             {
                 // 소비 타입과 같으면
@@ -77,7 +77,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                     DrawManager.instance.boxName = this.gameObject.GetComponent<ItemOnObject>().item.itemName;
                 }
 
-                //item from craft system to inventory
                 if (transform.parent.GetComponent<CraftResultSlot>() != null)
                 {
                     // checkIfItemAllreadyExist(item.itemID, item.itemValue)을 사용하고 값을 check에 저장한다.
@@ -103,6 +102,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                 }
                 else // 아이템이 인벤토리에 업데이트가 되었다면
                 {
+                    // 제작 오브젝트가 없기 때문에 무조건 여기로 들어옴.
                     //bool stop = false;
                     // EquipmentSystem(케릭터 장비 창) 컴포넌트를 가져오는데 성공했다면
                     if (eS != null)
@@ -115,6 +115,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                             {
                                 // 장비창 슬롯 하위 오브젝트가 있는가 없는가, 없으면 == 0 있으면 1이상
                                 // 하위 오브젝트가 없으면, 0이면
+                                // 장착 창의 슬롯이 비워있다면 아이템을 장착하는 코드
                                 if (eS.transform.GetChild(1).GetChild(i).childCount == 0)
                                 {
                                     //stop = true;
@@ -124,45 +125,72 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                         // 하나라도 null이면 아이템을 장착한다.
                                         inventory.EquiptItem(item);
                                     }
+
                                     // 장착 슬롯에 Item 오브젝트를 생성한다.
-                                    this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i));
+                                    // 그냥 옮기면 안되고 갯수를 파악해서 1 기준으로 큰지 작은지 확인한다.
+                                    //Debug.Log($"item.itemName : {item.itemName}");
+                                    //Debug.Log($"item.itemValue : {item.itemValue}");
+                                    
+                                    // 우클릭 시 아이템 갯수 감소 코드
+                                    if (item.itemValue <= 1) // 1 보다 작거나 같으면
+                                    {
+                                        // 통으로 옮김.
+                                        this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i)); // 장착 슬롯으로 옮기는 코드
+                                    }
+                                    else // 1 보다 크다면
+                                    {
+                                        item.itemValue -= 1;
+
+                                        //Debug.Log(eS.transform.GetChild(1).name);
+                                        //Debug.Log(eS.transform.GetChild(1).GetChild(i).name); // Slot(1)
+                                        if (eS.transform.GetChild(1).GetChild(i).childCount == 0)
+                                        {
+                                            Instantiate(this.gameObject.transform, eS.transform.GetChild(1).GetChild(i));
+                                            //Debug.Log(eS.transform.GetChild(1).GetChild(i).GetChild(0).name);
+                                            if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemValue >= 1)
+                                            {
+                                                eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemValue = 1;
+                                            }
+                                        }
+                                    }
+
                                     this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
                                     eS.gameObject.GetComponent<Inventory>().updateItemList();
                                     inventory.updateItemList();
                                     gearable = true;
-                                    if (duplication != null)
-                                        Destroy(duplication.gameObject);
+                                    /*if (duplication != null)
+                                        Destroy(duplication.gameObject);*/
                                     break;
                                 }
                             }
                         }
 
-
+                        // 현 상황에선 무조건 실행됨
                         /*if (!stop)
                         {
-                            // eS.slotsInTotal 인벤토리 슬롯 갯수만큼 반복
+                            // eS 장착 슬롯 갯수만큼 반복
                             for (int i = 0; i < eS.slotsInTotal; i++)
                             {
-                                // 아이템[999] 배열에 있는 타입과 item.itemType를 비교한다.
+                                // 아이템[99] 배열에 있는 타입과 item.itemType를 비교하고
                                 if (itemTypeOfSlot[i].Equals(item.itemType))
                                 {
                                     // 장비창 슬롯 하위 오브젝트가 있으면
                                     if (eS.transform.GetChild(1).GetChild(i).childCount != 0)
                                     {
                                         // 장착중인 Item 오브젝트를 otherItemFromCharacterSystem에 저장한다.
-                                        //GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
+                                        GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
                                         // 장착한 아이템의 정보도 otherSlotItem에 저장한다.
-                                        //Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
+                                        Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
 
-*//*                                        // 들어온 아이템의 타입이 UFPS_Weapon이면
-                                        if (item.itemType == ItemType.UFPS_Weapon)
+                                        // 들어온 아이템의 타입이 현재 장착중인 아이템 타입과 같다면
+                                        *//*if (item.itemType == otherSlotItem.itemType)
                                         {
                                             // 장착 중인 아이템을 장착 해제하고
                                             inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
                                             // 들어온 아이템을 장착한다.
                                             inventory.EquiptItem(item);
                                         }
-                                        else // 들어온 아이템의 타입이 UFPS_Weapon이 아니면
+                                        else // 들어온 아이템의 타입이 장착 중인 아이템과 다르다면
                                         {
                                             // 들어온 아이템을 장착한다.
                                             inventory.EquiptItem(item);
@@ -172,13 +200,13 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                                 // 장착 중인 아이템을 장착 해제
                                                 inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
                                             }
-                                        }*/
-                                        /*gearable = true;
+                                        }*//*
+                                        gearable = true;
                                         if (duplication != null)
                                             Destroy(duplication.gameObject);
                                         eS.gameObject.GetComponent<Inventory>().updateItemList();
                                         inventory.OnUpdateItemList();
-                                        break;*//*
+                                        break;
                                     }
                                 }
                             }
@@ -187,7 +215,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                     }
 
                 }
-                // 아이템을 우클릭 했을때, 사용되는 부분이고 사라지게 만드는 코드임
                 /*if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
                 {
 
@@ -209,7 +236,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                             Destroy(duplication.gameObject);
                         }
                     }
-                    // 수량이 0보다 작으면 사라짐
                     if (item.itemValue <= 0)
                     {
                         if (tooltip != null)
@@ -225,7 +251,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
         } // 큰 if 문 끝.
     }
 
-    public void consumeIt()
+    /*public void consumeIt()
     {
         Inventory inventory = transform.parent.parent.parent.GetComponent<Inventory>();
 
@@ -330,13 +356,13 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
             }
 
         }        
-    }
+    }*/
 
-    public void createDuplication(GameObject Item)
+    /*public void createDuplication(GameObject Item)
     {
         Item item = Item.GetComponent<ItemOnObject>().item;
         GameObject dup = mainInventory.GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue);
         Item.GetComponent<ConsumeItem>().duplication = dup;
         dup.GetComponent<ConsumeItem>().duplication = Item;
-    }
+    }*/
 }

@@ -8,19 +8,9 @@ using Photon.Pun;
 //             MAIL : artsung410@gmail.com         
 // ###############################################
 
-public class Arrow : Projectiles
+public class Arrow : Projectiles, ISeek
 {
-    private Transform target;
-
-    public float speed = 70f;
-
     public float explosionRadius = 0f;
-    public GameObject ImpactEffect;
-
-    public void Seek(Transform _target)
-    {
-        target = _target;
-    }
 
     private void Update()
     {
@@ -79,4 +69,6 @@ public class Arrow : Projectiles
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
     }
+
+
 }

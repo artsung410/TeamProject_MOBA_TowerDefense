@@ -52,7 +52,10 @@ public class Turret_Cannon : Turret
 
         if (bullet != null)
         {
-            bullet.Seek(shotTransform);
+            // 투사체의 공격력을 적용하고, 타겟을 넘겨줌.
+            bullet.speed = towerData.Projectiles_MoveSpeed;
+            bullet.enemyTag = enemyTag;
+            bullet.Seek(attack, shotTransform);
         }
     }
 

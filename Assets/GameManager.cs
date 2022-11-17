@@ -52,6 +52,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Transform[] tiles;
     private static GameManager instance;
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
+
+    // TODO : 생성할 플레이어 프리팹 정보를 캐릭터 선택단계에서 가져오기
     public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
 
     [Header("Nexus")]
@@ -73,20 +75,32 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool isGameEnd;
     public string winner;
 
+    public TrojanHorse myData;
+
     private void Awake()
     {
+        myData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         SpawnNexus();
         SpawnPlayer();
+        // buffManager 인스턴스생성 속도 맞추기 위해서 invoke사용
+        Invoke(nameof(SpawnTower), 0.5f);
     }
-
 
 
     private void Start()
     {
-        //SpawnTower();
-
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
 
+
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
+        {
+            gameObject.tag = "Blue";
+        }
+
+        else
+        {
+            gameObject.tag = "Red";
+        }
     }
 
     float elaspedTime;
@@ -126,58 +140,80 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 
     int count;
+
+    // TODO : 최적화, 파인드 오브젝트를 안쓰고 객체를 참조할수있는 방법은 없는지? 
     private void SpawnTower()
     {
-        count = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardId.Count;
+        count = myData.cardId.Count;
         if (count == 0)
         {
             return;
         }
 
+        Debug.Log($"{gameObject.tag}, 호출");
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[0];
-            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[0] - 4;
+            GameObject tower = myData.cardPrefab[0];
+            int slotIndex = myData.cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
+            CheckandApplyBuffs(newTower);
+
         }
         else
         {
-            GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[0];
-            int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[0] - 4;
+            GameObject tower = myData.cardPrefab[0];
+            int slotIndex = myData.cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
+            CheckandApplyBuffs(newTower);
         }
     }
 
     int idx = 1;
-    public void UnlockTower(int level)
+    public void UnlockTower(string tag, int level)
     {
         if (count == 0 || idx == count)
         {
             return;
         }
+
+        if (gameObject.tag != tag)
+        {
+            return;
+        }
+
         // 자기 자신 기준 1 2 3만 호출
         if (level == 3 || level == 5 || level == 7)
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
             {
-                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[idx];
-                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[idx] - 4;
+                GameObject tower = myData.cardPrefab[idx];
+                int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
+                CheckandApplyBuffs(newTower);
             }
             else
             {
-                GameObject tower = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardPrefab[idx];
-                int slotIndex = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().cardIndex[idx] - 4;
+                GameObject tower = myData.cardPrefab[idx];
+                int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
+                CheckandApplyBuffs(newTower);
             }
-
             idx++;
         }
 
     }
 
     private void SpawnNexus()
+
+    private void CheckandApplyBuffs(GameObject tower)
     {
+        TowerData towerData = tower.GetComponent<Turret>().towerData;
+        if (towerData.TowerType == Tower_Type.Buff_Tower || towerData.TowerType == Tower_Type.DeBuff_Tower)
+        {
+            BuffManager.Instance.AddBuff((BuffData)towerData.Scriptables[0]);
+        }
+    }
+
 
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
@@ -187,6 +223,15 @@ public class GameManager : MonoBehaviourPunCallbacks
 
 
         }
+    private void SpawnNexus()
+    {
+        Debug.Log("됨?");
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
+        {
+            Debug.Log("됨?1");
+            PhotonNetwork.Instantiate(NexusPrefab[0].name, spawnPositions[2].position, Quaternion.Euler(transform.position));
+        }
+
         else // red
         {
 
@@ -199,6 +244,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         if (PhotonNetwork.IsMasterClient && PlayerHUD.Instance.BossMonsterSpawnON)
         {
 
+
           PhotonNetwork.Instantiate(BossPrefeb.name,new Vector3(0,-1f,0f), Quaternion.identity);
         }
 
@@ -206,4 +252,6 @@ public class GameManager : MonoBehaviourPunCallbacks
     }
 }
 
+
+}
 

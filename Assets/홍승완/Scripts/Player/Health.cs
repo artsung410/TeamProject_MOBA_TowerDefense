@@ -17,7 +17,7 @@ public class Health : MonoBehaviourPun
     public Slider hpSlider3D;
     Outline _outline;
     Stats _stats;
-    PlayerAnimation ani;
+    public PlayerAnimation ani;
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
     float overhp;
 
@@ -27,23 +27,19 @@ public class Health : MonoBehaviourPun
 
     private float _maxHealth;
     private float _prevMaxHealth;
-    public bool isDeath
-    {
-        get;
-        private set;
-    }
+    public bool isDeath;
 
     private void Awake()
     {
         _outline = GetComponent<Outline>();
         _stats = GetComponent<Stats>();
-        ani = GetComponent<PlayerAnimation>();
        
     }
 
     private void OnEnable()
     {
         _outline.enabled = false;
+
         Init();
     }
 
@@ -71,8 +67,6 @@ public class Health : MonoBehaviourPun
         hpSlider3D.maxValue = _maxHealth;
         hpSlider3D.value = health;
     }
-
-    // TODO : 레벨업한뒤 캐릭터가 한대 맞으면 피가 다시 최대체력으로 한번 채워짐(1400/1500 => 1500/1500 으로 한번 초기화 된다)
 
     [PunRPC]
     public void HealthUpdate(float maxHP)
@@ -113,6 +107,7 @@ public class Health : MonoBehaviourPun
 
     float exp = 10000f;
 
+
     public void Die()
     {
         if (health <= 0f)
@@ -123,23 +118,17 @@ public class Health : MonoBehaviourPun
             hpSlider3D.gameObject.SetActive(false);
             // 죽었을때 Invoke => 실행이 된다
             OnPlayerDieEvent.Invoke(this.gameObject, _stats.enemyExp);
-
             //StartCoroutine(DelayDisapearBody());
             gameObject.SetActive(false);
-
         }
     }
 
-    IEnumerator DelayDisapearBody()
-    {
-        yield return new WaitForSeconds(1.5f);
-        gameObject.SetActive(false);
-    }
+    // TODO : 플레이어 콜라이더 제거부분과 렌더러 제거부분 시간 다르게 적용;
+    // 콜라이더 제거 => 렌더러 제거 => 게임 오브젝트 제거
 
     public void Regenation(float recovery)
     {
         photonView.RPC("PRC_regeneration", RpcTarget.All, recovery);
-
     }
     
     
@@ -154,7 +143,7 @@ public class Health : MonoBehaviourPun
             health -= overhp; // 맥스 체력으로 바꿔줌
         }
         hpSlider3D.value = health;
-        Debug.Log($"health : {health} ");
+        //Debug.Log($"health : {health} ");
     }
 
 

@@ -6715,6 +6715,7 @@ GameObject:
   - component: {fileID: 1639609450}
   - component: {fileID: 1639609449}
   - component: {fileID: 1639609452}
+  - component: {fileID: 1639609453}
   m_Layer: 5
   m_Name: BuffPanel
   m_TagString: Untagged
@@ -6802,7 +6803,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8054bd72a9bc31f43a697643e84898c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  all_DeBuffDatass:
+  - {fileID: 11400000, guid: 943f8b74ac7e66f40854bbc76b2f7a79, type: 2}
+  - {fileID: 11400000, guid: 5a1f11f00c3df09458086a3fc7400222, type: 2}
+  - {fileID: 11400000, guid: de8ce44b77cea7143821f6f4448b7570, type: 2}
+  - {fileID: 11400000, guid: 2a5558aa77dca1d49990b9bc3f73f822, type: 2}
   currentBuffDatas: []
+--- !u!114 &1639609453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1639609447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 78
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &1644709217
 GameObject:
   m_ObjectHideFlags: 0

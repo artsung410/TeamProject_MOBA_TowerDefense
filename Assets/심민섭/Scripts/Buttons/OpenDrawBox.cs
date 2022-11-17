@@ -28,9 +28,19 @@ public class OpenDrawBox : MonoBehaviour
         DrawManager.instance.OpenBoxDisCount();
 
         // 카드 뽑기
-        randomSelect.ResultSelect();
+        randomSelect.SkillResultSelect();
 
         closeObj.SetActive(false);
         openObj.SetActive(true);
+    }
+
+    public void RetryButton()
+    {
+        // 아이템 소모
+        DrawManager.instance.OpenBoxDisCount();
+        // 카드 뽑기 창 초기화
+        DrawManager.instance.CardDataInit();
+        // 카드 뽑기 실행
+        randomSelect.SkillResultSelect();
     }
 }

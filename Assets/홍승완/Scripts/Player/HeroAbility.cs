@@ -12,13 +12,28 @@ public class HeroAbility : MonoBehaviourPun
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    [Header("스킬PF")]
     public GameObject[] AbilityPrefabs;
+    [Header("스킬 테스트용")]
+    public GameObject TestAbilityPF;
+    public float TestDamage;
+    public float TestHoldingTime;
+    public float TestRange;
+    [Space]
     public Transform skillSpawn;
     public SkillCoolTimeManager coolTimeManager;
+    public PlayerAnimation skillMotion;
 
+    [Header("캐릭터 모델링")]
+    public GameObject ChractorRenderer;
+    public GameObject ChractorHpBar;
+    public Collider ChractorCol;
+
+
+    SkillManager _skillManager;
     GameObject go;
 
-    TrojanHorse _trojan;
+    //TrojanHorse _trojanHorse;
 
     #region private 변수들
 
@@ -28,26 +43,37 @@ public class HeroAbility : MonoBehaviourPun
     void Awake()
     {
         AbilityPrefabs = new GameObject[4];
-        _trojan = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        _skillManager = SkillManager.Instance;
+    }
 
-        int count = _trojan.skillIndex.Count;
-        if (count == 0)
+
+    private IEnumerator Start()
+    {
+        while (true)
         {
-            return;
-        }
-
-        for (int i = 0; i < count; i++)
-        {
-
-            int idx = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillIndex[i];
-
-            // 트로이목마 안에 있는 아이템 프리팹 게임상에서 가져오기
-            AbilityPrefabs[idx] = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>().skillItems[i].itemModel;
-             
+            try
+            {
+                if (_skillManager.SkillData.skillIndex.Count == 0)
+                {
+                    yield break;
+                }
+                for (int i = 0; i < _skillManager.SkillData.skillIndex.Count; i++)
+                {
+                    int idx = _skillManager.SkillData.skillIndex[i];
+                    AbilityPrefabs[idx] = _skillManager.SkillPF[idx];
+                }
+                yield break;
+            }
+            catch (Exception ie)
+            {
+                print(ie);
+                _skillManager = SkillManager.Instance;
+            }
+            yield return new WaitForSeconds(0.5f);
         }
     }
 
-    // TODO : 스킬발동중 다른 스킬을 쓰면 쓰던스킬이 취소되게한다(날리는 스킬 제외)
+    // TODO : 스킬발동중 다른 스킬을 쓰면 쓰던스킬이 취소되게한다(날리는 스킬 제외) or 다른 스킬을 못쓰게한다
 
     void Update()
     {
@@ -59,18 +85,39 @@ public class HeroAbility : MonoBehaviourPun
 
         if (photonView.IsMine)
         {
+
             AbilityQ();
             AbilityW();
             AbilityE();
             AbilityR();
+
+            AbilityTest();
 
             if (go != null)
             {
                 go.GetComponent<SkillHandler>().GetPlayerPos(this);
                 go.GetComponent<SkillHandler>().GetPlayerStatus(this.GetComponent<Stats>());
                 go.GetComponent<SkillHandler>().GetMousePos(this.GetComponent<PlayerBehaviour>());
-                go.GetComponent<SkillHandler>().GetAnimation(this.GetComponent<PlayerAnimation>());
+                //go.GetComponent<SkillHandler>().GetAnimation(this.GetComponent<PlayerAnimation>());
+                go.GetComponent<SkillHandler>().GetAnimation(skillMotion);
             }
+        }
+    }
+    
+    private void AbilityTest()
+    {
+        if (TestAbilityPF == null)
+        {
+            return;
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TestAbilityPF.GetComponent<SkillHandler>().SetDamage = TestDamage;
+            TestAbilityPF.GetComponent<SkillHandler>().SetHodingTime = TestHoldingTime;
+            TestAbilityPF.GetComponent<SkillHandler>().SetRange = TestRange;
+
+            go = Instantiate(TestAbilityPF, skillSpawn);
         }
 
     }
@@ -168,6 +215,16 @@ public class HeroAbility : MonoBehaviourPun
 
     }
 
+    public void CharactorRenderEvent(bool check)
+    {
+        photonView.RPC(nameof(RendererActivate), RpcTarget.All, check);
+    }
 
-
+    [PunRPC]
+    public void RendererActivate(bool bb)
+    {
+        ChractorRenderer.SetActive(bb);
+        ChractorHpBar.SetActive(bb);
+        ChractorCol.enabled = bb;
+    }
 }

@@ -13,7 +13,6 @@ public class Sword : MonoBehaviour
     //HeroCombat combat;
     [SerializeField] PlayerBehaviour _playerScript;
     [SerializeField] Health _playerHP;
-    [SerializeField] Stats _stat;
 
 
     private void OnTriggerEnter(Collider other)
@@ -30,7 +29,7 @@ public class Sword : MonoBehaviour
                 if (_playerScript.IsAttack)
                 {
                     _playerScript.enemyCol = other;
-
+                    Debug.Log($"Ä®¿¡ ´êÀº °´Ã¼ : {other}");
                 }
             }
             else
@@ -39,4 +38,5 @@ public class Sword : MonoBehaviour
             }
         }
     }
+
 }

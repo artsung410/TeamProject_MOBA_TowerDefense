@@ -11,7 +11,7 @@ public enum ProjectileType
     Bullet
 }
 
-public class Projectiles : MonoBehaviourPun
+public class Projectiles : MonoBehaviourPun, ISeek
 {
     // ###############################################
     //             NAME : ARTSUNG                      
@@ -20,37 +20,18 @@ public class Projectiles : MonoBehaviourPun
     public ProjectileType projectileType;
 
     [Header("Å¸°Ù TAG")]
-    public string enemyTag;
+    [HideInInspector]
     public float damage;
 
-    protected void OnEnable()
-    {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
-            {
-                enemyTag = "Red";
-            }
+    [HideInInspector]
+    public float speed;
 
-            else
-            {
-                enemyTag = "Blue";
-            }
-        }
+    public string enemyTag;
 
-        else
-        {
-            if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
-            {
-                enemyTag = "Blue";
-            }
+    [HideInInspector]
+    public Transform target;
 
-            else
-            {
-                enemyTag = "Red";
-            }
-        }
-    }
+    public GameObject ImpactEffect;
 
     protected void Damage(Transform enemy)
     {
@@ -96,6 +77,12 @@ public class Projectiles : MonoBehaviourPun
         }
     }
 
+    public void Seek(float dmg, Transform tg)
+    {
+        target = tg;
+        damage = dmg;
+    }
+
     protected void OnTriggerEnter(Collider other)
     {
         if (enemyTag == null)
@@ -107,6 +94,7 @@ public class Projectiles : MonoBehaviourPun
         {
             return;
         }
+
 
         if (other.tag == enemyTag)
         {
