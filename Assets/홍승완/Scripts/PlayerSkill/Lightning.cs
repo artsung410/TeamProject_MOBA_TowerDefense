@@ -25,6 +25,8 @@ public class Lightning : SkillHandler
     private float Range;
     private float Speed;
 
+    public float CrowdControlTime;
+
     private void Awake()
     {
         damageZoneRadius = DamazeZone.GetComponent<SphereCollider>().radius;
@@ -37,6 +39,7 @@ public class Lightning : SkillHandler
         Damage = SetDamage;
         Range = SetRange;
         HoldingTime = SetHodingTime;
+        CrowdControlTime = 2f;
 
         damageZoneRadius = 5f;
     }
@@ -80,7 +83,8 @@ public class Lightning : SkillHandler
         catch (System.Exception)
         {
 
-            throw new System.Exception($"무슨일이야");
+            //throw new System.Exception($"무슨일이야");
+            print("리모트 스킬이라 null이 뜨는것이란다");
         }
     }
 
@@ -103,26 +107,33 @@ public class Lightning : SkillHandler
 
         if (elasedTiem >= time)
         {
-            Destroy(gameObject);
-            //PhotonNetwork.Destroy(gameObject);
+            //Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
     public override void SkillUpdatePosition()
     {
-        transform.position = skillPos;
+        transform.position = new Vector3(skillPos.x, 0, skillPos.z);
     }
+
+    // TODO : 맞은 대상 스턴(2초동안)
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"충돌 테스트 : {other.gameObject.name}");
+        //Debug.Log($"충돌 테스트 : {other.gameObject.name}");
 
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            // 중립 몬스터 : 태그없음, layer 17
+            if (other.CompareTag(enemyTag) || other.gameObject.layer == 17)
             {
                 SkillDamage(Damage, other.gameObject);
+                CrowdControlStun(other.gameObject, CrowdControlTime, true);
             }
+            
         }
     }
+
+    // 스킬이 isStun을 true로 만들어주는데 몇초동안 유지할지 까지 알려준다
 }

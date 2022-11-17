@@ -178,7 +178,7 @@ public class Leap : SkillHandler
             // 바닥에 떨어짐(현재위치)
 
             // 플레이어 자신이 감지되고있어서 예외처리해줌 ㅠ
-            if (collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7)
+            if (collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7 || collision.gameObject.tag == "Ground")
             {
                 return;
             }

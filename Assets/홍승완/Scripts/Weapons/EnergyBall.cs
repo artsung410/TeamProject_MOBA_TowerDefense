@@ -115,8 +115,8 @@ public class EnergyBall : MonoBehaviourPun
                 {
                     target.GetComponent<Health>().OnDamage(_damage);
                 }
-                // 미니언 || 특수미니언 || 중립몬스터
-                else if (target.layer == 8 || target.layer == 13 || target.layer == 17)
+                // 미니언 || 특수미니언
+                else if (target.layer == 8 || target.layer == 13)
                 {
                     target.GetComponent<Enemybase>().TakeDamage(_damage);
                 }
@@ -130,7 +130,14 @@ public class EnergyBall : MonoBehaviourPun
                 {
                     target.GetComponent<NexusHp>().TakeOnDagmage(_damage);
                 }
-
+            }
+            // 중립 몬스터 : Untagged, Layer = 17
+            else
+            {
+                if (target.layer == 17)
+                {
+                    target.GetComponent<Enemybase>().TakeDamage(_damage);
+                }
             }
         }
     }

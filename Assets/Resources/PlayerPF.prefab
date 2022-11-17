@@ -2762,6 +2762,8 @@ MonoBehaviour:
   perfomRangeAttack: 0
   EnemyTag: 
   IsAttack: 0
+  isStun: 0
+  StunTime: 0
   enemyCol: {fileID: 0}
   cursorTextureOriginal: {fileID: 2800000, guid: 94645910bc2c50a41949356810b30d92, type: 3}
   cursorTexture: {fileID: 2800000, guid: d1bb6daee4b32a949b2faff52c72ab7a, type: 3}
@@ -2832,12 +2834,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityPrefabs: []
+  TestAbilityPF: {fileID: 0}
+  TestDamage: 0
+  TestHoldingTime: 0
+  TestRange: 0
   skillSpawn: {fileID: 386571534135840048}
   coolTimeManager: {fileID: 5572691436845342093}
   skillMotion: {fileID: 7525234218252226827}
   ChractorRenderer: {fileID: 275010276035042768}
   ChractorHpBar: {fileID: 5489203633437047593}
   ChractorCol: {fileID: 962274781265193606}
+  isActive: 0
 --- !u!136 &962274781265193606
 CapsuleCollider:
   m_ObjectHideFlags: 0

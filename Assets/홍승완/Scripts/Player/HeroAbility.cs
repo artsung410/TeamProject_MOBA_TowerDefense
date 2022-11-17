@@ -20,7 +20,7 @@ public class HeroAbility : MonoBehaviourPun
     public float TestHoldingTime;
     public float TestRange;
     [Space]
-    public Transform skillSpawn;
+    public Transform skillSpawn; // 스킬나가는 위치
     public SkillCoolTimeManager coolTimeManager;
     public PlayerAnimation skillMotion;
 
@@ -32,6 +32,7 @@ public class HeroAbility : MonoBehaviourPun
 
     SkillManager _skillManager;
     GameObject go;
+    PlayerBehaviour _behaviour;
 
     //TrojanHorse _trojanHorse;
 
@@ -44,8 +45,8 @@ public class HeroAbility : MonoBehaviourPun
     {
         AbilityPrefabs = new GameObject[4];
         _skillManager = SkillManager.Instance;
+        _behaviour = GetComponent<PlayerBehaviour>();
     }
-
 
     private IEnumerator Start()
     {
@@ -75,6 +76,8 @@ public class HeroAbility : MonoBehaviourPun
 
     // TODO : 스킬발동중 다른 스킬을 쓰면 쓰던스킬이 취소되게한다(날리는 스킬 제외) or 다른 스킬을 못쓰게한다
 
+    public bool isActive; // 스킬사용중 -> true
+
     void Update()
     {
         // 게임 끝나면 정지
@@ -85,6 +88,10 @@ public class HeroAbility : MonoBehaviourPun
 
         if (photonView.IsMine)
         {
+            if (isActive == true || _behaviour.isStun == true)
+            {
+                return;
+            }
 
             AbilityQ();
             AbilityW();

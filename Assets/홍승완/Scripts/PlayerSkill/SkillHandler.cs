@@ -60,7 +60,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
             }
         }
-        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
+        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13 || target.gameObject.layer == 17)
         {
             Enemybase minion = target.GetComponent<Enemybase>();
 
@@ -96,6 +96,31 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
         }
     }
 
+    public void CrowdControlStun(GameObject target, float time, bool stun)
+    {
+        if (target.gameObject.layer == 7)
+        {
+            PlayerBehaviour player = target.GetComponent<PlayerBehaviour>();
+
+            if (player != null)
+            {
+                player.OnStun(stun, time);
+            }
+        }
+    }
+
+    public void CrowdControlSlow(GameObject target, float time, float speed)
+    {
+        if (target.gameObject.layer == 7)
+        {
+            Stats player = target.GetComponent<Stats>();
+
+            if (player != null)
+            {
+
+            }
+        }
+    }
 
     protected string GetMytag(HeroAbility ability)
     {
