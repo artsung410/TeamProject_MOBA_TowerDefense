@@ -422,7 +422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 439392703046423976}
   - component: {fileID: 7012209521133024960}
-  m_Layer: 13
+  m_Layer: 0
   m_Name: WolfBlue(JM)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -466,8 +466,6 @@ MonoBehaviour:
   OwnershipTransfer: 0
   observableSearch: 2
   ObservedComponents:
-  - {fileID: 477570206287748836}
-  - {fileID: 578562929544001649}
   - {fileID: 892002901306630143}
   sceneViewId: 0
   InstantiationId: 0
@@ -1189,20 +1187,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eminontpye: 0
   moveSpeed: 1
   attackRange: 6
   Damage: 10
   AttackSpeed: 1
   minionSprite: {fileID: 0}
   HP: 100
+  lastDamageTeam: 
   CurrnetHP: 0
   EnemyTag: 
   myTag: 
   isDead: 0
+  _capsuleCollider: {fileID: 0}
   _target: {fileID: 0}
   Targeton: 0
   _estate: 0
-  _eminiomtype: 0
 --- !u!65 &5664799570988408538
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1264,7 +1264,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!136 &9181367850398307496
 CapsuleCollider:

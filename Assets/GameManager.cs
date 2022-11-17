@@ -60,6 +60,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private GameObject[] NexusPrefab = new GameObject[2];
 
+    [Header("Boss")]
+    [SerializeField]
+    private GameObject BossPrefeb;
+
     // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
     public List<GameObject> CurrentTurrets = new List<GameObject>(8);// 각 월드에서 생성된 모든 터렛들.
     public List<GameObject> CurrentPlayers = new List<GameObject>(2); // 각 월드에서 생성된 모든 플레이어들.
@@ -78,14 +82,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         myData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         SpawnNexus();
         SpawnPlayer();
-
         // buffManager 인스턴스생성 속도 맞추기 위해서 invoke사용
         Invoke(nameof(SpawnTower), 0.5f);
     }
 
+
     private void Start()
     {
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
+
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
@@ -195,7 +200,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             idx++;
         }
+
     }
+
+    private void SpawnNexus()
 
     private void CheckandApplyBuffs(GameObject tower)
     {
@@ -206,6 +214,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+
+
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
+        {
+
+            PhotonNetwork.Instantiate(NexusPrefab[0].name, spawnPositions[2].position, Quaternion.Euler(transform.position));
+
+
+        }
     private void SpawnNexus()
     {
         Debug.Log("됨?");
@@ -217,10 +234,24 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         else // red
         {
-            Debug.Log("됨?2");
+
             PhotonNetwork.Instantiate(NexusPrefab[1].name, spawnPositions[3].position, Quaternion.Euler(transform.position));
         }
     }
+    // 중립몬스터 생성
+    public void bossMonsterSpawn()
+    {
+        if (PhotonNetwork.IsMasterClient && PlayerHUD.Instance.BossMonsterSpawnON)
+        {
+
+
+          PhotonNetwork.Instantiate(BossPrefeb.name,new Vector3(0,-1f,0f), Quaternion.identity);
+        }
+
+
+    }
+}
+
 
 }
 
