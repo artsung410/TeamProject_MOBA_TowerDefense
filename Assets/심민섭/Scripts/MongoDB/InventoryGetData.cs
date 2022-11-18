@@ -151,6 +151,7 @@ public class InventoryGetData : MonoBehaviour
     ItemDataBaseList towerSkillDatabase;
 
     List<Item> sendItems = new List<Item>();
+    List<BsonValue> sendItemValue = new List<BsonValue>();
     // DB에서 받은 아이템 목록으로 아이템을 생성하고 인벤토리로 넣어준다.
     public void PutItemInInventoryData()
     {
@@ -169,6 +170,8 @@ public class InventoryGetData : MonoBehaviour
 
                     // 같으면 해당 아이템을 생성한다.
                     sendItems.Add(warriorSkillDatabase.itemList[j]); // <Item>
+                    BsonValue value = warriorItem[warriorSkillDatabase.itemList[j].itemName];
+                    sendItemValue.Add(value);
                     // 생성을 했으면 삭제해준다.
                     warriorItem.Remove(warriorSkillDatabase.itemList[j].itemName);
                     if (warriorItem.Count == 0)
@@ -184,6 +187,7 @@ public class InventoryGetData : MonoBehaviour
                 break;
             }
             sendItems.Clear();
+            sendItemValue.Clear();
         }
         // 마법사 아이템
         for (int i = 0; i < wizardItem.Count; i++)
@@ -196,6 +200,8 @@ public class InventoryGetData : MonoBehaviour
 
                     // 같으면 해당 아이템을 생성한다.
                     sendItems.Add(wizardSkillDatabase.itemList[j]); // <Item>
+                    BsonValue value = wizardItem.TryGetValue(wizardSkillDatabase.itemList[j].itemName, out value);
+                    sendItemValue.Add(value);
                     // 생성을 했으면 삭제해준다.
                     wizardItem.Remove(wizardSkillDatabase.itemList[j].itemName);
                     if (wizardItem.Count == 0)
@@ -211,6 +217,7 @@ public class InventoryGetData : MonoBehaviour
                 break;
             }
             sendItems.Clear();
+            sendItemValue.Clear();
         }
         // 공용 아이템
         for (int i = 0; i < inherenceItem.Count; i++)
@@ -223,6 +230,8 @@ public class InventoryGetData : MonoBehaviour
 
                     // 같으면 해당 아이템을 생성한다.
                     sendItems.Add(inherenceSkillDatabase.itemList[j]); // <Item>
+                    BsonValue value = inherenceItem.TryGetValue(inherenceSkillDatabase.itemList[j].itemName, out value);
+                    sendItemValue.Add(value);
                     // 생성을 했으면 삭제해준다.
                     inherenceItem.Remove(inherenceSkillDatabase.itemList[j].itemName);
                     if (inherenceItem.Count == 0)
@@ -238,6 +247,7 @@ public class InventoryGetData : MonoBehaviour
                 break;
             }
             sendItems.Clear();
+            sendItemValue.Clear();
         }
         // 타워 아이템
         for (int i = 0; i < towerItem.Count; i++)
@@ -250,6 +260,8 @@ public class InventoryGetData : MonoBehaviour
 
                     // 같으면 해당 아이템을 생성한다.
                     sendItems.Add(towerSkillDatabase.itemList[j]); // <Item>
+                    BsonValue value = towerItem.TryGetValue(towerSkillDatabase.itemList[j].itemName, out value);
+                    sendItemValue.Add(value);
                     // 생성을 했으면 삭제해준다.
                     towerItem.Remove(towerSkillDatabase.itemList[j].itemName);
                     if (towerItem.Count == 0)
@@ -265,6 +277,7 @@ public class InventoryGetData : MonoBehaviour
                 break;
             }
             sendItems.Clear();
+            sendItemValue.Clear();
         }
         otherItem.Clear();
         warriorItem.Clear();
@@ -287,7 +300,7 @@ public class InventoryGetData : MonoBehaviour
                 itemStruct.itemName = sendItems[i].itemName;
                 itemStruct.ClassType = sendItems[i].ClassType;
                 itemStruct.itemID = sendItems[i].itemID;
-                itemStruct.itemValue = sendItems[i].itemValue;
+                itemStruct.itemValue = (int)sendItemValue[i];
                 itemStruct.itemDesc = sendItems[i].itemDesc;
                 itemStruct.itemIcon = sendItems[i].itemIcon;
                 itemStruct.itemModel = sendItems[i].itemModel;
