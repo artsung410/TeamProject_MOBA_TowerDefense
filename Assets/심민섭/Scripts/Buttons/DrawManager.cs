@@ -264,7 +264,7 @@ public class DrawManager : MonoBehaviour
 
     // 뽑은 카드 정리(자료구조에서 중복 값 찾기)
     // 아이템이 없을 경우 실행
-    private void DrawCardOrganize_one()
+    public void DrawCardOrganize_one()
     {
         /*var duplicates = getDrawResultItem.GroupBy(x => x)
                                         .SelectMany(g => g.Skip(1))

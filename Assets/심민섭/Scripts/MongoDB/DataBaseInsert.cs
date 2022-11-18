@@ -26,20 +26,6 @@ public class DataBaseInsert : MonoBehaviour
         //collection = database.GetCollection<BsonDocument>("User_Info");
     }
 
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            New_DataInsert_User_Info();
-            /*New_DataInsert_User_Card_Info();
-            New_DataInsert_User_WarriorCard_Info();
-            New_DataInsert_User_WizardCard_Info();
-            New_DataInsert_User_InherenceCard_Info();
-            New_DataInsert_User_TowerCard_Info();*/
-        }
-    }
-
     public async void New_DataInsert_User_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Info");
@@ -53,7 +39,7 @@ public class DataBaseInsert : MonoBehaviour
         Debug.Log("유저 정보 전송");
         await collection.InsertOneAsync(User_Info);
     }
-    /*public async void New_DataInsert_User_Card_Info()
+    public async void New_DataInsert_User_Card_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Card_Info");
         MakeUserInfo.instance.User_Card_Info_DataSet();
@@ -301,5 +287,5 @@ public class DataBaseInsert : MonoBehaviour
 
         Debug.Log("유저 타워 카드 정보 전송");
         await collection.InsertOneAsync(User_TowerCard_Card_Info);
-    }*/
+    }
 }

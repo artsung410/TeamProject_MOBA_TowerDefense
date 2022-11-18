@@ -31,8 +31,6 @@ public class MakeUserInfo : MonoBehaviour
         }*/
     }
 
-    
-
     // 유저 정보
     public string id;
     public string nickName;
@@ -51,6 +49,7 @@ public class MakeUserInfo : MonoBehaviour
     public int inherenceCardCnt;
     public int towerCardCnt;
     public int otherItemCnt;
+
     public void User_Card_Info_DataSet()
     {
         haveCardCnt = InventoryGetData.instance.haveCardCnt;

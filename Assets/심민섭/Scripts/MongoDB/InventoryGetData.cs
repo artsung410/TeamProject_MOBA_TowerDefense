@@ -1,3 +1,4 @@
+using MongoDB.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,12 +19,19 @@ public class InventoryGetData : MonoBehaviour
     // 공통 인벤토리(공통 카드)
     // 타워 인벤토리(타워 카드)
 
-    // 아이템을 저장할 리스트
+    // 가지고 있는 아이템을 저장할 리스트
     public List<GameObject> otherInventoryData = new List<GameObject>();
     public List<GameObject> warriorInventoryData = new List<GameObject>();
     public List<GameObject> wizardInventoryData = new List<GameObject>();
     public List<GameObject> inherenceInventoryData = new List<GameObject>();
     public List<GameObject> towerInventoryData = new List<GameObject>();
+
+    // DB에서 받은 데이터를 저장할 곳
+    public Dictionary<string, BsonValue> otherItem = new Dictionary<string, BsonValue>();
+    public Dictionary<string, BsonValue> warriorItem = new Dictionary<string, BsonValue>();
+    public Dictionary<string, BsonValue> wizardItem = new Dictionary<string, BsonValue>();
+    public Dictionary<string, BsonValue> inherenceItem = new Dictionary<string, BsonValue>();
+    public Dictionary<string, BsonValue> towerItem = new Dictionary<string, BsonValue>();
 
     public int haveCardCnt;
     public int warriorCardCnt;
@@ -31,8 +39,6 @@ public class InventoryGetData : MonoBehaviour
     public int inherenceCardCnt;
     public int towerCardCnt;
     public int otherItemCnt;
-
-
 
     // Other 인벤토리
     private GameObject otherInventory;
@@ -126,4 +132,201 @@ public class InventoryGetData : MonoBehaviour
         }
     }
 
+    /*private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            PutItemInInventoryData();
+        }
+    }*/
+    
+    // 스크립터블 오브젝트
+    [SerializeField]
+    ItemDataBaseList warriorSkillDatabase;
+    [SerializeField]
+    ItemDataBaseList wizardSkillDatabase;
+    [SerializeField]
+    ItemDataBaseList inherenceSkillDatabase;
+    [SerializeField]
+    ItemDataBaseList towerSkillDatabase;
+
+    List<Item> sendItems = new List<Item>();
+    // DB에서 받은 아이템 목록으로 아이템을 생성하고 인벤토리로 넣어준다.
+    public void PutItemInInventoryData()
+    {
+        //warriorItem.Add("ChainAttack1", 1);
+        //warriorItem.Add("Whirlwind1", 1);
+        //towerItem.Add("Tower_Attack_Flame1", 1);
+
+        // 전사 아이템
+        for (int i = 0; i < warriorItem.Count; i++)
+        {
+            for (int j = 0; j < warriorSkillDatabase.itemList.Count; j++)
+            {
+                if (warriorItem.ContainsKey(warriorSkillDatabase.itemList[j].itemName))
+                {
+                    //Debug.Log(warriorSkillDatabase.itemList[j].itemName);
+
+                    // 같으면 해당 아이템을 생성한다.
+                    sendItems.Add(warriorSkillDatabase.itemList[j]); // <Item>
+                    // 생성을 했으면 삭제해준다.
+                    warriorItem.Remove(warriorSkillDatabase.itemList[j].itemName);
+                    if (warriorItem.Count == 0)
+                    {
+                        break;
+                    }
+                    continue;
+                }
+            }
+            if (warriorItem.Count == 0)
+            {
+                CreateItem(warriorSkillDatabase, warriorInventory);
+                break;
+            }
+            sendItems.Clear();
+        }
+        // 마법사 아이템
+        for (int i = 0; i < wizardItem.Count; i++)
+        {
+            for (int j = 0; j < wizardSkillDatabase.itemList.Count; j++)
+            {
+                if (wizardItem.ContainsKey(wizardSkillDatabase.itemList[j].itemName))
+                {
+                    //Debug.Log(warriorSkillDatabase.itemList[j].itemName);
+
+                    // 같으면 해당 아이템을 생성한다.
+                    sendItems.Add(wizardSkillDatabase.itemList[j]); // <Item>
+                    // 생성을 했으면 삭제해준다.
+                    wizardItem.Remove(wizardSkillDatabase.itemList[j].itemName);
+                    if (wizardItem.Count == 0)
+                    {
+                        break;
+                    }
+                    continue;
+                }
+            }
+            if (wizardItem.Count == 0)
+            {
+                CreateItem(wizardSkillDatabase, wizardInventory);
+                break;
+            }
+            sendItems.Clear();
+        }
+        // 공용 아이템
+        for (int i = 0; i < inherenceItem.Count; i++)
+        {
+            for (int j = 0; j < inherenceSkillDatabase.itemList.Count; j++)
+            {
+                if (inherenceItem.ContainsKey(inherenceSkillDatabase.itemList[j].itemName))
+                {
+                    //Debug.Log(warriorSkillDatabase.itemList[j].itemName);
+
+                    // 같으면 해당 아이템을 생성한다.
+                    sendItems.Add(inherenceSkillDatabase.itemList[j]); // <Item>
+                    // 생성을 했으면 삭제해준다.
+                    inherenceItem.Remove(inherenceSkillDatabase.itemList[j].itemName);
+                    if (inherenceItem.Count == 0)
+                    {
+                        break;
+                    }
+                    continue;
+                }
+            }
+            if (inherenceItem.Count == 0)
+            {
+                CreateItem(inherenceSkillDatabase, inherenceInventory);
+                break;
+            }
+            sendItems.Clear();
+        }
+        // 타워 아이템
+        for (int i = 0; i < towerItem.Count; i++)
+        {
+            for (int j = 0; j < towerSkillDatabase.itemList.Count; j++)
+            {
+                if (towerItem.ContainsKey(towerSkillDatabase.itemList[j].itemName))
+                {
+                    //Debug.Log(warriorSkillDatabase.itemList[j].itemName);
+
+                    // 같으면 해당 아이템을 생성한다.
+                    sendItems.Add(towerSkillDatabase.itemList[j]); // <Item>
+                    // 생성을 했으면 삭제해준다.
+                    towerItem.Remove(towerSkillDatabase.itemList[j].itemName);
+                    if (towerItem.Count == 0)
+                    {
+                        break;
+                    }
+                    continue;
+                }
+            }
+            if (towerItem.Count == 0)
+            {
+                CreateItem(towerSkillDatabase, towerInventory);
+                break;
+            }
+            sendItems.Clear();
+        }
+        otherItem.Clear();
+        warriorItem.Clear();
+        wizardItem.Clear();
+        inherenceItem.Clear();
+        towerItem.Clear();
+    }
+
+    [SerializeField]
+    private GameObject prefabItem;
+    // 아이템 생성
+    private void CreateItem(ItemDataBaseList itemDatabase, GameObject inventory)
+    {
+        if (sendItems.Count != 0)
+        {
+            for (int i = 0; i < sendItems.Count; i++)
+            {
+                // 아이템 데이터 넣어주기
+                ItemStruct itemStruct = new ItemStruct();
+                itemStruct.itemName = sendItems[i].itemName;
+                itemStruct.ClassType = sendItems[i].ClassType;
+                itemStruct.itemID = sendItems[i].itemID;
+                itemStruct.itemValue = sendItems[i].itemValue;
+                itemStruct.itemDesc = sendItems[i].itemDesc;
+                itemStruct.itemIcon = sendItems[i].itemIcon;
+                itemStruct.itemModel = sendItems[i].itemModel;
+                itemStruct.inGameData = sendItems[i].inGameData;
+                itemStruct.itemType = sendItems[i].itemType;
+                itemStruct.itemWeight = sendItems[i].itemWeight;
+                itemStruct.maxStack = sendItems[i].maxStack;
+                itemStruct.indexItemInList = sendItems[i].indexItemInList;
+                itemStruct.rarity = sendItems[i].rarity;
+                itemStruct.itemAttributes = sendItems[i].itemAttributes;
+                itemStruct.specialPrefabs = sendItems[i].specialPrefabs;
+                itemStruct.buffDatas = sendItems[i].buffDatas;
+
+                // 아이템 틀 만들고 데이터 넣어주기
+                GameObject itemObjProduce = (GameObject)Instantiate(prefabItem);
+                ItemOnObject itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
+                itemProduce.item.itemName = itemStruct.itemName;
+                itemProduce.item.ClassType = itemStruct.ClassType;
+                itemProduce.item.itemID = itemStruct.itemID;
+                itemProduce.item.itemDesc = itemStruct.itemDesc;
+                itemProduce.item.itemIcon = itemStruct.itemIcon;
+                itemProduce.item.itemModel = itemStruct.itemModel;
+                itemProduce.item.inGameData = itemStruct.inGameData;
+                itemProduce.item.itemValue = itemStruct.itemValue;
+                itemProduce.item.itemType = itemStruct.itemType;
+                itemProduce.item.itemWeight = itemStruct.itemWeight;
+                itemProduce.item.maxStack = itemStruct.maxStack;
+                itemProduce.item.indexItemInList = itemStruct.indexItemInList;
+                itemProduce.item.rarity = itemStruct.rarity;
+                itemProduce.item.itemAttributes = itemStruct.itemAttributes;
+                itemProduce.item.specialPrefabs = itemStruct.specialPrefabs;
+                itemProduce.item.buffDatas = itemStruct.buffDatas;
+
+                // 아이템 만들었으면 인벤토리로 옮겨 줘야겠지?
+                itemObjProduce.transform.SetParent(inventory.transform.GetChild(i));
+                itemObjProduce.transform.localPosition = Vector3.zero;
+                itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+            }
+            sendItems.Clear();
+        }
+    }    
 }

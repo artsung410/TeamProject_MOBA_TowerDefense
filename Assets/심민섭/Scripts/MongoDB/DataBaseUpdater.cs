@@ -1,73 +1,139 @@
 using UnityEngine;
 using MongoDB.Driver;
+using MongoDB.Driver.Core;
 using MongoDB.Bson;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using System.Linq;
 
+// 뽑기, 강화 등 아이템의 변동을 있을때, 실행되고 변경된 아이템만 업데이트가 이뤄진다.
+// 뽑기 시, 강화 시, 카드 팩 구매 시
 public class DataBaseUpdater : MonoBehaviour
 {
     // ###############################################
     //             NAME : Simstealer                      
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
-    string url = "mongodb+srv://metaverse:metaverse@cluster0.feoedbv.mongodb.net/?retryWrites=true&w=majority";
-    MongoClient server;
-    //MongoDatabase database;
-    //MongoCollection<BsonDocument> collection;
+    MongoClient server = new MongoClient("mongodb+srv://metaverse:metaverse@cluster0.feoedbv.mongodb.net/?retryWrites=true&w=majority");
+    IMongoDatabase database;
+    IMongoCollection<BsonDocument> collection;
     private PlayerStorage playerStorage;
 
     private void Start()
     {
-        server = new MongoClient(url);
-        //database = server.GetServer().GetDatabase("TowerDefense");
+        database = server.GetDatabase("TowerDefense");
     }
 
 
-    private async void Update()
+    private void Update()
     {
-        /*if (Input.GetKeyDown(KeyCode.U))
+        if (Input.GetKeyDown(KeyCode.I))
         {
+            DrawAfterUpdate();
+        }
+    }
+
+    // 현재 인벤토리에 있는 아이템을 저장하고 비교해서 수량을 올린다.
+    private void DrawAfterUpdate()
+    {
+        // 인벤토리 아이템 저장
+        InventoryGetData.instance.GetItemInInventoryData();
+
+        // 전사 아이템
+        if (InventoryGetData.instance.warriorInventoryData.Count != 0)
+        {
+            collection = database.GetCollection<BsonDocument>("User_Warrior_Card_Info");
             playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
-            //collection = database.GetCollection<BsonDocument>("User_Inherence_Card_Info");
-            *//*var filter = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
-            var result2 = collection.Find(filter).FirstOrDefault();
-            Debug.Log(result2); *//*
-        }*/
-    }
-
-    /*public async Task<List<string>> GetScoresFromDataBase()
-    {
-        var allTask = collection.FindAsync(new BsonDocument());
-        var Awaited = await allTask;
-
-        List<string> user_id = new List<string>();
-        foreach (var score in Awaited.ToString())
+            var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+            var document = collection.Find(builder).FirstOrDefault();
+            for (int i = 0; i < InventoryGetData.instance.warriorInventoryData.Count; i++)
+            {
+                for (int j = 2; j < document.Count(); j++)
+                {
+                    if (document.GetElement(j).Name == InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
+                    {
+                        var value = document.GetElement(j).Value;
+                        // 아이템이 같으면 개수를 업데이트 한다.
+                        var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue);
+                        collection.UpdateOne(filter, update);
+                    }
+                }
+            }
+        }
+        // 마법사 아이템
+        if (InventoryGetData.instance.wizardInventoryData.Count != 0)
         {
-            user_id.Add(Deserialize(score.ToString()));
+            collection = database.GetCollection<BsonDocument>("User_Wizard_Card_Info");
+            playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+            var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+            var document = collection.Find(builder).FirstOrDefault();
+            for (int i = 0; i < InventoryGetData.instance.wizardInventoryData.Count; i++)
+            {
+                for (int j = 2; j < document.Count(); j++)
+                {
+                    if (document.GetElement(j).Name == InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
+                    {
+                        var value = document.GetElement(j).Value;
+                        // 아이템이 같으면 개수를 업데이트 한다.
+                        var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue);
+                        collection.UpdateOne(filter, update);
+                    }
+                }
+            }
+        }
+        // 공용 아이템
+        if (InventoryGetData.instance.inherenceInventoryData.Count != 0)
+        {
+            collection = database.GetCollection<BsonDocument>("User_Inherence_Card_Info");
+            playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+            var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+            var document = collection.Find(builder).FirstOrDefault();
+            for (int i = 0; i < InventoryGetData.instance.inherenceInventoryData.Count; i++)
+            {
+                for (int j = 2; j < document.Count(); j++)
+                {
+                    if (document.GetElement(j).Name == InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
+                    {
+                        var value = document.GetElement(j).Value;
+                        // 아이템이 같으면 개수를 업데이트 한다.
+                        var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue);
+                        collection.UpdateOne(filter, update);
+                    }
+                }
+            }
+        }
+        // 타워 아이템
+        if (InventoryGetData.instance.towerInventoryData.Count != 0)
+        {
+            collection = database.GetCollection<BsonDocument>("User_Tower_Card_Info");
+            playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+            var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+            var document = collection.Find(builder).FirstOrDefault();
+            for (int i = 0; i < InventoryGetData.instance.towerInventoryData.Count; i++)
+            {
+                for (int j = 2; j < document.Count(); j++)
+                {
+                    if (document.GetElement(j).Name == InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
+                    {
+                        var value = document.GetElement(j).Value;
+                        // 아이템이 같으면 개수를 업데이트 한다.
+                        var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue);
+                        collection.UpdateOne(filter, update);
+                    }
+                }
+            }
         }
 
-        return user_id;
+        InventoryGetData.instance.otherInventoryData.Clear();
+        InventoryGetData.instance.warriorInventoryData.Clear();
+        InventoryGetData.instance.wizardInventoryData.Clear();
+        InventoryGetData.instance.inherenceInventoryData.Clear();
+        InventoryGetData.instance.towerInventoryData.Clear();
     }
-
-    private string Deserialize(string rawJson)
-    {
-        var highScore = new string();
-
-        // userName이 200인 데이터를 찾는다.
-        var filter = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
-
-        // .TiList()는 해당 조건의 전체 데이터를 찾고
-        //var result1 = collection.Find(filter).ToList();
-        // .FirstOrDefault()는 해당 조건의 첫번째 하나의 데이터를 찾는다
-        var result2 = collection.Find(filter).FirstOrDefault();
-
-        // userName을 Key로 Value를 찾아서 출력
-        //string Roomname = result1[0].GetElement("userName").Value.ToString();
-        //Debug.Log(Roomname);
-
-        return highScore;
-    }*/
-
 
 
 }
