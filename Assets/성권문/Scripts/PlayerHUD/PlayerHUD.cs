@@ -82,6 +82,8 @@ public class PlayerHUD : MonoBehaviourPun
     [Header("BossMonsterUI")]
     public GameObject BossSpawnNotification;
 
+    
+
     private int[] playerScores = { 0, 0 };
 
     float sec = 0;
@@ -96,8 +98,8 @@ public class PlayerHUD : MonoBehaviourPun
     NexusHp currentNexusforInfo;
 
     WaitForSeconds Delay500 = new WaitForSeconds(5);
-    
-   public string lastDamageTeam; 
+
+    public string lastDamageTeam;
 
 
 
@@ -119,7 +121,7 @@ public class PlayerHUD : MonoBehaviourPun
     {
         // 게임 제한 시간 관련 코드
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
-        int time = tro.limitedTime;
+        int time = 10;
 
         //시, 분, 초 선언
         int hours, minute, second;
@@ -137,7 +139,7 @@ public class PlayerHUD : MonoBehaviourPun
     {
         imigeCourutine = ImageFadeIn();
         resultImigePopup = ResultImagePopUp();
-        textCouruntine = textFadeIn();
+        textCouruntine = textFadeout();
 
 
 
@@ -164,8 +166,8 @@ public class PlayerHUD : MonoBehaviourPun
 
     void Update()
     {
-        
-     
+
+
 
         if (GameManager.Instance.isGameEnd == true)
         {
@@ -230,9 +232,9 @@ public class PlayerHUD : MonoBehaviourPun
                 sec = 0;
                 min++;
             }
-                sec += Time.deltaTime;
-                timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-                return;
+            sec += Time.deltaTime;
+            timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+            return;
         }
 
 
@@ -259,7 +261,7 @@ public class PlayerHUD : MonoBehaviourPun
                 gameWinMessage = GameManager.Instance.winner;
                 GameManager.Instance.isGameEnd = true;
             }
-                photonView.RPC("RPCInitScore", RpcTarget.All);
+            photonView.RPC("RPCInitScore", RpcTarget.All);
 
             //photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
             min = 0;
@@ -278,7 +280,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     public void AddScoreToEnemy(string tag)
     {
-    if(GameManager.Instance.winner =="Draw")
+        if (GameManager.Instance.winner == "Draw")
         {
             return;
         }
@@ -328,13 +330,13 @@ public class PlayerHUD : MonoBehaviourPun
     {
         // 오브젝트 활성화
         GameWinPanel.SetActive(true);
-        
+
         //GameManager.Instance.winner = "Blue";
 
         // 승자가 블루면
-         if (GameManager.Instance.winner == "Draw")
+        if (GameManager.Instance.winner == "Draw")
         {
-            
+
             if (PhotonNetwork.IsMasterClient)
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
@@ -344,7 +346,7 @@ public class PlayerHUD : MonoBehaviourPun
                 GameWinPanel.SetActive(false);
                 BossSpawnNotification.SetActive(true);
                 StartCoroutine(textCouruntine);
-                
+
 
                 ////GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
@@ -386,7 +388,7 @@ public class PlayerHUD : MonoBehaviourPun
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
             }
         }
-        else if(GameManager.Instance.winner == "Red")
+        else if (GameManager.Instance.winner == "Red")
         {
             if (PhotonNetwork.IsMasterClient)
             {
@@ -420,7 +422,7 @@ public class PlayerHUD : MonoBehaviourPun
         while (fadeValue <= 1.0f)
         {
             fadeValue += 0.5f;
-          
+
 
             yield return new WaitForSeconds(0.01f);
 
@@ -688,19 +690,19 @@ public class PlayerHUD : MonoBehaviourPun
     private void FadeinImige()
     {
         StartCoroutine(imigeCourutine);
-        
+
     }
 
-    private IEnumerator textFadeIn()
+    private IEnumerator textFadeout()
     {
         float fadeValue = 1f;
 
         TextMeshProUGUI bossText = BossSpawnNotification.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
-       
+
         while (fadeValue >= 0f)
         {
             fadeValue -= 0.2f;
-            if(fadeValue <= 0f)
+            if (fadeValue <= 0f)
             {
                 BossMonsterSpawnON = true;
                 GameManager.Instance.bossMonsterSpawn();
@@ -710,4 +712,81 @@ public class PlayerHUD : MonoBehaviourPun
             bossText.color = new Color(255, 255, 255, fadeValue);
         }
     }
+
+    #region Report System
+
+    [Header("ReportUI")]
+    public GameObject ReportPanel;
+    [SerializeField]
+    private GameObject SuccessPanel;
+    [SerializeField]
+    private TextOverFlow textoverflow;
+    private bool CheckboxOn = false;
+    private  bool button = false;
+
+    public void RefortButton()
+    {
+        button = !button;
+        if (false == button)
+        {
+            ReportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            ReportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
+            CheckboxOn = false;
+            textoverflow.text.text = "";
+        }
+        ReportPanel.SetActive(button);
+        textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+    }
+
+
+    public void Checkbox(int value)
+    {
+        CheckboxOn = true;
+        if (value == 0)
+        {
+            ReportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
+            ReportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        }
+        else
+        {
+            ReportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            ReportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
+        }
+
+
+    }
+
+    public void SendReport() // 2 입력안햇을때  3 체크박스 체크안햇을때  4 글자수 오바됬을때
+    {
+        Debug.Log($"{textoverflow.textNotEnter} : {CheckboxOn}");
+
+        if (!textoverflow.textNotEnter && CheckboxOn) //체크박스 되있고 글자수 있을때
+        {
+            
+            SuccessPanel.SetActive(true);
+        }
+        else if (textoverflow.textNotEnter == true) // 글자아무것도 안입력햇을때
+        {
+            
+
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
+
+            // 텍스트 이미지 출력
+            return;
+        }
+        else if (CheckboxOn == false)
+        {
+
+            
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+            return;
+        }
+    }
+
+    #endregion
 }
