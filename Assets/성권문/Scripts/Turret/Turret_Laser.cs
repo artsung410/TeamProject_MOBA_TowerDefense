@@ -1,28 +1,42 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class Turret_Laser : Turret
 {
     [Header("레이저 타워 속성")]
-    public int damageOverTime = 30;
-    public float slowAmount = 0.5f;
+
+    [HideInInspector]
+    public float damageOverTime;
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
-    public Light impactLight;
+    public GameObject smokeParticles;
 
     private void Start()
     {
+        damageOverTime = towerData.Attack;
+        lineRenderer.enabled = false;
+        // TODO : nameof로 바꿀것.
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
-    }
 
-    private void FixedUpdate()
-    {
         if (!photonView.IsMine)
         {
             return;
         }
 
+        if (smokeParticles == null)
+        {
+            return;
+        }
+
+        // 스모크 효과 생성
+        GameObject particle = PhotonNetwork.Instantiate(smokeParticles.name, firePoint.position, Quaternion.identity);
+        particle.transform.Rotate(new Vector3(0, -90f, 0));
+    }
+
+    private void FixedUpdate()
+    {
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
         if (target == null)
         {
@@ -30,42 +44,88 @@ public class Turret_Laser : Turret
             {
                 lineRenderer.enabled = false;
                 impactEffect.Stop();
-                impactLight.enabled = false;
             }
             return;
         }
 
         // 타겟을 찾는다.
         LockOnTarget();
+
+        // 레이저를 그린다.
+        DrawerLineRenderer();
+
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        // 레이저 데미지를 적용한다.
         Laser();
 
     }
 
-    // ★ 단일 레이저 발사
     void Laser()
     {
         // 데미지 적용 (시간에 비례해서)
-        targetEnemy.TakeDamage(damageOverTime * Time.deltaTime);
+        Damage_Laser();
+        Vector3 dir = firePoint.position - target.position;
+        impactEffect.transform.position = target.position + dir.normalized;
+        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
+        impactEffect.Play();
+    }
 
-        // 슬로우 효과 적용
-        //targetEnemy.Slow(slowAmount);
-        //if (!lineRenderer.enabled)
-        //{
-        //    lineRenderer.enabled = true;
-        //    impactEffect.Play();
-        //    impactLight.enabled = true;
-        //}
+    void DrawerLineRenderer()
+    {
+        if (!lineRenderer.enabled)
+        {
+            lineRenderer.enabled = true;
+            impactEffect.Play();
+        }
 
         // 처음 발사 위치
         lineRenderer.SetPosition(0, firePoint.position);
 
         // 마지막 위치
         lineRenderer.SetPosition(1, target.position);
+    }
 
-        Vector3 dir = firePoint.position - target.position;
+    void Damage_Laser()
+    {
+        // 플레이어 데미지 적용
+        if (target.gameObject.layer == 7)
+        {
+            Health player = target.GetComponent<Health>();
 
-        impactEffect.transform.position = target.position + dir.normalized;
+            if (player != null && player.gameObject.activeSelf)
+            {
+                player.OnDamage(damageOverTime);
+            }
+            else
+            {
+                return;
+            }
+        }
 
-        impactEffect.transform.rotation = Quaternion.LookRotation(dir);
+        // 미니언 데미지 적용
+        else if (target.gameObject.layer == 8)
+        {
+            Enemybase minion = target.GetComponent<Enemybase>();
+
+            if (minion != null)
+            {
+                minion.TakeDamage(damageOverTime);
+            }
+        }
+
+        // 스페셜 미니언 데미지 적용
+        else if (target.gameObject.layer == 13)
+        {
+            Enemybase special_minion = target.GetComponent<Enemybase>();
+
+            if (special_minion != null)
+            {
+                special_minion.TakeDamage(damageOverTime);
+            }
+        }
     }
 }
