@@ -65,8 +65,24 @@ public class PlayerInventory : MonoBehaviour
         audioSource.clip = clickSound;
         audioSource.Play();
 
-        mainInventory.closeInventory();
-        characterSystemInventory.closeInventory();
+        int stack = 0;
+        // 아이템이 모두 장착되어 있는지 확인한다.
+        for (int i = 0; i < characterSystem.transform.GetChild(1).childCount; i++)
+        {
+            if (characterSystem.transform.GetChild(1).GetChild(i).childCount != 0)
+            {
+                stack++;
+            }
+        }
+        if (stack == 8)
+        {
+            mainInventory.closeInventory();
+            characterSystemInventory.closeInventory();
+        }
+        else
+        {
+            Debug.Log("카드를 모두 장착해주세요.");
+        }
     }
 
 
