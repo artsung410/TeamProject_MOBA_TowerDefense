@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4352,14 +4352,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685963107}
-  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -45.1, y: 0.25758743, z: -19}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992064282}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!208 &685963112
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5409,14 +5409,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 869663255}
-  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -45.306435, y: 0.25758743, z: -10.870205}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992064282}
   m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!208 &869663260
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -5482,7 +5482,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 869663262}
   sceneViewId: 7
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -7391,14 +7392,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227490391}
-  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 44.831654, y: 0.25758743, z: -17.125221}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992064282}
   m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!208 &1227490396
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7464,7 +7465,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1227490398}
   sceneViewId: 9
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -7759,14 +7761,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1262351431}
-  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -45.848854, y: 0.25758743, z: 17.12454}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992064282}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!208 &1262351436
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -7832,7 +7834,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1262351438}
   sceneViewId: 8
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -11756,14 +11759,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1838243577}
-  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 44.13426, y: 0.25758743, z: 18.868025}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992064282}
   m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!208 &1838243582
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -11829,7 +11832,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1838243584}
   sceneViewId: 2
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -12058,14 +12062,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1859399654}
-  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 44.676678, y: 0.25758743, z: -9.126722}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992064282}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!208 &1859399659
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -12131,7 +12135,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1859399661}
   sceneViewId: 3
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -12816,14 +12821,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984740370}
-  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -45.693874, y: 0.25758743, z: 9.126043}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992064282}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!208 &1984740375
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -12889,7 +12894,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 1984740377}
   sceneViewId: 4
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -13914,14 +13920,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2104209922}
-  m_LocalRotation: {x: -0, y: -0.009686473, z: -0, w: 0.99995315}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 44.289238, y: 0.25758743, z: 10.869528}
   m_LocalScale: {x: 6, y: 1.001, z: 6}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1992064282}
   m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!208 &2104209927
 NavMeshObstacle:
   m_ObjectHideFlags: 0
@@ -13987,7 +13993,8 @@ MonoBehaviour:
   Synchronization: 3
   OwnershipTransfer: 0
   observableSearch: 2
-  ObservedComponents: []
+  ObservedComponents:
+  - {fileID: 2104209929}
   sceneViewId: 5
   InstantiationId: 0
   isRuntimeInstantiated: 0

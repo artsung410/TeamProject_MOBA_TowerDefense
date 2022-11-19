@@ -5,8 +5,6 @@ using Photon.Pun;
 
 public class Turret_Laser : Turret
 {
-    [Header("레이저 타워 속성")]
-
     [HideInInspector]
     public float damageOverTime;
     public LineRenderer lineRenderer;
@@ -14,12 +12,22 @@ public class Turret_Laser : Turret
 
     public List<Material> ElectricMaterials;
 
+    public GameObject smokeParticles;
     private void Start()
     {
         damageOverTime = towerData.Attack;
         lineRenderer.enabled = false;
         // TODO : nameof로 바꿀것.
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
+
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        // 스모크 효과 생성
+        GameObject particle = PhotonNetwork.Instantiate(smokeParticles.name, firePoint.position, Quaternion.identity);
+        particle.transform.Rotate(new Vector3(0, -90f, 0));
     }
 
     float elapsedTime = 0f;
@@ -66,6 +74,7 @@ public class Turret_Laser : Turret
     void DrawerLineRenderer()
     {
         elapsedTime += Time.deltaTime;
+        List<Material> myMaterial = ElectricMaterials;
 
         if (!lineRenderer.enabled)
         {
@@ -74,9 +83,9 @@ public class Turret_Laser : Turret
         }
 
         // 번개효과
-        if (elapsedTime >= 0.05f)
+        if (elapsedTime >= 0.02f)
         {
-            lineRenderer.material = ElectricMaterials[i];
+            lineRenderer.material = myMaterial[i];
             i++;
             if (i >= 4)
             {

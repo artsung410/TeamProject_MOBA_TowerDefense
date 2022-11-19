@@ -37,6 +37,9 @@ public class Turret : MonoBehaviourPun
     [HideInInspector]
     public float attackSpeed; // 공격속도
 
+    [Header("바디")]
+    public GameObject fowardBody;
+
     [Header("회전체")]
     public Transform partToRotate;
 
