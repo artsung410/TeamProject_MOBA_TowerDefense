@@ -16,7 +16,10 @@ public class Arrow : Projectiles, ISeek
     {
         if (target == null)
         {
-            Destroy(gameObject);
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
             return;
         }
 
@@ -37,8 +40,11 @@ public class Arrow : Projectiles, ISeek
 
     void HitTarget()
     {
-        GameObject effectIns = Instantiate(ImpactEffect, transform.position, transform.rotation);
-        Destroy(effectIns, 2f);
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Instantiate(ImpactEffect.name, transform.position, transform.rotation);
+            PhotonNetwork.Destroy(gameObject);
+        }
 
         if (explosionRadius > 0f)
         {
@@ -48,8 +54,6 @@ public class Arrow : Projectiles, ISeek
         {
             Damage(target);
         }
-
-        Destroy(gameObject);
     }
 
     void Explode()
