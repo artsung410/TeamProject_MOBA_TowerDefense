@@ -1529,19 +1529,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4f0c37e6077b534aa600440cc272282, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _eminontpye: 0
   moveSpeed: 0
   attackRange: 4
   Damage: 10
   AttackSpeed: 1
   minionSprite: {fileID: 21300000, guid: 9db6fa120496f6943909dcb214bf5dad, type: 3}
   HP: 100
+  lastDamageTeam: 
   CurrnetHP: 0
   EnemyTag: 
   myTag: 
+  isDead: 0
+  _capsuleCollider: {fileID: 0}
   _target: {fileID: 0}
   Targeton: 0
   _estate: 0
-  _eminiomtype: 0
 --- !u!114 &8515578425200524588
 MonoBehaviour:
   m_ObjectHideFlags: 0
