@@ -180,27 +180,6 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
-    // SMS-------------------------------------------------------------------------------------
-    private void MouseEnterEvent()
-    {
-        if (photonView.IsMine)
-        {
-            Cursor.SetCursor(cursorMoveAlly, hotSpot, CursorMode.ForceSoftware);
-        }
-        else
-        {
-            Cursor.SetCursor(cursorMoveEnemy, hotSpot, CursorMode.ForceSoftware);
-        }
-    }
-
-    private void OnMouseExit()
-    {
-        Cursor.SetCursor(cursorMoveNamal, hotSpot, CursorMode.ForceSoftware);
-    }
-
-
-    // END-------------------------------------------------------------------------------------
-
     private void IsPlayerDie()
     {
         // 그자리에서 죽음

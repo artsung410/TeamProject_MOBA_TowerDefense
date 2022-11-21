@@ -89,6 +89,27 @@ public class PlayerHUD : MonoBehaviourPun
     NexusHp currentNexusforInfo;
 
     InfoState INFO;
+
+    // 이동 일반 커서
+    [SerializeField]
+    public Texture2D cursorMoveNamal;
+    // 이동 아군 커서
+    [SerializeField]
+    public Texture2D cursorMoveAlly;
+    // 이동 적군 커서
+    [SerializeField]
+    public Texture2D cursorMoveEnemy;
+
+    // 공격 일반 커서
+    [SerializeField]
+    public Texture2D cusorAttackNomal;
+    // 공격 아군 커서
+    [SerializeField]
+    public Texture2D cusorAttackAlly;
+    // 공격 적군 커서
+    [SerializeField]
+    public Texture2D cusorAttackEnemy;
+
     private void Awake()
     {
         Instance = this;

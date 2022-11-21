@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class EquimentInventory : MonoBehaviour
 {
+    public static EquimentInventory instance;
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // 장착 아이템을 저장한다.
     private List<GameObject> equimentInventoryLIst = new List<GameObject>();
 
@@ -16,14 +22,26 @@ public class EquimentInventory : MonoBehaviour
     private Sprite backImage;
     [SerializeField]
     private GameObject selectedCharacter;
+    [SerializeField]
+    public string ClassName;
+    [SerializeField]
+    private GameObject playerButton;
 
-    private bool isSelected = false;
+    public bool setItemComplited;
+
+    private bool isSelected;
+
+    private void Start()
+    {
+        setItemComplited = false;
+    }
+
     private void Update()
     {
         // 1, 2, 3 슬롯 확인
         SeletedCharacterChange();
     }
-    
+
     private void SeletedCharacterChange()
     {
         int stack = 0;
@@ -45,14 +63,37 @@ public class EquimentInventory : MonoBehaviour
         if (stack == 3)
         {
             if (gameObject.transform.GetChild(1).GetChild(1).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.ClassType == "Warrior")
+            {
                 selectedCharacter.GetComponent<Image>().sprite = warriorImage;
+                ClassName = "Warrior";
+                SelectCharacterSend();
+            }
             if (gameObject.transform.GetChild(1).GetChild(1).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.ClassType == "Wizard")
+            {
                 selectedCharacter.GetComponent<Image>().sprite = wizardImage;
+                ClassName = "Wizard";
+                SelectCharacterSend();
+            }
         }
         else
         {
             selectedCharacter.GetComponent<Image>().sprite = backImage;
         }
+    }
+
+    // 아이템 장착 확인
+    public void AllItemCheck()
+    {
+        if (setItemComplited)
+        {
+            playerButton.GetComponent<PlayerButton>().OnButton();
+        }
+    }
+
+
+    private void SelectCharacterSend()
+    {
+        GameObject.FindGameObjectWithTag("GetCaller").GetComponent<TrojanHorse>().selectCharacter = ClassName;
     }
 
 }

@@ -29,6 +29,12 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField]
     private DragSlotsColorChange dragSlotsColorChange;
 
+    // 경고문
+    [SerializeField]
+    private GameObject backWarning1;
+
+    [SerializeField]
+    private GameObject backwarning2;
 
     void Start()
     {
@@ -58,6 +64,14 @@ public class PlayerInventory : MonoBehaviour
         characterSystemInventory.openInventory();
     }
 
+
+    // 백버튼을 바꾸다니..에휴
+    public void BackButton()
+    {
+        mainInventory.closeInventory();
+        characterSystemInventory.closeInventory();
+    }
+
     // 인벤토리의 백버튼 눌렀을떄
     public void closeInventory()
     {
@@ -76,12 +90,17 @@ public class PlayerInventory : MonoBehaviour
         }
         if (stack == 8)
         {
-            mainInventory.closeInventory();
-            characterSystemInventory.closeInventory();
+            //mainInventory.closeInventory();
+            //characterSystemInventory.closeInventory();
+            // 경고창 팝업
+            backwarning2.SetActive(true);
+            EquimentInventory.instance.setItemComplited = true;
+            EquimentInventory.instance.AllItemCheck();
         }
         else
         {
-            Debug.Log("카드를 모두 장착해주세요.");
+            // 경고문 팝업
+            backWarning1.SetActive(true);
         }
     }
 
