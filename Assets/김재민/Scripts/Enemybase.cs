@@ -5,8 +5,17 @@ using Photon.Pun;
 using UnityEngine.AI;
 using System;
 
+public enum EMINIONTYPE
+{
+    Nomal,
+    Shot,
+    Special,
+    Netural,
+}
+
 public class Enemybase : MonoBehaviourPun
 {
+    public EMINIONTYPE _eminontpye;
     // ###############################################
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
@@ -33,6 +42,8 @@ public class Enemybase : MonoBehaviourPun
     // 체력
     public float HP = 100f;
 
+   public string lastDamageTeam;
+
     public float CurrnetHP;
     [HideInInspector]
     public string EnemyTag;
@@ -45,15 +56,16 @@ public class Enemybase : MonoBehaviourPun
     protected Transform Diepos;
     public bool isDead = false;
 
-    private CapsuleCollider _capsuleCollider;
+    public CapsuleCollider _capsuleCollider;
     private Outline _outline;
 
-    
+
 
 
 
     protected virtual void Awake()
     {
+        _eminontpye = EMINIONTYPE.Nomal;
         _outline = GetComponent<Outline>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
@@ -62,8 +74,20 @@ public class Enemybase : MonoBehaviourPun
 
     protected virtual void OnEnable() // 생성
     {
+        if (GetComponent<BulletSpawn>() != null) // 타입구분
+        {
+            _eminontpye = EMINIONTYPE.Shot;
+        }else if (GetComponent<OrcFSM>() != null)
+        {
+            _eminontpye = EMINIONTYPE.Netural;
+        }
+        _navMeshAgent.enabled = false;
+        _navMeshAgent.enabled = true;
+        if(gameObject.GetComponent<Outline>() != null)
+        {
         _outline.enabled = false;
         _outline.OutlineWidth = 8f;
+        }
         CurrnetHP = HP;
         if (PhotonNetwork.IsMasterClient)
         {
@@ -99,12 +123,23 @@ public class Enemybase : MonoBehaviourPun
                 EnemyTag = "Red";
             }
         }
+      
+    
+    }
+
+    private void FixedUpdate()
+    {
+        if(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && _animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.die"))
+        {
+            Death();
+        }
     }
 
     public void TakeDamage(float Damage)
     {
+
         photonView.RPC("RPC_TakeDamage", RpcTarget.All, Damage);
-       
+
     }
 
     float exp = 30f;
@@ -114,21 +149,23 @@ public class Enemybase : MonoBehaviourPun
         if (isDead == false)
         {
             CurrnetHP -= Damage;
-            
             if (CurrnetHP <= 0)
             {
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
-                _navMeshAgent.isStopped = true;
+                if (_navMeshAgent == true)
+                {
+                    _navMeshAgent.isStopped = true;
+
+                }
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
-                gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
-
+                PlayerHUD.Instance.lastDamageTeam = lastDamageTeam;
             }
-            
+
         }
-       
+
     }
 
 
@@ -158,9 +195,12 @@ public class Enemybase : MonoBehaviourPun
             }
             if (CurrnetHP <= 0)
             {
-                Debug.Log("으앙 나죽어");
                 _capsuleCollider.enabled = false;
-                _navMeshAgent.isStopped = true;
+                if (_navMeshAgent.enabled == true)
+                {
+                    _navMeshAgent.isStopped = true;
+
+                }
                 gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
@@ -181,10 +221,15 @@ public class Enemybase : MonoBehaviourPun
     }
     private void OnMouseEnter()
     {
+        if(_outline == null)
+        {
+            return;
+        }
+
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
 
-            _outline.OutlineColor = Color.green ;
+            _outline.OutlineColor = Color.green;
             _outline.enabled = true; // 켜주고
         }
         else
@@ -193,11 +238,16 @@ public class Enemybase : MonoBehaviourPun
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }
-        
+
+
 
     }
     private void OnMouseExit()
     {
+        if (_outline == null)
+        {
+            return;
+        }
         _outline.enabled = false;
     }
 

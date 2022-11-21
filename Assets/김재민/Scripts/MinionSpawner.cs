@@ -61,7 +61,7 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
 
     void ChangeMinion(GameObject transferedMinion, string tag)
     {
-        if (transferedMinion.transform.GetChild(0).GetComponent<EnemySatatus>()._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal)
+        if (transferedMinion.transform.GetChild(0).GetComponent<EnemySatatus>()._eminontpye == EMINIONTYPE.Nomal)
         {
             if (tag == "Blue")
             {

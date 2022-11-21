@@ -33,7 +33,7 @@ public class PlayerHUD : MonoBehaviourPun
     public TextMeshProUGUI playerHealthBarTMpro;
     public TextMeshProUGUI playerExperienceBarTMpro;
     public TextMeshProUGUI playerInfoTMPro;
-                
+
     [Header("InfoUI")]
     public GameObject InfoPanel;
     public Image InfoIcon;
@@ -58,6 +58,7 @@ public class PlayerHUD : MonoBehaviourPun
     public Sprite GameResultWin;
     public Sprite GameResultDef;
     public Sprite GameResultDraw;
+    private bool winPanel = false;
 
     [Header("GameESCUI")]
     public GameObject ESCButton;
@@ -78,15 +79,33 @@ public class PlayerHUD : MonoBehaviourPun
     public GameObject MousePositionImage;
     public MousePointer mousePointer;
 
+    [Header("BossMonsterUI")]
+    public GameObject BossSpawnNotification;
+
+    
+
     private int[] playerScores = { 0, 0 };
 
     float sec = 0;
     int min = 0;
 
+    [SerializeField]
+    public bool BossMonsterSpawnON { get; private set; }
+
     Player currentPlayerforInfo;
     Turret currentTurretforInfo;
     Enemybase currentMinionforInfo;
     NexusHp currentNexusforInfo;
+
+    WaitForSeconds Delay500 = new WaitForSeconds(5);
+
+    public string lastDamageTeam;
+
+
+
+    IEnumerator imigeCourutine;
+    IEnumerator textCouruntine;
+    IEnumerator resultImigePopup;
 
     InfoState INFO;
     private void Awake()
@@ -113,10 +132,17 @@ public class PlayerHUD : MonoBehaviourPun
         second = time % 3600 % 60;
         min = minute;
         sec = second;
+        BossSpawnNotification.SetActive(false);
     }
 
     private void Start()
     {
+        imigeCourutine = ImageFadeIn();
+        resultImigePopup = ResultImagePopUp();
+        textCouruntine = textFadeout();
+
+
+
         setSkill();
         StartCoroutine(setHp());
         setMouseCursor();
@@ -129,16 +155,20 @@ public class PlayerHUD : MonoBehaviourPun
 
     private void FixedUpdate()
     {
+
         if (GameManager.Instance.isGameEnd == true)
         {
             return;
         }
-        
+
         Timer();
     }
 
     void Update()
     {
+
+
+
         if (GameManager.Instance.isGameEnd == true)
         {
             return;
@@ -147,11 +177,11 @@ public class PlayerHUD : MonoBehaviourPun
         UpdateHealthUI();
         UpdateInfo();
 
-        if( false == Chating && Input.GetKeyDown(KeyCode.Return))
+        if (false == Chating && Input.GetKeyDown(KeyCode.Return))
         {
             ChatingUi = !ChatingUi; //온오프
             ChatPanel.SetActive(Chating); // 채팅창온
-            if(ChatingUi && ChatInput.text == "")
+            if (ChatingUi && ChatInput.text == "")
             {
                 ChatingUi = false;
             }
@@ -195,6 +225,18 @@ public class PlayerHUD : MonoBehaviourPun
             sec = 60;
             min--;
         }
+        else if (GameManager.Instance.winner == "Draw")
+        {
+            if ((int)sec >= 60)
+            {
+                sec = 0;
+                min++;
+            }
+            sec += Time.deltaTime;
+            timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+            return;
+        }
+
 
         sec -= Time.deltaTime;
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
@@ -203,31 +245,33 @@ public class PlayerHUD : MonoBehaviourPun
         {
             string gameWinMessage = "";
 
-            if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
+            if (playerScores[(int)PlayerColor.Blue] == playerScores[(int)PlayerColor.Red])
+            {
+                GameManager.Instance.winner = "Draw";
+            }
+            else if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
             {
                 GameManager.Instance.winner = "Blue";
                 gameWinMessage = GameManager.Instance.winner;
+                GameManager.Instance.isGameEnd = true;
             }
             else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
             {
                 GameManager.Instance.winner = "Red";
                 gameWinMessage = GameManager.Instance.winner;
+                GameManager.Instance.isGameEnd = true;
             }
-            else
-            {
-                GameManager.Instance.winner = "Draw";
-                photonView.RPC("RPCInitScore", RpcTarget.All);
-            }
+            photonView.RPC("RPCInitScore", RpcTarget.All);
 
             //photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
             min = 0;
             sec = 0;
             timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-            GameManager.Instance.isGameEnd = true;
+
             onGameEnd.Invoke();
 
             // 승패 이미지 호출
-            StartCoroutine(ResultImagePopUp());
+            StartCoroutine(resultImigePopup);
 
             //StartCoroutine(DelayLeaveRoom());
             return;
@@ -236,6 +280,11 @@ public class PlayerHUD : MonoBehaviourPun
 
     public void AddScoreToEnemy(string tag)
     {
+        if (GameManager.Instance.winner == "Draw")
+        {
+            return;
+        }
+
         if (tag == "Red")
         {
             playerScores[(int)PlayerColor.Blue] += 1;
@@ -285,14 +334,45 @@ public class PlayerHUD : MonoBehaviourPun
         //GameManager.Instance.winner = "Blue";
 
         // 승자가 블루면
-        if (GameManager.Instance.winner == "Blue")
+        if (GameManager.Instance.winner == "Draw")
+        {
+
+            if (PhotonNetwork.IsMasterClient)
+            {
+                GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
+                FadeinImige();
+                yield return Delay500;
+
+                GameWinPanel.SetActive(false);
+                BossSpawnNotification.SetActive(true);
+                StartCoroutine(textCouruntine);
+
+
+                ////GameResultImage.SetActive(true);
+                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+            }
+            else
+            {
+                GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
+                FadeinImige();
+                yield return Delay500;
+                GameWinPanel.SetActive(false);
+                BossSpawnNotification.SetActive(true);
+                StartCoroutine(textCouruntine);
+
+                //GameResultImage.SetActive(true);
+                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+            }
+            yield return null;
+        }
+        else if (GameManager.Instance.winner == "Blue")
         {
             if (PhotonNetwork.IsMasterClient)
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
-                StartCoroutine(ImageFadeIn());
+                FadeinImige();
 
-                yield return new WaitForSeconds(5f);
+                yield return Delay500;
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
@@ -300,45 +380,22 @@ public class PlayerHUD : MonoBehaviourPun
             else
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
-                StartCoroutine(ImageFadeIn());
+                FadeinImige();
 
-                yield return new WaitForSeconds(5f);
+                yield return Delay500;
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
             }
         }
-        else if (GameManager.Instance.winner == "Draw")
-        {
-            if (PhotonNetwork.IsMasterClient)
-            {
-                GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
-                StartCoroutine(ImageFadeIn());
-
-                yield return new WaitForSeconds(5f);
-                GameWinPanel.SetActive(false);
-                GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
-            }
-            else
-            {
-                GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
-                StartCoroutine(ImageFadeIn());
-
-                yield return new WaitForSeconds(5f);
-                GameWinPanel.SetActive(false);
-                GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
-            }
-        }
-        else
+        else if (GameManager.Instance.winner == "Red")
         {
             if (PhotonNetwork.IsMasterClient)
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
-                StartCoroutine(ImageFadeIn());
+                FadeinImige();
 
-                yield return new WaitForSeconds(5f);
+                yield return Delay500;
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
@@ -346,9 +403,9 @@ public class PlayerHUD : MonoBehaviourPun
             else
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
-                StartCoroutine(ImageFadeIn());
+                FadeinImige();
 
-                yield return new WaitForSeconds(5f);
+                yield return Delay500;
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
@@ -361,17 +418,18 @@ public class PlayerHUD : MonoBehaviourPun
     private IEnumerator ImageFadeIn()
     {
         float fadeValue = 0;
-
         Image gameWinPanel = GameWinPanel.GetComponent<Image>();
-
-        while (fadeValue < 1.0f)
+        while (fadeValue <= 1.0f)
         {
-            fadeValue += 0.01f;
+            fadeValue += 0.5f;
+
 
             yield return new WaitForSeconds(0.01f);
 
             gameWinPanel.color = new Color(255, 255, 255, fadeValue);
+
         }
+
     }
 
     public void ActivationGameWinUI_Nexus(string tag)
@@ -625,6 +683,109 @@ public class PlayerHUD : MonoBehaviourPun
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
+    }
+
+    #endregion
+
+    private void FadeinImige()
+    {
+        StartCoroutine(imigeCourutine);
+
+    }
+
+    private IEnumerator textFadeout()
+    {
+        float fadeValue = 1f;
+
+        TextMeshProUGUI bossText = BossSpawnNotification.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
+
+        while (fadeValue >= 0f)
+        {
+            fadeValue -= 0.2f;
+            if (fadeValue <= 0f)
+            {
+                BossMonsterSpawnON = true;
+                GameManager.Instance.bossMonsterSpawn();
+            }
+            yield return new WaitForSeconds(0.1f);
+
+            bossText.color = new Color(255, 255, 255, fadeValue);
+        }
+    }
+
+    #region Report System
+
+    [Header("ReportUI")]
+    public GameObject ReportPanel;
+    [SerializeField]
+    private GameObject SuccessPanel;
+    [SerializeField]
+    private TextOverFlow textoverflow;
+    private bool CheckboxOn = false;
+    private  bool button = false;
+
+    public void RefortButton()
+    {
+        button = !button;
+        if (false == button)
+        {
+            ReportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            ReportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
+            CheckboxOn = false;
+            textoverflow.text.text = "";
+        }
+        ReportPanel.SetActive(button);
+        textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+    }
+
+
+    public void Checkbox(int value)
+    {
+        CheckboxOn = true;
+        if (value == 0)
+        {
+            ReportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
+            ReportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        }
+        else
+        {
+            ReportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            ReportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
+        }
+
+
+    }
+
+    public void SendReport() // 2 입력안햇을때  3 체크박스 체크안햇을때  4 글자수 오바됬을때
+    {
+        Debug.Log($"{textoverflow.textNotEnter} : {CheckboxOn}");
+
+        if (!textoverflow.textNotEnter && CheckboxOn) //체크박스 되있고 글자수 있을때
+        {
+            
+            SuccessPanel.SetActive(true);
+        }
+        else if (textoverflow.textNotEnter == true) // 글자아무것도 안입력햇을때
+        {
+            
+
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
+
+            // 텍스트 이미지 출력
+            return;
+        }
+        else if (CheckboxOn == false)
+        {
+
+            
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+            return;
+        }
     }
 
     #endregion

@@ -313,6 +313,8 @@ public class Turret : MonoBehaviourPun
     }
 
     // =========================== 스킬타워 공격처리 ===========================
+    //TODO: [★Artsung] 미니언 우선타격 적용 -> 미니언 없을 때만 플레이어 공격하도록 설정
+    //TODO: [★Artsung] 적 공격시 플레이어 자신이 우선타격 하도록 설정
     protected virtual void Fire()
     {
         // 스킬 정의.
