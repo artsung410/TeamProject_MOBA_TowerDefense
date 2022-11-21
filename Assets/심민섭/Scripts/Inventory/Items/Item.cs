@@ -31,7 +31,8 @@ public class Item
     public float itemWeight;                    // 아이템의 무게
     public int maxStack = 99;                    // 최대 소지 갯수
     public int indexItemInList = 99;            // 인덱스
-    public int rarity;                          // 아이템 얻을 확률
+    public float rarity;                          // 아이템 얻을 확률
+    public int CombinationValue;                // 조합에 필요한 카드 개수
 
     // 아이템의 효과
     [SerializeField]
