@@ -107,6 +107,13 @@ public class InventoryGetData : MonoBehaviour
     // 함수를 호출하면 인벤토리 내에 있는 아이템을 리스트에 저장한다.
     public void GetItemInInventoryData()
     {
+        otherInventoryData.Clear();
+        warriorInventoryData.Clear();
+        wizardInventoryData.Clear();
+        inherenceInventoryData.Clear();
+        towerInventoryData.Clear();
+
+        int stack = 0;
         for (int i = 0; i < otherInventory.transform.childCount; i++)
         {
             Debug.Log("기타 아이템 저장 시작");
@@ -114,10 +121,14 @@ public class InventoryGetData : MonoBehaviour
             {
                 otherInventoryData.Add(otherInventory.transform.GetChild(i).GetChild(0).gameObject);
                 otherItemCnt += otherInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
+                stack++;
             }
             Debug.Log("기타 아이템 저장 완료");
         }
-        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Other", otherItemCnt);
+        if (stack > 0)
+            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Other", otherItemCnt);
+
+        stack = 0;
         for (int i = 0; i < warriorInventory.transform.childCount; i++)
         {
             Debug.Log("전사 아이템 저장 시작");
@@ -125,10 +136,14 @@ public class InventoryGetData : MonoBehaviour
             {
                 warriorInventoryData.Add(warriorInventory.transform.GetChild(i).GetChild(0).gameObject);
                 warriorCardCnt += warriorInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
+                stack++;
             }
             Debug.Log("전사 아이템 저장 완료");
         }
-        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Warrior", warriorCardCnt);
+        if (stack > 0)
+            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Warrior", warriorCardCnt);
+
+        stack = 0;
         for (int i = 0; i < wizardInventory.transform.childCount; i++)
         {
             Debug.Log("마법사 아이템 저장 시작");
@@ -136,10 +151,14 @@ public class InventoryGetData : MonoBehaviour
             {
                 wizardInventoryData.Add(wizardInventory.transform.GetChild(i).GetChild(0).gameObject);
                 wizardCardCnt += wizardInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
+                stack++;
             }
             Debug.Log("마법사 아이템 저장 완료");
         }
-        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Wizard", wizardCardCnt);
+        if (stack > 0)
+            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Wizard", wizardCardCnt);
+
+        stack = 0;
         for (int i = 0; i < inherenceInventory.transform.childCount; i++)
         {
             Debug.Log("공통 아이템 저장 시작");
@@ -147,10 +166,14 @@ public class InventoryGetData : MonoBehaviour
             {
                 inherenceInventoryData.Add(inherenceInventory.transform.GetChild(i).GetChild(0).gameObject);
                 inherenceCardCnt += inherenceInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
+                stack++;
             }
             Debug.Log("공통 아이템 저장 완료");
         }
-        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Inherence", inherenceCardCnt);
+        if (stack > 0)
+            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Inherence", inherenceCardCnt);
+
+        stack = 0;
         for (int i = 0; i < towerInventory.transform.childCount; i++)
         {
             Debug.Log("타워 아이템 저장 시작");
@@ -158,16 +181,12 @@ public class InventoryGetData : MonoBehaviour
             {
                 towerInventoryData.Add(towerInventory.transform.GetChild(i).GetChild(0).gameObject);
                 towerCardCnt += towerInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
+                stack++;
             }
             Debug.Log("타워 아이템 저장 완료");
         }
-        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Tower", towerCardCnt);
-
-        otherInventoryData.Clear();
-        warriorInventoryData.Clear();
-        wizardInventoryData.Clear();
-        inherenceInventoryData.Clear();
-        towerInventoryData.Clear();
+        if (stack > 0)
+            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Tower", towerCardCnt);        
     }
 
     /*private void Update()

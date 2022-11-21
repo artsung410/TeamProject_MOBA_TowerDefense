@@ -28,7 +28,6 @@ public class OpenDrawBox : MonoBehaviour
         DrawManager.instance.OpenBoxDisCount();
         // Ä«µå »Ì±â
         randomSelect.SkillResultSelect();
-
         closeObj.SetActive(false);
         openObj.SetActive(true);
     }

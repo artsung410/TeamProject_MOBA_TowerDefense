@@ -516,8 +516,6 @@ public class DrawManager : MonoBehaviour
                 }
             }
         }
-
-        DataBaseUpdater.instance.DrawAfterUpdate();
         // 인벤토리에 아이템이 하나라도 있을 경우
         if (count != 0)
         {
@@ -528,6 +526,7 @@ public class DrawManager : MonoBehaviour
         }
 
         StructResultItem.Clear();
+        
     }
 
     // 카드 구매 후 재화 업데이트 예정 --------------------------------------------
