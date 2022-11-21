@@ -20,10 +20,11 @@ public class Blink : SkillHandler
     string enemyTag;
     Vector3 mouseDir;
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
-    private float Speed;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float speed;
+    private float lockTime;
 
     float damageZoneRadius;
     private void Awake()
@@ -36,9 +37,10 @@ public class Blink : SkillHandler
     private void OnEnable()
     {
         elasedTiem = 0f;
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
+        damage = SetDamage;
+        holdingTime = SetHodingTime;
+        range = SetRange;
+        lockTime = SetLockTime;
 
         damageZoneRadius = 2f;
 
@@ -57,6 +59,7 @@ public class Blink : SkillHandler
                 TagProcessing(_ability);
                 LookMouseCursor();
                 CheckBlinkArrivalPoint();
+                _ability.OnLock(true);
                 _ability.CharactorRenderEvent(false);
                 yield break;
             }
@@ -96,11 +99,11 @@ public class Blink : SkillHandler
     private void CheckBlinkArrivalPoint()
     {
         Vector3 mousePos = new Vector3(hit.point.x, _behaviour.transform.position.y, hit.point.z);
-        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Range)
+        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= range)
         {
             Vector3 startPos = _behaviour.transform.position;
             Vector3 endPos = _behaviour.transform.forward;
-            arrivalPoint = startPos + endPos * Range;
+            arrivalPoint = startPos + endPos * range;
         }
         else
         {
@@ -131,7 +134,7 @@ public class Blink : SkillHandler
             {
                 StartCoroutine(Temp());
 
-                SkillHoldingTime(HoldingTime);
+                SkillHoldingTime(holdingTime);
             }
 
         }
@@ -149,6 +152,11 @@ public class Blink : SkillHandler
     public override void SkillHoldingTime(float time)
     {
         elasedTiem += Time.deltaTime;
+
+        if (elasedTiem >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
 
         if (elasedTiem >= time)
         {
@@ -172,7 +180,7 @@ public class Blink : SkillHandler
         {
             if (other.CompareTag(enemyTag))
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillDamage(damage, other.gameObject);
             }
         }
     }

@@ -21,10 +21,12 @@ public class Leap : SkillHandler
     string enemyTag;
     Vector3 mouseDir;
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
-    private float Speed;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float speed;
+    private float lockTime;
+
     #endregion
 
     private void Awake()
@@ -36,9 +38,10 @@ public class Leap : SkillHandler
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
+        damage = SetDamage;
+        holdingTime = SetHodingTime;
+        range = SetRange;
+        lockTime = SetLockTime;
 
         //isArive = false;
         //isAttack = false;
@@ -55,9 +58,9 @@ public class Leap : SkillHandler
 
         TagProcessing(_ability);
         LookMouseCursor();
-
         CheckDist();
 
+        _ability.OnLock(true);
         _ani.animator.SetBool("JumpAttack", true);
 
     }
@@ -70,11 +73,11 @@ public class Leap : SkillHandler
     {
         mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
 
-        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Range)
+        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= range)
         {
             startPos = _behaviour.transform.position;
             endPos = _behaviour.transform.forward;
-            leapPos = (startPos + endPos * Range);
+            leapPos = (startPos + endPos * range);
         }
         else
         {
@@ -132,7 +135,7 @@ public class Leap : SkillHandler
 
             if (isArrive)
             {
-                SkillHoldingTime(HoldingTime);
+                SkillHoldingTime(holdingTime);
             }
         }
 
@@ -149,6 +152,11 @@ public class Leap : SkillHandler
     {
         elapsedTime += Time.deltaTime;
 
+        if (elapsedTime >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
+
         if (elapsedTime >= time)
         {
             if (photonView.IsMine)
@@ -164,7 +172,7 @@ public class Leap : SkillHandler
         {
             if (other.CompareTag(enemyTag))
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillDamage(damage, other.gameObject);
             }
         }
     }
@@ -178,7 +186,7 @@ public class Leap : SkillHandler
             // 바닥에 떨어짐(현재위치)
 
             // 플레이어 자신이 감지되고있어서 예외처리해줌 ㅠ
-            if (collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7)
+            if (collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7 || collision.gameObject.tag == "Ground")
             {
                 return;
             }
@@ -197,4 +205,10 @@ public class Leap : SkillHandler
     {
         _damageZone.SetActive(true);
     }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
+    }
+
 }

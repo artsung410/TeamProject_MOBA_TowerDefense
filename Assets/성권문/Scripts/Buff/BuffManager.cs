@@ -9,7 +9,13 @@ using Photon.Pun;
 //             NAME : ARTSUNG                      
 //             MAIL : artsung410@gmail.com         
 // ###############################################
-public enum Buff_Effect_byTower
+// 11 - 18 플레이어스킬 버프, 디버프 추가
+// ###############################################
+//             NAME : HongSW                      
+//             MAIL : gkenfktm@gmail.com         
+// ###############################################
+
+public enum Buff_Effect
 {
     AtkUP = 1,
     HpRegenUp,
@@ -19,7 +25,9 @@ public enum Buff_Effect_byTower
     HpRegenDown,
     MoveSpeedDown,
     AtkSpeedDown,
+    SlowOfSkill,
 }
+
 
 public class BuffManager : MonoBehaviourPun
 {
@@ -122,6 +130,7 @@ public class BuffManager : MonoBehaviourPun
         }
         else
         {
+            Debug.Log("김재민");
             photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.Group_ID);
         }
 

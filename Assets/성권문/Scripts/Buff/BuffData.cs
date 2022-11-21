@@ -50,6 +50,10 @@ public class BuffData : ScriptableObject
     public Target TargetType { get { return _target; } }
 
     [SerializeField]
+    private LayerMask _layer;
+    public LayerMask LayerType { get { return _layer; } }
+
+    [SerializeField]
     private float _effectValue;
     public float EffectValue { get { return _effectValue; } }
 

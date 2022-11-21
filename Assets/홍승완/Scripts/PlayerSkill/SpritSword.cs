@@ -19,17 +19,20 @@ public class SpritSword : SkillHandler
 
     #endregion
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float lockTime;
+
     public float Speed;
 
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
+        damage = SetDamage;
+        holdingTime = SetHodingTime;
+        range = SetRange;
+        lockTime = SetLockTime;
     }
 
     // Start is called before the first frame update
@@ -42,6 +45,14 @@ public class SpritSword : SkillHandler
 
         TagProcessing(_ability);
         LookMouseCursor();
+        StartCoroutine(SkillLock());
+    }
+
+    IEnumerator SkillLock()
+    {
+        _ability.OnLock(true);
+        yield return new WaitForSeconds(lockTime);
+        _ability.OnLock(false);
     }
 
     public void LookMouseCursor()
@@ -82,7 +93,7 @@ public class SpritSword : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(HoldingTime);
+            SkillHoldingTime(holdingTime);
         }
     }
 
@@ -116,8 +127,13 @@ public class SpritSword : SkillHandler
         {
             if (other.CompareTag(enemyTag))
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillDamage(damage, other.gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

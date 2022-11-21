@@ -23,6 +23,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     public float SetDamage;
     public float SetHodingTime;
     public float SetRange;
+    public float SetLockTime;
 
     // 플레이어 HeroAbility를 받아옴
     public void GetPlayerPos(HeroAbility heroAbility)
@@ -60,7 +61,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
             }
         }
-        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
+        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13 || target.gameObject.layer == 17)
         {
             Enemybase minion = target.GetComponent<Enemybase>();
 
@@ -79,8 +80,8 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
             if (player != null)
             {
+                Debug.Log("플레이어 지속데미지 적용 시작");
                 player.DamageOverTime(damage,time);
-
             }
         }
         else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
@@ -96,6 +97,18 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
         }
     }
 
+    public void CrowdControlStun(GameObject target, float time, bool stun)
+    {
+        if (target.gameObject.layer == 7)
+        {
+            PlayerBehaviour player = target.GetComponent<PlayerBehaviour>();
+
+            if (player != null)
+            {
+                player.OnStun(stun, time);
+            }
+        }
+    }
 
     protected string GetMytag(HeroAbility ability)
     {
@@ -107,5 +120,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     public abstract void SkillHoldingTime(float time);
 
     public abstract void SkillUpdatePosition();
-    
+
+    // TODO : 검기 위치 재조정
+
 }

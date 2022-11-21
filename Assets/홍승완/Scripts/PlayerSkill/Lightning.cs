@@ -20,10 +20,13 @@ public class Lightning : SkillHandler
     Vector3 mouseDir;
     Vector3 currentPos; // 스킬 사용 위치
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
+    private float holdingTime;
+    private float damage;
+    private float range;
     private float Speed;
+    private float lockTime;
+
+    public float CrowdControlTime;
 
     private void Awake()
     {
@@ -34,9 +37,11 @@ public class Lightning : SkillHandler
     {
         elasedTiem = 0f;
 
-        Damage = SetDamage;
-        Range = SetRange;
-        HoldingTime = SetHodingTime;
+        damage = SetDamage;
+        range = SetRange;
+        holdingTime = SetHodingTime;
+        CrowdControlTime = 2f;
+        lockTime = SetLockTime;
 
         damageZoneRadius = 5f;
     }
@@ -65,22 +70,24 @@ public class Lightning : SkillHandler
             }
 
             Vector3 mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
-            if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Range)
+            if (Vector3.Distance(_behaviour.transform.position, mousePos) >= range)
             {
                 Vector3 startPos = _behaviour.transform.position;
                 Vector3 endPos = _behaviour.transform.forward;
 
-                skillPos = startPos + endPos * Range;
+                skillPos = startPos + endPos * range;
             }
             else
             {
                 skillPos = mousePos;
             }
+
+            _ability.OnLock(true);
         }
         catch (System.Exception)
         {
-
-            throw new System.Exception($"무슨일이야");
+            //throw new System.Exception($"무슨일이야");
+            print("리모트 스킬이라 null이 뜨는것이란다");
         }
     }
 
@@ -95,34 +102,45 @@ public class Lightning : SkillHandler
         }
 
         SkillUpdatePosition();
-        SkillHoldingTime(HoldingTime);
+        SkillHoldingTime(holdingTime);
     }
     public override void SkillHoldingTime(float time)
     {
         elasedTiem += Time.deltaTime;
 
+        if (elasedTiem >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
+
         if (elasedTiem >= time)
         {
-            Destroy(gameObject);
-            //PhotonNetwork.Destroy(gameObject);
+            PhotonNetwork.Destroy(gameObject);
         }
     }
 
     public override void SkillUpdatePosition()
     {
-        transform.position = skillPos;
+        transform.position = new Vector3(skillPos.x, 0, skillPos.z);
     }
+
+    // TODO : 맞은 대상 스턴(2초동안)
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log($"충돌 테스트 : {other.gameObject.name}");
+        //Debug.Log($"충돌 테스트 : {other.gameObject.name}");
 
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            // 중립 몬스터 : 태그없음, layer 17
+            if (other.CompareTag(enemyTag) || other.gameObject.layer == 17)
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillDamage(damage, other.gameObject);
+                CrowdControlStun(other.gameObject, CrowdControlTime, true);
             }
+            
         }
     }
+
+    // 스킬이 isStun을 true로 만들어주는데 몇초동안 유지할지 까지 알려준다
 }
