@@ -16,7 +16,7 @@ public class Whirlwind : SkillHandler
 
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
+    //string enemyTag;
     Vector3 mouseDir;
 
     private float holdingTime;
@@ -46,7 +46,7 @@ public class Whirlwind : SkillHandler
         }
 
         _ability.OnLock(true);
-        TagProcessing(_ability);
+        //TagProcessing(_ability);
         //LookMouseCursor();
     }
 
@@ -62,18 +62,18 @@ public class Whirlwind : SkillHandler
             quaternion = _ability.transform.localRotation;
         }
     }
-    private void TagProcessing(HeroAbility ability)
-    {
+    //private void TagProcessing(HeroAbility ability)
+    //{
 
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-        }
-    }
+    //    if (ability.CompareTag("Blue"))
+    //    {
+    //        enemyTag = "Red";
+    //    }
+    //    else if (ability.CompareTag("Red"))
+    //    {
+    //        enemyTag = "Blue";
+    //    }
+    //}
 
     private void Update()
     {
@@ -144,7 +144,12 @@ public class Whirlwind : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            //if (other.CompareTag(enemyTag))
+            //{
+            //    SkillDamage(damage, other.gameObject);
+            //}
+
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SkillDamage(damage, other.gameObject);
             }

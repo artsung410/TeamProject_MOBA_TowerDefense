@@ -16,7 +16,6 @@ public class Blaze : SkillHandler
 
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
     private float holdingTime;
@@ -54,25 +53,12 @@ public class Blaze : SkillHandler
     {
         try
         {
-            TagAssignment();
             LookMouseDir();
             _ability.OnLock(true);
         }
         catch (System.Exception)
         {
             print("리모트 스킬 null참조중");
-        }
-    }
-
-    private void TagAssignment()
-    {
-        if (_ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-        }
-        else
-        {
-            enemyTag = "Blue";
         }
     }
 
@@ -147,7 +133,7 @@ public class Blaze : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag) || other.gameObject.layer == 17)
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SkillTimeDamage(30, 5f, other.gameObject);
                 SkillDamage(damage, other.gameObject);

@@ -16,7 +16,6 @@ public class Lightning : SkillHandler
 
     Quaternion quaternion;
     float elasedTiem;
-    string enemyTag;
     Vector3 mouseDir;
     Vector3 currentPos; // 스킬 사용 위치
 
@@ -51,15 +50,6 @@ public class Lightning : SkillHandler
     {
         try
         {
-            if (_ability.CompareTag("Blue"))
-            {
-                enemyTag = "Red";
-            }
-            else if (_ability.CompareTag("Red"))
-            {
-                enemyTag = "Blue";
-            }
-
             RaycastHit hit;
             if (Physics.Raycast(_behaviour.ray, out hit))
             {
@@ -133,7 +123,7 @@ public class Lightning : SkillHandler
         if (photonView.IsMine)
         {
             // 중립 몬스터 : 태그없음, layer 17
-            if (other.CompareTag(enemyTag) || other.gameObject.layer == 17)
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SkillDamage(damage, other.gameObject);
                 CrowdControlStun(other.gameObject, CrowdControlTime, true);
@@ -142,5 +132,4 @@ public class Lightning : SkillHandler
         }
     }
 
-    // 스킬이 isStun을 true로 만들어주는데 몇초동안 유지할지 까지 알려준다
 }

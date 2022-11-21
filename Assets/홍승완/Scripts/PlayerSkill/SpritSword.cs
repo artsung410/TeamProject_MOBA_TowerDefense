@@ -14,7 +14,6 @@ public class SpritSword : SkillHandler
     
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
     #endregion
@@ -43,7 +42,6 @@ public class SpritSword : SkillHandler
             return;
         }
 
-        TagProcessing(_ability);
         LookMouseCursor();
         StartCoroutine(SkillLock());
     }
@@ -66,21 +64,6 @@ public class SpritSword : SkillHandler
             _ability.transform.forward = mouseDir;
             quaternion = _ability.transform.localRotation;
         }
-    }
-    private void TagProcessing(HeroAbility ability)
-    {
-
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-            //Debug.Log(enemyTag);
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-            //Debug.Log(enemyTag);
-        }
-
     }
 
     void Update()
@@ -125,7 +108,11 @@ public class SpritSword : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            //if (other.CompareTag(enemyTag))
+            //{
+            //    SkillDamage(damage, other.gameObject);
+            //}
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SkillDamage(damage, other.gameObject);
             }

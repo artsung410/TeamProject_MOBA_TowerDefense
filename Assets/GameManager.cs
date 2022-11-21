@@ -127,8 +127,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             OnLeftRoom();
         }
 
-        mySelect.Add("Warrior", playerPrefab[0]);
-        mySelect.Add("Wizard", playerPrefab[1]);
         
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
@@ -139,6 +137,8 @@ public class GameManager : MonoBehaviourPunCallbacks
 #endif
 
 #if 캐릭터선택_VER_1
+        mySelect.Add("Warrior", playerPrefab[0]);
+        mySelect.Add("Wizard", playerPrefab[1]);
         player = PhotonNetwork.Instantiate(mySelect[myData.selectCharacter].name, spawnPosition.position, Quaternion.identity);
 #endif
         // HSW

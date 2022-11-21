@@ -16,7 +16,6 @@ public class IceArrow : SkillHandler
 
     Quaternion quaternion;
     float elasedTiem;
-    string enemyTag;
     Vector3 mouseDir;
     Vector3 currentPos; // 스킬 사용 위치
 
@@ -68,15 +67,6 @@ public class IceArrow : SkillHandler
                 quaternion = _behaviour.transform.localRotation;
             }
 
-            if (_ability.CompareTag("Blue"))
-            {
-                enemyTag = "Red";
-            }
-            else if (_ability.CompareTag("Red"))
-            {
-                enemyTag = "Blue";
-            }
-
             _ability.OnLock(true);
         }
         catch (System.Exception ie)
@@ -125,7 +115,7 @@ public class IceArrow : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.gameObject.layer == 17 || other.gameObject.tag == enemyTag)
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 BuffManager.Instance.AddBuff(deBuff);
                 SkillDamage(damage, other.gameObject);

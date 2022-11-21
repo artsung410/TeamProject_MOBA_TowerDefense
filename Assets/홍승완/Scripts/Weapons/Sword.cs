@@ -22,7 +22,7 @@ public class Sword : MonoBehaviour
             return;
         }
 
-        if (other.tag == _playerScript.EnemyTag)
+        if (other.tag == _playerScript.EnemyTag || other.gameObject.layer == 17)
         {
             if (_playerScript != null)
             {

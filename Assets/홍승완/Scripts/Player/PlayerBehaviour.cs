@@ -324,7 +324,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void GetTargetedObject()
     {
-        if (Hit.collider.CompareTag(EnemyTag))
+        if (Hit.collider.CompareTag(EnemyTag) || Hit.collider.gameObject.layer == 17)
         {
             targetedEnemy = Hit.collider.gameObject;
         }
@@ -406,6 +406,11 @@ public class PlayerBehaviour : MonoBehaviourPun
                         shortTarget = colTarget.gameObject;
                     }
                 }
+                // 중립 몬스터 검출
+                else if (colTarget.gameObject.layer == 17)
+                {
+                    targetedEnemy = colTarget.gameObject;
+                }
                 // 예외부분(땅, 기타등등) 건너뛰기
                 else
                 {
@@ -455,6 +460,11 @@ public class PlayerBehaviour : MonoBehaviourPun
         else if (targetedEnemy.layer == 12)
         {
             interpolationRange = 6f;
+        }
+        // 중립몬스터 보간
+        else if (targetedEnemy.layer == 17)
+        {
+            interpolationRange = 1f;
         }
     }
 
