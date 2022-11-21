@@ -17,7 +17,6 @@ public class Blink : SkillHandler
 
     Quaternion quaternion;
     float elasedTiem;
-    string enemyTag;
     Vector3 mouseDir;
 
     private float holdingTime;
@@ -56,7 +55,6 @@ public class Blink : SkillHandler
         {
             try
             {
-                TagProcessing(_ability);
                 LookMouseCursor();
                 CheckBlinkArrivalPoint();
                 _ability.OnLock(true);
@@ -80,18 +78,6 @@ public class Blink : SkillHandler
 
             _behaviour.transform.forward = mouseDir;
             quaternion = _behaviour.transform.localRotation;
-        }
-    }
-
-    private void TagProcessing(HeroAbility ability)
-    {
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
         }
     }
 
@@ -178,7 +164,7 @@ public class Blink : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SkillDamage(damage, other.gameObject);
             }
@@ -191,11 +177,9 @@ public class Blink : SkillHandler
         {
             if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7)
             {
-                //Debug.Log($"충돌 리턴중 : {collision.gameObject.name}");
                 return;
             }
 
-            //Debug.Log($"충돌중 : {collision.gameObject.name}");
             _behaviour.transform.forward = mouseDir;
             _behaviour.transform.position = transform.position;
             _behaviour.ForSkillAgent(transform.position);

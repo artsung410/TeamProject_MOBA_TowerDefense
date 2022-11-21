@@ -15,10 +15,10 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected PlayerBehaviour _behaviour;
     protected PlayerAnimation _ani;
     protected string _myTag;
+    protected string enemyTag;
     
     // TODO : skilldata scriptableObj사용할수있게 개조하기
     //protected ScriptableObject data;
-
 
     public float SetDamage;
     public float SetHodingTime;
@@ -41,6 +41,8 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     public void GetMousePos(PlayerBehaviour behaviour)
     {
         _behaviour = behaviour;
+
+        enemyTag = behaviour.EnemyTag;
     }
 
     // 플레이어 Animation 받아옴
@@ -51,17 +53,29 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
     public void SkillDamage(float damage, GameObject target)
     {
-        if (target.gameObject.layer == 7)
+        if (target.CompareTag(enemyTag))
         {
-            Health player = target.GetComponent<Health>();
-
-            if (player != null)
+            if (target.gameObject.layer == 7)
             {
-                player.OnDamage(damage);
+                Health player = target.GetComponent<Health>();
 
+                if (player != null)
+                {
+                    player.OnDamage(damage);
+
+                }
+            }
+            else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
+            {
+                Enemybase minion = target.GetComponent<Enemybase>();
+
+                if (minion != null)
+                {
+                    minion.TakeDamage(damage);
+                }
             }
         }
-        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13 || target.gameObject.layer == 17)
+        else if (target.gameObject.layer == 17)
         {
             Enemybase minion = target.GetComponent<Enemybase>();
 
@@ -74,25 +88,37 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
     public void SkillTimeDamage(float damage,float time ,GameObject target) // .데미지 지속시간 , 타켓
     {
-        if (target.gameObject.layer == 7)
+        if (target.CompareTag(enemyTag))
         {
-            Health player = target.GetComponent<Health>();
-
-            if (player != null)
+            if (target.gameObject.layer == 7)
             {
-                Debug.Log("플레이어 지속데미지 적용 시작");
-                player.DamageOverTime(damage,time);
+                Health player = target.GetComponent<Health>();
+
+                if (player != null)
+                {
+                    Debug.Log("플레이어 지속데미지 적용 시작");
+                    player.DamageOverTime(damage,time);
+                }
+            }
+            else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
+            {
+                Enemybase minion = target.GetComponent<Enemybase>();
+
+                if (minion != null)
+                {
+                    Debug.Log("input skillTimeDamage");
+                    minion.DamageOverTime(damage,time);
+                }
             }
         }
-        else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
+        else if (target.gameObject.layer == 17)
         {
             Enemybase minion = target.GetComponent<Enemybase>();
-
 
             if (minion != null)
             {
                 Debug.Log("input skillTimeDamage");
-                minion.DamageOverTime(damage,time);
+                minion.DamageOverTime(damage, time);
             }
         }
     }

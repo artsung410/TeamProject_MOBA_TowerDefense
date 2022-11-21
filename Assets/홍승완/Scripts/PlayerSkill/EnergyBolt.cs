@@ -17,7 +17,6 @@ public class EnergyBolt : SkillHandler
 
     Quaternion quaternion;
     float elasedTiem;
-    string enemyTag;
     Vector3 mouseDir;
     Vector3 currentPos; // 스킬 사용 위치
 
@@ -58,15 +57,6 @@ public class EnergyBolt : SkillHandler
 
                 _behaviour.transform.forward = mouseDir;
                 quaternion = _behaviour.transform.localRotation;
-            }
-
-            if (_ability.CompareTag("Blue"))
-            {
-                enemyTag = "Red";
-            }
-            else if (_ability.CompareTag("Red"))
-            {
-                enemyTag = "Blue";
             }
 
             _ability.OnLock(true);
@@ -117,14 +107,10 @@ public class EnergyBolt : SkillHandler
         //Debug.Log("충돌 확인용");
         if (photonView.IsMine)
         {
-            if (other.gameObject.tag != enemyTag)
+            if(other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
-                return;
-            }
-            else
-            {
-                SkillDamage(Damage, other.gameObject);
                 _ability.OnLock(false);
+                SkillDamage(Damage, other.gameObject);
                 PhotonNetwork.Destroy(gameObject);
             }
 

@@ -17,7 +17,6 @@ public class ChainAttack : SkillHandler
 
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
     private float holdingTime;
@@ -49,7 +48,7 @@ public class ChainAttack : SkillHandler
         range = SetRange;
         //Debug.Log($"SetRange : {SetRange}");
         lockTime = SetLockTime;
-        Debug.Log($"lockTime : {lockTime}");
+        //Debug.Log($"lockTime : {lockTime}");
 
         int currentNumber = Random.Range(0, 4);
 
@@ -80,7 +79,6 @@ public class ChainAttack : SkillHandler
 
         _ability.OnLock(true);
         LookMouseCursor();
-        TagProcessing(_ability);
     }
 
     public void LookMouseCursor()
@@ -96,22 +94,6 @@ public class ChainAttack : SkillHandler
             quaternion = _ability.transform.localRotation;
         }
 
-    }
-
-    private void TagProcessing(HeroAbility ability)
-    {
-
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-            //Debug.Log(enemyTag);
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-            //Debug.Log(enemyTag);
-
-        }
     }
 
     float dispersionTime = 0f;
@@ -213,7 +195,7 @@ public class ChainAttack : SkillHandler
         // 데미지 두번들어가던부분 IsMine으로 처리
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 if (isDamage)
                 {

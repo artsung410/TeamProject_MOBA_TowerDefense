@@ -18,7 +18,6 @@ public class Leap : SkillHandler
 
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
     private float holdingTime;
@@ -56,7 +55,6 @@ public class Leap : SkillHandler
             return;
         }
 
-        TagProcessing(_ability);
         LookMouseCursor();
         CheckDist();
 
@@ -96,18 +94,6 @@ public class Leap : SkillHandler
 
             _ability.transform.forward = mouseDir;
             quaternion = _ability.transform.localRotation;
-        }
-    }
-    private void TagProcessing(HeroAbility ability)
-    {
-
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
         }
     }
 
@@ -170,7 +156,7 @@ public class Leap : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SkillDamage(damage, other.gameObject);
             }

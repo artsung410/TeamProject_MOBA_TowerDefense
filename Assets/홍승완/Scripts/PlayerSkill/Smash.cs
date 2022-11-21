@@ -15,7 +15,6 @@ public class Smash : SkillHandler
 
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
     private float holdingTime;
@@ -44,7 +43,6 @@ public class Smash : SkillHandler
         }
 
         LookMouseCursor();
-        TagProcessing(_ability);
         _ability.OnLock(true);
     }
 
@@ -62,22 +60,6 @@ public class Smash : SkillHandler
             quaternion = _ability.transform.localRotation;
         }
 
-    }
-
-    private void TagProcessing(HeroAbility ability)
-    {
-
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-            //Debug.Log(enemyTag);
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-            //Debug.Log(enemyTag);
-
-        }
     }
 
     private void Update()
@@ -133,7 +115,11 @@ public class Smash : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            //if (other.CompareTag(enemyTag))
+            //{
+            //    SectorDamage(other);
+            //}
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SectorDamage(other);
             }

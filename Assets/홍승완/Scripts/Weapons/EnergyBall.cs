@@ -131,15 +131,14 @@ public class EnergyBall : MonoBehaviourPun
                     target.GetComponent<NexusHp>().TakeOnDagmage(_damage);
                 }
             }
-            // 중립 몬스터 : Untagged, Layer = 17
-            else
+            // 중립몬스터는 태그없음
+            else if (target.layer == 17)
             {
-                if (target.layer == 17)
-                {
-                    target.GetComponent<Enemybase>().TakeDamage(_damage);
-                }
+                target.GetComponent<Enemybase>().TakeDamage(_damage);
             }
         }
+
+
     }
 
     private void OnDisable()
