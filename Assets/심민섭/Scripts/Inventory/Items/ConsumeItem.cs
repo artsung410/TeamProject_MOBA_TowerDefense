@@ -165,6 +165,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                             }
                         }
 
+                        DataBaseUpdater.instance.DrawAfterUpdate();
                         // 현 상황에선 무조건 실행됨
                         /*if (!stop)
                         {

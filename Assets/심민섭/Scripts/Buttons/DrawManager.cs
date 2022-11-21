@@ -156,7 +156,7 @@ public class DrawManager : MonoBehaviour
                 drawItemObj.transform.GetChild(1).GetComponent<Text>().fontSize = 20;
                 drawItemObj.transform.GetChild(0).localScale = new Vector3(2f, 2f, 2f);
                 // 아이템을 넣었다면 
-                InventoryGetData.instance.GetItemInInventoryData();
+                //InventoryGetData.instance.GetItemInInventoryData();
                 DataBaseUpdater.instance.DrawAfterUpdate();
                 return;
             }
@@ -516,10 +516,8 @@ public class DrawManager : MonoBehaviour
                 }
             }
         }
-        // ------------------ 아이템 삭제 했을 때로 수정해주어야한다.-----------------------------
-        DataBaseUpdater.instance.DrawAfterUpdate();
-        InventoryGetData.instance.GetItemInInventoryData();
 
+        DataBaseUpdater.instance.DrawAfterUpdate();
         // 인벤토리에 아이템이 하나라도 있을 경우
         if (count != 0)
         {

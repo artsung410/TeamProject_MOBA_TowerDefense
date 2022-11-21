@@ -101,7 +101,8 @@ public class DataBaseHandler : MonoBehaviour
             var feild = "other";
             var value = document.GetElement(feild).Value;
             var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
-            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            var addValue = (int)cnt + (int)value;
+            var update = Builders<BsonDocument>.Update.Set(feild, addValue);
             collection.UpdateOne(filter, update);
         }
 
