@@ -57,6 +57,32 @@ public class DataBaseInsert : MonoBehaviour
         Debug.Log("유저 카드 정보 전송");
         await collection.InsertOneAsync(User_Card_Info);
     }
+    public async void New_DataInsert_Other_CardPack_Info()
+    {
+        collection = database.GetCollection<BsonDocument>("User_CardPack_Info");
+        MakeUserInfo.instance.User_OtherInventory_Card_Info_DataSet();
+        var User_CardPack_Info = new BsonDocument()
+        {
+            {"user_id", MakeUserInfo.instance.id},
+            {"cardPack_warrior_N", MakeUserInfo.instance.cardPack_warrior_N},
+            {"cardPack_wizard_N", MakeUserInfo.instance.cardPack_wizard_N},
+            {"cardPack_ingerence_N", MakeUserInfo.instance.cardPack_inherence_N},
+            {"cardPack_attack_N", MakeUserInfo.instance.cardPack_attack_N},
+            {"cardPack_minion_N", MakeUserInfo.instance.cardPack_minion_N},
+            {"cardPack_buff_N", MakeUserInfo.instance.cardPack_buff_N},
+            {"cardPack_random_N", MakeUserInfo.instance.cardPack_random_N},
+            {"cardPack_warrior_P", MakeUserInfo.instance.cardPack_warrior_P},
+            {"cardPack_wizard_P", MakeUserInfo.instance.cardPack_wizard_P},
+            {"cardPack_ingerence_P", MakeUserInfo.instance.cardPack_inherence_P},
+            {"cardPack_attack_P", MakeUserInfo.instance.cardPack_attack_P},
+            {"cardPack_minion_P", MakeUserInfo.instance.cardPack_minion_P},
+            {"cardPack_buff_P", MakeUserInfo.instance.cardPack_buff_P},
+            {"cardPack_random_P", MakeUserInfo.instance.cardPack_random_P},
+        };
+
+        Debug.Log("유저 카드팩 정보 전송");
+        await collection.InsertOneAsync(User_CardPack_Info);
+    }
     public async void New_DataInsert_User_WarriorCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Warrior_Card_Info");

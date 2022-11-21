@@ -14,10 +14,16 @@ public class DataBaseUpdater : MonoBehaviour
     //             NAME : Simstealer                      
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
+    public static DataBaseUpdater instance;
     MongoClient server = new MongoClient("mongodb+srv://metaverse:metaverse@cluster0.feoedbv.mongodb.net/?retryWrites=true&w=majority");
     IMongoDatabase database;
     IMongoCollection<BsonDocument> collection;
     private PlayerStorage playerStorage;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     private void Start()
     {
@@ -25,16 +31,16 @@ public class DataBaseUpdater : MonoBehaviour
     }
 
 
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
         {
             DrawAfterUpdate();
         }
-    }
+    }*/
 
     // 현재 인벤토리에 있는 아이템을 저장하고 비교해서 수량을 올린다.
-    private void DrawAfterUpdate()
+    public void DrawAfterUpdate()
     {
         // 인벤토리 아이템 저장
         InventoryGetData.instance.GetItemInInventoryData();

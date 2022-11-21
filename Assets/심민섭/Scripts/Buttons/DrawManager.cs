@@ -130,6 +130,8 @@ public class DrawManager : MonoBehaviour
                             drawItemObj.GetComponent<ItemOnObject>().item.itemIcon;
                         //drawItemObj.transform.GetChild(1).GetComponent<Text>().text = buyCount.ToString();
                         drawItemObj.transform.localPosition = Vector3.zero;
+                        drawItemObj.transform.GetChild(1).localPosition = new Vector3(35f, -30f, 0f);
+                        drawItemObj.transform.GetChild(1).GetComponent<Text>().fontSize = 20;
                         drawItemObj.transform.GetChild(0).localScale = new Vector3(2f, 2f, 2f);
                     }
                 }
@@ -150,8 +152,12 @@ public class DrawManager : MonoBehaviour
                     drawItemObj.GetComponent<ItemOnObject>().item.itemIcon;
                 //drawItemObj.transform.GetChild(1).GetComponent<Text>().text = buyCount.ToString();
                 drawItemObj.transform.localPosition = Vector3.zero;
+                drawItemObj.transform.GetChild(1).localPosition = new Vector3(35f, -30f, 0f);
+                drawItemObj.transform.GetChild(1).GetComponent<Text>().fontSize = 20;
                 drawItemObj.transform.GetChild(0).localScale = new Vector3(2f, 2f, 2f);
                 // 아이템을 넣었다면 
+                InventoryGetData.instance.GetItemInInventoryData();
+                DataBaseUpdater.instance.DrawAfterUpdate();
                 return;
             }
             
@@ -445,7 +451,7 @@ public class DrawManager : MonoBehaviour
 
                         itemObjProduce.transform.SetParent(selectInventory.transform.GetChild(j));
                         itemObjProduce.transform.localPosition = Vector3.zero;
-                        itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                        itemObjProduce.transform.localScale = new Vector3(0.55f, 0.7f, 0f);
 
                         // 넣었으면 아이템 삭제
                         sameItem.RemoveAt(i);
@@ -461,7 +467,7 @@ public class DrawManager : MonoBehaviour
             idList.Clear();
             idListDistinct.Clear();
         }
-        
+
     }
 
     // 아이템 오브젝트 생성 및 이동 함수
@@ -506,10 +512,14 @@ public class DrawManager : MonoBehaviour
 
                     itemObjProduce.transform.SetParent(selectInventory.transform.GetChild(j));
                     itemObjProduce.transform.localPosition = Vector3.zero;
-                    itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                    itemObjProduce.transform.localScale = new Vector3(0.55f, 0.7f, 0f);
                 }
             }
         }
+        // ------------------ 아이템 삭제 했을 때로 수정해주어야한다.-----------------------------
+        DataBaseUpdater.instance.DrawAfterUpdate();
+        InventoryGetData.instance.GetItemInInventoryData();
+
         // 인벤토리에 아이템이 하나라도 있을 경우
         if (count != 0)
         {

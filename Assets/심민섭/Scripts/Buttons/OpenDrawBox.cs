@@ -26,7 +26,6 @@ public class OpenDrawBox : MonoBehaviour
     {
         // 아이템 소모
         DrawManager.instance.OpenBoxDisCount();
-
         // 카드 뽑기
         randomSelect.SkillResultSelect();
 

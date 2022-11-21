@@ -6865,7 +6865,31 @@ MonoBehaviour:
   SlotGridLayout: {fileID: 1436696433}
   SlotGridRectTransform: {fileID: 1436696432}
   mainInventory: 1
-  ItemsInInventory: []
+  ItemsInInventory:
+  - itemName: ChainAttack1
+    ClassType: Warrior
+    itemID: 1
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: a49d70bc38fde7a4f95890a7ca766ef1, type: 3}
+    itemModel: {fileID: 5184541198715492353, guid: af5d35f732b8aae4d8eefafd65b3078e, type: 3}
+    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: -1
+    rarity: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 30
+    - attributeName: CoolTime
+      attributeValue: 3
+    - attributeName: HoldingTime
+      attributeValue: 2
+    - attributeName: SkillRange
+      attributeValue: 0
+    specialPrefabs: []
+    buffDatas: []
   height: 4
   width: 4
   stackable: 1
@@ -7098,6 +7122,20 @@ MonoBehaviour:
   inherenceCardCnt: 0
   towerCardCnt: 0
   otherItemCnt: 0
+  warrior_N: {fileID: 21300000, guid: 95260a82f6accc64b9304ae0a1d72c02, type: 3}
+  wizard_N: {fileID: 21300000, guid: 6f8b90aeb11313341ae549a4fecf0174, type: 3}
+  inherence_N: {fileID: 21300000, guid: 7097e26e663841f4180ac70e8edfc6e3, type: 3}
+  attack_N: {fileID: 21300000, guid: f071bc0d4f2e52840a36f78633a3ddec, type: 3}
+  minion_N: {fileID: 21300000, guid: 2fc697a0263e1ad48873146ec4ca6965, type: 3}
+  buff_N: {fileID: 21300000, guid: 3f2945dac370be54d83a72d83594f6ca, type: 3}
+  random_N: {fileID: 21300000, guid: 56ca5c5ebae88ff4cb9a46c26d818713, type: 3}
+  warrior_P: {fileID: 21300000, guid: 8f637f7045002c8468e1c6268d8fcd53, type: 3}
+  wizard_P: {fileID: 21300000, guid: 6330f9b6c0bf86d46bdb44423fb31c08, type: 3}
+  inherence_P: {fileID: 21300000, guid: cba498e92d9b1074490c1ba09b6e9337, type: 3}
+  attack_P: {fileID: 21300000, guid: 779cd55d9c7d4004c851598899a5b694, type: 3}
+  minion_P: {fileID: 21300000, guid: 1412691c7d34ab447a0f5f1abffd5565, type: 3}
+  buff_P: {fileID: 21300000, guid: dbca894136700cd438c79c587c8e7fab, type: 3}
+  random_P: {fileID: 21300000, guid: c46ee5c2d4f59e544aacf10c5ff8317a, type: 3}
   warriorSkillDatabase: {fileID: 11400000, guid: fce15b7de6026c248b77b0855e3fec2b, type: 2}
   wizardSkillDatabase: {fileID: 11400000, guid: 0a43f7233ec0f9540a78993b9abe6e4c, type: 2}
   inherenceSkillDatabase: {fileID: 11400000, guid: a6b634e63743c5b4fac4e21fece714aa, type: 2}
@@ -7136,6 +7174,20 @@ MonoBehaviour:
   increasedMinionProduction: 
   increasedMinionAttackPower: 
   dragonSummon: 
+  cardPack_warrior_N: 0
+  cardPack_wizard_N: 0
+  cardPack_inherence_N: 0
+  cardPack_attack_N: 0
+  cardPack_minion_N: 0
+  cardPack_buff_N: 0
+  cardPack_random_N: 0
+  cardPack_warrior_P: 0
+  cardPack_wizard_P: 0
+  cardPack_inherence_P: 0
+  cardPack_attack_P: 0
+  cardPack_minion_P: 0
+  cardPack_buff_P: 0
+  cardPack_random_P: 0
   towerAttackGuard: 
   towerAttackCannon: 
   towerAttackFlame: 
@@ -19248,79 +19300,7 @@ MonoBehaviour:
   SlotGridLayout: {fileID: 426573419}
   SlotGridRectTransform: {fileID: 426573418}
   mainInventory: 1
-  ItemsInInventory:
-  - itemName: "\uACE0\uC720 \uC2A4\uD0AC"
-    ClassType: Inherence
-    itemID: 9
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c2986e027f97f284dbe90a522238b6ea, type: 3}
-    itemModel: {fileID: 8936188002352116344, guid: 005bc3c502863684e85138a865b0ae55, type: 3}
-    inGameData: {fileID: 0}
-    itemValue: 1
-    itemType: 2
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: -1
-    rarity: 100
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 80
-    - attributeName: CoolTime
-      attributeValue: 6
-    - attributeName: HoldingTime
-      attributeValue: 6
-    - attributeName: SkillRange
-      attributeValue: 6
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: "\uACE0\uC720 \uC2A4\uD0AC"
-    ClassType: Inherence
-    itemID: 9
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c2986e027f97f284dbe90a522238b6ea, type: 3}
-    itemModel: {fileID: 8936188002352116344, guid: 005bc3c502863684e85138a865b0ae55, type: 3}
-    inGameData: {fileID: 0}
-    itemValue: 1
-    itemType: 2
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: 0
-    rarity: 100
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 80
-    - attributeName: CoolTime
-      attributeValue: 6
-    - attributeName: HoldingTime
-      attributeValue: 6
-    - attributeName: SkillRange
-      attributeValue: 6
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: "\uB3C4\uC57D1"
-    ClassType: Warrior
-    itemID: 26
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c67fbf9375ad5c34399c2849430ca7f7, type: 3}
-    itemModel: {fileID: 8911903397271815152, guid: d5b8cc9f692fdc446adcf89f09ed2d8b, type: 3}
-    inGameData: {fileID: 11400000, guid: 63936f3dded06ed43b73fee32d7b1765, type: 2}
-    itemValue: 1
-    itemType: 1
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: 1
-    rarity: 100
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 15
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 12
-    specialPrefabs: []
-    buffDatas: []
+  ItemsInInventory: []
   height: 4
   width: 4
   stackable: 1

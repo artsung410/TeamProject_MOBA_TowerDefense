@@ -23,6 +23,7 @@ public class GetAPICaller : MonoBehaviourPun
     private PlayerStorage playerStorage;
 
     private static GetAPICaller _instance;
+    
 
     public static GetAPICaller Instance
     {
@@ -37,6 +38,10 @@ public class GetAPICaller : MonoBehaviourPun
                     Debug.Log("no Singleton obj");
             }
             return _instance;
+        }
+        set
+        {
+            _instance = value;
         }
     }
     //public bool getAPIComplite = false;
@@ -151,7 +156,10 @@ public class GetAPICaller : MonoBehaviourPun
             //playerStorage.statusCode = jsonPlayer["StatusCode"].ToString();
             playerStorage.userName = jsonPlayer["userProfile"]["username"].ToString();
             playerStorage._id = jsonPlayer["userProfile"]["_id"].ToString();
-
+            if (playerStorage._id != "")
+            {
+                DataBaseHandler.instance.USER_INIT_INFO_INSERT();
+            }
             /*GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             APIStorage aPIStorage = apiStorageObj.GetComponent<APIStorage>();
             aPIStorage.userName[playerStorage.playerNumber] = jsonPlayer["userProfile"]["username"].ToString();

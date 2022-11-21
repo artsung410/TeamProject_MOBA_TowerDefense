@@ -14,8 +14,8 @@ public class SendReport : MonoBehaviour
     // 내 닉네임, 전판 상대방 닉네임, 텍스트
 
     MongoClient server = new MongoClient("mongodb+srv://metaverse:metaverse@cluster0.feoedbv.mongodb.net/?retryWrites=true&w=majority");
-    //MongoDatabase database;
-    //MongoCollection<BsonDocument> collection;
+    IMongoDatabase database;
+    IMongoCollection<BsonDocument> collection;
 
     // My NickName
     private string GetNickName()

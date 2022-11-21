@@ -17,6 +17,13 @@ public class DataBaseHandler : MonoBehaviour
     IMongoDatabase database;
     IMongoCollection<BsonDocument> collection;
 
+    public static DataBaseHandler instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
     // 0. 로비로 돌아 왔을 땐, 어떻게 할지 정해야 됨 DB로 불러 올지, 따로 데이터 저장해서 쓸지
 
     private PlayerStorage playerStorage;
@@ -26,20 +33,84 @@ public class DataBaseHandler : MonoBehaviour
     private void Start()
     {
         database = server.GetDatabase("TowerDefense");
+        //USER_INIT_INFO_INSERT();
     }
 
-    private void Update()
+    // 유저 정보 인서트(초기에만 사용해야한다.)
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
             USER_INIT_INFO_INSERT();
         }
+    }*/
+
+    // User Item Total Item Count
+    public void USER_ITEM_TOTAL_CNT_UPDATE(string name, int cnt)
+    {
+        collection = database.GetCollection<BsonDocument>("User_Card_Info");
+        playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+        // 플레이어 _id가 DB에 있는지 확인하기
+        var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        // 찾고 없으면 Null 리턴
+        var document = collection.Find(builder).FirstOrDefault();
+
+        if (name == "Total")
+        {
+            var feild = "total_cnt";
+            var value = document.GetElement(feild).Value;
+            var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
+            var addValue = (int)cnt + (int)value;
+            var update = Builders<BsonDocument>.Update.Set(feild, addValue);
+            collection.UpdateOne(filter, update);
+        }
+        else if (name == "Warrior")
+        {
+            var feild = "warrior";
+            var value = document.GetElement(feild).Value;
+            var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
+            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            collection.UpdateOne(filter, update);
+        }
+        else if (name == "Wizard")
+        {
+            var feild = "wizard";
+            var value = document.GetElement(feild).Value;
+            var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
+            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            collection.UpdateOne(filter, update);
+        }
+        else if (name == "Inherence")
+        {
+            var feild = "inherence";
+            var value = document.GetElement(feild).Value;
+            var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
+            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            collection.UpdateOne(filter, update);
+        }
+        else if (name == "Tower")
+        {
+            var feild = "tower";
+            var value = document.GetElement(feild).Value;
+            var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
+            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            collection.UpdateOne(filter, update);
+        }
+        else if (name == "Other")
+        {
+            var feild = "other";
+            var value = document.GetElement(feild).Value;
+            var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
+            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            collection.UpdateOne(filter, update);
+        }
+
     }
 
     [SerializeField]
     private DataBaseInsert init_UserInfo_Insert;
 
-    private void USER_INIT_INFO_INSERT()
+    public void USER_INIT_INFO_INSERT()
     {
         collection = database.GetCollection<BsonDocument>("User_Info");
         // 플레이어 오시리스 _id 가져오기
@@ -57,6 +128,7 @@ public class DataBaseHandler : MonoBehaviour
             init_UserInfo_Insert.New_DataInsert_User_WizardCard_Info();
             init_UserInfo_Insert.New_DataInsert_User_InherenceCard_Info();
             init_UserInfo_Insert.New_DataInsert_User_TowerCard_Info();
+            init_UserInfo_Insert.New_DataInsert_Other_CardPack_Info();
         }
 
         if (document != null)
@@ -239,15 +311,22 @@ public class DataBaseHandler : MonoBehaviour
 
     private void GET_USER_OTHER_ITEM()
     {
-        // 추후 만들자...
+        // 카드팩 아이템
+        collection = database.GetCollection<BsonDocument>("User_CardPack_Info");
+        playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+        var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        var document = collection.Find(builder).FirstOrDefault();
+        // value가 0이 아닌 데이터를 찾는다.
+        for (int i = 2; i < document.Count(); i++) // _id(0), user_id(1)
+        {
+            if (document.GetElement(i).Value != 0) // 수량이 0이 아닌 데이터
+            {
+                // 아이템의 이름과 value값을 넣는다.
+                InventoryGetData.instance.otherItem.Add(document.GetElement(i).Name, document.GetElement(i).Value);
+            }
+        }
+        InventoryGetData.instance.PutItemInInventoryData();
     }
-
-
-    // - DataBaseInsert스크립트에서 함수 호출
-    // 2. 유저 id가 있으면 정보를 불러 온다.
-    // 3. 뽑기 시 갯수 업데이트
-    // 4. 강화시 갯수, 아이템 업데이트
-    // 5. 카드 팩 구매했을때 아이템 업데이트
 
 }
 

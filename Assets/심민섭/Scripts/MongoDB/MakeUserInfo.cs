@@ -1,6 +1,7 @@
 using UnityEngine;
 using MongoDB.Bson;
 using System.Collections;
+using System.Collections.Generic;
 
 // DB 정보를 만든다.
 // 1. InventoryGetData에서 데이터를 받아서 아래의 틀에 넣어준다.
@@ -19,16 +20,6 @@ public class MakeUserInfo : MonoBehaviour
     private void Awake()
     {
         instance = this;
-    }
-
-
-    private void Update()
-    {
-        /*if (Input.GetKeyDown(KeyCode.T))
-        {
-            InventoryGetData.instance.GetItemInInventoryData();
-            User_Warrior_Card_Info_DataSet();
-        }*/
     }
 
     // 유저 정보
@@ -103,7 +94,7 @@ public class MakeUserInfo : MonoBehaviour
         towerDeBuffHpRegenDecrease = new int[5];
         towerDeBuffMoveDecrease = new int[5];
         towerDeBuffAttackSpeedDecrease = new int[5];
-    }
+}
 
 
     // 전사 카드 보유 데이터 목록
@@ -414,6 +405,102 @@ public class MakeUserInfo : MonoBehaviour
             }
         }
     }
+
+    // 기타 아이템
+    public int cardPack_warrior_N;
+    public int cardPack_wizard_N;
+    public int cardPack_inherence_N;
+    public int cardPack_attack_N;
+    public int cardPack_minion_N;
+    public int cardPack_buff_N;
+    public int cardPack_random_N;
+    public int cardPack_warrior_P;
+    public int cardPack_wizard_P;
+    public int cardPack_inherence_P;
+    public int cardPack_attack_P;
+    public int cardPack_minion_P;
+    public int cardPack_buff_P;
+    public int cardPack_random_P;
+    public void User_OtherInventory_Card_Info_DataSet()
+    {
+        for (int i = 0; i < InventoryGetData.instance.otherInventoryData.Count; i++)
+        {
+            // 노말 카드팩
+            if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Warrior Skill"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Nomal")
+            {
+                cardPack_warrior_N += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Wizard Skill"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Nomal")
+            {
+                cardPack_wizard_N += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Common Skill"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Nomal")
+            {
+                cardPack_inherence_N += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Attack Tower"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Nomal")
+            {
+                cardPack_attack_N += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Minion Tower"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Nomal")
+            {
+                cardPack_minion_N += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Buff Tower"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Nomal")
+            {
+                cardPack_buff_N += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Random Tower"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Nomal")
+            {
+                cardPack_random_N += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            // 프리미엄 카드팩
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Warrior Skill"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Premium")
+            {
+                cardPack_warrior_P += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Wizard Skill"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Premium")
+            {
+                cardPack_wizard_P += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Common Skill"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Premium")
+            {
+                cardPack_inherence_P += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Attack Tower"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Premium")
+            {
+                cardPack_attack_P += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Minion Tower"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Premium")
+            {
+                cardPack_minion_P += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Buff Tower"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Premium")
+            {
+                cardPack_buff_P += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+            else if (InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName == "Random Tower"
+                && InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.ClassType == "Premium")
+            {
+                cardPack_random_P += InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+            }
+        }
+    }
+
+
 
     public int[] towerAttackGuard;
     public int[] towerAttackCannon;

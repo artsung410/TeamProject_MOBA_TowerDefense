@@ -2,6 +2,7 @@ using MongoDB.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 // 각 직업별, 타워 인벤토리에서 데이터를 가져와 저장한다.
 public class InventoryGetData : MonoBehaviour
@@ -40,6 +41,38 @@ public class InventoryGetData : MonoBehaviour
     public int towerCardCnt;
     public int otherItemCnt;
 
+    // Sprite
+    [SerializeField]
+    private Sprite warrior_N;
+    [SerializeField]
+    private Sprite wizard_N;
+    [SerializeField]
+    private Sprite inherence_N;
+    [SerializeField]
+    private Sprite attack_N;
+    [SerializeField]
+    private Sprite minion_N;
+    [SerializeField]
+    private Sprite buff_N;
+    [SerializeField]
+    private Sprite random_N;
+
+    [SerializeField]
+    private Sprite warrior_P;
+    [SerializeField]
+    private Sprite wizard_P;
+    [SerializeField]
+    private Sprite inherence_P;
+    [SerializeField]
+    private Sprite attack_P;
+    [SerializeField]
+    private Sprite minion_P;
+    [SerializeField]
+    private Sprite buff_P;
+    [SerializeField]
+    private Sprite random_P;
+
+
     // Other 인벤토리
     private GameObject otherInventory;
     // Warrior 인벤토리
@@ -58,8 +91,9 @@ public class InventoryGetData : MonoBehaviour
 
     private void Start()
     {
+        //GetItemInInventoryData();
         // Other 인벤토리
-        otherInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject; // Slots
+        otherInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         // Warrior 인벤토리
         warriorInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         // Wizard 인벤토리
@@ -73,12 +107,6 @@ public class InventoryGetData : MonoBehaviour
     // 함수를 호출하면 인벤토리 내에 있는 아이템을 리스트에 저장한다.
     public void GetItemInInventoryData()
     {
-        otherInventoryData.Clear();
-        warriorInventoryData.Clear();
-        wizardInventoryData.Clear();
-        inherenceInventoryData.Clear();
-        towerInventoryData.Clear();
-
         for (int i = 0; i < otherInventory.transform.childCount; i++)
         {
             Debug.Log("기타 아이템 저장 시작");
@@ -89,6 +117,7 @@ public class InventoryGetData : MonoBehaviour
             }
             Debug.Log("기타 아이템 저장 완료");
         }
+        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Other", otherItemCnt);
         for (int i = 0; i < warriorInventory.transform.childCount; i++)
         {
             Debug.Log("전사 아이템 저장 시작");
@@ -99,7 +128,7 @@ public class InventoryGetData : MonoBehaviour
             }
             Debug.Log("전사 아이템 저장 완료");
         }
-        
+        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Warrior", warriorCardCnt);
         for (int i = 0; i < wizardInventory.transform.childCount; i++)
         {
             Debug.Log("마법사 아이템 저장 시작");
@@ -110,6 +139,7 @@ public class InventoryGetData : MonoBehaviour
             }
             Debug.Log("마법사 아이템 저장 완료");
         }
+        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Wizard", wizardCardCnt);
         for (int i = 0; i < inherenceInventory.transform.childCount; i++)
         {
             Debug.Log("공통 아이템 저장 시작");
@@ -120,6 +150,7 @@ public class InventoryGetData : MonoBehaviour
             }
             Debug.Log("공통 아이템 저장 완료");
         }
+        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Inherence", inherenceCardCnt);
         for (int i = 0; i < towerInventory.transform.childCount; i++)
         {
             Debug.Log("타워 아이템 저장 시작");
@@ -130,6 +161,13 @@ public class InventoryGetData : MonoBehaviour
             }
             Debug.Log("타워 아이템 저장 완료");
         }
+        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Tower", towerCardCnt);
+
+        otherInventoryData.Clear();
+        warriorInventoryData.Clear();
+        wizardInventoryData.Clear();
+        inherenceInventoryData.Clear();
+        towerInventoryData.Clear();
     }
 
     /*private void Update()
@@ -149,6 +187,10 @@ public class InventoryGetData : MonoBehaviour
     ItemDataBaseList inherenceSkillDatabase;
     [SerializeField]
     ItemDataBaseList towerSkillDatabase;
+
+    // 기타 아이템을 위한 리스트
+    List<string> cardPack = new List<string>();
+
 
     List<Item> sendItems = new List<Item>();
     List<BsonValue> sendItemValue = new List<BsonValue>();
@@ -279,6 +321,121 @@ public class InventoryGetData : MonoBehaviour
             sendItems.Clear();
             sendItemValue.Clear();
         }
+
+        // 카드팩(기타) 아이템
+        // ㅠㅜ
+        foreach (var itemKey in otherItem)
+        {
+            cardPack.Add(itemKey.Key);
+        }
+        foreach (var itemVlaue in otherItem)
+        {
+            sendItemValue.Add(itemVlaue.Value);
+        }
+
+        for (int i = 0; i < otherItem.Count; i++)
+        {
+            GameObject itemObjProduce = (GameObject)Instantiate(prefabItem);
+            ItemOnObject itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
+            //itemProduce.item.itemName = cardPack[i];
+            bool packCheck = cardPack[i].Contains("_P");
+            if (packCheck)
+            {
+                itemProduce.item.ClassType = "Premium";
+                if (cardPack[i].Contains("warrior"))
+                {
+                    itemProduce.item.itemName = "Warrior Skill";
+                    itemProduce.item.itemIcon = warrior_P;
+                }
+                else if (cardPack[i].Contains("wizard"))
+                {
+                    itemProduce.item.itemName = "Wizard Skill";
+                    itemProduce.item.itemIcon = wizard_P;
+                }
+                else if (cardPack[i].Contains("common"))
+                {
+                    itemProduce.item.itemName = "Common Skill";
+                    itemProduce.item.itemIcon = inherence_P;
+                }
+                else if (cardPack[i].Contains("attack"))
+                {
+                    itemProduce.item.itemName = "Attack Tower";
+                    itemProduce.item.itemIcon = attack_P;
+                }
+                else if (cardPack[i].Contains("minion"))
+                {
+                    itemProduce.item.itemName = "Minion Tower";
+                    itemProduce.item.itemIcon = minion_P;
+                }
+                else if (cardPack[i].Contains("buff"))
+                {
+                    itemProduce.item.itemName = "Buff Tower";
+                    itemProduce.item.itemIcon = buff_P;
+
+                }
+                else if (cardPack[i].Contains("random"))
+                {
+                    itemProduce.item.itemName = "Random Tower";
+                    itemProduce.item.itemIcon = random_P;
+                }
+            }
+            else
+            {
+                itemProduce.item.ClassType = "Nomal";
+                if (cardPack[i].Contains("warrior"))
+                {
+                    itemProduce.item.itemName = "Warrior Skill";
+                    itemProduce.item.itemIcon = warrior_N;
+                }
+                else if (cardPack[i].Contains("wizard"))
+                {
+                    itemProduce.item.itemName = "Wizard Skill";
+                    itemProduce.item.itemIcon = wizard_N;
+                }
+                else if (cardPack[i].Contains("common"))
+                {
+                    itemProduce.item.itemName = "Common Skill";
+                    itemProduce.item.itemIcon = inherence_N;
+                }
+                else if (cardPack[i].Contains("attack"))
+                {
+                    itemProduce.item.itemName = "Atack Tower";
+                    itemProduce.item.itemIcon = attack_N;
+                }
+                else if (cardPack[i].Contains("minion"))
+                {
+                    itemProduce.item.itemName = "Minion Tower";
+                    itemProduce.item.itemIcon = minion_N;
+                }
+                else if (cardPack[i].Contains("buff"))
+                {
+                    itemProduce.item.itemName = "Buff Tower";
+                    itemProduce.item.itemIcon = buff_N;
+
+                }
+                else if (cardPack[i].Contains("random"))
+                {
+                    itemProduce.item.itemName = "Random Tower";
+                    itemProduce.item.itemIcon = random_N;
+                }
+            }
+            itemProduce.item.itemID = 0;
+            itemProduce.item.itemDesc = "Card Pack";
+            itemProduce.item.itemValue = (int)sendItemValue[i].ToInt32();
+            itemProduce.item.itemType = ItemType.Consumable;
+            itemProduce.item.maxStack = 100;
+            itemProduce.item.indexItemInList = 99;
+            itemProduce.item.rarity = 0;
+            
+            // 아이템 만들었으면 인벤토리로 옮겨 줘야겠지?
+            itemObjProduce.transform.SetParent(otherInventory.transform.GetChild(i));
+            itemObjProduce.transform.localPosition = Vector3.zero;
+            itemObjProduce.transform.GetChild(1).localPosition = new Vector3(35f, -30f, 0f);
+            itemObjProduce.transform.GetChild(1).GetComponent<Text>().fontSize = 20;
+            itemObjProduce.transform.localScale = new Vector3(1f, 1f, 1f);
+            itemObjProduce.transform.GetChild(0).localScale = new Vector3(2f, 2f, 2f);
+        }
+
         otherItem.Clear();
         warriorItem.Clear();
         wizardItem.Clear();
@@ -300,7 +457,7 @@ public class InventoryGetData : MonoBehaviour
                 itemStruct.itemName = sendItems[i].itemName;
                 itemStruct.ClassType = sendItems[i].ClassType;
                 itemStruct.itemID = sendItems[i].itemID;
-                itemStruct.itemValue = (int)sendItemValue[i];
+                itemStruct.itemValue = (int)sendItemValue[i].ToInt32();
                 itemStruct.itemDesc = sendItems[i].itemDesc;
                 itemStruct.itemIcon = sendItems[i].itemIcon;
                 itemStruct.itemModel = sendItems[i].itemModel;
@@ -337,7 +494,7 @@ public class InventoryGetData : MonoBehaviour
                 // 아이템 만들었으면 인벤토리로 옮겨 줘야겠지?
                 itemObjProduce.transform.SetParent(inventory.transform.GetChild(i));
                 itemObjProduce.transform.localPosition = Vector3.zero;
-                itemObjProduce.transform.localScale = new Vector3(0.4f, 0.4f, 0.4f);
+                itemObjProduce.transform.localScale = new Vector3(0.55f, 0.7f, 0f);
             }
             sendItems.Clear();
         }
