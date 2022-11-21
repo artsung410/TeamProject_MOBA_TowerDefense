@@ -158,7 +158,6 @@ public class Enemybase : MonoBehaviourPun
                     _navMeshAgent.isStopped = true;
 
                 }
-                OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _animator.SetTrigger("Die");
                 isDead = true;
                 PlayerHUD.Instance.lastDamageTeam = lastDamageTeam;
