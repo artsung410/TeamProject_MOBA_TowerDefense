@@ -23,6 +23,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     public float SetDamage;
     public float SetHodingTime;
     public float SetRange;
+    public float SetLockTime;
 
     // 플레이어 HeroAbility를 받아옴
     public void GetPlayerPos(HeroAbility heroAbility)
@@ -79,8 +80,8 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
             if (player != null)
             {
+                Debug.Log("플레이어 지속데미지 적용 시작");
                 player.DamageOverTime(damage,time);
-
             }
         }
         else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
@@ -109,19 +110,6 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
         }
     }
 
-    public void CrowdControlSlow(GameObject target, float time, float speed)
-    {
-        if (target.gameObject.layer == 7)
-        {
-            Stats player = target.GetComponent<Stats>();
-
-            if (player != null)
-            {
-
-            }
-        }
-    }
-
     protected string GetMytag(HeroAbility ability)
     {
         _myTag = ability.tag;
@@ -132,5 +120,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     public abstract void SkillHoldingTime(float time);
 
     public abstract void SkillUpdatePosition();
-    
+
+    // TODO : 검기 위치 재조정
+
 }

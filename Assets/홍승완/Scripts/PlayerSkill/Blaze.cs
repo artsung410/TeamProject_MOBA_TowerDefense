@@ -7,8 +7,6 @@ using Photon.Pun;
 
 public class Blaze : SkillHandler
 {
-
-
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
@@ -21,10 +19,11 @@ public class Blaze : SkillHandler
     string enemyTag;
     Vector3 mouseDir;
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
-    private float Speed;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float speed;
+    private float lockTime;
 
     float width;
     float length;
@@ -40,11 +39,12 @@ public class Blaze : SkillHandler
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
+        damage = SetDamage;
+        holdingTime = SetHodingTime;
+        range = SetRange;
+        lockTime = SetLockTime;
 
-        width = Range;
+        width = range;
         length = 3;
 
         zCenter = width / 2f;
@@ -56,6 +56,7 @@ public class Blaze : SkillHandler
         {
             TagAssignment();
             LookMouseDir();
+            _ability.OnLock(true);
         }
         catch (System.Exception)
         {
@@ -104,13 +105,18 @@ public class Blaze : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(HoldingTime);
+            SkillHoldingTime(holdingTime);
         }
     }
 
     public override void SkillHoldingTime(float time)
     {
         elapsedTime += Time.deltaTime;
+
+        if (elapsedTime >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
 
         if (elapsedTime >= time)
         {
@@ -143,7 +149,8 @@ public class Blaze : SkillHandler
         {
             if (other.CompareTag(enemyTag) || other.gameObject.layer == 17)
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillTimeDamage(30, 5f, other.gameObject);
+                SkillDamage(damage, other.gameObject);
             }
         }
     }

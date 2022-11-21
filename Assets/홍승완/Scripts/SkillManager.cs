@@ -19,6 +19,7 @@ public class SkillManager : MonoBehaviour
     public float[] CoolTime = new float[4];
     public float[] HoldingTime = new float[4];
     public float[] Range = new float[4];
+    public float[] LockTime = new float[4];
 
     private void Awake()
     {
@@ -43,7 +44,9 @@ public class SkillManager : MonoBehaviour
             CoolTime[idx] = SkillData.skillItems[i].itemAttributes[1].attributeValue;
             HoldingTime[idx] = SkillData.skillItems[i].itemAttributes[2].attributeValue;
             Range[idx] = SkillData.skillItems[i].itemAttributes[3].attributeValue;
+            LockTime[idx] = SkillData.skillItems[i].itemAttributes[4].attributeValue;
         }
     }
-    
+
+
 }

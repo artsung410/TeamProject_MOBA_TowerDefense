@@ -19,10 +19,11 @@ public class Whirlwind : SkillHandler
     string enemyTag;
     Vector3 mouseDir;
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
-    private float Speed;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float speed;
+    private float lockTime;
     #endregion
 
     // TODO : 휠윈드 이펙트부분 수정필요
@@ -30,10 +31,11 @@ public class Whirlwind : SkillHandler
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
-        Speed = 1000f;
+        damage = SetDamage;
+        holdingTime = SetHodingTime;
+        range = SetRange;
+        speed = 1000f;
+        lockTime = SetLockTime;
     }
 
     private void Start()
@@ -43,6 +45,7 @@ public class Whirlwind : SkillHandler
             return;
         }
 
+        _ability.OnLock(true);
         TagProcessing(_ability);
         //LookMouseCursor();
     }
@@ -89,8 +92,9 @@ public class Whirlwind : SkillHandler
 
         if (photonView.IsMine)
         {
+
             SkillUpdatePosition();
-            SkillHoldingTime(HoldingTime);
+            SkillHoldingTime(holdingTime);
         }
     }
     public override void SkillUpdatePosition()
@@ -98,7 +102,7 @@ public class Whirlwind : SkillHandler
         // 스킬은 플레이어 주변에 있다
         transform.position = _ability.gameObject.transform.position;
         // 회전을 한다
-        damageZone.transform.Rotate(Speed * Time.deltaTime * Vector3.up);
+        damageZone.transform.Rotate(speed * Time.deltaTime * Vector3.up);
 
         
         
@@ -113,11 +117,16 @@ public class Whirlwind : SkillHandler
 
         // TODO : 도는 모션은 애니메이션으로 처리할것
         // 플레이어를 한번 돌려보자
-        _behaviour.gameObject.transform.Rotate(Vector3.up * 3000 * Time.deltaTime);
+        //_behaviour.gameObject.transform.Rotate(Vector3.up * 3000 * Time.deltaTime);
 
         // 지속시간동안 플레이어가 공격하지 못한다
         _behaviour.targetedEnemy = null;
         _behaviour.perfomMeleeAttack = false;
+
+        if (elapsedTime >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
 
         // 검기 지속시간이 끝나면 사라지게한다
         if (elapsedTime >= time)
@@ -137,8 +146,13 @@ public class Whirlwind : SkillHandler
         {
             if (other.CompareTag(enemyTag))
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillDamage(damage, other.gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

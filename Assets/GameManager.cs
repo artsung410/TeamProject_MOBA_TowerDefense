@@ -1,3 +1,6 @@
+//#define 캐릭터선택_VER_1
+#define 캐릭터선택_DEFAULT
+
 using Photon.Pun;
 using UnityEngine;
 using System.Collections;
@@ -54,7 +57,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
 
     // TODO : 생성할 플레이어 프리팹 정보를 캐릭터 선택단계에서 가져오기
-    public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
+    public Dictionary<string, GameObject> mySelect = new Dictionary<string, GameObject>();
+    public List<GameObject> playerPrefab; // 생성할 플레이어의 원형 프리팹
 
     [Header("Nexus")]
     [SerializeField]
@@ -118,11 +122,21 @@ public class GameManager : MonoBehaviourPunCallbacks
             OnLeftRoom();
         }
 
+        mySelect.Add("Warrior", playerPrefab[0]);
+        mySelect.Add("Wizard", playerPrefab[1]);
+        
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
+        // 플레이어 생성 HSW
+        GameObject player;
+#if 캐릭터선택_DEFAULT
+        player = PhotonNetwork.Instantiate(playerPrefab[0].name, spawnPosition.position, Quaternion.identity);
+#endif
 
-        // 플레이어 생성
-        GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
+#if 캐릭터선택_VER_1
+        player = PhotonNetwork.Instantiate(mySelect[myData.selectCharacter].name, spawnPosition.position, Quaternion.identity);
+#endif
+        // HSW
 
 
         // 미니맵 플레이어 캔버스 생성
@@ -222,5 +236,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+    // TODO : 로비로 돌아갔을떄 스킬 데이터부분 초기화 필요함
 }
 

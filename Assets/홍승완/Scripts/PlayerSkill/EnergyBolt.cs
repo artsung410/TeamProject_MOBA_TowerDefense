@@ -25,6 +25,7 @@ public class EnergyBolt : SkillHandler
     private float Damage;
     private float Range;
     private float Speed;
+    private float lockTime;
 
     private void Awake()
     {
@@ -38,6 +39,8 @@ public class EnergyBolt : SkillHandler
         Damage = SetDamage;
         HoldingTime = SetHodingTime;
         Range = SetRange;
+        lockTime = SetLockTime;
+
         currentPos = transform.position;
         
         damageZoneRadius = 2;
@@ -65,6 +68,8 @@ public class EnergyBolt : SkillHandler
             {
                 enemyTag = "Blue";
             }
+
+            _ability.OnLock(true);
         }
         catch (System.Exception ex)
         {
@@ -90,12 +95,17 @@ public class EnergyBolt : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
+            elasedTiem += Time.deltaTime;
+            if (elasedTiem >= lockTime)
+            {
+                _ability.OnLock(false);
+            }
 
             float dist = Vector3.Distance(currentPos, transform.position);
             //Debug.Log($"날라간 거리 : {dist}");
             if (dist >= Range)
             {
-                //Destroy(gameObject);
+                _ability.OnLock(false);
                 PhotonNetwork.Destroy(gameObject);
             }
             
@@ -114,6 +124,7 @@ public class EnergyBolt : SkillHandler
             else
             {
                 SkillDamage(Damage, other.gameObject);
+                _ability.OnLock(false);
                 PhotonNetwork.Destroy(gameObject);
             }
 

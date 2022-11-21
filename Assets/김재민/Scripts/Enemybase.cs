@@ -152,6 +152,10 @@ public class Enemybase : MonoBehaviourPun
         Debug.Log("courutine start");
         while (true)
         {
+            if (isDead)
+            {
+                yield break;
+            }
             if (CurrnetHP <= 0)
             {
                 Debug.Log("으앙 나죽어");

@@ -305,12 +305,12 @@ public class PlayerBehaviour : MonoBehaviourPun
                 transform.eulerAngles = new Vector3(0, rotationY, 0);
 
                 // 내가 근접캐라면
-                if (_statScript.AttackType == HeroAttackType.Melee)
+                if (_statScript.AttackType == HeroType.Warrior)
                 {
                     // 공격 수행 스위치를 true로 바꿈
                     perfomMeleeAttack = true;
                 }
-                else if (_statScript.AttackType == HeroAttackType.Ranged)
+                else if (_statScript.AttackType == HeroType.Wizard)
                 {
                     // 원거리 공격 수행 스위치 true바꿈
                     perfomRangeAttack = true;

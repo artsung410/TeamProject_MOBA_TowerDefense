@@ -20,13 +20,16 @@ public class IceArrow : SkillHandler
     Vector3 mouseDir;
     Vector3 currentPos; // 스킬 사용 위치
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
-    private float Speed;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float speed;
+    private float lockTime;
 
     private float CrowedControlTime;
     private float CrowedControlValue;
+
+    public BuffData deBuff;
 
     private void Awake()
     {
@@ -40,9 +43,12 @@ public class IceArrow : SkillHandler
         zSize = 2f;
         xSize = 1f;
 
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
+        damage = SetDamage;
+        holdingTime = SetHodingTime;
+        range = SetRange;
+        lockTime = SetLockTime;
+
+        currentPos = transform.position;
 
         CrowedControlTime = 3f;
         CrowedControlValue = 0.4f;
@@ -71,6 +77,7 @@ public class IceArrow : SkillHandler
                 enemyTag = "Blue";
             }
 
+            _ability.OnLock(true);
         }
         catch (System.Exception ie)
         {
@@ -85,9 +92,16 @@ public class IceArrow : SkillHandler
         {
             SkillUpdatePosition();
 
-            float dist = Vector3.Distance(currentPos, transform.position);
-            if (dist >= Range)
+            elasedTiem += Time.deltaTime;
+            if (elasedTiem >= lockTime)
             {
+                _ability.OnLock(false);
+            }
+
+            float dist = Vector3.Distance(currentPos, transform.position);
+            if (dist >= range)
+            {
+                _ability.OnLock(false);
                 PhotonNetwork.Destroy(gameObject);
             }
         }
@@ -113,7 +127,9 @@ public class IceArrow : SkillHandler
         {
             if (other.gameObject.layer == 17 || other.gameObject.tag == enemyTag)
             {
-                SkillDamage(Damage, other.gameObject);
+                BuffManager.Instance.AddBuff(deBuff);
+                SkillDamage(damage, other.gameObject);
+                _ability.OnLock(false);
                 PhotonNetwork.Destroy(gameObject);
             }
 

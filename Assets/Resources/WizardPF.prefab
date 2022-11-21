@@ -3024,6 +3024,7 @@ MonoBehaviour:
   ChractorRenderer: {fileID: 754092414171578193}
   ChractorHpBar: {fileID: 1144882493306071971}
   ChractorCol: {fileID: 6994365721379009215}
+  isActive: 0
 --- !u!114 &6994365721379009201
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3047,6 +3048,8 @@ MonoBehaviour:
   perfomRangeAttack: 0
   EnemyTag: 
   IsAttack: 0
+  isStun: 0
+  StunTime: 0
   enemyCol: {fileID: 0}
   cursorTextureOriginal: {fileID: 2800000, guid: 94645910bc2c50a41949356810b30d92, type: 3}
   cursorTexture: {fileID: 2800000, guid: d1bb6daee4b32a949b2faff52c72ab7a, type: 3}
@@ -3122,7 +3125,7 @@ GameObject:
   - component: {fileID: 6936705672367742873}
   - component: {fileID: 6889203967349238551}
   m_Layer: 0
-  m_Name: MagePF
+  m_Name: WizardPF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

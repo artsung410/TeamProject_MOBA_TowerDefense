@@ -90,6 +90,7 @@ public class HeroAbility : MonoBehaviourPun
         {
             if (isActive == true || _behaviour.isStun == true)
             {
+                Debug.Log("스킬 사용 못하게 막는중");
                 return;
             }
 
@@ -144,6 +145,7 @@ public class HeroAbility : MonoBehaviourPun
             AbilityPrefabs[0].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.Atk[0];
             AbilityPrefabs[0].GetComponent<SkillHandler>().SetHodingTime = SkillManager.Instance.HoldingTime[0];
             AbilityPrefabs[0].GetComponent<SkillHandler>().SetRange = SkillManager.Instance.Range[0];
+            AbilityPrefabs[0].GetComponent<SkillHandler>().SetLockTime = SkillManager.Instance.LockTime[0];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[0].name, skillSpawn.position, Quaternion.identity);
 
@@ -169,7 +171,7 @@ public class HeroAbility : MonoBehaviourPun
             AbilityPrefabs[1].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.Atk[1];
             AbilityPrefabs[1].GetComponent<SkillHandler>().SetHodingTime = SkillManager.Instance.HoldingTime[1];
             AbilityPrefabs[1].GetComponent<SkillHandler>().SetRange = SkillManager.Instance.Range[1];
-
+            AbilityPrefabs[1].GetComponent<SkillHandler>().SetLockTime = SkillManager.Instance.LockTime[1];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[1].name, skillSpawn.position, Quaternion.identity);
         }
@@ -192,6 +194,7 @@ public class HeroAbility : MonoBehaviourPun
             AbilityPrefabs[2].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.Atk[2];
             AbilityPrefabs[2].GetComponent<SkillHandler>().SetHodingTime = SkillManager.Instance.HoldingTime[2];
             AbilityPrefabs[2].GetComponent<SkillHandler>().SetRange = SkillManager.Instance.Range[2];
+            AbilityPrefabs[2].GetComponent<SkillHandler>().SetLockTime = SkillManager.Instance.LockTime[2];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[2].name, skillSpawn.position, Quaternion.identity);
         }
@@ -216,6 +219,7 @@ public class HeroAbility : MonoBehaviourPun
             AbilityPrefabs[3].GetComponent<SkillHandler>().SetDamage = SkillManager.Instance.Atk[3];
             AbilityPrefabs[3].GetComponent<SkillHandler>().SetHodingTime = SkillManager.Instance.HoldingTime[3];
             AbilityPrefabs[3].GetComponent<SkillHandler>().SetRange = SkillManager.Instance.Range[3];
+            AbilityPrefabs[3].GetComponent<SkillHandler>().SetLockTime = SkillManager.Instance.LockTime[3];
 
             go = PhotonNetwork.Instantiate(AbilityPrefabs[3].name, skillSpawn.position, Quaternion.identity);
         }
@@ -233,5 +237,16 @@ public class HeroAbility : MonoBehaviourPun
         ChractorRenderer.SetActive(bb);
         ChractorHpBar.SetActive(bb);
         ChractorCol.enabled = bb;
+    }
+
+    public void OnLock(bool isLock)
+    {
+        photonView.RPC(nameof(RPC_Lock), RpcTarget.All, isLock);
+    }
+
+    [PunRPC]
+    public void RPC_Lock(bool isLock)
+    {
+        isActive = isLock;
     }
 }

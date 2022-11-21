@@ -16,10 +16,10 @@ public enum Stat_Columns
     Exp_Enemy,      // int   
 }
 
-public enum HeroAttackType
+public enum HeroType
 {
-    Melee,
-    Ranged,
+    Warrior,
+    Wizard,
 }
 
 public class Stats : GoogleSheetManager
@@ -39,7 +39,7 @@ public class Stats : GoogleSheetManager
     public float attackRange = 1;
 
     [Header("공격 방식")]
-    public HeroAttackType AttackType;
+    public HeroType AttackType;
 
     // TODO : 이동속도 버프, 디버프 관련해서 새로운 변수 추가할 필요있음
     [Header("이동 관련")]
@@ -70,11 +70,11 @@ public class Stats : GoogleSheetManager
         _health = GetComponent<Health>();
 
         // 타입에 따라 가져오는 스탯이 다르다
-        if (AttackType == HeroAttackType.Melee)
+        if (AttackType == HeroType.Warrior)
         {
             StartCoroutine(GetLevelData(warriorURL));
         }
-        else if(AttackType == HeroAttackType.Ranged)
+        else if(AttackType == HeroType.Wizard)
         {
             StartCoroutine(GetLevelData(magicionURL));
         }

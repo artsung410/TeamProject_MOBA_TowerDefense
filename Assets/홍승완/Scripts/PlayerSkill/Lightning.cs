@@ -20,10 +20,11 @@ public class Lightning : SkillHandler
     Vector3 mouseDir;
     Vector3 currentPos; // 스킬 사용 위치
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
+    private float holdingTime;
+    private float damage;
+    private float range;
     private float Speed;
+    private float lockTime;
 
     public float CrowdControlTime;
 
@@ -36,10 +37,11 @@ public class Lightning : SkillHandler
     {
         elasedTiem = 0f;
 
-        Damage = SetDamage;
-        Range = SetRange;
-        HoldingTime = SetHodingTime;
+        damage = SetDamage;
+        range = SetRange;
+        holdingTime = SetHodingTime;
         CrowdControlTime = 2f;
+        lockTime = SetLockTime;
 
         damageZoneRadius = 5f;
     }
@@ -68,21 +70,22 @@ public class Lightning : SkillHandler
             }
 
             Vector3 mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
-            if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Range)
+            if (Vector3.Distance(_behaviour.transform.position, mousePos) >= range)
             {
                 Vector3 startPos = _behaviour.transform.position;
                 Vector3 endPos = _behaviour.transform.forward;
 
-                skillPos = startPos + endPos * Range;
+                skillPos = startPos + endPos * range;
             }
             else
             {
                 skillPos = mousePos;
             }
+
+            _ability.OnLock(true);
         }
         catch (System.Exception)
         {
-
             //throw new System.Exception($"무슨일이야");
             print("리모트 스킬이라 null이 뜨는것이란다");
         }
@@ -99,15 +102,19 @@ public class Lightning : SkillHandler
         }
 
         SkillUpdatePosition();
-        SkillHoldingTime(HoldingTime);
+        SkillHoldingTime(holdingTime);
     }
     public override void SkillHoldingTime(float time)
     {
         elasedTiem += Time.deltaTime;
 
+        if (elasedTiem >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
+
         if (elasedTiem >= time)
         {
-            //Destroy(gameObject);
             PhotonNetwork.Destroy(gameObject);
         }
     }
@@ -128,7 +135,7 @@ public class Lightning : SkillHandler
             // 중립 몬스터 : 태그없음, layer 17
             if (other.CompareTag(enemyTag) || other.gameObject.layer == 17)
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillDamage(damage, other.gameObject);
                 CrowdControlStun(other.gameObject, CrowdControlTime, true);
             }
             
