@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using System;
+using UnityEngine.Networking;
 
 public class EnergyBolt : SkillHandler
 {
@@ -11,9 +12,22 @@ public class EnergyBolt : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    #region DataParsing
+
+    //private const string energyBoltURL = "https://docs.google.com/spreadsheets/d/1PnBV0AFMfz3PdaEXZJcOPjnQCCQCOGoV/export?format=tsv&range=A16:Y18";
+
+    //IEnumerator GetSkillData(string url)
+    //{
+    //    UnityWebRequest GetSkillData = UnityWebRequest.Get(url);
+    //    yield return GetSkillData.SendWebRequest();
+    //    print(GetSkillData.downloadHandler.text);
+    //}
+
+    #endregion
+
     public GameObject DamazeZone;
-    
     public float damageZoneRadius;
+    public List<PlayerSkillDatas> Datas;
 
     Quaternion quaternion;
     float elasedTiem;

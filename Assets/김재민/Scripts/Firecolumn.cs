@@ -13,7 +13,7 @@ public class Firecolumn : SkillHandler
     float Damage = 5f;
     private float elapsedTime;
     private float holdlingTime = 15f;
-    string enemyTag;
+    //string enemyTag;
     private float dotTime = 5f; // 지속시간  
     SphereCollider sphereCollider;
 
@@ -29,7 +29,7 @@ public class Firecolumn : SkillHandler
         {
             return;
         }
-        TagProcessing(_ability);
+        //TagProcessing(_ability);
 
     }
 
@@ -57,18 +57,18 @@ public class Firecolumn : SkillHandler
 
     }
 
-    private void TagProcessing(HeroAbility ability)
-    {
+    //private void TagProcessing(HeroAbility ability)
+    //{
 
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-        }
-    }
+    //    if (ability.CompareTag("Blue"))
+    //    {
+    //        enemyTag = "Red";
+    //    }
+    //    else if (ability.CompareTag("Red"))
+    //    {
+    //        enemyTag = "Blue";
+    //    }
+    //}
 
     private void OnTriggerEnter(Collider other)
     {

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+public enum SkillRank
+{
+    // 파싱 데이터에서 Rank부분 찾을 키
+    Rank1 = 1,
+    Rank2,
+    Rank3,
+}
+
+
 public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 {
     // ###############################################
