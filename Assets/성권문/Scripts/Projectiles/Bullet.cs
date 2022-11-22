@@ -11,41 +11,41 @@ public class Bullet : Projectiles, ISeek
 {
     public float explosionRadius = 0f;
 
+    float InterpolateValue = 1f;
     private void Update()
     {
         if (target == null)
         {
-            Destroy(gameObject);
+            if(photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
             return;
         }
 
         Vector3 dir = target.position - transform.position;
         float distanceThisFrame = speed * Time.deltaTime;
 
-        if (dir.magnitude <= distanceThisFrame)
+        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+
+        transform.LookAt(target);
+
+        if (dir.magnitude <= distanceThisFrame || transform.position.y <= InterpolateValue)
         {
             HitTarget();
             return;
         }
-
-        transform.Translate(dir.normalized * distanceThisFrame, Space.World);
-
-        transform.LookAt(target);
     }
 
     void HitTarget()
     {
-        GameObject effectIns = Instantiate(ImpactEffect, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
-        Destroy(effectIns, 7.5f);
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, transform.position.y + 1, transform.position.z), Quaternion.identity);
+        }
 
-        if (explosionRadius > 0f)
-        {
-            Explode();
-        }
-        else
-        {
-            Damage(target);
-        }
+        Explode();
+        PhotonNetwork.Destroy(gameObject);
     }
 
     void Explode()
@@ -56,7 +56,6 @@ public class Bullet : Projectiles, ISeek
             if (collider.tag == enemyTag)
             {
                 Damage(collider.transform);
-                Destroy(gameObject);
             }
         }
     }

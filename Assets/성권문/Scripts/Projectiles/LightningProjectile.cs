@@ -42,17 +42,17 @@ public class LightningProjectile : Projectiles
 
         transform.LookAt(target);
 
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         if (dir.magnitude <= distanceThisFrame + InterpolateValue || transform.position.y <= InterpolateValue)
         {
-            MagicExplosion magicExplosion = ImpactEffect.GetComponent<MagicExplosion>();
+            GameObject newLightning = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            MagicExplosion magicExplosion = newLightning.GetComponent<MagicExplosion>();
             magicExplosion.enemyTag = enemyTag;
             magicExplosion.damage = damage;
-
-            if (PhotonNetwork.IsMasterClient)
-            {
-                PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
-            }
-
             PhotonNetwork.Destroy(gameObject);
             return;
         }

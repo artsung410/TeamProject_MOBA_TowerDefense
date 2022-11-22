@@ -19,7 +19,8 @@ public struct ItemStruct
     public float itemWeight;
     public int maxStack;
     public int indexItemInList;
-    public int rarity;
+    public float rarity;
+    public int CombinationValue;
 
     public List<ItemAttribute> itemAttributes;
     public List<GameObject> specialPrefabs;

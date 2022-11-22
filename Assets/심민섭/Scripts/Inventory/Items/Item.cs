@@ -29,9 +29,11 @@ public class Item
     public int itemValue = 1;                   // 가지고 있는 아이템 갯수
     public ItemType itemType;                   // 아이템이 무슨 타입인지 정의
     public float itemWeight;                    // 아이템의 무게
-    public int maxStack = 99;                    // 최대 소지 갯수
+    public int maxStack = 99;                   // 최대 소지 갯수
     public int indexItemInList = 99;            // 인덱스
-    public int rarity;                          // 아이템 얻을 확률
+    public float rarity;                        // 아이템 얻을 확률
+    public int CombinationValue;                // 조합에 필요한 카드 개수
+    public TowerBlueprint towerData;            // 타워 데이터            
 
     // 아이템의 효과
     [SerializeField]

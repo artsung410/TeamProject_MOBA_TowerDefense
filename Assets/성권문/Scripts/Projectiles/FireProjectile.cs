@@ -42,17 +42,17 @@ public class FireProjectile : Projectiles
 
         transform.LookAt(target);
 
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         if (dir.magnitude <= distanceThisFrame + InterpolateValue || transform.position.y <= InterpolateValue)
         {
-            MagicExplosion magicExplosion = ImpactEffect.GetComponent<MagicExplosion>();
-            magicExplosion.enemyTag = enemyTag;
+            GameObject newFire = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            MagicExplosion magicExplosion = newFire.GetComponent<MagicExplosion>();
             magicExplosion.damage = damage;
-
-            if(photonView.IsMine)
-            {
-                PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
-            }
-
+            magicExplosion.enemyTag = enemyTag;
             PhotonNetwork.Destroy(gameObject);
             return;
         }
