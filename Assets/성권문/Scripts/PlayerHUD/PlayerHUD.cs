@@ -76,7 +76,8 @@ public class PlayerHUD : MonoBehaviourPun
 
     [Header("MousePointer")]
     public Canvas MousePointerCanvas;
-    public GameObject MousePositionImage;
+    public GameObject MousePositionImage1;
+    public GameObject MousePositionImage2;
     public MousePointer mousePointer;
 
     [Header("BossMonsterUI")]
@@ -702,7 +703,8 @@ public class PlayerHUD : MonoBehaviourPun
     private void setMouseCursor()
     {
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj1 = MousePositionImage1;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj2 = MousePositionImage2;
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
