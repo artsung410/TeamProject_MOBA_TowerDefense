@@ -118,17 +118,6 @@ public class Blaze : SkillHandler
         transform.rotation = quaternion;
     }
 
-    // TODO : 지속 데미지 추가할것
-    /*
-    블레이즈 스킬 정의
-    플레이어 앞으로 생성된다
-    사이즈는 12 * 3 사각형이다
-    지속시간(2초)동안 바닥에 깔려있다
-    지속피해가 존재한다
-        5초동안 5틱 -> 1초에 1틱 30데미지
-        지속피해는 한번만 들어간다
-     */
-
     private void OnTriggerEnter(Collider other)
     {
         if (photonView.IsMine)
