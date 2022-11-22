@@ -13,7 +13,6 @@ public class TowerBlueprint
 {
     [Header("[기본정보]")]
     public int ID;                                           // 고유 아이디
-    //public string Pf_Name;                                   // 타워 프리팹 이름
     public GameObject Pf;
     public string Name;                                      // 타워 이름
 
@@ -45,7 +44,6 @@ public class TowerBlueprint
     [Header("[투사체]")]
     public int Projectile_Type;                              // 투사체 타입
     public float Projectile_Speed;                           // 투사체 속도
-    //public string Projectile_Pf_Name;                        // 투사체 프리팹 이름
     public GameObject Projectile_Pf;
 
     [Header("[부가옵션]")]

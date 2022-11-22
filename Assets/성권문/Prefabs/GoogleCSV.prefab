@@ -1,0 +1,51 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8390398679729326296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8390398679729326302}
+  - component: {fileID: 8390398679729326297}
+  m_Layer: 0
+  m_Name: GoogleCSV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8390398679729326302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390398679729326296}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 105.03395, y: 164.75948, z: -411.99918}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8390398679729326297
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8390398679729326296}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a8c646fb0646d4ebbb98fcc12c108a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  towerDatabaseListCSV: {fileID: 11400000, guid: e2d4a7ea8cbf1354fa983d7961eae074, type: 2}
+  towerDatabaseList: {fileID: 11400000, guid: a74b91c3d0f4dcb4298c4b0130d2d4e9, type: 2}
+  tower_Attack_DatabaseList: {fileID: 11400000, guid: 2ecdd1eee54d5ed4dbc9ab07b782beef, type: 2}
+  tower_Buff_DatabaseList: {fileID: 11400000, guid: 0be3921cbd2eda148849eb42c06913ad, type: 2}
+  tower_Minion_DatabaseList: {fileID: 11400000, guid: ca1bf5577830c5041acf03a27d3b5dfd, type: 2}
