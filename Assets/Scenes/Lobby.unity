@@ -1531,6 +1531,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 53710796}
   m_CullTransparentMesh: 1
+--- !u!1 &59417105
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 59417106}
+  - component: {fileID: 59417108}
+  - component: {fileID: 59417107}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &59417106
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59417105}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1215563909}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &59417107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59417105}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &59417108
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59417105}
+  m_CullTransparentMesh: 1
 --- !u!1 &63190678
 GameObject:
   m_ObjectHideFlags: 0
@@ -2996,6 +3076,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122144487}
   m_CullTransparentMesh: 1
+--- !u!1 &124320399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 124320400}
+  - component: {fileID: 124320402}
+  - component: {fileID: 124320401}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &124320400
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124320399}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1859682564}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &124320401
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124320399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &124320402
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 124320399}
+  m_CullTransparentMesh: 1
 --- !u!1 &128594772
 GameObject:
   m_ObjectHideFlags: 0
@@ -3425,6 +3581,199 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 158701159}
   m_CullTransparentMesh: 1
+--- !u!1 &159813186
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 159813187}
+  - component: {fileID: 159813191}
+  - component: {fileID: 159813190}
+  - component: {fileID: 159813189}
+  - component: {fileID: 159813188}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &159813187
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159813186}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.16666667, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 595379128}
+  - {fileID: 1358184193}
+  - {fileID: 774152918}
+  m_Father: {fileID: 1259555901}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &159813188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159813186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Attack_Flame5
+    ClassType: 
+    itemID: 15
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
+    itemModel: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 3
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 15
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Name: Flame_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 3
+      Rank: 5
+      Type: 1
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+--- !u!114 &159813189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159813186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    inGameData: {fileID: 0}
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      ID: 0
+      Pf: {fileID: 0}
+      Name: 
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: 
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &159813190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159813186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &159813191
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 159813186}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &163058465
 GameObject:
   m_ObjectHideFlags: 0
@@ -3690,6 +4039,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 180822960}
+  m_CullTransparentMesh: 1
+--- !u!1 &185230207
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 185230208}
+  - component: {fileID: 185230210}
+  - component: {fileID: 185230209}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &185230208
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185230207}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 700764271}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &185230209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185230207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &185230210
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 185230207}
   m_CullTransparentMesh: 1
 --- !u!1 &186437413
 GameObject:
@@ -4588,6 +5017,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalImageName: {fileID: 21300000, guid: d7d3f9d467a93834daae71294b6dbb44, type: 3}
   changeImageName: {fileID: 21300000, guid: 3b888818aaff8ca48892501982629dbc, type: 3}
+--- !u!1 &224982673
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 224982674}
+  - component: {fileID: 224982676}
+  - component: {fileID: 224982675}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &224982674
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224982673}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1215563909}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 170}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &224982675
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224982673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: e8cb8e19b327a8d42b0c18476531f113, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &224982676
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 224982673}
+  m_CullTransparentMesh: 1
 --- !u!1 &228351369
 GameObject:
   m_ObjectHideFlags: 0
@@ -4853,7 +5358,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1859682564}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8353,6 +8859,86 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &451374755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 451374756}
+  - component: {fileID: 451374758}
+  - component: {fileID: 451374757}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &451374756
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451374755}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840158756}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &451374757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451374755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &451374758
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451374755}
+  m_CullTransparentMesh: 1
 --- !u!1 &468879673
 GameObject:
   m_ObjectHideFlags: 0
@@ -9985,7 +10571,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 840158756}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11202,7 +11789,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1215563909}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -11528,6 +12116,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591009597}
+  m_CullTransparentMesh: 1
+--- !u!1 &595379127
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 595379128}
+  - component: {fileID: 595379130}
+  - component: {fileID: 595379129}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &595379128
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595379127}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 159813187}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 170}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &595379129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595379127}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &595379130
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 595379127}
   m_CullTransparentMesh: 1
 --- !u!1 &611915679
 GameObject:
@@ -12094,6 +12758,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649751198}
+  m_CullTransparentMesh: 1
+--- !u!1 &651894455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 651894456}
+  - component: {fileID: 651894458}
+  - component: {fileID: 651894457}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &651894456
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651894455}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1859682564}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &651894457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651894455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &651894458
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651894455}
   m_CullTransparentMesh: 1
 --- !u!1 &653069704
 GameObject:
@@ -13402,6 +14146,208 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 696402341}
   m_CullTransparentMesh: 1
+--- !u!1 &700764270
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 700764271}
+  - component: {fileID: 700764275}
+  - component: {fileID: 700764274}
+  - component: {fileID: 700764273}
+  - component: {fileID: 700764272}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &700764271
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700764270}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.16666667, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1100796146}
+  - {fileID: 185230208}
+  - {fileID: 1564924141}
+  m_Father: {fileID: 1280918217}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &700764272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700764270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Buff_Damage_Increase5
+    ClassType: 
+    itemID: 55
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
+    itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+    inGameData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 6
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 1005
+      Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+      Name: Damage_Increase_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      GroupID: 11
+      Rank: 5
+      Type: 2
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: GB_Crystal_1
+      Sprite_TowerCard: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+    itemAttributes:
+    - attributeName: towerHP
+      attributeValue: 300
+    - attributeName: towerATK
+      attributeValue: 1
+    - attributeName: towerRange
+      attributeValue: 300
+    - attributeName: buffValue
+      attributeValue: 5
+    specialPrefabs: []
+    buffDatas:
+    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+--- !u!114 &700764273
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700764270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    inGameData: {fileID: 0}
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      ID: 0
+      Pf: {fileID: 0}
+      Name: 
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: 
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &700764274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700764270}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &700764275
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700764270}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &702990704
 GameObject:
   m_ObjectHideFlags: 0
@@ -14690,6 +15636,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750752169}
   m_CullTransparentMesh: 1
+--- !u!1 &752299528
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 752299529}
+  - component: {fileID: 752299531}
+  - component: {fileID: 752299530}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &752299529
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752299528}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1215563909}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &752299530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752299528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &752299531
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 752299528}
+  m_CullTransparentMesh: 1
 --- !u!1 &753824818
 GameObject:
   m_ObjectHideFlags: 0
@@ -15123,6 +16145,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalImageName: {fileID: 21300000, guid: d7d3f9d467a93834daae71294b6dbb44, type: 3}
   changeImageName: {fileID: 21300000, guid: 3b888818aaff8ca48892501982629dbc, type: 3}
+--- !u!1 &774152917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774152918}
+  - component: {fileID: 774152920}
+  - component: {fileID: 774152919}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &774152918
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774152917}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 159813187}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &774152919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774152917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &774152920
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774152917}
+  m_CullTransparentMesh: 1
 --- !u!1 &777877911
 GameObject:
   m_ObjectHideFlags: 0
@@ -15901,6 +16999,199 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 839758349}
   m_CullTransparentMesh: 1
+--- !u!1 &840158755
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840158756}
+  - component: {fileID: 840158760}
+  - component: {fileID: 840158759}
+  - component: {fileID: 840158758}
+  - component: {fileID: 840158757}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &840158756
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840158755}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.16666667, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1037774423}
+  - {fileID: 451374756}
+  - {fileID: 1110375427}
+  m_Father: {fileID: 546527175}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &840158757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840158755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Attack_Wind5
+    ClassType: 
+    itemID: 45
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 5
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 45
+      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+      Name: Wind_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 9
+      Rank: 5
+      Type: 1
+      Attack: 70
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+--- !u!114 &840158758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840158755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    inGameData: {fileID: 0}
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      ID: 0
+      Pf: {fileID: 0}
+      Name: 
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: 
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &840158759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840158755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &840158760
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840158755}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &842209375
 GameObject:
   m_ObjectHideFlags: 0
@@ -19883,6 +21174,82 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalImageName: {fileID: 21300000, guid: d7d3f9d467a93834daae71294b6dbb44, type: 3}
   changeImageName: {fileID: 21300000, guid: 3b888818aaff8ca48892501982629dbc, type: 3}
+--- !u!1 &1037774422
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1037774423}
+  - component: {fileID: 1037774425}
+  - component: {fileID: 1037774424}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1037774423
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037774422}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840158756}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 170}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1037774424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037774422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1037774425
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1037774422}
+  m_CullTransparentMesh: 1
 --- !u!1 &1050297762
 GameObject:
   m_ObjectHideFlags: 0
@@ -20546,6 +21913,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099170465}
   m_CullTransparentMesh: 1
+--- !u!1 &1100796145
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1100796146}
+  - component: {fileID: 1100796148}
+  - component: {fileID: 1100796147}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1100796146
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100796145}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 700764271}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 170}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1100796147
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100796145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1100796148
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1100796145}
+  m_CullTransparentMesh: 1
 --- !u!1 &1101864389
 GameObject:
   m_ObjectHideFlags: 0
@@ -20969,6 +22412,82 @@ MonoBehaviour:
   closeObj: {fileID: 1879250479}
   openObj: {fileID: 1701643279}
   randomSelect: {fileID: 1070315406}
+--- !u!1 &1110375426
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1110375427}
+  - component: {fileID: 1110375429}
+  - component: {fileID: 1110375428}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1110375427
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110375426}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 840158756}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1110375428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110375426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1110375429
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1110375426}
+  m_CullTransparentMesh: 1
 --- !u!1 &1111931612
 GameObject:
   m_ObjectHideFlags: 0
@@ -21044,6 +22563,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1111931612}
+  m_CullTransparentMesh: 1
+--- !u!1 &1117138340
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1117138341}
+  - component: {fileID: 1117138343}
+  - component: {fileID: 1117138342}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1117138341
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117138340}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1859682564}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 120, y: 170}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1117138342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117138340}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1117138343
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117138340}
   m_CullTransparentMesh: 1
 --- !u!1 &1119231227
 GameObject:
@@ -23016,6 +24611,199 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210990694}
   m_CullTransparentMesh: 1
+--- !u!1 &1215563908
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1215563909}
+  - component: {fileID: 1215563913}
+  - component: {fileID: 1215563912}
+  - component: {fileID: 1215563911}
+  - component: {fileID: 1215563910}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1215563909
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215563908}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.16666667, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 224982674}
+  - {fileID: 59417106}
+  - {fileID: 752299529}
+  m_Father: {fileID: 584893559}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1215563910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215563908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Minion_Goblin5
+    ClassType: 
+    itemID: 110
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: e8cb8e19b327a8d42b0c18476531f113, type: 3}
+    itemModel: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 7
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 3020
+      Pf: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
+      Name: Goblin_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 1.6666666
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 22
+      Rank: 5
+      Type: 4
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: e8cb8e19b327a8d42b0c18476531f113, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 67d217d9f31cce249af0e75e504863df, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+--- !u!114 &1215563911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215563908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    inGameData: {fileID: 0}
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      ID: 0
+      Pf: {fileID: 0}
+      Name: 
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: 
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &1215563912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215563908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1215563913
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1215563908}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1216208437
 GameObject:
   m_ObjectHideFlags: 0
@@ -23850,7 +25638,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 159813187}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24811,7 +26600,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 700764271}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26494,6 +28284,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353158163}
+  m_CullTransparentMesh: 1
+--- !u!1 &1358184192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1358184193}
+  - component: {fileID: 1358184195}
+  - component: {fileID: 1358184194}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1358184193
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358184192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 159813187}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1358184194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358184192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &1358184195
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358184192}
   m_CullTransparentMesh: 1
 --- !u!1 &1375771034
 GameObject:
@@ -29398,6 +31268,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559550331}
+  m_CullTransparentMesh: 1
+--- !u!1 &1564924140
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1564924141}
+  - component: {fileID: 1564924143}
+  - component: {fileID: 1564924142}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1564924141
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564924140}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 700764271}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1564924142
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564924140}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1564924143
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564924140}
   m_CullTransparentMesh: 1
 --- !u!1 &1569736309
 GameObject:
@@ -34445,6 +36391,199 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1856781633}
   m_CullTransparentMesh: 1
+--- !u!1 &1859682563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1859682564}
+  - component: {fileID: 1859682568}
+  - component: {fileID: 1859682567}
+  - component: {fileID: 1859682566}
+  - component: {fileID: 1859682565}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1859682564
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859682563}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.16666667, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1117138341}
+  - {fileID: 651894456}
+  - {fileID: 124320400}
+  m_Father: {fileID: 254330588}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 95}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1859682565
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859682563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Attack_BlackHall5
+    ClassType: 
+    itemID: 30
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+    itemModel: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 4
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 30
+      Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+      Name: BlackHole_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 6
+      Rank: 5
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.6
+      Hp: 300
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+--- !u!114 &1859682566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859682563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 0}
+    inGameData: {fileID: 0}
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      ID: 0
+      Pf: {fileID: 0}
+      Name: 
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: 
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &1859682567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859682563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1859682568
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1859682563}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1860376250
 GameObject:
   m_ObjectHideFlags: 0
@@ -41610,6 +43749,260 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Attack_Flame5
+    ClassType: 
+    itemID: 15
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
+    itemModel: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 3
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 15
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Name: Flame_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 3
+      Rank: 5
+      Type: 1
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Attack_BlackHall5
+    ClassType: 
+    itemID: 30
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+    itemModel: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 4
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 30
+      Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+      Name: BlackHole_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 6
+      Rank: 5
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.6
+      Hp: 300
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Attack_Wind5
+    ClassType: 
+    itemID: 45
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 5
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 45
+      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+      Name: Wind_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 9
+      Rank: 5
+      Type: 1
+      Attack: 70
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+    itemAttributes: []
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Tower_Buff_Damage_Increase5
+    ClassType: 
+    itemID: 55
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
+    itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+    inGameData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 6
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 1005
+      Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+      Name: Damage_Increase_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      GroupID: 11
+      Rank: 5
+      Type: 2
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: GB_Crystal_1
+      Sprite_TowerCard: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+    itemAttributes:
+    - attributeName: towerHP
+      attributeValue: 300
+    - attributeName: towerATK
+      attributeValue: 1
+    - attributeName: towerRange
+      attributeValue: 300
+    - attributeName: buffValue
+      attributeValue: 5
+    specialPrefabs: []
+    buffDatas:
+    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+  - itemName: Tower_Minion_Goblin5
+    ClassType: 
+    itemID: 110
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: e8cb8e19b327a8d42b0c18476531f113, type: 3}
+    itemModel: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
+    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 7
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      ID: 3020
+      Pf: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
+      Name: Goblin_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 1.6666666
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 22
+      Rank: 5
+      Type: 4
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: e8cb8e19b327a8d42b0c18476531f113, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 67d217d9f31cce249af0e75e504863df, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []

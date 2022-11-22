@@ -6,10 +6,10 @@ using System.IO;
 
 public class CSVtest : MonoBehaviour
 {
-    private const string URL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
-                               
-    private string MYtext = "";
+    #region Tower
 
+    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
+                               
     [Header("[Å¸¿ö]")]
     public TowerDatabaseList towerDatabaseListCSV;
     public ItemDataBaseList towerDatabaseList;
@@ -19,21 +19,17 @@ public class CSVtest : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(GetLevelData());
+        StartCoroutine(GetTowerData());
     }
 
-    UnityWebRequest GetCharactorData;
-    float elaspedTime = 0f;
-    IEnumerator GetLevelData()
+    UnityWebRequest TowerWebData;
+    IEnumerator GetTowerData()
     {
-        GetCharactorData = UnityWebRequest.Get(URL);
-        Debug.Log(elaspedTime);
-        yield return GetCharactorData.SendWebRequest();
-        Debug.Log(elaspedTime);
+        TowerWebData = UnityWebRequest.Get(TowerURL);
+        yield return TowerWebData.SendWebRequest();
 
-        MYtext = GetCharactorData.downloadHandler.text;
-        Debug.Log(MYtext);
-        SetCharactorDatas(MYtext);
+        string DB = TowerWebData.downloadHandler.text;
+        SetCharactorDatas(DB);
     }
 
     public void SetCharactorDatas(string tsv)
@@ -117,4 +113,6 @@ public class CSVtest : MonoBehaviour
             }
         }
     }
+
+    #endregion Tower
 }
