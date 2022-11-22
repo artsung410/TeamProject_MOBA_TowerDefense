@@ -1,5 +1,5 @@
-//#define 캐릭터선택_VER_1
-#define 캐릭터선택_DEFAULT
+#define 캐릭터선택_VER_1
+//#define 캐릭터선택_DEFAULT
 
 using Photon.Pun;
 using UnityEngine;
