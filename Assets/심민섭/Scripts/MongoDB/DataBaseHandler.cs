@@ -69,7 +69,8 @@ public class DataBaseHandler : MonoBehaviour
             var feild = "warrior";
             var value = document.GetElement(feild).Value;
             var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
-            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            var addValue = (int)cnt + (int)value;
+            var update = Builders<BsonDocument>.Update.Set(feild, addValue);
             collection.UpdateOne(filter, update);
         }
         else if (name == "Wizard")
@@ -77,7 +78,8 @@ public class DataBaseHandler : MonoBehaviour
             var feild = "wizard";
             var value = document.GetElement(feild).Value;
             var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
-            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            var addValue = (int)cnt + (int)value;
+            var update = Builders<BsonDocument>.Update.Set(feild, addValue);
             collection.UpdateOne(filter, update);
         }
         else if (name == "Inherence")
@@ -85,7 +87,8 @@ public class DataBaseHandler : MonoBehaviour
             var feild = "inherence";
             var value = document.GetElement(feild).Value;
             var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
-            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            var addValue = (int)cnt + (int)value;
+            var update = Builders<BsonDocument>.Update.Set(feild, addValue);
             collection.UpdateOne(filter, update);
         }
         else if (name == "Tower")
@@ -93,7 +96,8 @@ public class DataBaseHandler : MonoBehaviour
             var feild = "tower";
             var value = document.GetElement(feild).Value;
             var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
-            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
+            var addValue = (int)cnt + (int)value;
+            var update = Builders<BsonDocument>.Update.Set(feild, addValue);
             collection.UpdateOne(filter, update);
         }
         else if (name == "Other")
@@ -101,8 +105,8 @@ public class DataBaseHandler : MonoBehaviour
             var feild = "other";
             var value = document.GetElement(feild).Value;
             var filter = Builders<BsonDocument>.Filter.Eq(feild, value);
-            var addValue = (int)cnt + (int)value;
-            var update = Builders<BsonDocument>.Update.Set(feild, addValue);
+            //var addValue = (int)cnt + (int)value;
+            var update = Builders<BsonDocument>.Update.Set(feild, cnt);
             collection.UpdateOne(filter, update);
         }
 

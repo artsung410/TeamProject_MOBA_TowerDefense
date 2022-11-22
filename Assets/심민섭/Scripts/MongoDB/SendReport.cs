@@ -24,8 +24,8 @@ public class SendReport : MonoBehaviour
 
         return myNickName;
     }
-    // Your NickName
-    // Explanation
+
+
     [SerializeField]
     private Text explanation;
 
@@ -34,18 +34,18 @@ public class SendReport : MonoBehaviour
         //database = server.GetServer().GetDatabase("TowerDefense");
     }
 
-    public void ReportButton()
+    public async void ReportButton()
     {
-        //collection = database.GetCollection<BsonDocument>("Report");
+        collection = database.GetCollection<BsonDocument>("Report");
         string myNickName = GetNickName();
 
         var SendReport = new BsonDocument()
         {
             {"MyNickName", myNickName},
-            {"YourNickName", "그색"},
+            {"YourNickName", "상대방 닉네임"},
             {"explanation", explanation.ToString()},
         };
-        Debug.Log("신고 리포트 전송");
-        //collection.Insert(SendReport);
+
+        await collection.InsertOneAsync(SendReport);
     }
 }

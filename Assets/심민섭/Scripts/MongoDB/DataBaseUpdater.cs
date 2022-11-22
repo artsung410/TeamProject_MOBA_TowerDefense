@@ -61,7 +61,8 @@ public class DataBaseUpdater : MonoBehaviour
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue);
+                        var addr = (int)value + InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }
                 }
@@ -83,7 +84,8 @@ public class DataBaseUpdater : MonoBehaviour
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue);
+                        var addr = (int)value + InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }
                 }
@@ -105,7 +107,8 @@ public class DataBaseUpdater : MonoBehaviour
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue);
+                        var addr = (int)value + InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }
                 }
@@ -127,7 +130,8 @@ public class DataBaseUpdater : MonoBehaviour
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue);
+                        var addr = (int)value + InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }
                 }

@@ -18,6 +18,7 @@ public class Test : MonoBehaviour
 
     void Start()
     {
+        
         // 데이터 베이스 명
         database = client.GetDatabase("TowerDefense");
         // 콜렉션 명

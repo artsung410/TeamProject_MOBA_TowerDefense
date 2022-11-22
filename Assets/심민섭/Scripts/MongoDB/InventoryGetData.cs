@@ -112,16 +112,22 @@ public class InventoryGetData : MonoBehaviour
         wizardInventoryData.Clear();
         inherenceInventoryData.Clear();
         towerInventoryData.Clear();
-
+        otherItemCnt = 0;
         int stack = 0;
         for (int i = 0; i < otherInventory.transform.childCount; i++)
         {
             Debug.Log("기타 아이템 저장 시작");
             if (otherInventory.transform.GetChild(i).childCount != 0)
             {
+                int count = otherInventory.transform.GetChild(i).childCount;
                 otherInventoryData.Add(otherInventory.transform.GetChild(i).GetChild(0).gameObject);
                 otherItemCnt += otherInventory.transform.GetChild(i).GetChild(0).gameObject.GetComponent<ItemOnObject>().item.itemValue;
+                count--;
                 stack++;
+                if (count == 0)
+                {
+                    continue;
+                }
             }
             Debug.Log("기타 아이템 저장 완료");
         }
