@@ -12,13 +12,19 @@ public class PlayerSkillDatas
     // ###############################################
 
     [Tooltip("스킬 이름")]
-    public string Name;
+    public string Name; // 인덱스 1
 
     [Tooltip("스킬 아이디. 데이터 파싱할 기준")]
-    public int ID;
+    public int ID; // 인덱스 0
+
+    [Tooltip("기획자 확인용")]
+    public string NameLevel; // 인덱스 2
 
     [Tooltip("카드 뽑기 확률")]
     public float Probability;
+
+    [Tooltip("스킬 직업 속성")]
+    public int Classification;
 
     [Tooltip("스킬의 랭크. 1 ~ 3성 까지 존재하며 랭크별로 값이 다르다")]
     public int Rank;
