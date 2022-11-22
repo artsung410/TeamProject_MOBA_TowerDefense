@@ -137,6 +137,29 @@ public class DataBaseUpdater : MonoBehaviour
                 }
             }
         }
+        // 카드팩 아이템
+        if (InventoryGetData.instance.otherInventoryData.Count != 0)
+        {
+            collection = database.GetCollection<BsonDocument>("User_CardPack_Info");
+            playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+            var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+            var document = collection.Find(builder).FirstOrDefault();
+            for (int i = 0; i < InventoryGetData.instance.otherInventoryData.Count; i++)
+            {
+                for (int j = 2; j < document.Count(); j++)
+                {
+                    if (document.GetElement(j).Name == InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
+                    {
+                        var value = document.GetElement(j).Value;
+                        // 아이템이 같으면 개수를 업데이트 한다.
+                        var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
+                        var addr = (int)value + InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
+                        collection.UpdateOne(filter, update);
+                    }
+                }
+            }
+        }
 
         InventoryGetData.instance.otherInventoryData.Clear();
         InventoryGetData.instance.warriorInventoryData.Clear();

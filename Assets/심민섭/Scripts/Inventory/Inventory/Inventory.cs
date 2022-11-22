@@ -107,11 +107,6 @@ public class Inventory : MonoBehaviour
     void Update()
     {
         updateItemIndex();
-        //Debug.Log(SlotContainer.transform.childCount);
-        /*foreach (var item in ItemsInInventory)
-        {
-            Debug.Log(item.itemName);
-        }*/
     }
 
     public void updateItemIndex()

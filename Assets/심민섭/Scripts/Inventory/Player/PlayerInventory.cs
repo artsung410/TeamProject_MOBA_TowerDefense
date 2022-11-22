@@ -10,13 +10,10 @@ public class PlayerInventory : MonoBehaviour
     public GameObject craftSystem;
     public GameObject characterSystem;
 
-    private CraftSystem cS;
-
     // 인벤토리 게임 오브젝트
     public GameObject inventory;
 
     // 제작, 케릭터장비창 모두 인벤토리를 가지고 있다.
-    private Inventory craftSystemInventory;
     private Inventory characterSystemInventory;
 
     // 인벤토리 스크립트를 가져옴
@@ -43,12 +40,6 @@ public class PlayerInventory : MonoBehaviour
 
         if (characterSystem != null)
             characterSystemInventory = characterSystem.GetComponent<Inventory>();
-
-        if (craftSystem != null)
-            craftSystemInventory = craftSystem.GetComponent<Inventory>();
-
-        if (craftSystem != null)
-            cS = craftSystem.GetComponent<CraftSystem>();
 
         this.audioSource = GetComponent<AudioSource>();
     }
@@ -134,27 +125,6 @@ public class PlayerInventory : MonoBehaviour
                 // 인벤토리를 닫는다.
                 mainInventory.closeInventory();
                 characterSystemInventory.closeInventory();
-            }
-        }
-
-        // InputManager의 CraftSystemKeyCode "K"
-        if (Input.GetKeyDown(inputManagerDatabase.CraftSystemKeyCode))
-        {
-            if (!craftSystem.activeSelf)
-            {
-                craftSystemInventory.openInventory();
-            }
-            else
-            {
-                // CraftSystem 스크립트를 가져오는데 성공했다면
-                if (cS != null)
-                {
-                    // 
-                    cS.backToInventory();
-                }
-                /*if (toolTip != null)
-                    toolTip.deactivateTooltip();*/
-                craftSystemInventory.closeInventory();
             }
         }
     }

@@ -90,10 +90,6 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue);
                         GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().inventory.GetComponent<Inventory>().stackableSettings();
                     }
-                    //CraftSystem cS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().craftSystem.GetComponent<CraftSystem>();
-                    //cS.deleteItems(item);
-                    //CraftResultSlot result = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().craftSystem.transform.GetChild(3).GetComponent<CraftResultSlot>();
-                    //result.temp = 0;
                     // 툴팁 비활성화
                     tooltip.deactivateTooltip();
                     gearable = true;

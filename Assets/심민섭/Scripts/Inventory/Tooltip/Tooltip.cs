@@ -69,9 +69,33 @@ public class Tooltip : MonoBehaviour
         deactivateTooltip();
     }
 
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            menuItemCreateInventory();
+        }
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            setImportantVariables();
+        }
+        if (Input.GetKeyDown(KeyCode.J))
+        {
+            setVariables();
+        }
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            activateTooltip();
+        }
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            updateTooltip();
+        }
+    }
+
 #if UNITY_EDITOR
-    //[MenuItem("Master System/Create/Tooltip")]        //creating the menu item
-    public static void menuItemCreateInventory()       //create the inventory at start
+    public static void menuItemCreateInventory()
     {
         if (GameObject.FindGameObjectWithTag("Tooltip") == null)
         {
@@ -107,15 +131,19 @@ public class Tooltip : MonoBehaviour
         tooltipDescText = transform.GetChild(3).GetComponent<Text>();
     }
 
-    public void activateTooltip()               //if you activate the tooltip through hovering over an item
+
+    /// <summary>
+    /// 툴팁 활성화
+    /// </summary>
+    public void activateTooltip()
     {
         tooltipTextName.SetActive(true);
         tooltipImageIcon.SetActive(true);
         tooltipTextDesc.SetActive(true);
-        transform.GetChild(0).gameObject.SetActive(true);          //Tooltip getting activated
-        transform.GetChild(1).GetComponent<Image>().sprite = item.itemIcon;         //and the itemIcon...
-        transform.GetChild(2).GetComponent<Text>().text = item.itemName;            //,itemName...
-        transform.GetChild(3).GetComponent<Text>().text = item.itemDesc;            //and itemDesc is getting set        
+        transform.GetChild(0).gameObject.SetActive(true);
+        transform.GetChild(1).GetComponent<Image>().sprite = item.itemIcon;
+        transform.GetChild(2).GetComponent<Text>().text = item.itemName;
+        transform.GetChild(3).GetComponent<Text>().text = item.itemDesc;   
     }
 
     /// <summary>
