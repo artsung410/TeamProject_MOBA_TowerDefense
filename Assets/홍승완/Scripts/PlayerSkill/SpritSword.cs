@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+public enum Star
+{
+    OneStar,
+    TwoStar,
+    ThreeStar,
+}
+
+
 public class SpritSword : SkillHandler
 {
     // ###############################################
@@ -24,6 +32,9 @@ public class SpritSword : SkillHandler
     private float lockTime;
 
     public float Speed;
+
+    //public ScriptableObject temp;
+    public Star Star;
 
     private void OnEnable()
     {
