@@ -27,7 +27,7 @@ public class Inventory : MonoBehaviour
     [SerializeField]
     private GameObject prefabSlotContainer;
     [SerializeField]
-    private GameObject prefabItem;
+    public GameObject prefabItem;
     [SerializeField]
     private GameObject prefabDraggingItemContainer;
     [SerializeField]

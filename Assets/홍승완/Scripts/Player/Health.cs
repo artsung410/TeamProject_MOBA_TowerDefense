@@ -173,11 +173,14 @@ public class Health : MonoBehaviourPun
     {
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
+            // 마우스 커서 변경 코드
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveAlly, Vector2.zero, CursorMode.Auto);
             _outline.enabled = true; // 켜주고
             _outline.OutlineColor = Color.blue;
         }
         else
         {
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveEnemy, Vector2.zero, CursorMode.Auto);
             _outline.enabled = true;
             _outline.OutlineColor = Color.red;
         }
@@ -186,6 +189,7 @@ public class Health : MonoBehaviourPun
 
     private void OnMouseExit()
     {
+        Cursor.SetCursor(PlayerHUD.Instance.cursorMoveNamal, Vector2.zero, CursorMode.Auto);
         _outline.enabled = false;
     }
 

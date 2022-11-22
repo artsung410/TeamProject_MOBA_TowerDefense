@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
 
-
 public class PlayerBehaviour : MonoBehaviourPun
 {
     // ###############################################
@@ -41,10 +40,20 @@ public class PlayerBehaviour : MonoBehaviourPun
     
     public Collider enemyCol;
     // SMS Start --------------------------------------------//
-    // A키 커서 관련 변수
 
-    public Texture2D cursorTextureOriginal;
-    public Texture2D cursorTexture;
+    // 이동 일반 커서
+    public Texture2D cursorMoveNamal;
+    // 이동 아군 커서
+    public Texture2D cursorMoveAlly;
+    // 이동 적군 커서
+    public Texture2D cursorMoveEnemy;
+
+    // 공격 일반 커서
+    public Texture2D cusorAttackNomal;
+    // 공격 아군 커서
+    public Texture2D cusorAttackAlly;
+    // 공격 적군 커서
+    public Texture2D cusorAttackEnemy;
 
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
@@ -85,6 +94,9 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void Start()
     {
+
+        Cursor.SetCursor(cursorMoveNamal, hotSpot, cursorMode);
+
         //PhotonView photonView = PhotonView.Get(this);
         //photonView.RPC("RPCStorageCaller", RpcTarget.MasterClient, playerStorage._id, playerStorage.session_id, playerStorage.userName, playerStorage.playerNumber, playerStorage.zera, playerStorage.ace, playerStorage.bet_id);
 
@@ -345,14 +357,13 @@ public class PlayerBehaviour : MonoBehaviourPun
             // 커서를 공격 커서로 바꾼다.
             ChangeMouseAMode();
             // SMS End ---------------------------------------------------//
-            Debug.Log($"inputA : {inputA}");
         }
 
         if (Input.GetMouseButtonDown(0) && inputA)
         {
             // SMS Start ------------------------------------------------//
             // 커서를 일반 커서로 바꾼다.
-            Cursor.SetCursor(cursorTextureOriginal, hotSpot, cursorMode);
+            Cursor.SetCursor(cursorMoveNamal, hotSpot, cursorMode);
             // SMS End ---------------------------------------------------//
 
             inputA = false;
@@ -369,7 +380,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     // SMS Start-------------------------------------------//
     public void ChangeMouseAMode()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        Cursor.SetCursor(cusorAttackNomal, hotSpot, cursorMode);
     }
     // SMS End-----------------------------------------------//
 

@@ -227,13 +227,13 @@ public class Enemybase : MonoBehaviourPun
 
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
-
-            _outline.OutlineColor = Color.green;
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveAlly, Vector2.zero, CursorMode.Auto);
+            _outline.OutlineColor = Color.green ;
             _outline.enabled = true; // 켜주고
         }
         else
         {
-
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveEnemy, Vector2.zero, CursorMode.Auto);
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }
