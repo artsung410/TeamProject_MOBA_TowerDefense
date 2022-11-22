@@ -156,6 +156,5 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
     public abstract void SkillUpdatePosition();
 
-    // TODO : 검기 위치 재조정
 
 }
