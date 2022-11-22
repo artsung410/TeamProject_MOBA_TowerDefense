@@ -19044,7 +19044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3795736645828584852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52686,8 +52686,10 @@ GameObject:
   - component: {fileID: 2278561848388981340}
   - component: {fileID: 6181133813336327122}
   - component: {fileID: 5230337345136128557}
+  - component: {fileID: 4951676478955841087}
+  - component: {fileID: 3005177911822694313}
   m_Layer: 0
-  m_Name: "\uB77C\uC774\uD2B8\uB2DD"
+  m_Name: "\uB77C\uC774\uD2B8\uB2DD(HSW)"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -52738,11 +52740,51 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fea8a66329b6440b9d3b458b08c302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetDamage: 0
-  SetHodingTime: 0
-  SetRange: 0
+  SetDamage: 200
+  SetHodingTime: 0.5
+  SetRange: 12
   DamazeZone: {fileID: 8203116267278275064}
   damageZoneRadius: 0
+  CrowdControlTime: 0
+--- !u!114 &4951676478955841087
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462896851685500729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 3005177911822694313}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &3005177911822694313
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7462896851685500729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &8203116267278275064
 GameObject:
   m_ObjectHideFlags: 0

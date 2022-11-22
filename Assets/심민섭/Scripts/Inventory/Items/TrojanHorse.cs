@@ -44,6 +44,9 @@ public class TrojanHorse: MonoBehaviour
     private GameObject EquipmentItemInventory;
 
     // ----------- 승완이 에게 보낼 추가 정보---------------
+    [Header("선택한 직업")]
+    public string selectCharacter;
+
     [Header("스킬 카드 고유 ID")]
     [SerializeField]
     public List<int> skillId = new List<int>();

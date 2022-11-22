@@ -17,6 +17,13 @@ public class Cancel : MonoBehaviour
         cancelObj.SetActive(false);
     }
 
+    public void InventoryBackButton()
+    {
+        cancelObj.SetActive(false);
+        GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().BackButton();
+
+    }
+
     public void CancleDrawButton()
     {
         cancelObj.SetActive(false);

@@ -158,7 +158,6 @@ public class Enemybase : MonoBehaviourPun
                     _navMeshAgent.isStopped = true;
 
                 }
-                OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _animator.SetTrigger("Die");
                 isDead = true;
                 PlayerHUD.Instance.lastDamageTeam = lastDamageTeam;
@@ -189,6 +188,10 @@ public class Enemybase : MonoBehaviourPun
         Debug.Log("courutine start");
         while (true)
         {
+            if (isDead)
+            {
+                yield break;
+            }
             if (CurrnetHP <= 0)
             {
                 _capsuleCollider.enabled = false;
@@ -224,13 +227,13 @@ public class Enemybase : MonoBehaviourPun
 
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
-
-            _outline.OutlineColor = Color.green;
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveAlly, Vector2.zero, CursorMode.Auto);
+            _outline.OutlineColor = Color.green ;
             _outline.enabled = true; // 켜주고
         }
         else
         {
-
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveEnemy, Vector2.zero, CursorMode.Auto);
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }

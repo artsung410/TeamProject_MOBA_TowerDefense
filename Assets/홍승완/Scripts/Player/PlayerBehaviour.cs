@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 using Photon.Pun;
 
-
 public class PlayerBehaviour : MonoBehaviourPun
 {
     // ###############################################
@@ -34,16 +33,27 @@ public class PlayerBehaviour : MonoBehaviourPun
     public bool perfomRangeAttack = false;
     public string EnemyTag;
     public bool IsAttack;
-
+    public bool isStun; // 스턴상태시 -> true
+    public float StunTime;
     
     [Space]
     
     public Collider enemyCol;
     // SMS Start --------------------------------------------//
-    // A키 커서 관련 변수
 
-    public Texture2D cursorTextureOriginal;
-    public Texture2D cursorTexture;
+    // 이동 일반 커서
+    public Texture2D cursorMoveNamal;
+    // 이동 아군 커서
+    public Texture2D cursorMoveAlly;
+    // 이동 적군 커서
+    public Texture2D cursorMoveEnemy;
+
+    // 공격 일반 커서
+    public Texture2D cusorAttackNomal;
+    // 공격 아군 커서
+    public Texture2D cusorAttackAlly;
+    // 공격 적군 커서
+    public Texture2D cusorAttackEnemy;
 
     public CursorMode cursorMode = CursorMode.Auto;
     public Vector2 hotSpot = Vector2.zero;
@@ -84,6 +94,9 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void Start()
     {
+
+        Cursor.SetCursor(cursorMoveNamal, hotSpot, cursorMode);
+
         //PhotonView photonView = PhotonView.Get(this);
         //photonView.RPC("RPCStorageCaller", RpcTarget.MasterClient, playerStorage._id, playerStorage.session_id, playerStorage.userName, playerStorage.playerNumber, playerStorage.zera, playerStorage.ace, playerStorage.bet_id);
 
@@ -133,7 +146,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
-
+    float recoveryTime;
     private void Update()
     {
         // 게임 끝나면 정지
@@ -145,6 +158,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 플레이어 위치정보 카메라로 보냄
         if (photonView.IsMine)
         {
+
             _rigid.velocity = Vector3.zero;
             _rigid.angularVelocity = Vector3.zero;
 
@@ -159,15 +173,47 @@ public class PlayerBehaviour : MonoBehaviourPun
                 CancelInvoke(nameof(AutoSearchTarget));
             }
 
-            if (_playerHealth.isDeath == false)
+            if (isStun == true)
             {
-                MoveTo();
+                recoveryTime += Time.deltaTime;
+                Debug.Log($"recoveryTime : {recoveryTime}\n" +
+                    $"stunTime : {StunTime}");
+                if (recoveryTime >= StunTime)
+                {
+                    recoveryTime = 0f;
+                    StunTime = 0f;
+                    isStun = false;
+                }
             }
             else
             {
-                IsPlayerDie();
+                if (_playerHealth.isDeath == false)
+                {
+                    MoveTo();
+                }
+                else
+                {
+                    IsPlayerDie();
+                }
             }
+
         }
+    }
+
+    public void OnStun(bool stun, float time)
+    {
+        if (_playerHealth.isDeath)
+        {
+            return;
+        }
+        photonView.RPC(nameof(RPC_Stun), RpcTarget.All, stun, time);
+    }
+
+    [PunRPC]
+    public void RPC_Stun(bool stun, float time)
+    {
+        isStun = stun;
+        StunTime = time;
     }
 
     private void IsPlayerDie()
@@ -271,12 +317,12 @@ public class PlayerBehaviour : MonoBehaviourPun
                 transform.eulerAngles = new Vector3(0, rotationY, 0);
 
                 // 내가 근접캐라면
-                if (_statScript.AttackType == HeroAttackType.Melee)
+                if (_statScript.AttackType == HeroType.Warrior)
                 {
                     // 공격 수행 스위치를 true로 바꿈
                     perfomMeleeAttack = true;
                 }
-                else if (_statScript.AttackType == HeroAttackType.Ranged)
+                else if (_statScript.AttackType == HeroType.Wizard)
                 {
                     // 원거리 공격 수행 스위치 true바꿈
                     perfomRangeAttack = true;
@@ -290,7 +336,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void GetTargetedObject()
     {
-        if (Hit.collider.CompareTag(EnemyTag))
+        if (Hit.collider.CompareTag(EnemyTag) || Hit.collider.gameObject.layer == 17)
         {
             targetedEnemy = Hit.collider.gameObject;
         }
@@ -311,14 +357,13 @@ public class PlayerBehaviour : MonoBehaviourPun
             // 커서를 공격 커서로 바꾼다.
             ChangeMouseAMode();
             // SMS End ---------------------------------------------------//
-            Debug.Log($"inputA : {inputA}");
         }
 
         if (Input.GetMouseButtonDown(0) && inputA)
         {
             // SMS Start ------------------------------------------------//
             // 커서를 일반 커서로 바꾼다.
-            Cursor.SetCursor(cursorTextureOriginal, hotSpot, cursorMode);
+            Cursor.SetCursor(cursorMoveNamal, hotSpot, cursorMode);
             // SMS End ---------------------------------------------------//
 
             inputA = false;
@@ -335,7 +380,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     // SMS Start-------------------------------------------//
     public void ChangeMouseAMode()
     {
-        Cursor.SetCursor(cursorTexture, hotSpot, cursorMode);
+        Cursor.SetCursor(cusorAttackNomal, hotSpot, cursorMode);
     }
     // SMS End-----------------------------------------------//
 
@@ -371,6 +416,11 @@ public class PlayerBehaviour : MonoBehaviourPun
                         // 가장 가까운 대상
                         shortTarget = colTarget.gameObject;
                     }
+                }
+                // 중립 몬스터 검출
+                else if (colTarget.gameObject.layer == 17)
+                {
+                    targetedEnemy = colTarget.gameObject;
                 }
                 // 예외부분(땅, 기타등등) 건너뛰기
                 else
@@ -421,6 +471,11 @@ public class PlayerBehaviour : MonoBehaviourPun
         else if (targetedEnemy.layer == 12)
         {
             interpolationRange = 6f;
+        }
+        // 중립몬스터 보간
+        else if (targetedEnemy.layer == 17)
+        {
+            interpolationRange = 1f;
         }
     }
 

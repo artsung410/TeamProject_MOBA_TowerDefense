@@ -116,11 +116,11 @@ public class PlayerAnimation : MonoBehaviourPun
                 // 공격 모션 재생 속도
                 animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
 
-                if (playerStats.AttackType == HeroAttackType.Melee)
+                if (playerStats.AttackType == HeroType.Warrior)
                 {
                     StartCoroutine(MeleeAttackInterval());
                 }
-                else if (playerStats.AttackType == HeroAttackType.Ranged)
+                else if (playerStats.AttackType == HeroType.Wizard)
                 {
                     StartCoroutine(RangeAttackInterval());
                 }
@@ -137,11 +137,11 @@ public class PlayerAnimation : MonoBehaviourPun
 
                 animator.SetBool("Attack", false);
 
-                if (playerStats.AttackType == HeroAttackType.Melee)
+                if (playerStats.AttackType == HeroType.Warrior)
                 {
                     StopCoroutine(MeleeAttackInterval());
                 }
-                else if (playerStats.AttackType == HeroAttackType.Ranged)
+                else if (playerStats.AttackType == HeroType.Wizard)
                 {
                     StopCoroutine(RangeAttackInterval());
                 }

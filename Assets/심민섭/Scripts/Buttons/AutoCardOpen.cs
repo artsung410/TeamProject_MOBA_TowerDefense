@@ -18,7 +18,7 @@ public class AutoCardOpen : MonoBehaviour
     public void AutoOpenButton()
     {
         cardObj = gameObject.transform.parent.GetChild(0).gameObject;
-
+        DataBaseUpdater.instance.DrawAfterUpdate();
         StartCoroutine(AnimationRun());
     }
 

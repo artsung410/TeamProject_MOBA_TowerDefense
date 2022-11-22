@@ -6,8 +6,6 @@ using System;
 
 public class EnergyBolt : SkillHandler
 {
-
-
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
@@ -19,7 +17,6 @@ public class EnergyBolt : SkillHandler
 
     Quaternion quaternion;
     float elasedTiem;
-    string enemyTag;
     Vector3 mouseDir;
     Vector3 currentPos; // 스킬 사용 위치
 
@@ -27,6 +24,7 @@ public class EnergyBolt : SkillHandler
     private float Damage;
     private float Range;
     private float Speed;
+    private float lockTime;
 
     private void Awake()
     {
@@ -40,6 +38,8 @@ public class EnergyBolt : SkillHandler
         Damage = SetDamage;
         HoldingTime = SetHodingTime;
         Range = SetRange;
+        lockTime = SetLockTime;
+
         currentPos = transform.position;
         
         damageZoneRadius = 2;
@@ -59,18 +59,12 @@ public class EnergyBolt : SkillHandler
                 quaternion = _behaviour.transform.localRotation;
             }
 
-            if (_ability.CompareTag("Blue"))
-            {
-                enemyTag = "Red";
-            }
-            else if (_ability.CompareTag("Red"))
-            {
-                enemyTag = "Blue";
-            }
+            _ability.OnLock(true);
         }
-        catch (System.Exception)
+        catch (System.Exception ex)
         {
-            throw new Exception($"null 참조중{gameObject.name}");
+            //throw new Exception($"null 참조중{gameObject.name}");
+            print(ex);
         }
     }
 
@@ -81,7 +75,7 @@ public class EnergyBolt : SkillHandler
 
     public override void SkillUpdatePosition()
     {
-        transform.Translate(Time.deltaTime * 40f * Vector3.forward);
+        transform.Translate(Time.deltaTime * 30f * Vector3.forward);
         transform.rotation = quaternion;
     }
 
@@ -91,32 +85,33 @@ public class EnergyBolt : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
+            elasedTiem += Time.deltaTime;
+            if (elasedTiem >= lockTime)
+            {
+                _ability.OnLock(false);
+            }
 
             float dist = Vector3.Distance(currentPos, transform.position);
             //Debug.Log($"날라간 거리 : {dist}");
             if (dist >= Range)
             {
-                Destroy(gameObject);
-                //PhotonNetwork.Destroy(gameObject);
+                _ability.OnLock(false);
+                PhotonNetwork.Destroy(gameObject);
             }
             
         }
     }
-    // TODO : 사거리는 10은 너무 짧소!
+
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("충돌 확인용");
+        //Debug.Log("충돌 확인용");
         if (photonView.IsMine)
         {
-            if (other.gameObject.tag != enemyTag)
+            if(other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
-                return;
-            }
-            else
-            {
+                _ability.OnLock(false);
                 SkillDamage(Damage, other.gameObject);
-                Destroy(gameObject);
-                //PhotonNetwork.Destroy(gameObject);
+                PhotonNetwork.Destroy(gameObject);
             }
 
         }
