@@ -112,8 +112,13 @@ public class InventoryGetData : MonoBehaviour
         wizardInventoryData.Clear();
         inherenceInventoryData.Clear();
         towerInventoryData.Clear();
+        haveCardCnt = 0;
+        warriorCardCnt = 0;
+        wizardCardCnt = 0;
+        inherenceCardCnt = 0;
+        towerCardCnt = 0;
         otherItemCnt = 0;
-        int stack = 0;
+    int stack = 0;
         for (int i = 0; i < otherInventory.transform.childCount; i++)
         {
             Debug.Log("기타 아이템 저장 시작");
