@@ -28,7 +28,8 @@ public class WarriorAnimationEvent : MonoBehaviourPun
                 _behaviour.enemyCol.GetComponent<Health>().OnDamage(_stat.attackDmg);
                 //Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
             }
-            else if (_behaviour.enemyCol.gameObject.layer == 8 || _behaviour.enemyCol.gameObject.layer == 13)
+            // TODO : 중립몬스터는 태그 없음
+            else if (_behaviour.enemyCol.gameObject.layer == 8 || _behaviour.enemyCol.gameObject.layer == 13 || _behaviour.enemyCol.gameObject.layer == 17)
             {
                 _behaviour.enemyCol.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
                 //Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");

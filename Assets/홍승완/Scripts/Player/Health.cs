@@ -97,7 +97,6 @@ public class Health : MonoBehaviourPun
     {
         if (isDeath)
         {
-            //StopCoroutine(DelayDisapearBody());
             return;
         }
 
@@ -128,7 +127,7 @@ public class Health : MonoBehaviourPun
 
     public void Regenation(float recovery)
     {
-        photonView.RPC("PRC_regeneration", RpcTarget.All, recovery);
+        photonView.RPC(nameof(PRC_regeneration), RpcTarget.All, recovery);
     }
     
     
@@ -149,7 +148,7 @@ public class Health : MonoBehaviourPun
 
     public void DamageOverTime(float Damage,float Time)
     {
-        photonView.RPC("RPC_DamageOverTime",RpcTarget.All,Damage,Time);
+        photonView.RPC(nameof(RPC_DamageOverTime),RpcTarget.All,Damage,Time);
     }
 
     [PunRPC]
@@ -161,7 +160,8 @@ public class Health : MonoBehaviourPun
             {
                 yield  break;
             }
-            health -= Damage;
+            //health -= Damage;
+            OnDamage(Damage);
             yield return Delay100;
             Time -= 1f;
 

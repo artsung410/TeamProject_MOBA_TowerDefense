@@ -11,12 +11,27 @@ using Photon.Pun;
 public class MagicExplosion : MonoBehaviourPun
 {
     [Header("Å¸°Ù TAG")]
+    [HideInInspector]
     public string enemyTag;
+
+    [HideInInspector]
     public float damage;
 
     private void OnEnable()
     {
-        Destroy(gameObject, 3f);
+        StartCoroutine(Destruction());
+    }
+
+    private IEnumerator Destruction()
+    {
+        yield return new WaitForSeconds(3f);
+
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+
+        StopCoroutine(Destruction());
     }
 
     private void Damage(Transform enemy)
@@ -70,7 +85,7 @@ public class MagicExplosion : MonoBehaviourPun
             return;
         }
 
-        if (!PhotonNetwork.IsMasterClient)
+        if (!photonView.IsMine)
         {
             return;
         }

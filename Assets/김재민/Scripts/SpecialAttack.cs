@@ -12,28 +12,20 @@ public class SpecialAttack : Enemybase
 
 
     public Transform target;
-    public GameObject Mother;
-
-
+    public SpecialMinionSkill _skill;
 
     protected override void Awake()
     {
-        base.Awake();
+        base.Awake();  
         transform.GetChild(2).gameObject.SetActive(false);
         transform.GetChild(2).transform.GetChild(0).GetComponent<DragonAttack>().Damage = Damage;
-        
-        
-
-
+        target = null;
     }
     protected override void OnEnable()
     {
         base.OnEnable();
         _navMeshAgent.enabled = false;
-        _navMeshAgent.enabled = true;
-
     }
-
     private void Start()
     {
         if (gameObject.CompareTag("Blue"))
@@ -48,14 +40,11 @@ public class SpecialAttack : Enemybase
     // Update is called once per frame
     void Update()
     {
-
-        if (target == null)
+       if(_skill.TargetOn == true)
         {
-            return;
+            Attack();
+
         }
-
-
-        Attack();
 
     }
 
@@ -75,34 +64,35 @@ public class SpecialAttack : Enemybase
    
     private void Attack()
     {
-        if (photonView.IsMine)
-        {
 
             if (target == null)
             {
+                target = null;
+                Debug.Log("용 타켓이 없을때");
                 _navMeshAgent.isStopped = false; //스탑 풀어주고
+                transform.GetChild(2).gameObject.SetActive(false);
                 Attackanimation(false);
+                _skill.TargetOn = false;
+            _capsuleCollider.enabled = false;
+            _navMeshAgent.enabled = false;
                 CombackSon();
-
-
-
+            return;
             }
-            _navMeshAgent.SetDestination(target.position);
+
+      
+        _navMeshAgent.SetDestination(target.position);
             transform.LookAt(new Vector3(target.position.x, 0, target.position.z));
             float vecDistance = Vector3.SqrMagnitude(target.position - transform.position);
-            Debug.Log($"vecDistance :{vecDistance} , attackRange : {attackRange * attackRange}");
             if (vecDistance <= attackRange * attackRange)
             {
                 _navMeshAgent.isStopped = true;
                 Attackanimation(true); //공격
 
             }
-        }
+            
+            
+        
     }
-
-   
-
-
     void Attackanimation(bool attackon)
     {
         photonView.RPC(nameof(RPC_Attackanimation), RpcTarget.All, attackon);
@@ -121,6 +111,9 @@ public class SpecialAttack : Enemybase
     [PunRPC]
     void RPC_CombackSon()
     {
-        transform.parent = Mother.transform;
+        transform.position = new Vector3(_skill.gameObject.transform.position.x,_skill.gameObject.transform.position.y,_skill.gameObject.transform.position.z + 10);
+        transform.rotation = Quaternion.Euler(0,90,0);
+        transform.parent.transform.parent = _skill.gameObject.transform; // 부모에 넣어주기전에
+
     }
 }

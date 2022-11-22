@@ -19,12 +19,12 @@ public class SkillManager : MonoBehaviour
     public float[] CoolTime = new float[4];
     public float[] HoldingTime = new float[4];
     public float[] Range = new float[4];
+    public float[] LockTime = new float[4];
 
     private void Awake()
     {
         Instance = this;
         SkillData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
-        Debug.Log("스킬매니저 awake실행");
     }
 
     private void Start()
@@ -44,12 +44,13 @@ public class SkillManager : MonoBehaviour
             CoolTime[idx] = SkillData.skillItems[i].itemAttributes[1].attributeValue;
             HoldingTime[idx] = SkillData.skillItems[i].itemAttributes[2].attributeValue;
             Range[idx] = SkillData.skillItems[i].itemAttributes[3].attributeValue;
-
-            Debug.Log($"{SkillData.skillItems[i].itemAttributes[0].attributeName}의 값 : {Atk[idx]}\n" +
-                $"{SkillData.skillItems[i].itemAttributes[1].attributeName}의 값 : {CoolTime[idx]}\n" +
-                $"{SkillData.skillItems[i].itemAttributes[2].attributeName}의 값 : {HoldingTime[idx]}\n" +
-                $"{SkillData.skillItems[i].itemAttributes[3].attributeName}의 값 : {Range[idx]}\n");
+            LockTime[idx] = SkillData.skillItems[i].itemAttributes[4].attributeValue;
         }
     }
-    
+
+    private void OnDisable()
+    {
+        Instance = null;
+    }
+
 }

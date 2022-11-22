@@ -15,21 +15,22 @@ public class Smash : SkillHandler
 
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float lockTime;
     float angle;
     #endregion
 
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
+        damage = SetDamage;
+        holdingTime = SetHodingTime;
+        range = SetRange;
+        lockTime = SetLockTime;
 
         angle = 120f;
     }
@@ -42,7 +43,7 @@ public class Smash : SkillHandler
         }
 
         LookMouseCursor();
-        TagProcessing(_ability);
+        _ability.OnLock(true);
     }
 
 
@@ -61,22 +62,6 @@ public class Smash : SkillHandler
 
     }
 
-    private void TagProcessing(HeroAbility ability)
-    {
-
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-            //Debug.Log(enemyTag);
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-            //Debug.Log(enemyTag);
-
-        }
-    }
-
     private void Update()
     {
         if (_ability == null)
@@ -87,7 +72,7 @@ public class Smash : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(HoldingTime);
+            SkillHoldingTime(holdingTime);
         }
     }
 
@@ -104,9 +89,14 @@ public class Smash : SkillHandler
         // 스킬을 쓰면 플레이어는 그자리에서 멈춘다
         _behaviour.ForSkillAgent(_behaviour.transform.position);
 
+        if (elapsedTime >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
+
         if (elapsedTime >= time)
         {
-
+            
             if (photonView.IsMine)
             {
                 PhotonNetwork.Destroy(gameObject);
@@ -125,7 +115,11 @@ public class Smash : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            //if (other.CompareTag(enemyTag))
+            //{
+            //    SectorDamage(other);
+            //}
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SectorDamage(other);
             }
@@ -136,7 +130,7 @@ public class Smash : SkillHandler
     {
         Vector3 interV = other.gameObject.transform.position - _behaviour.gameObject.transform.position;
 
-        if (interV.magnitude <= Range)
+        if (interV.magnitude <= range)
         {
             float dot = Vector3.Dot(interV.normalized, _behaviour.gameObject.transform.forward);
             float theta = Mathf.Acos(dot);
@@ -145,7 +139,7 @@ public class Smash : SkillHandler
 
             if (degree <= angle / 2f)
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillDamage(damage, other.gameObject);
             }
         }
     }

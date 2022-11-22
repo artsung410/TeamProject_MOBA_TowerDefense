@@ -29,13 +29,13 @@ public class Player : MonoBehaviourPun
     }
     private void OnMouseDown()
     {
-        if(photonView.IsMine)
+        if (photonView.IsMine)
         {
             return;
         }
 
         PlayerMouseDownEvent.Invoke(this);
-        
+
     }
 
     float elapsedTime;
@@ -64,7 +64,17 @@ public class Player : MonoBehaviourPun
         }
 
         Debug.Log(gameObject.tag + "내꺼 멎움");
-        StartCoroutine(delayApplyBuff(id, addValue, state));
+        
+        // 스킬용 id : 9 ~
+        if (id >= 9)
+        {
+            ApplyDebuff(id, addValue, state);
+        }
+        // 타워용 id : 1 ~ 8
+        else
+        {
+            StartCoroutine(delayApplyBuff(id, addValue, state));
+        }
     }
 
     // 플레이어 스탯 초기화가 이루어진 뒤에 디버프적용
@@ -74,13 +84,26 @@ public class Player : MonoBehaviourPun
         photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
     }
 
-    // TODO : 버프 상대편한테 적용하게 할것
-    // TODO : 캐릭터 setactive false되도 스크립트 유지하게함
-    [PunRPC]
+    // 스킬 전용 디버프
+    public void ApplyDebuff(int id, float addValue, bool state)
+    {
+
+            photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
+        
+    }
+
+// TODO : 버프 상대편한테 적용하게 할것
+// TODO : 캐릭터 setactive false되도 스크립트 유지하게함
+[PunRPC]
     public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
+        Debug.Log($"들어온 값들\n" +
+            $" id : {id}\n" +
+            $"addValue : {addValue}\n" +
+            $"state : {state}");
+
         // 플레이어 버프 적용
-        if (id == (int)Buff_Effect_byTower.AtkUP || id == (int)Buff_Effect_byTower.AtkDown)
+        if (id == (int)Buff_Effect.AtkUP || id == (int)Buff_Effect.AtkDown)
         {
             if (state)
             {
@@ -92,7 +115,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Effect_byTower.HpRegenUp || id == (int)Buff_Effect_byTower.HpRegenDown)
+        else if (id == (int)Buff_Effect.HpRegenUp || id == (int)Buff_Effect.HpRegenDown)
         {
             if (state)
             {
@@ -104,19 +127,21 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Effect_byTower.MoveSpeedUp || id == (int)Buff_Effect_byTower.MoveSpeedDown)
+        else if (id == (int)Buff_Effect.MoveSpeedUp || id == (int)Buff_Effect.MoveSpeedDown || id == (int)Buff_Effect.SlowOfSkill)
         {
             if (state)
             {
-                playerStats.MoveSpeed += addValue;
+                playerStats.MoveSpeed *= (1 + addValue); // 버프적용
+                Debug.Log($"현재 이동속도 : {playerStats.MoveSpeed}");
             }
             else
             {
-                playerStats.MoveSpeed -= addValue;
+                playerStats.MoveSpeed /= (1 + addValue);  // 원상복구
+                Debug.Log($"현재 이동속도 : {playerStats.MoveSpeed}");
             }
         }
 
-        else if (id == (int)Buff_Effect_byTower.AtkSpeedUp || id == (int)Buff_Effect_byTower.AtkSpeedDown)
+        else if (id == (int)Buff_Effect.AtkSpeedUp || id == (int)Buff_Effect.AtkSpeedDown)
         {
             if (state)
             {
@@ -127,5 +152,6 @@ public class Player : MonoBehaviourPun
                 playerStats.attackSpeed /= addValue;
             }
         }
+
     }
 }

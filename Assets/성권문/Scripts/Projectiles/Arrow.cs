@@ -10,12 +10,7 @@ using Photon.Pun;
 
 public class Arrow : Projectiles, ISeek
 {
-    private Transform target;
-
-    public float speed = 70f;
-
     public float explosionRadius = 0f;
-
 
     private void Update()
     {
@@ -38,12 +33,6 @@ public class Arrow : Projectiles, ISeek
 
 
         transform.LookAt(target);
-    }
-
-    public void Seek(float dmg, Transform tg)
-    {
-        target = tg;
-        damage = dmg;
     }
 
     void HitTarget()

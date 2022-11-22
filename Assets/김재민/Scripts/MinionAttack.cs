@@ -41,26 +41,31 @@ public class MinionAttack : MonoBehaviourPun
             if (photonView.IsMine)
             {
 
-                if (other.gameObject.layer == 8 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // 미니언 공격
+                if (other.gameObject.layer == 8) // 미니언 공격
                 {
                    
                     other.gameObject.GetComponent<Enemybase>().TakeDamage(satatus.Damage);
+                    
                 }
-                else if (other.gameObject.layer == 7 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // 플레이어 공격
+                else if (other.gameObject.layer == 7) // 플레이어 공격
                 {
                     other.gameObject.GetComponent<Health>().OnDamage(satatus.Damage);
+                    
                 }
                 else if (other.gameObject.layer == 6) // 타워
                 {
                     other.gameObject.GetComponent<Turret>().TakeDamage(satatus.Damage);
+                    
                 }
                 else if (other.gameObject.layer == 12) // 넥서스
                 {
                     other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(satatus.Damage);
+                    
                 }
-                else if (other.gameObject.layer == 13 && satatus._eminiomtype == EnemySatatus.EMINIOMTYPE.Nomal) // 특수미니언
+                else if (other.gameObject.layer == 13) // 특수미니언
                 {
                     other.gameObject.GetComponent<Enemybase>().TakeDamage(satatus.Damage);
+                    
                 }
             }
         }

@@ -11,18 +11,18 @@ public class ChainAttack : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public ParticleSystem effect;
+    public GameObject[] Effect;
 
     #region private 변수모음
 
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float lockTime;
 
     #endregion
 
@@ -30,17 +30,41 @@ public class ChainAttack : SkillHandler
     private void Awake()
     {
         //effect = gameObject.GetComponent<ParticleSystem>();
+        for (int i = 0; i < Effect.Length; i++)
+        {
+            Effect[i].SetActive(false);
+        }
+
     }
 
+    List<int> randomNum = new List<int>();    
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Damage = SetDamage;
-        Debug.Log($"SetDamage : {SetDamage}");
-        HoldingTime = SetHodingTime;
-        Debug.Log($"SetHodingTime : {SetHodingTime}");
-        Range = SetRange;
-        Debug.Log($"SetRange : {SetRange}");
+        damage = SetDamage;
+        //Debug.Log($"SetDamage : {SetDamage}");
+        holdingTime = SetHodingTime;
+        //Debug.Log($"SetHodingTime : {SetHodingTime}");
+        range = SetRange;
+        //Debug.Log($"SetRange : {SetRange}");
+        lockTime = SetLockTime;
+        //Debug.Log($"lockTime : {lockTime}");
+
+        int currentNumber = Random.Range(0, 4);
+
+        for (int i = 0; i < 4;)
+        {
+            if (randomNum.Contains(currentNumber))
+            {
+                currentNumber = Random.Range(0, 4);
+            }
+            else
+            {
+                randomNum.Add(currentNumber);
+                i++;
+            }
+        }
+
     }
 
     // Start is called before the first frame update
@@ -52,9 +76,9 @@ public class ChainAttack : SkillHandler
         }
 
         //photonView.RPC(nameof(TagProcessing), RpcTarget.All);
-        LookMouseCursor();
-        TagProcessing(_ability);
 
+        _ability.OnLock(true);
+        LookMouseCursor();
     }
 
     public void LookMouseCursor()
@@ -72,51 +96,55 @@ public class ChainAttack : SkillHandler
 
     }
 
-    private void TagProcessing(HeroAbility ability)
-    {
-
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-            //Debug.Log(enemyTag);
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-            //Debug.Log(enemyTag);
-
-        }
-    }
-
     float dispersionTime = 0f;
     bool isDamage = true;
     void Update()
     {
         if (_ability == null)
         {
-            Debug.Log("abilty 없음");
             return;
         }
 
         if (_ability.gameObject.GetComponent<Health>().isDeath == true)
         {
-            Debug.Log("설마여기?");
             if (photonView.IsMine)
             {
                 PhotonNetwork.Destroy(gameObject);
             }
         }
 
+        // 랜덤한 이펙트 4개 켜주는 부분(아주 엉망진창임 그냥)
+        if (testInt <= 3)
+        {
+            EnableTime += Time.deltaTime;
+            if (EnableTime >= 0.1f)
+            {
+                photonView.RPC(nameof(RPC_RandomVFX), RpcTarget.All, testInt);
+                testInt++;
+                EnableTime = 0f;
+            }
+        }
+
         SkillUpdatePosition();
-        SkillHoldingTime(HoldingTime);
+        SkillHoldingTime(holdingTime);
 
         dispersionTime += Time.deltaTime;
-        float tickTime = HoldingTime / 10;
+        
+        float tickTime = holdingTime / 10;
         if (dispersionTime >= tickTime)
         {
             dispersionTime = 0f;
             isDamage = true;
         }
+
+    }
+    float EnableTime;
+    int testInt;
+
+    [PunRPC]
+    public void RPC_RandomVFX(int idx)
+    {
+        Effect[randomNum[idx]].SetActive(true);
     }
 
     /// <summary>
@@ -132,6 +160,12 @@ public class ChainAttack : SkillHandler
     public override void SkillHoldingTime(float time)
     {
         elapsedTime += Time.deltaTime;
+
+        // Lock타임 동안 다른 스킬은 못쓰게 해준다
+        if (elapsedTime >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
 
         // 지속시간동안 플레이어가 느려진다
         _stat.MoveSpeed = 3f;
@@ -161,12 +195,12 @@ public class ChainAttack : SkillHandler
         // 데미지 두번들어가던부분 IsMine으로 처리
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 if (isDamage)
                 {
                     isDamage = false;
-                    float tickDamage = Damage / 10;
+                    float tickDamage = damage / 10;
                     SkillDamage(tickDamage, other.gameObject);
                 }
             }

@@ -1,3 +1,6 @@
+//#define 캐릭터선택_VER_1
+#define 캐릭터선택_DEFAULT
+
 using Photon.Pun;
 using UnityEngine;
 using System.Collections;
@@ -54,11 +57,16 @@ public class GameManager : MonoBehaviourPunCallbacks
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
 
     // TODO : 생성할 플레이어 프리팹 정보를 캐릭터 선택단계에서 가져오기
-    public GameObject playerPrefab; // 생성할 플레이어의 원형 프리팹
-    
+    public Dictionary<string, GameObject> mySelect = new Dictionary<string, GameObject>();
+    public List<GameObject> playerPrefab; // 생성할 플레이어의 원형 프리팹
+
     [Header("Nexus")]
     [SerializeField]
     private GameObject[] NexusPrefab = new GameObject[2];
+
+    [Header("Boss")]
+    [SerializeField]
+    private GameObject BossPrefeb;
 
     // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
     public List<GameObject> CurrentTurrets = new List<GameObject>(8);// 각 월드에서 생성된 모든 터렛들.
@@ -78,16 +86,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         myData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         SpawnNexus();
         SpawnPlayer();
-
         // buffManager 인스턴스생성 속도 맞추기 위해서 invoke사용
-        Invoke("SpawnTower", 0.5f);
+        Invoke(nameof(SpawnTower), 0.5f);
     }
+
 
     private void Start()
     {
-        SpawnTower();
-
         // HSW : 11 - 08 병합후 충돌로 임시 주석처리
+
 
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
@@ -98,7 +105,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             gameObject.tag = "Red";
         }
-
     }
 
     float elaspedTime;
@@ -121,11 +127,21 @@ public class GameManager : MonoBehaviourPunCallbacks
             OnLeftRoom();
         }
 
+        
         var spawnPosition = spawnPositions[localPlayerIndex % spawnPositions.Length];
 
+        // 플레이어 생성 HSW
+        GameObject player;
+#if 캐릭터선택_DEFAULT
+        player = PhotonNetwork.Instantiate(playerPrefab[0].name, spawnPosition.position, Quaternion.identity);
+#endif
 
-        // 플레이어 생성
-        GameObject player = PhotonNetwork.Instantiate(playerPrefab.name, spawnPosition.position, Quaternion.identity);
+#if 캐릭터선택_VER_1
+        mySelect.Add("Warrior", playerPrefab[0]);
+        mySelect.Add("Wizard", playerPrefab[1]);
+        player = PhotonNetwork.Instantiate(mySelect[myData.selectCharacter].name, spawnPosition.position, Quaternion.identity);
+#endif
+        // HSW
 
 
         // 미니맵 플레이어 캔버스 생성
@@ -148,6 +164,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             return;
         }
 
+        Debug.Log($"{gameObject.tag}, 호출");
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             GameObject tower = myData.cardPrefab[0];
@@ -197,7 +214,10 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             idx++;
         }
+
     }
+
+    //private void SpawnNexus()
 
     private void CheckandApplyBuffs(GameObject tower)
     {
@@ -208,6 +228,15 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
+
+
+        //if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
+        //{
+
+        //    PhotonNetwork.Instantiate(NexusPrefab[0].name, spawnPositions[2].position, Quaternion.Euler(transform.position));
+
+
+        //}
     private void SpawnNexus()
     {
         Debug.Log("됨?");
@@ -219,9 +248,29 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         else // red
         {
-            Debug.Log("됨?2");
+
             PhotonNetwork.Instantiate(NexusPrefab[1].name, spawnPositions[3].position, Quaternion.Euler(transform.position));
         }
     }
 
+
+    // TODO : 로비로 돌아갔을떄 스킬 데이터부분 초기화 필요함
+
+    // 중립몬스터 생성
+    public void bossMonsterSpawn()
+    {
+        if (PhotonNetwork.IsMasterClient && PlayerHUD.Instance.BossMonsterSpawnON)
+        {
+
+
+          PhotonNetwork.Instantiate(BossPrefeb.name,new Vector3(0,-1f,0f), Quaternion.identity);
+        }
+
+
+    }
+
 }
+
+
+
+

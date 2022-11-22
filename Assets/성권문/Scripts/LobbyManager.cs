@@ -29,6 +29,14 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     public GameObject matChingObj;
     // SMS end -------------------------------------------------------
 
+    // KJM start -----------------------------------------------------
+    [SerializeField]
+    private GameObject reportButton;
+    [SerializeField]
+    private GameObject reportPanel;
+    public bool CheckboxOn { get; private set; }
+
+    // KJM end -----------------------------------------------------
     public string apiKey = "5hO4J33kQPhtHhq4e0F76V";
 
     public TextMeshProUGUI connectionInfoText; // 네트워크 상태 텍스트
@@ -123,13 +131,15 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         }
     }*/
 
-    
+
     // join button을 눌렀을때 메소드
     public void JoinRandomOrCreateRoom()
     {
         //print($"{nick} 랜덤 매칭 시작.");
         //PhotonNetwork.LocalPlayer.NickName = nick; // 현재 플레이어 닉네임 설정하기.
+
         playButton.interactable = false;
+        reportButton.SetActive(false);
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         tro.PlayerTrojanInfo();
 
@@ -186,6 +196,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         UpdatePlayerCounts();
         matChingObj.SetActive(true);
+        reportButton.SetActive(false);
         Debug.Log($"{PhotonNetwork.LocalPlayer.NickName}은 인원수 {PhotonNetwork.CurrentRoom.MaxPlayers} 매칭 기다리는 중.");
         UpdatePlayerCounts();
     }
@@ -237,4 +248,75 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             print("연결됐는지? : " + PhotonNetwork.IsConnected);
         }
     }
+
+    public void Checkbox(int value)
+    {
+        CheckboxOn = true;
+        if (value == 0)
+        {
+            reportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
+            reportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+
+        }
+        else
+        {
+            reportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            reportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.yellow;
+        }
+
+
+    }
+
+
+    [SerializeField]
+    private TextOverFlow textoverflow;
+    bool button = false;
+    [SerializeField]
+    private GameObject SuccessPanel;
+    public void RefortButton()
+    {
+        
+        button = !button;
+        if(false == button)
+        {
+            reportPanel.transform.GetChild(2).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            reportPanel.transform.GetChild(3).GetChild(0).GetComponent<TextMeshProUGUI>().color = Color.white;
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
+            CheckboxOn = false;
+            textoverflow.text.text = "";
+        }
+        reportPanel.SetActive(button);
+        textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+    }
+
+    public void SendReport() // 2 입력안햇을때  3 체크박스 체크안햇을때  4 글자수 오바됬을때
+    {
+        Debug.Log($"{textoverflow.textNotEnter} : {CheckboxOn}");
+
+        if (!textoverflow.textNotEnter && CheckboxOn) //체크박스 되있고 글자수 있을때
+        {
+            Debug.Log("1");
+            SuccessPanel.SetActive(true);
+        }
+        else if (textoverflow.textNotEnter == true) // 글자아무것도 안입력햇을때
+        {
+            Debug.Log("2");
+
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(true);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(false);
+
+            // 텍스트 이미지 출력
+            return;
+        }
+        else if (CheckboxOn == false)
+        {
+
+            Debug.Log("3");
+            textoverflow.gameObject.transform.GetChild(0).GetChild(3).gameObject.SetActive(false);
+            textoverflow.gameObject.transform.GetChild(0).GetChild(4).gameObject.SetActive(true);
+            return;
+        }
+    }
+
 }
