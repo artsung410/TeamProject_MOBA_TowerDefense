@@ -48,5 +48,9 @@ public class SkillManager : MonoBehaviour
         }
     }
 
+    private void OnDisable()
+    {
+        Instance = null;
+    }
 
 }

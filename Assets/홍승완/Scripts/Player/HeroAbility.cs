@@ -52,6 +52,7 @@ public class HeroAbility : MonoBehaviourPun
     {
         while (true)
         {
+            yield return new WaitForSeconds(0.5f);
             try
             {
                 if (_skillManager.SkillData.skillIndex.Count == 0)

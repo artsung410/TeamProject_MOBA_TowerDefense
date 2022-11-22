@@ -177,6 +177,11 @@ public class Stats : GoogleSheetManager
     //[PunRPC]
     public void PlayerLevelUpFactory(GameObject expBag, float exp)
     {
+        if (expBag == null)
+        {
+            return;
+        }
+
         // expBag와 나의 tag가 같으면 같은팀이니까 return한다
         if (expBag.tag == gameObject.tag)
         {
