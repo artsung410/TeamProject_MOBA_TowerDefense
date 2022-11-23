@@ -1,29 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
-public class DangerZone : MonoBehaviour
+public class DangerZone : MonoBehaviourPun
 {
     // ###############################################
     //             NAME : ARTSUNG                      
     //             MAIL : artsung410@gmail.com         
     // ###############################################
 
-    //public Vector3 target;
-    //public bool isTargetOn;
-
-    private void Start()
+    private void OnEnable()
     {
-        Destroy(gameObject, 1.5f);
+        StartCoroutine(Destruction());
     }
 
-    //private void Update()
-    //{
-    //    if (isTargetOn == false)
-    //    {
-    //        return;
-    //    }
+    private IEnumerator Destruction()
+    {
+        yield return new WaitForSeconds(1.5f);
 
-    //    transform.position = new Vector3(target.x, target.y, target.z);
-    //}
+        if (photonView.IsMine)
+        {
+            PhotonNetwork.Destroy(gameObject);
+        }
+
+        StopCoroutine(Destruction());
+    }
 }

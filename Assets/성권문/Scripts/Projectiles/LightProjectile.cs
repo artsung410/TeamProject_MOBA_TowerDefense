@@ -49,8 +49,8 @@ public class LightProjectile : Projectiles
 
         if (dir.magnitude <= distanceThisFrame + InterpolateValue)
         {
-            GameObject newWind = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
-            MagicExplosion magicExplosion = newWind.GetComponent<MagicExplosion>();
+            GameObject newLight = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            MagicExplosion magicExplosion = newLight.GetComponent<MagicExplosion>();
             magicExplosion.damage = damage;
             magicExplosion.enemyTag = enemyTag;
             PhotonNetwork.Destroy(gameObject);

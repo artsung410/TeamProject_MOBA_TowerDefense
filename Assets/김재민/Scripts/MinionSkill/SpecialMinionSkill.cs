@@ -13,9 +13,10 @@ public class SpecialMinionSkill : SkillHandler
     //             MAIL : woals1566@gmail.com         
     // ###############################################
 
-    // ÇÃ·¹ÀÌ¾î À§Ä¡¸¦ µ¹¾Æ¾ßÇÔ °Å¸®¸¦ ¾Ë¾Æ¾ßÇÔ
+    // í”Œë ˆì´ì–´ ìœ„ì¹˜ë¥¼ ëŒì•„ì•¼í•¨ ê±°ë¦¬ë¥¼ ì•Œì•„ì•¼í•¨
     float speed = 100f;
     float distance = 5f;
+    //string enemyTag;
     float elapsedTime;
     public bool TargetOn;
 
@@ -34,25 +35,26 @@ public class SpecialMinionSkill : SkillHandler
     {
 
         if (_ability == null) return;
-        TagProcessing(_ability);
+        //TagProcessing(_ability);
         gameObject.tag = GetMytag(_ability);
         InvokeRepeating(nameof(nearFindObject), 0, 0.5f);
 
 
     }
 
-    private void TagProcessing(HeroAbility ability)// ÀûÅÂ±× ¾Ë¾Æ¾ßÇÔ °¨Áö¶§¹®
-    {
+    // SkillHandlerì—ì„œ tagì²˜ë¦¬ì¤‘
+    //private void TagProcessing(HeroAbility ability)// ì íƒœê·¸ ì•Œì•„ì•¼í•¨ ê°ì§€ë•Œë¬¸
+    //{
 
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-        }
-    }
+    //    if (ability.CompareTag("Blue"))
+    //    {
+    //        enemyTag = "Red";
+    //    }
+    //    else if (ability.CompareTag("Red"))
+    //    {
+    //        enemyTag = "Blue";
+    //    }
+    //}
 
     void FixedUpdate()
     {
@@ -72,12 +74,12 @@ public class SpecialMinionSkill : SkillHandler
         }
     }
 
-    public override void SkillHoldingTime(float time) // Áö¼Ó½Ã°£
+    public override void SkillHoldingTime(float time) // ì§€ì†ì‹œê°„
     {
 
     }
 
-    public override void SkillUpdatePosition() // ÀÌ°Å ÇÊ¿äÇÔ È£È£ Æ®·£½ºÆûºä ¾È³Ö¾î¼­ ÀÛµ¿¾È‰çÀ½
+    public override void SkillUpdatePosition() // ì´ê±° í•„ìš”í•¨ í˜¸í˜¸ íŠ¸ëžœìŠ¤í¼ë·° ì•ˆë„£ì–´ì„œ ìž‘ë™ì•ˆÂ‰ç‘›
     {
         this.gameObject.transform.position = _ability.gameObject.transform.position;
         gameObject.transform.Rotate(Vector3.up * Time.deltaTime * speed);
@@ -111,7 +113,7 @@ public class SpecialMinionSkill : SkillHandler
 
 
                 if (col.gameObject.CompareTag(enemyTag))
-                { // ½ºÅ³ -> ºó¿ÀºêÁ§Æ® -> 
+                { // ìŠ¤í‚¬ -> ë¹ˆì˜¤ë¸Œì íŠ¸ -> 
                     if (transform.GetChild(0) != null)
                     {
                         gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpecialAttack>().target = col.transform;

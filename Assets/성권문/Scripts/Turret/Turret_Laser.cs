@@ -5,14 +5,14 @@ using Photon.Pun;
 
 public class Turret_Laser : Turret
 {
-    [Header("레이저 타워 속성")]
-
     [HideInInspector]
     public float damageOverTime;
     public LineRenderer lineRenderer;
     public ParticleSystem impactEffect;
-    public GameObject smokeParticles;
 
+    public List<Material> ElectricMaterials;
+
+    public GameObject smokeParticles;
     private void Start()
     {
         damageOverTime = towerData.Attack;
@@ -25,16 +25,12 @@ public class Turret_Laser : Turret
             return;
         }
 
-        if (smokeParticles == null)
-        {
-            return;
-        }
-
         // 스모크 효과 생성
         GameObject particle = PhotonNetwork.Instantiate(smokeParticles.name, firePoint.position, Quaternion.identity);
         particle.transform.Rotate(new Vector3(0, -90f, 0));
     }
 
+    float elapsedTime = 0f;
     private void FixedUpdate()
     {
         // 적이 범위밖으로 사라져 target이 null이 되면 리턴한다.
@@ -42,6 +38,7 @@ public class Turret_Laser : Turret
         {
             if (lineRenderer.enabled)
             {
+                elapsedTime = 0f;
                 lineRenderer.enabled = false;
                 impactEffect.Stop();
             }
@@ -71,15 +68,30 @@ public class Turret_Laser : Turret
         Vector3 dir = firePoint.position - target.position;
         impactEffect.transform.position = target.position + dir.normalized;
         impactEffect.transform.rotation = Quaternion.LookRotation(dir);
-        impactEffect.Play();
     }
 
+    int i = 0;
     void DrawerLineRenderer()
     {
+        elapsedTime += Time.deltaTime;
+        List<Material> myMaterial = ElectricMaterials;
+
         if (!lineRenderer.enabled)
         {
             lineRenderer.enabled = true;
             impactEffect.Play();
+        }
+
+        // 번개효과
+        if (elapsedTime >= 0.02f)
+        {
+            lineRenderer.material = myMaterial[i];
+            i++;
+            if (i >= 4)
+            {
+                i = 0;
+            }
+            elapsedTime = 0f;
         }
 
         // 처음 발사 위치

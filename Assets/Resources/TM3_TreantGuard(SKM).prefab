@@ -61,6 +61,7 @@ MonoBehaviour:
   ui: {fileID: 4734952393571714768}
   attack: 0
   attackSpeed: 0
+  fowardBody: {fileID: 5868930841028875135}
   partToRotate: {fileID: 1132625977036601116}
   firePoint: {fileID: 1132625977036601116}
   DangerZonePF: {fileID: 0}
@@ -177,6 +178,8 @@ GameObject:
   - component: {fileID: 5865927970992791861}
   - component: {fileID: 5837528960682691181}
   - component: {fileID: 5846344675834617179}
+  - component: {fileID: 9141928148936142738}
+  - component: {fileID: 3457659123367597476}
   m_Layer: 0
   m_Name: EL_Portal
   m_TagString: Untagged
@@ -191,7 +194,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5868930841028875135}
-  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 0
@@ -199,7 +202,7 @@ Transform:
   - {fileID: 1132625977036601116}
   m_Father: {fileID: 4494158194158773545}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5837528960682691181
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -250,6 +253,45 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &9141928148936142738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868930841028875135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 3457659123367597476}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &3457659123367597476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5868930841028875135}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &1925007901696358125
 PrefabInstance:
   m_ObjectHideFlags: 0

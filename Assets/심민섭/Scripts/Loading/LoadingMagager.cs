@@ -9,6 +9,12 @@ using UnityEngine.SceneManagement;
 // 1. 로딩 0% ~ 100% - 어떤 기준으로 할 지는 정해야한다.
 // 2. 100%가 되면 Prototype_1 씬으로 모두 넘긴다.
 
+public enum LoadingCharactorType
+{
+    Warrior = 0,
+    Wizard = 1,
+}
+
 public class LoadingMagager : MonoBehaviourPunCallbacks
 {
     // ###############################################
@@ -16,15 +22,14 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
 
-    private void Awake()
-    {
-        PhotonNetwork.AutomaticallySyncScene = true;
-        loadingText.text = 0.ToString();
-    }
 
     // isMain 테스트
     // Player 생성 프리펩
     public GameObject playerPrefab;
+    // 작은 초상화
+    public GameObject playerSmallPrefab;
+    // VS 이미지
+    public GameObject VSImage;
 
     // 로딩 상황을 보여줄 텍스트
     [SerializeField]
@@ -39,11 +44,30 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
     // 기달리 시간
     private float waitTime = 30f;
 
+    public static LoadingMagager Instance;
+
+
+    private void Awake()
+    {
+        Instance = this;
+        PhotonNetwork.AutomaticallySyncScene = true;
+        loadingText.text = 0.ToString();
+    }
+
+
+    public List<Sprite> heroImages = new List<Sprite>();
+    public List<Transform> loadingCharactorPos = new List<Transform>();
+    public List<Sprite> heroImages_small = new List<Sprite>();
+    public List<Transform> loadingCharactorSmallPos = new List<Transform>();
+    public Transform VSPos;
+
     private void Start()
     {
         PhotonNetwork.Instantiate(playerPrefab.name, Vector3.zero, Quaternion.identity);
-    }
+        PhotonNetwork.Instantiate(playerSmallPrefab.name, Vector3.zero, Quaternion.identity);
 
+        PhotonNetwork.Instantiate(VSImage.name, VSPos.position, Quaternion.identity);
+    }
     // 우선 임시로 시간에 맞는 로딩 게이지를 올려준다.
     private void Update()
     {

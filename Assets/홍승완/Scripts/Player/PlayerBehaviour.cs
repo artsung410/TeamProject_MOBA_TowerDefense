@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.AI;
 using Photon.Pun;
 
@@ -59,7 +60,8 @@ public class PlayerBehaviour : MonoBehaviourPun
     public Vector2 hotSpot = Vector2.zero;
 
     public Canvas moveMouseCanvas;
-    public GameObject moveMouseObj;
+    public GameObject moveMouseObj1;
+    public GameObject moveMouseObj2;
     public MousePointer moveMousePointer;
     // SMS End --------------------------------------------//
 
@@ -248,8 +250,11 @@ public class PlayerBehaviour : MonoBehaviourPun
                 GetTargetedObject();
 
                 // SMS Start --------------------------------------//
+                if (isAKey == false)
+                    moveMouseObj2.gameObject.SetActive(false);
+
                 moveMouseCanvas.transform.position = Hit.point;
-                moveMouseObj.gameObject.SetActive(true);
+                moveMouseObj1.gameObject.SetActive(true);
                 StartCoroutine(moveMousePointer.MoveMouseCursorPoint());
                 // SMS End --------------------------------------//
             }
@@ -346,7 +351,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
-
+    bool isAKey = false;
     bool inputA = false;
     private void AutoTargetInput()
     {
@@ -356,6 +361,8 @@ public class PlayerBehaviour : MonoBehaviourPun
             // SMS Start ------------------------------------------------//
             // 커서를 공격 커서로 바꾼다.
             ChangeMouseAMode();
+            // A를 눌렀음
+            isAKey = true;
             // SMS End ---------------------------------------------------//
         }
 
@@ -364,14 +371,24 @@ public class PlayerBehaviour : MonoBehaviourPun
             // SMS Start ------------------------------------------------//
             // 커서를 일반 커서로 바꾼다.
             Cursor.SetCursor(cursorMoveNamal, hotSpot, cursorMode);
-            // SMS End ---------------------------------------------------//
-
+            // A키가 눌리고 왼쪽 클릭이 되었다면 실행
+            
             inputA = false;
             // 누른 위치로 이동한다
             if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out Hit, Mathf.Infinity))
             {
                 MoveOntheGround(Hit);
+
+                if (isAKey)
+                {
+                    moveMouseObj1.gameObject.SetActive(false);
+                    moveMouseCanvas.transform.position = Hit.point;
+                    moveMouseObj2.gameObject.SetActive(true);
+                    StartCoroutine(moveMousePointer.MoveMouseCursorPoint());
+                    isAKey = false;
+                }
             }
+            // SMS End ---------------------------------------------------//
 
             InvokeRepeating(nameof(AutoSearchTarget), 0, 0.5f);
         }

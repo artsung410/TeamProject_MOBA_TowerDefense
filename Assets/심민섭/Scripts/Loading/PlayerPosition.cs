@@ -1,4 +1,4 @@
-using System.Collections;
+/*using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,52 +8,44 @@ using Photon.Pun;
 public class PlayerPosition : MonoBehaviourPun
 {
     // 테스트 텍스트
-    [SerializeField]
-    public Text playerText;
+    *//*[SerializeField]
+    public Text playerText;*//*
 
     void Start()
     {
-        if (PhotonNetwork.IsMasterClient)
+
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // 마스터
         {
-            /*transform.position = new Vector2(0f, -2.4f);
-            playerText.text = 11.ToString();*/
+            photonView.RPC("PlayerLoadingImagePositionFromTotal", RpcTarget.All);
+        }
+        else // 2 일때 클라
+        {
+            photonView.RPC("PlayerLoadingImagePositionFromTotal", RpcTarget.All);
+        }
+
+        *//*if (PhotonNetwork.IsMasterClient)
+        {
             photonView.RPC("PlayerLoadingImagePositionFromTotal", RpcTarget.Others);
         }
         else
         {
-            /*transform.position = new Vector2(0f, 4f);
-            playerText.text = 22.ToString();*/
             photonView.RPC("PlayerLoadingImagePositionFromTotal", RpcTarget.MasterClient);
-        }
+        }*//*
     }
 
     [PunRPC]
     private void PlayerLoadingImagePositionFromTotal()
     {
-        if (photonView.IsMine)
+        if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // 마스터
         {
-            transform.position = new Vector2(956.9f, 221.83f);
-            playerText.text = 11.ToString();
+            transform.position = new Vector2(725f, 570f);
+            //playerText.text = 11.ToString();
         }
-        else
+        else // 2 일때 클라
         {
-            transform.position = new Vector2(956.9f, 850.27f);
-            playerText.text = 22.ToString();
+            transform.position = new Vector2(1200f, 570f);
+            //playerText.text = 22.ToString();
         }
     }
-/*[PunRPC]
-    private void PlayerLoadingImagePositionFromMaster()
-    {
-        transform.position = new Vector2(0f, 4f);
-        playerText.text = 22.ToString();
-    }
-
-    [PunRPC]
-    private void PlayerLoadingImagePositionFromClient()
-    {
-        transform.position = new Vector2(0f, -2.4f);
-        playerText.text = 11.ToString();
-    }*/
-    
-
 }
+*/

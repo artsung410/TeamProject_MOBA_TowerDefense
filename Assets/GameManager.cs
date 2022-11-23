@@ -1,5 +1,5 @@
-//#define 캐릭터선택_VER_1
-#define 캐릭터선택_DEFAULT
+#define 캐릭터선택_VER_1
+//#define 캐릭터선택_DEFAULT
 
 using Photon.Pun;
 using UnityEngine;
@@ -170,6 +170,13 @@ public class GameManager : MonoBehaviourPunCallbacks
             GameObject tower = myData.cardPrefab[0];
             int slotIndex = myData.cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
+            GameObject body = newTower.GetComponent<Turret>().fowardBody;
+
+            if (body != null)
+            {
+                body.transform.rotation = tiles[slotIndex].rotation;
+            }
+
             CheckandApplyBuffs(newTower);
 
         }
@@ -178,6 +185,13 @@ public class GameManager : MonoBehaviourPunCallbacks
             GameObject tower = myData.cardPrefab[0];
             int slotIndex = myData.cardIndex[0] - 4;
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
+            GameObject body = newTower.GetComponent<Turret>().fowardBody;
+
+            if (body != null)
+            {
+                body.transform.rotation = tiles[slotIndex + 4].rotation;
+            }
+
             CheckandApplyBuffs(newTower);
         }
     }
@@ -203,6 +217,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 GameObject tower = myData.cardPrefab[idx];
                 int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
+                GameObject body = newTower.GetComponent<Turret>().fowardBody;
+
+                if (body != null)
+                {
+                    body.transform.rotation = tiles[slotIndex].rotation;
+                }
+
                 CheckandApplyBuffs(newTower);
             }
             else
@@ -210,6 +231,13 @@ public class GameManager : MonoBehaviourPunCallbacks
                 GameObject tower = myData.cardPrefab[idx];
                 int slotIndex = myData.cardIndex[idx] - 4;
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
+                GameObject body = newTower.GetComponent<Turret>().fowardBody;
+
+                if (body != null)
+                {
+                    body.transform.rotation = tiles[slotIndex + 4].rotation;
+                }
+
                 CheckandApplyBuffs(newTower);
             }
             idx++;

@@ -40,21 +40,20 @@ public class Turret_Arrow : Turret
 
     protected override void Shoot()
     {
-        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
-
         if (!photonView.IsMine)
         {
-            Collider bulletCol = bulletGO.GetComponent<Collider>();
-            bulletCol.enabled = false;
+            return;
         }
 
-        Arrow arrow = bulletGO.GetComponent<Arrow>();
+        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
 
-        if (arrow != null)
+        Projectiles projectile = bulletGO.GetComponent<Projectiles>();
+
+        if (projectile != null)
         {
-            arrow.speed = towerData.Projectiles_MoveSpeed;
-            arrow.enemyTag = enemyTag;
-            arrow.Seek(attack, target);
+            projectile.speed = towerData.Projectiles_MoveSpeed;
+            projectile.enemyTag = enemyTag;
+            projectile.Seek(attack, target);
         }
     }
 }

@@ -3,6 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+public enum SkillRank
+{
+    // 파싱 데이터에서 Rank부분 찾을 키
+    Rank1 = 1,
+    Rank2,
+    Rank3,
+}
+
+
 public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 {
     // ###############################################
@@ -126,7 +135,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
     public void CrowdControlStun(GameObject target, float time, bool stun)
     {
-        if (target.gameObject.layer == 7)
+        if (target.gameObject.layer == 7 && target.tag == enemyTag)
         {
             PlayerBehaviour player = target.GetComponent<PlayerBehaviour>();
 
@@ -148,6 +157,5 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
     public abstract void SkillUpdatePosition();
 
-    // TODO : 검기 위치 재조정
 
 }

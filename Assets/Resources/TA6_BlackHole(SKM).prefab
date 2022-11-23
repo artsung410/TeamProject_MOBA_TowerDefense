@@ -62,6 +62,7 @@ MonoBehaviour:
   ui: {fileID: 2389134872911816350}
   attack: 0
   attackSpeed: 0
+  fowardBody: {fileID: 8598630876373100636}
   partToRotate: {fileID: 8600804408805437316}
   firePoint: {fileID: 8600804408805437316}
   DangerZonePF: {fileID: 0}
@@ -243,6 +244,8 @@ GameObject:
   - component: {fileID: 8601075045554511366}
   - component: {fileID: 8585335056380306770}
   - component: {fileID: 8576794323952681258}
+  - component: {fileID: 8621809411551784918}
+  - component: {fileID: 8678292951479302137}
   m_Layer: 0
   m_Name: BlackHall_Tower Variant
   m_TagString: Untagged
@@ -316,6 +319,45 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &8621809411551784918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598630876373100636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 8678292951479302137}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &8678292951479302137
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8598630876373100636}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1 &8599594227745205586
 GameObject:
   m_ObjectHideFlags: 0

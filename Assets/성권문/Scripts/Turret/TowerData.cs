@@ -34,6 +34,10 @@ public class TowerData : ScriptableObject
         Splash
     }
 
+    //[SerializeField]
+    //private int Tower_Grade;
+    //public int Group_ID { get { return _group_id; } }
+
     [SerializeField]
     private int _group_id;
     public int Group_ID { get { return _group_id; } }

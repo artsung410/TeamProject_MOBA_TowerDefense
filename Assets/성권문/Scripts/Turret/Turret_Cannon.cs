@@ -40,13 +40,12 @@ public class Turret_Cannon : Turret
 
     protected override void Shoot()
     {
-        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
-
         if (!photonView.IsMine)
         {
-            Collider bulletCol = bulletGO.GetComponent<Collider>();
-            bulletCol.enabled = false;
+            return;
         }
+
+        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
 
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
@@ -71,18 +70,23 @@ public class Turret_Cannon : Turret
 
     void makeDangerZone()
     {
-        NewDangerZone = Instantiate(DangerZonePF, firePoint.position, firePoint.rotation);
-        NewDangerZone.transform.position = new Vector3(target.position.x, 0.5f, target.position.z);
-        shotTransform = NewDangerZone.transform;
+        if(photonView.IsMine)
+        {
+            NewDangerZone = PhotonNetwork.Instantiate(DangerZonePF.name, new Vector3(target.position.x, 0.5f, target.position.z), Quaternion.identity);
+            shotTransform = NewDangerZone.transform;
+        }
     }
 
     // dangerZone기준으로 설정
     void LockOnTarget_dangerZone()
     {
-        Vector3 dir = shotTransform.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        if (photonView.IsMine)
+        {
+            Vector3 dir = shotTransform.position - transform.position;
+            Quaternion lookRotation = Quaternion.LookRotation(dir);
+            Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
+            partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
     }
 
     // 범위 그리기

@@ -5,7 +5,7 @@ using UnityEngine;
 public class RandomSelect : MonoBehaviour
 {
     //public List<Card> deck = new List<Card>();  // 카드 덱
-    public int total;  // 카드들의 가중치 총 합
+    public float total;  // 카드들의 가중치 총 합
 
     //[SerializeField]
     //private ItemDataBaseList SkillDatabase;
@@ -112,7 +112,7 @@ public class RandomSelect : MonoBehaviour
     // 가중치 랜덤의 설명은 영상을 참고.
     public int SkillRandomCard()
     {
-        int weight = 0;
+        float weight = 0;
         int selectNum = 0;
 
         selectNum = Mathf.RoundToInt(total * Random.Range(0.0f, 1.0f));

@@ -60,6 +60,7 @@ public class Turret_Minion : Turret
 
         StraightAttack straight = projectiles.GetComponent<StraightAttack>();
         straight.enemyTag = enemyTag;
+        straight.damage = towerData.Attack;
 
         if (!photonView.IsMine)
         {
