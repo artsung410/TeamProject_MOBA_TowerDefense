@@ -182,10 +182,9 @@ public class Turret : MonoBehaviourPun
         //{
         //    minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
         //}
-        =======
         //if (towerData.ObjectBluePF != null && towerData.ObjectRedPF != null)
         //{
-            minionTowerEvent.Invoke(towerData.ObjectBluePF,towerData.ObjectRedPF ,gameObject.tag);
+        //    minionTowerEvent.Invoke(towerData.ObjectBluePF,towerData.ObjectRedPF ,gameObject.tag);
         //}
         
         if (photonView.IsMine)
