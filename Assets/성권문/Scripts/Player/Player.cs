@@ -65,16 +65,15 @@ public class Player : MonoBehaviourPun
 
         Debug.Log(gameObject.tag + "내꺼 멎움");
         
-        // 스킬용 id : 9 ~
-        if (id >= 9)
-        {
-            ApplyDebuff(id, addValue, state);
-        }
+        //// 스킬용 id : 9 ~
+        //if (id >= 9)
+        //{
+        //    ApplyDebuff(id, addValue, state);
+        //}
         // 타워용 id : 1 ~ 8
-        else
-        {
-            StartCoroutine(delayApplyBuff(id, addValue, state));
-        }
+
+        StartCoroutine(delayApplyBuff(id, addValue, state));
+
     }
 
     // 플레이어 스탯 초기화가 이루어진 뒤에 디버프적용
@@ -97,13 +96,8 @@ public class Player : MonoBehaviourPun
 [PunRPC]
     public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
-        Debug.Log($"들어온 값들\n" +
-            $" id : {id}\n" +
-            $"addValue : {addValue}\n" +
-            $"state : {state}");
-
         // 플레이어 버프 적용
-        if (id == (int)Buff_Effect.AtkUP || id == (int)Buff_Effect.AtkDown)
+        if (id == (int)Buff_Group.Attack_Increase || id == (int)Buff_Group.Attack_Decrese)
         {
             if (state)
             {
@@ -115,7 +109,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Effect.HpRegenUp || id == (int)Buff_Effect.HpRegenDown)
+        else if (id == (int)Buff_Group.HP_Regen_Increase || id == (int)Buff_Group.HP_Regen_Decrease)
         {
             if (state)
             {
@@ -127,7 +121,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Effect.MoveSpeedUp || id == (int)Buff_Effect.MoveSpeedDown || id == (int)Buff_Effect.SlowOfSkill)
+        else if (id == (int)Buff_Group.Move_Speed_Increase || id == (int)Buff_Group.Move_Speed_Decrese)
         {
             if (state)
             {
@@ -141,7 +135,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Effect.AtkSpeedUp || id == (int)Buff_Effect.AtkSpeedDown)
+        else if (id == (int)Buff_Group.Attack_Speed_Increase || id == (int)Buff_Group.Attack_Speed_Decrese)
         {
             if (state)
             {

@@ -35,7 +35,7 @@ public class Projectiles : MonoBehaviourPun, ISeek
 
     protected void Damage(Transform enemy)
     {
-        // 플레이어 데미지 적용
+         // 플레이어 데미지 적용
         if (enemy.gameObject.layer == 7)
         {
             Debug.Log("Player 데미지 적용");

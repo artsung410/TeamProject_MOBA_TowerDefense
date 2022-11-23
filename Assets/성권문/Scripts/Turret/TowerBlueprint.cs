@@ -46,12 +46,16 @@ public class TowerBlueprint
     public float Projectile_Speed;                           // 투사체 속도
     public GameObject Projectile_Pf;
 
-    [Header("[부가옵션]")]
-    public string Destroy_Effect_Pf_Name;                    // 타워 파괴 이펙트
+    [Header("[부가 옵션]")]
+    public GameObject Destroy_Effect_Pf;                     // 타워 파괴 이펙트
     public string Desc;                                      // 타워 설명
-    public Sprite Sprite_TowerCard;                     // 타워카드 이미지
-    public Sprite Sprite_TowerProtrait;                 // 타워상태 이미지
+    public Sprite Sprite_TowerCard;                          // 타워카드 이미지
+    public Sprite Sprite_TowerProtrait;                      // 타워상태 이미지
     public string AudioClip_Attack_Name;                     // 공격 사운드 이름
     public string AudioClip_Hit_Name;                        // 피격 사운드 이름
     public string AudioClip_Normal_Name;                     // 공격 사운드 이름
+
+    [Header("[버프타워만]")]
+    public int buffID;                                       // 버프 타워만 해당.
+
 }

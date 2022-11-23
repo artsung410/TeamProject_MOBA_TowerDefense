@@ -15,18 +15,6 @@ using Photon.Pun;
 //             MAIL : gkenfktm@gmail.com         
 // ###############################################
 
-public enum Buff_Effect
-{
-    AtkUP = 1,
-    HpRegenUp,
-    MoveSpeedUp,
-    AtkSpeedUp,
-    AtkDown,
-    HpRegenDown,
-    MoveSpeedDown,
-    AtkSpeedDown,
-    SlowOfSkill,
-}
 
 
 public class BuffManager : MonoBehaviourPun
@@ -34,104 +22,47 @@ public class BuffManager : MonoBehaviourPun
     public static event Action<int, float, bool> towerBuffAdditionEvent = delegate { };
     public static event Action<int, float, bool> playerBuffAdditionEvent = delegate { };
     public static event Action<int, float, bool> minionBuffAdditionEvent = delegate { };
-    public List<BuffData> all_DeBuffDatass = new List<BuffData>();
-    public List<BuffData> currentBuffDatas = new List<BuffData>(); // 각 월드에서 생성된 모든 버프들
-    public static BuffManager Instance;
-    public Dictionary<BuffData, float> buffDic = new Dictionary<BuffData, float>();
 
+    public BuffDatabaseList buffDB;
+
+    [HideInInspector]
+    public List<BuffBlueprint> currentBuffDatas = new List<BuffBlueprint>();           
+    // 각 월드에서 생성된 모든 버프들
+    public static BuffManager Instance;
+    public Dictionary<BuffBlueprint, float> buffDic = new Dictionary<BuffBlueprint, float>();             // 버프 쿨타임 담을 딕셔너리(버프 정렬시도 유지하도록)
+
+    // 모든 버프데이터를 담을 딕셔너리
+    public Dictionary<int, BuffBlueprint> buffDB_Dic = new Dictionary<int, BuffBlueprint>();
 
     private void Awake()
     {
         Instance = this;
     }
 
-    //void Start()
-    //{
-    //    if(PhotonNetwork.LocalPlayer.ActorNumber == 1)
-    //    {
-    //        initBuff();
-    //        Debug.Log("플레이어1 initBuff");
-    //    }
-    //    else
-    //    {
-    //        StartCoroutine(delayClientInitBuff());
-    //        Debug.Log("플레이어2 initBuff");
-    //    }
-    //}
+    private void Start()
+    {
+        int buffCount = buffDB.itemList.Count;
 
-    //float delayTime = 0.5f;
-    //IEnumerator delayClientInitBuff()
-    //{
-    //    yield return new WaitForSeconds(delayTime);
-    //    initBuff();
-    //}
+        for (int i = 0; i < buffCount; i++)
+        {
+            Debug.Log(i);
+            buffDB_Dic.Add(buffDB.itemList[i].ID, buffDB.itemList[i]);
+        }
 
-    //public void initBuff()
-    //{
-    //    TrojanHorse data = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
-
-    //    int count = data.cardId.Count;
-
-    //    if (count == 0)
-    //    {
-    //        return;
-    //    }
-
-    //    for (int item = 0; item < count; item++)
-    //    {
-    //        TowerData Towerdata = (TowerData)data.ingameDatas[item];
-
-    //        if (Towerdata.TowerType == Tower_Type.Buff_Tower)
-    //        {
-    //            TowerData tower = (TowerData)data.ingameDatas[item];
-
-    //            int buffCount = tower.Scriptables.Count;
-
-    //            if (buffCount == 0)
-    //            {
-    //                return;
-    //            }
-
-    //            for (int i = 0; i < buffCount; i++)
-    //            {
-    //                BuffData buff = (BuffData)tower.Scriptables[i];
-    //                AddBuff(buff);
-    //                AssemblyBuff();
-    //            }
-    //        }
-
-    //        if (Towerdata.TowerType == Tower_Type.DeBuff_Tower)
-    //        {
-    //            TowerData tower = (TowerData)data.ingameDatas[item];
-
-    //            int buffCount = tower.Scriptables.Count;
-
-    //            if (buffCount == 0)
-    //            {
-    //                return;
-    //            }
-
-    //            for (int i = 0; i < buffCount; i++)
-    //            {
-    //                BuffData buff = (BuffData)tower.Scriptables[i];
-    //                AddDebuff();
-    //            }
-    //        }
-    //    }
-    //}
+        Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
+    }
 
     // 버프 시작
-    public void AddBuff(BuffData buff)
+    public void AddBuff(BuffBlueprint buff)
     {
-        if (buff.EffectType == Effect_Type.Buff)
+        if (buff.Type == (int)Buff_Effect_Type.Buff)
         {
             currentBuffDatas.Add(buff);
-            playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
+            playerBuffAdditionEvent.Invoke(buff.GroupID, buff.Value, true);
         }
         else
         {
-            Debug.Log("김재민");
-            photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.Group_ID);
+            photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.ID);
         }
 
         AssemblyBuff();
@@ -142,16 +73,16 @@ public class BuffManager : MonoBehaviourPun
     private void RPC_AddDeBuff(int id)
     {
         Debug.Log("1to2 RPC^^^^^^");
-        currentBuffDatas.Add(all_DeBuffDatass[id - 5]);
-        playerBuffAdditionEvent.Invoke(id, all_DeBuffDatass[id - 5].EffectValue, true);
+        currentBuffDatas.Add(buffDB_Dic[id]);
+        playerBuffAdditionEvent.Invoke(buffDB_Dic[id].GroupID, buffDB_Dic[id].Value, true);
         AssemblyBuff();
     }
 
     // 버프 종료
-    public void removeBuff(BuffData buff)
+    public void removeBuff(BuffBlueprint buff)
     {
         currentBuffDatas.Remove(buff);
-        playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, false);
+        playerBuffAdditionEvent.Invoke(buff.GroupID, buff.Value, false);
     }
 
     public void removeBuff_All()
@@ -187,8 +118,8 @@ public class BuffManager : MonoBehaviourPun
                 }
             }
 
-            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].EffectDuration; // 슬롯마다 버프쿨타임 세팅
-            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].BuffIcon; // 슬롯 버프이미지 적용
+            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].Duration; // 슬롯마다 버프쿨타임 세팅
+            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].Icon; // 슬롯 버프이미지 적용
             Color color = transform.GetChild(i).GetComponent<Image>().color; 
             color.a = 1f;
             gameObject.transform.GetChild(i).GetComponent<Image>().color = color; // 슬롯 버프이미지 투명도 1로 적용

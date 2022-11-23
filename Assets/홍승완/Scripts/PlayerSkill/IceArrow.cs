@@ -117,7 +117,7 @@ public class IceArrow : SkillHandler
         {
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
-                BuffManager.Instance.AddBuff(deBuff);
+                //BuffManager.Instance.AddBuff(deBuff);
                 SkillDamage(damage, other.gameObject);
                 _ability.OnLock(false);
                 PhotonNetwork.Destroy(gameObject);

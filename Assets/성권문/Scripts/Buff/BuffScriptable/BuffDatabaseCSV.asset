@@ -1,0 +1,600 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29d057c900e725e4aa15b7c2739fb2c0, type: 3}
+  m_Name: BuffDatabaseCSV
+  m_EditorClassIdentifier: 
+  itemList:
+  - ID: 15001
+    Name: Attack_Increase
+    Icon: {fileID: 21300000, guid: 5d62009baf2e7074fbaff7c3aefe964c, type: 3}
+    GroupID: 1
+    Rank: 1
+    Type: 2
+    Target: 1
+    Value: 1.2
+    Duration: 0
+  - ID: 15002
+    Name: 'Attack_Increase '
+    Icon: {fileID: 0}
+    GroupID: 1
+    Rank: 2
+    Type: 2
+    Target: 1
+    Value: 1.4
+    Duration: 0
+  - ID: 15003
+    Name: Attack_Increase
+    Icon: {fileID: 21300000, guid: 5d62009baf2e7074fbaff7c3aefe964c, type: 3}
+    GroupID: 1
+    Rank: 3
+    Type: 2
+    Target: 1
+    Value: 1.6
+    Duration: 0
+  - ID: 15004
+    Name: Attack_Increase
+    Icon: {fileID: 21300000, guid: 5d62009baf2e7074fbaff7c3aefe964c, type: 3}
+    GroupID: 1
+    Rank: 4
+    Type: 2
+    Target: 1
+    Value: 1.8
+    Duration: 0
+  - ID: 15005
+    Name: Attack_Increase
+    Icon: {fileID: 21300000, guid: 5d62009baf2e7074fbaff7c3aefe964c, type: 3}
+    GroupID: 1
+    Rank: 5
+    Type: 2
+    Target: 1
+    Value: 2
+    Duration: 0
+  - ID: 15006
+    Name: HP_Regen_Increase
+    Icon: {fileID: 21300000, guid: efb8d9f7475f41042b80fdace5cf4e38, type: 3}
+    GroupID: 2
+    Rank: 1
+    Type: 2
+    Target: 1
+    Value: 0.47
+    Duration: 0
+  - ID: 15007
+    Name: HP_Regen_Increase
+    Icon: {fileID: 21300000, guid: efb8d9f7475f41042b80fdace5cf4e38, type: 3}
+    GroupID: 2
+    Rank: 2
+    Type: 2
+    Target: 1
+    Value: 0.67
+    Duration: 0
+  - ID: 15008
+    Name: HP_Regen_Increase
+    Icon: {fileID: 21300000, guid: efb8d9f7475f41042b80fdace5cf4e38, type: 3}
+    GroupID: 2
+    Rank: 3
+    Type: 2
+    Target: 1
+    Value: 0.87
+    Duration: 0
+  - ID: 15009
+    Name: HP_Regen_Increase
+    Icon: {fileID: 21300000, guid: efb8d9f7475f41042b80fdace5cf4e38, type: 3}
+    GroupID: 2
+    Rank: 4
+    Type: 2
+    Target: 1
+    Value: 0.97
+    Duration: 0
+  - ID: 15010
+    Name: HP_Regen_Increase
+    Icon: {fileID: 21300000, guid: efb8d9f7475f41042b80fdace5cf4e38, type: 3}
+    GroupID: 2
+    Rank: 5
+    Type: 2
+    Target: 1
+    Value: 1.17
+    Duration: 0
+  - ID: 15011
+    Name: Move_Speed_Increase
+    Icon: {fileID: 21300000, guid: 8980ba0487ddc614d801525095d78cc1, type: 3}
+    GroupID: 3
+    Rank: 1
+    Type: 2
+    Target: 1
+    Value: 0.5
+    Duration: 0
+  - ID: 15012
+    Name: Move_Speed_Increase
+    Icon: {fileID: 21300000, guid: 8980ba0487ddc614d801525095d78cc1, type: 3}
+    GroupID: 3
+    Rank: 2
+    Type: 2
+    Target: 1
+    Value: 0.7
+    Duration: 0
+  - ID: 15013
+    Name: Move_Speed_Increase
+    Icon: {fileID: 21300000, guid: 8980ba0487ddc614d801525095d78cc1, type: 3}
+    GroupID: 3
+    Rank: 3
+    Type: 2
+    Target: 1
+    Value: 0.9
+    Duration: 0
+  - ID: 15014
+    Name: Move_Speed_Increase
+    Icon: {fileID: 21300000, guid: 8980ba0487ddc614d801525095d78cc1, type: 3}
+    GroupID: 3
+    Rank: 4
+    Type: 2
+    Target: 1
+    Value: 1.1
+    Duration: 0
+  - ID: 15015
+    Name: Move_Speed_Increase
+    Icon: {fileID: 21300000, guid: 8980ba0487ddc614d801525095d78cc1, type: 3}
+    GroupID: 3
+    Rank: 5
+    Type: 2
+    Target: 1
+    Value: 1.2
+    Duration: 0
+  - ID: 15016
+    Name: Attack_Speed_Increase
+    Icon: {fileID: 21300000, guid: b947326350fb0e8479cd0657aac5ff2d, type: 3}
+    GroupID: 4
+    Rank: 1
+    Type: 2
+    Target: 1
+    Value: 0.1
+    Duration: 0
+  - ID: 15017
+    Name: Attack_Speed_Increase
+    Icon: {fileID: 21300000, guid: b947326350fb0e8479cd0657aac5ff2d, type: 3}
+    GroupID: 4
+    Rank: 2
+    Type: 2
+    Target: 1
+    Value: 0.2
+    Duration: 0
+  - ID: 15018
+    Name: Attack_Speed_Increase
+    Icon: {fileID: 21300000, guid: b947326350fb0e8479cd0657aac5ff2d, type: 3}
+    GroupID: 4
+    Rank: 3
+    Type: 2
+    Target: 1
+    Value: 0.3
+    Duration: 0
+  - ID: 15019
+    Name: Attack_Speed_Increase
+    Icon: {fileID: 21300000, guid: b947326350fb0e8479cd0657aac5ff2d, type: 3}
+    GroupID: 4
+    Rank: 4
+    Type: 2
+    Target: 1
+    Value: 0.4
+    Duration: 0
+  - ID: 15020
+    Name: Attack_Speed_Increase
+    Icon: {fileID: 21300000, guid: b947326350fb0e8479cd0657aac5ff2d, type: 3}
+    GroupID: 4
+    Rank: 5
+    Type: 2
+    Target: 1
+    Value: 0.5
+    Duration: 0
+  - ID: 15021
+    Name: Attack_Decrese
+    Icon: {fileID: 21300000, guid: b46d9bb86d556f54ba9327573442db89, type: 3}
+    GroupID: 5
+    Rank: 1
+    Type: 3
+    Target: 2
+    Value: -0.2
+    Duration: 0
+  - ID: 15022
+    Name: Attack_Decrese
+    Icon: {fileID: 21300000, guid: b46d9bb86d556f54ba9327573442db89, type: 3}
+    GroupID: 5
+    Rank: 2
+    Type: 3
+    Target: 2
+    Value: -0.3
+    Duration: 0
+  - ID: 15023
+    Name: Attack_Decrese
+    Icon: {fileID: 21300000, guid: b46d9bb86d556f54ba9327573442db89, type: 3}
+    GroupID: 5
+    Rank: 3
+    Type: 3
+    Target: 2
+    Value: -0.4
+    Duration: 0
+  - ID: 15024
+    Name: Attack_Decrese
+    Icon: {fileID: 21300000, guid: b46d9bb86d556f54ba9327573442db89, type: 3}
+    GroupID: 5
+    Rank: 4
+    Type: 3
+    Target: 2
+    Value: -0.5
+    Duration: 0
+  - ID: 15025
+    Name: Attack_Decrese
+    Icon: {fileID: 21300000, guid: b46d9bb86d556f54ba9327573442db89, type: 3}
+    GroupID: 5
+    Rank: 5
+    Type: 3
+    Target: 2
+    Value: -0.6
+    Duration: 0
+  - ID: 15026
+    Name: HP_Regen_Decrease
+    Icon: {fileID: 21300000, guid: 5c81ba46598a2f54d90a8554e015eb16, type: 3}
+    GroupID: 6
+    Rank: 1
+    Type: 3
+    Target: 2
+    Value: -0.1
+    Duration: 0
+  - ID: 15027
+    Name: HP_Regen_Decrease
+    Icon: {fileID: 21300000, guid: 5c81ba46598a2f54d90a8554e015eb16, type: 3}
+    GroupID: 6
+    Rank: 2
+    Type: 3
+    Target: 2
+    Value: -0.2
+    Duration: 0
+  - ID: 15028
+    Name: HP_Regen_Decrease
+    Icon: {fileID: 21300000, guid: 5c81ba46598a2f54d90a8554e015eb16, type: 3}
+    GroupID: 6
+    Rank: 3
+    Type: 3
+    Target: 2
+    Value: -0.3
+    Duration: 0
+  - ID: 15029
+    Name: HP_Regen_Decrease
+    Icon: {fileID: 21300000, guid: 5c81ba46598a2f54d90a8554e015eb16, type: 3}
+    GroupID: 6
+    Rank: 4
+    Type: 3
+    Target: 2
+    Value: -0.4
+    Duration: 0
+  - ID: 15030
+    Name: HP_Regen_Decrease
+    Icon: {fileID: 21300000, guid: 5c81ba46598a2f54d90a8554e015eb16, type: 3}
+    GroupID: 6
+    Rank: 5
+    Type: 3
+    Target: 2
+    Value: -0.6
+    Duration: 0
+  - ID: 15031
+    Name: Move_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 3357e5483e6eb464ca633629386ca41f, type: 3}
+    GroupID: 7
+    Rank: 1
+    Type: 3
+    Target: 2
+    Value: -0.5
+    Duration: 0
+  - ID: 15032
+    Name: Move_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 3357e5483e6eb464ca633629386ca41f, type: 3}
+    GroupID: 7
+    Rank: 2
+    Type: 3
+    Target: 2
+    Value: -0.7
+    Duration: 0
+  - ID: 15033
+    Name: Move_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 3357e5483e6eb464ca633629386ca41f, type: 3}
+    GroupID: 7
+    Rank: 3
+    Type: 3
+    Target: 2
+    Value: -0.9
+    Duration: 0
+  - ID: 15034
+    Name: Move_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 3357e5483e6eb464ca633629386ca41f, type: 3}
+    GroupID: 7
+    Rank: 4
+    Type: 3
+    Target: 2
+    Value: -1
+    Duration: 0
+  - ID: 15035
+    Name: Move_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 3357e5483e6eb464ca633629386ca41f, type: 3}
+    GroupID: 7
+    Rank: 5
+    Type: 3
+    Target: 2
+    Value: -1.2
+    Duration: 0
+  - ID: 15036
+    Name: Attack_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 2d69995312e161d44937fa83633aa4d0, type: 3}
+    GroupID: 8
+    Rank: 1
+    Type: 3
+    Target: 2
+    Value: -0.3
+    Duration: 0
+  - ID: 15037
+    Name: Attack_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 2d69995312e161d44937fa83633aa4d0, type: 3}
+    GroupID: 8
+    Rank: 2
+    Type: 3
+    Target: 2
+    Value: -0.4
+    Duration: 0
+  - ID: 15038
+    Name: Attack_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 2d69995312e161d44937fa83633aa4d0, type: 3}
+    GroupID: 8
+    Rank: 3
+    Type: 3
+    Target: 2
+    Value: -0.6
+    Duration: 0
+  - ID: 15039
+    Name: Attack_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 2d69995312e161d44937fa83633aa4d0, type: 3}
+    GroupID: 8
+    Rank: 4
+    Type: 3
+    Target: 2
+    Value: -0.7
+    Duration: 0
+  - ID: 15040
+    Name: Attack_Speed_Decrese
+    Icon: {fileID: 21300000, guid: 2d69995312e161d44937fa83633aa4d0, type: 3}
+    GroupID: 8
+    Rank: 5
+    Type: 3
+    Target: 2
+    Value: -0.9
+    Duration: 0
+  - ID: 20001
+    Name: Stun
+    Icon: {fileID: 21300000, guid: ad084fccc42d5b642b63cd3b52510e4c, type: 3}
+    GroupID: 9
+    Rank: 1
+    Type: 1
+    Target: 2
+    Value: 0
+    Duration: 0.1
+  - ID: 20002
+    Name: Stun
+    Icon: {fileID: 21300000, guid: ad084fccc42d5b642b63cd3b52510e4c, type: 3}
+    GroupID: 9
+    Rank: 2
+    Type: 1
+    Target: 2
+    Value: 0
+    Duration: 0.2
+  - ID: 20003
+    Name: Stun
+    Icon: {fileID: 21300000, guid: ad084fccc42d5b642b63cd3b52510e4c, type: 3}
+    GroupID: 9
+    Rank: 3
+    Type: 1
+    Target: 2
+    Value: 0
+    Duration: 0.3
+  - ID: 20004
+    Name: Stun
+    Icon: {fileID: 21300000, guid: ad084fccc42d5b642b63cd3b52510e4c, type: 3}
+    GroupID: 9
+    Rank: 4
+    Type: 1
+    Target: 2
+    Value: 0
+    Duration: 0.4
+  - ID: 20005
+    Name: Stun
+    Icon: {fileID: 21300000, guid: ad084fccc42d5b642b63cd3b52510e4c, type: 3}
+    GroupID: 9
+    Rank: 5
+    Type: 1
+    Target: 2
+    Value: 0
+    Duration: 0.5
+  - ID: 20006
+    Name: Freezing
+    Icon: {fileID: 0}
+    GroupID: 10
+    Rank: 1
+    Type: 1
+    Target: 2
+    Value: -0.2
+    Duration: 0.3
+  - ID: 20007
+    Name: Freezing
+    Icon: {fileID: 0}
+    GroupID: 10
+    Rank: 2
+    Type: 1
+    Target: 2
+    Value: -0.3
+    Duration: 0.3
+  - ID: 20008
+    Name: Freezing
+    Icon: {fileID: 0}
+    GroupID: 10
+    Rank: 3
+    Type: 1
+    Target: 2
+    Value: -0.4
+    Duration: 0.4
+  - ID: 20009
+    Name: Freezing
+    Icon: {fileID: 0}
+    GroupID: 10
+    Rank: 4
+    Type: 1
+    Target: 2
+    Value: -0.5
+    Duration: 0.4
+  - ID: 20010
+    Name: Freezing
+    Icon: {fileID: 0}
+    GroupID: 10
+    Rank: 5
+    Type: 1
+    Target: 2
+    Value: -0.5
+    Duration: 0.6
+  - ID: 20011
+    Name: Burn
+    Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
+    GroupID: 11
+    Rank: 1
+    Type: 1
+    Target: 2
+    Value: 0.2
+    Duration: 3
+  - ID: 20012
+    Name: Burn
+    Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
+    GroupID: 11
+    Rank: 2
+    Type: 1
+    Target: 2
+    Value: 0.3
+    Duration: 4
+  - ID: 20013
+    Name: Burn
+    Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
+    GroupID: 11
+    Rank: 3
+    Type: 1
+    Target: 2
+    Value: 0.4
+    Duration: 5
+  - ID: 20014
+    Name: Burn
+    Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
+    GroupID: 11
+    Rank: 4
+    Type: 1
+    Target: 2
+    Value: 0.5
+    Duration: 6
+  - ID: 20015
+    Name: Burn
+    Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
+    GroupID: 11
+    Rank: 5
+    Type: 1
+    Target: 2
+    Value: 0.6
+    Duration: 7
+  - ID: 20016
+    Name: Neutralize
+    Icon: {fileID: 0}
+    GroupID: 12
+    Rank: 1
+    Type: 1
+    Target: 2
+    Value: 0.1
+    Duration: 2
+  - ID: 20017
+    Name: Neutralize
+    Icon: {fileID: 0}
+    GroupID: 12
+    Rank: 2
+    Type: 1
+    Target: 2
+    Value: 0.2
+    Duration: 3
+  - ID: 20018
+    Name: Neutralize
+    Icon: {fileID: 0}
+    GroupID: 12
+    Rank: 3
+    Type: 1
+    Target: 2
+    Value: 0.2
+    Duration: 4
+  - ID: 20019
+    Name: Neutralize
+    Icon: {fileID: 0}
+    GroupID: 12
+    Rank: 4
+    Type: 1
+    Target: 2
+    Value: 0.3
+    Duration: 5
+  - ID: 20020
+    Name: Neutralize
+    Icon: {fileID: 0}
+    GroupID: 12
+    Rank: 5
+    Type: 1
+    Target: 2
+    Value: 0.3
+    Duration: 6
+  - ID: 20021
+    Name: Knockback
+    Icon: {fileID: 0}
+    GroupID: 13
+    Rank: 1
+    Type: 1
+    Target: 2
+    Value: 1
+    Duration: 0
+  - ID: 20022
+    Name: Knockback
+    Icon: {fileID: 0}
+    GroupID: 13
+    Rank: 2
+    Type: 1
+    Target: 2
+    Value: 2
+    Duration: 0
+  - ID: 20023
+    Name: Knockback
+    Icon: {fileID: 0}
+    GroupID: 13
+    Rank: 3
+    Type: 1
+    Target: 2
+    Value: 3
+    Duration: 0
+  - ID: 20024
+    Name: Knockback
+    Icon: {fileID: 0}
+    GroupID: 13
+    Rank: 4
+    Type: 1
+    Target: 2
+    Value: 4
+    Duration: 0
+  - ID: 20025
+    Name: Knockback
+    Icon: {fileID: 0}
+    GroupID: 13
+    Rank: 5
+    Type: 1
+    Target: 2
+    Value: 5
+    Duration: 0

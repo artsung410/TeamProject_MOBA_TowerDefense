@@ -26,7 +26,7 @@ public class MinionSpawnUp : SkillHandler
     void Start()
     {
         GameObject MinionSpawner = GameObject.FindGameObjectWithTag("MinionSpawner");
-        BuffManager.Instance.AddBuff((BuffData)buff);
+        //BuffManager.Instance.AddBuff((BuffData)buff);
         BuffManager.Instance.AssemblyBuff();
 
         if (GetMytag(_ability) == "Blue")

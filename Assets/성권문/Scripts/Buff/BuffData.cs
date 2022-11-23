@@ -2,23 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Target
-{
-    Player,
-    Enemy,
-    My_Minion,
-    Enemy_Minion,
-    Whole_Enemy,
-    Tower
-}
 
-public enum Effect_Type
-{
-    Damage,
-    Buff,
-    Debuff,
-    Minion,
-}
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -42,12 +26,12 @@ public class BuffData : ScriptableObject
     public string Name { get { return _name; } }
 
     [SerializeField]
-    private Effect_Type _effectType;
-    public Effect_Type EffectType { get { return _effectType; } }
+    private Buff_Effect_Type _effectType;
+    public Buff_Effect_Type EffectType { get { return _effectType; } }
 
     [SerializeField]
-    private Target _target;
-    public Target TargetType { get { return _target; } }
+    private Buff_Target _target;
+    public Buff_Target TargetType { get { return _target; } }
 
     [SerializeField]
     private LayerMask _layer;

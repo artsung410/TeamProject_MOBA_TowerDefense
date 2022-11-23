@@ -17,16 +17,9 @@ public class Turret : MonoBehaviourPun
     public static event Action<GameObject, float> OnTurretDestroyEvent = delegate { };
 
 
-    
-
-    [Header("인게임 DB")]
-    public TowerData towerData;
-
+    [Header("타워 DB")]
+    public TowerBlueprint towerDB;
     private Outline _outline;
-
-
-    [HideInInspector]
-    public float currentHealth; // 현재체력
 
     [Header("Hp바")]
     public Sprite[] healthbarImages = new Sprite[3];
@@ -36,10 +29,25 @@ public class Turret : MonoBehaviourPun
     private GameObject newDestroyParticle; // 타워 파괴효과를 담을 변수
 
     [HideInInspector]
+    public float maxHealth; // 초기체력
+
+    [HideInInspector]
+    public float currentHealth; // 현재체력
+
+    [HideInInspector]
     public float attack; // 공격력
 
     [HideInInspector]
     public float attackSpeed; // 공격속도
+
+    [HideInInspector]
+    protected float range; // 공격범위
+
+    protected GameObject destroyPF; // 타워파괴 파티클
+    protected float destroySpeed = 10f; // 타워 파괴 속도
+
+    protected GameObject projectilePF; // 투사체 프리팹
+    protected float projectiles_Speed; // 투사체 속도
 
     [Header("바디")]
     public GameObject fowardBody;
@@ -72,14 +80,37 @@ public class Turret : MonoBehaviourPun
     void Awake()
     {
         // 타워 데이터 -> 타워의 체력 적용
-        currentHealth = towerData.MaxHP;
 
-        // 타워 데이터 -> 투사체의 공격력 적용
-        attack = towerData.Attack;
+        if(photonView.IsMine)
+        {
+            currentHealth = towerDB.Hp;
 
-        // 타워 데이터 -> 타워의 공격 주기 적용
-        attackSpeed = towerData.AttackSpeed;
+            // 타워 데이터 -> 투사체의 공격력 적용
+            attack = towerDB.Attack;
 
+            // 타워 데이터 -> 타워의 공격 주기 적용
+            attackSpeed = towerDB.Attack_Speed;
+
+            // 타워 데이터 -> 타워의 공격 범위 적용
+            range = towerDB.Range;
+
+            // 타워 데이터 -> 타워의 파괴 프리팹 적용
+            destroyPF = towerDB.Destroy_Effect_Pf;
+
+            // 타워 데이터 -> 타워의 투사체 적용
+            projectilePF = towerDB.Projectile_Pf;
+
+            // 타워 데이터 -> 타워 투사체 속도적용
+            projectiles_Speed = towerDB.Projectile_Speed;
+
+            if (towerDB.Type == (int)Buff_Effect_Type.Buff || towerDB.Type == (int)Buff_Effect_Type.DeBuff)
+            {
+                StartCoroutine(SetBuff());
+            }
+        }
+
+
+        // 타워 아웃라인 컴포넌트 할당
         _outline = GetComponent<Outline>();
 
         // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
@@ -88,6 +119,13 @@ public class Turret : MonoBehaviourPun
         // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
         PlayerHUD.onGameEnd += Destroy_gameEnd;
 
+    }
+
+    private IEnumerator SetBuff()
+    {
+        yield return new WaitForSeconds(0.5f);
+        BuffBlueprint buff = BuffManager.Instance.buffDB_Dic[towerDB.buffID];
+        BuffManager.Instance.AddBuff(buff);
     }
 
     protected void OnEnable()
@@ -139,10 +177,17 @@ public class Turret : MonoBehaviourPun
         }
 
         // [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
-        if (towerData.ObjectBluePF != null && towerData.ObjectRedPF != null)
-        {
+
+        //if (towerData.ObjectPF != null)
+        //{
+        //    minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
+        //}
+        =======
+        //if (towerData.ObjectBluePF != null && towerData.ObjectRedPF != null)
+        //{
             minionTowerEvent.Invoke(towerData.ObjectBluePF,towerData.ObjectRedPF ,gameObject.tag);
-        }
+        //}
+        
         if (photonView.IsMine)
         {
             healthbarImage.sprite = healthbarImages[0]; // 초록 
@@ -175,7 +220,7 @@ public class Turret : MonoBehaviourPun
     public void TakeDamage(float damage)
     {
         currentHealth = Mathf.Max(currentHealth - damage, 0);
-        healthbarImage.fillAmount = currentHealth / towerData.MaxHP;
+        healthbarImage.fillAmount = currentHealth / maxHealth;
         StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
         if (currentHealth <= 0)
         {
@@ -226,7 +271,7 @@ public class Turret : MonoBehaviourPun
         }
 
         StartCoroutine(Destructing());
-        newDestroyParticle = PhotonNetwork.Instantiate(towerData.DestroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+        newDestroyParticle = PhotonNetwork.Instantiate(destroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
         StartCoroutine(Destruction(newDestroyParticle));
     }
 
@@ -235,7 +280,7 @@ public class Turret : MonoBehaviourPun
         while (true)
         {
             yield return new WaitForSeconds(0.01f);
-            transform.Translate(Vector3.down * Time.deltaTime * towerData.DestroySpeed);
+            transform.Translate(Vector3.down * Time.deltaTime * destroySpeed);
 
             if (transform.position.y < -10)
             {
@@ -322,7 +367,7 @@ public class Turret : MonoBehaviourPun
         }
 
         // 적이 범위안에 들어왔고, 적과의 거리가 범위값보다 작을경우
-        if (nearestEnemy != null && shortestDistance <= towerData.AttackRange)
+        if (nearestEnemy != null && shortestDistance <= range)
         {
             target = nearestEnemy.transform;
         }

@@ -594,6 +594,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35f1685e553152847b1d2e9aff0ace79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerDB:
+    ID: 0
+    Pf: {fileID: 0}
+    Name: 
+    Combination_ResultID: 0
+    Combination_Required_Value: 0
+    Normal_Random_Draw_Probability: 0
+    Normal_Attack_Draw_Probability: 0
+    Normal_Minion_Draw_Probability: 0
+    Normal_Buff_Debuff_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 0
+    Premium_Attack_Draw_Probability: 0
+    Premium_Minion_Draw_Probability: 0
+    Premium_Buff_Debuff_Draw_Probability: 0
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Attack: 0
+    Attack_Speed: 0
+    Hp: 0
+    Range: 0
+    Range_Type: 0
+    Projectile_Type: 0
+    Projectile_Speed: 0
+    Projectile_Pf: {fileID: 0}
+    Destroy_Effect_Pf: {fileID: 0}
+    Desc: 
+    Sprite_TowerCard: {fileID: 0}
+    Sprite_TowerProtrait: {fileID: 0}
+    AudioClip_Attack_Name: 
+    AudioClip_Hit_Name: 
+    AudioClip_Normal_Name: 
+    buffID: 0
   towerData: {fileID: 11400000, guid: 763cdb3ab38a65249b1ad8dffc56475e, type: 2}
   currentHealth: 0
   healthbarImages:
@@ -603,6 +636,8 @@ MonoBehaviour:
   healthbarImage: {fileID: 3739483490595420446}
   hitbarImage: {fileID: 5120613583254271374}
   ui: {fileID: 8015749598941180598}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 834644509087557173}

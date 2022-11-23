@@ -252,6 +252,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0040168299127d429b53f7795319c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerDB:
+    ID: 15
+    Pf: {fileID: 7185640794416597223}
+    Name: Flame_Tower5
+    Combination_ResultID: 0
+    Combination_Required_Value: 0
+    Normal_Random_Draw_Probability: 0
+    Normal_Attack_Draw_Probability: 0
+    Normal_Minion_Draw_Probability: 0
+    Normal_Buff_Debuff_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 0.41666666
+    Premium_Attack_Draw_Probability: 1
+    Premium_Minion_Draw_Probability: 0
+    Premium_Buff_Debuff_Draw_Probability: 0
+    GroupID: 3
+    Rank: 5
+    Type: 1
+    Attack: 30
+    Attack_Speed: 0.3
+    Hp: 300
+    Range: 20
+    Range_Type: 1
+    Projectile_Type: 2
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+    Destroy_Effect_Pf: {fileID: 0}
+    Desc: 0
+    Sprite_TowerCard: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
   towerData: {fileID: 11400000, guid: cc9c85cae8e8f9c4da6e5756ac0d502b, type: 2}
   currentHealth: 0
   healthbarImages:
@@ -261,6 +293,8 @@ MonoBehaviour:
   healthbarImage: {fileID: 6872020389898603736}
   hitbarImage: {fileID: 3146627056455663688}
   ui: {fileID: 254079016244021104}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 5335148703409983824}

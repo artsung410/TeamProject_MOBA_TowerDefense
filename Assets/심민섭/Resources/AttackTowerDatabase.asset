@@ -27,6 +27,38 @@ MonoBehaviour:
     indexItemInList: 0
     rarity: 0
     CombinationValue: 0
+    towerData:
+      ID: 0
+      Pf: {fileID: 0}
+      Name: 
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: 
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -34,7 +66,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 1
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c51f4ee40eac21346b6ea34182cf3465, type: 3}
+    itemIcon: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
     itemModel: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     inGameData: {fileID: 11400000, guid: ffb5569bd9360014895ce4d6ce840d5c, type: 2}
     itemValue: 1
@@ -44,6 +76,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Name: Guard_Tower
+      Combination_ResultID: 2
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 1
+      Rank: 1
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack_Name: ES_Guard_Tower
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -51,7 +115,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 2
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c51f4ee40eac21346b6ea34182cf3465, type: 3}
+    itemIcon: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
     itemModel: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     inGameData: {fileID: 11400000, guid: ffb5569bd9360014895ce4d6ce840d5c, type: 2}
     itemValue: 1
@@ -61,6 +125,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 2
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Name: Guard_Tower2
+      Combination_ResultID: 3
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 1
+      Rank: 2
+      Type: 1
+      Attack: 20
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack_Name: ES_Cannon_Tower
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -68,7 +164,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 3
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c51f4ee40eac21346b6ea34182cf3465, type: 3}
+    itemIcon: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
     itemModel: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     inGameData: {fileID: 11400000, guid: ffb5569bd9360014895ce4d6ce840d5c, type: 2}
     itemValue: 1
@@ -78,6 +174,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 3
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Name: Guard_Tower3
+      Combination_ResultID: 4
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 1
+      Rank: 3
+      Type: 1
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -85,7 +213,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 4
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c51f4ee40eac21346b6ea34182cf3465, type: 3}
+    itemIcon: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
     itemModel: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     inGameData: {fileID: 11400000, guid: ffb5569bd9360014895ce4d6ce840d5c, type: 2}
     itemValue: 1
@@ -95,6 +223,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 4
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Name: Guard_Tower4
+      Combination_ResultID: 5
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 1
+      Rank: 4
+      Type: 1
+      Attack: 40
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -102,7 +262,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 5
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c51f4ee40eac21346b6ea34182cf3465, type: 3}
+    itemIcon: {fileID: 21300000, guid: 7d5ff8144514e8a40ad31e9ee639f482, type: 3}
     itemModel: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     inGameData: {fileID: 11400000, guid: ffb5569bd9360014895ce4d6ce840d5c, type: 2}
     itemValue: 1
@@ -112,6 +272,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 5
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Name: Guard_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 1
+      Rank: 5
+      Type: 1
+      Attack: 50
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 7d5ff8144514e8a40ad31e9ee639f482, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -119,7 +311,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 6
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 725f10fa9ac647d49a51f7de95f02b3d, type: 3}
+    itemIcon: {fileID: 21300000, guid: d7d1b75e07a3b61419ec7582b56cbbd8, type: 3}
     itemModel: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     inGameData: {fileID: 11400000, guid: 763cdb3ab38a65249b1ad8dffc56475e, type: 2}
     itemValue: 1
@@ -129,6 +321,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 6
+      Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
+      Name: Cannon_Tower
+      Combination_ResultID: 7
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 2
+      Rank: 1
+      Type: 1
+      Attack: 20
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: d7d1b75e07a3b61419ec7582b56cbbd8, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -136,7 +360,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 7
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 725f10fa9ac647d49a51f7de95f02b3d, type: 3}
+    itemIcon: {fileID: 21300000, guid: 992911eedf9fcb248be9c2ddee1fa248, type: 3}
     itemModel: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     inGameData: {fileID: 11400000, guid: 763cdb3ab38a65249b1ad8dffc56475e, type: 2}
     itemValue: 1
@@ -146,6 +370,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 7
+      Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
+      Name: Cannon_Tower2
+      Combination_ResultID: 8
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 2
+      Rank: 2
+      Type: 1
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 992911eedf9fcb248be9c2ddee1fa248, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -153,7 +409,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 8
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 725f10fa9ac647d49a51f7de95f02b3d, type: 3}
+    itemIcon: {fileID: 21300000, guid: 86ba4cf7cb2aeaf4f9a44c958bf33f50, type: 3}
     itemModel: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     inGameData: {fileID: 11400000, guid: 763cdb3ab38a65249b1ad8dffc56475e, type: 2}
     itemValue: 1
@@ -163,6 +419,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 8
+      Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
+      Name: Cannon_Tower3
+      Combination_ResultID: 9
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 2
+      Rank: 3
+      Type: 1
+      Attack: 40
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 86ba4cf7cb2aeaf4f9a44c958bf33f50, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -170,7 +458,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 9
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 725f10fa9ac647d49a51f7de95f02b3d, type: 3}
+    itemIcon: {fileID: 21300000, guid: e72e766dc039df244897939edb034478, type: 3}
     itemModel: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     inGameData: {fileID: 11400000, guid: 763cdb3ab38a65249b1ad8dffc56475e, type: 2}
     itemValue: 1
@@ -180,6 +468,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 9
+      Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
+      Name: Cannon_Tower4
+      Combination_ResultID: 10
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 2
+      Rank: 4
+      Type: 1
+      Attack: 50
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: e72e766dc039df244897939edb034478, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -187,7 +507,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 10
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 725f10fa9ac647d49a51f7de95f02b3d, type: 3}
+    itemIcon: {fileID: 21300000, guid: bf9f5f857ab2a284f9bed72be4e3e881, type: 3}
     itemModel: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     inGameData: {fileID: 11400000, guid: 763cdb3ab38a65249b1ad8dffc56475e, type: 2}
     itemValue: 1
@@ -197,6 +517,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 10
     CombinationValue: 0
+    towerData:
+      ID: 10
+      Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
+      Name: Cannon_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 2
+      Rank: 5
+      Type: 1
+      Attack: 60
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: bf9f5f857ab2a284f9bed72be4e3e881, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -204,7 +556,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 11
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c34e7b181da4f2442930b4761a5385d9, type: 3}
+    itemIcon: {fileID: 21300000, guid: f634ee18e67349543a72b575ec92f985, type: 3}
     itemModel: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     inGameData: {fileID: 11400000, guid: cc9c85cae8e8f9c4da6e5756ac0d502b, type: 2}
     itemValue: 1
@@ -214,6 +566,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 11
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Name: Flame_Tower
+      Combination_ResultID: 12
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 3
+      Rank: 1
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: f634ee18e67349543a72b575ec92f985, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -221,8 +605,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 12
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: da6cbf10cae825544bf732ae18deb0fa, type: 3}
+    itemModel: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -231,6 +615,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 12
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Name: Flame_Tower2
+      Combination_ResultID: 13
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 3
+      Rank: 2
+      Type: 1
+      Attack: 15
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: da6cbf10cae825544bf732ae18deb0fa, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -238,8 +654,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 13
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 417c606dc5320b549b2b11069f3ae604, type: 3}
+    itemModel: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -248,6 +664,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 13
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Name: Flame_Tower3
+      Combination_ResultID: 14
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 3
+      Rank: 3
+      Type: 1
+      Attack: 20
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 417c606dc5320b549b2b11069f3ae604, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -255,8 +703,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 14
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 6803b07b48ccdf743a8fa3d4b2af1edf, type: 3}
+    itemModel: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -265,6 +713,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 14
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Name: Flame_Tower4
+      Combination_ResultID: 15
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 3
+      Rank: 4
+      Type: 1
+      Attack: 25
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 6803b07b48ccdf743a8fa3d4b2af1edf, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -272,8 +752,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 15
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
+    itemModel: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -282,6 +762,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 15
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Name: Flame_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 3
+      Rank: 5
+      Type: 1
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -289,7 +801,7 @@ MonoBehaviour:
     ClassType: 
     itemID: 16
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: e7ed15dfc89b8e14884b7d61ba12609a, type: 3}
+    itemIcon: {fileID: 21300000, guid: 623a39af688903b498e2e64d80ddc269, type: 3}
     itemModel: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     inGameData: {fileID: 11400000, guid: 2198c672e9cf9244d9716b0250696589, type: 2}
     itemValue: 1
@@ -299,6 +811,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 16
+      Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
+      Name: FrozenOrb_Tower
+      Combination_ResultID: 17
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 4
+      Rank: 1
+      Type: 1
+      Attack: 5
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 2
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 623a39af688903b498e2e64d80ddc269, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -306,8 +850,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 17
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 2095c4000e86f8d44bfa1a2356dfd72e, type: 3}
+    itemModel: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -316,6 +860,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 17
+      Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
+      Name: FrozenOrb_Tower2
+      Combination_ResultID: 18
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 4
+      Rank: 2
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 2
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 2095c4000e86f8d44bfa1a2356dfd72e, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -323,8 +899,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 18
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 5b326eec05b120f45a391b164fbaeca8, type: 3}
+    itemModel: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -333,6 +909,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 18
+      Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
+      Name: FrozenOrb_Tower3
+      Combination_ResultID: 19
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 4
+      Rank: 3
+      Type: 1
+      Attack: 15
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 2
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 5b326eec05b120f45a391b164fbaeca8, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -340,8 +948,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 19
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 1f776b896b09a434db2082825be4892d, type: 3}
+    itemModel: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -350,6 +958,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 19
+      Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
+      Name: FrozenOrb_Tower4
+      Combination_ResultID: 20
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 4
+      Rank: 4
+      Type: 1
+      Attack: 20
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 2
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 1f776b896b09a434db2082825be4892d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -357,8 +997,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 20
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: a8598c05c05d9384c8e54fda592925a5, type: 3}
+    itemModel: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -367,6 +1007,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 20
+      Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
+      Name: FrozenOrb_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 4
+      Rank: 5
+      Type: 1
+      Attack: 25
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 2
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: a8598c05c05d9384c8e54fda592925a5, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -374,8 +1046,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 21
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 55bfb8f3f2b2b8447a37aff553dd00d1, type: 3}
+    itemModel: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -384,6 +1056,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 21
+      Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
+      Name: Lightning_Tower
+      Combination_ResultID: 22
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 5
+      Rank: 1
+      Type: 1
+      Attack: 5
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 55bfb8f3f2b2b8447a37aff553dd00d1, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -391,8 +1095,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 22
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 1610cd11bc8291b4abe4867cb4507246, type: 3}
+    itemModel: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -401,6 +1105,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 22
+      Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
+      Name: Lightning_Tower2
+      Combination_ResultID: 23
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 5
+      Rank: 2
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 1610cd11bc8291b4abe4867cb4507246, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -408,8 +1144,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 23
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: cea68d78ce9bc1140b9147b5b256d531, type: 3}
+    itemModel: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -418,6 +1154,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 23
+      Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
+      Name: Lightning_Tower3
+      Combination_ResultID: 24
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 5
+      Rank: 3
+      Type: 1
+      Attack: 15
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: cea68d78ce9bc1140b9147b5b256d531, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -425,8 +1193,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 24
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: ed41682185da3a84297ad0aa0a699d1a, type: 3}
+    itemModel: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -435,6 +1203,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 24
+      Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
+      Name: Lightning_Tower4
+      Combination_ResultID: 25
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 5
+      Rank: 4
+      Type: 1
+      Attack: 20
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: ed41682185da3a84297ad0aa0a699d1a, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -442,8 +1242,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 25
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 420b495e00351df4986fd4ccab001449, type: 3}
+    itemModel: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -452,6 +1252,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 25
+      Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
+      Name: Lightning_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 5
+      Rank: 5
+      Type: 1
+      Attack: 25
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 420b495e00351df4986fd4ccab001449, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -459,8 +1291,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 26
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: b664a600adbbe9043b33a2d9cac14fc3, type: 3}
+    itemModel: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -469,6 +1301,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 26
+      Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+      Name: BlackHole_Tower
+      Combination_ResultID: 27
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 6
+      Rank: 1
+      Type: 1
+      Attack: 10
+      Attack_Speed: 1.5
+      Hp: 100
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: b664a600adbbe9043b33a2d9cac14fc3, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -476,8 +1340,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 27
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 5ec46b2fe08e6db4f8d901464548efeb, type: 3}
+    itemModel: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -486,6 +1350,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 27
+      Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+      Name: BlackHole_Tower2
+      Combination_ResultID: 28
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 6
+      Rank: 2
+      Type: 1
+      Attack: 10
+      Attack_Speed: 1.3
+      Hp: 150
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 5ec46b2fe08e6db4f8d901464548efeb, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -493,8 +1389,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 28
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 66aa5f5ce1f2c68419593c28f9ee861b, type: 3}
+    itemModel: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -503,6 +1399,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 28
+      Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+      Name: BlackHole_Tower3
+      Combination_ResultID: 29
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 6
+      Rank: 3
+      Type: 1
+      Attack: 10
+      Attack_Speed: 1
+      Hp: 200
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 66aa5f5ce1f2c68419593c28f9ee861b, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -510,8 +1438,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 29
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 6c5b82d14ce6506499e59e3e2f25b80f, type: 3}
+    itemModel: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -520,6 +1448,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 29
+      Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+      Name: BlackHole_Tower4
+      Combination_ResultID: 30
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 6
+      Rank: 4
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.8
+      Hp: 250
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 6c5b82d14ce6506499e59e3e2f25b80f, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -527,8 +1487,8 @@ MonoBehaviour:
     ClassType: 
     itemID: 30
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+    itemModel: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -537,15 +1497,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 30
+      Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
+      Name: BlackHole_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 6
+      Rank: 5
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.6
+      Hp: 300
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_7_1
+  - itemName: Tower_Attack_Ruined1
     ClassType: 
     itemID: 31
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 1ebeafe900f46e741978c8ffc244f5c5, type: 3}
+    itemModel: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -554,15 +1546,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 31
+      Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
+      Name: RuinedTower
+      Combination_ResultID: 32
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 7
+      Rank: 1
+      Type: 1
+      Attack: 10
+      Attack_Speed: 1
+      Hp: 100
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 1ebeafe900f46e741978c8ffc244f5c5, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_7_2
+  - itemName: Tower_Attack_Ruined2
     ClassType: 
     itemID: 32
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 35ba9d41fd3b91442a3a23173ede78a6, type: 3}
+    itemModel: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -571,15 +1595,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 32
+      Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
+      Name: RuinedTower2
+      Combination_ResultID: 33
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 7
+      Rank: 2
+      Type: 1
+      Attack: 20
+      Attack_Speed: 1
+      Hp: 150
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 35ba9d41fd3b91442a3a23173ede78a6, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_7_3
+  - itemName: Tower_Attack_Ruined3
     ClassType: 
     itemID: 33
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: b48ec3f9f136be0459d927d8596d70f8, type: 3}
+    itemModel: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -588,15 +1644,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 33
+      Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
+      Name: RuinedTower3
+      Combination_ResultID: 34
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 7
+      Rank: 3
+      Type: 1
+      Attack: 30
+      Attack_Speed: 1
+      Hp: 200
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: b48ec3f9f136be0459d927d8596d70f8, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_7_4
+  - itemName: Tower_Attack_Ruined4
     ClassType: 
     itemID: 34
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 8521d008ef9704443b5b213c6973350f, type: 3}
+    itemModel: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -605,15 +1693,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 34
+      Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
+      Name: RuinedTower4
+      Combination_ResultID: 35
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 7
+      Rank: 4
+      Type: 1
+      Attack: 40
+      Attack_Speed: 1
+      Hp: 250
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 8521d008ef9704443b5b213c6973350f, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_7_5
+  - itemName: Tower_Attack_Ruined5
     ClassType: 
     itemID: 35
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 766421934e87dee4982fd603013e8501, type: 3}
+    itemModel: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -622,15 +1742,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 35
+      Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
+      Name: RuinedTower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 7
+      Rank: 5
+      Type: 1
+      Attack: 50
+      Attack_Speed: 1
+      Hp: 300
+      Range: 20
+      Range_Type: 3
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 766421934e87dee4982fd603013e8501, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_8_1
+  - itemName: Tower_Attack_Laser1
     ClassType: 
     itemID: 36
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 4f7d4be2ecacb7a44a92fc0d6f906507, type: 3}
+    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -639,15 +1791,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 36
+      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
+      Name: Laser_Tower
+      Combination_ResultID: 37
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 8
+      Rank: 1
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 4f7d4be2ecacb7a44a92fc0d6f906507, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_8_2
+  - itemName: Tower_Attack_Laser2
     ClassType: 
     itemID: 37
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: a467719aaf9aa154cad7c4f49d097c30, type: 3}
+    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -656,15 +1840,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 37
+      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
+      Name: Laser_Tower2
+      Combination_ResultID: 38
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 8
+      Rank: 2
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: a467719aaf9aa154cad7c4f49d097c30, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_8_3
+  - itemName: Tower_Attack_Laser3
     ClassType: 
     itemID: 38
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 7d9af09b855dec24a95586933816fca8, type: 3}
+    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -673,15 +1889,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 38
+      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
+      Name: Laser_Tower3
+      Combination_ResultID: 39
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 8
+      Rank: 3
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 7d9af09b855dec24a95586933816fca8, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_8_4
+  - itemName: Tower_Attack_Laser4
     ClassType: 
     itemID: 39
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: c8e4e836a57bb754bb4f8acda6cba2fe, type: 3}
+    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -690,15 +1938,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 39
+      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
+      Name: Laser_Tower4
+      Combination_ResultID: 40
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 8
+      Rank: 4
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: c8e4e836a57bb754bb4f8acda6cba2fe, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_8_5
+  - itemName: Tower_Attack_Laser5
     ClassType: 
     itemID: 40
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 143b0a01b2083c949979cce22fea5690, type: 3}
+    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -707,15 +1987,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 40
+      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
+      Name: Laser_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 8
+      Rank: 5
+      Type: 1
+      Attack: 10
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 143b0a01b2083c949979cce22fea5690, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_9_1
+  - itemName: Tower_Attack_Wind1
     ClassType: 
     itemID: 41
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: c61094d318b6a1447bccc6fa4a647f00, type: 3}
+    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -724,15 +2036,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 41
+      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+      Name: Wind_Tower
+      Combination_ResultID: 42
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 9
+      Rank: 1
+      Type: 1
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: c61094d318b6a1447bccc6fa4a647f00, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_9_2
+  - itemName: Tower_Attack_Wind2
     ClassType: 
     itemID: 42
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 32043e0974980884594d401703bc926d, type: 3}
+    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -741,15 +2085,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 42
+      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+      Name: Wind_Tower2
+      Combination_ResultID: 43
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 9
+      Rank: 2
+      Type: 1
+      Attack: 40
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 32043e0974980884594d401703bc926d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_9_3
+  - itemName: Tower_Attack_Wind3
     ClassType: 
     itemID: 43
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 020358f99d25be246a00eb0c1094dd18, type: 3}
+    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -758,15 +2134,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 43
+      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+      Name: Wind_Tower3
+      Combination_ResultID: 44
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 9
+      Rank: 3
+      Type: 1
+      Attack: 50
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 020358f99d25be246a00eb0c1094dd18, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_9_4
+  - itemName: Tower_Attack_Wind4
     ClassType: 
     itemID: 44
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 4187b0771b5715b40802bf6bfed2a9fd, type: 3}
+    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -775,15 +2183,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 44
+      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+      Name: Wind_Tower4
+      Combination_ResultID: 45
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 9
+      Rank: 4
+      Type: 1
+      Attack: 60
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 4187b0771b5715b40802bf6bfed2a9fd, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_9_5
+  - itemName: Tower_Attack_Wind5
     ClassType: 
     itemID: 45
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -792,15 +2232,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 45
+      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
+      Name: Wind_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 9
+      Rank: 5
+      Type: 1
+      Attack: 70
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_10_1
+  - itemName: Tower_Attack_Light1
     ClassType: 
     itemID: 46
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 0}
+    itemModel: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -809,15 +2281,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 46
+      Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
+      Name: Light_Tower
+      Combination_ResultID: 47
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 10
+      Rank: 1
+      Type: 1
+      Attack: 15
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_10_2
+  - itemName: Tower_Attack_Light2
     ClassType: 
     itemID: 47
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 9472b586ed75d1648b54c6244413c300, type: 3}
+    itemModel: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -826,15 +2330,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 47
+      Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
+      Name: Light_Tower2
+      Combination_ResultID: 48
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 10
+      Rank: 2
+      Type: 1
+      Attack: 20
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 9472b586ed75d1648b54c6244413c300, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_10_3
+  - itemName: Tower_Attack_Light3
     ClassType: 
     itemID: 48
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: ec066062b20f2a0418da6200aeb89ad0, type: 3}
+    itemModel: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -843,15 +2379,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 48
+      Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
+      Name: Light_Tower3
+      Combination_ResultID: 49
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 7
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 10
+      Rank: 3
+      Type: 1
+      Attack: 25
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: ec066062b20f2a0418da6200aeb89ad0, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_10_4
+  - itemName: Tower_Attack_Light4
     ClassType: 
     itemID: 49
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: c92de39a6f4340940b6321420b455cb6, type: 3}
+    itemModel: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -860,15 +2428,47 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 49
+      Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
+      Name: Light_Tower4
+      Combination_ResultID: 50
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 2
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 10
+      Rank: 4
+      Type: 1
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: c92de39a6f4340940b6321420b455cb6, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_10_5
+  - itemName: Tower_Attack_Light5
     ClassType: 
     itemID: 50
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+    itemIcon: {fileID: 21300000, guid: 68e8984074ce4d24d80c88cea2cbf2f7, type: 3}
+    itemModel: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -877,6 +2477,38 @@ MonoBehaviour:
     indexItemInList: 99
     rarity: 100
     CombinationValue: 0
+    towerData:
+      ID: 50
+      Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
+      Name: Light_Tower5
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 1
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 10
+      Rank: 5
+      Type: 1
+      Attack: 35
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
+      Destroy_Effect_Pf_Name: FireSphereBlast
+      Desc: 0
+      Sprite_TowerCard: {fileID: 21300000, guid: 68e8984074ce4d24d80c88cea2cbf2f7, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []

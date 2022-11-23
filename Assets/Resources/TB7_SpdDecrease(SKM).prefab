@@ -51,6 +51,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7f40312e0bc12546b1f66d2ba96b674, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerDB:
+    ID: 2012
+    Pf: {fileID: 74654566039358036}
+    Name: Move_Decrease_Tower2
+    Combination_ResultID: 2013
+    Combination_Required_Value: 300
+    Normal_Random_Draw_Probability: 0.8333333
+    Normal_Attack_Draw_Probability: 0
+    Normal_Minion_Draw_Probability: 0
+    Normal_Buff_Debuff_Draw_Probability: 2.5
+    Premium_Random_Draw_Probability: 0
+    Premium_Attack_Draw_Probability: 0
+    Premium_Minion_Draw_Probability: 0
+    Premium_Buff_Debuff_Draw_Probability: 0
+    GroupID: 17
+    Rank: 2
+    Type: 3
+    Attack: 1
+    Attack_Speed: 0.3
+    Hp: 150
+    Range: 20
+    Range_Type: 1
+    Projectile_Type: 1
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: 30028
+    Sprite_TowerCard: {fileID: 21300000, guid: a23d6ef9b9d2358448fc31bd312389ad, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
+    buffID: 15032
   towerData: {fileID: 11400000, guid: e566f92fd7b600340a77355d856d28cf, type: 2}
   currentHealth: 0
   healthbarImages:
@@ -60,6 +93,8 @@ MonoBehaviour:
   healthbarImage: {fileID: 3717229199190728417}
   hitbarImage: {fileID: 5143958238075589233}
   ui: {fileID: 8020552381727495497}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 6358345316237751310}

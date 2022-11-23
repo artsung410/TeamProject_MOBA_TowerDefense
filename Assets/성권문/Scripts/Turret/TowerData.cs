@@ -4,7 +4,7 @@ using UnityEngine;
 
 public enum Tower_Type
 {
-    Attack_Tower,
+    Attack_Tower = 1,
     Buff_Tower,
     DeBuff_Tower,
     Minion_Tower
