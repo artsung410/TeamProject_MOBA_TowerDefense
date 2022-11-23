@@ -32,8 +32,6 @@ public class BulletMove : MonoBehaviourPun
         {
             return;
         }
-        
-
         // 유도탄
         if (tg.position != null) //타켓이 있을때
         {
@@ -85,6 +83,8 @@ public class BulletMove : MonoBehaviourPun
                 PhotonNetwork.Destroy(gameObject);
             }else if(other.gameObject.layer == 17)
             {
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                other.gameObject.GetComponent<Enemybase>().lastDamageTeam = gameObject.tag;  
                 PhotonNetwork.Destroy(gameObject);
             }
          

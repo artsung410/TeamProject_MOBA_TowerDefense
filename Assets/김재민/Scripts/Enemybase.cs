@@ -160,7 +160,11 @@ public class Enemybase : MonoBehaviourPun
                 }
                 _animator.SetTrigger("Die");
                 isDead = true;
-                PlayerHUD.Instance.lastDamageTeam = lastDamageTeam;
+                if(_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
+                {
+                GameManager.Instance.winner = lastDamageTeam;
+                    Debug.Log($"{GameManager.Instance.winner}");
+                }
             }
 
         }
@@ -178,7 +182,7 @@ public class Enemybase : MonoBehaviourPun
     }
     public void DamageOverTime(float Damage, float Time)
     {
-        Debug.Log($"damage : {Damage}\n Time : {Time}");
+        
         photonView.RPC(nameof(RPC_DamageOverTime), RpcTarget.All, Damage, Time);
     }
 
@@ -194,6 +198,7 @@ public class Enemybase : MonoBehaviourPun
             }
             if (CurrnetHP <= 0)
             {
+                OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent.enabled == true)
                 {
@@ -203,6 +208,11 @@ public class Enemybase : MonoBehaviourPun
                 gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
+                if (_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
+                {
+                    GameManager.Instance.winner = lastDamageTeam;
+                }
+
                 yield return Delay100;
                 yield break;
             }

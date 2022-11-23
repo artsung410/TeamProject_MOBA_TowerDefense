@@ -40,12 +40,20 @@ public class BulletSpawn : MonoBehaviourPun
                 PhotonNetwork.Destroy(bullet);
             }
 
+            if (gameObject.CompareTag("Blue"))
+            {
+                bullet.GetComponent<BulletMove>().CompareTag("Blue");
+                bullet.GetComponent<BulletMove>().EnemyTag = "Red";
+
+            }
+            else
+            {
+                bullet.GetComponent<BulletMove>().CompareTag("Red");
+                bullet.GetComponent<BulletMove>().EnemyTag = "Blue";
+            }
+
+
 
         }
     }
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, 14f);
-        }
-    }
+}

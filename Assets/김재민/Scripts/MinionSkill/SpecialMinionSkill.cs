@@ -16,7 +16,6 @@ public class SpecialMinionSkill : SkillHandler
     // 플레이어 위치를 돌아야함 거리를 알아야함
     float speed = 100f;
     float distance = 5f;
-    string enemyTag;
     float elapsedTime;
     public bool TargetOn;
 
