@@ -39,7 +39,7 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+
         elaspedTime += Time.deltaTime;
         if (elaspedTime >= minionSpawnTime)
         {
@@ -58,7 +58,7 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
             }
         }
     }
-                                  // 블루                             // 레드 
+    // 블루                             // 레드 
     void ChangeMinion(GameObject transferedMinionBlue,GameObject transferedMinionRed,string tag) // 
     {
         if (transferedMinionBlue.transform.GetChild(0).GetComponent<EnemySatatus>()._eminontpye == EMINIONTYPE.Nomal) //첫번째 미니언으로 타입 설정 근접이면

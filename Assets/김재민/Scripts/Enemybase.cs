@@ -61,6 +61,8 @@ public class Enemybase : MonoBehaviourPun
 
     private Monster _monster;
 
+    public bool hit = false;
+
 
 
 
@@ -153,6 +155,7 @@ public class Enemybase : MonoBehaviourPun
         if (isDead == false)
         {
             CurrnetHP -= Damage;
+            
             Debug.Log($"{gameObject.tag} HP : {CurrnetHP}");
             if (CurrnetHP <= 0)
             {
@@ -173,6 +176,7 @@ public class Enemybase : MonoBehaviourPun
                     Debug.Log($"{GameManager.Instance.winner}");
                 }
             }
+            
 
         }
 

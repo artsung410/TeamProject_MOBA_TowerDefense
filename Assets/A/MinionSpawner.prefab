@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4263961859846396011
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4263961859846396005}
+  - component: {fileID: 4263961859846396004}
+  m_Layer: 0
+  m_Name: MinionSpawner
+  m_TagString: MinionSpawner
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4263961859846396005
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263961859846396011}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -29.805672, y: 7.832294, z: -20.622274}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4263961859846396004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4263961859846396011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e551c5986e4e31499e5159a38d66927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BasicMinion:
+  - {fileID: 727053806592155602, guid: 020f063b3cc772140bcdc47d857f5505, type: 3}
+  - {fileID: 8808627454346318819, guid: fd4b0ccf9421ead489ef23a221d9ef8c, type: 3}
+  - {fileID: 7437779938411895516, guid: bfa11348a265b5d4aa279d1b14589986, type: 3}
+  - {fileID: 3405628836457899908, guid: c4c91a6129acca14c98e1c97240e1b15, type: 3}
+  BlueSkillWave: 0
+  RedSkillWave: 0
+  skillOn: 0
+  tag: 

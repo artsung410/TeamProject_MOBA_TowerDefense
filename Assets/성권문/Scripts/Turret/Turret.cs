@@ -12,7 +12,6 @@ using System;
 
 public class Turret : MonoBehaviourPun
 {
-    public static event Action<GameObject, string> minionTowerEvent = delegate { };
     public static event Action<GameObject,GameObject,string> minionTowerEvent = delegate { };
     public static event Action<Turret> turretMouseDownEvent = delegate { };
     public static event Action<GameObject, float> OnTurretDestroyEvent = delegate { };
@@ -65,6 +64,7 @@ public class Turret : MonoBehaviourPun
 
     // 타워 효과음
     protected private AudioSource audioSource;
+    
 
     void Awake()
     {
@@ -139,6 +139,16 @@ public class Turret : MonoBehaviourPun
         if (towerData.ObjectBluePF != null && towerData.ObjectRedPF != null)
         {
             minionTowerEvent.Invoke(towerData.ObjectBluePF,towerData.ObjectRedPF ,gameObject.tag);
+        }
+        if (photonView.IsMine)
+        {
+            healthbarImage.sprite = healthbarImages[0]; // 초록 
+            hitbarImage.sprite = healthbarImages[1]; //빨강
+        }
+        else
+        {
+            healthbarImage.sprite = healthbarImages[1];
+            hitbarImage.sprite = healthbarImages[2];
         }
 
         _outline.enabled = false;

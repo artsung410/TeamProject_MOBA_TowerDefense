@@ -29,13 +29,13 @@ public class NexusHp : MonoBehaviourPun
     [SerializeField]
     GameObject healthEffect;
     WaitForSeconds Dealay100 = new WaitForSeconds(1);
+
     Outline _outline;
     string myTag;
     private void Awake()
     {
         _outline = GetComponent<Outline>();
         CurrentHp = MaxHp;
-
         _outline.enabled = false;
         _outline.OutlineWidth = 8f;
         healthEffect.SetActive(false);
@@ -122,12 +122,11 @@ public class NexusHp : MonoBehaviourPun
         {
 
             CurrentHp -= Damage;
+            CurrentHp = Mathf.Max(CurrentHp - Damage, 0);
+            healthbarImage.fillAmount = CurrentHp / MaxHp;
+            StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
             if (CurrentHp <= 0)
             {
-                CurrentHp = Mathf.Max(CurrentHp - Damage, 0);
-                healthbarImage.fillAmount = CurrentHp / MaxHp;
-                StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
-
                 isDie = true;
                 PlayerHUD.Instance.ActivationGameWinUI_Nexus(gameObject.tag);
                 PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
@@ -201,15 +200,20 @@ public class NexusHp : MonoBehaviourPun
     private void OnMouseEnter()
     {
 
+        //if(PlayerHUD.Instance.cursorMoveEnemy == null || PlayerHUD.Instance.cursorMoveAlly == null)
+        //{
+        //    return;
+        //}
+
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
-            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveAlly, Vector2.zero, CursorMode.Auto);
+            //Cursor.SetCursor(PlayerHUD.Instance.cursorMoveAlly, Vector2.zero, CursorMode.Auto);
             _outline.OutlineColor = Color.green;
             _outline.enabled = true; // 켜주고
         }
         else
         {
-            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveEnemy, Vector2.zero, CursorMode.Auto);
+            //Cursor.SetCursor(PlayerHUD.Instance.cursorMoveEnemy, Vector2.zero, CursorMode.Auto);
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }
@@ -218,7 +222,7 @@ public class NexusHp : MonoBehaviourPun
 
     private void OnMouseExit()
     {
-        Cursor.SetCursor(PlayerHUD.Instance.cursorMoveNamal, Vector2.zero, CursorMode.Auto);
+        //Cursor.SetCursor(PlayerHUD.Instance.cursorMoveNamal, Vector2.zero, CursorMode.Auto);
         _outline.enabled = false;
     }
 

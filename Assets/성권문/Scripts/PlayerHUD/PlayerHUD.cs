@@ -529,7 +529,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     private IEnumerator setHp()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
         enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
         StopCoroutine(setHp());
