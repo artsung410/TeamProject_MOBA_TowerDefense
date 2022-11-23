@@ -7,7 +7,7 @@ using System.IO;
 public class CSVtest : MonoBehaviour
 {
     private const string URL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
-                               
+
     private string MYtext = "";
 
     [Header("[타워]")]
@@ -117,4 +117,29 @@ public class CSVtest : MonoBehaviour
             }
         }
     }
+
+
+
+
+
+   
+    
+    
+    
+    
+    #region SkillDataParsing
+
+    private const string wizardSkillURL = "https://docs.google.com/spreadsheets/d/1PnBV0AFMfz3PdaEXZJcOPjnQCCQCOGoV/export?format=tsv&range=A4:Y18";
+    private const string warriorSkillURL = "https://docs.google.com/spreadsheets/d/1ggp4p3CU3bRVbeF-Eq6UshL67FK0VHwV/export?format=tsv&range=A4:Y18";
+
+    Dictionary<int, List<string>> CharactorSkillDatas = new Dictionary<int, List<string>>();
+    List<List<string>> SkillRowDatas = new List<List<string>>();
+
+    [Header("[스킬]")]
+    public SkillDatas WarriorSkillParsing;
+    public SkillDatas WizardSkillParsing;
+    public ItemDataBaseList WarriorDatabaseList;
+    public ItemDataBaseList WizardDatabaseList;
+
+    #endregion
 }
