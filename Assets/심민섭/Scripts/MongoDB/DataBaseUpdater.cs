@@ -148,6 +148,7 @@ public class DataBaseUpdater : MonoBehaviour
             {
                 for (int j = 2; j < document.Count(); j++)
                 {
+                    // 아이템 이름이 다름 = 아이템 이름만 같게 해주면 문제 해결됨
                     if (document.GetElement(j).Name == InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
                     {
                         var value = document.GetElement(j).Value;
