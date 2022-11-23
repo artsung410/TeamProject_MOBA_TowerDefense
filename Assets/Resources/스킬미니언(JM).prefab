@@ -9671,9 +9671,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b732723d74169449ed4cdc8e2c4bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetDamage: 0
-  SetHodingTime: 0
-  SetRange: 0
+  SetDamage: 40
+  SetHodingTime: 0.5
+  SetRange: 12
+  SetLockTime: 0
   TargetOn: 0
 --- !u!114 &6303172857478669785
 MonoBehaviour:
@@ -11005,6 +11006,7 @@ MonoBehaviour:
   AttackSpeed: 1
   minionSprite: {fileID: 21300000, guid: e8a68fd17ce42174e9b24babd0ae6629, type: 3}
   HP: 100
+  lastDamageTeam: 
   CurrnetHP: 0
   EnemyTag: 
   myTag: 

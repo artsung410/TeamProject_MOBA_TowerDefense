@@ -47,7 +47,7 @@ public class TowerBlueprint
     public GameObject Projectile_Pf;
 
     [Header("[부가옵션]")]
-    public string Destroy_Effect_Pf_Name;                    // 타워 파괴 이펙트
+    public GameObject Destroy_Effect_Pf;                    // 타워 파괴 이펙트
     public string Desc;                                      // 타워 설명
     public Sprite Sprite_TowerCard;                     // 타워카드 이미지
     public Sprite Sprite_TowerProtrait;                 // 타워상태 이미지

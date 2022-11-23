@@ -47,7 +47,7 @@ public class Turret_Magic : Turret
         if (fireCountdown <= 0f)
         {
             Shoot();
-            audioSource.clip = towerData.SoundAttack;
+            //audioSource.clip = TowerDB.AudioClip_Attack_Name;
             audioSource.Play();
             fireCountdown = 1f / attackSpeed;
         }
@@ -67,12 +67,12 @@ public class Turret_Magic : Turret
 
     void makeMagicProjectile()
     {
-        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = PhotonNetwork.Instantiate(projectilePF.name, firePoint.position, firePoint.rotation);
         Projectiles projectile = bulletGO.GetComponent<Projectiles>();
 
         if (projectile != null)
         {
-            projectile.speed = towerData.Projectiles_MoveSpeed;
+            projectile.speed = projectiles_Speed;
             projectile.enemyTag = enemyTag;
             projectile.Seek(attack, target);
         }
@@ -82,6 +82,6 @@ public class Turret_Magic : Turret
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, towerData.AttackRange);
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

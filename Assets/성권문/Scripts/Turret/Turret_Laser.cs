@@ -15,7 +15,7 @@ public class Turret_Laser : Turret
     public GameObject smokeParticles;
     private void Start()
     {
-        damageOverTime = towerData.Attack;
+        damageOverTime = attack;
         lineRenderer.enabled = false;
         // TODO : nameof·Î ¹Ù²Ü°Í.
         InvokeRepeating("UpdateTarget", 0f, 0.5f);

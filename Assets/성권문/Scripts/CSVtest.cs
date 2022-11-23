@@ -5,22 +5,23 @@ using UnityEngine.Networking;
 using System.IO;
 
 public class CSVtest : MonoBehaviour
-{
+{                          
+    private void Start()
+    {
+        StartCoroutine(GetTowerData());
+        StartCoroutine(GetBuffData());
+    }
+
     #region Tower
 
     private const string TowerURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
-                               
+
     [Header("[타워]")]
     public TowerDatabaseList towerDatabaseListCSV;
     public ItemDataBaseList towerDatabaseList;
     public ItemDataBaseList tower_Attack_DatabaseList;
     public ItemDataBaseList tower_Buff_DatabaseList;
     public ItemDataBaseList tower_Minion_DatabaseList;
-
-    private void Start()
-    {
-        StartCoroutine(GetTowerData());
-    }
 
     UnityWebRequest TowerWebData;
     IEnumerator GetTowerData()
@@ -29,10 +30,10 @@ public class CSVtest : MonoBehaviour
         yield return TowerWebData.SendWebRequest();
 
         string DB = TowerWebData.downloadHandler.text;
-        SetCharactorDatas(DB);
+        SetTowerData(DB);
     }
 
-    public void SetCharactorDatas(string tsv)
+    public void SetTowerData(string tsv)
     {
         string[] row = tsv.Split('\n');
         int rowSize = row.Length;
@@ -78,7 +79,7 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Projectile_Pf = Resources.Load<GameObject>(col[26]);
 
             // 부가옵션
-            towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf_Name = col[30];
+            towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf = Resources.Load<GameObject>(col[30]);
             towerDatabaseListCSV.itemList[i].Desc = col[33];
             towerDatabaseListCSV.itemList[i].Sprite_TowerCard = Resources.Load<Sprite>("Sprites/TowerImage/" + col[34]);
 
@@ -115,4 +116,46 @@ public class CSVtest : MonoBehaviour
     }
 
     #endregion Tower
+
+    #region Buff
+
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=1296679834&range=A4:I68";
+
+    [Header("[버프]")]
+    public BuffDatabaseList buffDatabaseListCSV;
+
+    UnityWebRequest BuffWebData;
+    IEnumerator GetBuffData()
+    {
+        BuffWebData = UnityWebRequest.Get(BuffURL);
+        yield return BuffWebData.SendWebRequest();
+
+        string DB = BuffWebData.downloadHandler.text;
+        SetBuffData(DB);
+    }
+
+    public void SetBuffData(string tsv)
+    {
+        string[] row = tsv.Split('\n');
+        int rowSize = row.Length;
+        int columnSize = row[0].Split('\t').Length;
+
+        for (int i = 0; i < rowSize; i++)
+        {
+            string[] col = row[i].Split('\t');
+
+            // 기본정보
+            buffDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
+            buffDatabaseListCSV.itemList[i].Name = col[2];
+            buffDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/BuffIcon/" + col[2]);
+            buffDatabaseListCSV.itemList[i].GroupID = int.Parse(col[3]);
+            buffDatabaseListCSV.itemList[i].Rank = int.Parse(col[4]);
+            buffDatabaseListCSV.itemList[i].Type = int.Parse(col[5]);
+            buffDatabaseListCSV.itemList[i].Target = int.Parse(col[6]);
+            buffDatabaseListCSV.itemList[i].Value = float.Parse(col[7]);
+            buffDatabaseListCSV.itemList[i].Duration = float.Parse(col[8]);
+        }
+    }
+    #endregion Buff 
+
 }

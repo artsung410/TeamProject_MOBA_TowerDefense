@@ -51,11 +51,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0040168299127d429b53f7795319c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: 58a1fa4a1136116428597604363413af, type: 2}
-  currentHealth: 0
+  towerDB:
+    ID: 45
+    Pf: {fileID: 6171984124208090233}
+    Name: Wind_Tower5
+    Combination_ResultID: 0
+    Combination_Required_Value: 0
+    Normal_Random_Draw_Probability: 0
+    Normal_Attack_Draw_Probability: 0
+    Normal_Minion_Draw_Probability: 0
+    Normal_Buff_Debuff_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 0.41666666
+    Premium_Attack_Draw_Probability: 1
+    Premium_Minion_Draw_Probability: 0
+    Premium_Buff_Debuff_Draw_Probability: 0
+    GroupID: 9
+    Rank: 5
+    Type: 1
+    Attack: 70
+    Attack_Speed: 0.3
+    Hp: 300
+    Range: 20
+    Range_Type: 1
+    Projectile_Type: 1
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
+    Destroy_Effect_Pf: {fileID: 0}
+    Desc: 0
+    Sprite_TowerCard: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
   healthbarImage: {fileID: 1891883274301303514}
   hitbarImage: {fileID: 7977022074444244554}
   ui: {fileID: 5087282478985879922}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 8080896796780137838}

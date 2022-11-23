@@ -599,9 +599,9 @@ public class PlayerHUD : MonoBehaviourPun
             }
 
             // 실시간 체력 동기화
-            InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
+            //InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
             Hp2D = currentTurretforInfo.currentHealth;
-            InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
+            //InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
 
             // 실시간 dps / speed 동기화
             float dmg = currentTurretforInfo.attack;
@@ -664,7 +664,7 @@ public class PlayerHUD : MonoBehaviourPun
         InfoPanel.SetActive(true);
 
         // 이벤트로 들어온 매개변수 세팅(Item class)
-        InfoIcon.sprite = turret.towerData.Icon;
+        //InfoIcon.sprite = turret.towerData.Icon;
     }
 
     public void ActivationMinionInfoUI(Enemybase minion, Sprite icon)

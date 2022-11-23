@@ -79,11 +79,11 @@ public class GameManager : MonoBehaviourPunCallbacks
     public bool isGameEnd;
     public string winner;
 
-    public TrojanHorse myData;
+    public TrojanHorse myAllData;
 
     private void Awake()
     {
-        myData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
+        myAllData = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
         SpawnNexus();
         SpawnPlayer();
         // buffManager 인스턴스생성 속도 맞추기 위해서 invoke사용
@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 #if 캐릭터선택_VER_1
         mySelect.Add("Warrior", playerPrefab[0]);
         mySelect.Add("Wizard", playerPrefab[1]);
-        player = PhotonNetwork.Instantiate(mySelect[myData.selectCharacter].name, spawnPosition.position, Quaternion.identity);
+        player = PhotonNetwork.Instantiate(mySelect[myAllData.selectCharacter].name, spawnPosition.position, Quaternion.identity);
 #endif
         // HSW
 
@@ -158,7 +158,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // TODO : 최적화, 파인드 오브젝트를 안쓰고 객체를 참조할수있는 방법은 없는지? 
     private void SpawnTower()
     {
-        count = myData.cardId.Count;
+        count = myAllData.cardId.Count;
         if (count == 0)
         {
             return;
@@ -167,8 +167,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         Debug.Log($"{gameObject.tag}, 호출");
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
-            GameObject tower = myData.cardPrefab[0];
-            int slotIndex = myData.cardIndex[0] - 4;
+            GameObject tower = myAllData.cardPrefab[0];
+            int slotIndex = myAllData.cardIndex[0] - 4;
+
+            // towerDB 적용
+            tower.GetComponent<Turret>().towerDB = myAllData.towerItems[0].towerData;
+
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
             GameObject body = newTower.GetComponent<Turret>().fowardBody;
 
@@ -182,8 +186,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
         else
         {
-            GameObject tower = myData.cardPrefab[0];
-            int slotIndex = myData.cardIndex[0] - 4;
+            GameObject tower = myAllData.cardPrefab[0];
+            int slotIndex = myAllData.cardIndex[0] - 4;
+
+            // towerDB 적용
+            tower.GetComponent<Turret>().towerDB = myAllData.towerItems[0].towerData;
+
             GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
             GameObject body = newTower.GetComponent<Turret>().fowardBody;
 
@@ -214,8 +222,12 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
             {
-                GameObject tower = myData.cardPrefab[idx];
-                int slotIndex = myData.cardIndex[idx] - 4;
+                GameObject tower = myAllData.cardPrefab[idx];
+                int slotIndex = myAllData.cardIndex[idx] - 4;
+
+                // towerDB 적용
+                tower.GetComponent<Turret>().towerDB = myAllData.towerItems[idx].towerData;
+
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
                 GameObject body = newTower.GetComponent<Turret>().fowardBody;
 
@@ -228,8 +240,12 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                GameObject tower = myData.cardPrefab[idx];
-                int slotIndex = myData.cardIndex[idx] - 4;
+                GameObject tower = myAllData.cardPrefab[idx];
+                int slotIndex = myAllData.cardIndex[idx] - 4;
+
+                // towerDB 적용
+                tower.GetComponent<Turret>().towerDB = myAllData.towerItems[idx].towerData;
+
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
                 GameObject body = newTower.GetComponent<Turret>().fowardBody;
 
@@ -249,14 +265,12 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void CheckandApplyBuffs(GameObject tower)
     {
-        TowerData towerData = tower.GetComponent<Turret>().towerData;
-        if (towerData.TowerType == Tower_Type.Buff_Tower || towerData.TowerType == Tower_Type.DeBuff_Tower)
+        TowerBlueprint towerData = tower.GetComponent<Turret>().towerDB;
+        if (towerData.Type == (int)Tower_Type.Buff_Tower || towerData.Type == (int)Tower_Type.DeBuff_Tower)
         {
-            BuffManager.Instance.AddBuff((BuffData)towerData.Scriptables[0]);
+            //BuffManager.Instance.AddBuff((BuffData)towerData.Scriptables[0]);
         }
     }
-
-
 
         //if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
         //{

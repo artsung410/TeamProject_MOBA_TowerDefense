@@ -45,14 +45,14 @@ public class Turret_Cannon : Turret
             return;
         }
 
-        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = PhotonNetwork.Instantiate(projectilePF.name, firePoint.position, firePoint.rotation);
 
         Bullet bullet = bulletGO.GetComponent<Bullet>();
 
         if (bullet != null)
         {
             // 투사체의 공격력을 적용하고, 타겟을 넘겨줌.
-            bullet.speed = towerData.Projectiles_MoveSpeed;
+            bullet.speed = projectiles_Speed;
             bullet.enemyTag = enemyTag;
             bullet.Seek(attack, shotTransform);
         }
@@ -62,7 +62,7 @@ public class Turret_Cannon : Turret
     {
         yield return new WaitForSeconds(1f);
         Shoot();
-        audioSource.clip = towerData.SoundAttack;
+        //audioSource.clip = towerData.SoundAttack;
         audioSource.Play();
         yield return new WaitForSeconds(0.5f);
         isLockOn = false;
@@ -93,6 +93,6 @@ public class Turret_Cannon : Turret
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, towerData.AttackRange);
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 }

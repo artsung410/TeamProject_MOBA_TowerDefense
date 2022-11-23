@@ -31,7 +31,7 @@ public class Turret_Arrow : Turret
         if (fireCountdown <= 0f)
         {
             Shoot();
-            audioSource.clip = towerData.SoundAttack;
+            //audioSource.clip = towerData.SoundAttack;
             audioSource.Play();
             fireCountdown = 1f / attackSpeed;
         }
@@ -45,13 +45,13 @@ public class Turret_Arrow : Turret
             return;
         }
 
-        GameObject bulletGO = PhotonNetwork.Instantiate(towerData.Projectiles.name, firePoint.position, firePoint.rotation);
+        GameObject bulletGO = PhotonNetwork.Instantiate(projectilePF.name, firePoint.position, firePoint.rotation);
 
         Projectiles projectile = bulletGO.GetComponent<Projectiles>();
 
         if (projectile != null)
         {
-            projectile.speed = towerData.Projectiles_MoveSpeed;
+            projectile.speed = projectiles_Speed;
             projectile.enemyTag = enemyTag;
             projectile.Seek(attack, target);
         }

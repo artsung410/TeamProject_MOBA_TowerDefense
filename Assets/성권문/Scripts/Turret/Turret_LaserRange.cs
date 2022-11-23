@@ -62,7 +62,7 @@ public class Turret_LaserRange : Turret
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, towerData.AttackRange);
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 
 }
