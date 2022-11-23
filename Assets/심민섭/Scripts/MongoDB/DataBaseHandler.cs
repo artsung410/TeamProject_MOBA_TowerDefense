@@ -254,7 +254,7 @@ public class DataBaseHandler : MonoBehaviour
             if (document.GetElement(i).Value != 0)
             {
                 // 아이템의 이름과 value값을 넣는다.
-                InventoryGetData.instance.warriorItem.Add(document.GetElement(i).Name, document.GetElement(i).Value);
+                InventoryGetData.instance.warriorItem.Add(document.GetElement(i).Name, document.GetElement(i).Value.ToInt32());
             }
         }
         InventoryGetData.instance.PutItemInInventoryData();
@@ -272,7 +272,7 @@ public class DataBaseHandler : MonoBehaviour
             if (document.GetElement(i).Value != 0)
             {
                 // 아이템의 이름과 value값을 넣는다.
-                InventoryGetData.instance.wizardItem.Add(document.GetElement(i).Name, document.GetElement(i).Value);
+                InventoryGetData.instance.wizardItem.Add(document.GetElement(i).Name, document.GetElement(i).Value.ToInt32());
             }
         }
         InventoryGetData.instance.PutItemInInventoryData();
@@ -290,7 +290,7 @@ public class DataBaseHandler : MonoBehaviour
             if (document.GetElement(i).Value != 0)
             {
                 // 아이템의 이름과 value값을 넣는다.
-                InventoryGetData.instance.inherenceItem.Add(document.GetElement(i).Name, document.GetElement(i).Value);
+                InventoryGetData.instance.inherenceItem.Add(document.GetElement(i).Name, document.GetElement(i).Value.ToInt32());
             }
         }
         InventoryGetData.instance.PutItemInInventoryData();
@@ -308,7 +308,7 @@ public class DataBaseHandler : MonoBehaviour
             if (document.GetElement(i).Value != 0)
             {
                 // 아이템의 이름과 value값을 넣는다.
-                InventoryGetData.instance.towerItem.Add(document.GetElement(i).Name, document.GetElement(i).Value);
+                InventoryGetData.instance.towerItem.Add(document.GetElement(i).Name, document.GetElement(i).Value.ToInt32());
             }
         }
         InventoryGetData.instance.PutItemInInventoryData();
@@ -327,7 +327,7 @@ public class DataBaseHandler : MonoBehaviour
             if (document.GetElement(i).Value != 0) // 수량이 0이 아닌 데이터
             {
                 // 아이템의 이름과 value값을 넣는다.
-                InventoryGetData.instance.otherItem.Add(document.GetElement(i).Name, document.GetElement(i).Value);
+                InventoryGetData.instance.otherItem.Add(document.GetElement(i).Name, document.GetElement(i).Value.ToInt32());
             }
         }
         InventoryGetData.instance.PutItemInInventoryData();

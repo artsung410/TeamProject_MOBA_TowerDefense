@@ -110,6 +110,7 @@ public class DrawManager : MonoBehaviour
                     firstItem.item.itemValue += buyCount;
 
                     Debug.Log("아이템 명이 같음");
+                    InventoryGetData.instance.GetItemInInventoryData();
                     return;
                 }
                 else // 이름이 같지 않은 경우

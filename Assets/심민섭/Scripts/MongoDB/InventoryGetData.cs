@@ -1,5 +1,8 @@
 using MongoDB.Bson;
 using System.Collections;
+using MongoDB.Driver;
+using MongoDB.Driver.Core;
+using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -28,11 +31,11 @@ public class InventoryGetData : MonoBehaviour
     public List<GameObject> towerInventoryData = new List<GameObject>();
 
     // DB에서 받은 데이터를 저장할 곳
-    public Dictionary<string, BsonValue> otherItem = new Dictionary<string, BsonValue>();
-    public Dictionary<string, BsonValue> warriorItem = new Dictionary<string, BsonValue>();
-    public Dictionary<string, BsonValue> wizardItem = new Dictionary<string, BsonValue>();
-    public Dictionary<string, BsonValue> inherenceItem = new Dictionary<string, BsonValue>();
-    public Dictionary<string, BsonValue> towerItem = new Dictionary<string, BsonValue>();
+    public Dictionary<string, int> otherItem = new Dictionary<string, int>();
+    public Dictionary<string, int> warriorItem = new Dictionary<string, int>();
+    public Dictionary<string, int> wizardItem = new Dictionary<string, int>();
+    public Dictionary<string, int> inherenceItem = new Dictionary<string, int>();
+    public Dictionary<string, int> towerItem = new Dictionary<string, int>();
 
     public int haveCardCnt;
     public int warriorCardCnt;
@@ -71,7 +74,10 @@ public class InventoryGetData : MonoBehaviour
     private Sprite buff_P;
     [SerializeField]
     private Sprite random_P;
-
+    MongoClient server = new MongoClient("mongodb+srv://metaverse:metaverse@cluster0.feoedbv.mongodb.net/?retryWrites=true&w=majority");
+    IMongoDatabase database;
+    IMongoCollection<BsonDocument> collection;
+    private PlayerStorage playerStorage;
 
     // Other 인벤토리
     private GameObject otherInventory;
@@ -91,7 +97,7 @@ public class InventoryGetData : MonoBehaviour
 
     private void Start()
     {
-        //GetItemInInventoryData();
+        database = server.GetDatabase("TowerDefense");
         // Other 인벤토리
         otherInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
         // Warrior 인벤토리
@@ -138,6 +144,18 @@ public class InventoryGetData : MonoBehaviour
         }
         if (stack > 0)
             DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Other", otherItemCnt);
+
+        collection = database.GetCollection<BsonDocument>("User_Card_Info");
+        playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+        var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        var document = collection.Find(builder).FirstOrDefault();
+        var value = document.GetElement(7).Value;
+        if (stack == 0 && value >= 1)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("other", value);
+            var update = Builders<BsonDocument>.Update.Set("other", 0);
+            collection.UpdateOne(filter, update);
+        }
 
         stack = 0;
         for (int i = 0; i < warriorInventory.transform.childCount; i++)
@@ -223,7 +241,7 @@ public class InventoryGetData : MonoBehaviour
 
 
     List<Item> sendItems = new List<Item>();
-    List<BsonValue> sendItemValue = new List<BsonValue>();
+    List<int> sendItemValue = new List<int>();
     // DB에서 받은 아이템 목록으로 아이템을 생성하고 인벤토리로 넣어준다.
     public void PutItemInInventoryData()
     {
@@ -242,7 +260,7 @@ public class InventoryGetData : MonoBehaviour
 
                     // 같으면 해당 아이템을 생성한다.
                     sendItems.Add(warriorSkillDatabase.itemList[j]); // <Item>
-                    BsonValue value = warriorItem[warriorSkillDatabase.itemList[j].itemName];
+                    int value = warriorItem[warriorSkillDatabase.itemList[j].itemName];
                     sendItemValue.Add(value);
                     // 생성을 했으면 삭제해준다.
                     warriorItem.Remove(warriorSkillDatabase.itemList[j].itemName);
@@ -272,7 +290,7 @@ public class InventoryGetData : MonoBehaviour
 
                     // 같으면 해당 아이템을 생성한다.
                     sendItems.Add(wizardSkillDatabase.itemList[j]); // <Item>
-                    BsonValue value = wizardItem.TryGetValue(wizardSkillDatabase.itemList[j].itemName, out value);
+                    int value = wizardItem[wizardSkillDatabase.itemList[j].itemName];
                     sendItemValue.Add(value);
                     // 생성을 했으면 삭제해준다.
                     wizardItem.Remove(wizardSkillDatabase.itemList[j].itemName);
@@ -302,7 +320,7 @@ public class InventoryGetData : MonoBehaviour
 
                     // 같으면 해당 아이템을 생성한다.
                     sendItems.Add(inherenceSkillDatabase.itemList[j]); // <Item>
-                    BsonValue value = inherenceItem.TryGetValue(inherenceSkillDatabase.itemList[j].itemName, out value);
+                    int value = inherenceItem[inherenceSkillDatabase.itemList[j].itemName];
                     sendItemValue.Add(value);
                     // 생성을 했으면 삭제해준다.
                     inherenceItem.Remove(inherenceSkillDatabase.itemList[j].itemName);
@@ -332,7 +350,7 @@ public class InventoryGetData : MonoBehaviour
 
                     // 같으면 해당 아이템을 생성한다.
                     sendItems.Add(towerSkillDatabase.itemList[j]); // <Item>
-                    BsonValue value = towerItem.TryGetValue(towerSkillDatabase.itemList[j].itemName, out value);
+                    int value = towerItem[towerSkillDatabase.itemList[j].itemName];
                     sendItemValue.Add(value);
                     // 생성을 했으면 삭제해준다.
                     towerItem.Remove(towerSkillDatabase.itemList[j].itemName);
@@ -451,7 +469,7 @@ public class InventoryGetData : MonoBehaviour
             }
             itemProduce.item.itemID = 0;
             itemProduce.item.itemDesc = "Card Pack";
-            itemProduce.item.itemValue = (int)sendItemValue[i].ToInt32();
+            itemProduce.item.itemValue = sendItemValue[i];
             itemProduce.item.itemType = ItemType.Consumable;
             itemProduce.item.maxStack = 100;
             itemProduce.item.indexItemInList = 99;
@@ -487,7 +505,7 @@ public class InventoryGetData : MonoBehaviour
                 itemStruct.itemName = sendItems[i].itemName;
                 itemStruct.ClassType = sendItems[i].ClassType;
                 itemStruct.itemID = sendItems[i].itemID;
-                itemStruct.itemValue = (int)sendItemValue[i].ToInt32();
+                itemStruct.itemValue = sendItemValue[i];
                 itemStruct.itemDesc = sendItems[i].itemDesc;
                 itemStruct.itemIcon = sendItems[i].itemIcon;
                 itemStruct.itemModel = sendItems[i].itemModel;
