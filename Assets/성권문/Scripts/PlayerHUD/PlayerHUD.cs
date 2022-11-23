@@ -163,8 +163,6 @@ public class PlayerHUD : MonoBehaviourPun
         resultImigePopup = ResultImagePopUp();
         textCouruntine = textFadeout();
 
-
-
         setSkill();
         StartCoroutine(setHp());
         setMouseCursor();
@@ -188,9 +186,6 @@ public class PlayerHUD : MonoBehaviourPun
 
     void Update()
     {
-
-
-
         if (GameManager.Instance.isGameEnd == true)
         {
             return;
@@ -548,7 +543,6 @@ public class PlayerHUD : MonoBehaviourPun
         playerHp2D = playerHp.hpSlider3D.value;
         playerHealthBarTMpro.text = (int)playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
     }
-
     #endregion
 
 
