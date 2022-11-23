@@ -15,8 +15,8 @@ public class CSVtest : MonoBehaviour
     #region Tower
 
     private const string TowerURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
-
-    [Header("[≈∏øˆ]")]
+    
+    [Header("[ÌÉÄÏõå]")]
     public TowerDatabaseList towerDatabaseListCSV;
     public ItemDataBaseList towerDatabaseList;
     public ItemDataBaseList tower_Attack_DatabaseList;
@@ -43,16 +43,16 @@ public class CSVtest : MonoBehaviour
         {
             string[] col = row[i].Split('\t');
 
-            // ±‚∫ª¡§∫∏
+            // Í∏∞Î≥∏Ï†ïÎ≥¥
             towerDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
             towerDatabaseListCSV.itemList[i].Pf = Resources.Load<GameObject>(col[3]);
             towerDatabaseListCSV.itemList[i].Name = col[4];
 
-            // ¡∂«’
+            // Ï°∞Ìï©
             towerDatabaseListCSV.itemList[i].Combination_ResultID = int.Parse(col[6]);
             towerDatabaseListCSV.itemList[i].Combination_Required_Value = int.Parse(col[7]);
 
-            // ªÃ±‚
+            // ÎΩëÍ∏∞
             towerDatabaseListCSV.itemList[i].Normal_Random_Draw_Probability = float.Parse(col[8]);
             towerDatabaseListCSV.itemList[i].Normal_Attack_Draw_Probability = float.Parse(col[9]);
             towerDatabaseListCSV.itemList[i].Normal_Minion_Draw_Probability = float.Parse(col[10]);
@@ -63,7 +63,7 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Premium_Minion_Draw_Probability = float.Parse(col[14]);
             towerDatabaseListCSV.itemList[i].Premium_Buff_Debuff_Draw_Probability = float.Parse(col[15]);
 
-            // º”º∫
+            // ÏÜçÏÑ±
             towerDatabaseListCSV.itemList[i].GroupID = int.Parse(col[16]);
             towerDatabaseListCSV.itemList[i].Rank = int.Parse(col[17]);
             towerDatabaseListCSV.itemList[i].Type = int.Parse(col[18]);
@@ -73,12 +73,12 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Range = int.Parse(col[22]);
             towerDatabaseListCSV.itemList[i].Range_Type = int.Parse(col[23]);
 
-            // ≈ıªÁ√º
+            // Ìà¨ÏÇ¨Ï≤¥
             towerDatabaseListCSV.itemList[i].Projectile_Speed = float.Parse(col[24]);
             towerDatabaseListCSV.itemList[i].Projectile_Type = int.Parse(col[25]);
             towerDatabaseListCSV.itemList[i].Projectile_Pf = Resources.Load<GameObject>(col[26]);
 
-            // ∫Œ∞°ø…º«
+            // Î∂ÄÍ∞ÄÏòµÏÖò
             towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf = Resources.Load<GameObject>(col[30]);
             towerDatabaseListCSV.itemList[i].Desc = col[33];
             towerDatabaseListCSV.itemList[i].Sprite_TowerCard = Resources.Load<Sprite>("Sprites/TowerImage/" + col[34]);
@@ -88,7 +88,7 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].AudioClip_Hit_Name = col[37];
             towerDatabaseListCSV.itemList[i].AudioClip_Normal_Name = col[38];
 
-            // πˆ«¡≈∏øˆ∏∏ «ÿ¥Á
+            // Î≤ÑÌîÑÌÉÄÏõåÎßå Ìï¥Îãπ
             towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
 
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
@@ -126,7 +126,7 @@ public class CSVtest : MonoBehaviour
 
     private const string BuffURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=1296679834&range=A4:I68";
 
-    [Header("[πˆ«¡]")]
+    [Header("[Î≤ÑÌîÑ]")]
     public BuffDatabaseList buffDatabaseListCSV;
 
     UnityWebRequest BuffWebData;
@@ -149,7 +149,7 @@ public class CSVtest : MonoBehaviour
         {
             string[] col = row[i].Split('\t');
 
-            // ±‚∫ª¡§∫∏
+            // Í∏∞Î≥∏Ï†ïÎ≥¥
             buffDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
             buffDatabaseListCSV.itemList[i].Name = col[2];
             buffDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/BuffIcon/" + col[2]);
@@ -163,4 +163,28 @@ public class CSVtest : MonoBehaviour
     }
     #endregion Buff 
 
+
+
+
+
+   
+    
+    
+    
+    
+    #region SkillDataParsing
+
+    private const string wizardSkillURL = "https://docs.google.com/spreadsheets/d/1PnBV0AFMfz3PdaEXZJcOPjnQCCQCOGoV/export?format=tsv&range=A4:Y18";
+    private const string warriorSkillURL = "https://docs.google.com/spreadsheets/d/1ggp4p3CU3bRVbeF-Eq6UshL67FK0VHwV/export?format=tsv&range=A4:Y18";
+
+    Dictionary<int, List<string>> CharactorSkillDatas = new Dictionary<int, List<string>>();
+    List<List<string>> SkillRowDatas = new List<List<string>>();
+
+    [Header("[Ïä§ÌÇ¨]")]
+    public SkillDatas WarriorSkillParsing;
+    public SkillDatas WizardSkillParsing;
+    public ItemDataBaseList WarriorDatabaseList;
+    public ItemDataBaseList WizardDatabaseList;
+
+    #endregion
 }

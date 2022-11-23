@@ -12,7 +12,7 @@ public class BulletMove : MonoBehaviourPun
     // ###############################################
 
 
-    public Transform tg;
+    public GameObject tg;
 
     new Rigidbody rigidbody;
     public float turn;
@@ -32,27 +32,30 @@ public class BulletMove : MonoBehaviourPun
         {
             return;
         }
-        
 
-        // ¿Øµµ≈∫
-        if (tg.position != null) //≈∏ƒœ¿Ã ¿÷¿ª∂ß
+        // Ïú†ÎèÑÌÉÑ
+        if (tg == null) //ÌÉÄÏºìÏù¥ ÏóÜÏùÑÎïå;
         {
-            rigidbody.velocity = transform.forward * ballVelocity; 
-            var ballTargetRotation = Quaternion.LookRotation(tg.position + new Vector3(0, 0.8f) - transform.position);
-            rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+
+            }
         }
         else
         {
-            PhotonNetwork.Destroy(gameObject);
-           
+            rigidbody.velocity = transform.forward * ballVelocity;
+            var ballTargetRotation = Quaternion.LookRotation(tg.transform.position + new Vector3(0, 0.8f) - transform.position);
+            rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
+
         }
 
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        // πÃ¥œæ¿œ ∂ß √≥∏Æ
-        if (photonView.IsMine)
+        // ÎØ∏ÎãàÏñ∏Ïùº Îïå Ï≤òÎ¶¨
+        if (PhotonNetwork.IsMasterClient)
         {
 
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
@@ -60,19 +63,19 @@ public class BulletMove : MonoBehaviourPun
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
-            // ≈∏øˆ¿œ∂ß √≥∏Æ
+            // ÌÉÄÏõåÏùºÎïå Ï≤òÎ¶¨
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
             {
                 other.gameObject.GetComponent<Turret>().Damage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
-            // «√∑π¿ÃæÓ¿œ∂ß 
+            // ÌîåÎ†àÏù¥Ïñ¥ÏùºÎïå 
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
             {
                 other.gameObject.GetComponent<Health>().OnDamage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
-            // ≥ÿº≠Ω∫ ¿œ∂ß
+            // ÎÑ•ÏÑúÏä§ ÏùºÎïå
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
             {
                 other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
@@ -81,14 +84,17 @@ public class BulletMove : MonoBehaviourPun
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-                Debug.Log($" ¿Ã∏ß : {other.gameObject}");
-                PhotonNetwork.Destroy(gameObject);
-            }else if(other.gameObject.layer == 17)
-            {
+
                 PhotonNetwork.Destroy(gameObject);
             }
-         
-        
+            else if (other.gameObject.layer == 17)
+            {
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                other.gameObject.GetComponent<Enemybase>().lastDamageTeam = gameObject.tag;  
+                PhotonNetwork.Destroy(gameObject);
+            }
+
+
         }
 
     }

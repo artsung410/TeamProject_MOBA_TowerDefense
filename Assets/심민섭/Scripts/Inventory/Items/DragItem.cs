@@ -171,18 +171,14 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                     {
                         int newSlotChildCount = newSlot.transform.parent.childCount;
                         bool isOnSlot = newSlot.transform.parent.GetChild(0).tag == "ItemIcon";
-                        //dragging on a slot where allready is an item on
                         if (newSlotChildCount != 0 && isOnSlot)
                         {
-                            //check if the items fits into the other item
                             bool fitsIntoStack = false;
                             if (sameItem)
                                 fitsIntoStack = (firstItem.itemValue + secondItem.itemValue) <= firstItem.maxStack;
-                            //if the item is stackable checking if the firstitemstack and seconditemstack is not full and check if they are the same items
 
                             if (inventory.stackable && sameItem && firstItemStack && secondItemStack)
                             {
-                                //if the item does not fit into the other item
                                 if (fitsIntoStack && !sameItemRerferenced)
                                 {
                                     secondItem.itemValue = firstItem.itemValue + secondItem.itemValue;
@@ -347,6 +343,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         itemOnObject.item = dragItem.item;
                         Instantiate(item, newSlot);
                         item.GetComponent<RectTransform>().localPosition = Vector3.zero;
+                        item.GetComponent<RectTransform>().localScale = new Vector3(0.7f, 0.8f, 0f);
                         eS.gameObject.GetComponent<Inventory>().updateItemList();
 
 

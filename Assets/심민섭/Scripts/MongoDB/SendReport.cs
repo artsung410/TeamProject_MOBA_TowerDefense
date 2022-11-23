@@ -2,6 +2,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class SendReport : MonoBehaviour
 {
@@ -25,17 +26,12 @@ public class SendReport : MonoBehaviour
         return myNickName;
     }
 
-
     [SerializeField]
-    private Text explanation;
-
-    private void Start()
-    {
-        //database = server.GetServer().GetDatabase("TowerDefense");
-    }
+    private TextMeshProUGUI explanation;
 
     public async void ReportButton()
     {
+        database = server.GetDatabase("TowerDefense");
         collection = database.GetCollection<BsonDocument>("Report");
         string myNickName = GetNickName();
 
@@ -43,7 +39,7 @@ public class SendReport : MonoBehaviour
         {
             {"MyNickName", myNickName},
             {"YourNickName", "상대방 닉네임"},
-            {"explanation", explanation.ToString()},
+            {"explanation", explanation.text.ToString()},
         };
 
         await collection.InsertOneAsync(SendReport);

@@ -29,23 +29,41 @@ public class BulletSpawn : MonoBehaviourPun
 
     public void Spawn()
     {
-        if (photonView.IsMine)
+        if (PhotonNetwork.IsMasterClient)
         {
             GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, transform.rotation);
-            bullet.GetComponent<BulletMove>().tg = Minion._target;
+            bullet.GetComponent<BulletMove>().tg = Minion._target.gameObject;
             bullet.GetComponent<BulletMove>().Damage = Minion.Damage;
+            if (gameObject.CompareTag("Blue"))
+            {
+                bullet.GetComponent<BulletMove>().EnemyTag = "Red";
+            }
+            else
+            {
+                bullet.GetComponent<BulletMove>().EnemyTag = "Blue";
+            }
 
             if (bullet.GetComponent<BulletMove>().tg == Minion._PrevTarget)
             {
                 PhotonNetwork.Destroy(bullet);
             }
 
+            if (gameObject.CompareTag("Blue"))
+            {
+                bullet.GetComponent<BulletMove>().CompareTag("Blue");
+                bullet.GetComponent<BulletMove>().EnemyTag = "Red";
+
+            }
+            else
+            {
+                bullet.GetComponent<BulletMove>().CompareTag("Red");
+                bullet.GetComponent<BulletMove>().EnemyTag = "Blue";
+            }
+
+
 
         }
     }
-        private void OnDrawGizmos()
-        {
-            Gizmos.color = Color.red;
-            Gizmos.DrawWireSphere(transform.position, 14f);
-        }
-    }
+
+}
+

@@ -12,16 +12,17 @@ using System;
 
 public class Turret : MonoBehaviourPun
 {
-    public static event Action<GameObject,string> minionTowerEvent = delegate { };
+    public static event Action<GameObject,GameObject,string> minionTowerEvent = delegate { };
     public static event Action<Turret> turretMouseDownEvent = delegate { };
     public static event Action<GameObject, float> OnTurretDestroyEvent = delegate { };
 
+
     [Header("타워 DB")]
     public TowerBlueprint towerDB;
-
     private Outline _outline;
 
     [Header("Hp바")]
+    public Sprite[] healthbarImages = new Sprite[3];
     public Image healthbarImage; // hp바 
     public Image hitbarImage; // hit바
     public GameObject ui; // Hp바 캔버스
@@ -74,6 +75,7 @@ public class Turret : MonoBehaviourPun
 
     // 타워 효과음
     protected private AudioSource audioSource;
+    
 
     void Awake()
     {
@@ -116,6 +118,7 @@ public class Turret : MonoBehaviourPun
 
         // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
         PlayerHUD.onGameEnd += Destroy_gameEnd;
+
     }
 
     private IEnumerator SetBuff()
@@ -161,13 +164,40 @@ public class Turret : MonoBehaviourPun
                 gameObject.tag = "Blue";
                 enemyTag = "Red";
             }
+            if (photonView.IsMine)
+            {
+                healthbarImage.sprite = healthbarImages[0]; // 초록 
+                hitbarImage.sprite = healthbarImages[1]; //빨강
+            }
+            else
+            {
+                healthbarImage.sprite = healthbarImages[1];
+                hitbarImage.sprite = healthbarImages[2];
+            }
         }
 
         // [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
+
         //if (towerData.ObjectPF != null)
         //{
         //    minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
         //}
+        =======
+        //if (towerData.ObjectBluePF != null && towerData.ObjectRedPF != null)
+        //{
+            minionTowerEvent.Invoke(towerData.ObjectBluePF,towerData.ObjectRedPF ,gameObject.tag);
+        //}
+        
+        if (photonView.IsMine)
+        {
+            healthbarImage.sprite = healthbarImages[0]; // 초록 
+            hitbarImage.sprite = healthbarImages[1]; //빨강
+        }
+        else
+        {
+            healthbarImage.sprite = healthbarImages[1];
+            hitbarImage.sprite = healthbarImages[2];
+        }
 
         _outline.enabled = false;
         _outline.OutlineWidth = 8f;
@@ -208,7 +238,7 @@ public class Turret : MonoBehaviourPun
         float prevValue = hitbarImage.fillAmount;
         float delta = prevValue / 100f;
 
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(0.01f);
             prevValue -= delta;
@@ -247,7 +277,7 @@ public class Turret : MonoBehaviourPun
 
     IEnumerator Destructing()
     {
-        while(true)
+        while (true)
         {
             yield return new WaitForSeconds(0.01f);
             transform.Translate(Vector3.down * Time.deltaTime * destroySpeed);

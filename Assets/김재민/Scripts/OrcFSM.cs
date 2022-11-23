@@ -71,7 +71,7 @@ public class OrcFSM : Enemybase
                     StopCoroutine(Imove);  // 3 
                 }
                 StartCoroutine(attack()); // 코루틴생성 4 
-                Iattack = attack(); //  5코루틴 넣어줌 넣어주는 이유 삭제를 해주기 위해서 start코루틴할때마다 다른 주소값의 코루틴을 실행시킴  
+                Iattack = attack(); //  5코루틴 넣어줌 넣어주는 이유 삭제를 해주기 위해서 start코루틴할때마다 다른 주소값의 코루틴을 실행시킴
                 break;
 
             default:
