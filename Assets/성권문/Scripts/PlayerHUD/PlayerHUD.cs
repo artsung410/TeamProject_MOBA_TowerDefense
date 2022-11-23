@@ -121,7 +121,7 @@ public class PlayerHUD : MonoBehaviourPun
     {
         // 게임 제한 시간 관련 코드
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
-        int time = 10;
+        int time = tro.limitedTime;
 
         //시, 분, 초 선언
         int hours, minute, second;
@@ -238,7 +238,7 @@ public class PlayerHUD : MonoBehaviourPun
         }
 
 
-        sec -= Time.deltaTime * 5;
+        sec -= Time.deltaTime;
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
 
         if (min < 0)

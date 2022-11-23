@@ -12,7 +12,7 @@ public class BulletMove : MonoBehaviourPun
     // ###############################################
 
 
-    public Transform tg;
+    public GameObject tg;
 
     new Rigidbody rigidbody;
     public float turn;
@@ -27,24 +27,21 @@ public class BulletMove : MonoBehaviourPun
 
     private void FixedUpdate()
     {
-       
-        if(tg == null)
-        {
-            return;
-        }
-        
-
         // 유도탄
-        if (tg.position != null) //타켓이 있을때
+        if (tg == null) //타켓이 없을때;
         {
-            rigidbody.velocity = transform.forward * ballVelocity; 
-            var ballTargetRotation = Quaternion.LookRotation(tg.position + new Vector3(0, 0.8f) - transform.position);
-            rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+
+            }
         }
         else
         {
-            PhotonNetwork.Destroy(gameObject);
-           
+            rigidbody.velocity = transform.forward * ballVelocity;
+            var ballTargetRotation = Quaternion.LookRotation(tg.transform.position + new Vector3(0, 0.8f) - transform.position);
+            rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
+
         }
 
     }
@@ -52,7 +49,7 @@ public class BulletMove : MonoBehaviourPun
     private void OnTriggerEnter(Collider other)
     {
         // 미니언일 때 처리
-        if (photonView.IsMine)
+        if (PhotonNetwork.IsMasterClient)
         {
 
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
@@ -81,14 +78,16 @@ public class BulletMove : MonoBehaviourPun
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
-                Debug.Log($" 이름 : {other.gameObject}");
-                PhotonNetwork.Destroy(gameObject);
-            }else if(other.gameObject.layer == 17)
-            {
+
                 PhotonNetwork.Destroy(gameObject);
             }
-         
-        
+            else if (other.gameObject.layer == 17)
+            {
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                PhotonNetwork.Destroy(gameObject);
+            }
+
+
         }
 
     }
