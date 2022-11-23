@@ -98,7 +98,7 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
         // 마스터 서버와 연결이 되어있고 로딩 게이지가 100%면
         if (PhotonNetwork.IsConnected && loadingGage == 100)
         {
-            SceneManager.LoadScene("Prototype_1");
+            SceneManager.LoadScene("demoSmaller");
         }
     }
 }

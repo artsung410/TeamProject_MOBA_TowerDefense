@@ -39,7 +39,7 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     // Update is called once per frame
     void Update()
     {
-        
+
         elaspedTime += Time.deltaTime;
         if (elaspedTime >= minionSpawnTime)
         {
@@ -58,35 +58,34 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
             }
         }
     }
-
-    void ChangeMinion(GameObject transferedMinion, string tag)
+    // 블루                             // 레드 
+    void ChangeMinion(GameObject transferedMinionBlue,GameObject transferedMinionRed,string tag) // 
     {
-        if (transferedMinion.transform.GetChild(0).GetComponent<EnemySatatus>()._eminontpye == EMINIONTYPE.Nomal)
+        if (transferedMinionBlue.transform.GetChild(0).GetComponent<EnemySatatus>()._eminontpye == EMINIONTYPE.Nomal) //첫번째 미니언으로 타입 설정 근접이면
         {
-            if (tag == "Blue")
+            if (tag == "Blue") //근접이고 태그가 블루면 
             {
-                BasicMinion[0] = transferedMinion; //  블루 근접미니언
+                BasicMinion[0] = transferedMinionBlue; //  블루 근접미니언
             }
-            else
+            else // 근접이고 태그가 레드면
             {
-                BasicMinion[2] = transferedMinion; // 레드 근접미니언
+                BasicMinion[2] = transferedMinionRed; // 레드 근접미니언
 
             }
         }
 
-        else
+        else // 원거리 이면서
         {
-            if (tag == "Red")
+            if (tag == "Blue") // 원거리면서 태그가 블루면  
             {
-                BasicMinion[1] = transferedMinion; // 블루 원거리 미니언
+                BasicMinion[1] = transferedMinionBlue; // 블루 원거리 미니언
             }
             else
             {
-                BasicMinion[3] = transferedMinion; // 레드 원거리 미니언
+                BasicMinion[3] = transferedMinionRed; // 레드 원거리 미니언
             }
         }
 
-        Debug.Log(tag);
 
     }
 

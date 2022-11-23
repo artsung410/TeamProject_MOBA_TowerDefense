@@ -81,8 +81,11 @@ public class TowerData : ScriptableObject
 
     [Header("오브젝트PF(미니언 타워만 해당)")]
     [SerializeField]
-    private GameObject _objectPF;
-    public GameObject ObjectPF { get { return _objectPF; } }
+    private GameObject _objectBluePF;
+    public GameObject ObjectBluePF { get { return _objectBluePF; } }
+    [SerializeField]
+    private GameObject _objectRedPF;
+    public GameObject ObjectRedPF { get { return _objectRedPF; } }
 
     [Header("타워 파괴효과PF")]
     [SerializeField]

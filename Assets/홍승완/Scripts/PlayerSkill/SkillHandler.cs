@@ -128,6 +128,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
             {
                 Debug.Log("input skillTimeDamage");
                 minion.DamageOverTime(damage, time);
+                minion.lastDamageTeam = GetMytag(_ability);
             }
         }
     }
