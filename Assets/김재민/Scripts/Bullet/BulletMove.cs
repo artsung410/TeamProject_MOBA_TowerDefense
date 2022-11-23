@@ -27,8 +27,14 @@ public class BulletMove : MonoBehaviourPun
 
     private void FixedUpdate()
     {
-        // À¯µµÅº
-        if (tg == null) //Å¸ÄÏÀÌ ¾øÀ»¶§;
+       
+        if(tg == null)
+        {
+            return;
+        }
+
+        // ìœ ë„íƒ„
+        if (tg == null) //íƒ€ì¼“ì´ ì—†ì„ë•Œ;
         {
             if (photonView.IsMine)
             {
@@ -48,7 +54,7 @@ public class BulletMove : MonoBehaviourPun
 
     private void OnTriggerEnter(Collider other)
     {
-        // ¹Ì´Ï¾ğÀÏ ¶§ Ã³¸®
+        // ë¯¸ë‹ˆì–¸ì¼ ë•Œ ì²˜ë¦¬
         if (PhotonNetwork.IsMasterClient)
         {
 
@@ -57,19 +63,19 @@ public class BulletMove : MonoBehaviourPun
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
-            // Å¸¿öÀÏ¶§ Ã³¸®
+            // íƒ€ì›Œì¼ë•Œ ì²˜ë¦¬
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
             {
                 other.gameObject.GetComponent<Turret>().Damage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
-            // ÇÃ·¹ÀÌ¾îÀÏ¶§ 
+            // í”Œë ˆì´ì–´ì¼ë•Œ 
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
             {
                 other.gameObject.GetComponent<Health>().OnDamage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
-            // ³Ø¼­½º ÀÏ¶§
+            // ë„¥ì„œìŠ¤ ì¼ë•Œ
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
             {
                 other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
@@ -84,6 +90,7 @@ public class BulletMove : MonoBehaviourPun
             else if (other.gameObject.layer == 17)
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                other.gameObject.GetComponent<Enemybase>().lastDamageTeam = gameObject.tag;  
                 PhotonNetwork.Destroy(gameObject);
             }
 

@@ -86,7 +86,6 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
             }
         }
 
-        Debug.Log(tag);
 
     }
 

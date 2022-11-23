@@ -1,8 +1,9 @@
-using Photon.Pun;
-using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 using UnityEngine.UI;
-
+using System;
 public class NexusHp : MonoBehaviourPun
 {
     // ###############################################
@@ -15,8 +16,14 @@ public class NexusHp : MonoBehaviourPun
     public float MaxHp;
     private bool isDie;
     public GameObject destroyParticle;
-    [SerializeField]
-    private Slider _slider;
+
+    [Header("Hp바")]
+    public Sprite[] healthbarImages = new Sprite[3];  // 적군 아군 체력바 구별
+    public Image healthbarImage; // hp바 
+    public Image hitbarImage; // hit바
+    public GameObject ui; // Hp바 캔버스
+
+
     public Sprite nexusSprite;
 
     [SerializeField]
@@ -54,12 +61,27 @@ public class NexusHp : MonoBehaviourPun
                 gameObject.tag = "Red";
             }
         }
+        if (gameObject == null)
+        {
+            return;
+        }
 
+        if (photonView.IsMine)
+        {
+            healthbarImage.sprite = healthbarImages[0]; // 초록 
+            hitbarImage.sprite = healthbarImages[1]; //빨강
+        }
+        else
+        {
+            healthbarImage.sprite = healthbarImages[1]; // 빨강
+            hitbarImage.sprite = healthbarImages[2]; // 노랑
+        }
     }
 
     private void Start()
     {
         InvokeRepeating(nameof(RegenerationSwitch), 0, 1f);
+
     }
 
 
@@ -70,11 +92,7 @@ public class NexusHp : MonoBehaviourPun
         {
             return;
         }
-        _slider.value = CurrentHp / MaxHp;
-        if (_slider == null)
-        {
-            return;
-        }
+
 
         if (transform == null || transform.gameObject == null || this == null)
         {
@@ -106,6 +124,10 @@ public class NexusHp : MonoBehaviourPun
             CurrentHp -= Damage;
             if (CurrentHp <= 0)
             {
+                CurrentHp = Mathf.Max(CurrentHp - Damage, 0);
+                healthbarImage.fillAmount = CurrentHp / MaxHp;
+                StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
+
                 isDie = true;
                 PlayerHUD.Instance.ActivationGameWinUI_Nexus(gameObject.tag);
                 PhotonNetwork.Instantiate(destroyParticle.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
@@ -115,6 +137,25 @@ public class NexusHp : MonoBehaviourPun
             }
         }
     }
+
+    private IEnumerator ApplyHitBar(float value)
+    {
+        float prevValue = hitbarImage.fillAmount;
+        float delta = prevValue / 100f;
+
+        while (true)
+        {
+            yield return new WaitForSeconds(0.01f);
+            prevValue -= delta;
+            hitbarImage.fillAmount = prevValue;
+
+            if (prevValue - value < 0.001f)
+            {
+                break;
+            }
+        }
+    }
+
 
     private void OnMouseDown()
     {
@@ -162,13 +203,13 @@ public class NexusHp : MonoBehaviourPun
 
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
-
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveAlly, Vector2.zero, CursorMode.Auto);
             _outline.OutlineColor = Color.green;
             _outline.enabled = true; // 켜주고
         }
         else
         {
-
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveEnemy, Vector2.zero, CursorMode.Auto);
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }
@@ -177,6 +218,7 @@ public class NexusHp : MonoBehaviourPun
 
     private void OnMouseExit()
     {
+        Cursor.SetCursor(PlayerHUD.Instance.cursorMoveNamal, Vector2.zero, CursorMode.Auto);
         _outline.enabled = false;
     }
 

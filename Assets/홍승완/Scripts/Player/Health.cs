@@ -97,7 +97,6 @@ public class Health : MonoBehaviourPun
     {
         if (isDeath)
         {
-            //StopCoroutine(DelayDisapearBody());
             return;
         }
 
@@ -128,7 +127,7 @@ public class Health : MonoBehaviourPun
 
     public void Regenation(float recovery)
     {
-        photonView.RPC("PRC_regeneration", RpcTarget.All, recovery);
+        photonView.RPC(nameof(PRC_regeneration), RpcTarget.All, recovery);
     }
     
     
@@ -149,7 +148,7 @@ public class Health : MonoBehaviourPun
 
     public void DamageOverTime(float Damage,float Time)
     {
-        photonView.RPC("RPC_DamageOverTime",RpcTarget.All,Damage,Time);
+        photonView.RPC(nameof(RPC_DamageOverTime),RpcTarget.All,Damage,Time);
     }
 
     [PunRPC]
@@ -161,7 +160,8 @@ public class Health : MonoBehaviourPun
             {
                 yield  break;
             }
-            health -= Damage;
+            //health -= Damage;
+            OnDamage(Damage);
             yield return Delay100;
             Time -= 1f;
 
@@ -173,11 +173,14 @@ public class Health : MonoBehaviourPun
     {
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
+            // 마우스 커서 변경 코드
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveAlly, Vector2.zero, CursorMode.Auto);
             _outline.enabled = true; // 켜주고
             _outline.OutlineColor = Color.blue;
         }
         else
         {
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveEnemy, Vector2.zero, CursorMode.Auto);
             _outline.enabled = true;
             _outline.OutlineColor = Color.red;
         }
@@ -186,6 +189,7 @@ public class Health : MonoBehaviourPun
 
     private void OnMouseExit()
     {
+        Cursor.SetCursor(PlayerHUD.Instance.cursorMoveNamal, Vector2.zero, CursorMode.Auto);
         _outline.enabled = false;
     }
 

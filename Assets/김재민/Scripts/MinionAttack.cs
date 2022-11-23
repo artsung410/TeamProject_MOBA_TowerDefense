@@ -27,10 +27,10 @@ public class MinionAttack : MonoBehaviourPun
     //TODO : 데미지 연산부분 이즈마인 처리해서 한번만 들어가게끔 처리해야함
     private void OnTriggerEnter(Collider other)
     {
-
-        EnemyTagNullCheck();
-        if (PhotonNetwork.IsMasterClient)
+        if (photonView.IsMine)
         {
+            
+            EnemyTagNullCheck();
             if (other.CompareTag(satatus.EnemyTag))
             {
 
@@ -64,8 +64,8 @@ public class MinionAttack : MonoBehaviourPun
             else if (other.gameObject.layer == 17)
             {
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(satatus.Damage);
+                other.gameObject.GetComponent<Enemybase>().lastDamageTeam = gameObject.tag;
             }
-
         }
 
     }
@@ -90,3 +90,4 @@ public class MinionAttack : MonoBehaviourPun
 
 
 }
+

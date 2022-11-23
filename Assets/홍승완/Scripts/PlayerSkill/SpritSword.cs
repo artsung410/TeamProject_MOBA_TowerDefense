@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
+public enum Star
+{
+    OneStar,
+    TwoStar,
+    ThreeStar,
+}
+
+
 public class SpritSword : SkillHandler
 {
     // ###############################################
@@ -14,22 +22,27 @@ public class SpritSword : SkillHandler
     
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
     #endregion
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float lockTime;
+
     public float Speed;
+
+    //public ScriptableObject temp;
+    public Star Star;
 
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
+        damage = SetDamage;
+        holdingTime = SetHodingTime;
+        range = SetRange;
+        lockTime = SetLockTime;
     }
 
     // Start is called before the first frame update
@@ -40,8 +53,15 @@ public class SpritSword : SkillHandler
             return;
         }
 
-        TagProcessing(_ability);
         LookMouseCursor();
+        StartCoroutine(SkillLock());
+    }
+
+    IEnumerator SkillLock()
+    {
+        _ability.OnLock(true);
+        yield return new WaitForSeconds(lockTime);
+        _ability.OnLock(false);
     }
 
     public void LookMouseCursor()
@@ -56,21 +76,6 @@ public class SpritSword : SkillHandler
             quaternion = _ability.transform.localRotation;
         }
     }
-    private void TagProcessing(HeroAbility ability)
-    {
-
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-            //Debug.Log(enemyTag);
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-            //Debug.Log(enemyTag);
-        }
-
-    }
 
     void Update()
     {
@@ -82,7 +87,7 @@ public class SpritSword : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(HoldingTime);
+            SkillHoldingTime(holdingTime);
         }
     }
 
@@ -114,10 +119,19 @@ public class SpritSword : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            //if (other.CompareTag(enemyTag))
+            //{
+            //    SkillDamage(damage, other.gameObject);
+            //}
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
-                SkillDamage(Damage, other.gameObject);
+                SkillDamage(damage, other.gameObject);
             }
         }
+    }
+
+    private void OnDestroy()
+    {
+        StopAllCoroutines();
     }
 }

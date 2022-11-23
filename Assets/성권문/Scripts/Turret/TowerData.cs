@@ -67,10 +67,6 @@ public class TowerData : ScriptableObject
     public Attack_Range_Type AttackRangeType { get { return _attackRangeType; } }
 
     [SerializeField]
-    private float _attackRangeTypeRadius;
-    public float AttackRangeTypeRadius { get { return _attackRangeTypeRadius; } }
-
-    [SerializeField]
     private float _maxHP;
     public float MaxHP { get { return _maxHP; } }
 

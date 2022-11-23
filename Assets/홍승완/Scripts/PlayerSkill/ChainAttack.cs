@@ -17,12 +17,12 @@ public class ChainAttack : SkillHandler
 
     Quaternion quaternion;
     float elapsedTime;
-    string enemyTag;
     Vector3 mouseDir;
 
-    private float HoldingTime;
-    private float Damage;
-    private float Range;
+    private float holdingTime;
+    private float damage;
+    private float range;
+    private float lockTime;
 
     #endregion
 
@@ -41,12 +41,14 @@ public class ChainAttack : SkillHandler
     private void OnEnable()
     {
         elapsedTime = 0f;
-        Damage = SetDamage;
+        damage = SetDamage;
         //Debug.Log($"SetDamage : {SetDamage}");
-        HoldingTime = SetHodingTime;
+        holdingTime = SetHodingTime;
         //Debug.Log($"SetHodingTime : {SetHodingTime}");
-        Range = SetRange;
+        range = SetRange;
         //Debug.Log($"SetRange : {SetRange}");
+        lockTime = SetLockTime;
+        //Debug.Log($"lockTime : {lockTime}");
 
         int currentNumber = Random.Range(0, 4);
 
@@ -74,8 +76,9 @@ public class ChainAttack : SkillHandler
         }
 
         //photonView.RPC(nameof(TagProcessing), RpcTarget.All);
+
+        _ability.OnLock(true);
         LookMouseCursor();
-        TagProcessing(_ability);
     }
 
     public void LookMouseCursor()
@@ -91,22 +94,6 @@ public class ChainAttack : SkillHandler
             quaternion = _ability.transform.localRotation;
         }
 
-    }
-
-    private void TagProcessing(HeroAbility ability)
-    {
-
-        if (ability.CompareTag("Blue"))
-        {
-            enemyTag = "Red";
-            //Debug.Log(enemyTag);
-        }
-        else if (ability.CompareTag("Red"))
-        {
-            enemyTag = "Blue";
-            //Debug.Log(enemyTag);
-
-        }
     }
 
     float dispersionTime = 0f;
@@ -139,11 +126,11 @@ public class ChainAttack : SkillHandler
         }
 
         SkillUpdatePosition();
-        SkillHoldingTime(HoldingTime);
+        SkillHoldingTime(holdingTime);
 
         dispersionTime += Time.deltaTime;
         
-        float tickTime = HoldingTime / 10;
+        float tickTime = holdingTime / 10;
         if (dispersionTime >= tickTime)
         {
             dispersionTime = 0f;
@@ -174,6 +161,12 @@ public class ChainAttack : SkillHandler
     {
         elapsedTime += Time.deltaTime;
 
+        // Lock타임 동안 다른 스킬은 못쓰게 해준다
+        if (elapsedTime >= lockTime)
+        {
+            _ability.OnLock(false);
+        }
+
         // 지속시간동안 플레이어가 느려진다
         _stat.MoveSpeed = 3f;
 
@@ -202,12 +195,12 @@ public class ChainAttack : SkillHandler
         // 데미지 두번들어가던부분 IsMine으로 처리
         if (photonView.IsMine)
         {
-            if (other.CompareTag(enemyTag))
+            if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 if (isDamage)
                 {
                     isDamage = false;
-                    float tickDamage = Damage / 10;
+                    float tickDamage = damage / 10;
                     SkillDamage(tickDamage, other.gameObject);
                 }
             }

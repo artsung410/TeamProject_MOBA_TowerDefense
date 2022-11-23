@@ -12,6 +12,11 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
     private GameObject oldSlot;
     private Inventory inventory;
     private Transform draggedItemBox;
+    private GameObject dragItemObj;
+    private ItemOnObject dragItem;
+
+// 케릭터 장비창의 컴포넌트를 가져올 변수
+    public static EquipmentSystem eS;
 
     public delegate void ItemDelegate();
     public static event ItemDelegate updateInventoryList;
@@ -24,9 +29,15 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         // 드래그아이템 Rect 위치
         rectTransformSlot = GameObject.FindGameObjectWithTag("DraggingItem").GetComponent<RectTransform>();
         // 인벤토리 컴포넌트
-        inventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetComponent<Inventory>();
+        inventory = GameObject.FindGameObjectWithTag("MainInventory").GetComponent<Inventory>();
         // 드래그 아이템 박스 위치
         draggedItemBox = GameObject.FindGameObjectWithTag("DraggingItem").transform;
+
+        if (GameObject.FindGameObjectWithTag("EquipmentSystem") != null)
+        {
+            // "Player" 태그를 찾아서 PlayerInventory스크립트 안에 characterSystem 오브젝트의 EquipmentSystem스크립트를 가져온다.
+            eS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().characterSystem.GetComponent<EquipmentSystem>();
+        }
     }
 
 
@@ -36,6 +47,13 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         // Rect 위치가 null이면
         if (rectTransform == null)
             return;
+
+        // 드래그 아이템 정보 저장하기
+        if (draggedItemBox.childCount != 0)
+        {
+            dragItemObj = GameObject.FindGameObjectWithTag("DraggingItem").transform.GetChild(0).gameObject;
+            dragItem = dragItemObj.GetComponent<ItemOnObject>();
+        }
 
         // 왼 클릭이고 CraftResultSlot이 null이면
         if (data.button == PointerEventData.InputButton.Left && transform.parent.GetComponent<CraftResultSlot>() == null)
@@ -232,6 +250,24 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                             firstItemRectTransform.localPosition = Vector3.zero;
                                             return;
                                         }
+                                        if (oldSlot.tag == "WizardSlot")
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
+                                        if (oldSlot.tag == "AssassinSlot")
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
+                                        if (oldSlot.tag == "InherenceSlot")
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
 
                                         if (oldSlot.tag != newSlot.tag)
                                         {
@@ -293,6 +329,31 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                     oldSlot.transform.parent.parent.GetComponent<Inventory>().UnEquipItem1(firstItem);
                             }
                         }
+                    }
+                }
+
+                if (newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WarriorSlot" || newSlot.tag == "WizardSlot" || newSlot.tag == "AssassinSlot"
+                    || newSlot.tag == "InherenceSlot")
+                {
+                    // 갯수가 1보다 크면
+                    if (dragItem.item.itemValue > 1)
+                    {
+                        int itemValueCount;
+                        itemValueCount = dragItem.item.itemValue;
+                        // 수량을 1로 변화 시키고 장착 슬롯으로 복사
+                        GameObject item = (GameObject)Instantiate(inventory.prefabItem);
+                        ItemOnObject itemOnObject = item.GetComponent<ItemOnObject>();
+                        dragItem.item.itemValue = 1;
+                        itemOnObject.item = dragItem.item;
+                        Instantiate(item, newSlot);
+                        item.GetComponent<RectTransform>().localPosition = Vector3.zero;
+                        eS.gameObject.GetComponent<Inventory>().updateItemList();
+
+
+                        // 남은 아이템은 -1를 시켜서 인벤토리로 이동
+                        dragItem.item.itemValue = itemValueCount - 1;
+                        firstItemGameObject.transform.SetParent(oldSlot.transform);
+                        firstItemRectTransform.localPosition = Vector3.zero;
                     }
                 }
 

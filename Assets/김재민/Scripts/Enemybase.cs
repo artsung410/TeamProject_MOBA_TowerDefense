@@ -167,7 +167,11 @@ public class Enemybase : MonoBehaviourPun
                 }
                 _animator.SetTrigger("Die");
                 isDead = true;
-                PlayerHUD.Instance.lastDamageTeam = lastDamageTeam;
+                if(_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
+                {
+                GameManager.Instance.winner = lastDamageTeam;
+                    Debug.Log($"{GameManager.Instance.winner}");
+                }
             }
 
         }
@@ -185,7 +189,7 @@ public class Enemybase : MonoBehaviourPun
     }
     public void DamageOverTime(float Damage, float Time)
     {
-        Debug.Log($"damage : {Damage}\n Time : {Time}");
+        
         photonView.RPC(nameof(RPC_DamageOverTime), RpcTarget.All, Damage, Time);
     }
 
@@ -195,8 +199,13 @@ public class Enemybase : MonoBehaviourPun
         Debug.Log("courutine start");
         while (true)
         {
+            if (isDead)
+            {
+                yield break;
+            }
             if (CurrnetHP <= 0)
             {
+                OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent.enabled == true)
                 {
@@ -206,6 +215,11 @@ public class Enemybase : MonoBehaviourPun
                 gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
+                if (_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
+                {
+                    GameManager.Instance.winner = lastDamageTeam;
+                }
+
                 yield return Delay100;
                 yield break;
             }
@@ -230,13 +244,13 @@ public class Enemybase : MonoBehaviourPun
 
         if (photonView.IsMine) // 자기 자신이면 켜주고  색 그린
         {
-
-            _outline.OutlineColor = Color.green;
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveAlly, Vector2.zero, CursorMode.Auto);
+            _outline.OutlineColor = Color.green ;
             _outline.enabled = true; // 켜주고
         }
         else
         {
-
+            Cursor.SetCursor(PlayerHUD.Instance.cursorMoveEnemy, Vector2.zero, CursorMode.Auto);
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }

@@ -13,6 +13,8 @@ public class PlayerStorage : MonoBehaviour
     [SerializeField]
     public string userName;
     [SerializeField]
+    public string yourName;
+    [SerializeField]
     public string zera;
     [SerializeField]
     public string ace;
