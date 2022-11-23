@@ -217,7 +217,6 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     }
 
-    //private void SpawnNexus()
 
     private void CheckandApplyBuffs(GameObject tower)
     {
@@ -228,15 +227,6 @@ public class GameManager : MonoBehaviourPunCallbacks
         }
     }
 
-
-
-        //if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
-        //{
-
-        //    PhotonNetwork.Instantiate(NexusPrefab[0].name, spawnPositions[2].position, Quaternion.Euler(transform.position));
-
-
-        //}
     private void SpawnNexus()
     {
         Debug.Log("됨?");
@@ -259,9 +249,10 @@ public class GameManager : MonoBehaviourPunCallbacks
     // 중립몬스터 생성
     public void bossMonsterSpawn()
     {
+       
         if (PhotonNetwork.IsMasterClient && PlayerHUD.Instance.BossMonsterSpawnON)
         {
-
+            
 
           PhotonNetwork.Instantiate(BossPrefeb.name,new Vector3(0,-1f,0f), Quaternion.identity);
         }

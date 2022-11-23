@@ -13,8 +13,12 @@ using System;
 public class Turret : MonoBehaviourPun
 {
     public static event Action<GameObject, string> minionTowerEvent = delegate { };
+    public static event Action<GameObject,GameObject,string> minionTowerEvent = delegate { };
     public static event Action<Turret> turretMouseDownEvent = delegate { };
     public static event Action<GameObject, float> OnTurretDestroyEvent = delegate { };
+
+
+    
 
     [Header("인게임 DB")]
     public TowerData towerData;
@@ -132,9 +136,9 @@ public class Turret : MonoBehaviourPun
         }
 
         // [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
-        if (towerData.ObjectPF != null)
+        if (towerData.ObjectBluePF != null && towerData.ObjectRedPF != null)
         {
-            minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
+            minionTowerEvent.Invoke(towerData.ObjectBluePF,towerData.ObjectRedPF ,gameObject.tag);
         }
 
         _outline.enabled = false;
