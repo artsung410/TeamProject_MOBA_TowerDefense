@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OpenDrawBox : MonoBehaviour
 {
@@ -21,6 +22,12 @@ public class OpenDrawBox : MonoBehaviour
     [SerializeField]
     private RandomSelect randomSelect;
 
+    private void OnEnable()
+    {
+        gameObject.GetComponent<Button>().interactable = true;
+    }
+
+
     // 카드 뽑기 함수 실행 (드로우 매니저)
     public void BoxOpen()
     {
@@ -32,8 +39,27 @@ public class OpenDrawBox : MonoBehaviour
         openObj.SetActive(true);
     }
 
+    private void Update()
+    {
+        // 자기 자신이 활성화 되어 있고
+        if (gameObject.activeSelf == true && DrawManager.instance.boxItem.item.itemValue < 10 && gameObject.GetComponent<Button>().interactable == true)
+        {
+            gameObject.GetComponent<Button>().interactable = false;
+        }
+    }
+
     public void RetryButton()
     {
+        StartCoroutine(RetryButtonIE());
+    }
+
+    public IEnumerator RetryButtonIE()
+    {
+        // 자동 오픈 이후
+        gameObject.GetComponent<AutoCardOpen>().AutoOpenButton();
+
+        yield return new WaitForSeconds(2f);
+
         // 아이템 소모
         DrawManager.instance.OpenBoxDisCount();
         // 카드 뽑기 창 초기화

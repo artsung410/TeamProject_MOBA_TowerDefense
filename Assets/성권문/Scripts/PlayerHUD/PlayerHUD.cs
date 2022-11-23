@@ -76,7 +76,8 @@ public class PlayerHUD : MonoBehaviourPun
 
     [Header("MousePointer")]
     public Canvas MousePointerCanvas;
-    public GameObject MousePositionImage;
+    public GameObject MousePositionImage1;
+    public GameObject MousePositionImage2;
     public MousePointer mousePointer;
 
     [Header("BossMonsterUI")]
@@ -162,8 +163,6 @@ public class PlayerHUD : MonoBehaviourPun
         resultImigePopup = ResultImagePopUp();
         textCouruntine = textFadeout();
 
-
-
         setSkill();
         StartCoroutine(setHp());
         setMouseCursor();
@@ -187,9 +186,6 @@ public class PlayerHUD : MonoBehaviourPun
 
     void Update()
     {
-
-
-
         if (GameManager.Instance.isGameEnd == true)
         {
             return;
@@ -547,7 +543,6 @@ public class PlayerHUD : MonoBehaviourPun
         playerHp2D = playerHp.hpSlider3D.value;
         playerHealthBarTMpro.text = (int)playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
     }
-
     #endregion
 
 
@@ -702,7 +697,8 @@ public class PlayerHUD : MonoBehaviourPun
     private void setMouseCursor()
     {
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj1 = MousePositionImage1;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj2 = MousePositionImage2;
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 
