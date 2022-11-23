@@ -100,6 +100,11 @@ public class Turret : MonoBehaviourPun
 
             // 타워 데이터 -> 타워 투사체 속도적용
             projectiles_Speed = towerDB.Projectile_Speed;
+
+            if (towerDB.Type == (int)Buff_Effect_Type.Buff || towerDB.Type == (int)Buff_Effect_Type.DeBuff)
+            {
+                StartCoroutine(SetBuff());
+            }
         }
 
 
@@ -111,8 +116,13 @@ public class Turret : MonoBehaviourPun
 
         // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
         PlayerHUD.onGameEnd += Destroy_gameEnd;
+    }
 
-    
+    private IEnumerator SetBuff()
+    {
+        yield return new WaitForSeconds(0.5f);
+        BuffBlueprint buff = BuffManager.Instance.buffDB_Dic[towerDB.buffID];
+        BuffManager.Instance.AddBuff(buff);
     }
 
     protected void OnEnable()

@@ -218,37 +218,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    ID: 1005
+    ID: 1003
     Pf: {fileID: 8588469063931012877}
-    Name: Damage_Increase_Tower5
-    Combination_ResultID: 0
-    Combination_Required_Value: 0
-    Normal_Random_Draw_Probability: 0
+    Name: Damage_Increase_Tower3
+    Combination_ResultID: 1004
+    Combination_Required_Value: 200
+    Normal_Random_Draw_Probability: 0.41666666
     Normal_Attack_Draw_Probability: 0
     Normal_Minion_Draw_Probability: 0
-    Normal_Buff_Debuff_Draw_Probability: 0
-    Premium_Random_Draw_Probability: 0.41666666
+    Normal_Buff_Debuff_Draw_Probability: 1.25
+    Premium_Random_Draw_Probability: 2.9166667
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
-    Premium_Buff_Debuff_Draw_Probability: 1.25
+    Premium_Buff_Debuff_Draw_Probability: 8.75
     GroupID: 11
-    Rank: 5
+    Rank: 3
     Type: 2
     Attack: 1
     Attack_Speed: 0.3
-    Hp: 300
+    Hp: 200
     Range: 20
     Range_Type: 1
     Projectile_Type: 1
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
-    Destroy_Effect_Pf: {fileID: 0}
-    Desc: GB_Crystal_1
-    Sprite_TowerCard: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: 30022
+    Sprite_TowerCard: {fileID: 21300000, guid: 6492c1ec9ff7ab54990891fd13bd05ac, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+    buffID: 15003
   healthbarImage: {fileID: 2386787520153585009}
   hitbarImage: {fileID: 6190989451697490401}
   ui: {fileID: 9063330684376567513}

@@ -43,7 +43,7 @@ public class MinionAtkUp : SkillHandler
         }
         // 나의 태그 찾음
         minionBuff(atkBuff); // 미니언 버프 적용
-        BuffManager.Instance.AddBuff((BuffData)buff);
+        //BuffManager.Instance.AddBuff((BuffData)buff);
         BuffManager.Instance.AssemblyBuff();
 
     }

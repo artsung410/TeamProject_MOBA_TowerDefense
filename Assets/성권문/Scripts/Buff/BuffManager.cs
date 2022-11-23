@@ -15,22 +15,6 @@ using Photon.Pun;
 //             MAIL : gkenfktm@gmail.com         
 // ###############################################
 
-public enum Buff_Effect
-{
-    Attack_Increase = 1,
-    HP_Regen_Increase,
-    Move_Speed_Increase,
-    Attack_Speed_Increase,
-    Attack_Decrese,
-    HP_Regen_Decrease,
-    Move_Speed_Decrese,
-    Attack_Speed_Decrese,
-    Stun,
-    Freezing,
-    Burn,
-    Airborne,
-    Knockback,
-}
 
 
 public class BuffManager : MonoBehaviourPun
@@ -42,10 +26,10 @@ public class BuffManager : MonoBehaviourPun
     public BuffDatabaseList buffDB;
 
     [HideInInspector]
-    public List<BuffData> currentBuffDatas = new List<BuffData>();           
+    public List<BuffBlueprint> currentBuffDatas = new List<BuffBlueprint>();           
     // 각 월드에서 생성된 모든 버프들
     public static BuffManager Instance;
-    public Dictionary<BuffData, float> buffDic = new Dictionary<BuffData, float>();             // 버프 쿨타임 담을 딕셔너리(버프 정렬시도 유지하도록)
+    public Dictionary<BuffBlueprint, float> buffDic = new Dictionary<BuffBlueprint, float>();             // 버프 쿨타임 담을 딕셔너리(버프 정렬시도 유지하도록)
 
     // 모든 버프데이터를 담을 딕셔너리
     public Dictionary<int, BuffBlueprint> buffDB_Dic = new Dictionary<int, BuffBlueprint>();
@@ -69,16 +53,16 @@ public class BuffManager : MonoBehaviourPun
     }
 
     // 버프 시작
-    public void AddBuff(BuffData buff)
+    public void AddBuff(BuffBlueprint buff)
     {
-        if (buff.EffectType == Effect_Type.Buff)
+        if (buff.Type == (int)Buff_Effect_Type.Buff)
         {
             currentBuffDatas.Add(buff);
-            playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, true);
+            playerBuffAdditionEvent.Invoke(buff.GroupID, buff.Value, true);
         }
         else
         {
-            photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.Group_ID);
+            photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.ID);
         }
 
         AssemblyBuff();
@@ -89,16 +73,16 @@ public class BuffManager : MonoBehaviourPun
     private void RPC_AddDeBuff(int id)
     {
         Debug.Log("1to2 RPC^^^^^^");
-        //currentBuffDatas.Add(all_DeBuffDatass[id - 5]);
-        //playerBuffAdditionEvent.Invoke(id, all_DeBuffDatass[id - 5].EffectValue, true);
+        currentBuffDatas.Add(buffDB_Dic[id]);
+        playerBuffAdditionEvent.Invoke(buffDB_Dic[id].GroupID, buffDB_Dic[id].Value, true);
         AssemblyBuff();
     }
 
     // 버프 종료
-    public void removeBuff(BuffData buff)
+    public void removeBuff(BuffBlueprint buff)
     {
         currentBuffDatas.Remove(buff);
-        playerBuffAdditionEvent.Invoke(buff.Group_ID, buff.EffectValue, false);
+        playerBuffAdditionEvent.Invoke(buff.GroupID, buff.Value, false);
     }
 
     public void removeBuff_All()
@@ -134,8 +118,8 @@ public class BuffManager : MonoBehaviourPun
                 }
             }
 
-            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].EffectDuration; // 슬롯마다 버프쿨타임 세팅
-            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].BuffIcon; // 슬롯 버프이미지 적용
+            transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].Duration; // 슬롯마다 버프쿨타임 세팅
+            transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].Icon; // 슬롯 버프이미지 적용
             Color color = transform.GetChild(i).GetComponent<Image>().color; 
             color.a = 1f;
             gameObject.transform.GetChild(i).GetComponent<Image>().color = color; // 슬롯 버프이미지 투명도 1로 적용

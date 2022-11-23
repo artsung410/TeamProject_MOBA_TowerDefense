@@ -96,7 +96,7 @@ public class MakeUserInfo : MonoBehaviour
         towerDeBuffAttackSpeedDecrease = new int[5];
 }
 
-
+    // TODO: 인벤토리 정리/리팩토링 
     // 전사 카드 보유 데이터 목록
     public int[] ChainAttack;
     public int[] Smash;

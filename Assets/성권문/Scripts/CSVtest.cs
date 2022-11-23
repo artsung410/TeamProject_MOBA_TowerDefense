@@ -88,10 +88,15 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].AudioClip_Hit_Name = col[37];
             towerDatabaseListCSV.itemList[i].AudioClip_Normal_Name = col[38];
 
+            // 버프타워만 해당
+            towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
+
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
             towerDatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
             towerDatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
 
+
+            
             if (i < 50)
             {
                 tower_Attack_DatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
