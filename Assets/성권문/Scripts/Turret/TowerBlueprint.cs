@@ -7,6 +7,13 @@ using UnityEngine;
 //             MAIL : artsung410@gmail.com         
 // ###############################################
 
+public enum Tower_Type
+{
+    Attack_Tower = 1,
+    Buff_Tower,
+    DeBuff_Tower,
+    Minion_Tower
+}
 
 [System.Serializable]
 public class TowerBlueprint
@@ -14,6 +21,9 @@ public class TowerBlueprint
     [Header("[기본정보]")]
     public string Name;                                      // 타워 이름
     public int ID;                                           // 고유 아이디
+    public int GroupID;                                      // 그룹 아이디 
+    public int Rank;                                         // 등급
+    public int Type;                                         // 타입
     public GameObject Pf;
 
     [Header("[조합]")]
@@ -32,9 +42,6 @@ public class TowerBlueprint
     public float Premium_Buff_Debuff_Draw_Probability;       // 프리미엄 버프/디퍼프 타워 뽑기 박스 확률
 
     [Header("[속성]")]
-    public int GroupID;                                      // 그룹 아이디 
-    public int Rank;                                         // 등급
-    public int Type;                                         // 타입
     public float Attack;                                     // 공격력
     public float Attack_Speed;                               // 공격속도
     public int Hp;                                           // 체력
@@ -57,4 +64,7 @@ public class TowerBlueprint
 
     [Header("[버프타워만]")]
     public int buffID;                                       // 버프 타워만 해당.
+
+    [Header("[미니언타워만]")]
+    public int Camp_GroupID;                                 // 미니언 타워만 해당.
 }

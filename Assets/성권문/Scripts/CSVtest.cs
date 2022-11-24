@@ -63,6 +63,8 @@ public class CSVtest : MonoBehaviour
         
         StartCoroutine(GetTowerData());
         StartCoroutine(GetBuffData());
+
+        StartCoroutine(GetMinionData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
     }
@@ -100,7 +102,7 @@ public class CSVtest : MonoBehaviour
 
     #region Tower
 
-    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
+    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=625995306&range=A5:AM124";
     
     [Header("[타워]")]
     public TowerDatabaseList towerDatabaseListCSV;
@@ -110,7 +112,7 @@ public class CSVtest : MonoBehaviour
     public ItemDataBaseList tower_Minion_DatabaseList;
 
     UnityWebRequest TowerWebData;
-    IEnumerator GetTowerData()
+    IEnumerator GetTowerData()                                                                              
     {
         TowerWebData = UnityWebRequest.Get(TowerURL);
         yield return TowerWebData.SendWebRequest();
@@ -181,12 +183,15 @@ public class CSVtest : MonoBehaviour
             // 버프타워만 해당
             towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
 
+            // 미니언타워만 해당.
+            towerDatabaseListCSV.itemList[i].Camp_GroupID = int.Parse(col[32]);
+
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
             towerDatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
             towerDatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
 
 
-            
+
             if (i < 50)
             {
                 tower_Attack_DatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
@@ -217,7 +222,7 @@ public class CSVtest : MonoBehaviour
 
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=1296679834&range=A4:I68";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:I68";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
@@ -256,8 +261,57 @@ public class CSVtest : MonoBehaviour
     }
     #endregion Buff 
 
+    #region Minion
 
+    private const string MinionURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=653157190&range=A5:S114";
 
+    [Header("[미니언]")]
+    public MinionDatabaseList MinionDatabaseListCSV;
+
+    UnityWebRequest MinionWebData;
+    IEnumerator GetMinionData()
+    {
+        MinionWebData = UnityWebRequest.Get(MinionURL);
+        yield return MinionWebData.SendWebRequest();
+
+        string DB = MinionWebData.downloadHandler.text;
+        SetMinionData(DB);
+    }
+
+    public void SetMinionData(string tsv)
+    {
+        string[] row = tsv.Split('\n');
+        int rowSize = row.Length;
+        int columnSize = row[0].Split('\t').Length;
+
+        for (int i = 0; i < rowSize; i++)
+        {
+            string[] col = row[i].Split('\t');
+
+            // 기본정보
+            MinionDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
+            MinionDatabaseListCSV.itemList[i].Name = col[3] + col[6];
+            MinionDatabaseListCSV.itemList[i].GroupID = int.Parse(col[4]);
+            MinionDatabaseListCSV.itemList[i].Camp_GroupID = int.Parse(col[5]);
+            MinionDatabaseListCSV.itemList[i].Camp = int.Parse(col[2]);
+            MinionDatabaseListCSV.itemList[i].Pf = Resources.Load<GameObject>(col[3]);
+
+            // 투사체
+            MinionDatabaseListCSV.itemList[i].Rank = int.Parse(col[6]);
+            MinionDatabaseListCSV.itemList[i].Type = int.Parse(col[7]);
+
+            // 속성
+            MinionDatabaseListCSV.itemList[i].Attack = float.Parse(col[12]);
+            MinionDatabaseListCSV.itemList[i].Attack_Speed = float.Parse(col[13]);
+            MinionDatabaseListCSV.itemList[i].Range = float.Parse(col[14]);
+            MinionDatabaseListCSV.itemList[i].Move_Speed = float.Parse(col[15]);
+            MinionDatabaseListCSV.itemList[i].Hp = float.Parse(col[16]);
+            MinionDatabaseListCSV.itemList[i].Exp = float.Parse(col[17]);
+            MinionDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[18]);
+
+        }
+    }
+    #endregion Minion 
 
     #region SkillDataParsing
 

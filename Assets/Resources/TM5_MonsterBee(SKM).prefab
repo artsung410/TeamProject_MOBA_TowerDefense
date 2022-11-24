@@ -81,8 +81,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e923bd12c3ae9e54e9248edb3a041236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: e1423b6003bae3b479cce6d522a31caa, type: 2}
-  currentHealth: 0
+  towerDB:
+    Name: 
+    ID: 0
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Pf: {fileID: 0}
+    Combination_ResultID: 0
+    Combination_Required_Value: 0
+    Normal_Random_Draw_Probability: 0
+    Normal_Attack_Draw_Probability: 0
+    Normal_Minion_Draw_Probability: 0
+    Normal_Buff_Debuff_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 0
+    Premium_Attack_Draw_Probability: 0
+    Premium_Minion_Draw_Probability: 0
+    Premium_Buff_Debuff_Draw_Probability: 0
+    Attack: 0
+    Attack_Speed: 0
+    Hp: 0
+    Range: 0
+    Range_Type: 0
+    Projectile_Type: 0
+    Projectile_Speed: 0
+    Projectile_Pf: {fileID: 0}
+    Destroy_Effect_Pf: {fileID: 0}
+    Desc: 
+    Sprite_TowerCard: {fileID: 0}
+    Sprite_TowerProtrait: {fileID: 0}
+    AudioClip_Attack_Name: 
+    AudioClip_Hit_Name: 
+    AudioClip_Normal_Name: 
+    buffID: 0
+    Camp_GroupID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -90,6 +122,8 @@ MonoBehaviour:
   healthbarImage: {fileID: 8943578516525596410}
   hitbarImage: {fileID: 641969409801007722}
   ui: {fileID: 2361294545513903442}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 7736452426764348620}
@@ -97,6 +131,26 @@ MonoBehaviour:
   firePoint: {fileID: 9052330861811738752}
   DangerZonePF: {fileID: 0}
   smokeParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
+  MinionDB:
+    Name: 
+    ID: 0
+    GroupID: 0
+    Camp_GroupID: 0
+    Camp: 0
+    Pf: {fileID: 0}
+    Rank: 0
+    Type: 0
+    Projectile_Speed: 0
+    Projectile_Type: 0
+    Attack: 0
+    Attack_Speed: 0
+    Range: 0
+    Move_Speed: 0
+    Hp: 0
+    Exp: 0
+    Icon: {fileID: 0}
+  bluePF: {fileID: 1609328083060089661, guid: 1882b09f2175ec94480b75999066afd9, type: 3}
+  redPF: {fileID: 4152114453513019565, guid: f7687e7878ffb2c46a5af78e29682ab7, type: 3}
 --- !u!114 &1473713780714943513
 MonoBehaviour:
   m_ObjectHideFlags: 0
