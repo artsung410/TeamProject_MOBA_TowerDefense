@@ -134,7 +134,7 @@ public class Turret : MonoBehaviourPun
         // 피아식별
         if (PhotonNetwork.IsMasterClient)
         {
-            Debug.Log("마스터 클라이언트 태그 적용");
+            //Debug.Log("마스터 클라이언트 태그 적용");
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
                 gameObject.tag = "Blue";

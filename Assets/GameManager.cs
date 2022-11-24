@@ -139,7 +139,7 @@ public class GameManager : MonoBehaviourPunCallbacks
 
         if (PhotonNetwork.LocalPlayer.ActorNumber >= 1)
         {
-            Debug.Log("이벤트 적용");
+            //Debug.Log("이벤트 적용");
         }
     }
 
@@ -154,7 +154,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             return;
         }
 
-        Debug.Log($"{gameObject.tag}, 호출");
+        //Debug.Log($"{gameObject.tag}, 호출");
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
         {
             GameObject tower = myAllData.cardPrefab[0];
@@ -271,10 +271,10 @@ public class GameManager : MonoBehaviourPunCallbacks
 
     private void SpawnNexus()
     {
-        Debug.Log("됨?");
+        //Debug.Log("됨?");
         if (PhotonNetwork.LocalPlayer.ActorNumber == 1) // blue
         {
-            Debug.Log("됨?1");
+            //Debug.Log("됨?1");
             PhotonNetwork.Instantiate(NexusPrefab[0].name, spawnPositions[2].position, Quaternion.Euler(transform.position));
         }
 

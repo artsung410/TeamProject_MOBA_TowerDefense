@@ -3,13 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 
-public enum Star
-{
-    OneStar,
-    TwoStar,
-    ThreeStar,
-}
-
 
 public class SpritSword : SkillHandler
 {
@@ -18,31 +11,40 @@ public class SpritSword : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    public GameObject damageZone;
+
     #region Private 변수들
     
     Quaternion quaternion;
     float elapsedTime;
     Vector3 mouseDir;
-
+    Vector3 currentPos;
     #endregion
 
-    private float holdingTime;
     private float damage;
-    private float range;
-    private float lockTime;
+    private float width;
+    private float vertical;
 
     public float Speed;
 
-    //public ScriptableObject temp;
-    public Star Star;
+    private void Awake()
+    {
+        width = damageZone.GetComponent<BoxCollider>().size.x;
+        vertical = damageZone.GetComponent<BoxCollider>().size.z;
+    }
 
     private void OnEnable()
     {
         elapsedTime = 0f;
-        damage = SetDamage;
-        holdingTime = SetHodingTime;
-        range = SetRange;
-        lockTime = SetLockTime;
+
+        damage = Data.Value_1;
+
+        width = Data.RangeValue_1;
+        vertical = Data.RangeValue_2;
+        
+        currentPos = transform.position;
+
+        Speed = 5f;
     }
 
     // Start is called before the first frame update
@@ -60,7 +62,7 @@ public class SpritSword : SkillHandler
     IEnumerator SkillLock()
     {
         _ability.OnLock(true);
-        yield return new WaitForSeconds(lockTime);
+        yield return new WaitForSeconds(Data.LockTime);
         _ability.OnLock(false);
     }
 
@@ -87,7 +89,7 @@ public class SpritSword : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(holdingTime);
+            SkillHoldingTime(Data.HoldingTime);
         }
     }
 
@@ -98,6 +100,13 @@ public class SpritSword : SkillHandler
 
         // 회전부분은 처음회전위치에서 날아간다
         transform.rotation = quaternion;
+
+        // 사거리까지 날아가면 삭제
+        if (Vector3.Distance(currentPos, transform.position) >= Data.Range)
+        {
+            _ability.OnLock(false);
+            PhotonNetwork.Destroy(gameObject);
+        }
     }
 
 
@@ -119,10 +128,6 @@ public class SpritSword : SkillHandler
     {
         if (photonView.IsMine)
         {
-            //if (other.CompareTag(enemyTag))
-            //{
-            //    SkillDamage(damage, other.gameObject);
-            //}
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SkillDamage(damage, other.gameObject);

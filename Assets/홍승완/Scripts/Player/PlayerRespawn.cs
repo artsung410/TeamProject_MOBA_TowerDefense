@@ -40,7 +40,6 @@ public class PlayerRespawn : MonoBehaviourPun
 
         if (health.gameObject.CompareTag("Blue"))
         {
-    // TODO : ºí·çÁø¿µÄ³¸¯ÅÍ ¸®½ºÆù½Ã ¶¥¿¡ ÆÄ¹¯Èû -> ¸®½ºÆùÀå¼Ò yÃàÀ¸·Î 2 ¿Ã¸°»óÅÂ Á¤È®ÇÑ¿øÀÎÀº Àß ¸ğ¸£°ÚÀ½
             playerRespawnPosition = new Vector3(GameManager.Instance.spawnPositions[0].position.x, GameManager.Instance.spawnPositions[0].position.y, GameManager.Instance.spawnPositions[0].position.z);
 
         }
@@ -54,10 +53,7 @@ public class PlayerRespawn : MonoBehaviourPun
 
     void Update()
     {
-        
-            Respawn();
-        
-
+        Respawn();
     }
 
     float elapsedTime;
@@ -70,7 +66,7 @@ public class PlayerRespawn : MonoBehaviourPun
             if (elapsedTime >= respawnTime)
             {
                 // TODO : MissingReferenceException: The object of type 'Health' has been destroyed but you are still trying to access it.
-                // ¸®½ºÆùÀ§Ä¡ ÇÒ´ç
+                // ë¦¬ìŠ¤í°ìœ„ì¹˜ í• ë‹¹
                 health.gameObject.transform.position = playerRespawnPosition;
                 elapsedTime = 0f;
                 health.gameObject.SetActive(true);

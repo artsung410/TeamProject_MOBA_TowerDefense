@@ -18,15 +18,11 @@ public class Blaze : SkillHandler
     float elapsedTime;
     Vector3 mouseDir;
 
-    private float holdingTime;
     private float damage;
-    private float range;
-    private float speed;
-    private float lockTime;
 
-    float width;
-    float length;
-    float zCenter;
+    private float width;
+    private float length;
+    private float zCenter;
 
     private void Awake()
     {
@@ -38,14 +34,10 @@ public class Blaze : SkillHandler
     private void OnEnable()
     {
         elapsedTime = 0f;
-        damage = SetDamage;
-        holdingTime = SetHodingTime;
-        range = SetRange;
-        lockTime = SetLockTime;
 
-        width = range;
-        length = 3;
-
+        damage = Data.Value_1;
+        width = Data.RangeValue_1;
+        length = Data.RangeValue_2;
         zCenter = width / 2f;
     }
 
@@ -91,7 +83,7 @@ public class Blaze : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(holdingTime);
+            SkillHoldingTime(Data.HoldingTime);
         }
     }
 
@@ -99,7 +91,7 @@ public class Blaze : SkillHandler
     {
         elapsedTime += Time.deltaTime;
 
-        if (elapsedTime >= lockTime)
+        if (elapsedTime >= Data.LockTime)
         {
             _ability.OnLock(false);
         }
@@ -124,8 +116,8 @@ public class Blaze : SkillHandler
         {
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
-                SkillTimeDamage(30, 5f, other.gameObject);
                 SkillDamage(damage, other.gameObject);
+                SkillTimeDamage(Data.TickDamage, Data.TickTime, other.gameObject);
             }
         }
     }

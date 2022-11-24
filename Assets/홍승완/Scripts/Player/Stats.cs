@@ -41,7 +41,6 @@ public class Stats : GoogleSheetManager
     [Header("공격 방식")]
     public HeroType AttackType;
 
-    // TODO : 이동속도 버프, 디버프 관련해서 새로운 변수 추가할 필요있음
     [Header("이동 관련")]
     public float MoveSpeed = 1;
 
@@ -114,16 +113,14 @@ public class Stats : GoogleSheetManager
     }
     public void StatInit()
     {
-        //Level = 1;
-
-        MaxHealth = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.HP]);
-        attackDmg = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Dmg]);
-        attackRange = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Range]);
-        attackSpeed = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Atk_Speed]);
-        MoveSpeed = float.Parse(CharactorLevelData[Level][(int)Stat_Columns.Move_Speed]);
-        maxExp = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Max_Exp]);
-        charID = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Character_ID]);
-        enemyExp = int.Parse(CharactorLevelData[Level][(int)Stat_Columns.Exp_Enemy]);
+        MaxHealth = float.Parse(CharactorLevelData[1][(int)Stat_Columns.HP]);
+        attackDmg = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Dmg]);
+        attackRange = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Range]);
+        attackSpeed = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Atk_Speed]);
+        MoveSpeed = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Move_Speed]);
+        maxExp = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Max_Exp]);
+        charID = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Character_ID]);
+        enemyExp = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Exp_Enemy]);
 
         //Debug.Log("코루틴 부분 초기화 완료");
         // 실험결과 코루틴 부분이 start보다 나중에 완료 되었다

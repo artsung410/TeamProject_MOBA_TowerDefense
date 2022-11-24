@@ -380,14 +380,14 @@ public class CSVtest : MonoBehaviour
             skillDatas.DataList[i].LockTime = float.Parse(dic[i + 1][(int)SkillColData.LockTime]);
 
             skillDatas.DataList[i].SkillType = int.Parse(dic[i + 1][(int)SkillColData.SkillType]);
-            skillDatas.DataList[i].Value_1 = int.Parse(dic[i + 1][(int)SkillColData.Value1]);
-            skillDatas.DataList[i].Value_2 = int.Parse(dic[i + 1][(int)SkillColData.Value2]);
+            skillDatas.DataList[i].Value_1 = float.Parse(dic[i + 1][(int)SkillColData.Value1]);
+            skillDatas.DataList[i].Value_2 = float.Parse(dic[i + 1][(int)SkillColData.Value2]);
 
             skillDatas.DataList[i].CoolTime = float.Parse(dic[i + 1][(int)SkillColData.CoolTime]);
 
             skillDatas.DataList[i].Range = float.Parse(dic[i + 1][(int)SkillColData.Range]);
-            skillDatas.DataList[i].RangeValue_1 = int.Parse(dic[i + 1][(int)SkillColData.RangeValue1]);
-            skillDatas.DataList[i].RangeValue_2 = int.Parse(dic[i + 1][(int)SkillColData.RangeValue2]);
+            skillDatas.DataList[i].RangeValue_1 = float.Parse(dic[i + 1][(int)SkillColData.RangeValue1]);
+            skillDatas.DataList[i].RangeValue_2 = float.Parse(dic[i + 1][(int)SkillColData.RangeValue2]);
 
             skillDatas.DataList[i].HoldingTime = float.Parse(dic[i + 1][(int)SkillColData.HoldingTime]);
 
