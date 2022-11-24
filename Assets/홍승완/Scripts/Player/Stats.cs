@@ -52,7 +52,7 @@ public class Stats : GoogleSheetManager
     public float Exp;
     public float ExpDetectRange;
 
-    private int maxExp;
+    public int maxExp;
     private int minExp;
     private int charID;
     public int enemyExp
