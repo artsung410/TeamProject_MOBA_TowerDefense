@@ -212,6 +212,9 @@ public class CSVtest : MonoBehaviour
 
     #endregion Tower
 
+
+
+
     #region Buff
 
     private const string BuffURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=1296679834&range=A4:I68";
@@ -252,12 +255,6 @@ public class CSVtest : MonoBehaviour
         }
     }
     #endregion Buff 
-
-
-
-
-
-
 
 
 
