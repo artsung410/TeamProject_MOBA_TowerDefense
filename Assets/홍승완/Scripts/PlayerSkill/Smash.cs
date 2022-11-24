@@ -11,28 +11,24 @@ public class Smash : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
+    public GameObject damageZone;
+
     #region private 변수모음
 
     Quaternion quaternion;
     float elapsedTime;
     Vector3 mouseDir;
 
-    private float holdingTime;
     private float damage;
-    private float range;
-    private float lockTime;
-    float angle;
+    private float angle;
     #endregion
 
     private void OnEnable()
     {
         elapsedTime = 0f;
-        damage = SetDamage;
-        holdingTime = SetHodingTime;
-        range = SetRange;
-        lockTime = SetLockTime;
-
-        angle = 120f;
+        damage = Data.Value_1;
+        damageZone.GetComponent<SphereCollider>().radius = Data.Value_1;
+        angle = Data.RangeValue_2 * 2;
     }
 
     void Start()
@@ -72,7 +68,7 @@ public class Smash : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            SkillHoldingTime(holdingTime);
+            SkillHoldingTime(Data.HoldingTime);
         }
     }
 
@@ -89,7 +85,7 @@ public class Smash : SkillHandler
         // 스킬을 쓰면 플레이어는 그자리에서 멈춘다
         _behaviour.ForSkillAgent(_behaviour.transform.position);
 
-        if (elapsedTime >= lockTime)
+        if (elapsedTime >= Data.LockTime)
         {
             _ability.OnLock(false);
         }
@@ -115,10 +111,6 @@ public class Smash : SkillHandler
     {
         if (photonView.IsMine)
         {
-            //if (other.CompareTag(enemyTag))
-            //{
-            //    SectorDamage(other);
-            //}
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SectorDamage(other);
@@ -130,16 +122,17 @@ public class Smash : SkillHandler
     {
         Vector3 interV = other.gameObject.transform.position - _behaviour.gameObject.transform.position;
 
-        if (interV.magnitude <= range)
+        if (interV.magnitude <= Data.Range)
         {
             float dot = Vector3.Dot(interV.normalized, _behaviour.gameObject.transform.forward);
             float theta = Mathf.Acos(dot);
 
             float degree = Mathf.Rad2Deg * theta;
 
-            if (degree <= angle / 2f)
+            if (degree <= angle)
             {
                 SkillDamage(damage, other.gameObject);
+                SkillTimeDamage(Data.TickDamage, Data.TickTime, other.gameObject);
             }
         }
     }

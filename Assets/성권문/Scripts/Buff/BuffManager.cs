@@ -45,11 +45,11 @@ public class BuffManager : MonoBehaviourPun
 
         for (int i = 0; i < buffCount; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             buffDB_Dic.Add(buffDB.itemList[i].ID, buffDB.itemList[i]);
         }
 
-        Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
+        //Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
     }
 
     // 버프 시작

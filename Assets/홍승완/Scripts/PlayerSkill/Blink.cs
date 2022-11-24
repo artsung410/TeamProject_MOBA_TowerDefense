@@ -19,32 +19,21 @@ public class Blink : SkillHandler
     float elasedTiem;
     Vector3 mouseDir;
 
-    private float holdingTime;
     private float damage;
-    private float range;
     private float speed;
-    private float lockTime;
 
-    float damageZoneRadius;
     private void Awake()
     {
-        damageZoneRadius = DamageZone.GetComponent<SphereCollider>().radius;
-        //DamageZone = GetComponentInChildren<SphereCollider>().gameObject;
+        DamageZone.GetComponent<SphereCollider>().radius = Data.RangeValue_1;
     }
 
     Vector3 vfxPoint;
     private void OnEnable()
     {
         elasedTiem = 0f;
-        damage = SetDamage;
-        holdingTime = SetHodingTime;
-        range = SetRange;
-        lockTime = SetLockTime;
-
-        damageZoneRadius = 2f;
 
         vfxPoint = transform.position;
-
+        damage = Data.Value_1;
         DamageZone.SetActive(false);
     }
 
@@ -85,11 +74,11 @@ public class Blink : SkillHandler
     private void CheckBlinkArrivalPoint()
     {
         Vector3 mousePos = new Vector3(hit.point.x, _behaviour.transform.position.y, hit.point.z);
-        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= range)
+        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Data.Range)
         {
             Vector3 startPos = _behaviour.transform.position;
             Vector3 endPos = _behaviour.transform.forward;
-            arrivalPoint = startPos + endPos * range;
+            arrivalPoint = startPos + endPos * Data.Range;
         }
         else
         {
@@ -120,7 +109,7 @@ public class Blink : SkillHandler
             {
                 StartCoroutine(Temp());
 
-                SkillHoldingTime(holdingTime);
+                SkillHoldingTime(Data.HoldingTime);
             }
 
         }
@@ -139,7 +128,7 @@ public class Blink : SkillHandler
     {
         elasedTiem += Time.deltaTime;
 
-        if (elasedTiem >= lockTime)
+        if (elasedTiem >= Data.LockTime)
         {
             _ability.OnLock(false);
         }

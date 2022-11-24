@@ -10,41 +10,28 @@ public class Lightning : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public GameObject DamazeZone;
-
-    public float damageZoneRadius;
+    public GameObject DamageZone;
 
     Quaternion quaternion;
     float elasedTiem;
     Vector3 mouseDir;
-    Vector3 currentPos; // 스킬 사용 위치
 
-    private float holdingTime;
     private float damage;
-    private float range;
-    private float Speed;
-    private float lockTime;
-
-    public float CrowdControlTime;
+    private float crowdControlTime;
 
     private void Awake()
     {
-        damageZoneRadius = DamazeZone.GetComponent<SphereCollider>().radius;
+        DamageZone.GetComponent<SphereCollider>().radius = Data.RangeValue_1;
     }
 
     private void OnEnable()
     {
         elasedTiem = 0f;
 
-        damage = SetDamage;
-        range = SetRange;
-        holdingTime = SetHodingTime;
-        CrowdControlTime = 2f;
-        lockTime = SetLockTime;
+        damage = Data.Value_1;
+        crowdControlTime = Data.CcTime;
 
-        damageZoneRadius = 5f;
     }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -60,12 +47,12 @@ public class Lightning : SkillHandler
             }
 
             Vector3 mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
-            if (Vector3.Distance(_behaviour.transform.position, mousePos) >= range)
+            if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Data.Range)
             {
                 Vector3 startPos = _behaviour.transform.position;
                 Vector3 endPos = _behaviour.transform.forward;
 
-                skillPos = startPos + endPos * range;
+                skillPos = startPos + endPos * Data.Range;
             }
             else
             {
@@ -92,13 +79,13 @@ public class Lightning : SkillHandler
         }
 
         SkillUpdatePosition();
-        SkillHoldingTime(holdingTime);
+        SkillHoldingTime(Data.HoldingTime);
     }
     public override void SkillHoldingTime(float time)
     {
         elasedTiem += Time.deltaTime;
 
-        if (elasedTiem >= lockTime)
+        if (elasedTiem >= Data.LockTime)
         {
             _ability.OnLock(false);
         }
@@ -114,19 +101,15 @@ public class Lightning : SkillHandler
         transform.position = new Vector3(skillPos.x, 0, skillPos.z);
     }
 
-    // TODO : 맞은 대상 스턴(2초동안)
-
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log($"충돌 테스트 : {other.gameObject.name}");
-
         if (photonView.IsMine)
         {
             // 중립 몬스터 : 태그없음, layer 17
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 SkillDamage(damage, other.gameObject);
-                CrowdControlStun(other.gameObject, CrowdControlTime, true);
+                CrowdControlStun(other.gameObject, crowdControlTime, true);
             }
             
         }

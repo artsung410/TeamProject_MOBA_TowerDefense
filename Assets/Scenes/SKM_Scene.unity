@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
+  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -175,7 +175,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -580,7 +589,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -3187,9 +3205,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -3218,6 +3236,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}
@@ -3489,7 +3508,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -3848,7 +3876,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &829485551
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4076,7 +4104,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -4634,8 +4671,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1293057568}
+  m_Children: []
   m_Father: {fileID: 1118216809}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5412,86 +5448,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1151259907}
   m_CullTransparentMesh: 1
---- !u!1 &1184584272
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1184584273}
-  - component: {fileID: 1184584275}
-  - component: {fileID: 1184584274}
-  m_Layer: 5
-  m_Name: Text (Legacy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1184584273
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184584272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1881721517}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1184584274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184584272}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: a87dd24088b678a45841a24e89e67d30, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 3
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: 25
---- !u!222 &1184584275
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184584272}
-  m_CullTransparentMesh: 1
 --- !u!1 &1204455672 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2193615623343743060, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
@@ -5843,86 +5799,6 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243236392}
-  m_CullTransparentMesh: 1
---- !u!1 &1293057567
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1293057568}
-  - component: {fileID: 1293057570}
-  - component: {fileID: 1293057569}
-  m_Layer: 5
-  m_Name: Text (Legacy)
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &1293057568
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293057567}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1030085378}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -50}
-  m_SizeDelta: {x: 100, y: 100}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1293057569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293057567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_FontData:
-    m_Font: {fileID: 12800000, guid: a87dd24088b678a45841a24e89e67d30, type: 3}
-    m_FontSize: 30
-    m_FontStyle: 0
-    m_BestFit: 0
-    m_MinSize: 0
-    m_MaxSize: 40
-    m_Alignment: 4
-    m_AlignByGeometry: 0
-    m_RichText: 1
-    m_HorizontalOverflow: 1
-    m_VerticalOverflow: 1
-    m_LineSpacing: 1
-  m_Text: 100
---- !u!222 &1293057570
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293057567}
   m_CullTransparentMesh: 1
 --- !u!1 &1320110574
 GameObject:
@@ -6348,7 +6224,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6443,7 +6328,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6500,7 +6394,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6633,7 +6536,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -7018,9 +6930,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -7049,6 +6961,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}
@@ -8756,7 +8669,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -9501,9 +9423,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -9532,6 +9454,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}
@@ -9591,8 +9514,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1184584273}
+  m_Children: []
   m_Father: {fileID: 1118216809}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10443,7 +10365,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -10788,9 +10719,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -10819,6 +10750,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}
@@ -13785,9 +13717,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -13816,6 +13748,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}
@@ -13912,9 +13845,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -13943,6 +13876,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}
@@ -14020,9 +13954,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -14051,6 +13985,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}
@@ -14906,9 +14841,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -14937,6 +14872,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}

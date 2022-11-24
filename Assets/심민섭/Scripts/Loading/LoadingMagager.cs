@@ -93,7 +93,7 @@ public class LoadingMagager : MonoBehaviourPunCallbacks
 
     public void ChangeMainScene()
     {
-        Debug.Log(PhotonNetwork.IsConnected);
+        //Debug.Log(PhotonNetwork.IsConnected);
 
         // 마스터 서버와 연결이 되어있고 로딩 게이지가 100%면
         if (PhotonNetwork.IsConnected && loadingGage == 100)
