@@ -17,10 +17,14 @@ public class OpenDrawBox : MonoBehaviour
     private GameObject closeObj;
     // 뽑기 창 띄우기
     [SerializeField]
-    private GameObject openObj;
+    private GameObject openObj_ten;
+    [SerializeField]
+    private GameObject openObj_one;
 
     [SerializeField]
-    private RandomSelect randomSelect;
+    private RandomSelect randomSelect_one;
+    [SerializeField]
+    private RandomSelect randomSelect_ten;
 
     private void OnEnable()
     {
@@ -34,15 +38,28 @@ public class OpenDrawBox : MonoBehaviour
         // 아이템 소모
         DrawManager.instance.OpenBoxDisCount();
         // 카드 뽑기
-        randomSelect.SkillResultSelect();
         closeObj.SetActive(false);
-        openObj.SetActive(true);
+
+        if (DrawManager.instance.boxCount == 10)
+        {
+            openObj_ten.SetActive(true);
+            randomSelect_ten.SkillResultSelect();
+        }
+        else if (DrawManager.instance.boxCount == 1)
+        {
+            openObj_one.SetActive(true);
+            randomSelect_one.SkillResultSelect();
+        }
     }
 
     private void Update()
     {
         // 자기 자신이 활성화 되어 있고
-        if (gameObject.activeSelf == true && DrawManager.instance.boxItem.item.itemValue < 10 && gameObject.GetComponent<Button>().interactable == true)
+        if (gameObject.activeSelf == true && DrawManager.instance.boxItem.item.itemValue < 10 && gameObject.GetComponent<Button>().interactable == true && DrawManager.instance.boxCount == 10)
+        {
+            gameObject.GetComponent<Button>().interactable = false;
+        }
+        if (gameObject.name == "OneRetry - Button" && DrawManager.instance.boxItem.item.itemValue < 1)
         {
             gameObject.GetComponent<Button>().interactable = false;
         }
@@ -65,6 +82,13 @@ public class OpenDrawBox : MonoBehaviour
         // 카드 뽑기 창 초기화
         DrawManager.instance.CardDataInit();
         // 카드 뽑기 실행
-        randomSelect.SkillResultSelect();
+        if (DrawManager.instance.boxCount == 10)
+        {
+            randomSelect_ten.SkillResultSelect();
+        }
+        else if (DrawManager.instance.boxCount == 1)
+        {
+            randomSelect_one.SkillResultSelect();
+        }
     }
 }

@@ -15,6 +15,12 @@ using Photon.Pun;
 //             MAIL : gkenfktm@gmail.com         
 // ###############################################
 
+public enum Buff_Effect_Type
+{
+    Damage = 1,
+    Buff,
+    Debuff,
+}
 
 
 public class BuffManager : MonoBehaviourPun
@@ -45,11 +51,8 @@ public class BuffManager : MonoBehaviourPun
 
         for (int i = 0; i < buffCount; i++)
         {
-            //Debug.Log(i);
             buffDB_Dic.Add(buffDB.itemList[i].ID, buffDB.itemList[i]);
         }
-
-        //Debug.Log(PhotonNetwork.LocalPlayer.ActorNumber);
     }
 
     // 버프 시작
@@ -60,9 +63,13 @@ public class BuffManager : MonoBehaviourPun
             currentBuffDatas.Add(buff);
             playerBuffAdditionEvent.Invoke(buff.GroupID, buff.Value, true);
         }
-        else
+        else if (buff.Type == (int)Buff_Effect_Type.Debuff)
         {
             photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.ID);
+        }
+        else
+        {
+            currentBuffDatas.Add(buff);
         }
 
         AssemblyBuff();
@@ -72,7 +79,6 @@ public class BuffManager : MonoBehaviourPun
     [PunRPC]
     private void RPC_AddDeBuff(int id)
     {
-        Debug.Log("1to2 RPC^^^^^^");
         currentBuffDatas.Add(buffDB_Dic[id]);
         playerBuffAdditionEvent.Invoke(buffDB_Dic[id].GroupID, buffDB_Dic[id].Value, true);
         AssemblyBuff();

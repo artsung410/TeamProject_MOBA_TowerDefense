@@ -12,7 +12,7 @@ using System;
 
 public class Turret : MonoBehaviourPun
 {
-    public static event Action<GameObject,GameObject,string> minionTowerEvent = delegate { };
+
     public static event Action<Turret> turretMouseDownEvent = delegate { };
     public static event Action<GameObject, float> OnTurretDestroyEvent = delegate { };
 
@@ -75,7 +75,6 @@ public class Turret : MonoBehaviourPun
 
     // 타워 효과음
     protected private AudioSource audioSource;
-    
 
     void Awake()
     {
@@ -103,12 +102,12 @@ public class Turret : MonoBehaviourPun
             // 타워 데이터 -> 타워 투사체 속도적용
             projectiles_Speed = towerDB.Projectile_Speed;
 
-            if (towerDB.Type == (int)Buff_Effect_Type.Buff || towerDB.Type == (int)Buff_Effect_Type.DeBuff)
+            // 타워 데이터 -> 버프타워 찾아서 버프적용
+            if (towerDB.Type == (int)Tower_Type.Buff_Tower || towerDB.Type == (int)Tower_Type.DeBuff_Tower)
             {
                 StartCoroutine(SetBuff());
             }
         }
-
 
         // 타워 아웃라인 컴포넌트 할당
         _outline = GetComponent<Outline>();
@@ -118,7 +117,6 @@ public class Turret : MonoBehaviourPun
 
         // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
         PlayerHUD.onGameEnd += Destroy_gameEnd;
-
     }
 
     private IEnumerator SetBuff()
@@ -176,17 +174,6 @@ public class Turret : MonoBehaviourPun
             }
         }
 
-        // [自 -> Event] 미니언PF가 존재하면 MinionSpawner에게 알리기. 
-
-        //if (towerData.ObjectPF != null)
-        //{
-        //    minionTowerEvent.Invoke(towerData.ObjectPF, gameObject.tag);
-        //}
-        //if (towerData.ObjectBluePF != null && towerData.ObjectRedPF != null)
-        //{
-        //    minionTowerEvent.Invoke(towerData.ObjectBluePF,towerData.ObjectRedPF ,gameObject.tag);
-        //}
-        
         if (photonView.IsMine)
         {
             healthbarImage.sprite = healthbarImages[0]; // 초록 

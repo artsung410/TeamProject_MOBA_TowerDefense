@@ -156,7 +156,6 @@ public class Enemybase : MonoBehaviourPun
         {
             CurrnetHP -= Damage;
             
-            //Debug.Log($"{gameObject.tag} HP : {CurrnetHP}");
             if (CurrnetHP <= 0)
             {
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
@@ -173,7 +172,6 @@ public class Enemybase : MonoBehaviourPun
                 if(_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
                 {
                 GameManager.Instance.winner = lastDamageTeam;
-                    //Debug.Log($"{GameManager.Instance.winner}");
                 }
             }
             

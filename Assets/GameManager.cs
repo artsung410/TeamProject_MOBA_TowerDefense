@@ -16,14 +16,6 @@ using System;
 // ###############################################
 
 
-public enum Tower
-{
-    GuardTower = 1,
-    CannonTower,
-    MinionTower,
-    BuffTower
-}
-
 public enum Skill
 {
     Sword = 5,
@@ -47,8 +39,6 @@ public class GameManager : MonoBehaviourPunCallbacks
             return instance;
         }
     }
-
-    public Tower tower;
     public Skill skill;
 
     public ItemDataBaseList itemDB;

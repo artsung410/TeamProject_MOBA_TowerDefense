@@ -14,8 +14,8 @@ public class PlayerButton : MonoBehaviourPun
 
     private void Start()
     {
-        if (gameObject.name == "PlayerButton")
-            gameObject.GetComponent<Button>().interactable = false;
+        /*if (gameObject.name == "PlayButton")
+            gameObject.GetComponent<Button>().interactable = false;*/
     }
     private void Awake()
     {

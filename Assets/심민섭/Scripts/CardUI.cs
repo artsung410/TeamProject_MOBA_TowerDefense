@@ -6,20 +6,22 @@ using UnityEngine.EventSystems;
 
 public class CardUI : MonoBehaviour, IPointerDownHandler
 {
-    public Image _chr;
+    public Image _frontImage;
+    public Image _backImage;
     public Text _cardName;
-    public int _cardIndex;
-
+    public Text _cardDesc;
     Animator animator;
     private void Start()
     {
         animator = GetComponent<Animator>();
     }
     // 카드의 정보를 초기화
-    public void CardUISet(int cardIndex, Sprite cardImage, string cardName)
+    public void CardUISet(Sprite frontCardImage, Sprite backCardImage, string cardName, string cardDesc)
     {
-        _chr.sprite = cardImage;
+        _frontImage.sprite = frontCardImage;
+        _backImage.sprite = backCardImage;
         _cardName.text = cardName;
+        _cardDesc.text = cardDesc;
     }
     // 카드가 클릭되면 뒤집는 애니메이션 재생
     public void OnPointerDown(PointerEventData eventData)
