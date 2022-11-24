@@ -11,6 +11,6 @@ public class SkillDatas : ScriptableObject
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public List<PlayerSkillDatas> Data;
+    public List<PlayerSkillDatas> DataList = new List<PlayerSkillDatas>();
 
 }

@@ -5,13 +5,14 @@ using Photon.Pun;
 
 public class ChainAttack : SkillHandler
 {
-
     // ###############################################
     //             NAME : HongSW                      
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
     public GameObject[] Effect;
+
+    public PlayerSkillDatas data;
 
     #region private 변수모음
 

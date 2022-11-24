@@ -11,14 +11,14 @@ public class PlayerSkillDatas
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    [Tooltip("스킬 이름")]
-    public string Name; // 인덱스 1
+    [Tooltip("기획자 확인용")]
+    public string NameLevel; // 인덱스 2
+
+    [Tooltip("스킬 이름/ 스킬 PF")]
+    public GameObject Name; // 인덱스 1
 
     [Tooltip("스킬 아이디. 데이터 파싱할 기준")]
     public int ID; // 인덱스 0
-
-    [Tooltip("기획자 확인용")]
-    public string NameLevel; // 인덱스 2
 
     [Tooltip("카드 뽑기 확률")]
     public float Probability;
@@ -104,10 +104,10 @@ public class PlayerSkillDatas
     public float CcValue;
 
     [Tooltip("스킬 카드 이미지")]
-    public Image CardImage;
+    public Sprite CardImage;
 
     [Tooltip("인게임상 스킬 아이콘")]
-    public Image SkillIcon;
+    public Sprite SkillIcon;
 
     [Multiline(3)]
     public string Desc;

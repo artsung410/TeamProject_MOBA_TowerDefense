@@ -12,23 +12,173 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6a230925e772e84f9e512b291aad2f8, type: 3}
   m_Name: WizardSkillParsing
   m_EditorClassIdentifier: 
-  Data:
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
+  DataList:
+  - Name: Blaze
+    ID: 1
+    NameLevel: "\uBE14\uB808\uC774\uC988_1\uB808\uBCA8"
+    Probability: 10
+    Classification: 3
+    Rank: 1
+    LockTime: 0.5
+    SkillType: 1
+    Value_1: 100
     Value_2: 0
-    CoolTime: 0
-    Range: 0
+    CoolTime: 3
+    Range: 12
     RangeType: 0
-    RangeValue_1: 0
+    RangeValue_1: 12
+    RangeValue_2: 3
+    HoldingTime: 2
+    TickDamage: 30
+    TickCount: 5
+    TickTime: 5
+    CcType: 0
+    CcTime: 0
+    CcValue: 0
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "9\r"
+  - Name: Blaze
+    ID: 2
+    NameLevel: "\uBE14\uB808\uC774\uC988_2\uB808\uBCA8"
+    Probability: 8
+    Classification: 3
+    Rank: 2
+    LockTime: 0.5
+    SkillType: 1
+    Value_1: 120
+    Value_2: 0
+    CoolTime: 3
+    Range: 12
+    RangeType: 0
+    RangeValue_1: 12
+    RangeValue_2: 3
+    HoldingTime: 2
+    TickDamage: 40
+    TickCount: 5
+    TickTime: 5
+    CcType: 0
+    CcTime: 0
+    CcValue: 0
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "9\r"
+  - Name: Blaze
+    ID: 3
+    NameLevel: "\uBE14\uB808\uC774\uC988_3\uB808\uBCA8"
+    Probability: 2
+    Classification: 3
+    Rank: 3
+    LockTime: 0.5
+    SkillType: 1
+    Value_1: 150
+    Value_2: 0
+    CoolTime: 3
+    Range: 12
+    RangeType: 0
+    RangeValue_1: 12
+    RangeValue_2: 3
+    HoldingTime: 2
+    TickDamage: 50
+    TickCount: 5
+    TickTime: 5
+    CcType: 0
+    CcTime: 0
+    CcValue: 0
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "9\r"
+  - Name: Lightning
+    ID: 4
+    NameLevel: "\uB77C\uC774\uD2B8\uB2DD_1\uB808\uBCA8"
+    Probability: 10
+    Classification: 3
+    Rank: 1
+    LockTime: 0.5
+    SkillType: 6
+    Value_1: 200
+    Value_2: 0
+    CoolTime: 15
+    Range: 12
+    RangeType: 0
+    RangeValue_1: 5
     RangeValue_2: 0
-    HoldingTime: 0
+    HoldingTime: 0.5
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 2
+    CcTime: 2
+    CcValue: 0
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "10\r"
+  - Name: Lightning
+    ID: 5
+    NameLevel: "\uB77C\uC774\uD2B8\uB2DD_2\uB808\uBCA8"
+    Probability: 8
+    Classification: 3
+    Rank: 2
+    LockTime: 0.5
+    SkillType: 6
+    Value_1: 220
+    Value_2: 0
+    CoolTime: 15
+    Range: 12
+    RangeType: 0
+    RangeValue_1: 5
+    RangeValue_2: 0
+    HoldingTime: 0.5
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 2
+    CcTime: 3
+    CcValue: 0
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "10\r"
+  - Name: Lightning
+    ID: 6
+    NameLevel: "\uB77C\uC774\uD2B8\uB2DD_3\uB808\uBCA8"
+    Probability: 2
+    Classification: 3
+    Rank: 3
+    LockTime: 0.5
+    SkillType: 6
+    Value_1: 250
+    Value_2: 0
+    CoolTime: 15
+    Range: 12
+    RangeType: 0
+    RangeValue_1: 7
+    RangeValue_2: 0
+    HoldingTime: 0.5
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 2
+    CcTime: 5
+    CcValue: 0
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "10\r"
+  - Name: Blink
+    ID: 7
+    NameLevel: "\uBE14\uB9C1\uD06C_1\uB808\uBCA8"
+    Probability: 10
+    Classification: 3
+    Rank: 1
+    LockTime: 0.5
+    SkillType: 3
+    Value_1: 30
+    Value_2: 0
+    CoolTime: 8
+    Range: 20
+    RangeType: 0
+    RangeValue_1: 2
+    RangeValue_2: 0
+    HoldingTime: 0.5
     TickDamage: 0
     TickCount: 0
     TickTime: 0
@@ -37,23 +187,23 @@ MonoBehaviour:
     CcValue: 0
     CardImage: {fileID: 0}
     SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
+    Desc: "11\r"
+  - Name: Blink
+    ID: 8
+    NameLevel: "\uBE14\uB9C1\uD06C_2\uB808\uBCA8"
+    Probability: 8
+    Classification: 3
+    Rank: 2
+    LockTime: 0.5
+    SkillType: 3
+    Value_1: 30
     Value_2: 0
-    CoolTime: 0
-    Range: 0
+    CoolTime: 7
+    Range: 20
     RangeType: 0
-    RangeValue_1: 0
+    RangeValue_1: 2
     RangeValue_2: 0
-    HoldingTime: 0
+    HoldingTime: 0.5
     TickDamage: 0
     TickCount: 0
     TickTime: 0
@@ -62,23 +212,23 @@ MonoBehaviour:
     CcValue: 0
     CardImage: {fileID: 0}
     SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
+    Desc: "11\r"
+  - Name: Blink
+    ID: 9
+    NameLevel: "\uBE14\uB9C1\uD06C_3\uB808\uBCA8"
+    Probability: 2
+    Classification: 3
+    Rank: 3
+    LockTime: 0.5
+    SkillType: 3
+    Value_1: 30
     Value_2: 0
-    CoolTime: 0
-    Range: 0
+    CoolTime: 6
+    Range: 20
     RangeType: 0
-    RangeValue_1: 0
+    RangeValue_1: 2
     RangeValue_2: 0
-    HoldingTime: 0
+    HoldingTime: 0.5
     TickDamage: 0
     TickCount: 0
     TickTime: 0
@@ -87,23 +237,98 @@ MonoBehaviour:
     CcValue: 0
     CardImage: {fileID: 0}
     SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
+    Desc: "11\r"
+  - Name: Ice Arrow
+    ID: 10
+    NameLevel: "\uC544\uC774\uC2A4\uC560\uB85C\uC6B0_1\uB808\uBCA8"
+    Probability: 10
+    Classification: 3
+    Rank: 1
+    LockTime: 0.5
+    SkillType: 2
+    Value_1: 50
     Value_2: 0
-    CoolTime: 0
-    Range: 0
+    CoolTime: 8
+    Range: 20
     RangeType: 0
-    RangeValue_1: 0
+    RangeValue_1: 1
+    RangeValue_2: 2
+    HoldingTime: 3
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 1
+    CcTime: 3
+    CcValue: 40
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "12\r"
+  - Name: Ice Arrow
+    ID: 11
+    NameLevel: "\uC544\uC774\uC2A4\uC560\uB85C\uC6B0_2\uB808\uBCA8"
+    Probability: 8
+    Classification: 3
+    Rank: 2
+    LockTime: 0.5
+    SkillType: 2
+    Value_1: 60
+    Value_2: 0
+    CoolTime: 8
+    Range: 20
+    RangeType: 0
+    RangeValue_1: 1
+    RangeValue_2: 2
+    HoldingTime: 3
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 1
+    CcTime: 4
+    CcValue: 50
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "12\r"
+  - Name: Ice Arrow
+    ID: 12
+    NameLevel: "\uC544\uC774\uC2A4\uC560\uB85C\uC6B0_3\uB808\uBCA8"
+    Probability: 2
+    Classification: 3
+    Rank: 3
+    LockTime: 0.5
+    SkillType: 2
+    Value_1: 80
+    Value_2: 0
+    CoolTime: 8
+    Range: 20
+    RangeType: 0
+    RangeValue_1: 1
+    RangeValue_2: 2
+    HoldingTime: 3
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 1
+    CcTime: 5
+    CcValue: 60
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: "12\r"
+  - Name: Energy Bolt
+    ID: 13
+    NameLevel: "\uC5D0\uB108\uC9C0\uBCFC\uD2B8_1\uB808\uBCA8"
+    Probability: 10
+    Classification: 3
+    Rank: 1
+    LockTime: 0.5
+    SkillType: 2
+    Value_1: 80
+    Value_2: 0
+    CoolTime: 7
+    Range: 20
+    RangeType: 0
+    RangeValue_1: 2
     RangeValue_2: 0
-    HoldingTime: 0
+    HoldingTime: 3
     TickDamage: 0
     TickCount: 0
     TickTime: 0
@@ -112,23 +337,23 @@ MonoBehaviour:
     CcValue: 0
     CardImage: {fileID: 0}
     SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
+    Desc: "13\r"
+  - Name: Energy Bolt
+    ID: 14
+    NameLevel: "\uC5D0\uB108\uC9C0\uBCFC\uD2B8_2\uB808\uBCA8"
+    Probability: 8
+    Classification: 3
+    Rank: 2
+    LockTime: 0.5
+    SkillType: 2
+    Value_1: 90
     Value_2: 0
-    CoolTime: 0
-    Range: 0
+    CoolTime: 7
+    Range: 20
     RangeType: 0
-    RangeValue_1: 0
+    RangeValue_1: 2
     RangeValue_2: 0
-    HoldingTime: 0
+    HoldingTime: 3
     TickDamage: 0
     TickCount: 0
     TickTime: 0
@@ -137,23 +362,23 @@ MonoBehaviour:
     CcValue: 0
     CardImage: {fileID: 0}
     SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
+    Desc: "13\r"
+  - Name: Energy Bolt
+    ID: 15
+    NameLevel: "\uC5D0\uB108\uC9C0\uBCFC\uD2B8_3\uB808\uBCA8"
+    Probability: 2
+    Classification: 3
+    Rank: 3
+    LockTime: 0.5
+    SkillType: 2
+    Value_1: 120
     Value_2: 0
-    CoolTime: 0
-    Range: 0
+    CoolTime: 7
+    Range: 20
     RangeType: 0
-    RangeValue_1: 0
+    RangeValue_1: 2
     RangeValue_2: 0
-    HoldingTime: 0
+    HoldingTime: 3
     TickDamage: 0
     TickCount: 0
     TickTime: 0
@@ -162,229 +387,4 @@ MonoBehaviour:
     CcValue: 0
     CardImage: {fileID: 0}
     SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
-  - Name: 
-    ID: 0
-    NameLevel: 
-    Probability: 0
-    Classification: 0
-    Rank: 0
-    LockTime: 0
-    SkillType: 0
-    Value_1: 0
-    Value_2: 0
-    CoolTime: 0
-    Range: 0
-    RangeType: 0
-    RangeValue_1: 0
-    RangeValue_2: 0
-    HoldingTime: 0
-    TickDamage: 0
-    TickCount: 0
-    TickTime: 0
-    CcType: 0
-    CcTime: 0
-    CcValue: 0
-    CardImage: {fileID: 0}
-    SkillIcon: {fileID: 0}
-    Desc: 
+    Desc: 13
