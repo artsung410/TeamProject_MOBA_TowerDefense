@@ -13,7 +13,7 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     public GameObject[] BasicMinion;
     
     [HideInInspector]
-   public int BlueSkillWave;
+    public int BlueSkillWave;
 
     [HideInInspector]
     public int RedSkillWave;
@@ -29,9 +29,17 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     float elaspedTime;
     float minionSpawnTime = 20f;
 
+    public static MinionSpawner Instance;
+    public MinionDatabaseList minionDB;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     void Start()
     {
-        Turret.minionTowerEvent += ChangeMinion;
+        Turret_Minion.minionTowerEvent += ChangeMinion;
         BlueSpawnMinion();
         RedSpawnMinion();
     }
