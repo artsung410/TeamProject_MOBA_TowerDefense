@@ -40,23 +40,23 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     void Update()
     {
 
-        elaspedTime += Time.deltaTime;
-        if (elaspedTime >= minionSpawnTime)
-        {
-            elaspedTime = 0;
-            BlueSpawnMinion();
-            RedSpawnMinion();
-            if (tag == "Blue" && BlueSkillWave > 0)
-            {
-                BlueSpawnMinion();
-                BlueSkillWave--;
-            }
-            else if (tag == "Red" && RedSkillWave > 0)
-            {
-                RedSpawnMinion();
-                RedSkillWave--;
-            }
-        }
+        //elaspedTime += Time.deltaTime;
+        //if (elaspedTime >= minionSpawnTime)
+        //{
+        //    elaspedTime = 0;
+        //    BlueSpawnMinion();
+        //    RedSpawnMinion();
+        //    if (tag == "Blue" && BlueSkillWave > 0)
+        //    {
+        //        BlueSpawnMinion();
+        //        BlueSkillWave--;
+        //    }
+        //    else if (tag == "Red" && RedSkillWave > 0)
+        //    {
+        //        RedSpawnMinion();
+        //        RedSkillWave--;
+        //    }
+        //}
     }
     // 블루                             // 레드 
     void ChangeMinion(GameObject transferedMinionBlue,GameObject transferedMinionRed,string tag) // 

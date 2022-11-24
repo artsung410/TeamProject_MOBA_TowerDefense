@@ -41,7 +41,7 @@ public class PlayerRespawn : MonoBehaviourPun
         if (health.gameObject.CompareTag("Blue"))
         {
     // TODO : 블루진영캐릭터 리스폰시 땅에 파묻힘 -> 리스폰장소 y축으로 2 올린상태 정확한원인은 잘 모르겠음
-            playerRespawnPosition = new Vector3(GameManager.Instance.spawnPositions[0].position.x, 2f, GameManager.Instance.spawnPositions[0].position.z);
+            playerRespawnPosition = new Vector3(GameManager.Instance.spawnPositions[0].position.x, GameManager.Instance.spawnPositions[0].position.y, GameManager.Instance.spawnPositions[0].position.z);
 
         }
         else if (health.gameObject.CompareTag("Red"))

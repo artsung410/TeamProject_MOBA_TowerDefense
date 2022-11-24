@@ -31,7 +31,7 @@ public class BulletSpawn : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, transform.rotation);
+            GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position,Quaternion.Euler(0,0,90f));
             bullet.GetComponent<BulletMove>().tg = Minion._target.gameObject;
             bullet.GetComponent<BulletMove>().Damage = Minion.Damage;
             if (gameObject.CompareTag("Blue"))

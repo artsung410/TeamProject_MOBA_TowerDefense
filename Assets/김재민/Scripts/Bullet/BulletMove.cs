@@ -28,10 +28,7 @@ public class BulletMove : MonoBehaviourPun
     private void FixedUpdate()
     {
        
-        if(tg == null)
-        {
-            return;
-        }
+     
 
         // 유도탄
         if (tg == null) //타켓이 없을때;
@@ -47,6 +44,7 @@ public class BulletMove : MonoBehaviourPun
             rigidbody.velocity = transform.forward * ballVelocity;
             var ballTargetRotation = Quaternion.LookRotation(tg.transform.position + new Vector3(0, 0.8f) - transform.position);
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
+            transform.LookAt(tg.transform.position);
 
         }
 

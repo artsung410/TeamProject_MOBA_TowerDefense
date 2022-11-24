@@ -175,7 +175,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -580,7 +589,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -3187,9 +3205,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -3218,6 +3236,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -3463,7 +3482,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -4050,7 +4078,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -4318,7 +4355,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.07075471, b: 0.07075471, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -6240,7 +6277,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6335,7 +6381,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6392,7 +6447,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6525,7 +6589,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6708,7 +6781,7 @@ Camera:
   m_GameObject: {fileID: 1578853577}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 2
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -6726,7 +6799,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 58.33
+  orthographic size: 90.6
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
@@ -6749,14 +6822,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1578853577}
-  m_LocalRotation: {x: 0.65653867, y: 0.26259664, z: -0.26259664, w: 0.65653867}
-  m_LocalPosition: {x: 0, y: 132, z: 0}
+  m_LocalRotation: {x: 0.5979826, y: -0.120719366, z: -0.040344108, w: 0.79133815}
+  m_LocalPosition: {x: 249.5, y: 674.3335, z: -96.33548}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 90, y: 43.6, z: 0}
+  m_LocalEulerAnglesHint: {x: 69.5, y: -43.105, z: -36.483}
 --- !u!1 &1596289784
 GameObject:
   m_ObjectHideFlags: 0
@@ -6910,9 +6983,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -6941,6 +7014,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -8538,7 +8612,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -9283,9 +9366,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -9314,6 +9397,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -10199,7 +10283,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8342ebf6a8adf5d4faaa4ed3a6dad5d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buff: {fileID: 0}
+  buff:
+    Name: 
+    ID: 0
+    Icon: {fileID: 0}
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Target: 0
+    Value: 0
+    Duration: 0
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -10544,9 +10637,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -10575,6 +10668,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -13515,9 +13609,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -13546,6 +13640,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -13616,9 +13711,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -13647,6 +13742,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -13698,9 +13794,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -13729,6 +13825,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -14558,9 +14655,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -14589,6 +14686,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
