@@ -28,11 +28,17 @@ public class PlayerHUD : MonoBehaviourPun
     // ###############################################
 
     [Header("PlayerStatusUI")]
-    public Image playerHealthBar;
-    public Image playerExperienceBar;
-    public TextMeshProUGUI playerHealthBarTMpro;
-    public TextMeshProUGUI playerExperienceBarTMpro;
-    public TextMeshProUGUI playerInfoTMPro;
+    public GameObject PlayerObject;
+    private Stats playerStat;
+    private Player playerScript;
+    public Image PlayerPortrait;                        // 초상화
+    public Image playerHealthBar;                       // 체력 게이지
+    public Image playerExperienceBar;                   // 경험치 게이지
+    public TextMeshProUGUI playerHealthBarTMpro;        // 체력 text
+    public TextMeshProUGUI playerExperienceBarTMpro;    // 경험치 text
+    public TextMeshProUGUI PlayerLevelText;             // 레벨 text
+    public Text PlayerDpsText;                          // 초당공격력 text
+    public Text PlayerSpeedText;                        // 이동속도 text
 
     [Header("InfoUI")]
     public GameObject InfoPanel;
@@ -162,7 +168,8 @@ public class PlayerHUD : MonoBehaviourPun
         imigeCourutine = ImageFadeIn();
         resultImigePopup = ResultImagePopUp();
         textCouruntine = textFadeout();
-
+        
+        StartCoroutine(SetPlayer());
         setSkill();
         StartCoroutine(setHp());
         setMouseCursor();
@@ -191,6 +198,7 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
 
+        UpdateStatusUI();
         UpdateHealthUI();
         UpdateInfo();
 
@@ -543,6 +551,47 @@ public class PlayerHUD : MonoBehaviourPun
         playerHp2D = playerHp.hpSlider3D.value;
         playerHealthBarTMpro.text = (int)playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
     }
+
+    IEnumerator SetPlayer()
+    {
+        while (true)
+        {
+            try
+            {
+                PlayerObject = GameManager.Instance.CurrentPlayers[0];
+                playerStat = PlayerObject.GetComponent<Stats>();
+                playerScript = PlayerObject.GetComponent<Player>();
+                yield break;
+            }
+            catch (Exception)
+            {
+                Debug.Log("플레이어 가져오는중");
+            }
+            yield return new WaitForSeconds(0.1f);
+        }
+    }
+
+    private void UpdateStatusUI()
+    {
+        // 경험치
+        playerExperienceBarTMpro.text = $"{playerStat.Exp} / {playerStat.maxExp}";
+
+        // 경험치 바
+        playerExperienceBar.fillAmount = playerStat.Exp / playerStat.maxExp;
+
+        // DPS
+        PlayerDpsText.text = $"{playerStat.attackDmg / playerStat.attackSpeed}";
+
+        // 이동속도
+        PlayerSpeedText.text = $"{playerStat.MoveSpeed}";
+
+        // 초상화
+        PlayerPortrait.sprite = playerScript.playerIcon;
+
+        // 레벨
+        PlayerLevelText.text = $"{playerStat.Level}";
+    }
+
     #endregion
 
 

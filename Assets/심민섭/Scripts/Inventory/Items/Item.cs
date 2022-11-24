@@ -33,7 +33,8 @@ public class Item
     public int indexItemInList = 99;            // 인덱스
     public float rarity;                        // 아이템 얻을 확률
     public int CombinationValue;                // 조합에 필요한 카드 개수
-    public TowerBlueprint towerData;            // 타워 데이터            
+    public TowerBlueprint towerData;            // 타워 데이터
+    public PlayerSkillDatas skillData;          // 스킬 데이터
 
     // 아이템의 효과
     [SerializeField]
