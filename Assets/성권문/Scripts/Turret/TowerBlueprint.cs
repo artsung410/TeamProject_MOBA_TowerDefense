@@ -55,7 +55,7 @@ public class TowerBlueprint
 
     [Header("[부가 옵션]")]
     public GameObject Destroy_Effect_Pf;                     // 타워 파괴 이펙트
-    public string Desc;                                      // 타워 설명
+    [TextArea] public string Desc;                                      // 타워 설명
     public Sprite Sprite_TowerCard;                          // 타워카드 이미지
     public Sprite Sprite_TowerProtrait;                      // 타워상태 이미지
     public string AudioClip_Attack_Name;                     // 공격 사운드 이름

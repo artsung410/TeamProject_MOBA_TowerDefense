@@ -167,8 +167,10 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Projectile_Type = int.Parse(col[25]);
             towerDatabaseListCSV.itemList[i].Projectile_Pf = Resources.Load<GameObject>(col[26]);
 
-
-            towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_Ko];
+            if (int.Parse(col[33]) != 0)
+            {
+                towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_Ko];
+            }
 
             // 부가옵션
             towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf = Resources.Load<GameObject>(col[30]);
