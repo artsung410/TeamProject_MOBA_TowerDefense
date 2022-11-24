@@ -27,7 +27,7 @@ public class GameExitButton : MonoBehaviourPunCallbacks
 
     public override void OnLeftRoom()
     {
-        if (SceneManager.GetActiveScene().name == "Prototype_1")
+        if (SceneManager.GetActiveScene().name == "demoSmaller")
         {
             SceneManager.LoadScene("Lobby");
             return;

@@ -147,12 +147,12 @@ public class InventoryGetData : MonoBehaviour
 
         collection = database.GetCollection<BsonDocument>("User_Card_Info");
         playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
-        var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
-        var document = collection.Find(builder).FirstOrDefault();
-        var value = document.GetElement(7).Value;
-        if (stack == 0 && value >= 1)
+        var builder_other = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        var document_other = collection.Find(builder_other).FirstOrDefault();
+        var value_other = document_other.GetElement(7).Value;
+        if (stack == 0 && value_other >= 1)
         {
-            var filter = Builders<BsonDocument>.Filter.Eq("other", value);
+            var filter = Builders<BsonDocument>.Filter.Eq("other", value_other);
             var update = Builders<BsonDocument>.Update.Set("other", 0);
             collection.UpdateOne(filter, update);
         }
@@ -172,6 +172,18 @@ public class InventoryGetData : MonoBehaviour
         if (stack > 0)
             DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Warrior", warriorCardCnt);
 
+        collection = database.GetCollection<BsonDocument>("User_Card_Info");
+        playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+        var builder_warrior = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        var document_warrior = collection.Find(builder_warrior).FirstOrDefault();
+        var value_warrior = document_warrior.GetElement(3).Value;
+        if (stack == 0 && value_warrior >= 1)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("warrior", value_warrior);
+            var update = Builders<BsonDocument>.Update.Set("warrior", 0);
+            collection.UpdateOne(filter, update);
+        }
+
         stack = 0;
         for (int i = 0; i < wizardInventory.transform.childCount; i++)
         {
@@ -186,6 +198,19 @@ public class InventoryGetData : MonoBehaviour
         }
         if (stack > 0)
             DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Wizard", wizardCardCnt);
+
+        collection = database.GetCollection<BsonDocument>("User_Card_Info");
+        playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+        var builder_wizard = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        var document_wizard = collection.Find(builder_wizard).FirstOrDefault();
+        var value_wizard = document_wizard.GetElement(4).Value;
+        if (stack == 0 && value_wizard >= 1)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("wizard", value_wizard);
+            var update = Builders<BsonDocument>.Update.Set("wizard", 0);
+            collection.UpdateOne(filter, update);
+        }
+
 
         stack = 0;
         for (int i = 0; i < inherenceInventory.transform.childCount; i++)
@@ -202,6 +227,19 @@ public class InventoryGetData : MonoBehaviour
         if (stack > 0)
             DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Inherence", inherenceCardCnt);
 
+        collection = database.GetCollection<BsonDocument>("User_Card_Info");
+        playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+        var builder_inherence = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        var document_inherence = collection.Find(builder_inherence).FirstOrDefault();
+        var value_inherence = document_inherence.GetElement(5).Value;
+        if (stack == 0 && value_inherence >= 1)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("inherence", value_inherence);
+            var update = Builders<BsonDocument>.Update.Set("inherence", 0);
+            collection.UpdateOne(filter, update);
+        }
+
+
         stack = 0;
         for (int i = 0; i < towerInventory.transform.childCount; i++)
         {
@@ -215,7 +253,26 @@ public class InventoryGetData : MonoBehaviour
             Debug.Log("타워 아이템 저장 완료");
         }
         if (stack > 0)
-            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Tower", towerCardCnt);        
+            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Tower", towerCardCnt);
+
+        collection = database.GetCollection<BsonDocument>("User_Card_Info");
+        playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+        var builder_tower = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        var document_tower = collection.Find(builder_tower).FirstOrDefault();
+        var value_tower = document_tower.GetElement(5).Value;
+        if (stack == 0 && value_tower >= 1)
+        {
+            var filter = Builders<BsonDocument>.Filter.Eq("tower", value_tower);
+            var update = Builders<BsonDocument>.Update.Set("tower", 0);
+            collection.UpdateOne(filter, update);
+        }
+
+
+        // 모든 카드를 더해서 total에 업데이트를 한다.
+        int total = otherItemCnt + warriorCardCnt + wizardCardCnt + inherenceCardCnt + towerCardCnt;
+        DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Total", total);
+
+        DataBaseUpdater.instance.cardPackAmountUpdate();
     }
 
     /*private void Update()
