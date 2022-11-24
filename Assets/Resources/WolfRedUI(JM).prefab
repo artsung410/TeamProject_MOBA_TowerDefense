@@ -2712,9 +2712,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.86
-  m_Height: 1
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0.44, z: 0}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!114 &5730621960139930149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2898,6 +2898,10 @@ PrefabInstance:
       propertyPath: enemybase
       value: 
       objectReference: {fileID: 3426133034253493362}
+    - target: {fileID: 2590112740196459040, guid: afe3fb38166e41a4c99025e5afaa66c4, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3682810003097182663, guid: afe3fb38166e41a4c99025e5afaa66c4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
