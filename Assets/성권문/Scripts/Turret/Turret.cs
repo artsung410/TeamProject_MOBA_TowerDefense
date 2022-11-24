@@ -218,6 +218,11 @@ public class Turret : MonoBehaviourPun
     [PunRPC]
     public void TakeDamage(float damage)
     {
+        if (currentHealth <= 0 )
+        {
+            return;
+        }
+
         currentHealth = Mathf.Max(currentHealth - damage, 0);
         healthbarImage.fillAmount = currentHealth / maxHealth;
         StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
@@ -226,7 +231,12 @@ public class Turret : MonoBehaviourPun
             // 타워 파괴시 경험치
             OnTurretDestroyEvent.Invoke(gameObject, exp);
 
-            photonView.RPC("Destroy", RpcTarget.All);
+            if(photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+                newDestroyParticle = PhotonNetwork.Instantiate(destroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+                StartCoroutine(Destruction(newDestroyParticle));
+            }
             return;
         }
     }
@@ -258,47 +268,33 @@ public class Turret : MonoBehaviourPun
             return;
         }
 
-        photonView.RPC("Destroy", RpcTarget.All);
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        PhotonNetwork.Destroy(gameObject);
+
     }
 
     [PunRPC]
     public void Destroy()
     {
-        if (gameObject.activeSelf == false)
-        {
-            return;
-        }
+        //if (gameObject.activeSelf == false)
+        //{
+        //    return;
+        //}
 
-        StartCoroutine(Destructing());
-        newDestroyParticle = PhotonNetwork.Instantiate(destroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
-        StartCoroutine(Destruction(newDestroyParticle));
-    }
-
-    IEnumerator Destructing()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(0.01f);
-            transform.Translate(Vector3.down * Time.deltaTime * destroySpeed);
-
-            if (transform.position.y < -10)
-            {
-                StopCoroutine(Destructing());
-
-                if (newDestroyParticle != null)
-                {
-                    StopCoroutine(Destructing());
-                    StopCoroutine(Destruction(newDestroyParticle));
-                }
-            }
-        }
+        //StartCoroutine(Destructing());
+        //newDestroyParticle = PhotonNetwork.Instantiate(destroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+        //StartCoroutine(Destruction(newDestroyParticle));
     }
 
     IEnumerator Destruction(GameObject particle)
     {
         yield return new WaitForSeconds(1.5f);
-        Destroy(particle);
-        Destroy(gameObject);
+
+        PhotonNetwork.Destroy(particle);
     }
 
     // =========================== 타워 버프 적용 처리 ===========================

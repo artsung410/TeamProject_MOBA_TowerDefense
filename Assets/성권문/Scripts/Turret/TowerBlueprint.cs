@@ -12,9 +12,9 @@ using UnityEngine;
 public class TowerBlueprint
 {
     [Header("[기본정보]")]
+    public string Name;                                      // 타워 이름
     public int ID;                                           // 고유 아이디
     public GameObject Pf;
-    public string Name;                                      // 타워 이름
 
     [Header("[조합]")]
     public int Combination_ResultID;                         // 조합 결과 ID
@@ -57,5 +57,4 @@ public class TowerBlueprint
 
     [Header("[버프타워만]")]
     public int buffID;                                       // 버프 타워만 해당.
-
 }

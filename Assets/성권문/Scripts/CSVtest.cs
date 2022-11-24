@@ -151,7 +151,7 @@ public class CSVtest : MonoBehaviour
 
             // 기본정보
             buffDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
-            buffDatabaseListCSV.itemList[i].Name = col[2];
+            buffDatabaseListCSV.itemList[i].Name = col[2] + col[4];
             buffDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/BuffIcon/" + col[2]);
             buffDatabaseListCSV.itemList[i].GroupID = int.Parse(col[3]);
             buffDatabaseListCSV.itemList[i].Rank = int.Parse(col[4]);
