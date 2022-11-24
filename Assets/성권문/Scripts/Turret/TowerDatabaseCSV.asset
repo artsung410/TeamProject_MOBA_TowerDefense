@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: TowerDatabaseCSV
   m_EditorClassIdentifier: 
   itemList:
-  - Name: Guard_Tower1
+  - Name: Guard_Tower
     ID: 1
+    GroupID: 1
+    Rank: 1
+    Type: 1
     Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     Combination_ResultID: 2
     Combination_Required_Value: 500
@@ -26,9 +29,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 1
-    Rank: 1
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 100
@@ -38,15 +38,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30012
+    Desc: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uACF5\uACA9 \uD0C0\uC6CC\uC785\uB2C8\uB2E4.
+      \uD654\uC0B4\uC744 \uBC1C\uC0AC\uD558\uC5EC \uC801\uB4E4\uC758 \uACF5\uACA9\uC744
+      \uBC29\uC5B4\uD569\uB2C8\uB2E4. \"\uD53C\uC735~ \uD53C\uC735~\" "
     Sprite_TowerCard: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
     AudioClip_Attack_Name: ES_Guard_Tower
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Guard_Tower2
     ID: 2
+    GroupID: 1
+    Rank: 2
+    Type: 1
     Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     Combination_ResultID: 3
     Combination_Required_Value: 300
@@ -58,9 +64,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 1
-    Rank: 2
-    Type: 1
     Attack: 20
     Attack_Speed: 0.3
     Hp: 150
@@ -70,15 +73,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30012
+    Desc: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uACF5\uACA9 \uD0C0\uC6CC\uC785\uB2C8\uB2E4.
+      \uD654\uC0B4\uC744 \uBC1C\uC0AC\uD558\uC5EC \uC801\uB4E4\uC758 \uACF5\uACA9\uC744
+      \uBC29\uC5B4\uD569\uB2C8\uB2E4. \"\uD53C\uC735~ \uD53C\uC735~\" "
     Sprite_TowerCard: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
     AudioClip_Attack_Name: ES_Cannon_Tower
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Guard_Tower3
     ID: 3
+    GroupID: 1
+    Rank: 3
+    Type: 1
     Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     Combination_ResultID: 4
     Combination_Required_Value: 200
@@ -90,9 +99,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 1
-    Rank: 3
-    Type: 1
     Attack: 30
     Attack_Speed: 0.3
     Hp: 200
@@ -102,15 +108,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30012
+    Desc: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uACF5\uACA9 \uD0C0\uC6CC\uC785\uB2C8\uB2E4.
+      \uD654\uC0B4\uC744 \uBC1C\uC0AC\uD558\uC5EC \uC801\uB4E4\uC758 \uACF5\uACA9\uC744
+      \uBC29\uC5B4\uD569\uB2C8\uB2E4. \"\uD53C\uC735~ \uD53C\uC735~\" "
     Sprite_TowerCard: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Guard_Tower4
     ID: 4
+    GroupID: 1
+    Rank: 4
+    Type: 1
     Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     Combination_ResultID: 5
     Combination_Required_Value: 100
@@ -122,9 +134,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 1
-    Rank: 4
-    Type: 1
     Attack: 40
     Attack_Speed: 0.3
     Hp: 250
@@ -134,15 +143,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30012
+    Desc: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uACF5\uACA9 \uD0C0\uC6CC\uC785\uB2C8\uB2E4.
+      \uD654\uC0B4\uC744 \uBC1C\uC0AC\uD558\uC5EC \uC801\uB4E4\uC758 \uACF5\uACA9\uC744
+      \uBC29\uC5B4\uD569\uB2C8\uB2E4. \"\uD53C\uC735~ \uD53C\uC735~\" "
     Sprite_TowerCard: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Guard_Tower5
     ID: 5
+    GroupID: 1
+    Rank: 5
+    Type: 1
     Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -154,9 +169,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 1
-    Rank: 5
-    Type: 1
     Attack: 50
     Attack_Speed: 0.3
     Hp: 300
@@ -166,15 +178,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30012
+    Desc: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uACF5\uACA9 \uD0C0\uC6CC\uC785\uB2C8\uB2E4.
+      \uD654\uC0B4\uC744 \uBC1C\uC0AC\uD558\uC5EC \uC801\uB4E4\uC758 \uACF5\uACA9\uC744
+      \uBC29\uC5B4\uD569\uB2C8\uB2E4. \"\uD53C\uC735~ \uD53C\uC735~\" "
     Sprite_TowerCard: {fileID: 21300000, guid: 7d5ff8144514e8a40ad31e9ee639f482, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: Cannon_Tower1
+    Camp_GroupID: 0
+  - Name: Cannon_Tower
     ID: 6
+    GroupID: 2
+    Rank: 1
+    Type: 1
     Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     Combination_ResultID: 7
     Combination_Required_Value: 500
@@ -186,9 +204,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 2
-    Rank: 1
-    Type: 1
     Attack: 20
     Attack_Speed: 0.3
     Hp: 100
@@ -198,15 +213,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30013
+    Desc: "\uB300\uD3EC\uB97C \uBC1C\uC0AC\uD558\uC5EC \uC804\uC7A5\uC758 \uC801\uB4E4\uC5D0\uAC8C
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD569\uB2C8\uB2E4. \uCF85\uCF85 \uC3D8\uC544
+      \uB300\uB294 \uB9DB\uC774 \uC77C\uD488\uC778 \uD0C0\uC6CC\uC785\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: d7d1b75e07a3b61419ec7582b56cbbd8, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Cannon_Tower2
     ID: 7
+    GroupID: 2
+    Rank: 2
+    Type: 1
     Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     Combination_ResultID: 8
     Combination_Required_Value: 300
@@ -218,9 +239,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 2
-    Rank: 2
-    Type: 1
     Attack: 30
     Attack_Speed: 0.3
     Hp: 150
@@ -230,15 +248,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30013
+    Desc: "\uB300\uD3EC\uB97C \uBC1C\uC0AC\uD558\uC5EC \uC804\uC7A5\uC758 \uC801\uB4E4\uC5D0\uAC8C
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD569\uB2C8\uB2E4. \uCF85\uCF85 \uC3D8\uC544
+      \uB300\uB294 \uB9DB\uC774 \uC77C\uD488\uC778 \uD0C0\uC6CC\uC785\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: 992911eedf9fcb248be9c2ddee1fa248, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Cannon_Tower3
     ID: 8
+    GroupID: 2
+    Rank: 3
+    Type: 1
     Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     Combination_ResultID: 9
     Combination_Required_Value: 200
@@ -250,9 +274,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 2
-    Rank: 3
-    Type: 1
     Attack: 40
     Attack_Speed: 0.3
     Hp: 200
@@ -262,15 +283,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30013
+    Desc: "\uB300\uD3EC\uB97C \uBC1C\uC0AC\uD558\uC5EC \uC804\uC7A5\uC758 \uC801\uB4E4\uC5D0\uAC8C
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD569\uB2C8\uB2E4. \uCF85\uCF85 \uC3D8\uC544
+      \uB300\uB294 \uB9DB\uC774 \uC77C\uD488\uC778 \uD0C0\uC6CC\uC785\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: 86ba4cf7cb2aeaf4f9a44c958bf33f50, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Cannon_Tower4
     ID: 9
+    GroupID: 2
+    Rank: 4
+    Type: 1
     Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     Combination_ResultID: 10
     Combination_Required_Value: 100
@@ -282,9 +309,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 2
-    Rank: 4
-    Type: 1
     Attack: 50
     Attack_Speed: 0.3
     Hp: 250
@@ -294,15 +318,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30013
+    Desc: "\uB300\uD3EC\uB97C \uBC1C\uC0AC\uD558\uC5EC \uC804\uC7A5\uC758 \uC801\uB4E4\uC5D0\uAC8C
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD569\uB2C8\uB2E4. \uCF85\uCF85 \uC3D8\uC544
+      \uB300\uB294 \uB9DB\uC774 \uC77C\uD488\uC778 \uD0C0\uC6CC\uC785\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: e72e766dc039df244897939edb034478, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Cannon_Tower5
     ID: 10
+    GroupID: 2
+    Rank: 5
+    Type: 1
     Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -314,9 +344,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 2
-    Rank: 5
-    Type: 1
     Attack: 60
     Attack_Speed: 0.3
     Hp: 300
@@ -326,15 +353,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30013
+    Desc: "\uB300\uD3EC\uB97C \uBC1C\uC0AC\uD558\uC5EC \uC804\uC7A5\uC758 \uC801\uB4E4\uC5D0\uAC8C
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD569\uB2C8\uB2E4. \uCF85\uCF85 \uC3D8\uC544
+      \uB300\uB294 \uB9DB\uC774 \uC77C\uD488\uC778 \uD0C0\uC6CC\uC785\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: bf9f5f857ab2a284f9bed72be4e3e881, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: Flame_Tower1
+    Camp_GroupID: 0
+  - Name: Flame_Tower
     ID: 11
+    GroupID: 3
+    Rank: 1
+    Type: 1
     Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     Combination_ResultID: 12
     Combination_Required_Value: 500
@@ -346,9 +379,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 3
-    Rank: 1
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 100
@@ -358,15 +388,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30014
+    Desc: "\uBD88\uC758 \uC138\uB840\uB97C \uBC1B\uC544 \uBCF4\uC2E0\uC801\uC774
+      \uC788\uB098\uC694? \uB728\uAC70\uC6B4 \uB9DB\uC744 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: f634ee18e67349543a72b575ec92f985, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20011
+    Camp_GroupID: 0
   - Name: Flame_Tower2
     ID: 12
+    GroupID: 3
+    Rank: 2
+    Type: 1
     Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     Combination_ResultID: 13
     Combination_Required_Value: 300
@@ -378,9 +413,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 3
-    Rank: 2
-    Type: 1
     Attack: 15
     Attack_Speed: 0.3
     Hp: 150
@@ -390,15 +422,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30014
+    Desc: "\uBD88\uC758 \uC138\uB840\uB97C \uBC1B\uC544 \uBCF4\uC2E0\uC801\uC774
+      \uC788\uB098\uC694? \uB728\uAC70\uC6B4 \uB9DB\uC744 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: da6cbf10cae825544bf732ae18deb0fa, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20012
+    Camp_GroupID: 0
   - Name: Flame_Tower3
     ID: 13
+    GroupID: 3
+    Rank: 3
+    Type: 1
     Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     Combination_ResultID: 14
     Combination_Required_Value: 200
@@ -410,9 +447,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 3
-    Rank: 3
-    Type: 1
     Attack: 20
     Attack_Speed: 0.3
     Hp: 200
@@ -422,15 +456,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30014
+    Desc: "\uBD88\uC758 \uC138\uB840\uB97C \uBC1B\uC544 \uBCF4\uC2E0\uC801\uC774
+      \uC788\uB098\uC694? \uB728\uAC70\uC6B4 \uB9DB\uC744 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 417c606dc5320b549b2b11069f3ae604, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20013
+    Camp_GroupID: 0
   - Name: Flame_Tower4
     ID: 14
+    GroupID: 3
+    Rank: 4
+    Type: 1
     Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     Combination_ResultID: 15
     Combination_Required_Value: 100
@@ -442,9 +481,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 3
-    Rank: 4
-    Type: 1
     Attack: 25
     Attack_Speed: 0.3
     Hp: 250
@@ -454,15 +490,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30014
+    Desc: "\uBD88\uC758 \uC138\uB840\uB97C \uBC1B\uC544 \uBCF4\uC2E0\uC801\uC774
+      \uC788\uB098\uC694? \uB728\uAC70\uC6B4 \uB9DB\uC744 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 6803b07b48ccdf743a8fa3d4b2af1edf, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20014
+    Camp_GroupID: 0
   - Name: Flame_Tower5
     ID: 15
+    GroupID: 3
+    Rank: 5
+    Type: 1
     Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -474,9 +515,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 3
-    Rank: 5
-    Type: 1
     Attack: 30
     Attack_Speed: 0.3
     Hp: 300
@@ -486,15 +524,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30014
+    Desc: "\uBD88\uC758 \uC138\uB840\uB97C \uBC1B\uC544 \uBCF4\uC2E0\uC801\uC774
+      \uC788\uB098\uC694? \uB728\uAC70\uC6B4 \uB9DB\uC744 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 318009f90a2216d4088145175732af00, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20015
-  - Name: FrozenOrb_Tower1
+    Camp_GroupID: 0
+  - Name: FrozenOrb_Tower
     ID: 16
+    GroupID: 4
+    Rank: 1
+    Type: 1
     Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     Combination_ResultID: 17
     Combination_Required_Value: 500
@@ -506,9 +549,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 4
-    Rank: 1
-    Type: 1
     Attack: 5
     Attack_Speed: 0.3
     Hp: 100
@@ -518,15 +558,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30015
+    Desc: "\uC5BC\uC74C \uB3D9\uB3D9! \uC0B4 \uC5BC\uC74C \uD30C\uD2F0!"
     Sprite_TowerCard: {fileID: 21300000, guid: 623a39af688903b498e2e64d80ddc269, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20006
+    Camp_GroupID: 0
   - Name: FrozenOrb_Tower2
     ID: 17
+    GroupID: 4
+    Rank: 2
+    Type: 1
     Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     Combination_ResultID: 18
     Combination_Required_Value: 300
@@ -538,9 +582,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 4
-    Rank: 2
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 150
@@ -550,15 +591,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30015
+    Desc: "\uC5BC\uC74C \uB3D9\uB3D9! \uC0B4 \uC5BC\uC74C \uD30C\uD2F0!"
     Sprite_TowerCard: {fileID: 21300000, guid: 2095c4000e86f8d44bfa1a2356dfd72e, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20007
+    Camp_GroupID: 0
   - Name: FrozenOrb_Tower3
     ID: 18
+    GroupID: 4
+    Rank: 3
+    Type: 1
     Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     Combination_ResultID: 19
     Combination_Required_Value: 200
@@ -570,9 +615,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 4
-    Rank: 3
-    Type: 1
     Attack: 15
     Attack_Speed: 0.3
     Hp: 200
@@ -582,15 +624,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30015
+    Desc: "\uC5BC\uC74C \uB3D9\uB3D9! \uC0B4 \uC5BC\uC74C \uD30C\uD2F0!"
     Sprite_TowerCard: {fileID: 21300000, guid: 5b326eec05b120f45a391b164fbaeca8, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20008
+    Camp_GroupID: 0
   - Name: FrozenOrb_Tower4
     ID: 19
+    GroupID: 4
+    Rank: 4
+    Type: 1
     Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     Combination_ResultID: 20
     Combination_Required_Value: 100
@@ -602,9 +648,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 4
-    Rank: 4
-    Type: 1
     Attack: 20
     Attack_Speed: 0.3
     Hp: 250
@@ -614,15 +657,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30015
+    Desc: "\uC5BC\uC74C \uB3D9\uB3D9! \uC0B4 \uC5BC\uC74C \uD30C\uD2F0!"
     Sprite_TowerCard: {fileID: 21300000, guid: 1f776b896b09a434db2082825be4892d, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20009
+    Camp_GroupID: 0
   - Name: FrozenOrb_Tower5
     ID: 20
+    GroupID: 4
+    Rank: 5
+    Type: 1
     Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -634,9 +681,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 4
-    Rank: 5
-    Type: 1
     Attack: 25
     Attack_Speed: 0.3
     Hp: 300
@@ -646,15 +690,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30015
+    Desc: "\uC5BC\uC74C \uB3D9\uB3D9! \uC0B4 \uC5BC\uC74C \uD30C\uD2F0!"
     Sprite_TowerCard: {fileID: 21300000, guid: a8598c05c05d9384c8e54fda592925a5, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20010
-  - Name: Lightning_Tower1
+    Camp_GroupID: 0
+  - Name: Lightning_Tower
     ID: 21
+    GroupID: 5
+    Rank: 1
+    Type: 1
     Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     Combination_ResultID: 22
     Combination_Required_Value: 500
@@ -666,9 +714,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 5
-    Rank: 1
-    Type: 1
     Attack: 5
     Attack_Speed: 0.3
     Hp: 100
@@ -678,15 +723,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30016
+    Desc: "\uC9DC\uB9BF\uC9DC\uB9BF!\uCC0C\uB9BF\uCC0C\uB9BF! \uBC88\uAC1C\uB9DB
+      \uAD6C\uC774\uAC00 \uB420 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? \uC624\uAE08\uC774
+      \uC800\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4 \uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 55bfb8f3f2b2b8447a37aff553dd00d1, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20001
+    Camp_GroupID: 0
   - Name: Lightning_Tower2
     ID: 22
+    GroupID: 5
+    Rank: 2
+    Type: 1
     Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     Combination_ResultID: 23
     Combination_Required_Value: 300
@@ -698,9 +749,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 5
-    Rank: 2
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 150
@@ -710,15 +758,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30016
+    Desc: "\uC9DC\uB9BF\uC9DC\uB9BF!\uCC0C\uB9BF\uCC0C\uB9BF! \uBC88\uAC1C\uB9DB
+      \uAD6C\uC774\uAC00 \uB420 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? \uC624\uAE08\uC774
+      \uC800\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4 \uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 1610cd11bc8291b4abe4867cb4507246, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20002
+    Camp_GroupID: 0
   - Name: Lightning_Tower3
     ID: 23
+    GroupID: 5
+    Rank: 3
+    Type: 1
     Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     Combination_ResultID: 24
     Combination_Required_Value: 200
@@ -730,9 +784,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 5
-    Rank: 3
-    Type: 1
     Attack: 15
     Attack_Speed: 0.3
     Hp: 200
@@ -742,15 +793,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30016
+    Desc: "\uC9DC\uB9BF\uC9DC\uB9BF!\uCC0C\uB9BF\uCC0C\uB9BF! \uBC88\uAC1C\uB9DB
+      \uAD6C\uC774\uAC00 \uB420 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? \uC624\uAE08\uC774
+      \uC800\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4 \uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: cea68d78ce9bc1140b9147b5b256d531, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20003
+    Camp_GroupID: 0
   - Name: Lightning_Tower4
     ID: 24
+    GroupID: 5
+    Rank: 4
+    Type: 1
     Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     Combination_ResultID: 25
     Combination_Required_Value: 100
@@ -762,9 +819,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 5
-    Rank: 4
-    Type: 1
     Attack: 20
     Attack_Speed: 0.3
     Hp: 250
@@ -774,15 +828,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30016
+    Desc: "\uC9DC\uB9BF\uC9DC\uB9BF!\uCC0C\uB9BF\uCC0C\uB9BF! \uBC88\uAC1C\uB9DB
+      \uAD6C\uC774\uAC00 \uB420 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? \uC624\uAE08\uC774
+      \uC800\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4 \uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: ed41682185da3a84297ad0aa0a699d1a, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20004
+    Camp_GroupID: 0
   - Name: Lightning_Tower5
     ID: 25
+    GroupID: 5
+    Rank: 5
+    Type: 1
     Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -794,9 +854,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 5
-    Rank: 5
-    Type: 1
     Attack: 25
     Attack_Speed: 0.3
     Hp: 300
@@ -806,15 +863,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30016
+    Desc: "\uC9DC\uB9BF\uC9DC\uB9BF!\uCC0C\uB9BF\uCC0C\uB9BF! \uBC88\uAC1C\uB9DB
+      \uAD6C\uC774\uAC00 \uB420 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? \uC624\uAE08\uC774
+      \uC800\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4 \uB4DC\uB9B4\uAC8C\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 420b495e00351df4986fd4ccab001449, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20005
-  - Name: BlackHole_Tower1
+    Camp_GroupID: 0
+  - Name: BlackHole_Tower
     ID: 26
+    GroupID: 6
+    Rank: 1
+    Type: 1
     Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     Combination_ResultID: 27
     Combination_Required_Value: 500
@@ -826,9 +889,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 6
-    Rank: 1
-    Type: 1
     Attack: 10
     Attack_Speed: 1.5
     Hp: 100
@@ -838,15 +898,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30017
+    Desc: "\uC6B0\uC8FC\uC758 \uADFC\uC6D0\uC744 \uCC3E\uC544\uC11C \uADF8\uB300\uC5D0\uAC8C
+      \uBCF4\uC5EC\uB4DC\uB9BD\uB2C8\uB2E4. \uBB49\uCE60 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: b664a600adbbe9043b33a2d9cac14fc3, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: BlackHole_Tower2
     ID: 27
+    GroupID: 6
+    Rank: 2
+    Type: 1
     Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     Combination_ResultID: 28
     Combination_Required_Value: 300
@@ -858,9 +923,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 6
-    Rank: 2
-    Type: 1
     Attack: 10
     Attack_Speed: 1.3
     Hp: 150
@@ -870,15 +932,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30017
+    Desc: "\uC6B0\uC8FC\uC758 \uADFC\uC6D0\uC744 \uCC3E\uC544\uC11C \uADF8\uB300\uC5D0\uAC8C
+      \uBCF4\uC5EC\uB4DC\uB9BD\uB2C8\uB2E4. \uBB49\uCE60 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: 5ec46b2fe08e6db4f8d901464548efeb, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: BlackHole_Tower3
     ID: 28
+    GroupID: 6
+    Rank: 3
+    Type: 1
     Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     Combination_ResultID: 29
     Combination_Required_Value: 200
@@ -890,9 +957,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 6
-    Rank: 3
-    Type: 1
     Attack: 10
     Attack_Speed: 1
     Hp: 200
@@ -902,15 +966,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30017
+    Desc: "\uC6B0\uC8FC\uC758 \uADFC\uC6D0\uC744 \uCC3E\uC544\uC11C \uADF8\uB300\uC5D0\uAC8C
+      \uBCF4\uC5EC\uB4DC\uB9BD\uB2C8\uB2E4. \uBB49\uCE60 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: 66aa5f5ce1f2c68419593c28f9ee861b, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: BlackHole_Tower4
     ID: 29
+    GroupID: 6
+    Rank: 4
+    Type: 1
     Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     Combination_ResultID: 30
     Combination_Required_Value: 100
@@ -922,9 +991,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 6
-    Rank: 4
-    Type: 1
     Attack: 10
     Attack_Speed: 0.8
     Hp: 250
@@ -934,15 +1000,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30017
+    Desc: "\uC6B0\uC8FC\uC758 \uADFC\uC6D0\uC744 \uCC3E\uC544\uC11C \uADF8\uB300\uC5D0\uAC8C
+      \uBCF4\uC5EC\uB4DC\uB9BD\uB2C8\uB2E4. \uBB49\uCE60 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: 6c5b82d14ce6506499e59e3e2f25b80f, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: BlackHole_Tower5
     ID: 30
+    GroupID: 6
+    Rank: 5
+    Type: 1
     Pf: {fileID: 4274299024074093435, guid: cef5222f9ec233f4cae8b729ab4d8b2e, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -954,9 +1025,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 6
-    Rank: 5
-    Type: 1
     Attack: 10
     Attack_Speed: 0.6
     Hp: 300
@@ -966,15 +1034,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30017
+    Desc: "\uC6B0\uC8FC\uC758 \uADFC\uC6D0\uC744 \uCC3E\uC544\uC11C \uADF8\uB300\uC5D0\uAC8C
+      \uBCF4\uC5EC\uB4DC\uB9BD\uB2C8\uB2E4. \uBB49\uCE60 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: RuinedTower1
+    Camp_GroupID: 0
+  - Name: RuinedTower
     ID: 31
+    GroupID: 7
+    Rank: 1
+    Type: 1
     Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     Combination_ResultID: 32
     Combination_Required_Value: 500
@@ -986,9 +1059,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 7
-    Rank: 1
-    Type: 1
     Attack: 10
     Attack_Speed: 1
     Hp: 100
@@ -998,15 +1068,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30018
+    Desc: "\uB2E4 \uBB34\uB108\uC9C4 \uD0C0\uC6CC\uB77C\uACE0 \uBB34\uC2DC\uD558\uBA74
+      \uC544\uC57C \uD558\uC2E4\uAEBC\uC5D0\uC694! \uBC1C \uBC11\uC744 \uC870\uC2EC\uD558\uC138\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 1ebeafe900f46e741978c8ffc244f5c5, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: RuinedTower2
     ID: 32
+    GroupID: 7
+    Rank: 2
+    Type: 1
     Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     Combination_ResultID: 33
     Combination_Required_Value: 300
@@ -1018,9 +1093,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 7
-    Rank: 2
-    Type: 1
     Attack: 20
     Attack_Speed: 1
     Hp: 150
@@ -1030,15 +1102,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30018
+    Desc: "\uB2E4 \uBB34\uB108\uC9C4 \uD0C0\uC6CC\uB77C\uACE0 \uBB34\uC2DC\uD558\uBA74
+      \uC544\uC57C \uD558\uC2E4\uAEBC\uC5D0\uC694! \uBC1C \uBC11\uC744 \uC870\uC2EC\uD558\uC138\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 35ba9d41fd3b91442a3a23173ede78a6, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: RuinedTower3
     ID: 33
+    GroupID: 7
+    Rank: 3
+    Type: 1
     Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     Combination_ResultID: 34
     Combination_Required_Value: 200
@@ -1050,9 +1127,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 7
-    Rank: 3
-    Type: 1
     Attack: 30
     Attack_Speed: 1
     Hp: 200
@@ -1062,15 +1136,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30018
+    Desc: "\uB2E4 \uBB34\uB108\uC9C4 \uD0C0\uC6CC\uB77C\uACE0 \uBB34\uC2DC\uD558\uBA74
+      \uC544\uC57C \uD558\uC2E4\uAEBC\uC5D0\uC694! \uBC1C \uBC11\uC744 \uC870\uC2EC\uD558\uC138\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: b48ec3f9f136be0459d927d8596d70f8, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: RuinedTower4
     ID: 34
+    GroupID: 7
+    Rank: 4
+    Type: 1
     Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     Combination_ResultID: 35
     Combination_Required_Value: 100
@@ -1082,9 +1161,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 7
-    Rank: 4
-    Type: 1
     Attack: 40
     Attack_Speed: 1
     Hp: 250
@@ -1094,15 +1170,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30018
+    Desc: "\uB2E4 \uBB34\uB108\uC9C4 \uD0C0\uC6CC\uB77C\uACE0 \uBB34\uC2DC\uD558\uBA74
+      \uC544\uC57C \uD558\uC2E4\uAEBC\uC5D0\uC694! \uBC1C \uBC11\uC744 \uC870\uC2EC\uD558\uC138\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 8521d008ef9704443b5b213c6973350f, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: RuinedTower5
     ID: 35
+    GroupID: 7
+    Rank: 5
+    Type: 1
     Pf: {fileID: 4149779834440913111, guid: 0b63b31a9421ad041b2937fd3915a3c9, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -1114,9 +1195,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 7
-    Rank: 5
-    Type: 1
     Attack: 50
     Attack_Speed: 1
     Hp: 300
@@ -1126,15 +1204,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7529217830654467740, guid: 2cfa22e839cd55944bc9b8c762c15be5, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30018
+    Desc: "\uB2E4 \uBB34\uB108\uC9C4 \uD0C0\uC6CC\uB77C\uACE0 \uBB34\uC2DC\uD558\uBA74
+      \uC544\uC57C \uD558\uC2E4\uAEBC\uC5D0\uC694! \uBC1C \uBC11\uC744 \uC870\uC2EC\uD558\uC138\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 766421934e87dee4982fd603013e8501, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: Laser_Tower1
+    Camp_GroupID: 0
+  - Name: Laser_Tower
     ID: 36
+    GroupID: 8
+    Rank: 1
+    Type: 1
     Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     Combination_ResultID: 37
     Combination_Required_Value: 500
@@ -1146,9 +1229,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 8
-    Rank: 1
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 100
@@ -1158,15 +1238,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 0}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30019
+    Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: 4f7d4be2ecacb7a44a92fc0d6f906507, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Laser_Tower2
     ID: 37
+    GroupID: 8
+    Rank: 2
+    Type: 1
     Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     Combination_ResultID: 38
     Combination_Required_Value: 300
@@ -1178,9 +1262,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 8
-    Rank: 2
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 150
@@ -1190,15 +1271,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 0}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30019
+    Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: a467719aaf9aa154cad7c4f49d097c30, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Laser_Tower3
     ID: 38
+    GroupID: 8
+    Rank: 3
+    Type: 1
     Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     Combination_ResultID: 39
     Combination_Required_Value: 200
@@ -1210,9 +1295,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 8
-    Rank: 3
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 200
@@ -1222,15 +1304,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 0}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30019
+    Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: 7d9af09b855dec24a95586933816fca8, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Laser_Tower4
     ID: 39
+    GroupID: 8
+    Rank: 4
+    Type: 1
     Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     Combination_ResultID: 40
     Combination_Required_Value: 100
@@ -1242,9 +1328,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 8
-    Rank: 4
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 250
@@ -1254,15 +1337,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 0}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30019
+    Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: c8e4e836a57bb754bb4f8acda6cba2fe, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 0
   - Name: Laser_Tower5
     ID: 40
+    GroupID: 8
+    Rank: 5
+    Type: 1
     Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -1274,9 +1361,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 8
-    Rank: 5
-    Type: 1
     Attack: 10
     Attack_Speed: 0.3
     Hp: 300
@@ -1286,15 +1370,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 0}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30019
+    Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: 143b0a01b2083c949979cce22fea5690, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: Wind_Tower1
+    Camp_GroupID: 0
+  - Name: Wind_Tower
     ID: 41
+    GroupID: 9
+    Rank: 1
+    Type: 1
     Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     Combination_ResultID: 42
     Combination_Required_Value: 500
@@ -1306,9 +1394,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 9
-    Rank: 1
-    Type: 1
     Attack: 30
     Attack_Speed: 0.3
     Hp: 100
@@ -1318,15 +1403,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30020
+    Desc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: c61094d318b6a1447bccc6fa4a647f00, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20016
+    Camp_GroupID: 0
   - Name: Wind_Tower2
     ID: 42
+    GroupID: 9
+    Rank: 2
+    Type: 1
     Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     Combination_ResultID: 43
     Combination_Required_Value: 300
@@ -1338,9 +1427,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 9
-    Rank: 2
-    Type: 1
     Attack: 40
     Attack_Speed: 0.3
     Hp: 150
@@ -1350,15 +1436,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30020
+    Desc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: 32043e0974980884594d401703bc926d, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20017
+    Camp_GroupID: 0
   - Name: Wind_Tower3
     ID: 43
+    GroupID: 9
+    Rank: 3
+    Type: 1
     Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     Combination_ResultID: 44
     Combination_Required_Value: 200
@@ -1370,9 +1460,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 9
-    Rank: 3
-    Type: 1
     Attack: 50
     Attack_Speed: 0.3
     Hp: 200
@@ -1382,15 +1469,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30020
+    Desc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: 020358f99d25be246a00eb0c1094dd18, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20018
+    Camp_GroupID: 0
   - Name: Wind_Tower4
     ID: 44
+    GroupID: 9
+    Rank: 4
+    Type: 1
     Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     Combination_ResultID: 45
     Combination_Required_Value: 100
@@ -1402,9 +1493,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 9
-    Rank: 4
-    Type: 1
     Attack: 60
     Attack_Speed: 0.3
     Hp: 250
@@ -1414,15 +1502,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30020
+    Desc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: 4187b0771b5715b40802bf6bfed2a9fd, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20019
+    Camp_GroupID: 0
   - Name: Wind_Tower5
     ID: 45
+    GroupID: 9
+    Rank: 5
+    Type: 1
     Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -1434,9 +1526,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 9
-    Rank: 5
-    Type: 1
     Attack: 70
     Attack_Speed: 0.3
     Hp: 300
@@ -1446,15 +1535,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30020
+    Desc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20020
-  - Name: Light_Tower1
+    Camp_GroupID: 0
+  - Name: Light_Tower
     ID: 46
+    GroupID: 10
+    Rank: 1
+    Type: 1
     Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     Combination_ResultID: 47
     Combination_Required_Value: 500
@@ -1466,9 +1559,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 10
-    Rank: 1
-    Type: 1
     Attack: 15
     Attack_Speed: 0.3
     Hp: 100
@@ -1478,15 +1568,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30021
+    Desc: "\uC624 \uB208\uC774 \uBD80\uC2DC\uAC8C \uBC1D\uC740 \uACF5\uACA9\uC774\uAD70\uC694!
+      \uD0DC\uC591\uAD8C!"
     Sprite_TowerCard: {fileID: 0}
     Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20021
+    Camp_GroupID: 0
   - Name: Light_Tower2
     ID: 47
+    GroupID: 10
+    Rank: 2
+    Type: 1
     Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     Combination_ResultID: 48
     Combination_Required_Value: 300
@@ -1498,9 +1593,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 10
-    Rank: 2
-    Type: 1
     Attack: 20
     Attack_Speed: 0.3
     Hp: 150
@@ -1510,15 +1602,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30021
+    Desc: "\uC624 \uB208\uC774 \uBD80\uC2DC\uAC8C \uBC1D\uC740 \uACF5\uACA9\uC774\uAD70\uC694!
+      \uD0DC\uC591\uAD8C!"
     Sprite_TowerCard: {fileID: 21300000, guid: 9472b586ed75d1648b54c6244413c300, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20022
+    Camp_GroupID: 0
   - Name: Light_Tower3
     ID: 48
+    GroupID: 10
+    Rank: 3
+    Type: 1
     Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     Combination_ResultID: 49
     Combination_Required_Value: 200
@@ -1530,9 +1627,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 10
-    Rank: 3
-    Type: 1
     Attack: 25
     Attack_Speed: 0.3
     Hp: 200
@@ -1542,15 +1636,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30021
+    Desc: "\uC624 \uB208\uC774 \uBD80\uC2DC\uAC8C \uBC1D\uC740 \uACF5\uACA9\uC774\uAD70\uC694!
+      \uD0DC\uC591\uAD8C!"
     Sprite_TowerCard: {fileID: 21300000, guid: ec066062b20f2a0418da6200aeb89ad0, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20023
+    Camp_GroupID: 0
   - Name: Light_Tower4
     ID: 49
+    GroupID: 10
+    Rank: 4
+    Type: 1
     Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     Combination_ResultID: 50
     Combination_Required_Value: 100
@@ -1562,9 +1661,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 2
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 10
-    Rank: 4
-    Type: 1
     Attack: 30
     Attack_Speed: 0.3
     Hp: 250
@@ -1574,15 +1670,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30021
+    Desc: "\uC624 \uB208\uC774 \uBD80\uC2DC\uAC8C \uBC1D\uC740 \uACF5\uACA9\uC774\uAD70\uC694!
+      \uD0DC\uC591\uAD8C!"
     Sprite_TowerCard: {fileID: 21300000, guid: c92de39a6f4340940b6321420b455cb6, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20024
+    Camp_GroupID: 0
   - Name: Light_Tower5
     ID: 50
+    GroupID: 10
+    Rank: 5
+    Type: 1
     Pf: {fileID: 8103812384240647844, guid: 07c9f94d0850b7b459b37c3310e96bf3, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -1594,9 +1695,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 1
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 10
-    Rank: 5
-    Type: 1
     Attack: 35
     Attack_Speed: 0.3
     Hp: 300
@@ -1606,15 +1704,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30021
+    Desc: "\uC624 \uB208\uC774 \uBD80\uC2DC\uAC8C \uBC1D\uC740 \uACF5\uACA9\uC774\uAD70\uC694!
+      \uD0DC\uC591\uAD8C!"
     Sprite_TowerCard: {fileID: 21300000, guid: 68e8984074ce4d24d80c88cea2cbf2f7, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20025
-  - Name: Damage_Increase_Tower1
+    Camp_GroupID: 0
+  - Name: Damage_Increase_Tower
     ID: 1001
+    GroupID: 11
+    Rank: 1
+    Type: 2
     Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
     Combination_ResultID: 1002
     Combination_Required_Value: 500
@@ -1626,9 +1729,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 11
-    Rank: 1
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -1638,15 +1738,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30022
+    Desc: "\uBD88\uC758 \uD798\uC73C\uB85C \uCE90\uB9AD\uD130\uC758 \uB370\uBBF8\uC9C0\uB97C
+      \uC99D\uAC00 \uC2DC\uD0B5\uB2C8\uB2E4. \uBD88\uD0C0\uB294 \uBF55\uB9DB!"
     Sprite_TowerCard: {fileID: 21300000, guid: f351c83c844808c48bc8854351770133, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15001
+    Camp_GroupID: 0
   - Name: Damage_Increase_Tower2
     ID: 1002
+    GroupID: 11
+    Rank: 2
+    Type: 2
     Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
     Combination_ResultID: 1003
     Combination_Required_Value: 300
@@ -1658,9 +1763,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 11
-    Rank: 2
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -1670,15 +1772,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30022
+    Desc: "\uBD88\uC758 \uD798\uC73C\uB85C \uCE90\uB9AD\uD130\uC758 \uB370\uBBF8\uC9C0\uB97C
+      \uC99D\uAC00 \uC2DC\uD0B5\uB2C8\uB2E4. \uBD88\uD0C0\uB294 \uBF55\uB9DB!"
     Sprite_TowerCard: {fileID: 21300000, guid: 4c9e185b1c5755946a72464ce967ede4, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15002
+    Camp_GroupID: 0
   - Name: Damage_Increase_Tower3
     ID: 1003
+    GroupID: 11
+    Rank: 3
+    Type: 2
     Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
     Combination_ResultID: 1004
     Combination_Required_Value: 200
@@ -1690,9 +1797,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 8.75
-    GroupID: 11
-    Rank: 3
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -1702,15 +1806,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30022
+    Desc: "\uBD88\uC758 \uD798\uC73C\uB85C \uCE90\uB9AD\uD130\uC758 \uB370\uBBF8\uC9C0\uB97C
+      \uC99D\uAC00 \uC2DC\uD0B5\uB2C8\uB2E4. \uBD88\uD0C0\uB294 \uBF55\uB9DB!"
     Sprite_TowerCard: {fileID: 21300000, guid: 6492c1ec9ff7ab54990891fd13bd05ac, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15003
+    Camp_GroupID: 0
   - Name: Damage_Increase_Tower4
     ID: 1004
+    GroupID: 11
+    Rank: 4
+    Type: 2
     Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
     Combination_ResultID: 1005
     Combination_Required_Value: 100
@@ -1722,9 +1831,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 2.5
-    GroupID: 11
-    Rank: 4
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -1734,15 +1840,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30022
+    Desc: "\uBD88\uC758 \uD798\uC73C\uB85C \uCE90\uB9AD\uD130\uC758 \uB370\uBBF8\uC9C0\uB97C
+      \uC99D\uAC00 \uC2DC\uD0B5\uB2C8\uB2E4. \uBD88\uD0C0\uB294 \uBF55\uB9DB!"
     Sprite_TowerCard: {fileID: 21300000, guid: 40292c8c2399a0246bce3b7d7689c4b6, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15004
+    Camp_GroupID: 0
   - Name: Damage_Increase_Tower5
     ID: 1005
+    GroupID: 11
+    Rank: 5
+    Type: 2
     Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -1754,9 +1865,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 11
-    Rank: 5
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -1766,15 +1874,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30022
+    Desc: "\uBD88\uC758 \uD798\uC73C\uB85C \uCE90\uB9AD\uD130\uC758 \uB370\uBBF8\uC9C0\uB97C
+      \uC99D\uAC00 \uC2DC\uD0B5\uB2C8\uB2E4. \uBD88\uD0C0\uB294 \uBF55\uB9DB!"
     Sprite_TowerCard: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15005
-  - Name: Hp_Regen_Increase_Tower1
+    Camp_GroupID: 0
+  - Name: Hp_Regen_Increase_Tower
     ID: 1006
+    GroupID: 12
+    Rank: 1
+    Type: 2
     Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
     Combination_ResultID: 1006
     Combination_Required_Value: 500
@@ -1786,9 +1899,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 12
-    Rank: 1
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -1798,15 +1908,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30023
+    Desc: "\uBFCC\uBFCC\uBFE1! \uB2F9\uC2E0\uC758 \uCCB4\uB825\uC744 \uCC45\uC784\uC9D1\uB2C8\uB2E4!
+      \uBFCC\uBFCC\uBFE1!"
     Sprite_TowerCard: {fileID: 21300000, guid: 49535959013910a41bed75876222126e, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15006
+    Camp_GroupID: 0
   - Name: Hp_Regen_Increase_Tower2
     ID: 1007
+    GroupID: 12
+    Rank: 2
+    Type: 2
     Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
     Combination_ResultID: 1007
     Combination_Required_Value: 300
@@ -1818,9 +1933,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 12
-    Rank: 2
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -1830,15 +1942,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30023
+    Desc: "\uBFCC\uBFCC\uBFE1! \uB2F9\uC2E0\uC758 \uCCB4\uB825\uC744 \uCC45\uC784\uC9D1\uB2C8\uB2E4!
+      \uBFCC\uBFCC\uBFE1!"
     Sprite_TowerCard: {fileID: 21300000, guid: 46ddddc378163a646981226725a175dd, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15007
+    Camp_GroupID: 0
   - Name: Hp_Regen_Increase_Tower3
     ID: 1008
+    GroupID: 12
+    Rank: 3
+    Type: 2
     Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
     Combination_ResultID: 1008
     Combination_Required_Value: 200
@@ -1850,9 +1967,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 8.75
-    GroupID: 12
-    Rank: 3
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -1862,15 +1976,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30023
+    Desc: "\uBFCC\uBFCC\uBFE1! \uB2F9\uC2E0\uC758 \uCCB4\uB825\uC744 \uCC45\uC784\uC9D1\uB2C8\uB2E4!
+      \uBFCC\uBFCC\uBFE1!"
     Sprite_TowerCard: {fileID: 21300000, guid: 91db5eadc594473428ac33a75108e7a4, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15008
+    Camp_GroupID: 0
   - Name: Hp_Regen_Increase_Tower4
     ID: 1009
+    GroupID: 12
+    Rank: 4
+    Type: 2
     Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
     Combination_ResultID: 1009
     Combination_Required_Value: 100
@@ -1882,9 +2001,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 2.5
-    GroupID: 12
-    Rank: 4
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -1894,15 +2010,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30023
+    Desc: "\uBFCC\uBFCC\uBFE1! \uB2F9\uC2E0\uC758 \uCCB4\uB825\uC744 \uCC45\uC784\uC9D1\uB2C8\uB2E4!
+      \uBFCC\uBFCC\uBFE1!"
     Sprite_TowerCard: {fileID: 21300000, guid: 8db79c5610e949b439169a90f636405a, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15009
+    Camp_GroupID: 0
   - Name: Hp_Regen_Increase_Tower5
     ID: 1010
+    GroupID: 12
+    Rank: 5
+    Type: 2
     Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
     Combination_ResultID: 1010
     Combination_Required_Value: 0
@@ -1914,9 +2035,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 12
-    Rank: 5
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -1926,15 +2044,20 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30023
+    Desc: "\uBFCC\uBFCC\uBFE1! \uB2F9\uC2E0\uC758 \uCCB4\uB825\uC744 \uCC45\uC784\uC9D1\uB2C8\uB2E4!
+      \uBFCC\uBFCC\uBFE1!"
     Sprite_TowerCard: {fileID: 21300000, guid: 76d27766d70606c43a3d7256da77e2a5, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15010
-  - Name: Speed_Increase_Tower1
+    Camp_GroupID: 0
+  - Name: Speed_Increase_Tower
     ID: 1011
+    GroupID: 13
+    Rank: 1
+    Type: 2
     Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
     Combination_ResultID: 1012
     Combination_Required_Value: 500
@@ -1946,9 +2069,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 13
-    Rank: 1
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -1958,15 +2078,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30024
+    Desc: "\uC6B0\uC0AC\uC778 \uC36C\uB354!"
     Sprite_TowerCard: {fileID: 21300000, guid: 074373cf7928961448f5b8f87bbd2d10, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15011
+    Camp_GroupID: 0
   - Name: Speed_Increase_Tower2
     ID: 1012
+    GroupID: 13
+    Rank: 2
+    Type: 2
     Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
     Combination_ResultID: 1013
     Combination_Required_Value: 300
@@ -1978,9 +2102,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 13
-    Rank: 2
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -1990,15 +2111,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30024
+    Desc: "\uC6B0\uC0AC\uC778 \uC36C\uB354!"
     Sprite_TowerCard: {fileID: 21300000, guid: 0a758b1541a4b64468c7f00f3caad9d1, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15012
+    Camp_GroupID: 0
   - Name: Speed_Increase_Tower3
     ID: 1013
+    GroupID: 13
+    Rank: 3
+    Type: 2
     Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
     Combination_ResultID: 1014
     Combination_Required_Value: 200
@@ -2010,9 +2135,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 8.75
-    GroupID: 13
-    Rank: 3
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -2022,15 +2144,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30024
+    Desc: "\uC6B0\uC0AC\uC778 \uC36C\uB354!"
     Sprite_TowerCard: {fileID: 21300000, guid: 8fb5eb7f6b222e944913c1f84121a3b2, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15013
+    Camp_GroupID: 0
   - Name: Speed_Increase_Tower4
     ID: 1014
+    GroupID: 13
+    Rank: 4
+    Type: 2
     Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
     Combination_ResultID: 1015
     Combination_Required_Value: 100
@@ -2042,9 +2168,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 2.5
-    GroupID: 13
-    Rank: 4
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -2054,15 +2177,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30024
+    Desc: "\uC6B0\uC0AC\uC778 \uC36C\uB354!"
     Sprite_TowerCard: {fileID: 21300000, guid: 85ce1b77c4b5bdd46bf79c61c989a21a, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15014
+    Camp_GroupID: 0
   - Name: Speed_Increase_Tower5
     ID: 1015
+    GroupID: 13
+    Rank: 5
+    Type: 2
     Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -2074,9 +2201,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 13
-    Rank: 5
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -2086,15 +2210,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30024
+    Desc: "\uC6B0\uC0AC\uC778 \uC36C\uB354!"
     Sprite_TowerCard: {fileID: 21300000, guid: e87d5e740d7179b4c9bd5fc253db292f, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15015
-  - Name: Attack_Speed_Increase_Tower1
+    Camp_GroupID: 0
+  - Name: Attack_Speed_Increase_Tower
     ID: 1016
+    GroupID: 14
+    Rank: 1
+    Type: 2
     Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
     Combination_ResultID: 1017
     Combination_Required_Value: 500
@@ -2106,9 +2234,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 14
-    Rank: 1
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -2118,15 +2243,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30025
+    Desc: "\uB108 \uD55C\uB300 \uB098 \uB450\uB300 \uB108 \uC138\uB300 \uB098 \uC5EC\uC12F\uB300"
     Sprite_TowerCard: {fileID: 21300000, guid: 5437999f885c1f84caea03651911ade1, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15016
+    Camp_GroupID: 0
   - Name: Attack_Speed_Increase_Tower2
     ID: 1017
+    GroupID: 14
+    Rank: 2
+    Type: 2
     Pf: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
     Combination_ResultID: 1018
     Combination_Required_Value: 300
@@ -2138,9 +2267,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 14
-    Rank: 2
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -2150,15 +2276,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30025
+    Desc: "\uB108 \uD55C\uB300 \uB098 \uB450\uB300 \uB108 \uC138\uB300 \uB098 \uC5EC\uC12F\uB300"
     Sprite_TowerCard: {fileID: 21300000, guid: ddf0f94c7ff4e4645acf9e002b19cd1f, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15017
+    Camp_GroupID: 0
   - Name: Attack_Speed_Increase_Tower3
     ID: 1018
+    GroupID: 14
+    Rank: 3
+    Type: 2
     Pf: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
     Combination_ResultID: 1019
     Combination_Required_Value: 200
@@ -2170,9 +2300,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 8.75
-    GroupID: 14
-    Rank: 3
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -2182,15 +2309,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30025
+    Desc: "\uB108 \uD55C\uB300 \uB098 \uB450\uB300 \uB108 \uC138\uB300 \uB098 \uC5EC\uC12F\uB300"
     Sprite_TowerCard: {fileID: 21300000, guid: 9e01c11e96741724da7b6bbf167e2621, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15018
+    Camp_GroupID: 0
   - Name: Attack_Speed_Increase_Tower4
     ID: 1019
+    GroupID: 14
+    Rank: 4
+    Type: 2
     Pf: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
     Combination_ResultID: 1020
     Combination_Required_Value: 100
@@ -2202,9 +2333,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 2.5
-    GroupID: 14
-    Rank: 4
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -2214,15 +2342,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30025
+    Desc: "\uB108 \uD55C\uB300 \uB098 \uB450\uB300 \uB108 \uC138\uB300 \uB098 \uC5EC\uC12F\uB300"
     Sprite_TowerCard: {fileID: 21300000, guid: f5dbf9cc223494447b7472a309c8e64e, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15019
+    Camp_GroupID: 0
   - Name: Attack_Speed_Increase_Tower5
     ID: 1020
+    GroupID: 14
+    Rank: 5
+    Type: 2
     Pf: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -2234,9 +2366,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 14
-    Rank: 5
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -2246,15 +2375,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30025
+    Desc: "\uB108 \uD55C\uB300 \uB098 \uB450\uB300 \uB108 \uC138\uB300 \uB098 \uC5EC\uC12F\uB300"
     Sprite_TowerCard: {fileID: 21300000, guid: 14a2823e390979b4191eb08c8135e6af, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15020
-  - Name: Damage_Decrease_Tower1
+    Camp_GroupID: 0
+  - Name: Damage_Decrease_Tower
     ID: 2001
+    GroupID: 15
+    Rank: 1
+    Type: 3
     Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
     Combination_ResultID: 2002
     Combination_Required_Value: 500
@@ -2266,9 +2399,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 15
-    Rank: 1
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -2278,15 +2408,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30026
+    Desc: "\uD0C0\uC6CC\uC5D0 \uBD80\uC5EC\uB41C \uC800\uC8FC \uBC1B\uC740 \uD798\uC73C\uB85C
+      \uC0C1\uB300\uBC29\uC758 \uC758\uC9C0\uB97C \uAEBD\uC5B4  \uACF5\uACA9\uB825\uC744
+      \uD558\uB77D\uC2DC\uD0B5\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: 23e64726bf8ac5645a8be443823629e1, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15021
+    Camp_GroupID: 0
   - Name: Damage_Decrease_Tower2
     ID: 2002
+    GroupID: 15
+    Rank: 2
+    Type: 3
     Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
     Combination_ResultID: 2003
     Combination_Required_Value: 300
@@ -2298,9 +2434,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 15
-    Rank: 2
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -2310,15 +2443,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30026
+    Desc: "\uD0C0\uC6CC\uC5D0 \uBD80\uC5EC\uB41C \uC800\uC8FC \uBC1B\uC740 \uD798\uC73C\uB85C
+      \uC0C1\uB300\uBC29\uC758 \uC758\uC9C0\uB97C \uAEBD\uC5B4  \uACF5\uACA9\uB825\uC744
+      \uD558\uB77D\uC2DC\uD0B5\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: 77609a7756fb1d842b7db42890e7b50c, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15022
+    Camp_GroupID: 0
   - Name: Damage_Decrease_Tower3
     ID: 2003
+    GroupID: 15
+    Rank: 3
+    Type: 3
     Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
     Combination_ResultID: 2004
     Combination_Required_Value: 200
@@ -2330,9 +2469,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 8.75
-    GroupID: 15
-    Rank: 3
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -2342,15 +2478,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30026
+    Desc: "\uD0C0\uC6CC\uC5D0 \uBD80\uC5EC\uB41C \uC800\uC8FC \uBC1B\uC740 \uD798\uC73C\uB85C
+      \uC0C1\uB300\uBC29\uC758 \uC758\uC9C0\uB97C \uAEBD\uC5B4  \uACF5\uACA9\uB825\uC744
+      \uD558\uB77D\uC2DC\uD0B5\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: 7eaa5544f893c914eb2f7870a10e650d, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15023
+    Camp_GroupID: 0
   - Name: Damage_Decrease_Tower4
     ID: 2004
+    GroupID: 15
+    Rank: 4
+    Type: 3
     Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
     Combination_ResultID: 2005
     Combination_Required_Value: 100
@@ -2362,9 +2504,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 2.5
-    GroupID: 15
-    Rank: 4
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -2374,15 +2513,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30026
+    Desc: "\uD0C0\uC6CC\uC5D0 \uBD80\uC5EC\uB41C \uC800\uC8FC \uBC1B\uC740 \uD798\uC73C\uB85C
+      \uC0C1\uB300\uBC29\uC758 \uC758\uC9C0\uB97C \uAEBD\uC5B4  \uACF5\uACA9\uB825\uC744
+      \uD558\uB77D\uC2DC\uD0B5\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: 041c82a65156306419036c1c97942e4c, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15024
+    Camp_GroupID: 0
   - Name: Damage_Decrease_Tower5
     ID: 2005
+    GroupID: 15
+    Rank: 5
+    Type: 3
     Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -2394,9 +2539,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 15
-    Rank: 5
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -2406,15 +2548,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30026
+    Desc: "\uD0C0\uC6CC\uC5D0 \uBD80\uC5EC\uB41C \uC800\uC8FC \uBC1B\uC740 \uD798\uC73C\uB85C
+      \uC0C1\uB300\uBC29\uC758 \uC758\uC9C0\uB97C \uAEBD\uC5B4  \uACF5\uACA9\uB825\uC744
+      \uD558\uB77D\uC2DC\uD0B5\uB2C8\uB2E4."
     Sprite_TowerCard: {fileID: 21300000, guid: 74cc02e414ebd1e4d8dc58fab8952f3b, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15025
-  - Name: HP_Regen_Decrease_Tower1
+    Camp_GroupID: 0
+  - Name: HP_Regen_Decrease_Tower
     ID: 2006
+    GroupID: 16
+    Rank: 1
+    Type: 3
     Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
     Combination_ResultID: 2007
     Combination_Required_Value: 500
@@ -2426,9 +2574,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 16
-    Rank: 1
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -2438,15 +2583,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30027
+    Desc: "\uB3C5\uCE68 \uB9DB \uD55C\uBC88 \uBCF4\uACA0\uB2C8?"
     Sprite_TowerCard: {fileID: 21300000, guid: c46d79bc4acc5704ab5754b0221ec3ff, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15026
+    Camp_GroupID: 0
   - Name: HP_Regen_Decrease_Tower2
     ID: 2007
+    GroupID: 16
+    Rank: 2
+    Type: 3
     Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
     Combination_ResultID: 2008
     Combination_Required_Value: 300
@@ -2458,9 +2607,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 16
-    Rank: 2
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -2470,15 +2616,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30027
+    Desc: "\uB3C5\uCE68 \uB9DB \uD55C\uBC88 \uBCF4\uACA0\uB2C8?"
     Sprite_TowerCard: {fileID: 21300000, guid: 80cbd928531f68d4196460fa52448e34, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15027
+    Camp_GroupID: 0
   - Name: HP_Regen_Decrease_Tower3
     ID: 2008
+    GroupID: 16
+    Rank: 3
+    Type: 3
     Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
     Combination_ResultID: 2009
     Combination_Required_Value: 200
@@ -2490,9 +2640,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 8.75
-    GroupID: 16
-    Rank: 3
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -2502,15 +2649,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30027
+    Desc: "\uB3C5\uCE68 \uB9DB \uD55C\uBC88 \uBCF4\uACA0\uB2C8?"
     Sprite_TowerCard: {fileID: 21300000, guid: 1b00ce1b26bdf23408343b2b6ade09b3, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15028
+    Camp_GroupID: 0
   - Name: HP_Regen_Decrease_Tower4
     ID: 2009
+    GroupID: 16
+    Rank: 4
+    Type: 3
     Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
     Combination_ResultID: 2010
     Combination_Required_Value: 100
@@ -2522,9 +2673,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 2.5
-    GroupID: 16
-    Rank: 4
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -2534,15 +2682,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30027
+    Desc: "\uB3C5\uCE68 \uB9DB \uD55C\uBC88 \uBCF4\uACA0\uB2C8?"
     Sprite_TowerCard: {fileID: 21300000, guid: 3d47eefa154654d42b254dc75214fbc9, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15029
+    Camp_GroupID: 0
   - Name: HP_Regen_Decrease_Tower5
     ID: 2010
+    GroupID: 16
+    Rank: 5
+    Type: 3
     Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -2554,9 +2706,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 16
-    Rank: 5
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -2566,15 +2715,19 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30027
+    Desc: "\uB3C5\uCE68 \uB9DB \uD55C\uBC88 \uBCF4\uACA0\uB2C8?"
     Sprite_TowerCard: {fileID: 21300000, guid: 0a0716ae920665248bec7acc6ad59a2c, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15030
-  - Name: Move_Decrease_Tower1
+    Camp_GroupID: 0
+  - Name: Move_Decrease_Tower
     ID: 2011
+    GroupID: 17
+    Rank: 1
+    Type: 3
     Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
     Combination_ResultID: 2012
     Combination_Required_Value: 500
@@ -2586,9 +2739,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 17
-    Rank: 1
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -2598,15 +2748,23 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30028
+    Desc: "\uB2AA\uC9C0\uB300 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uC11C\uC2DD\uD558\uB358
+      \uC545\uB9C8\uC758 \uAF43\uC744 \uC0AC\uC6A9\uD574 \uC801\uAD70\uC744 \uBB34\uB825\uD654
+      \uC2DC\uD0A4\uAE30 \uC704\uD574 \uACF5\uC218\uD574\uC654\uC2B5\uB2C8\uB2E4.
+      \uC801\uAD70\uC774 \uB290\uB9BF\uB290\uB9BF\uD558\uAC8C \uAE30\uC5B4\uAC00\uB294
+      \uBAA8\uC2B5\uC774 \uB208\uC5D0 \uC120\uD558\uB124\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: b80f54dae95a57f43a46494a606c8af2, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15031
+    Camp_GroupID: 0
   - Name: Move_Decrease_Tower2
     ID: 2012
+    GroupID: 17
+    Rank: 2
+    Type: 3
     Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
     Combination_ResultID: 2013
     Combination_Required_Value: 300
@@ -2618,9 +2776,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 17
-    Rank: 2
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -2630,15 +2785,23 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30028
+    Desc: "\uB2AA\uC9C0\uB300 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uC11C\uC2DD\uD558\uB358
+      \uC545\uB9C8\uC758 \uAF43\uC744 \uC0AC\uC6A9\uD574 \uC801\uAD70\uC744 \uBB34\uB825\uD654
+      \uC2DC\uD0A4\uAE30 \uC704\uD574 \uACF5\uC218\uD574\uC654\uC2B5\uB2C8\uB2E4.
+      \uC801\uAD70\uC774 \uB290\uB9BF\uB290\uB9BF\uD558\uAC8C \uAE30\uC5B4\uAC00\uB294
+      \uBAA8\uC2B5\uC774 \uB208\uC5D0 \uC120\uD558\uB124\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: a23d6ef9b9d2358448fc31bd312389ad, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15032
+    Camp_GroupID: 0
   - Name: Move_Decrease_Tower3
     ID: 2013
+    GroupID: 17
+    Rank: 3
+    Type: 3
     Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
     Combination_ResultID: 2014
     Combination_Required_Value: 200
@@ -2650,9 +2813,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 8.75
-    GroupID: 17
-    Rank: 3
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -2662,15 +2822,23 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30028
+    Desc: "\uB2AA\uC9C0\uB300 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uC11C\uC2DD\uD558\uB358
+      \uC545\uB9C8\uC758 \uAF43\uC744 \uC0AC\uC6A9\uD574 \uC801\uAD70\uC744 \uBB34\uB825\uD654
+      \uC2DC\uD0A4\uAE30 \uC704\uD574 \uACF5\uC218\uD574\uC654\uC2B5\uB2C8\uB2E4.
+      \uC801\uAD70\uC774 \uB290\uB9BF\uB290\uB9BF\uD558\uAC8C \uAE30\uC5B4\uAC00\uB294
+      \uBAA8\uC2B5\uC774 \uB208\uC5D0 \uC120\uD558\uB124\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: d04fe2a383e5c9646b9238f6ae786953, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15033
+    Camp_GroupID: 0
   - Name: Move_Decrease_Tower4
     ID: 2014
+    GroupID: 17
+    Rank: 4
+    Type: 3
     Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
     Combination_ResultID: 2015
     Combination_Required_Value: 100
@@ -2682,9 +2850,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 2.5
-    GroupID: 17
-    Rank: 4
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -2694,15 +2859,23 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30028
+    Desc: "\uB2AA\uC9C0\uB300 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uC11C\uC2DD\uD558\uB358
+      \uC545\uB9C8\uC758 \uAF43\uC744 \uC0AC\uC6A9\uD574 \uC801\uAD70\uC744 \uBB34\uB825\uD654
+      \uC2DC\uD0A4\uAE30 \uC704\uD574 \uACF5\uC218\uD574\uC654\uC2B5\uB2C8\uB2E4.
+      \uC801\uAD70\uC774 \uB290\uB9BF\uB290\uB9BF\uD558\uAC8C \uAE30\uC5B4\uAC00\uB294
+      \uBAA8\uC2B5\uC774 \uB208\uC5D0 \uC120\uD558\uB124\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 6385a4d4f59103540b29c77aebf2ed6f, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15034
+    Camp_GroupID: 0
   - Name: Move_Decrease_Tower5
     ID: 2015
+    GroupID: 17
+    Rank: 5
+    Type: 3
     Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -2714,9 +2887,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 17
-    Rank: 5
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -2726,15 +2896,23 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30028
+    Desc: "\uB2AA\uC9C0\uB300 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uC11C\uC2DD\uD558\uB358
+      \uC545\uB9C8\uC758 \uAF43\uC744 \uC0AC\uC6A9\uD574 \uC801\uAD70\uC744 \uBB34\uB825\uD654
+      \uC2DC\uD0A4\uAE30 \uC704\uD574 \uACF5\uC218\uD574\uC654\uC2B5\uB2C8\uB2E4.
+      \uC801\uAD70\uC774 \uB290\uB9BF\uB290\uB9BF\uD558\uAC8C \uAE30\uC5B4\uAC00\uB294
+      \uBAA8\uC2B5\uC774 \uB208\uC5D0 \uC120\uD558\uB124\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 800c19b478ebd6c49a16dc97f89bcd16, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15035
-  - Name: Attack_Speed_Decrease_Tower1
+    Camp_GroupID: 0
+  - Name: Attack_Speed_Decrease_Tower
     ID: 2016
+    GroupID: 18
+    Rank: 1
+    Type: 3
     Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
     Combination_ResultID: 2017
     Combination_Required_Value: 500
@@ -2746,9 +2924,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 18
-    Rank: 1
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -2758,15 +2933,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30029
+    Desc: "\uC678\uACC4 \uD589\uC131\uC73C\uB85C \uBD80\uD130 \uB5A8\uC5B4\uC9C4
+      \uAD34\uC774\uD55C \uC11D\uC0C1\uC740 \uC801\uAD70\uC744 \uC0C1\uB300\uB85C
+      \uD6A8\uACFC\uB97C \uBC1C\uD718 \uD569\uB2C8\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: 84da24d6236149f4b90c07687c1b747c, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15036
+    Camp_GroupID: 0
   - Name: Attack_Speed_Decrease_Tower2
     ID: 2017
+    GroupID: 18
+    Rank: 2
+    Type: 3
     Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
     Combination_ResultID: 2018
     Combination_Required_Value: 300
@@ -2778,9 +2959,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 18
-    Rank: 2
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -2790,15 +2968,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30029
+    Desc: "\uC678\uACC4 \uD589\uC131\uC73C\uB85C \uBD80\uD130 \uB5A8\uC5B4\uC9C4
+      \uAD34\uC774\uD55C \uC11D\uC0C1\uC740 \uC801\uAD70\uC744 \uC0C1\uB300\uB85C
+      \uD6A8\uACFC\uB97C \uBC1C\uD718 \uD569\uB2C8\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: e7d622bcfd0c1de41b1e62d41ca6f398, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15037
+    Camp_GroupID: 0
   - Name: Attack_Speed_Decrease_Tower3
     ID: 2018
+    GroupID: 18
+    Rank: 3
+    Type: 3
     Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
     Combination_ResultID: 2019
     Combination_Required_Value: 200
@@ -2810,9 +2994,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 8.75
-    GroupID: 18
-    Rank: 3
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -2822,15 +3003,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30029
+    Desc: "\uC678\uACC4 \uD589\uC131\uC73C\uB85C \uBD80\uD130 \uB5A8\uC5B4\uC9C4
+      \uAD34\uC774\uD55C \uC11D\uC0C1\uC740 \uC801\uAD70\uC744 \uC0C1\uB300\uB85C
+      \uD6A8\uACFC\uB97C \uBC1C\uD718 \uD569\uB2C8\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: dfb569776350dd44bb321ab8051451e3, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15038
+    Camp_GroupID: 0
   - Name: Attack_Speed_Decrease_Tower4
     ID: 2019
+    GroupID: 18
+    Rank: 4
+    Type: 3
     Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
     Combination_ResultID: 2020
     Combination_Required_Value: 100
@@ -2842,9 +3029,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 2.5
-    GroupID: 18
-    Rank: 4
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -2854,15 +3038,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30029
+    Desc: "\uC678\uACC4 \uD589\uC131\uC73C\uB85C \uBD80\uD130 \uB5A8\uC5B4\uC9C4
+      \uAD34\uC774\uD55C \uC11D\uC0C1\uC740 \uC801\uAD70\uC744 \uC0C1\uB300\uB85C
+      \uD6A8\uACFC\uB97C \uBC1C\uD718 \uD569\uB2C8\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: 5ae95815f348d3f4e9f37fb9c982c9a9, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15039
+    Camp_GroupID: 0
   - Name: Attack_Speed_Decrease_Tower5
     ID: 2020
+    GroupID: 18
+    Rank: 5
+    Type: 3
     Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -2874,9 +3064,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 18
-    Rank: 5
-    Type: 3
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -2886,15 +3073,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30029
+    Desc: "\uC678\uACC4 \uD589\uC131\uC73C\uB85C \uBD80\uD130 \uB5A8\uC5B4\uC9C4
+      \uAD34\uC774\uD55C \uC11D\uC0C1\uC740 \uC801\uAD70\uC744 \uC0C1\uB300\uB85C
+      \uD6A8\uACFC\uB97C \uBC1C\uD718 \uD569\uB2C8\uB2E4!"
     Sprite_TowerCard: {fileID: 21300000, guid: 42eda0340168cfc43bf31250dac50a6e, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 15040
-  - Name: Wolf_Tower1
+    Camp_GroupID: 0
+  - Name: Wolf_Tower
     ID: 3001
+    GroupID: 19
+    Rank: 1
+    Type: 4
     Pf: {fileID: 2719887186148994814, guid: b0704d2253632714ba48b63ee466bd51, type: 3}
     Combination_ResultID: 3002
     Combination_Required_Value: 500
@@ -2906,9 +3099,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 19
-    Rank: 1
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -2918,15 +3108,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uD478\uB978 \uBC14\uC704 \uD611\uACE1\uC5D0 \uBB34\uB9AC \uC9C0\uC5B4
+      \uC0AC\uB294 \uC9D1\uB2E8. \uD611\uACE1\uC744 \uC7A5\uC545\uD55C \uC774 \uB291\uB300
+      \uBB34\uB9AC\uB4E4\uC740 \uC778\uADFC \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C \uACF5\uD3EC\uC640
+      \uACBD\uACC4\uC758 \uB300\uC0C1\uC774\uC8E0. \uC810\uC810 \uC138\uB825\uC744
+      \uB113\uD600 \uAC00\uB358 \uC911  \uC18D\uC0AD\uC774\uB294 \uBAA9\uC18C\uB9AC\uC5D0
+      \uC774\uB04C\uB824 \uC804\uC7A5\uC5D0 \uCC38\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+      \"\uC544\uC6B0~~~~~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: 4a78c42807ff16646bc1bfb8cd1eb20e, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: e86ee112fa1af9d46936986970168b9c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Minion_Tower\r"
     buffID: 0
+    Camp_GroupID: 31
   - Name: Wolf_Tower2
     ID: 3002
+    GroupID: 19
+    Rank: 2
+    Type: 4
     Pf: {fileID: 2719887186148994814, guid: b0704d2253632714ba48b63ee466bd51, type: 3}
     Combination_ResultID: 3003
     Combination_Required_Value: 300
@@ -2938,9 +3138,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 19
-    Rank: 2
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -2950,15 +3147,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uD478\uB978 \uBC14\uC704 \uD611\uACE1\uC5D0 \uBB34\uB9AC \uC9C0\uC5B4
+      \uC0AC\uB294 \uC9D1\uB2E8. \uD611\uACE1\uC744 \uC7A5\uC545\uD55C \uC774 \uB291\uB300
+      \uBB34\uB9AC\uB4E4\uC740 \uC778\uADFC \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C \uACF5\uD3EC\uC640
+      \uACBD\uACC4\uC758 \uB300\uC0C1\uC774\uC8E0. \uC810\uC810 \uC138\uB825\uC744
+      \uB113\uD600 \uAC00\uB358 \uC911  \uC18D\uC0AD\uC774\uB294 \uBAA9\uC18C\uB9AC\uC5D0
+      \uC774\uB04C\uB824 \uC804\uC7A5\uC5D0 \uCC38\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+      \"\uC544\uC6B0~~~~~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: 720e664e21810014fb6e998d38af2881, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: e86ee112fa1af9d46936986970168b9c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Minion_Tower\r"
     buffID: 0
+    Camp_GroupID: 32
   - Name: Wolf_Tower3
     ID: 3003
+    GroupID: 19
+    Rank: 3
+    Type: 4
     Pf: {fileID: 2719887186148994814, guid: b0704d2253632714ba48b63ee466bd51, type: 3}
     Combination_ResultID: 3004
     Combination_Required_Value: 200
@@ -2970,9 +3177,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 11.666667
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 19
-    Rank: 3
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -2982,15 +3186,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uD478\uB978 \uBC14\uC704 \uD611\uACE1\uC5D0 \uBB34\uB9AC \uC9C0\uC5B4
+      \uC0AC\uB294 \uC9D1\uB2E8. \uD611\uACE1\uC744 \uC7A5\uC545\uD55C \uC774 \uB291\uB300
+      \uBB34\uB9AC\uB4E4\uC740 \uC778\uADFC \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C \uACF5\uD3EC\uC640
+      \uACBD\uACC4\uC758 \uB300\uC0C1\uC774\uC8E0. \uC810\uC810 \uC138\uB825\uC744
+      \uB113\uD600 \uAC00\uB358 \uC911  \uC18D\uC0AD\uC774\uB294 \uBAA9\uC18C\uB9AC\uC5D0
+      \uC774\uB04C\uB824 \uC804\uC7A5\uC5D0 \uCC38\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+      \"\uC544\uC6B0~~~~~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: b098f12c7717ca04f827d4ecdeeecb5a, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: e86ee112fa1af9d46936986970168b9c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Minion_Tower\r"
     buffID: 0
+    Camp_GroupID: 33
   - Name: Wolf_Tower4
     ID: 3004
+    GroupID: 19
+    Rank: 4
+    Type: 4
     Pf: {fileID: 2719887186148994814, guid: b0704d2253632714ba48b63ee466bd51, type: 3}
     Combination_ResultID: 3005
     Combination_Required_Value: 100
@@ -3002,9 +3216,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 3.3333333
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 19
-    Rank: 4
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -3014,15 +3225,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uD478\uB978 \uBC14\uC704 \uD611\uACE1\uC5D0 \uBB34\uB9AC \uC9C0\uC5B4
+      \uC0AC\uB294 \uC9D1\uB2E8. \uD611\uACE1\uC744 \uC7A5\uC545\uD55C \uC774 \uB291\uB300
+      \uBB34\uB9AC\uB4E4\uC740 \uC778\uADFC \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C \uACF5\uD3EC\uC640
+      \uACBD\uACC4\uC758 \uB300\uC0C1\uC774\uC8E0. \uC810\uC810 \uC138\uB825\uC744
+      \uB113\uD600 \uAC00\uB358 \uC911  \uC18D\uC0AD\uC774\uB294 \uBAA9\uC18C\uB9AC\uC5D0
+      \uC774\uB04C\uB824 \uC804\uC7A5\uC5D0 \uCC38\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+      \"\uC544\uC6B0~~~~~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: 9ff379d6dcc9c5543994800b1e392e94, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: e86ee112fa1af9d46936986970168b9c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Minion_Tower\r"
     buffID: 0
+    Camp_GroupID: 34
   - Name: Wolf_Tower5
     ID: 3005
+    GroupID: 19
+    Rank: 5
+    Type: 4
     Pf: {fileID: 2719887186148994814, guid: b0704d2253632714ba48b63ee466bd51, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -3034,9 +3255,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 1.6666666
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 19
-    Rank: 5
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -3046,15 +3264,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uD478\uB978 \uBC14\uC704 \uD611\uACE1\uC5D0 \uBB34\uB9AC \uC9C0\uC5B4
+      \uC0AC\uB294 \uC9D1\uB2E8. \uD611\uACE1\uC744 \uC7A5\uC545\uD55C \uC774 \uB291\uB300
+      \uBB34\uB9AC\uB4E4\uC740 \uC778\uADFC \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C \uACF5\uD3EC\uC640
+      \uACBD\uACC4\uC758 \uB300\uC0C1\uC774\uC8E0. \uC810\uC810 \uC138\uB825\uC744
+      \uB113\uD600 \uAC00\uB358 \uC911  \uC18D\uC0AD\uC774\uB294 \uBAA9\uC18C\uB9AC\uC5D0
+      \uC774\uB04C\uB824 \uC804\uC7A5\uC5D0 \uCC38\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+      \"\uC544\uC6B0~~~~~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: 5b49bb2320bcfb544b86aa81c22b76d8, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: e86ee112fa1af9d46936986970168b9c, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Minion_Tower\r"
     buffID: 0
-  - Name: Golem_Tower1
+    Camp_GroupID: 35
+  - Name: Golem_Tower
     ID: 3006
+    GroupID: 20
+    Rank: 1
+    Type: 4
     Pf: {fileID: 2375627643360651068, guid: 93a798fb4b3843e4a9d0c34642f06e16, type: 3}
     Combination_ResultID: 3007
     Combination_Required_Value: 500
@@ -3066,9 +3294,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 20
-    Rank: 1
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -3078,15 +3303,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB545\uC73C\uB85C \uBD80\uD130 \uD0DC\uC5B4\uB09C \uB300\uC9C0\uC758
+      \uC815\uB839\uC778 \uACE8\uB818\uB4E4\uC740 \uC624\uB79C \uC61B\uB0A0 \uBD80\uD130
+      \uB545\uACFC \uC18C\uD1B5\uD558\uBA70  \uB300\uC9C0\uB97C \uAC00\uAFB8\uC5B4
+      \uC654\uC8E0. \uC790\uC2E0\uB4E4\uC758 \uB300\uC9C0\uAC00 \uC810\uC810 \uC624\uC5FC\uB418\uC790
+      \uD749\uD3ED\uD574 \uC9C4 \uADF8\uB4E4\uC740 \uB300\uC9C0\uB97C \uB354\uB7FD\uD788\uB294
+      \uC801\uB4E4\uC744 \uD63C\uB0B4\uC8FC\uAE30 \uC704\uD574 \uC804\uC7A5\uC5D0
+      \uB098\uC11C \uBC84\uB838\uB124\uC694!  \"\uCFF0!\""
     Sprite_TowerCard: {fileID: 21300000, guid: 874a284c06ad5cf409909d18d2185b43, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f2b0a0241eeb6e044932a56c3625ba16, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 26
   - Name: Golem_Tower2
     ID: 3007
+    GroupID: 20
+    Rank: 2
+    Type: 4
     Pf: {fileID: 2375627643360651068, guid: 93a798fb4b3843e4a9d0c34642f06e16, type: 3}
     Combination_ResultID: 3008
     Combination_Required_Value: 300
@@ -3098,9 +3333,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 20
-    Rank: 2
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -3110,15 +3342,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB545\uC73C\uB85C \uBD80\uD130 \uD0DC\uC5B4\uB09C \uB300\uC9C0\uC758
+      \uC815\uB839\uC778 \uACE8\uB818\uB4E4\uC740 \uC624\uB79C \uC61B\uB0A0 \uBD80\uD130
+      \uB545\uACFC \uC18C\uD1B5\uD558\uBA70  \uB300\uC9C0\uB97C \uAC00\uAFB8\uC5B4
+      \uC654\uC8E0. \uC790\uC2E0\uB4E4\uC758 \uB300\uC9C0\uAC00 \uC810\uC810 \uC624\uC5FC\uB418\uC790
+      \uD749\uD3ED\uD574 \uC9C4 \uADF8\uB4E4\uC740 \uB300\uC9C0\uB97C \uB354\uB7FD\uD788\uB294
+      \uC801\uB4E4\uC744 \uD63C\uB0B4\uC8FC\uAE30 \uC704\uD574 \uC804\uC7A5\uC5D0
+      \uB098\uC11C \uBC84\uB838\uB124\uC694!  \"\uCFF0!\""
     Sprite_TowerCard: {fileID: 21300000, guid: 86f0ef52422e84e40b05924d2fcc4595, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f2b0a0241eeb6e044932a56c3625ba16, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 27
   - Name: Golem_Tower3
     ID: 3008
+    GroupID: 20
+    Rank: 3
+    Type: 4
     Pf: {fileID: 2375627643360651068, guid: 93a798fb4b3843e4a9d0c34642f06e16, type: 3}
     Combination_ResultID: 3009
     Combination_Required_Value: 200
@@ -3130,9 +3372,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 11.666667
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 20
-    Rank: 3
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -3142,15 +3381,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB545\uC73C\uB85C \uBD80\uD130 \uD0DC\uC5B4\uB09C \uB300\uC9C0\uC758
+      \uC815\uB839\uC778 \uACE8\uB818\uB4E4\uC740 \uC624\uB79C \uC61B\uB0A0 \uBD80\uD130
+      \uB545\uACFC \uC18C\uD1B5\uD558\uBA70  \uB300\uC9C0\uB97C \uAC00\uAFB8\uC5B4
+      \uC654\uC8E0. \uC790\uC2E0\uB4E4\uC758 \uB300\uC9C0\uAC00 \uC810\uC810 \uC624\uC5FC\uB418\uC790
+      \uD749\uD3ED\uD574 \uC9C4 \uADF8\uB4E4\uC740 \uB300\uC9C0\uB97C \uB354\uB7FD\uD788\uB294
+      \uC801\uB4E4\uC744 \uD63C\uB0B4\uC8FC\uAE30 \uC704\uD574 \uC804\uC7A5\uC5D0
+      \uB098\uC11C \uBC84\uB838\uB124\uC694!  \"\uCFF0!\""
     Sprite_TowerCard: {fileID: 21300000, guid: 74ad5ded477cea441baf23ee9a662516, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f2b0a0241eeb6e044932a56c3625ba16, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 28
   - Name: Golem_Tower4
     ID: 3009
+    GroupID: 20
+    Rank: 4
+    Type: 4
     Pf: {fileID: 2375627643360651068, guid: 93a798fb4b3843e4a9d0c34642f06e16, type: 3}
     Combination_ResultID: 3010
     Combination_Required_Value: 100
@@ -3162,9 +3411,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 3.3333333
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 20
-    Rank: 4
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -3174,15 +3420,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB545\uC73C\uB85C \uBD80\uD130 \uD0DC\uC5B4\uB09C \uB300\uC9C0\uC758
+      \uC815\uB839\uC778 \uACE8\uB818\uB4E4\uC740 \uC624\uB79C \uC61B\uB0A0 \uBD80\uD130
+      \uB545\uACFC \uC18C\uD1B5\uD558\uBA70  \uB300\uC9C0\uB97C \uAC00\uAFB8\uC5B4
+      \uC654\uC8E0. \uC790\uC2E0\uB4E4\uC758 \uB300\uC9C0\uAC00 \uC810\uC810 \uC624\uC5FC\uB418\uC790
+      \uD749\uD3ED\uD574 \uC9C4 \uADF8\uB4E4\uC740 \uB300\uC9C0\uB97C \uB354\uB7FD\uD788\uB294
+      \uC801\uB4E4\uC744 \uD63C\uB0B4\uC8FC\uAE30 \uC704\uD574 \uC804\uC7A5\uC5D0
+      \uB098\uC11C \uBC84\uB838\uB124\uC694!  \"\uCFF0!\""
     Sprite_TowerCard: {fileID: 21300000, guid: e32a7fe0ed86ec642b97bbf0e4c09b9b, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f2b0a0241eeb6e044932a56c3625ba16, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 29
   - Name: Golem_Tower5
     ID: 3010
+    GroupID: 20
+    Rank: 5
+    Type: 4
     Pf: {fileID: 2375627643360651068, guid: 93a798fb4b3843e4a9d0c34642f06e16, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -3194,9 +3450,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 1.6666666
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 20
-    Rank: 5
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -3206,15 +3459,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB545\uC73C\uB85C \uBD80\uD130 \uD0DC\uC5B4\uB09C \uB300\uC9C0\uC758
+      \uC815\uB839\uC778 \uACE8\uB818\uB4E4\uC740 \uC624\uB79C \uC61B\uB0A0 \uBD80\uD130
+      \uB545\uACFC \uC18C\uD1B5\uD558\uBA70  \uB300\uC9C0\uB97C \uAC00\uAFB8\uC5B4
+      \uC654\uC8E0. \uC790\uC2E0\uB4E4\uC758 \uB300\uC9C0\uAC00 \uC810\uC810 \uC624\uC5FC\uB418\uC790
+      \uD749\uD3ED\uD574 \uC9C4 \uADF8\uB4E4\uC740 \uB300\uC9C0\uB97C \uB354\uB7FD\uD788\uB294
+      \uC801\uB4E4\uC744 \uD63C\uB0B4\uC8FC\uAE30 \uC704\uD574 \uC804\uC7A5\uC5D0
+      \uB098\uC11C \uBC84\uB838\uB124\uC694!  \"\uCFF0!\""
     Sprite_TowerCard: {fileID: 21300000, guid: 0f51e89f995c9cb46bb1e6c574a7c5e5, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f2b0a0241eeb6e044932a56c3625ba16, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: TreantGuard_Tower1
+    Camp_GroupID: 30
+  - Name: TreantGuard_Tower
     ID: 3011
+    GroupID: 21
+    Rank: 1
+    Type: 4
     Pf: {fileID: 1862620217445196292, guid: d23dcc87196ac024694551c0be14f3ec, type: 3}
     Combination_ResultID: 3012
     Combination_Required_Value: 500
@@ -3226,9 +3489,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 21
-    Rank: 1
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -3238,15 +3498,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB108\uB4DC\uB808 \uC232\uC5D0 \uC218\uD638\uC790\uC778 \uADF8\uB294
+      \uC232\uC758 \uCE68\uC785\uC790\uB97C \uC81C\uAC70\uD558\uAE30 \uC704\uD574
+      \uC6C0\uC9C1\uC785\uB2C8\uB2E4. \"\uC6C0 \uB77C\uCC60!"
     Sprite_TowerCard: {fileID: 21300000, guid: 40a5c20ad98354e45af3b55b30767a1f, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: a5b60337856a46d4b9143fda34cebf2a, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 46
   - Name: TreantGuard_Tower2
     ID: 3012
+    GroupID: 21
+    Rank: 2
+    Type: 4
     Pf: {fileID: 1862620217445196292, guid: d23dcc87196ac024694551c0be14f3ec, type: 3}
     Combination_ResultID: 3013
     Combination_Required_Value: 300
@@ -3258,9 +3524,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 21
-    Rank: 2
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -3270,15 +3533,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB108\uB4DC\uB808 \uC232\uC5D0 \uC218\uD638\uC790\uC778 \uADF8\uB294
+      \uC232\uC758 \uCE68\uC785\uC790\uB97C \uC81C\uAC70\uD558\uAE30 \uC704\uD574
+      \uC6C0\uC9C1\uC785\uB2C8\uB2E4. \"\uC6C0 \uB77C\uCC60!"
     Sprite_TowerCard: {fileID: 21300000, guid: ade50a1b23242ac45b60677aa5473850, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: a5b60337856a46d4b9143fda34cebf2a, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 47
   - Name: TreantGuard_Tower3
     ID: 3013
+    GroupID: 21
+    Rank: 3
+    Type: 4
     Pf: {fileID: 1862620217445196292, guid: d23dcc87196ac024694551c0be14f3ec, type: 3}
     Combination_ResultID: 3014
     Combination_Required_Value: 200
@@ -3290,9 +3559,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 11.666667
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 21
-    Rank: 3
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -3302,15 +3568,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB108\uB4DC\uB808 \uC232\uC5D0 \uC218\uD638\uC790\uC778 \uADF8\uB294
+      \uC232\uC758 \uCE68\uC785\uC790\uB97C \uC81C\uAC70\uD558\uAE30 \uC704\uD574
+      \uC6C0\uC9C1\uC785\uB2C8\uB2E4. \"\uC6C0 \uB77C\uCC60!"
     Sprite_TowerCard: {fileID: 21300000, guid: bb75ef9f712604f4b85ccf3714ee288e, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: a5b60337856a46d4b9143fda34cebf2a, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 48
   - Name: TreantGuard_Tower4
     ID: 3014
+    GroupID: 21
+    Rank: 4
+    Type: 4
     Pf: {fileID: 1862620217445196292, guid: d23dcc87196ac024694551c0be14f3ec, type: 3}
     Combination_ResultID: 3015
     Combination_Required_Value: 100
@@ -3322,9 +3594,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 3.3333333
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 21
-    Rank: 4
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -3334,15 +3603,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB108\uB4DC\uB808 \uC232\uC5D0 \uC218\uD638\uC790\uC778 \uADF8\uB294
+      \uC232\uC758 \uCE68\uC785\uC790\uB97C \uC81C\uAC70\uD558\uAE30 \uC704\uD574
+      \uC6C0\uC9C1\uC785\uB2C8\uB2E4. \"\uC6C0 \uB77C\uCC60!"
     Sprite_TowerCard: {fileID: 21300000, guid: b1b6996794984ad42ba0f972ef7a7b48, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: a5b60337856a46d4b9143fda34cebf2a, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 49
   - Name: TreantGuard_Tower5
     ID: 3015
+    GroupID: 21
+    Rank: 5
+    Type: 4
     Pf: {fileID: 1862620217445196292, guid: d23dcc87196ac024694551c0be14f3ec, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -3354,9 +3629,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 1.6666666
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 21
-    Rank: 5
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -3366,15 +3638,21 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uB108\uB4DC\uB808 \uC232\uC5D0 \uC218\uD638\uC790\uC778 \uADF8\uB294
+      \uC232\uC758 \uCE68\uC785\uC790\uB97C \uC81C\uAC70\uD558\uAE30 \uC704\uD574
+      \uC6C0\uC9C1\uC785\uB2C8\uB2E4. \"\uC6C0 \uB77C\uCC60!"
     Sprite_TowerCard: {fileID: 21300000, guid: 202f9e9bdcefedb4293a91d75c4078c1, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: a5b60337856a46d4b9143fda34cebf2a, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: Goblin_Tower1
+    Camp_GroupID: 50
+  - Name: Goblin_Tower
     ID: 3016
+    GroupID: 22
+    Rank: 1
+    Type: 4
     Pf: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
     Combination_ResultID: 3017
     Combination_Required_Value: 500
@@ -3386,9 +3664,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 22
-    Rank: 1
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -3398,15 +3673,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uBD89\uC740 \uAD11\uC0B0 \uAE4A\uC740 \uB545\uAD74 \uC18D\uC5D0 \uC790\uC2E0\uB4E4\uC758
+      \uC655\uAD6D\uC744 \uB9CC\uB4E0 \uACE0\uBE14\uB9B0\uB4E4. \"\uD0A5\u2026\uD0A4\u2026\uD0A4\u2026\uD0A5!\"
+      \uBD89\uC740 \uB208\uC5D0 \uC7A5\uB09C\uB07C \uAC00\uB4DD\uD55C \uC6C3\uC74C\uC744
+      \uC9C0\uC73C\uBA70 \uC801\uB4E4\uC744 \uC870\uB871\uD558\uB294 \uAE30\uBD84
+      \uB098\uC05C \uB140\uC11D. \uBB34\uB9AC \uC9C0\uC5B4 \uACF5\uACA9\uD558\uB294
+      \uC2B5\uC131 \uB54C\uBB38\uC5D0  \uC5EC\uAC04\uD574\uC120 \uADF8\uB4E4\uC744
+      \uD53C\uD574 \uB3C4\uB9DD\uCE58\uAE30 \uC5B4\uB824\uC6CC\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 9ac8675880a82014db738e12ceec5666, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 67d217d9f31cce249af0e75e504863df, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 51
   - Name: Goblin_Tower2
     ID: 3017
+    GroupID: 22
+    Rank: 2
+    Type: 4
     Pf: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
     Combination_ResultID: 3018
     Combination_Required_Value: 300
@@ -3418,9 +3703,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 22
-    Rank: 2
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -3430,15 +3712,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uBD89\uC740 \uAD11\uC0B0 \uAE4A\uC740 \uB545\uAD74 \uC18D\uC5D0 \uC790\uC2E0\uB4E4\uC758
+      \uC655\uAD6D\uC744 \uB9CC\uB4E0 \uACE0\uBE14\uB9B0\uB4E4. \"\uD0A5\u2026\uD0A4\u2026\uD0A4\u2026\uD0A5!\"
+      \uBD89\uC740 \uB208\uC5D0 \uC7A5\uB09C\uB07C \uAC00\uB4DD\uD55C \uC6C3\uC74C\uC744
+      \uC9C0\uC73C\uBA70 \uC801\uB4E4\uC744 \uC870\uB871\uD558\uB294 \uAE30\uBD84
+      \uB098\uC05C \uB140\uC11D. \uBB34\uB9AC \uC9C0\uC5B4 \uACF5\uACA9\uD558\uB294
+      \uC2B5\uC131 \uB54C\uBB38\uC5D0  \uC5EC\uAC04\uD574\uC120 \uADF8\uB4E4\uC744
+      \uD53C\uD574 \uB3C4\uB9DD\uCE58\uAE30 \uC5B4\uB824\uC6CC\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 4365f453424e61b45bb014d538d345b1, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 67d217d9f31cce249af0e75e504863df, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 52
   - Name: Goblin_Tower3
     ID: 3018
+    GroupID: 22
+    Rank: 3
+    Type: 4
     Pf: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
     Combination_ResultID: 3019
     Combination_Required_Value: 200
@@ -3450,9 +3742,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 11.666667
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 22
-    Rank: 3
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -3462,15 +3751,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uBD89\uC740 \uAD11\uC0B0 \uAE4A\uC740 \uB545\uAD74 \uC18D\uC5D0 \uC790\uC2E0\uB4E4\uC758
+      \uC655\uAD6D\uC744 \uB9CC\uB4E0 \uACE0\uBE14\uB9B0\uB4E4. \"\uD0A5\u2026\uD0A4\u2026\uD0A4\u2026\uD0A5!\"
+      \uBD89\uC740 \uB208\uC5D0 \uC7A5\uB09C\uB07C \uAC00\uB4DD\uD55C \uC6C3\uC74C\uC744
+      \uC9C0\uC73C\uBA70 \uC801\uB4E4\uC744 \uC870\uB871\uD558\uB294 \uAE30\uBD84
+      \uB098\uC05C \uB140\uC11D. \uBB34\uB9AC \uC9C0\uC5B4 \uACF5\uACA9\uD558\uB294
+      \uC2B5\uC131 \uB54C\uBB38\uC5D0  \uC5EC\uAC04\uD574\uC120 \uADF8\uB4E4\uC744
+      \uD53C\uD574 \uB3C4\uB9DD\uCE58\uAE30 \uC5B4\uB824\uC6CC\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: a63bbadb93e2998478f500c6b2a3c2f0, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 67d217d9f31cce249af0e75e504863df, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 53
   - Name: Goblin_Tower4
     ID: 3019
+    GroupID: 22
+    Rank: 4
+    Type: 4
     Pf: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
     Combination_ResultID: 3020
     Combination_Required_Value: 100
@@ -3482,9 +3781,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 3.3333333
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 22
-    Rank: 4
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -3494,15 +3790,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uBD89\uC740 \uAD11\uC0B0 \uAE4A\uC740 \uB545\uAD74 \uC18D\uC5D0 \uC790\uC2E0\uB4E4\uC758
+      \uC655\uAD6D\uC744 \uB9CC\uB4E0 \uACE0\uBE14\uB9B0\uB4E4. \"\uD0A5\u2026\uD0A4\u2026\uD0A4\u2026\uD0A5!\"
+      \uBD89\uC740 \uB208\uC5D0 \uC7A5\uB09C\uB07C \uAC00\uB4DD\uD55C \uC6C3\uC74C\uC744
+      \uC9C0\uC73C\uBA70 \uC801\uB4E4\uC744 \uC870\uB871\uD558\uB294 \uAE30\uBD84
+      \uB098\uC05C \uB140\uC11D. \uBB34\uB9AC \uC9C0\uC5B4 \uACF5\uACA9\uD558\uB294
+      \uC2B5\uC131 \uB54C\uBB38\uC5D0  \uC5EC\uAC04\uD574\uC120 \uADF8\uB4E4\uC744
+      \uD53C\uD574 \uB3C4\uB9DD\uCE58\uAE30 \uC5B4\uB824\uC6CC\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: e8d9ac91d16f3fc4a96ebe78f0072d25, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 67d217d9f31cce249af0e75e504863df, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 54
   - Name: Goblin_Tower5
     ID: 3020
+    GroupID: 22
+    Rank: 5
+    Type: 4
     Pf: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -3514,9 +3820,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 1.6666666
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 22
-    Rank: 5
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -3526,15 +3829,25 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uBD89\uC740 \uAD11\uC0B0 \uAE4A\uC740 \uB545\uAD74 \uC18D\uC5D0 \uC790\uC2E0\uB4E4\uC758
+      \uC655\uAD6D\uC744 \uB9CC\uB4E0 \uACE0\uBE14\uB9B0\uB4E4. \"\uD0A5\u2026\uD0A4\u2026\uD0A4\u2026\uD0A5!\"
+      \uBD89\uC740 \uB208\uC5D0 \uC7A5\uB09C\uB07C \uAC00\uB4DD\uD55C \uC6C3\uC74C\uC744
+      \uC9C0\uC73C\uBA70 \uC801\uB4E4\uC744 \uC870\uB871\uD558\uB294 \uAE30\uBD84
+      \uB098\uC05C \uB140\uC11D. \uBB34\uB9AC \uC9C0\uC5B4 \uACF5\uACA9\uD558\uB294
+      \uC2B5\uC131 \uB54C\uBB38\uC5D0  \uC5EC\uAC04\uD574\uC120 \uADF8\uB4E4\uC744
+      \uD53C\uD574 \uB3C4\uB9DD\uCE58\uAE30 \uC5B4\uB824\uC6CC\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: e8cb8e19b327a8d42b0c18476531f113, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 67d217d9f31cce249af0e75e504863df, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: Monster_Bee_Tower1
+    Camp_GroupID: 55
+  - Name: Monster_Bee_Tower
     ID: 3021
+    GroupID: 23
+    Rank: 1
+    Type: 4
     Pf: {fileID: 7566052548809756703, guid: cf8331d328f161b4a9d9adc21bc336ee, type: 3}
     Combination_ResultID: 3022
     Combination_Required_Value: 500
@@ -3546,9 +3859,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 23
-    Rank: 1
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -3558,15 +3868,24 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC774 \uAC70\uB300\uD558\uACE0 \uBB34\uC790\uBE44\uD55C \uBC8C\uC740
+      \uBE60\uB978 \uB0A0\uAC1C\uC9D3\uACFC \uC18C\uC74C\uC73C\uB85C \uC8FC\uC704\uB97C
+      \uACF5\uD3EC\uC5D0 \uB5A8\uAC8C  \uB9CC\uB4E4\uC5B4 \uBC84\uB9AC\uB124\uC694.
+      \uBB34\uCC28\uBCC4\uC801\uC778 \uD3ED\uB825\uC131\uC744 \uC9C0\uB2CC \uC774
+      \uBAAC\uC2A4\uD130\uB294 \uBAA9\uD45C \uB300\uC0C1\uC744 \uD5A5\uD574 \uCEE4\uB2E4\uB780
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD558\uC8E0. \"\uC704\uC774\uC774\uC789~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: 330f7ccce54b4a4489ab3a21df1c89cc, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c38c42b8c72a18e47b736cb946f1c9c6, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 36
   - Name: Monster_Bee_Tower2
     ID: 3022
+    GroupID: 23
+    Rank: 2
+    Type: 4
     Pf: {fileID: 7566052548809756703, guid: cf8331d328f161b4a9d9adc21bc336ee, type: 3}
     Combination_ResultID: 3023
     Combination_Required_Value: 300
@@ -3578,9 +3897,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 23
-    Rank: 2
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -3590,15 +3906,24 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC774 \uAC70\uB300\uD558\uACE0 \uBB34\uC790\uBE44\uD55C \uBC8C\uC740
+      \uBE60\uB978 \uB0A0\uAC1C\uC9D3\uACFC \uC18C\uC74C\uC73C\uB85C \uC8FC\uC704\uB97C
+      \uACF5\uD3EC\uC5D0 \uB5A8\uAC8C  \uB9CC\uB4E4\uC5B4 \uBC84\uB9AC\uB124\uC694.
+      \uBB34\uCC28\uBCC4\uC801\uC778 \uD3ED\uB825\uC131\uC744 \uC9C0\uB2CC \uC774
+      \uBAAC\uC2A4\uD130\uB294 \uBAA9\uD45C \uB300\uC0C1\uC744 \uD5A5\uD574 \uCEE4\uB2E4\uB780
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD558\uC8E0. \"\uC704\uC774\uC774\uC789~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: d052844a159cb154b8b550aaff92fd93, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c38c42b8c72a18e47b736cb946f1c9c6, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 37
   - Name: Monster_Bee_Tower3
     ID: 3023
+    GroupID: 23
+    Rank: 3
+    Type: 4
     Pf: {fileID: 7566052548809756703, guid: cf8331d328f161b4a9d9adc21bc336ee, type: 3}
     Combination_ResultID: 3024
     Combination_Required_Value: 200
@@ -3610,9 +3935,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 11.666667
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 23
-    Rank: 3
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -3622,15 +3944,24 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC774 \uAC70\uB300\uD558\uACE0 \uBB34\uC790\uBE44\uD55C \uBC8C\uC740
+      \uBE60\uB978 \uB0A0\uAC1C\uC9D3\uACFC \uC18C\uC74C\uC73C\uB85C \uC8FC\uC704\uB97C
+      \uACF5\uD3EC\uC5D0 \uB5A8\uAC8C  \uB9CC\uB4E4\uC5B4 \uBC84\uB9AC\uB124\uC694.
+      \uBB34\uCC28\uBCC4\uC801\uC778 \uD3ED\uB825\uC131\uC744 \uC9C0\uB2CC \uC774
+      \uBAAC\uC2A4\uD130\uB294 \uBAA9\uD45C \uB300\uC0C1\uC744 \uD5A5\uD574 \uCEE4\uB2E4\uB780
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD558\uC8E0. \"\uC704\uC774\uC774\uC789~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: 27d323d468e128f4986bc7ba43419b5c, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c38c42b8c72a18e47b736cb946f1c9c6, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 38
   - Name: Monster_Bee_Tower4
     ID: 3024
+    GroupID: 23
+    Rank: 4
+    Type: 4
     Pf: {fileID: 7566052548809756703, guid: cf8331d328f161b4a9d9adc21bc336ee, type: 3}
     Combination_ResultID: 3025
     Combination_Required_Value: 100
@@ -3642,9 +3973,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 3.3333333
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 23
-    Rank: 4
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -3654,15 +3982,24 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC774 \uAC70\uB300\uD558\uACE0 \uBB34\uC790\uBE44\uD55C \uBC8C\uC740
+      \uBE60\uB978 \uB0A0\uAC1C\uC9D3\uACFC \uC18C\uC74C\uC73C\uB85C \uC8FC\uC704\uB97C
+      \uACF5\uD3EC\uC5D0 \uB5A8\uAC8C  \uB9CC\uB4E4\uC5B4 \uBC84\uB9AC\uB124\uC694.
+      \uBB34\uCC28\uBCC4\uC801\uC778 \uD3ED\uB825\uC131\uC744 \uC9C0\uB2CC \uC774
+      \uBAAC\uC2A4\uD130\uB294 \uBAA9\uD45C \uB300\uC0C1\uC744 \uD5A5\uD574 \uCEE4\uB2E4\uB780
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD558\uC8E0. \"\uC704\uC774\uC774\uC789~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: cad0a82db4f6649459cadc022fe7497a, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c38c42b8c72a18e47b736cb946f1c9c6, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 39
   - Name: Monster_Bee_Tower5
     ID: 3025
+    GroupID: 23
+    Rank: 5
+    Type: 4
     Pf: {fileID: 7566052548809756703, guid: cf8331d328f161b4a9d9adc21bc336ee, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -3674,9 +4011,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 1.6666666
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 23
-    Rank: 5
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -3686,15 +4020,24 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC774 \uAC70\uB300\uD558\uACE0 \uBB34\uC790\uBE44\uD55C \uBC8C\uC740
+      \uBE60\uB978 \uB0A0\uAC1C\uC9D3\uACFC \uC18C\uC74C\uC73C\uB85C \uC8FC\uC704\uB97C
+      \uACF5\uD3EC\uC5D0 \uB5A8\uAC8C  \uB9CC\uB4E4\uC5B4 \uBC84\uB9AC\uB124\uC694.
+      \uBB34\uCC28\uBCC4\uC801\uC778 \uD3ED\uB825\uC131\uC744 \uC9C0\uB2CC \uC774
+      \uBAAC\uC2A4\uD130\uB294 \uBAA9\uD45C \uB300\uC0C1\uC744 \uD5A5\uD574 \uCEE4\uB2E4\uB780
+      \uACF5\uD3EC\uB97C \uC120\uC0AC\uD558\uC8E0. \"\uC704\uC774\uC774\uC789~~~\""
     Sprite_TowerCard: {fileID: 21300000, guid: e6951e9315659ce4eb25dd2288ea5b6a, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: c38c42b8c72a18e47b736cb946f1c9c6, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
-  - Name: Evil_Mushroom_Tower1
+    Camp_GroupID: 40
+  - Name: Evil_Mushroom_Tower
     ID: 3026
+    GroupID: 24
+    Rank: 1
+    Type: 4
     Pf: {fileID: 6065851825608508065, guid: a09e87caf8fffe74aa99f70d9f4bb406, type: 3}
     Combination_ResultID: 3027
     Combination_Required_Value: 500
@@ -3706,9 +4049,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 24
-    Rank: 1
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 100
@@ -3718,15 +4058,22 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC548\uAD11 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uBFDC\uC5B4\uC838 \uB098\uC624\uB294
+      \uC0AC\uC545\uD568\uC740 \uC885\uC885 \uC8FC\uBCC0\uC744 \uB9C8\uBE44 \uC2DC\uD0B5\uB2C8\uB2E4.
+      \uD3EC\uC790\uC5D0 \uC19F\uC544\uB09C 8\uAC1C\uC758 \uBFD4\uC740 \uB2F9\uC2E0\uC744
+      \uACF5\uACA9\uD558\uAE30\uC5D0 \uC548\uC131 \uB9DE\uCDA4"
     Sprite_TowerCard: {fileID: 21300000, guid: 89ba0c243f2d3934db73591f7dd9e68d, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: aee332f2e39c5784cbecf0a309c90941, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 6
   - Name: Evil_Mushroom_Tower2
     ID: 3027
+    GroupID: 24
+    Rank: 2
+    Type: 4
     Pf: {fileID: 6065851825608508065, guid: a09e87caf8fffe74aa99f70d9f4bb406, type: 3}
     Combination_ResultID: 3028
     Combination_Required_Value: 300
@@ -3738,9 +4085,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 24
-    Rank: 2
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 150
@@ -3750,15 +4094,22 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC548\uAD11 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uBFDC\uC5B4\uC838 \uB098\uC624\uB294
+      \uC0AC\uC545\uD568\uC740 \uC885\uC885 \uC8FC\uBCC0\uC744 \uB9C8\uBE44 \uC2DC\uD0B5\uB2C8\uB2E4.
+      \uD3EC\uC790\uC5D0 \uC19F\uC544\uB09C 8\uAC1C\uC758 \uBFD4\uC740 \uB2F9\uC2E0\uC744
+      \uACF5\uACA9\uD558\uAE30\uC5D0 \uC548\uC131 \uB9DE\uCDA4"
     Sprite_TowerCard: {fileID: 21300000, guid: dcf17e4efd04d76439b19894171f19c5, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: aee332f2e39c5784cbecf0a309c90941, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 7
   - Name: Evil_Mushroom_Tower3
     ID: 3028
+    GroupID: 24
+    Rank: 3
+    Type: 4
     Pf: {fileID: 6065851825608508065, guid: a09e87caf8fffe74aa99f70d9f4bb406, type: 3}
     Combination_ResultID: 3029
     Combination_Required_Value: 200
@@ -3770,9 +4121,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 11.666667
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 24
-    Rank: 3
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 200
@@ -3782,15 +4130,22 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC548\uAD11 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uBFDC\uC5B4\uC838 \uB098\uC624\uB294
+      \uC0AC\uC545\uD568\uC740 \uC885\uC885 \uC8FC\uBCC0\uC744 \uB9C8\uBE44 \uC2DC\uD0B5\uB2C8\uB2E4.
+      \uD3EC\uC790\uC5D0 \uC19F\uC544\uB09C 8\uAC1C\uC758 \uBFD4\uC740 \uB2F9\uC2E0\uC744
+      \uACF5\uACA9\uD558\uAE30\uC5D0 \uC548\uC131 \uB9DE\uCDA4"
     Sprite_TowerCard: {fileID: 21300000, guid: 46ed5dafa36dd9a4aa1c5ea7d989d2d0, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: aee332f2e39c5784cbecf0a309c90941, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 8
   - Name: Evil_Mushroom_Tower4
     ID: 3029
+    GroupID: 24
+    Rank: 4
+    Type: 4
     Pf: {fileID: 6065851825608508065, guid: a09e87caf8fffe74aa99f70d9f4bb406, type: 3}
     Combination_ResultID: 3030
     Combination_Required_Value: 100
@@ -3802,9 +4157,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 3.3333333
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 24
-    Rank: 4
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 250
@@ -3814,15 +4166,22 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC548\uAD11 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uBFDC\uC5B4\uC838 \uB098\uC624\uB294
+      \uC0AC\uC545\uD568\uC740 \uC885\uC885 \uC8FC\uBCC0\uC744 \uB9C8\uBE44 \uC2DC\uD0B5\uB2C8\uB2E4.
+      \uD3EC\uC790\uC5D0 \uC19F\uC544\uB09C 8\uAC1C\uC758 \uBFD4\uC740 \uB2F9\uC2E0\uC744
+      \uACF5\uACA9\uD558\uAE30\uC5D0 \uC548\uC131 \uB9DE\uCDA4"
     Sprite_TowerCard: {fileID: 21300000, guid: cdd85326e98284247a2a9a04ac38702e, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: aee332f2e39c5784cbecf0a309c90941, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    Camp_GroupID: 9
   - Name: Evil_Mushroom_Tower5
     ID: 3030
+    GroupID: 24
+    Rank: 5
+    Type: 4
     Pf: {fileID: 6065851825608508065, guid: a09e87caf8fffe74aa99f70d9f4bb406, type: 3}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -3834,9 +4193,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 1.6666666
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 24
-    Rank: 5
-    Type: 4
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -3846,10 +4202,14 @@ MonoBehaviour:
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 1
+    Desc: "\uC548\uAD11 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uBFDC\uC5B4\uC838 \uB098\uC624\uB294
+      \uC0AC\uC545\uD568\uC740 \uC885\uC885 \uC8FC\uBCC0\uC744 \uB9C8\uBE44 \uC2DC\uD0B5\uB2C8\uB2E4.
+      \uD3EC\uC790\uC5D0 \uC19F\uC544\uB09C 8\uAC1C\uC758 \uBFD4\uC740 \uB2F9\uC2E0\uC744
+      \uACF5\uACA9\uD558\uAE30\uC5D0 \uC548\uC131 \uB9DE\uCDA4"
     Sprite_TowerCard: {fileID: 21300000, guid: 3d88aaa65289f3f4b9f8a4ee53993f8e, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: aee332f2e39c5784cbecf0a309c90941, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: 0
     buffID: 0
+    Camp_GroupID: 10
