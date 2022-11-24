@@ -81,7 +81,7 @@ public class DataBaseUpdater : MonoBehaviour
                 {
                     if (document.GetElement(j).Name == InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
                     {
-                        var value = document.GetElement(j).Value;
+                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
                         var addr = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
@@ -138,6 +138,20 @@ public class DataBaseUpdater : MonoBehaviour
             }
         }
         // 카드팩 아이템
+        cardPackAmountUpdate();
+
+
+        InventoryGetData.instance.otherInventoryData.Clear();
+        InventoryGetData.instance.warriorInventoryData.Clear();
+        InventoryGetData.instance.wizardInventoryData.Clear();
+        InventoryGetData.instance.inherenceInventoryData.Clear();
+        InventoryGetData.instance.towerInventoryData.Clear();
+    }
+
+
+    public void cardPackAmountUpdate()
+    {
+        // 카드팩 아이템
         if (InventoryGetData.instance.otherInventoryData.Count != 0)
         {
             collection = database.GetCollection<BsonDocument>("User_CardPack_Info");
@@ -148,7 +162,6 @@ public class DataBaseUpdater : MonoBehaviour
             {
                 for (int j = 2; j < document.Count(); j++)
                 {
-                    // 아이템 이름이 다름 = 아이템 이름만 같게 해주면 문제 해결됨
                     if (document.GetElement(j).Name == InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
                     {
                         var value = document.GetElement(j).Value;
@@ -161,12 +174,6 @@ public class DataBaseUpdater : MonoBehaviour
                 }
             }
         }
-
-        InventoryGetData.instance.otherInventoryData.Clear();
-        InventoryGetData.instance.warriorInventoryData.Clear();
-        InventoryGetData.instance.wizardInventoryData.Clear();
-        InventoryGetData.instance.inherenceInventoryData.Clear();
-        InventoryGetData.instance.towerInventoryData.Clear();
     }
 
 

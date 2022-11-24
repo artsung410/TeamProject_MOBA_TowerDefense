@@ -45,19 +45,23 @@ public class ShowTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, slotCorners[3], data.pressEventCamera, out localPointerPosition))   // and set the localposition of the tooltip...
             {
                 /*if (transform.parent.Get.GetComponent<Hotbar>() == null)
-                    tooltipRectTransform.localPosition = localPointerPosition;          //at the right bottom side of the slot
+                    tooltipRectTransform.localPosition = localPointerPosition;
                 else*/
-                tooltipRectTransform.localPosition = new Vector3(localPointerPosition.x, localPointerPosition.y + tooltip.tooltipHeight);
+                //tooltipRectTransform.localPosition = new Vector3(localPointerPosition.x, localPointerPosition.y + tooltip.tooltipHeight);
             }
+        }
 
+        if (this.gameObject.transform.parent.parent.parent.gameObject.tag == "EquipmentSystem")
+        {
+            tooltip.deactivateTooltip();
         }
 
     }
 
-    public void OnPointerExit(PointerEventData data)                //if we go out of the slot with the item
+    public void OnPointerExit(PointerEventData data)
     {
         if (tooltip != null)
-            tooltip.deactivateTooltip();            //the tooltip getting deactivated
+            tooltip.deactivateTooltip();
     }
 
 }

@@ -487,7 +487,7 @@ public class DrawManager : MonoBehaviour
 
     }
 
-    // 아이템 오브젝트 생성 및 이동 함수
+    // 아이템 오브젝트 생성 및 이동 함수 -- 빈 슬롯으로 카드팩 처음 구매했을때 실행
     public void ItemProduceAndIventoryMove()
     {
 

@@ -18,6 +18,25 @@ public class RandomSelect : MonoBehaviour
     public Transform parent;
     public GameObject cardprefab;
 
+
+    // card back image
+    [SerializeField]
+    private Sprite cardBack_warrior;
+    [SerializeField]
+    private Sprite cardBack_wizard;
+    [SerializeField]
+    private Sprite cardBack_assassin;
+    [SerializeField]
+    private Sprite cardBack_common;
+    [SerializeField]
+    private Sprite cardBack_attackTower;
+    [SerializeField]
+    private Sprite cardBack_minionTower;
+    [SerializeField]
+    private Sprite cardBack_buffTower;
+    [SerializeField]
+    private Sprite cardBack_randomTower;
+
     public void SkillResultSelect()
     {
         // 인벤토리 지정
@@ -103,7 +122,38 @@ public class RandomSelect : MonoBehaviour
             // 카드 보여주는 부분
             CardUI cardUI = Instantiate(cardprefab, parent).GetComponent<CardUI>();
             // 생성 된 카드에 결과 리스트의 정보를 넣어줍니다.
-            cardUI.CardUISet(cardIndex, result[i].itemIcon, result[i].itemName);
+            if (result[i].ClassType == "Warrior") // 타워 1,2,4 없으면 랜덤
+            {
+                cardUI.CardUISet(result[i].itemIcon, cardBack_warrior, result[i].itemName, result[i].itemDesc);
+            }
+            else if (result[i].ClassType == "Wizard")
+            {
+                cardUI.CardUISet(result[i].itemIcon, cardBack_wizard, result[i].itemName, result[i].itemDesc);
+            }
+            else if (result[i].ClassType == "Assassin")
+            {
+                cardUI.CardUISet(result[i].itemIcon, cardBack_assassin, result[i].itemName, result[i].itemDesc);
+            }
+            else if (result[i].ClassType == "Common")
+            {
+                cardUI.CardUISet(result[i].itemIcon, cardBack_common, result[i].itemName, result[i].itemDesc);
+            }
+            else if (result[i].towerData.Type == 1) // 공격 타워
+            {
+                cardUI.CardUISet(result[i].itemIcon, cardBack_attackTower, result[i].itemName, result[i].itemDesc);
+            }
+            else if (result[i].towerData.Type == 2) // 버프타워 3, 디버프 타워
+            {
+                cardUI.CardUISet(result[i].itemIcon, cardBack_minionTower, result[i].itemName, result[i].itemDesc);
+            }
+            else if (result[i].towerData.Type == 4) // 미니언 타워
+            {
+                cardUI.CardUISet(result[i].itemIcon, cardBack_buffTower, result[i].itemName, result[i].itemDesc);
+            }
+            else if (result[i].ClassType == "") // 랜덤 타워
+            {
+                cardUI.CardUISet(result[i].itemIcon, cardBack_randomTower, result[i].itemName, result[i].itemDesc);
+            }
         }
         // 뽑은 아이템을 getDrawResultItem에 모두 넣고 실행한다.
         DrawManager.instance.ItemProduceAndIventoryMove();

@@ -215,7 +215,9 @@ public class InventoryGetData : MonoBehaviour
             Debug.Log("타워 아이템 저장 완료");
         }
         if (stack > 0)
-            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Tower", towerCardCnt);        
+            DataBaseHandler.instance.USER_ITEM_TOTAL_CNT_UPDATE("Tower", towerCardCnt);
+
+        DataBaseUpdater.instance.cardPackAmountUpdate();
     }
 
     /*private void Update()
