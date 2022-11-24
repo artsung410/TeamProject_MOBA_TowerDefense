@@ -244,7 +244,10 @@ public class DrawManager : MonoBehaviour
             //Debug.Log(alreadyCardDraw.transform.GetChild(i).name);
             Destroy(alreadyCardDraw.transform.GetChild(i).gameObject);
         }
-        Destroy(alreadyCardDraw_one.transform.GetChild(0).gameObject);
+        for (int i = 0; i < alreadyCardDraw_one.transform.childCount; i++)
+        {
+            Destroy(alreadyCardDraw_one.transform.GetChild(i).gameObject);
+        }
     }
 
 
