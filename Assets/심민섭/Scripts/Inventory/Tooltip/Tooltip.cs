@@ -70,30 +70,6 @@ public class Tooltip : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            menuItemCreateInventory();
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            setImportantVariables();
-        }
-        if (Input.GetKeyDown(KeyCode.J))
-        {
-            setVariables();
-        }
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            activateTooltip();
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            updateTooltip();
-        }
-    }
-
 #if UNITY_EDITOR
     public static void menuItemCreateInventory()
     {

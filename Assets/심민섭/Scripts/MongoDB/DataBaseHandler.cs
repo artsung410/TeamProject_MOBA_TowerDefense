@@ -41,9 +41,49 @@ public class DataBaseHandler : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            USER_INIT_INFO_INSERT();
+            Test();
         }
+    }
+
+    public class Nomal
+    {
+        public string warrior { get; set; }
+        public string wizard { get; set; }
+    }
+
+    public class Premium
+    {
+        public string warrior { get; set; }
+        public string wizard { get; set; }
+    }
+
+    public class Root
+    {
+        public Nomal Nomal { get; set; }
+        public Premium Premium { get; set; }
+    }
+
+    public async void Test()
+    {
+        Nomal nomal = new Nomal();
+        nomal.warrior = "1111";
+        nomal.wizard = "2222";
+
+        Premium premium = new Premium();
+        premium.warrior = "3333";
+        premium.warrior = "4444";
+
+        Root root = new Root();
+        root.Nomal = nomal;
+        root.Premium = premium;
+        IMongoCollection<Root> collection;
+        collection = database.GetCollection<Root>("TestCollection");
+        Debug.Log("구조 생성");
+        await collection.InsertOneAsync(root);
     }*/
+
+
+
 
     // User Item Total Item Count
     public void USER_ITEM_TOTAL_CNT_UPDATE(string name, int cnt)

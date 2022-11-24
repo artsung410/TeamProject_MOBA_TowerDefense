@@ -28,9 +28,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -59,6 +59,7 @@ MonoBehaviour:
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
@@ -77,9 +78,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -101,13 +102,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 30
@@ -136,9 +138,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -160,13 +162,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 30
@@ -184,7 +187,7 @@ MonoBehaviour:
     ClassType: Warrior
     itemID: 3
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 790a95b5bbd1b664eaa3b5e01344c83a, type: 3}
+    itemIcon: {fileID: 21300000, guid: a49d70bc38fde7a4f95890a7ca766ef1, type: 3}
     itemModel: {fileID: 5184541198715492353, guid: af5d35f732b8aae4d8eefafd65b3078e, type: 3}
     inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
     itemValue: 1
@@ -195,9 +198,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -219,13 +222,134 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 30
+    - attributeName: CoolTime
+      attributeValue: 3
+    - attributeName: HoldingTime
+      attributeValue: 2
+    - attributeName: SkillRange
+      attributeValue: 0
+    - attributeName: LockTime
+      attributeValue: 2
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: ChainAttack4
+    ClassType: Warrior
+    itemID: 4
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: a49d70bc38fde7a4f95890a7ca766ef1, type: 3}
+    itemModel: {fileID: 5184541198715492353, guid: af5d35f732b8aae4d8eefafd65b3078e, type: 3}
+    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 30
+    - attributeName: CoolTime
+      attributeValue: 3
+    - attributeName: HoldingTime
+      attributeValue: 2
+    - attributeName: SkillRange
+      attributeValue: 0
+    - attributeName: LockTime
+      attributeValue: 2
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: ChainAttack5
+    ClassType: Warrior
+    itemID: 5
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: a49d70bc38fde7a4f95890a7ca766ef1, type: 3}
+    itemModel: {fileID: 5184541198715492353, guid: af5d35f732b8aae4d8eefafd65b3078e, type: 3}
+    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 30
@@ -251,12 +375,12 @@ MonoBehaviour:
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
-    rarity: 0
+    rarity: 10
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -278,13 +402,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 100
@@ -310,12 +435,12 @@ MonoBehaviour:
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
-    rarity: 0
+    rarity: 10
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -337,13 +462,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 110
@@ -369,12 +495,12 @@ MonoBehaviour:
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
-    rarity: 1
+    rarity: 10
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -396,16 +522,137 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 120
+    - attributeName: CoolTime
+      attributeValue: 7
+    - attributeName: HoldingTime
+      attributeValue: 0.5
+    - attributeName: SkillRange
+      attributeValue: 8
+    - attributeName: LockTime
+      attributeValue: 0.5
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Smash4
+    ClassType: Warrior
+    itemID: 9
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 58e81ff14ea6c254db47989f2da77323, type: 3}
+    itemModel: {fileID: 7570805014596217275, guid: ae48745f78ef46b478a6e9debebf5e0e, type: 3}
+    inGameData: {fileID: 11400000, guid: b3085fb74ee09c04c87561970762eedd, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 100
+    - attributeName: CoolTime
+      attributeValue: 7
+    - attributeName: HoldingTime
+      attributeValue: 0.5
+    - attributeName: SkillRange
+      attributeValue: 8
+    - attributeName: LockTime
+      attributeValue: 0.5
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Smash5
+    ClassType: Warrior
+    itemID: 10
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 58e81ff14ea6c254db47989f2da77323, type: 3}
+    itemModel: {fileID: 7570805014596217275, guid: ae48745f78ef46b478a6e9debebf5e0e, type: 3}
+    inGameData: {fileID: 11400000, guid: b3085fb74ee09c04c87561970762eedd, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 100
     - attributeName: CoolTime
       attributeValue: 7
     - attributeName: HoldingTime
@@ -431,9 +678,9 @@ MonoBehaviour:
     rarity: 5
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -455,13 +702,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 80
@@ -490,9 +738,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -514,13 +762,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 80
@@ -536,9 +785,9 @@ MonoBehaviour:
     buffDatas: []
   - itemName: Whirlwind3
     ClassType: Warrior
-    itemID: 9
+    itemID: 13
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 44d35375b39a90b42a00b4ad0ff8ae7e, type: 3}
+    itemIcon: {fileID: 21300000, guid: 49b1324fe9983f44382c52acd0d35f20, type: 3}
     itemModel: {fileID: 3005192478522135544, guid: 1ff6e38d24d9fb74dbbca9b9d3c25117, type: 3}
     inGameData: {fileID: 11400000, guid: dc6f8b7372fe488409ca35700f0c32d8, type: 2}
     itemValue: 1
@@ -549,9 +798,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -573,13 +822,134 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 80
+    - attributeName: CoolTime
+      attributeValue: 10
+    - attributeName: HoldingTime
+      attributeValue: 4
+    - attributeName: SkillRange
+      attributeValue: 0
+    - attributeName: LockTime
+      attributeValue: 4
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Whirlwind4
+    ClassType: Warrior
+    itemID: 14
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 49b1324fe9983f44382c52acd0d35f20, type: 3}
+    itemModel: {fileID: 3005192478522135544, guid: 1ff6e38d24d9fb74dbbca9b9d3c25117, type: 3}
+    inGameData: {fileID: 11400000, guid: dc6f8b7372fe488409ca35700f0c32d8, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 80
+    - attributeName: CoolTime
+      attributeValue: 10
+    - attributeName: HoldingTime
+      attributeValue: 4
+    - attributeName: SkillRange
+      attributeValue: 0
+    - attributeName: LockTime
+      attributeValue: 4
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Whirlwind5
+    ClassType: Warrior
+    itemID: 15
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 44d35375b39a90b42a00b4ad0ff8ae7e, type: 3}
+    itemModel: {fileID: 3005192478522135544, guid: 1ff6e38d24d9fb74dbbca9b9d3c25117, type: 3}
+    inGameData: {fileID: 11400000, guid: dc6f8b7372fe488409ca35700f0c32d8, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 80
@@ -608,9 +978,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -632,13 +1002,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 150
@@ -667,9 +1038,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -691,13 +1062,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 150
@@ -713,9 +1085,9 @@ MonoBehaviour:
     buffDatas: []
   - itemName: SpritSword3
     ClassType: Warrior
-    itemID: 12
+    itemID: 18
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: eb18071372353e6419183459cccd50ca, type: 3}
+    itemIcon: {fileID: 21300000, guid: ff81aacd3eb896d419ddf5171547b453, type: 3}
     itemModel: {fileID: 8936188002352116344, guid: 005bc3c502863684e85138a865b0ae55, type: 3}
     inGameData: {fileID: 11400000, guid: 6edcb4164d5bea747bcccb77c38e080c, type: 2}
     itemValue: 1
@@ -726,9 +1098,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -750,13 +1122,134 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 150
+    - attributeName: CoolTime
+      attributeValue: 8
+    - attributeName: HoldingTime
+      attributeValue: 1.5
+    - attributeName: SkillRange
+      attributeValue: 8
+    - attributeName: LockTime
+      attributeValue: 0.5
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: SpritSword4
+    ClassType: Warrior
+    itemID: 19
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: ff81aacd3eb896d419ddf5171547b453, type: 3}
+    itemModel: {fileID: 8936188002352116344, guid: 005bc3c502863684e85138a865b0ae55, type: 3}
+    inGameData: {fileID: 11400000, guid: 6edcb4164d5bea747bcccb77c38e080c, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 150
+    - attributeName: CoolTime
+      attributeValue: 8
+    - attributeName: HoldingTime
+      attributeValue: 1.5
+    - attributeName: SkillRange
+      attributeValue: 8
+    - attributeName: LockTime
+      attributeValue: 0.5
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: SpritSword5
+    ClassType: Warrior
+    itemID: 20
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: eb18071372353e6419183459cccd50ca, type: 3}
+    itemModel: {fileID: 8936188002352116344, guid: 005bc3c502863684e85138a865b0ae55, type: 3}
+    inGameData: {fileID: 11400000, guid: 6edcb4164d5bea747bcccb77c38e080c, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 150
@@ -782,12 +1275,12 @@ MonoBehaviour:
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
-    rarity: 8
+    rarity: 10
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -809,13 +1302,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 40
@@ -844,9 +1338,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -868,13 +1362,14 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 40
@@ -890,9 +1385,9 @@ MonoBehaviour:
     buffDatas: []
   - itemName: Leap3
     ClassType: Warrior
-    itemID: 15
+    itemID: 23
     itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 75176e9742264e748a4cbff68270c4ed, type: 3}
+    itemIcon: {fileID: 21300000, guid: c67fbf9375ad5c34399c2849430ca7f7, type: 3}
     itemModel: {fileID: 8911903397271815152, guid: d5b8cc9f692fdc446adcf89f09ed2d8b, type: 3}
     inGameData: {fileID: 11400000, guid: 63936f3dded06ed43b73fee32d7b1765, type: 2}
     itemValue: 1
@@ -903,9 +1398,9 @@ MonoBehaviour:
     rarity: 0
     CombinationValue: 0
     towerData:
+      Name: 
       ID: 0
       Pf: {fileID: 0}
-      Name: 
       Combination_ResultID: 0
       Combination_Required_Value: 0
       Normal_Random_Draw_Probability: 0
@@ -927,13 +1422,134 @@ MonoBehaviour:
       Projectile_Type: 0
       Projectile_Speed: 0
       Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf_Name: 
+      Destroy_Effect_Pf: {fileID: 0}
       Desc: 
       Sprite_TowerCard: {fileID: 0}
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 40
+    - attributeName: CoolTime
+      attributeValue: 15
+    - attributeName: HoldingTime
+      attributeValue: 0.5
+    - attributeName: SkillRange
+      attributeValue: 12
+    - attributeName: LockTime
+      attributeValue: 0.5
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Leap4
+    ClassType: Warrior
+    itemID: 24
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: c67fbf9375ad5c34399c2849430ca7f7, type: 3}
+    itemModel: {fileID: 8911903397271815152, guid: d5b8cc9f692fdc446adcf89f09ed2d8b, type: 3}
+    inGameData: {fileID: 11400000, guid: 63936f3dded06ed43b73fee32d7b1765, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
+    itemAttributes:
+    - attributeName: ATK
+      attributeValue: 40
+    - attributeName: CoolTime
+      attributeValue: 15
+    - attributeName: HoldingTime
+      attributeValue: 0.5
+    - attributeName: SkillRange
+      attributeValue: 12
+    - attributeName: LockTime
+      attributeValue: 0.5
+    specialPrefabs: []
+    buffDatas: []
+  - itemName: Leap5
+    ClassType: Warrior
+    itemID: 25
+    itemDesc: Text
+    itemIcon: {fileID: 21300000, guid: 75176e9742264e748a4cbff68270c4ed, type: 3}
+    itemModel: {fileID: 8911903397271815152, guid: d5b8cc9f692fdc446adcf89f09ed2d8b, type: 3}
+    inGameData: {fileID: 11400000, guid: 63936f3dded06ed43b73fee32d7b1765, type: 2}
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      ID: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
     itemAttributes:
     - attributeName: ATK
       attributeValue: 40
