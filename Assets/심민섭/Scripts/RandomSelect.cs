@@ -134,7 +134,7 @@ public class RandomSelect : MonoBehaviour
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_assassin, result[i].itemName, result[i].itemDesc);
             }
-            else if (result[i].ClassType == "Common")
+            else if (result[i].ClassType == "Inherence")
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_common, result[i].itemName, result[i].itemDesc);
             }

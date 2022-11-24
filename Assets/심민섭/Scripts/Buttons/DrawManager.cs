@@ -229,8 +229,12 @@ public class DrawManager : MonoBehaviour
     // 3. 같은 카드데이터가 있으면 Value만 올린다.
     // 4. 같은 카드데이터가 없으면 빈 슬롯에 오브젝트를 생성한다.
 
+    // 10장
     [SerializeField]
     private GameObject alreadyCardDraw;
+    // 1장
+    [SerializeField]
+    private GameObject alreadyCardDraw_one;
     // Back 버튼을 클릭 시 뽑기 카드 데이터 초기화와 함께 창이 닫힌다.
     public void CardDataInit()
     {
@@ -240,6 +244,7 @@ public class DrawManager : MonoBehaviour
             //Debug.Log(alreadyCardDraw.transform.GetChild(i).name);
             Destroy(alreadyCardDraw.transform.GetChild(i).gameObject);
         }
+        Destroy(alreadyCardDraw_one.transform.GetChild(0).gameObject);
     }
 
 

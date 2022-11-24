@@ -4,12 +4,12 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class ShowTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
-{         //Tooltip
+{
 
-    public Tooltip tooltip;                                     //The tooltip script
-    public GameObject tooltipGameObject;                        //the tooltip as a GameObject
-    public RectTransform canvasRectTransform;                    //the panel(Inventory Background) RectTransform
-    public RectTransform tooltipRectTransform;                  //the tooltip RectTransform
+    public Tooltip tooltip;
+    public GameObject tooltipGameObject;
+    public RectTransform canvasRectTransform;
+    public RectTransform tooltipRectTransform;
     private Item item;
 
 
@@ -27,23 +27,24 @@ public class ShowTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
 
 
 
-    public void OnPointerEnter(PointerEventData data)                               //if you hit a item in the slot
+    public void OnPointerEnter(PointerEventData data)
     {
         if (tooltip != null)
         {
-            item = GetComponent<ItemOnObject>().item;                   //we get the item
-            tooltip.item = item;                                        //set the item in the tooltip
-            tooltip.activateTooltip();                                  //set all informations of the item in the tooltip
+            item = GetComponent<ItemOnObject>().item;
+            tooltip.item = item;
+            tooltip.activateTooltip();
             if (canvasRectTransform == null)
                 return;
 
 
-            Vector3[] slotCorners = new Vector3[4];                     //get the corners of the slot
-            GetComponent<RectTransform>().GetWorldCorners(slotCorners); //get the corners of the slot                
+            Vector3[] slotCorners = new Vector3[4];
+            GetComponent<RectTransform>().GetWorldCorners(slotCorners);            
 
             Vector2 localPointerPosition;
             if (RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRectTransform, slotCorners[3], data.pressEventCamera, out localPointerPosition))   // and set the localposition of the tooltip...
             {
+                // ≈¯∆¡ ¿Ãµø
                 /*if (transform.parent.Get.GetComponent<Hotbar>() == null)
                     tooltipRectTransform.localPosition = localPointerPosition;
                 else*/
