@@ -137,6 +137,11 @@ public class EnemySatatus : Enemybase
     }
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8 12 넥서스 13 스페셜
     {
+        if(Targeton)
+        {
+            return;
+        }
+
         Collider[] RangeTarget = Physics.OverlapSphere(transform.position, 15f);
         foreach (Collider collider in RangeTarget)
         {
@@ -165,6 +170,14 @@ public class EnemySatatus : Enemybase
                 //레이어로 확인해서 공격타켓 설정
 
             }
+             else if(collider.gameObject.layer == 17)
+            {
+                Targeton = true;
+                _target = collider.transform;
+                _navMeshAgent.SetDestination(_target.position);
+
+            }
+            //레이어로 확인해서 공격타켓 설정
         }
     }
 }

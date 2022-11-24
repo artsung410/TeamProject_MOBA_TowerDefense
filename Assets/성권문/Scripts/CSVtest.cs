@@ -48,7 +48,7 @@ public class CSVtest : MonoBehaviour
 
     private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D44";
 
-    // Å°°ªÀ¸·Î ID, List¿¡´Â Name KoTooltip, EnTooltipÀÌ ´ã±ä´Ù
+    // Å°ï¿½ï¿½ï¿½ï¿½ï¿½ ID, Listï¿½ï¿½ï¿½ï¿½ Name KoTooltip, EnTooltipï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
     List<List<string>> descList = new List<List<string>>();
 
@@ -59,8 +59,10 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest DescDataRequest = UnityWebRequest.Get(url);
         yield return DescDataRequest.SendWebRequest();
         SplitDescData(DescDataRequest.downloadHandler.text);
-        Debug.Log("DescÆÄ½Ì¿Ï·á");
-        StartCoroutine(GetLevelData());
+        Debug.Log("Descï¿½Ä½Ì¿Ï·ï¿½");
+        
+        StartCoroutine(GetTowerData());
+        StartCoroutine(GetBuffData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
     }
@@ -71,7 +73,7 @@ public class CSVtest : MonoBehaviour
         int rowSize = row.Length;
         int colSize = row[0].Split('\t').Length;
 
-        // row¸¸Å­ ¹İº¹ÇÔ
+        // rowï¿½ï¿½Å­ ï¿½İºï¿½ï¿½ï¿½
         for (int i = 0; i < rowSize; i++)
         {
             
@@ -81,7 +83,7 @@ public class CSVtest : MonoBehaviour
             {
                 descList[i].Add(col[j]);
             }
-            // ¸®½ºÆ®ÀÇ Ã¹¹øÂ°¤Ä ¿ä¼Ò´Â ID´Ù
+            // ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ Ã¹ï¿½ï¿½Â°ï¿½ï¿½ ï¿½ï¿½Ò´ï¿½ IDï¿½ï¿½
             descDic.Add(int.Parse(descList[i][(int)DescColData.ID]), descList[i]);
         }
     }
@@ -89,40 +91,36 @@ public class CSVtest : MonoBehaviour
     #endregion
 
 
+                       
+    private void Start()
+    {
+        StartCoroutine(GetDescData(descURL));
+    }
 
-    private const string URL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
 
-    private string MYtext = "";
+    #region Tower
 
-    [Header("[Å¸¿ö]")]
+    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
+    
+    [Header("[íƒ€ì›Œ]")]
     public TowerDatabaseList towerDatabaseListCSV;
     public ItemDataBaseList towerDatabaseList;
     public ItemDataBaseList tower_Attack_DatabaseList;
     public ItemDataBaseList tower_Buff_DatabaseList;
     public ItemDataBaseList tower_Minion_DatabaseList;
 
-    private void Start()
+    UnityWebRequest TowerWebData;
+    IEnumerator GetTowerData()
     {
-        StartCoroutine(GetDescData(descURL));
+        TowerWebData = UnityWebRequest.Get(TowerURL);
+        yield return TowerWebData.SendWebRequest();
+
+        string DB = TowerWebData.downloadHandler.text;
+        SetTowerData(DB);
     }
+        
 
-    UnityWebRequest GetCharactorData;
-    float elaspedTime = 0f;
-    IEnumerator GetLevelData()
-    {
-        GetCharactorData = UnityWebRequest.Get(URL);
-        Debug.Log(elaspedTime);
-        yield return GetCharactorData.SendWebRequest();
-        Debug.Log(elaspedTime);
-
-        MYtext = GetCharactorData.downloadHandler.text;
-        Debug.Log(MYtext);
-        SetCharactorDatas(MYtext);
-        Debug.Log("towerÆÄ½Ì¿Ï·á");
-
-    }
-
-    public void SetCharactorDatas(string tsv)
+    public void SetTowerData(string tsv)
     {
         string[] row = tsv.Split('\n');
         int rowSize = row.Length;
@@ -132,16 +130,16 @@ public class CSVtest : MonoBehaviour
         {
             string[] col = row[i].Split('\t');
 
-            // ±âº»Á¤º¸
+            // ê¸°ë³¸ì •ë³´
             towerDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
             towerDatabaseListCSV.itemList[i].Pf = Resources.Load<GameObject>(col[3]);
             towerDatabaseListCSV.itemList[i].Name = col[4];
 
-            // Á¶ÇÕ
+            // ì¡°í•©
             towerDatabaseListCSV.itemList[i].Combination_ResultID = int.Parse(col[6]);
             towerDatabaseListCSV.itemList[i].Combination_Required_Value = int.Parse(col[7]);
 
-            // »Ì±â
+            // ë½‘ê¸°
             towerDatabaseListCSV.itemList[i].Normal_Random_Draw_Probability = float.Parse(col[8]);
             towerDatabaseListCSV.itemList[i].Normal_Attack_Draw_Probability = float.Parse(col[9]);
             towerDatabaseListCSV.itemList[i].Normal_Minion_Draw_Probability = float.Parse(col[10]);
@@ -152,7 +150,7 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Premium_Minion_Draw_Probability = float.Parse(col[14]);
             towerDatabaseListCSV.itemList[i].Premium_Buff_Debuff_Draw_Probability = float.Parse(col[15]);
 
-            // ¼Ó¼º
+            // ì†ì„±
             towerDatabaseListCSV.itemList[i].GroupID = int.Parse(col[16]);
             towerDatabaseListCSV.itemList[i].Rank = int.Parse(col[17]);
             towerDatabaseListCSV.itemList[i].Type = int.Parse(col[18]);
@@ -162,14 +160,17 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Range = int.Parse(col[22]);
             towerDatabaseListCSV.itemList[i].Range_Type = int.Parse(col[23]);
 
-            // Åõ»çÃ¼
+            // íˆ¬ì‚¬ì²´
             towerDatabaseListCSV.itemList[i].Projectile_Speed = float.Parse(col[24]);
             towerDatabaseListCSV.itemList[i].Projectile_Type = int.Parse(col[25]);
             towerDatabaseListCSV.itemList[i].Projectile_Pf = Resources.Load<GameObject>(col[26]);
 
-            // ºÎ°¡¿É¼Ç
-            towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf_Name = col[30];
+
             towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_Ko];
+
+            // ë¶€ê°€ì˜µì…˜
+            towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf = Resources.Load<GameObject>(col[30]);
+
             towerDatabaseListCSV.itemList[i].Sprite_TowerCard = Resources.Load<Sprite>("Sprites/TowerImage/" + col[34]);
 
             towerDatabaseListCSV.itemList[i].Sprite_TowerProtrait = Resources.Load<Sprite>("Sprites/TowerIcon/" + col[35]);
@@ -177,10 +178,15 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].AudioClip_Hit_Name = col[37];
             towerDatabaseListCSV.itemList[i].AudioClip_Normal_Name = col[38];
 
+            // ë²„í”„íƒ€ì›Œë§Œ í•´ë‹¹
+            towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
+
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
             towerDatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
             towerDatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
 
+
+            
             if (i < 50)
             {
                 tower_Attack_DatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
@@ -204,6 +210,49 @@ public class CSVtest : MonoBehaviour
         }
     }
 
+    #endregion Tower
+
+    #region Buff
+
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=1296679834&range=A4:I68";
+
+    [Header("[ë²„í”„]")]
+    public BuffDatabaseList buffDatabaseListCSV;
+
+    UnityWebRequest BuffWebData;
+    IEnumerator GetBuffData()
+    {
+        BuffWebData = UnityWebRequest.Get(BuffURL);
+        yield return BuffWebData.SendWebRequest();
+
+        string DB = BuffWebData.downloadHandler.text;
+        SetBuffData(DB);
+    }
+
+    public void SetBuffData(string tsv)
+    {
+        string[] row = tsv.Split('\n');
+        int rowSize = row.Length;
+        int columnSize = row[0].Split('\t').Length;
+
+        for (int i = 0; i < rowSize; i++)
+        {
+            string[] col = row[i].Split('\t');
+
+            // ê¸°ë³¸ì •ë³´
+            buffDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
+            buffDatabaseListCSV.itemList[i].Name = col[2] + col[4];
+            buffDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/BuffIcon/" + col[2]);
+            buffDatabaseListCSV.itemList[i].GroupID = int.Parse(col[3]);
+            buffDatabaseListCSV.itemList[i].Rank = int.Parse(col[4]);
+            buffDatabaseListCSV.itemList[i].Type = int.Parse(col[5]);
+            buffDatabaseListCSV.itemList[i].Target = int.Parse(col[6]);
+            buffDatabaseListCSV.itemList[i].Value = float.Parse(col[7]);
+            buffDatabaseListCSV.itemList[i].Duration = float.Parse(col[8]);
+        }
+    }
+    #endregion Buff 
+
 
 
 
@@ -224,7 +273,7 @@ public class CSVtest : MonoBehaviour
     Dictionary<int, List<string>> WizardSkillDatas = new Dictionary<int, List<string>>();
     List<List<string>> WizardSkillRowDatas = new List<List<string>>();
 
-    [Header("[½ºÅ³]")]
+    [Header("[ìŠ¤í‚¬]")]
     public SkillDatas WarriorSkillParsing;
     public SkillDatas WizardSkillParsing;
     public ItemDataBaseList WarriorDatabaseList;
@@ -235,7 +284,7 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest WizardSkillDataRequest = UnityWebRequest.Get(url);
         yield return WizardSkillDataRequest.SendWebRequest();
         SplitSkillDatas(WizardSkillDataRequest.downloadHandler.text, WizardSkillDatas, WizardSkillRowDatas, WizardSkillParsing, WizardDatabaseList);
-        Debug.Log("skillÆÄ½Ì¿Ï·á");
+        Debug.Log("skillï¿½Ä½Ì¿Ï·ï¿½");
 
     }
 
@@ -244,7 +293,7 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest WarriorSkillDataRequest = UnityWebRequest.Get(url);
         yield return WarriorSkillDataRequest.SendWebRequest();
         SplitSkillDatas(WarriorSkillDataRequest.downloadHandler.text, WarriorSkillDatas, WarriorSkillRowDatas, WarriorSkillParsing, WarriorDatabaseList);
-        Debug.Log("skillÆÄ½Ì¿Ï·á");
+        Debug.Log("skillï¿½Ä½Ì¿Ï·ï¿½");
 
     }
 
@@ -305,7 +354,7 @@ public class CSVtest : MonoBehaviour
             //skillDatas.DataList[i].Desc = dic[i + 1][(int)SkillColData.Desc];
             skillDatas.DataList[i].Desc = descDic[int.Parse(dic[i + 1][(int)SkillColData.Desc])][(int)DescColData.Text_En];
 
-            // ±âÁ¸¿¡ ¾²´ø µ¥ÀÌÅÍº£ÀÌ½º¸®½ºÆ®¿¡ Àû¿ë(ÀÏ´ÜÀº)
+            // ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Íºï¿½ï¿½Ì½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½(ï¿½Ï´ï¿½ï¿½)
             oldData.itemList[i + 1].skillData = skillDatas.DataList[i];
             oldData.itemList[i + 1].itemName = skillDatas.DataList[i].NameLevel;
             oldData.itemList[i + 1].itemIcon = skillDatas.DataList[i].CardImage;

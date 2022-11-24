@@ -10,7 +10,7 @@ using UnityEngine.UI;
 
 public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public BuffData buff;
+    public BuffBlueprint buff;
     public BuffTooltip tooltip;
     public float coolTime;
     public float elapsedTime;
@@ -21,7 +21,8 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         if (buff != null)
         {
             tooltip.gameObject.SetActive(true);
-            tooltip.SetupTooltip(buff.Name, buff.Desc);
+            //TODO: 버프 스크립트 적용하기.
+            tooltip.SetupTooltip(buff.Name, buff.Name);
         }
     }
 
@@ -40,7 +41,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             return;
         }
 
-        if (buff.Unlimited)
+        if (buff.Duration == 0)
         {
             return;
         }

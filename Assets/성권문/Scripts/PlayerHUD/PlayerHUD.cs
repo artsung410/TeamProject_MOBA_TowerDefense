@@ -82,7 +82,8 @@ public class PlayerHUD : MonoBehaviourPun
 
     [Header("MousePointer")]
     public Canvas MousePointerCanvas;
-    public GameObject MousePositionImage;
+    public GameObject MousePositionImage1;
+    public GameObject MousePositionImage2;
     public MousePointer mousePointer;
 
     [Header("BossMonsterUI")]
@@ -167,9 +168,8 @@ public class PlayerHUD : MonoBehaviourPun
         imigeCourutine = ImageFadeIn();
         resultImigePopup = ResultImagePopUp();
         textCouruntine = textFadeout();
-
+        
         StartCoroutine(SetPlayer());
-
         setSkill();
         StartCoroutine(setHp());
         setMouseCursor();
@@ -533,7 +533,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     private IEnumerator setHp()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1f);
         playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
         enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
         StopCoroutine(setHp());
@@ -643,9 +643,9 @@ public class PlayerHUD : MonoBehaviourPun
             }
 
             // 실시간 체력 동기화
-            InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
+            //InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.towerData.MaxHP;
             Hp2D = currentTurretforInfo.currentHealth;
-            InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
+            //InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentTurretforInfo.towerData.MaxHP;
 
             // 실시간 dps / speed 동기화
             float dmg = currentTurretforInfo.attack;
@@ -708,7 +708,7 @@ public class PlayerHUD : MonoBehaviourPun
         InfoPanel.SetActive(true);
 
         // 이벤트로 들어온 매개변수 세팅(Item class)
-        InfoIcon.sprite = turret.towerData.Icon;
+        //InfoIcon.sprite = turret.towerData.Icon;
     }
 
     public void ActivationMinionInfoUI(Enemybase minion, Sprite icon)
@@ -746,7 +746,8 @@ public class PlayerHUD : MonoBehaviourPun
     private void setMouseCursor()
     {
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseCanvas = MousePointerCanvas;
-        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj = MousePositionImage;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj1 = MousePositionImage1;
+        GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMouseObj2 = MousePositionImage2;
         GameManager.Instance.CurrentPlayers[0].GetComponent<PlayerBehaviour>().moveMousePointer = mousePointer;
     }
 

@@ -76,10 +76,10 @@ public class MakeUserInfo : MonoBehaviour
         towerAttackFrozenOrb = new int[5];
         towerAttackLightning = new int[5];
         towerAttackBlackHall = new int[5];
-        towerAttack_7 = new int[5];
-        towerAttack_8 = new int[5];
-        towerAttack_9 = new int[5];
-        towerAttack_10 = new int[5];
+        towerAttackRuined = new int[5];
+        towerAttackLaser = new int[5];
+        towerAttackWind = new int[5];
+        towerAttackLight = new int[5];
         towerMinionWolf = new int[5];
         towerMinionGolem = new int[5];
         towerMinionTreantGuard = new int[5];
@@ -96,7 +96,7 @@ public class MakeUserInfo : MonoBehaviour
         towerDeBuffAttackSpeedDecrease = new int[5];
 }
 
-
+    // TODO: 인벤토리 정리/리팩토링 
     // 전사 카드 보유 데이터 목록
     public int[] ChainAttack;
     public int[] Smash;
@@ -499,19 +499,16 @@ public class MakeUserInfo : MonoBehaviour
             }
         }
     }
-
-
-
     public int[] towerAttackGuard;
     public int[] towerAttackCannon;
     public int[] towerAttackFlame;
     public int[] towerAttackFrozenOrb;
     public int[] towerAttackLightning;
     public int[] towerAttackBlackHall;
-    public int[] towerAttack_7;
-    public int[] towerAttack_8;
-    public int[] towerAttack_9;
-    public int[] towerAttack_10;
+    public int[] towerAttackRuined;
+    public int[] towerAttackLaser;
+    public int[] towerAttackWind;
+    public int[] towerAttackLight;
     public int[] towerMinionWolf;
     public int[] towerMinionGolem;
     public int[] towerMinionTreantGuard;
@@ -656,89 +653,89 @@ public class MakeUserInfo : MonoBehaviour
             {
                 towerAttackBlackHall[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            // 공격 타워 7
+            // Ruined 타워
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 31)
             {
-                towerAttack_7[0] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackRuined[0] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 32)
             {
-                towerAttack_7[1] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackRuined[1] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 33)
             {
-                towerAttack_7[2] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackRuined[2] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 34)
             {
-                towerAttack_7[3] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackRuined[3] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 35)
             {
-                towerAttack_7[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackRuined[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            // 공격 타워 8
+            // 레이저 타워
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 36)
             {
-                towerAttack_8[0] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLaser[0] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 37)
             {
-                towerAttack_8[1] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLaser[1] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 38)
             {
-                towerAttack_8[2] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLaser[2] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 39)
             {
-                towerAttack_8[3] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLaser[3] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 40)
             {
-                towerAttack_8[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLaser[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            // 공격 타워 9
+            // 윈드 타워
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 41)
             {
-                towerAttack_9[0] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackWind[0] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 42)
             {
-                towerAttack_9[1] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackWind[1] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 43)
             {
-                towerAttack_9[2] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackWind[2] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 44)
             {
-                towerAttack_9[3] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackWind[3] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 45)
             {
-                towerAttack_9[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackWind[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            // 공격 타워 10
+            // Light 타워
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 46)
             {
-                towerAttack_10[0] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLight[0] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 47)
             {
-                towerAttack_10[1] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLight[1] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 48)
             {
-                towerAttack_10[2] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLight[2] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 49)
             {
-                towerAttack_10[3] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLight[3] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 50)
             {
-                towerAttack_10[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                towerAttackLight[4] = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
             // 버프 타워 뎀증
             else if (InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 51)

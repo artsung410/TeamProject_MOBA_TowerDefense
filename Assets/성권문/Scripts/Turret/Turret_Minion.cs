@@ -56,11 +56,11 @@ public class Turret_Minion : Turret
 
     protected override void Fire()
     {
-        GameObject projectiles = PhotonNetwork.Instantiate(towerData.Projectiles.name, partToRotate.transform.position, partToRotate.transform.rotation);
+        GameObject projectiles = PhotonNetwork.Instantiate(projectilePF.name, partToRotate.transform.position, partToRotate.transform.rotation);
 
         StraightAttack straight = projectiles.GetComponent<StraightAttack>();
         straight.enemyTag = enemyTag;
-        straight.damage = towerData.Attack;
+        straight.damage = attack;
 
         if (!photonView.IsMine)
         {

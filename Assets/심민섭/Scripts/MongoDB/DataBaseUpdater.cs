@@ -61,7 +61,7 @@ public class DataBaseUpdater : MonoBehaviour
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var addr = (int)value + InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var addr = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
                         var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }
@@ -84,7 +84,7 @@ public class DataBaseUpdater : MonoBehaviour
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var addr = (int)value + InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var addr = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
                         var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }
@@ -107,7 +107,7 @@ public class DataBaseUpdater : MonoBehaviour
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var addr = (int)value + InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var addr = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
                         var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }
@@ -130,7 +130,7 @@ public class DataBaseUpdater : MonoBehaviour
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var addr = (int)value + InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var addr = InventoryGetData.instance.towerInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
                         var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }
@@ -148,12 +148,13 @@ public class DataBaseUpdater : MonoBehaviour
             {
                 for (int j = 2; j < document.Count(); j++)
                 {
+                    // 아이템 이름이 다름 = 아이템 이름만 같게 해주면 문제 해결됨
                     if (document.GetElement(j).Name == InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemName)
                     {
                         var value = document.GetElement(j).Value;
                         // 아이템이 같으면 개수를 업데이트 한다.
                         var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(j).Name, value);
-                        var addr = (int)value + InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
+                        var addr = InventoryGetData.instance.otherInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
                         var update = Builders<BsonDocument>.Update.Set(document.GetElement(j).Name, addr);
                         collection.UpdateOne(filter, update);
                     }

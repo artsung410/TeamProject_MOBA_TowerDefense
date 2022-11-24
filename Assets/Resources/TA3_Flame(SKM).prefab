@@ -252,11 +252,48 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0040168299127d429b53f7795319c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: cc9c85cae8e8f9c4da6e5756ac0d502b, type: 2}
-  currentHealth: 0
+  towerDB:
+    Name: Flame_Tower2
+    ID: 12
+    Pf: {fileID: 7185640794416597223}
+    Combination_ResultID: 13
+    Combination_Required_Value: 300
+    Normal_Random_Draw_Probability: 0.8333333
+    Normal_Attack_Draw_Probability: 2
+    Normal_Minion_Draw_Probability: 0
+    Normal_Buff_Debuff_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 0
+    Premium_Attack_Draw_Probability: 0
+    Premium_Minion_Draw_Probability: 0
+    Premium_Buff_Debuff_Draw_Probability: 0
+    GroupID: 3
+    Rank: 2
+    Type: 1
+    Attack: 15
+    Attack_Speed: 0.3
+    Hp: 150
+    Range: 20
+    Range_Type: 1
+    Projectile_Type: 2
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: 30014
+    Sprite_TowerCard: {fileID: 21300000, guid: da6cbf10cae825544bf732ae18deb0fa, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
+    buffID: 20012
+  healthbarImages:
+  - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
+  - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
+  - {fileID: 21300000, guid: 5ea3df25c6aae8d41aab4f3110b4c4d5, type: 3}
   healthbarImage: {fileID: 6872020389898603736}
   hitbarImage: {fileID: 3146627056455663688}
   ui: {fileID: 254079016244021104}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 5335148703409983824}

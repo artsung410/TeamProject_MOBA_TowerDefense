@@ -110,6 +110,7 @@ public class DrawManager : MonoBehaviour
                     firstItem.item.itemValue += buyCount;
 
                     Debug.Log("아이템 명이 같음");
+                    InventoryGetData.instance.GetItemInInventoryData();
                     return;
                 }
                 else // 이름이 같지 않은 경우
@@ -122,6 +123,14 @@ public class DrawManager : MonoBehaviour
                         drawItem.item.itemIcon = buyItemImage.sprite; // 박스 이미지
                         drawItem.item.itemName = buyItemName; // 박스 명
                         drawItem.item.itemValue = buyCount;
+                        if (buyCurencyName == "Zera")
+                        {
+                            drawItem.item.ClassType = "Nomal";
+                        }
+                        else if (buyCurencyName == "Dappx")
+                        {
+                            drawItem.item.ClassType = "Premium";
+                        }
                         drawItem.item.itemType = ItemType.Consumable;
                         //drawItem.item.ClassType = "Box";
 
@@ -144,6 +153,14 @@ public class DrawManager : MonoBehaviour
                 drawItem.item.itemIcon = buyItemImage.sprite; // 박스 이미지
                 drawItem.item.itemName = buyItemName; // 박스 명
                 drawItem.item.itemValue = buyCount;
+                if (buyCurencyName == "Zera")
+                {
+                    drawItem.item.ClassType = "Nomal";
+                }
+                else if (buyCurencyName == "Dappx")
+                {
+                    drawItem.item.ClassType = "Premium";
+                }
                 drawItem.item.itemType = ItemType.Consumable;
                 //drawItem.item.ClassType = "Box";
 

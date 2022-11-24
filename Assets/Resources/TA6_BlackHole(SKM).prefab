@@ -51,11 +51,49 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0040168299127d429b53f7795319c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerDB:
+    ID: 30
+    Pf: {fileID: 4274299024074093435}
+    Name: BlackHole_Tower5
+    Combination_ResultID: 0
+    Combination_Required_Value: 0
+    Normal_Random_Draw_Probability: 0
+    Normal_Attack_Draw_Probability: 0
+    Normal_Minion_Draw_Probability: 0
+    Normal_Buff_Debuff_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 0.41666666
+    Premium_Attack_Draw_Probability: 1
+    Premium_Minion_Draw_Probability: 0
+    Premium_Buff_Debuff_Draw_Probability: 0
+    GroupID: 6
+    Rank: 5
+    Type: 1
+    Attack: 10
+    Attack_Speed: 0.6
+    Hp: 300
+    Range: 20
+    Range_Type: 3
+    Projectile_Type: 2
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
+    Destroy_Effect_Pf: {fileID: 0}
+    Desc: 0
+    Sprite_TowerCard: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
   towerData: {fileID: 11400000, guid: 756a7d8f966d7a44083480702873cfd9, type: 2}
   currentHealth: 0
+  healthbarImages:
+  - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
+  - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
+  - {fileID: 21300000, guid: 5ea3df25c6aae8d41aab4f3110b4c4d5, type: 3}
   healthbarImage: {fileID: 9078993121904618806}
   hitbarImage: {fileID: 651423961457844646}
   ui: {fileID: 2389134872911816350}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 8598630876373100636}

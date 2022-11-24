@@ -42,7 +42,7 @@ public class Enemybase : MonoBehaviourPun
     // 체력
     public float HP = 100f;
 
-   public string lastDamageTeam;
+    public string lastDamageTeam;
 
     public float CurrnetHP;
     [HideInInspector]
@@ -59,6 +59,10 @@ public class Enemybase : MonoBehaviourPun
     public CapsuleCollider _capsuleCollider;
     private Outline _outline;
 
+    private Monster _monster;
+
+    public bool hit = false;
+
 
 
 
@@ -70,6 +74,7 @@ public class Enemybase : MonoBehaviourPun
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        
     }
 
     protected virtual void OnEnable() // 생성
@@ -77,16 +82,17 @@ public class Enemybase : MonoBehaviourPun
         if (GetComponent<BulletSpawn>() != null) // 타입구분
         {
             _eminontpye = EMINIONTYPE.Shot;
-        }else if (GetComponent<OrcFSM>() != null)
+        }
+        else if (GetComponent<OrcFSM>() != null)
         {
             _eminontpye = EMINIONTYPE.Netural;
         }
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
-        if(gameObject.GetComponent<Outline>() != null)
+        if (gameObject.GetComponent<Outline>() != null)
         {
-        _outline.enabled = false;
-        _outline.OutlineWidth = 8f;
+            _outline.enabled = false;
+            _outline.OutlineWidth = 8f;
         }
         CurrnetHP = HP;
         if (PhotonNetwork.IsMasterClient)
@@ -123,13 +129,13 @@ public class Enemybase : MonoBehaviourPun
                 EnemyTag = "Red";
             }
         }
-      
-    
+
+
     }
 
     private void FixedUpdate()
     {
-        if(_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && _animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.die"))
+        if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && _animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.die"))
         {
             Death();
         }
@@ -149,19 +155,28 @@ public class Enemybase : MonoBehaviourPun
         if (isDead == false)
         {
             CurrnetHP -= Damage;
+            
+            Debug.Log($"{gameObject.tag} HP : {CurrnetHP}");
             if (CurrnetHP <= 0)
             {
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent == true)
                 {
+                    transform.LookAt(transform.forward);
+                    _navMeshAgent.SetDestination(transform.position);
                     _navMeshAgent.isStopped = true;
 
                 }
                 _animator.SetTrigger("Die");
                 isDead = true;
-                PlayerHUD.Instance.lastDamageTeam = lastDamageTeam;
+                if(_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
+                {
+                GameManager.Instance.winner = lastDamageTeam;
+                    Debug.Log($"{GameManager.Instance.winner}");
+                }
             }
+            
 
         }
 
@@ -178,7 +193,7 @@ public class Enemybase : MonoBehaviourPun
     }
     public void DamageOverTime(float Damage, float Time)
     {
-        Debug.Log($"damage : {Damage}\n Time : {Time}");
+        
         photonView.RPC(nameof(RPC_DamageOverTime), RpcTarget.All, Damage, Time);
     }
 
@@ -194,6 +209,7 @@ public class Enemybase : MonoBehaviourPun
             }
             if (CurrnetHP <= 0)
             {
+                OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent.enabled == true)
                 {
@@ -203,6 +219,11 @@ public class Enemybase : MonoBehaviourPun
                 gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
+                if (_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
+                {
+                    GameManager.Instance.winner = lastDamageTeam;
+                }
+
                 yield return Delay100;
                 yield break;
             }
@@ -220,7 +241,7 @@ public class Enemybase : MonoBehaviourPun
     }
     private void OnMouseEnter()
     {
-        if(_outline == null)
+        if (_outline == null)
         {
             return;
         }
