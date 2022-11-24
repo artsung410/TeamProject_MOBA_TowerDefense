@@ -25,9 +25,9 @@ public class BuffData : ScriptableObject
     private string _name;
     public string Name { get { return _name; } }
 
-    [SerializeField]
-    private Buff_Effect_Type _effectType;
-    public Buff_Effect_Type EffectType { get { return _effectType; } }
+    //[SerializeField]
+    //private Buff_Effect_Type _effectType;
+    //public Buff_Effect_Type EffectType { get { return _effectType; } }
 
     [SerializeField]
     private Buff_Target _target;

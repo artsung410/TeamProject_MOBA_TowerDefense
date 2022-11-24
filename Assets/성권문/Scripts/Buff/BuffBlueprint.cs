@@ -29,15 +29,6 @@ public enum Buff_Group
     Knockback,
 }
 
-
-public enum Buff_Effect_Type
-{
-    Damage = 1,
-    Buff,
-    DeBuff,
-    Minion,
-}
-
 [System.Serializable]
 public class BuffBlueprint
 {

@@ -81,8 +81,40 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e923bd12c3ae9e54e9248edb3a041236, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: e1423b6003bae3b479cce6d522a31caa, type: 2}
-  currentHealth: 0
+  towerDB:
+    Name: Monster_Bee_Tower3
+    ID: 3023
+    GroupID: 23
+    Rank: 3
+    Type: 4
+    Pf: {fileID: 7566052548809756703}
+    Combination_ResultID: 3024
+    Combination_Required_Value: 200
+    Normal_Random_Draw_Probability: 0.41666666
+    Normal_Attack_Draw_Probability: 0
+    Normal_Minion_Draw_Probability: 1.6666666
+    Normal_Buff_Debuff_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 2.9166667
+    Premium_Attack_Draw_Probability: 0
+    Premium_Minion_Draw_Probability: 11.666667
+    Premium_Buff_Debuff_Draw_Probability: 0
+    Attack: 1
+    Attack_Speed: 0.3
+    Hp: 200
+    Range: 20
+    Range_Type: 4
+    Projectile_Type: 1
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: 0
+    Sprite_TowerCard: {fileID: 21300000, guid: 27d323d468e128f4986bc7ba43419b5c, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: c38c42b8c72a18e47b736cb946f1c9c6, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
+    buffID: 0
+    Camp_GroupID: 38
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -90,6 +122,8 @@ MonoBehaviour:
   healthbarImage: {fileID: 8943578516525596410}
   hitbarImage: {fileID: 641969409801007722}
   ui: {fileID: 2361294545513903442}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 7736452426764348620}
@@ -97,6 +131,26 @@ MonoBehaviour:
   firePoint: {fileID: 9052330861811738752}
   DangerZonePF: {fileID: 0}
   smokeParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
+  MinionDB:
+    Name: 
+    ID: 0
+    GroupID: 0
+    Camp_GroupID: 0
+    Camp: 0
+    Pf: {fileID: 0}
+    Rank: 0
+    Type: 0
+    Projectile_Speed: 0
+    Projectile_Type: 0
+    Attack: 0
+    Attack_Speed: 0
+    Range: 0
+    Move_Speed: 0
+    Hp: 0
+    Exp: 0
+    Icon: {fileID: 0}
+  bluePF: {fileID: 1609328083060089661, guid: 1882b09f2175ec94480b75999066afd9, type: 3}
+  redPF: {fileID: 4152114453513019565, guid: f7687e7878ffb2c46a5af78e29682ab7, type: 3}
 --- !u!114 &1473713780714943513
 MonoBehaviour:
   m_ObjectHideFlags: 0

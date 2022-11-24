@@ -255,6 +255,9 @@ MonoBehaviour:
   towerDB:
     Name: Flame_Tower2
     ID: 12
+    GroupID: 3
+    Rank: 2
+    Type: 1
     Pf: {fileID: 7185640794416597223}
     Combination_ResultID: 13
     Combination_Required_Value: 300
@@ -266,9 +269,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 3
-    Rank: 2
-    Type: 1
     Attack: 15
     Attack_Speed: 0.3
     Hp: 150
@@ -285,6 +285,7 @@ MonoBehaviour:
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 20012
+    Camp_GroupID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -300,6 +301,8 @@ MonoBehaviour:
   partToRotate: {fileID: 5334300266537667598}
   firePoint: {fileID: 5334300266537667598}
   DangerZonePF: {fileID: 216217715730466437, guid: 870d94772f6b4084da32c5b3bc87e3a5, type: 3}
+  bluePF: {fileID: 0}
+  redPF: {fileID: 0}
   smokeParticles: {fileID: 4937846866766143086, guid: 39b405bc0d87cc34db33652ed1b93c2b, type: 3}
 --- !u!114 &7126004375171045835
 MonoBehaviour:
