@@ -71,6 +71,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
         // 마우스 커서 
         Cursor.SetCursor(originalCursor, Vector2.zero, CursorMode.Auto);
+
+        matchingCancle = false;
     }
 
 
@@ -108,7 +110,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
             return;
         }
-        else
+        else if (matchingCancle == false && existence != null)
         {
             Destroy(GameObject.FindGameObjectWithTag("GetCaller").gameObject);
             Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
@@ -179,9 +181,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     }
 
+    private bool matchingCancle = false;
     // 매칭 메소드
     public void CancelMatching()
     {
+        matchingCancle = true;
         // 매칭 취소
         matChingObj.SetActive(false);
         playButton.interactable = true;

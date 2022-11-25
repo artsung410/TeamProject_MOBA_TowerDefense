@@ -21,7 +21,7 @@ public class PlayerButton : MonoBehaviourPun
     {
         Playercount = 0;
         //selectMatch = GameObject.FindGameObjectWithTag("SelectMatch");
-        selectMatch = gameObject.transform.parent.parent.GetChild(5).gameObject;
+        selectMatch = gameObject.transform.parent.parent.GetChild(6).gameObject;
     }
     [PunRPC]
     public void SelectMatchPopUp()
