@@ -110,7 +110,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
             return;
         }
-        else if (matchingCancle == false && existence != null)
+        else if (matchingCancle)
+        {
+            matchingCancle = false;
+            return;
+        }
+        else
         {
             Destroy(GameObject.FindGameObjectWithTag("GetCaller").gameObject);
             Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
