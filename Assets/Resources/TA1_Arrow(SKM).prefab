@@ -255,6 +255,9 @@ MonoBehaviour:
   towerDB:
     Name: Guard_Tower3
     ID: 3
+    GroupID: 1
+    Rank: 3
+    Type: 1
     Pf: {fileID: 165880}
     Combination_ResultID: 4
     Combination_Required_Value: 200
@@ -266,9 +269,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 7
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 1
-    Rank: 3
-    Type: 1
     Attack: 30
     Attack_Speed: 0.3
     Hp: 200
@@ -285,6 +285,7 @@ MonoBehaviour:
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -884,10 +885,10 @@ PrefabInstance:
     - target: {fileID: 565790850083912597, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
+      objectReference: {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
     - target: {fileID: 565790850083912597, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_FillAmount
-      value: 0.838
+      value: 0.654
       objectReference: {fileID: 0}
     - target: {fileID: 4367624973842323870, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_Pivot.x
@@ -980,10 +981,26 @@ PrefabInstance:
     - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: ce02418f40f479a4299334d14462cbdc, type: 3}
+      objectReference: {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
+    - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_FillAmount
-      value: 0.676
+      value: 0.797
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}

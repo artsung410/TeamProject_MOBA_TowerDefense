@@ -66,5 +66,5 @@ public class TowerBlueprint
     public int buffID;                                       // 버프 타워만 해당.
 
     [Header("[미니언타워만]")]
-    public int Camp_GroupID;                                 // 미니언 타워만 해당.
+    public int MinionID;                                 // 미니언 타워만 해당.
 }

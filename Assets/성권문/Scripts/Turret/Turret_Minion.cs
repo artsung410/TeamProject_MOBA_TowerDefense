@@ -11,11 +11,11 @@ using System;
 
 public class Turret_Minion : Turret
 {
-    public static event Action<GameObject, GameObject, string> minionTowerEvent = delegate { };
+    public static event Action<int, GameObject, GameObject, string> minionTowerEvent = delegate { };
     public GameObject smokeParticles;
 
     [Header("미니언 타워 속성")]
-    public MinionBlueprint MinionDB;
+    public MinionBlueprint MinionBluePrint;
     public GameObject bluePF;
     public GameObject redPF;
 
@@ -24,7 +24,7 @@ public class Turret_Minion : Turret
         // 타겟을 수시로 찾을수있게 invoke를 한다.
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
 
-        if(!photonView.IsMine)
+        if (!photonView.IsMine)
         {
             return;
         }
@@ -32,7 +32,7 @@ public class Turret_Minion : Turret
         // 미니언 생성
         if (bluePF != null && redPF != null)
         {
-            minionTowerEvent.Invoke(bluePF, redPF, gameObject.tag);
+            minionTowerEvent.Invoke(towerDB.MinionID, bluePF, redPF, gameObject.tag);
         }
 
         // 스모크 효과 생성

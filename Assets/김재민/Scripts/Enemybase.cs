@@ -20,11 +20,17 @@ public class Enemybase : MonoBehaviourPun
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
+    // ###############################################
+    //             NAME : Artsung                      
+    //             MAIL : artsung410@gmail.com
+    //             2022-11-25 /11:59 / MinionBlueprint 추가
+    // ###############################################
 
     // 경험치관련 이벤트
     public static event Action<GameObject, float> OnMinionDieEvent = delegate { };
 
     public static event Action<Enemybase, Sprite> minionMouseDownEvent = delegate { };
+
     // 이동속도
     public float moveSpeed;
     // 공격사거리
@@ -63,10 +69,6 @@ public class Enemybase : MonoBehaviourPun
 
     public bool hit = false;
 
-
-
-
-
     protected virtual void Awake()
     {
         _eminontpye = EMINIONTYPE.Nomal;
@@ -74,7 +76,6 @@ public class Enemybase : MonoBehaviourPun
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
-        
     }
 
     protected virtual void OnEnable() // 생성
@@ -174,17 +175,14 @@ public class Enemybase : MonoBehaviourPun
                 GameManager.Instance.winner = lastDamageTeam;
                 }
             }
-            
-
         }
-
     }
-
 
     private void OnMouseDown()
     {
         minionMouseDownEvent.Invoke(this, minionSprite);
     }
+
     public void Death()
     {
         Destroy(transform.parent.gameObject);
@@ -274,5 +272,4 @@ public class Enemybase : MonoBehaviourPun
         _navMeshAgent.isStopped = false;
         _navMeshAgent.SetDestination(destination);
     }
-
 }

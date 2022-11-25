@@ -13,7 +13,7 @@ public class LightningProjectile : Projectiles
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
     float maxHeight = 16f;
-    float minHeight = 1f;
+    float minHeight = 7f;
     private void Update()
     {
         if (target == null)
@@ -44,12 +44,12 @@ public class LightningProjectile : Projectiles
 
         if (!photonView.IsMine)
         {
-            return;
+            return; 
         }
 
-        if (dir.magnitude <= distanceThisFrame + InterpolateValue || transform.position.y <= InterpolateValue)
+        if (dir.magnitude <= distanceThisFrame + InterpolateValue)
         {
-            GameObject newLightning = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            GameObject newLightning = PhotonNetwork.Instantiate(ImpactEffect.name, target.position, Quaternion.identity);
             MagicExplosion magicExplosion = newLightning.GetComponent<MagicExplosion>();
             magicExplosion.enemyTag = enemyTag;
             magicExplosion.damage = damage;

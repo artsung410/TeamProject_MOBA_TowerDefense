@@ -139,12 +139,14 @@ public class Turret : MonoBehaviourPun
             {
                 gameObject.tag = "Blue";
                 enemyTag = "Red";
+
             }
 
             else
             {
                 gameObject.tag = "Red";
                 enemyTag = "Blue";
+
             }
         }
 
@@ -155,34 +157,21 @@ public class Turret : MonoBehaviourPun
             {
                 gameObject.tag = "Red";
                 enemyTag = "Blue";
+
             }
 
             else
             {
                 gameObject.tag = "Blue";
                 enemyTag = "Red";
-            }
-            if (photonView.IsMine)
-            {
-                healthbarImage.sprite = healthbarImages[0]; // 초록 
-                hitbarImage.sprite = healthbarImages[1]; //빨강
-            }
-            else
-            {
-                healthbarImage.sprite = healthbarImages[1];
-                hitbarImage.sprite = healthbarImages[2];
+
             }
         }
 
-        if (photonView.IsMine)
+        if (!photonView.IsMine)
         {
-            healthbarImage.sprite = healthbarImages[0]; // 초록 
-            hitbarImage.sprite = healthbarImages[1]; //빨강
-        }
-        else
-        {
-            healthbarImage.sprite = healthbarImages[1];
             hitbarImage.sprite = healthbarImages[2];
+            healthbarImage.sprite = healthbarImages[1];
         }
 
         _outline.enabled = false;
@@ -220,9 +209,9 @@ public class Turret : MonoBehaviourPun
 
             if(photonView.IsMine)
             {
-                PhotonNetwork.Destroy(gameObject);
                 newDestroyParticle = PhotonNetwork.Instantiate(destroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
                 StartCoroutine(Destruction(newDestroyParticle));
+                PhotonNetwork.Destroy(gameObject);
             }
             return;
         }

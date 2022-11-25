@@ -185,12 +185,12 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
 
             // 미니언타워만 해당.
-            towerDatabaseListCSV.itemList[i].Camp_GroupID = int.Parse(col[32]);
+            towerDatabaseListCSV.itemList[i].MinionID = int.Parse(col[32]);
 
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
             towerDatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
             towerDatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
-
+            towerDatabaseList.itemList[i + 1].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
 
 
             if (i < 50)
@@ -198,6 +198,7 @@ public class CSVtest : MonoBehaviour
                 tower_Attack_DatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
                 tower_Attack_DatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Attack_DatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
+                tower_Attack_DatabaseList.itemList[i + 1].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
 
             else if (i >= 50 && i < 90)
@@ -205,6 +206,7 @@ public class CSVtest : MonoBehaviour
                 tower_Buff_DatabaseList.itemList[i - 49].towerData = towerDatabaseListCSV.itemList[i];
                 tower_Buff_DatabaseList.itemList[i - 49].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Buff_DatabaseList.itemList[i - 49].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
+                tower_Buff_DatabaseList.itemList[i - 49].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
 
             else
@@ -212,13 +214,12 @@ public class CSVtest : MonoBehaviour
                 tower_Minion_DatabaseList.itemList[i - 89].towerData = towerDatabaseListCSV.itemList[i];
                 tower_Minion_DatabaseList.itemList[i - 89].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Minion_DatabaseList.itemList[i - 89].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
+                tower_Minion_DatabaseList.itemList[i - 89].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
         }
     }
 
     #endregion Tower
-
-
 
 
     #region Buff
@@ -264,7 +265,7 @@ public class CSVtest : MonoBehaviour
 
     #region Minion
 
-    private const string MinionURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=653157190&range=A5:S114";
+    private const string MinionURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=653157190&range=A5:R59";
 
     [Header("[미니언]")]
     public MinionDatabaseList MinionDatabaseListCSV;
@@ -291,25 +292,23 @@ public class CSVtest : MonoBehaviour
 
             // 기본정보
             MinionDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
-            MinionDatabaseListCSV.itemList[i].Name = col[3] + col[6];
+            MinionDatabaseListCSV.itemList[i].Name = col[3] + col[5];
             MinionDatabaseListCSV.itemList[i].GroupID = int.Parse(col[4]);
-            MinionDatabaseListCSV.itemList[i].Camp_GroupID = int.Parse(col[5]);
-            MinionDatabaseListCSV.itemList[i].Camp = int.Parse(col[2]);
-            MinionDatabaseListCSV.itemList[i].Pf = Resources.Load<GameObject>(col[3]);
+            MinionDatabaseListCSV.itemList[i].Rank = int.Parse(col[5]);
+            MinionDatabaseListCSV.itemList[i].Type = int.Parse(col[6]);
 
-            // 투사체
-            MinionDatabaseListCSV.itemList[i].Rank = int.Parse(col[6]);
-            MinionDatabaseListCSV.itemList[i].Type = int.Parse(col[7]);
+            // 투사체 정보
+            MinionDatabaseListCSV.itemList[i].Projectile_Speed = float.Parse(col[9]);
+            MinionDatabaseListCSV.itemList[i].Projectile_Type = int.Parse(col[10]);
 
             // 속성
-            MinionDatabaseListCSV.itemList[i].Attack = float.Parse(col[12]);
-            MinionDatabaseListCSV.itemList[i].Attack_Speed = float.Parse(col[13]);
-            MinionDatabaseListCSV.itemList[i].Range = float.Parse(col[14]);
-            MinionDatabaseListCSV.itemList[i].Move_Speed = float.Parse(col[15]);
-            MinionDatabaseListCSV.itemList[i].Hp = float.Parse(col[16]);
-            MinionDatabaseListCSV.itemList[i].Exp = float.Parse(col[17]);
-            MinionDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[18]);
-
+            MinionDatabaseListCSV.itemList[i].Attack = float.Parse(col[11]);
+            MinionDatabaseListCSV.itemList[i].Attack_Speed = float.Parse(col[12]);
+            MinionDatabaseListCSV.itemList[i].Range = float.Parse(col[13]);
+            MinionDatabaseListCSV.itemList[i].Move_Speed = float.Parse(col[14]);
+            MinionDatabaseListCSV.itemList[i].Hp = float.Parse(col[15]);
+            MinionDatabaseListCSV.itemList[i].Exp = float.Parse(col[16]);
+            MinionDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[17]);
         }
     }
     #endregion Minion 
