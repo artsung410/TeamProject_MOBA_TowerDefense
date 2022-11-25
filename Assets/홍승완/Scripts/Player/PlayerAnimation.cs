@@ -39,7 +39,7 @@ public class PlayerAnimation : MonoBehaviourPun
 
     private void OnEnable()
     {
-        Debug.Log($"플레이어 랜더러 : {hp.isDeath}");
+        //Debug.Log($"플레이어 랜더러 : {hp.isDeath}");
     }
 
     float elapsedTime;

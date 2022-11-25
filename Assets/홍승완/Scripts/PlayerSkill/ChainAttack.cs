@@ -11,8 +11,9 @@ public class ChainAttack : SkillHandler
     // ###############################################
 
     public GameObject[] Effect;
+    public GameObject damageZone;
 
-    public PlayerSkillDatas data;
+    //public PlayerSkillDatas data;
 
     #region private 변수모음
 
@@ -20,10 +21,11 @@ public class ChainAttack : SkillHandler
     float elapsedTime;
     Vector3 mouseDir;
 
-    private float holdingTime;
     private float damage;
     private float range;
-    private float lockTime;
+    private float width;
+    private float vertical;
+
 
     #endregion
 
@@ -35,21 +37,19 @@ public class ChainAttack : SkillHandler
         {
             Effect[i].SetActive(false);
         }
-
+        width = damageZone.GetComponent<BoxCollider>().size.x;
+        vertical = damageZone.GetComponent<BoxCollider>().size.z;
     }
 
     List<int> randomNum = new List<int>();    
     private void OnEnable()
     {
         elapsedTime = 0f;
-        damage = SetDamage;
-        //Debug.Log($"SetDamage : {SetDamage}");
-        holdingTime = SetHodingTime;
-        //Debug.Log($"SetHodingTime : {SetHodingTime}");
-        range = SetRange;
-        //Debug.Log($"SetRange : {SetRange}");
-        lockTime = SetLockTime;
-        //Debug.Log($"lockTime : {lockTime}");
+
+        damage = Data.Value_1;
+
+        width = Data.RangeValue_1;
+        vertical = Data.RangeValue_2;
 
         int currentNumber = Random.Range(0, 4);
 
@@ -65,7 +65,6 @@ public class ChainAttack : SkillHandler
                 i++;
             }
         }
-
     }
 
     // Start is called before the first frame update
@@ -127,11 +126,11 @@ public class ChainAttack : SkillHandler
         }
 
         SkillUpdatePosition();
-        SkillHoldingTime(holdingTime);
+        SkillHoldingTime(Data.HoldingTime);
 
         dispersionTime += Time.deltaTime;
         
-        float tickTime = holdingTime / 10;
+        float tickTime = Data.HoldingTime / 10;
         if (dispersionTime >= tickTime)
         {
             dispersionTime = 0f;
@@ -153,7 +152,6 @@ public class ChainAttack : SkillHandler
     /// </summary>
     public override void SkillUpdatePosition()
     {
-        Debug.Log("위치 업데이트중");
         transform.position = _ability.transform.position;
         transform.rotation = quaternion;
     }
@@ -163,7 +161,7 @@ public class ChainAttack : SkillHandler
         elapsedTime += Time.deltaTime;
 
         // Lock타임 동안 다른 스킬은 못쓰게 해준다
-        if (elapsedTime >= lockTime)
+        if (elapsedTime >= Data.LockTime)
         {
             _ability.OnLock(false);
         }

@@ -47,12 +47,12 @@ public class PlayerSkillDatas
         "5일 때: 아군 미니언 공격력 증가량(%)\n" +
         "6일 때: 피해량\n" +
         "7일 때: 블루 팀 일 때 소환되는 미니언\n")]
-    public int Value_1;
+    public float Value_1;
 
     [Tooltip("Skill_Type의 값이\n" +
         "5일 때: 공격속도 증가량(%)\n" +
         "7일 때: 레드 팀 일 때 소환되는 미니언")]
-    public int Value_2;
+    public float Value_2;
 
     [Tooltip("스킬 재사용 시간")]
     public float CoolTime;
@@ -71,12 +71,12 @@ public class PlayerSkillDatas
         "1일 때: 가로\n" +
         "2일 때: 반지름\n" +
         "3일 때: 반지름\n")]
-    public int RangeValue_1;
+    public float RangeValue_1;
 
     [Tooltip("Range_Type 의 값이\n" +
         "1일 때: 세로\n" +
         "3일 때: 각도 / 2")]
-    public int RangeValue_2;
+    public float RangeValue_2;
 
     [Tooltip("스킬 유지시간/ 도형이 남아있는 시간")]
     public float HoldingTime;

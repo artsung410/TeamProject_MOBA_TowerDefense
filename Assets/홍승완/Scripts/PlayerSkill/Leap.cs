@@ -11,7 +11,7 @@ public class Leap : SkillHandler
     // ###############################################
 
 
-    GameObject _damageZone;
+    public GameObject damageZone;
     GameObject _obstacleDetector;
 
     #region Private 변수들
@@ -20,32 +20,23 @@ public class Leap : SkillHandler
     float elapsedTime;
     Vector3 mouseDir;
 
-    private float holdingTime;
     private float damage;
-    private float range;
     private float speed;
-    private float lockTime;
 
     #endregion
 
     private void Awake()
     {
-        _damageZone = GetComponentInChildren<SphereCollider>().gameObject;
         _obstacleDetector = transform.GetChild(1).gameObject;
     }
 
     private void OnEnable()
     {
         elapsedTime = 0f;
-        damage = SetDamage;
-        holdingTime = SetHodingTime;
-        range = SetRange;
-        lockTime = SetLockTime;
+        damage = Data.Value_1;
+        damageZone.GetComponent<SphereCollider>().radius = Data.RangeValue_1;
 
-        //isArive = false;
-        //isAttack = false;
-
-        _damageZone.SetActive(false);
+        damageZone.SetActive(false);
     }
 
     private void Start()
@@ -63,19 +54,16 @@ public class Leap : SkillHandler
 
     }
 
-    Vector3 startPos;
-    Vector3 endPos;
-    Vector3 mousePos;
     Vector3 leapPos;
     private void CheckDist()
     {
-        mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
+        Vector3 mousePos = new Vector3(hit.point.x, _ability.transform.position.y, hit.point.z);
 
-        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= range)
+        if (Vector3.Distance(_behaviour.transform.position, mousePos) >= Data.Range)
         {
-            startPos = _behaviour.transform.position;
-            endPos = _behaviour.transform.forward;
-            leapPos = (startPos + endPos * range);
+            Vector3 startPos = _behaviour.transform.position;
+            Vector3 endPos = _behaviour.transform.forward;
+            leapPos = (startPos + endPos * Data.Range);
         }
         else
         {
@@ -121,7 +109,7 @@ public class Leap : SkillHandler
 
             if (isArrive)
             {
-                SkillHoldingTime(holdingTime);
+                SkillHoldingTime(Data.HoldingTime);
             }
         }
 
@@ -138,7 +126,7 @@ public class Leap : SkillHandler
     {
         elapsedTime += Time.deltaTime;
 
-        if (elapsedTime >= lockTime)
+        if (elapsedTime >= Data.LockTime)
         {
             _ability.OnLock(false);
         }
@@ -170,8 +158,7 @@ public class Leap : SkillHandler
         {
             // 충돌하면 
             // 바닥에 떨어짐(현재위치)
-
-            // 플레이어 자신이 감지되고있어서 예외처리해줌 ㅠ
+            // 플레이어 자신이 감지되고있어서 예외처리해줌
             if (collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7 || collision.gameObject.tag == "Ground")
             {
                 return;
@@ -189,7 +176,7 @@ public class Leap : SkillHandler
     [PunRPC]
     public void RPC_Activate()
     {
-        _damageZone.SetActive(true);
+        damageZone.SetActive(true);
     }
 
     private void OnDestroy()

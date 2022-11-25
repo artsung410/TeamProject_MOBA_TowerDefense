@@ -50,6 +50,12 @@ public class EnemyHpBar : MonoBehaviourPun
             healthbarImage.sprite = healthbarImages[1];
             hitbarImage.sprite = healthbarImages[2];
         }
+        else
+        {
+            return;
+        }
+
+
 
     }
 
@@ -107,11 +113,11 @@ public class EnemyHpBar : MonoBehaviourPun
 
         if (enemybase._eminontpye != EMINIONTYPE.Netural)
         {
-            transform.position = new Vector3(Enemy.position.x, 7f, Enemy.position.z);
+            transform.position = new Vector3(Enemy.position.x, 10f, Enemy.position.z);
         }
         else if (enemybase._eminontpye == EMINIONTYPE.Netural)
         {
-            transform.position = new Vector3(Enemy.position.x, 14f, Enemy.position.z);
+            transform.position = new Vector3(Enemy.position.x, 17f, Enemy.position.z);
         }
     }
 

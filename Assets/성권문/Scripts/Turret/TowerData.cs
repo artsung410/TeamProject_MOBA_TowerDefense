@@ -2,13 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum Tower_Type
-{
-    Attack_Tower = 1,
-    Buff_Tower,
-    DeBuff_Tower,
-    Minion_Tower
-}
 
 // ###############################################
 //             NAME : ARTSUNG                      

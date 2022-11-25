@@ -12,51 +12,26 @@ public class EnergyBolt : SkillHandler
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    #region DataParsing
-
-    //private const string energyBoltURL = "https://docs.google.com/spreadsheets/d/1PnBV0AFMfz3PdaEXZJcOPjnQCCQCOGoV/export?format=tsv&range=A16:Y18";
-
-    //IEnumerator GetSkillData(string url)
-    //{
-    //    UnityWebRequest GetSkillData = UnityWebRequest.Get(url);
-    //    yield return GetSkillData.SendWebRequest();
-    //    print(GetSkillData.downloadHandler.text);
-    //}
-
-    #endregion
-
     public GameObject DamazeZone;
-    public float damageZoneRadius;
-    public List<PlayerSkillDatas> Datas;
 
     Quaternion quaternion;
     float elasedTiem;
     Vector3 mouseDir;
     Vector3 currentPos; // 스킬 사용 위치
 
-    private float HoldingTime;
     private float Damage;
-    private float Range;
-    private float Speed;
-    private float lockTime;
 
     private void Awake()
     {
-        damageZoneRadius = DamazeZone.GetComponent<SphereCollider>().radius;
+        DamazeZone.GetComponent<SphereCollider>().radius = Data.RangeValue_1;
     }
 
     private void OnEnable()
     {
         elasedTiem = 0;
+        currentPos = transform.position;        
 
-        Damage = SetDamage;
-        HoldingTime = SetHodingTime;
-        Range = SetRange;
-        lockTime = SetLockTime;
-
-        currentPos = transform.position;
-        
-        damageZoneRadius = 2;
+        Damage = Data.Value_1;
     }
 
     // Start is called before the first frame update
@@ -84,12 +59,12 @@ public class EnergyBolt : SkillHandler
 
     public override void SkillHoldingTime(float time)
     {
-
+        Debug.Log("투사체 속도 필요");
     }
 
     public override void SkillUpdatePosition()
     {
-        transform.Translate(Time.deltaTime * 30f * Vector3.forward);
+        transform.Translate(Time.deltaTime * 10 * Vector3.forward);
         transform.rotation = quaternion;
     }
 
@@ -100,14 +75,13 @@ public class EnergyBolt : SkillHandler
         {
             SkillUpdatePosition();
             elasedTiem += Time.deltaTime;
-            if (elasedTiem >= lockTime)
+            if (elasedTiem >= Data.LockTime)
             {
                 _ability.OnLock(false);
             }
 
             float dist = Vector3.Distance(currentPos, transform.position);
-            //Debug.Log($"날라간 거리 : {dist}");
-            if (dist >= Range)
+            if (dist >= Data.Range)
             {
                 _ability.OnLock(false);
                 PhotonNetwork.Destroy(gameObject);
@@ -118,7 +92,6 @@ public class EnergyBolt : SkillHandler
 
     private void OnTriggerEnter(Collider other)
     {
-        //Debug.Log("충돌 확인용");
         if (photonView.IsMine)
         {
             if(other.GetComponent<Health>() || other.GetComponent<Enemybase>())
@@ -131,8 +104,4 @@ public class EnergyBolt : SkillHandler
         }
     }
 
-    private void OnDisable()
-    {
-        
-    }
 }

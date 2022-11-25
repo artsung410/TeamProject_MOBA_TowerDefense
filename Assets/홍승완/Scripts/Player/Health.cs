@@ -122,12 +122,10 @@ public class Health : MonoBehaviourPun
         }
     }
 
-    // TODO : 플레이어 콜라이더 제거부분과 렌더러 제거부분 시간 다르게 적용;
-    // 콜라이더 제거 => 렌더러 제거 => 게임 오브젝트 제거
-
     public void Regenation(float recovery)
     {
-        photonView.RPC(nameof(PRC_regeneration), RpcTarget.All, recovery);
+        // TODO : 포톤에러로 인한 임시 주석처리
+        //photonView.RPC(nameof(PRC_regeneration), RpcTarget.All, recovery);
     }
     
     

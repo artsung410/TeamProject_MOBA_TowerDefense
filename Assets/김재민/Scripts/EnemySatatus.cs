@@ -67,8 +67,8 @@ public class EnemySatatus : Enemybase
             {
                 Targeton = false;
                 _target = _PrevTarget;
-                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
                 _navMeshAgent.SetDestination(_target.position);
+                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
             }
             transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z)); // 타켓을 바라봄
             Vector3 vecDistance = _target.position - transform.position; //거리계산
@@ -91,8 +91,8 @@ public class EnemySatatus : Enemybase
             {
                 Targeton = false;
                 _target = _PrevTarget;
-                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
                 _navMeshAgent.SetDestination(_target.position);
+                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
             }
 
             Vector3 vecAtkDistance = _target.position - transform.position;
@@ -104,10 +104,13 @@ public class EnemySatatus : Enemybase
             //공격쿨타임
             if (AtkDistance >= attackRange * attackRange)
             {
+                Targeton = false;
                 _animator.SetBool("Attack", false);
                 _navMeshAgent.isStopped = false;
-                _navMeshAgent.SetDestination(_PrevTarget.position);
                 _estate = ESTATE.move;
+                _target = _PrevTarget;
+                _navMeshAgent.SetDestination(_target.position);
+                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
                 stateChange();
                 break;
             }
@@ -158,16 +161,8 @@ public class EnemySatatus : Enemybase
                     Targeton = true;
                     _target = collider.transform;
                     _navMeshAgent.SetDestination(_target.position);
+                    transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
                 }
-
-                //}else if  (collider.gameObject.layer == 17)
-                //{
-                //    Targeton = true;
-                //    _target = collider.transform;
-                //    _navMeshAgent.SetDestination(_target.position);
-
-                //}
-                //레이어로 확인해서 공격타켓 설정
 
             }
              else if(collider.gameObject.layer == 17)
@@ -175,6 +170,7 @@ public class EnemySatatus : Enemybase
                 Targeton = true;
                 _target = collider.transform;
                 _navMeshAgent.SetDestination(_target.position);
+                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
 
             }
             //레이어로 확인해서 공격타켓 설정

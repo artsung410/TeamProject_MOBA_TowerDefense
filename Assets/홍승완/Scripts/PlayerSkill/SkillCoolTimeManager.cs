@@ -1,3 +1,6 @@
+//#define OLD_VER
+#define PARSE_VER
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,10 +32,17 @@ public class SkillCoolTimeManager : MonoBehaviour
     IEnumerator Init()
     {
         yield return new WaitForSeconds(0.5f);
-        for (int i = 0; i < 4; i++)
+        for (int i = 1; i < 4; i++)
         {
             coolTimeImgs[i] = PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>();
+#if OLD_VER
             skillCoolTimeArr[i] = SkillManager.Instance.CoolTime[i];
+
+#endif
+
+#if PARSE_VER
+            skillCoolTimeArr[i] = SkillManager.Instance.Datas[i].CoolTime;
+#endif
         }
     }
 

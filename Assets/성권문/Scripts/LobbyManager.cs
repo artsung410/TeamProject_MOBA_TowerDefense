@@ -150,7 +150,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         roomOptions.MaxPlayers = (byte)roomMaxPlayers; // 인원 지정.
         roomOptions.CustomRoomProperties = new ExitGames.Client.Photon.Hashtable() { { "maxTime", maxTime } }; // 게임 시간 지정.
         roomOptions.CustomRoomPropertiesForLobby = new string[] { "maxTime" }; // 여기에 키 값을 등록해야, 필터링이 가능하다.
-        Debug.Log((int)roomOptions.CustomRoomProperties["maxTime"]);
+        //Debug.Log((int)roomOptions.CustomRoomProperties["maxTime"]);
         tro.limitedTime = (int)roomOptions.CustomRoomProperties["maxTime"];
 
         // 방 참가를 시도하고, 실패하면 생성해서 참가함.

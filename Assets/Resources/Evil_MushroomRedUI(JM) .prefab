@@ -907,6 +907,7 @@ MonoBehaviour:
   myTag: 
   isDead: 0
   _capsuleCollider: {fileID: 0}
+  hit: 0
   _target: {fileID: 0}
   Targeton: 0
   _estate: 0
@@ -1057,9 +1058,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.51
-  m_Height: 1.56
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0.77, z: 0}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!114 &6623162274708379773
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1955,6 +1956,50 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: afe3fb38166e41a4c99025e5afaa66c4, type: 3}
+--- !u!1 &5355087687113709960 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1950403306875658249, guid: afe3fb38166e41a4c99025e5afaa66c4, type: 3}
+  m_PrefabInstance: {fileID: 5854730747300624769}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4086464934195494158
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5355087687113709960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 4777863922964136373}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
+--- !u!114 &4777863922964136373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5355087687113709960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!224 &7087494520764749894 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3682810003097182663, guid: afe3fb38166e41a4c99025e5afaa66c4, type: 3}

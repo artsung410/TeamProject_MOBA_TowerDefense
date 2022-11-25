@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using System;
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -10,7 +11,13 @@ using Photon.Pun;
 
 public class Turret_Minion : Turret
 {
+    public static event Action<GameObject, GameObject, string> minionTowerEvent = delegate { };
     public GameObject smokeParticles;
+
+    [Header("미니언 타워 속성")]
+    public MinionBlueprint MinionDB;
+    public GameObject bluePF;
+    public GameObject redPF;
 
     private void Start()
     {
@@ -20,6 +27,12 @@ public class Turret_Minion : Turret
         if(!photonView.IsMine)
         {
             return;
+        }
+
+        // 미니언 생성
+        if (bluePF != null && redPF != null)
+        {
+            minionTowerEvent.Invoke(bluePF, redPF, gameObject.tag);
         }
 
         // 스모크 효과 생성

@@ -25,14 +25,16 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected PlayerAnimation _ani;
     protected string _myTag;
     protected string enemyTag;
-    
+
     // TODO : skilldata scriptableObj사용할수있게 개조하기
     //protected ScriptableObject data;
 
-    public float SetDamage;
-    public float SetHodingTime;
-    public float SetRange;
-    public float SetLockTime;
+    public PlayerSkillDatas Data;
+
+    public float SetDamage = 1;
+    public float SetHodingTime = 1;
+    public float SetRange = 1;
+    public float SetLockTime = 1;
 
     // 플레이어 HeroAbility를 받아옴
     public void GetPlayerPos(HeroAbility heroAbility)

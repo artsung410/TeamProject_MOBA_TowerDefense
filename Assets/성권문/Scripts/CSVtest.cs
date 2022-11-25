@@ -59,10 +59,11 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest DescDataRequest = UnityWebRequest.Get(url);
         yield return DescDataRequest.SendWebRequest();
         SplitDescData(DescDataRequest.downloadHandler.text);
-        Debug.Log("Desc�Ľ̿Ϸ�");
         
         StartCoroutine(GetTowerData());
         StartCoroutine(GetBuffData());
+
+        StartCoroutine(GetMinionData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
     }
@@ -83,7 +84,7 @@ public class CSVtest : MonoBehaviour
             {
                 descList[i].Add(col[j]);
             }
-            // ����Ʈ�� ù��°�� ��Ҵ� ID��
+
             descDic.Add(int.Parse(descList[i][(int)DescColData.ID]), descList[i]);
         }
     }
@@ -100,7 +101,7 @@ public class CSVtest : MonoBehaviour
 
     #region Tower
 
-    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=625995306&range=A5:AM124";
+    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=625995306&range=A5:AM124";
     
     [Header("[타워]")]
     public TowerDatabaseList towerDatabaseListCSV;
@@ -110,7 +111,7 @@ public class CSVtest : MonoBehaviour
     public ItemDataBaseList tower_Minion_DatabaseList;
 
     UnityWebRequest TowerWebData;
-    IEnumerator GetTowerData()
+    IEnumerator GetTowerData()                                                                              
     {
         TowerWebData = UnityWebRequest.Get(TowerURL);
         yield return TowerWebData.SendWebRequest();
@@ -165,8 +166,10 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Projectile_Type = int.Parse(col[25]);
             towerDatabaseListCSV.itemList[i].Projectile_Pf = Resources.Load<GameObject>(col[26]);
 
-
-            towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_Ko];
+            if (int.Parse(col[33]) != 0)
+            {
+                towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_Ko];
+            }
 
             // 부가옵션
             towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf = Resources.Load<GameObject>(col[30]);
@@ -181,12 +184,15 @@ public class CSVtest : MonoBehaviour
             // 버프타워만 해당
             towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
 
+            // 미니언타워만 해당.
+            towerDatabaseListCSV.itemList[i].Camp_GroupID = int.Parse(col[32]);
+
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
             towerDatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
             towerDatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
 
 
-            
+
             if (i < 50)
             {
                 tower_Attack_DatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
@@ -217,7 +223,7 @@ public class CSVtest : MonoBehaviour
 
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1FOm8D4Hb0IbgmNOnSLiLrV7HpSgB-kjS/export?format=tsv&gid=1296679834&range=A4:I68";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:I68";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
@@ -256,8 +262,57 @@ public class CSVtest : MonoBehaviour
     }
     #endregion Buff 
 
+    #region Minion
 
+    private const string MinionURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=653157190&range=A5:S114";
 
+    [Header("[미니언]")]
+    public MinionDatabaseList MinionDatabaseListCSV;
+
+    UnityWebRequest MinionWebData;
+    IEnumerator GetMinionData()
+    {
+        MinionWebData = UnityWebRequest.Get(MinionURL);
+        yield return MinionWebData.SendWebRequest();
+
+        string DB = MinionWebData.downloadHandler.text;
+        SetMinionData(DB);
+    }
+
+    public void SetMinionData(string tsv)
+    {
+        string[] row = tsv.Split('\n');
+        int rowSize = row.Length;
+        int columnSize = row[0].Split('\t').Length;
+
+        for (int i = 0; i < rowSize; i++)
+        {
+            string[] col = row[i].Split('\t');
+
+            // 기본정보
+            MinionDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
+            MinionDatabaseListCSV.itemList[i].Name = col[3] + col[6];
+            MinionDatabaseListCSV.itemList[i].GroupID = int.Parse(col[4]);
+            MinionDatabaseListCSV.itemList[i].Camp_GroupID = int.Parse(col[5]);
+            MinionDatabaseListCSV.itemList[i].Camp = int.Parse(col[2]);
+            MinionDatabaseListCSV.itemList[i].Pf = Resources.Load<GameObject>(col[3]);
+
+            // 투사체
+            MinionDatabaseListCSV.itemList[i].Rank = int.Parse(col[6]);
+            MinionDatabaseListCSV.itemList[i].Type = int.Parse(col[7]);
+
+            // 속성
+            MinionDatabaseListCSV.itemList[i].Attack = float.Parse(col[12]);
+            MinionDatabaseListCSV.itemList[i].Attack_Speed = float.Parse(col[13]);
+            MinionDatabaseListCSV.itemList[i].Range = float.Parse(col[14]);
+            MinionDatabaseListCSV.itemList[i].Move_Speed = float.Parse(col[15]);
+            MinionDatabaseListCSV.itemList[i].Hp = float.Parse(col[16]);
+            MinionDatabaseListCSV.itemList[i].Exp = float.Parse(col[17]);
+            MinionDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[18]);
+
+        }
+    }
+    #endregion Minion 
 
     #region SkillDataParsing
 
@@ -281,7 +336,6 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest WizardSkillDataRequest = UnityWebRequest.Get(url);
         yield return WizardSkillDataRequest.SendWebRequest();
         SplitSkillDatas(WizardSkillDataRequest.downloadHandler.text, WizardSkillDatas, WizardSkillRowDatas, WizardSkillParsing, WizardDatabaseList);
-        Debug.Log("skill�Ľ̿Ϸ�");
 
     }
 
@@ -290,7 +344,6 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest WarriorSkillDataRequest = UnityWebRequest.Get(url);
         yield return WarriorSkillDataRequest.SendWebRequest();
         SplitSkillDatas(WarriorSkillDataRequest.downloadHandler.text, WarriorSkillDatas, WarriorSkillRowDatas, WarriorSkillParsing, WarriorDatabaseList);
-        Debug.Log("skill�Ľ̿Ϸ�");
 
     }
 
@@ -318,7 +371,7 @@ public class CSVtest : MonoBehaviour
         for (int i = 0; i < size; i++)
         {
             skillDatas.DataList[i].ID = int.Parse(dic[i + 1][(int)SkillColData.ID]);
-            skillDatas.DataList[i].Name = Resources.Load<GameObject>("Skills/" + dic[i + 1][(int)SkillColData.Name]);
+            skillDatas.DataList[i].Name = Resources.Load<GameObject>(dic[i + 1][(int)SkillColData.Name]);
             skillDatas.DataList[i].NameLevel = dic[i + 1][(int)SkillColData.NameLevel];
             skillDatas.DataList[i].Probability = float.Parse(dic[i + 1][(int)SkillColData.Probability]);
             skillDatas.DataList[i].Classification = int.Parse(dic[i + 1][(int)SkillColData.Classification]);
@@ -326,14 +379,14 @@ public class CSVtest : MonoBehaviour
             skillDatas.DataList[i].LockTime = float.Parse(dic[i + 1][(int)SkillColData.LockTime]);
 
             skillDatas.DataList[i].SkillType = int.Parse(dic[i + 1][(int)SkillColData.SkillType]);
-            skillDatas.DataList[i].Value_1 = int.Parse(dic[i + 1][(int)SkillColData.Value1]);
-            skillDatas.DataList[i].Value_2 = int.Parse(dic[i + 1][(int)SkillColData.Value2]);
+            skillDatas.DataList[i].Value_1 = float.Parse(dic[i + 1][(int)SkillColData.Value1]);
+            skillDatas.DataList[i].Value_2 = float.Parse(dic[i + 1][(int)SkillColData.Value2]);
 
             skillDatas.DataList[i].CoolTime = float.Parse(dic[i + 1][(int)SkillColData.CoolTime]);
 
             skillDatas.DataList[i].Range = float.Parse(dic[i + 1][(int)SkillColData.Range]);
-            skillDatas.DataList[i].RangeValue_1 = int.Parse(dic[i + 1][(int)SkillColData.RangeValue1]);
-            skillDatas.DataList[i].RangeValue_2 = int.Parse(dic[i + 1][(int)SkillColData.RangeValue2]);
+            skillDatas.DataList[i].RangeValue_1 = float.Parse(dic[i + 1][(int)SkillColData.RangeValue1]);
+            skillDatas.DataList[i].RangeValue_2 = float.Parse(dic[i + 1][(int)SkillColData.RangeValue2]);
 
             skillDatas.DataList[i].HoldingTime = float.Parse(dic[i + 1][(int)SkillColData.HoldingTime]);
 
