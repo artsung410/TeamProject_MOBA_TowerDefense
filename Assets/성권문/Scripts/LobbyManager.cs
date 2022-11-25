@@ -50,9 +50,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     private AudioSource matchingAudio;
 
     // 마우스 커서 담을 변수
+    [SerializeField]
     private Texture2D originalCursor;
-    private Texture2D changeCursor;
-    // 로비 씬으로 오면 오리지널 마우스로 변경된다.
 
 
     private void Awake()
@@ -71,7 +70,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.AutomaticallySyncScene = true;
 
         // 마우스 커서 
-        //Cursor.SetCursor(originalCursor, Vector2.zero, CursorMode.Auto);
+        Cursor.SetCursor(originalCursor, Vector2.zero, CursorMode.Auto);
     }
 
 
