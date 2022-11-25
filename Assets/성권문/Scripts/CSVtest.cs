@@ -59,7 +59,6 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest DescDataRequest = UnityWebRequest.Get(url);
         yield return DescDataRequest.SendWebRequest();
         SplitDescData(DescDataRequest.downloadHandler.text);
-        Debug.Log("Desc�Ľ̿Ϸ�");
         
         StartCoroutine(GetTowerData());
         StartCoroutine(GetBuffData());
@@ -85,7 +84,7 @@ public class CSVtest : MonoBehaviour
             {
                 descList[i].Add(col[j]);
             }
-            // ����Ʈ�� ù��°�� ��Ҵ� ID��
+
             descDic.Add(int.Parse(descList[i][(int)DescColData.ID]), descList[i]);
         }
     }
@@ -335,7 +334,6 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest WizardSkillDataRequest = UnityWebRequest.Get(url);
         yield return WizardSkillDataRequest.SendWebRequest();
         SplitSkillDatas(WizardSkillDataRequest.downloadHandler.text, WizardSkillDatas, WizardSkillRowDatas, WizardSkillParsing, WizardDatabaseList);
-        Debug.Log("skill�Ľ̿Ϸ�");
 
     }
 
@@ -344,7 +342,6 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest WarriorSkillDataRequest = UnityWebRequest.Get(url);
         yield return WarriorSkillDataRequest.SendWebRequest();
         SplitSkillDatas(WarriorSkillDataRequest.downloadHandler.text, WarriorSkillDatas, WarriorSkillRowDatas, WarriorSkillParsing, WarriorDatabaseList);
-        Debug.Log("skill�Ľ̿Ϸ�");
 
     }
 
@@ -372,7 +369,7 @@ public class CSVtest : MonoBehaviour
         for (int i = 0; i < size; i++)
         {
             skillDatas.DataList[i].ID = int.Parse(dic[i + 1][(int)SkillColData.ID]);
-            skillDatas.DataList[i].Name = Resources.Load<GameObject>("Skills/" + dic[i + 1][(int)SkillColData.Name]);
+            skillDatas.DataList[i].Name = Resources.Load<GameObject>(dic[i + 1][(int)SkillColData.Name]);
             skillDatas.DataList[i].NameLevel = dic[i + 1][(int)SkillColData.NameLevel];
             skillDatas.DataList[i].Probability = float.Parse(dic[i + 1][(int)SkillColData.Probability]);
             skillDatas.DataList[i].Classification = int.Parse(dic[i + 1][(int)SkillColData.Classification]);
