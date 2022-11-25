@@ -64,10 +64,6 @@ public class PlayerHUD : MonoBehaviourPun
     public Sprite GameResultWin;
     public Sprite GameResultDef;
     public Sprite GameResultDraw;
-    private bool winPanel = false;
-
-    [Header("GameESCUI")]
-    public GameObject ESCButton;
 
     private Health playerHp;
     private Health enemyHp;
@@ -213,11 +209,6 @@ public class PlayerHUD : MonoBehaviourPun
 
 
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ESCButton_S();
-        }
     }
 
 
@@ -339,11 +330,6 @@ public class PlayerHUD : MonoBehaviourPun
 
 
     #region ⚙️ MainMenu Panel ⚙️
-
-    private void ESCButton_S()
-    {
-        ESCButton.SetActive(true);
-    }
 
     #endregion
 
