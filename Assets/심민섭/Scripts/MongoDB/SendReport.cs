@@ -18,6 +18,10 @@ public class SendReport : MonoBehaviour
     IMongoDatabase database;
     IMongoCollection<BsonDocument> collection;
 
+    private void Awake()
+    {
+        database = server.GetDatabase("TowerDefense");
+    }
     // My NickName
     private string GetNickName()
     {
@@ -31,15 +35,14 @@ public class SendReport : MonoBehaviour
 
     public async void ReportButton()
     {
-        database = server.GetDatabase("TowerDefense");
         collection = database.GetCollection<BsonDocument>("Report");
         string myNickName = GetNickName();
-
+        string explanation_text = explanation.text;
         var SendReport = new BsonDocument()
         {
             {"MyNickName", myNickName},
             {"YourNickName", "상대방 닉네임"},
-            {"explanation", explanation.text.ToString()},
+            {"explanation", explanation_text},
         };
 
         await collection.InsertOneAsync(SendReport);
