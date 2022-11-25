@@ -29,11 +29,15 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Info");
-        MakeUserInfo.instance.User_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Info_DataSet();
+
         var User_Info = new BsonDocument()
         {
             {"user_id",  MakeUserInfo.instance.id},
-            {"user_nickName", MakeUserInfo.instance.nickName}
+            {"user_nickName", MakeUserInfo.instance.nickName},
+            {"first_login",  DataBaseHandler.instance.firstLogin}
         };
 
         Debug.Log("유저 정보 전송");
@@ -42,7 +46,10 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_Card_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Card_Info");
-        MakeUserInfo.instance.User_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Card_Info_DataSet();
+
         var User_Card_Info = new BsonDocument()
         {
             // 기본 카드 제공
@@ -61,7 +68,10 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_Other_CardPack_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_CardPack_Info");
-        MakeUserInfo.instance.User_OtherInventory_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_OtherInventory_Card_Info_DataSet();
+
         var User_CardPack_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
@@ -87,7 +97,10 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_WarriorCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Warrior_Card_Info");
-        MakeUserInfo.instance.User_Warrior_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Warrior_Card_Info_DataSet();
+
         var User_Warrior_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
@@ -113,7 +126,10 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_WizardCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Wizard_Card_Info");
-        MakeUserInfo.instance.User_Wizard_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Wizard_Card_Info_DataSet();
+
         var User_Wizard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
@@ -139,7 +155,10 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_InherenceCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Inherence_Card_Info");
-        MakeUserInfo.instance.User_Inherence_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Inherence_Card_Info_DataSet();
+
         var User_InherenceCard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
@@ -160,7 +179,10 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_TowerCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Tower_Card_Info");
-        MakeUserInfo.instance.User_Tower_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Tower_Card_Info_DataSet();
+
         var User_TowerCard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},

@@ -259,31 +259,31 @@ public class DrawManager : MonoBehaviour
         // ex) 전사 카드 -> 전사 인벤토리
         // 어떤 아이템을 오픈하는지 확인해서 인벤토리를 정하면 된다.
 
-        if (boxName == "Warrior Skill")
+        if (boxName == "Warrior Skill" || boxName == "Warrior Skill_P")
         {
             selectInventory = warriorInventory;
         }
-        else if (boxName == "Wizard Skill")
+        else if (boxName == "Wizard Skill" || boxName == "Wizard Skill_P")
         {
             selectInventory = wizardInventory;
         }
-        else if (boxName == "Common Skill")
+        else if (boxName == "Common Skill" || boxName == "Common Skill_P")
         {
             selectInventory = InherenceInventory;
         }
-        else if (boxName == "Attack Tower")
+        else if (boxName == "Attack Tower" || boxName == "Attack Tower_P")
         {
             selectInventory = towerInventory;
         }
-        else if (boxName == "Minion Tower")
+        else if (boxName == "Minion Tower" || boxName == "Minion Tower_P")
         {
             selectInventory = towerInventory;
         }
-        else if (boxName == "Random Tower")
+        else if (boxName == "Random Tower" || boxName == "Random Tower_P")
         {
             selectInventory = towerInventory;
         }
-        else if (boxName == "Buff Tower")
+        else if (boxName == "Buff Tower" || boxName == "Buff Tower_P")
         {
             selectInventory = towerInventory;
         }
