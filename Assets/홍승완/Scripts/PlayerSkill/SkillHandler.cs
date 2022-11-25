@@ -31,11 +31,6 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
     public PlayerSkillDatas Data;
 
-    public float SetDamage = 1;
-    public float SetHodingTime = 1;
-    public float SetRange = 1;
-    public float SetLockTime = 1;
-
     // 플레이어 HeroAbility를 받아옴
     public void GetPlayerPos(HeroAbility heroAbility)
     {

@@ -23,6 +23,11 @@ public class Smash : SkillHandler
     private float angle;
     #endregion
 
+    private void Awake()
+    {
+        damageZone = GetComponentInChildren<Collider>().gameObject;
+    }
+
     private void OnEnable()
     {
         elapsedTime = 0f;

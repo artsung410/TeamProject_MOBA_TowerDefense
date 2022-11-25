@@ -19044,7 +19044,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3795736645828584852}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.51, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -52740,12 +52740,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fea8a66329b6440b9d3b458b08c302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetDamage: 200
-  SetHodingTime: 0.5
-  SetRange: 12
-  DamazeZone: {fileID: 8203116267278275064}
-  damageZoneRadius: 0
-  CrowdControlTime: 0
+  Data:
+    NameLevel: Lightning1
+    Name: {fileID: 7462896851685500729}
+    ID: 4
+    Probability: 10
+    Classification: 3
+    Rank: 1
+    LockTime: 0.5
+    SkillType: 6
+    Value_1: 200
+    Value_2: 0
+    CoolTime: 15
+    Range: 12
+    RangeType: 0
+    RangeValue_1: 5
+    RangeValue_2: 0
+    HoldingTime: 0.5
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 2
+    CcTime: 2
+    CcValue: 0
+    CardImage: {fileID: 21300000, guid: 67ec7c6bb3c6720408c364c91cba7b72, type: 3}
+    SkillIcon: {fileID: 21300000, guid: 9a74945936e68224fb2b3bdcfd18b712, type: 3}
+    Desc: "Strikes lightning to inflict damage on enemies within range.\r"
+  DamageZone: {fileID: 0}
 --- !u!114 &4951676478955841087
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52810,7 +52831,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8203116267278275064}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

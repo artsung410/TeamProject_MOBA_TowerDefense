@@ -94,6 +94,11 @@ public class EnergyBolt : SkillHandler
     {
         if (photonView.IsMine)
         {
+            if (other.CompareTag(_behaviour.tag))
+            {
+                return;
+            }
+
             if(other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 _ability.OnLock(false);
