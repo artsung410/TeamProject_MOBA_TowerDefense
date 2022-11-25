@@ -296,7 +296,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             
 
-          PhotonNetwork.Instantiate(BossPrefeb.name,new Vector3(0,-1f,0f), Quaternion.identity);
+          PhotonNetwork.Instantiate(BossPrefeb.name,new Vector3(87.775f,0f,75.799f), Quaternion.identity);
         }
 
 
