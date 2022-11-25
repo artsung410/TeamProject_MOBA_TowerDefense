@@ -45,12 +45,13 @@ public class DataBaseInsert : MonoBehaviour
         MakeUserInfo.instance.User_Card_Info_DataSet();
         var User_Card_Info = new BsonDocument()
         {
+            // 기본 카드 제공
             {"user_id", MakeUserInfo.instance.id},
-            {"total_cnt", MakeUserInfo.instance.haveCardCnt},
-            {"warrior", MakeUserInfo.instance.warriorCardCnt},
-            {"wizard", MakeUserInfo.instance.wizardCardCnt},
-            {"inherence", MakeUserInfo.instance.inherenceCardCnt},
-            {"tower", MakeUserInfo.instance.towerCardCnt},
+            {"total_cnt", 11}, // MakeUserInfo.instance.haveCardCnt
+            {"warrior", 3}, // MakeUserInfo.instance.warriorCardCnt
+            {"wizard", 3}, // MakeUserInfo.instance.wizardCardCnt
+            {"inherence", 1}, // MakeUserInfo.instance.inherenceCardCnt
+            {"tower", 4}, // MakeUserInfo.instance.towerCardCnt
             {"other", MakeUserInfo.instance.otherItemCnt},
         };
 
@@ -90,12 +91,12 @@ public class DataBaseInsert : MonoBehaviour
         var User_Warrior_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
-            {"ChainAttack1", MakeUserInfo.instance.ChainAttack[0]},
+            {"ChainAttack1", 1}, // MakeUserInfo.instance.ChainAttack[0]
             {"ChainAttack2", MakeUserInfo.instance.ChainAttack[1]},
             {"ChainAttack3", MakeUserInfo.instance.ChainAttack[2]},
             {"ChainAttack4", MakeUserInfo.instance.ChainAttack[3]},
             {"ChainAttack5", MakeUserInfo.instance.ChainAttack[4]},
-            {"Smash1", MakeUserInfo.instance.Smash[0]},
+            {"Smash1", 1}, // MakeUserInfo.instance.Smash[0]
             {"Smash2", MakeUserInfo.instance.Smash[1]},
             {"Smash3", MakeUserInfo.instance.Smash[2]},
             {"Smash4", MakeUserInfo.instance.Smash[3]},
@@ -105,7 +106,7 @@ public class DataBaseInsert : MonoBehaviour
             {"Whirlwind3", MakeUserInfo.instance.Whirlwind[2]},
             {"Whirlwind4", MakeUserInfo.instance.Whirlwind[3]},
             {"Whirlwind5", MakeUserInfo.instance.Whirlwind[4]},
-            {"SpritSword1", MakeUserInfo.instance.SpritSword[0]},
+            {"SpritSword1", 1}, // MakeUserInfo.instance.SpritSword[0]
             {"SpritSword2", MakeUserInfo.instance.SpritSword[1]},
             {"SpritSword3", MakeUserInfo.instance.SpritSword[2]},
             {"SpritSword4", MakeUserInfo.instance.SpritSword[3]},
@@ -126,12 +127,12 @@ public class DataBaseInsert : MonoBehaviour
         var User_Wizard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
-            {"Blaze1", MakeUserInfo.instance.Blaze[0]},
+            {"Blaze1", 1}, // MakeUserInfo.instance.Blaze[0]
             {"Blaze2", MakeUserInfo.instance.Blaze[1]},
             {"Blaze3", MakeUserInfo.instance.Blaze[2]},
             {"Blaze4", MakeUserInfo.instance.Blaze[3]},
             {"Blaze5", MakeUserInfo.instance.Blaze[4]},
-            {"Lightning1", MakeUserInfo.instance.Lightning[0]},
+            {"Lightning1", 1}, // MakeUserInfo.instance.Lightning[0]
             {"Lightning2", MakeUserInfo.instance.Lightning[1]},
             {"Lightning3", MakeUserInfo.instance.Lightning[2]},
             {"Lightning4", MakeUserInfo.instance.Lightning[3]},
@@ -141,7 +142,7 @@ public class DataBaseInsert : MonoBehaviour
             {"Blink3", MakeUserInfo.instance.Blink[2]},
             {"Blink4", MakeUserInfo.instance.Blink[3]},
             {"Blink5", MakeUserInfo.instance.Blink[4]},
-            {"IceArrow1", MakeUserInfo.instance.IceArrow[0]},
+            {"IceArrow1", 1}, // MakeUserInfo.instance.IceArrow[0]
             {"IceArrow2", MakeUserInfo.instance.IceArrow[1]},
             {"IceArrow3", MakeUserInfo.instance.IceArrow[2]},
             {"IceArrow4", MakeUserInfo.instance.IceArrow[3]},
@@ -162,7 +163,7 @@ public class DataBaseInsert : MonoBehaviour
         var User_InherenceCard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
-            {"increasedMinionProduction1", MakeUserInfo.instance.increasedMinionProduction[0]},
+            {"increasedMinionProduction1", 1}, // MakeUserInfo.instance.increasedMinionProduction[0]
             {"increasedMinionProduction2", MakeUserInfo.instance.increasedMinionProduction[1]},
             {"increasedMinionProduction3", MakeUserInfo.instance.increasedMinionProduction[2]},
             {"increasedMinionProduction4", MakeUserInfo.instance.increasedMinionProduction[3]},
@@ -189,12 +190,12 @@ public class DataBaseInsert : MonoBehaviour
         var User_TowerCard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
-            {"Tower_Attack_Guard1", MakeUserInfo.instance.towerAttackGuard[0]},
+            {"Tower_Attack_Guard1", 1}, // MakeUserInfo.instance.towerAttackGuard[0]
             {"Tower_Attack_Guard2", MakeUserInfo.instance.towerAttackGuard[1]},
             {"Tower_Attack_Guard3", MakeUserInfo.instance.towerAttackGuard[2]},
             {"Tower_Attack_Guard4", MakeUserInfo.instance.towerAttackGuard[3]},
             {"Tower_Attack_Guard5", MakeUserInfo.instance.towerAttackGuard[4]},
-            {"Tower_Attack_Cannon1", MakeUserInfo.instance.towerAttackCannon[0]},
+            {"Tower_Attack_Cannon1", 1}, // MakeUserInfo.instance.towerAttackCannon[0]
             {"Tower_Attack_Cannon2", MakeUserInfo.instance.towerAttackCannon[1]},
             {"Tower_Attack_Cannon3", MakeUserInfo.instance.towerAttackCannon[2]},
             {"Tower_Attack_Cannon4", MakeUserInfo.instance.towerAttackCannon[3]},
@@ -239,12 +240,12 @@ public class DataBaseInsert : MonoBehaviour
             {"Tower_Attack_Light3", MakeUserInfo.instance.towerAttackLight[2]},
             {"Tower_Attack_Light4", MakeUserInfo.instance.towerAttackLight[3]},
             {"Tower_Attack_Light5", MakeUserInfo.instance.towerAttackLight[4]},
-            {"Tower_Buff_Damage_Increase1", MakeUserInfo.instance.towerBuffDamageIncrease[0]},
+            {"Tower_Buff_Damage_Increase1", 1}, //MakeUserInfo.instance.towerBuffDamageIncrease[0]
             {"Tower_Buff_Damage_Increase2", MakeUserInfo.instance.towerBuffDamageIncrease[1]},
             {"Tower_Buff_Damage_Increase3", MakeUserInfo.instance.towerBuffDamageIncrease[2]},
             {"Tower_Buff_Damage_Increase4", MakeUserInfo.instance.towerBuffDamageIncrease[3]},
             {"Tower_Buff_Damage_Increase5", MakeUserInfo.instance.towerBuffDamageIncrease[4]},
-            {"Tower_Buff_Hp_Regen_Increase1", MakeUserInfo.instance.towerBuffHp_RegenIncrease[0]},
+            {"Tower_Buff_Hp_Regen_Increase1", 1}, // MakeUserInfo.instance.towerBuffHp_RegenIncrease[0]
             {"Tower_Buff_Hp_Regen_Increase2", MakeUserInfo.instance.towerBuffHp_RegenIncrease[1]},
             {"Tower_Buff_Hp_Regen_Increase3", MakeUserInfo.instance.towerBuffHp_RegenIncrease[2]},
             {"Tower_Buff_Hp_Regen_Increase4", MakeUserInfo.instance.towerBuffHp_RegenIncrease[3]},

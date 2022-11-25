@@ -11,54 +11,54 @@ public class DrawManager : MonoBehaviour
     //             NAME : Simstealer                      
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
-    // ¹öÆ° Á¤º¸ ÀúÀå º¯¼ö
+    // ë²„íŠ¼ ì •ë³´ ì €ì¥ ë³€ìˆ˜
     public static DrawManager instance;
 
-    [Header("¼±ÅÃµÈ ¾ÆÀÌÅÛ Á¤º¸")]
-    // ¼±ÅÃÇÑ ÀÌ¹ÌÁö
+    [Header("ì„ íƒëœ ì•„ì´í…œ ì •ë³´")]
+    // ì„ íƒí•œ ì´ë¯¸ì§€
     public Sprite selectImage;
-    // ¼±ÅÃÇÑ ¾ÆÀÌÅÛ ¸í
+    // ì„ íƒí•œ ì•„ì´í…œ ëª…
     public string selectNameText;
-    // ¼±ÅÃÇÑ ¾ÆÀÌÅÛÀÇ ¼³¸í
+    // ì„ íƒí•œ ì•„ì´í…œì˜ ì„¤ëª…
     public string selectExplanationText;
 
-    [Header("±¸¸ÅÇÑ ¾ÆÀÌÅÛ Á¤º¸")]
-    // ±¸¸ÅÇÑ ¾ÆÀÌÅÛÀÇ ÀçÈ­¸í
+    [Header("êµ¬ë§¤í•œ ì•„ì´í…œ ì •ë³´")]
+    // êµ¬ë§¤í•œ ì•„ì´í…œì˜ ì¬í™”ëª…
     public string buyCurencyName;
-    // ±¸¸ÅÇÑ Ä«µå °³¼ö
-    public int buyCount; // 0ÀÌ ¾Æ´Ï¸é ±¸¸ÅÇÑ °Í - ¾ÆÀÌÅÛ È¹µæ Ã³¸® ÈÄ 0À¸·Î ÃÊ±âÈ­
-    // ±¸¸ÅÇÑ ¾ÆÀÌÅÛÀÇ ÀÌ¹ÌÁö
+    // êµ¬ë§¤í•œ ì¹´ë“œ ê°œìˆ˜
+    public int buyCount; // 0ì´ ì•„ë‹ˆë©´ êµ¬ë§¤í•œ ê²ƒ - ì•„ì´í…œ íšë“ ì²˜ë¦¬ í›„ 0ìœ¼ë¡œ ì´ˆê¸°í™”
+    // êµ¬ë§¤í•œ ì•„ì´í…œì˜ ì´ë¯¸ì§€
     public Image buyItemImage;
-    // ±¸¸ÅÇÑ ¾ÆÀÌÅÛ ¸í
+    // êµ¬ë§¤í•œ ì•„ì´í…œ ëª…
     public string buyItemName;
 
     [SerializeField]
     private GameObject prefabItem;
 
-    // Other ÀÎº¥Åä¸®
+    // Other ì¸ë²¤í† ë¦¬
     private GameObject otherInventory;
-    // Warrior ÀÎº¥Åä¸®
+    // Warrior ì¸ë²¤í† ë¦¬
     private GameObject warriorInventory;
-    // Wizard ÀÎº¥Åä¸®
+    // Wizard ì¸ë²¤í† ë¦¬
     private GameObject wizardInventory;
-    // Tower ÀÎº¥Åä¸®
+    // Tower ì¸ë²¤í† ë¦¬
     private GameObject towerInventory;
-    // Inherence ÀÎº¥Åä¸®
+    // Inherence ì¸ë²¤í† ë¦¬
     private GameObject InherenceInventory;
 
-    // ÇöÀç ±î°í ÀÖ´Â ¹Ú½º Á¤º¸ ÀúÀå
-    [Header("Box Á¤º¸")]
+    // í˜„ì¬ ê¹Œê³  ìˆëŠ” ë°•ìŠ¤ ì •ë³´ ì €ì¥
+    [Header("Box ì •ë³´")]
     public ItemOnObject boxItem;
     public Sprite boxImage;
     public string boxName;
-    public int boxCount; // ±î¹ö¸± °¹¼ö
+    public int boxCount; // ê¹Œë²„ë¦´ ê°¯ìˆ˜
 
     private void Awake()
     {
         instance = this;
     }
 
-    // ÀÎº¥Åä¸® ºĞ·ùµÈ º¯¼ö
+    // ì¸ë²¤í† ë¦¬ ë¶„ë¥˜ëœ ë³€ìˆ˜
     private GameObject selectInventory;
 
     private void Start()
@@ -67,61 +67,61 @@ public class DrawManager : MonoBehaviour
         boxCount = 1;
         buyCurencyName = "Zera";
 
-        // Other ÀÎº¥Åä¸®
+        // Other ì¸ë²¤í† ë¦¬
         otherInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(2).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject; // Slots
-        // Warrior ÀÎº¥Åä¸®
+        // Warrior ì¸ë²¤í† ë¦¬
         warriorInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        // Wizard ÀÎº¥Åä¸®
+        // Wizard ì¸ë²¤í† ë¦¬
         wizardInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        // Inherence ÀÎº¥Åä¸®
+        // Inherence ì¸ë²¤í† ë¦¬
         InherenceInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(0).GetChild(3).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
-        // Tower ÀÎº¥Åä¸®
+        // Tower ì¸ë²¤í† ë¦¬
         towerInventory = GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(1).GetChild(1).GetChild(0).GetChild(0).GetChild(0).GetChild(0).GetChild(0).gameObject;
     }
 
-    // ÀÌ¹Ì ÀÖ´Â ¾ÆÀÌÅÛ ¾ÆÀÌÅÛ
+    // ì´ë¯¸ ìˆëŠ” ì•„ì´í…œ ì•„ì´í…œ
     private ItemOnObject firstItem;
-    // »õ·Î µé¾î¿Â ¾ÆÀÌÅÛ
+    // ìƒˆë¡œ ë“¤ì–´ì˜¨ ì•„ì´í…œ
     private ItemOnObject secondItem;
-    // »õ·Î µé¾î¿Â ¾ÆÀÌÅÛ Á¤º¸ ´ã´Â º¯¼ö
+    // ìƒˆë¡œ ë“¤ì–´ì˜¨ ì•„ì´í…œ ì •ë³´ ë‹´ëŠ” ë³€ìˆ˜
     private ItemOnObject drawItem;
-    // »õ·Î µé¾î¿Â ¾ÆÀÌÅÛ ¿ÀºêÁ§Æ® ´ã´Â º¯¼ö
+    // ìƒˆë¡œ ë“¤ì–´ì˜¨ ì•„ì´í…œ ì˜¤ë¸Œì íŠ¸ ë‹´ëŠ” ë³€ìˆ˜
     private GameObject drawItemObj;
 
     public void PutCardItem_AfterBuy()
     {
-        // ½½·Ô ¼ö ¸¸Å­ ¹İº¹ÇØ¼­ ºñ¾îÀÖ´Â °÷À» È®ÀÎ
+        // ìŠ¬ë¡¯ ìˆ˜ ë§Œí¼ ë°˜ë³µí•´ì„œ ë¹„ì–´ìˆëŠ” ê³³ì„ í™•ì¸
         for (int i = 0; i < otherInventory.transform.childCount; i++)
         {
-            if (otherInventory.transform.GetChild(i).childCount > 0) // ¾ÆÀÌÅÛÀÌ ÀÌ¹Ì ÀÖ´Â °æ¿ì
+            if (otherInventory.transform.GetChild(i).childCount > 0) // ì•„ì´í…œì´ ì´ë¯¸ ìˆëŠ” ê²½ìš°
             {
                 firstItem = otherInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>();
                 //Debug.Log(otherInventory.transform.GetChild(i).GetChild(0).name); // DrawBox
                 /*drawItem = drawItemObj.GetComponent<DrawItem>();
                 secondItem.drawBox.BoxName = selectNameText;*/
 
-                // ÀÌ¹Ì ÀÖ´Â ¾ÆÀÌÅÛ ¸í°ú ±¸¸ÅÇÑ ¾ÆÀÌÅÛ ¸í ºñ±³
+                // ì´ë¯¸ ìˆëŠ” ì•„ì´í…œ ëª…ê³¼ êµ¬ë§¤í•œ ì•„ì´í…œ ëª… ë¹„êµ
                 if (firstItem.item.itemName == buyItemName)
                 {
-                    // Value¸¸ ¿Ã·ÁÁØ´Ù.
+                    // Valueë§Œ ì˜¬ë ¤ì¤€ë‹¤.
                     /*Text text = firstItem.transform.GetChild(1).GetComponent<Text>();
                     text.text = (int.Parse(text.text) + buyCount).ToString();*/
 
                     firstItem.item.itemValue += buyCount;
 
-                    Debug.Log("¾ÆÀÌÅÛ ¸íÀÌ °°À½");
+                    Debug.Log("ì•„ì´í…œ ëª…ì´ ê°™ìŒ");
                     InventoryGetData.instance.GetItemInInventoryData();
                     return;
                 }
-                else // ÀÌ¸§ÀÌ °°Áö ¾ÊÀº °æ¿ì
+                else // ì´ë¦„ì´ ê°™ì§€ ì•Šì€ ê²½ìš°
                 {
                     if (otherInventory.transform.GetChild(i).childCount == 0)
                     {
-                        Debug.Log("¾ÆÀÌÅÛ ¸íÀÌ ´Ù¸§");
+                        Debug.Log("ì•„ì´í…œ ëª…ì´ ë‹¤ë¦„");
                         drawItemObj = (GameObject)Instantiate(prefabItem);
                         drawItem = drawItemObj.GetComponent<ItemOnObject>();
-                        drawItem.item.itemIcon = buyItemImage.sprite; // ¹Ú½º ÀÌ¹ÌÁö
-                        drawItem.item.itemName = buyItemName; // ¹Ú½º ¸í
+                        drawItem.item.itemIcon = buyItemImage.sprite; // ë°•ìŠ¤ ì´ë¯¸ì§€
+                        drawItem.item.itemName = buyItemName; // ë°•ìŠ¤ ëª…
                         drawItem.item.itemValue = buyCount;
                         if (buyCurencyName == "Zera")
                         {
@@ -145,13 +145,13 @@ public class DrawManager : MonoBehaviour
                     }
                 }
             }
-            // ½½·ÔÀÌ ºñ¾îÀÖÀ» °æ¿ì
+            // ìŠ¬ë¡¯ì´ ë¹„ì–´ìˆì„ ê²½ìš°
             if (otherInventory.transform.GetChild(i).childCount == 0)
             {
                 drawItemObj = (GameObject)Instantiate(prefabItem);
                 drawItem = drawItemObj.GetComponent<ItemOnObject>();
-                drawItem.item.itemIcon = buyItemImage.sprite; // ¹Ú½º ÀÌ¹ÌÁö
-                drawItem.item.itemName = buyItemName; // ¹Ú½º ¸í
+                drawItem.item.itemIcon = buyItemImage.sprite; // ë°•ìŠ¤ ì´ë¯¸ì§€
+                drawItem.item.itemName = buyItemName; // ë°•ìŠ¤ ëª…
                 drawItem.item.itemValue = buyCount;
                 if (buyCurencyName == "Zera")
                 {
@@ -172,7 +172,7 @@ public class DrawManager : MonoBehaviour
                 drawItemObj.transform.GetChild(1).localPosition = new Vector3(35f, -30f, 0f);
                 drawItemObj.transform.GetChild(1).GetComponent<Text>().fontSize = 20;
                 drawItemObj.transform.GetChild(0).localScale = new Vector3(2f, 2f, 2f);
-                // ¾ÆÀÌÅÛÀ» ³Ö¾ú´Ù¸é 
+                // ì•„ì´í…œì„ ë„£ì—ˆë‹¤ë©´ 
                 //InventoryGetData.instance.GetItemInInventoryData();
                 DataBaseUpdater.instance.DrawAfterUpdate();
                 return;
@@ -181,10 +181,10 @@ public class DrawManager : MonoBehaviour
         }
     }
 
-    // ¾ÆÀÌÅÛ ¼Ò¸ğ ÇÔ¼ö
+    // ì•„ì´í…œ ì†Œëª¨ í•¨ìˆ˜
     public void OpenBoxDisCount()
     {
-        // ¼ö·®
+        // ìˆ˜ëŸ‰
         if (boxItem.item.itemValue <= 0)
         {
             Destroy(boxItem.gameObject);
@@ -199,7 +199,7 @@ public class DrawManager : MonoBehaviour
         }
     }
 
-    // °³¼ö 10°³ ÀÌÇÏ·Î ÀÎÇØ ¹öÆ° ºñÈ°¼ºÈ­ ÇÔ¼ö
+    // ê°œìˆ˜ 10ê°œ ì´í•˜ë¡œ ì¸í•´ ë²„íŠ¼ ë¹„í™œì„±í™” í•¨ìˆ˜
     [SerializeField]
     private GameObject openCard_tenButton;
     public void ButtonDisable()
@@ -211,31 +211,31 @@ public class DrawManager : MonoBehaviour
         openCard_tenButton.GetComponent<Button>().interactable = true;
     }
 
-    // È¹µæÇÑ ¾ÆÀÌÅÛ ÀÎµ¦½ºÀ» ´ãÀ» °ø°£
+    // íšë“í•œ ì•„ì´í…œ ì¸ë±ìŠ¤ì„ ë‹´ì„ ê³µê°„
     public List<int> getDrawResult = new List<int>();
 
-    // È¹µæÇÑ ¾ÆÀÌÅÛ ¿ÀºêÁ§Æ®À» ´ãÀ» °ø°£(RandomSelect -> DrawManager)
+    // íšë“í•œ ì•„ì´í…œ ì˜¤ë¸Œì íŠ¸ì„ ë‹´ì„ ê³µê°„(RandomSelect -> DrawManager)
     public List<Item> getDrawResultItem = new List<Item>();
 
-    // ÀÌ°Ô ÁøÂ¥ ÁøÂ¥ µå·Î¿ìÇØ¼­ »ÌÀº Ä«µåÀÓ!!
+    // ì´ê²Œ ì§„ì§œ ì§„ì§œ ë“œë¡œìš°í•´ì„œ ë½‘ì€ ì¹´ë“œì„!!
     public List<Item> ResultItem = new List<Item>();
 
-    // List -> Struct º¯È¯
+    // List -> Struct ë³€í™˜
     public List<ItemStruct> StructResultItem = new List<ItemStruct>();
 
-    // Ä«µå ¿ÀÇÂ ½Ã ¾ÆÀÌÅÛÀÌ ÀÎº¥Åä¸®·Î µé¾î°£´Ù.
-    // 1. Ä«µå´Â ¿ÀÇÂ ½Ã getItemList·Î µ¥ÀÌÅÍ¸¦ ³Ö´Â´Ù.
-    // 2. ÀÎº¥Åä¸®¿¡ °°Àº Ä«µåµ¥ÀÌÅÍ°¡ ÀÖ´ÂÁö È®ÀÎ ÇÑ´Ù.
-    // 3. °°Àº Ä«µåµ¥ÀÌÅÍ°¡ ÀÖÀ¸¸é Value¸¸ ¿Ã¸°´Ù.
-    // 4. °°Àº Ä«µåµ¥ÀÌÅÍ°¡ ¾øÀ¸¸é ºó ½½·Ô¿¡ ¿ÀºêÁ§Æ®¸¦ »ı¼ºÇÑ´Ù.
+    // ì¹´ë“œ ì˜¤í”ˆ ì‹œ ì•„ì´í…œì´ ì¸ë²¤í† ë¦¬ë¡œ ë“¤ì–´ê°„ë‹¤.
+    // 1. ì¹´ë“œëŠ” ì˜¤í”ˆ ì‹œ getItemListë¡œ ë°ì´í„°ë¥¼ ë„£ëŠ”ë‹¤.
+    // 2. ì¸ë²¤í† ë¦¬ì— ê°™ì€ ì¹´ë“œë°ì´í„°ê°€ ìˆëŠ”ì§€ í™•ì¸ í•œë‹¤.
+    // 3. ê°™ì€ ì¹´ë“œë°ì´í„°ê°€ ìˆìœ¼ë©´ Valueë§Œ ì˜¬ë¦°ë‹¤.
+    // 4. ê°™ì€ ì¹´ë“œë°ì´í„°ê°€ ì—†ìœ¼ë©´ ë¹ˆ ìŠ¬ë¡¯ì— ì˜¤ë¸Œì íŠ¸ë¥¼ ìƒì„±í•œë‹¤.
 
-    // 10Àå
+    // 10ì¥
     [SerializeField]
     private GameObject alreadyCardDraw;
-    // 1Àå
+    // 1ì¥
     [SerializeField]
     private GameObject alreadyCardDraw_one;
-    // Back ¹öÆ°À» Å¬¸¯ ½Ã »Ì±â Ä«µå µ¥ÀÌÅÍ ÃÊ±âÈ­¿Í ÇÔ²² Ã¢ÀÌ ´İÈù´Ù.
+    // Back ë²„íŠ¼ì„ í´ë¦­ ì‹œ ë½‘ê¸° ì¹´ë“œ ë°ì´í„° ì´ˆê¸°í™”ì™€ í•¨ê»˜ ì°½ì´ ë‹«íŒë‹¤.
     public void CardDataInit()
     {
         //Debug.Log(alreadyCardDraw.transform.childCount);
@@ -244,6 +244,7 @@ public class DrawManager : MonoBehaviour
             //Debug.Log(alreadyCardDraw.transform.GetChild(i).name);
             Destroy(alreadyCardDraw.transform.GetChild(i).gameObject);
         }
+
         for (int i = 0; i < alreadyCardDraw_one.transform.childCount; i++)
         {
             Destroy(alreadyCardDraw_one.transform.GetChild(i).gameObject);
@@ -251,12 +252,12 @@ public class DrawManager : MonoBehaviour
     }
 
 
-    // ¾ÆÁÖ¾ÆÁÖ Áß¿äÇÑ ÀÎº¥Åä¸® ºĞ¹è ÇÔ¼ö
+    // ì•„ì£¼ì•„ì£¼ ì¤‘ìš”í•œ ì¸ë²¤í† ë¦¬ ë¶„ë°° í•¨ìˆ˜
     public void SelectInventory()
     {
-        // ¿©±â¼± ¾î¶² ÀÎº¥Åä¸®¿¡ ¾ÆÀÌÅÛÀ» ³ÖÀ»Áö Á¤ÇÑ´Ù.
-        // ex) Àü»ç Ä«µå -> Àü»ç ÀÎº¥Åä¸®
-        // ¾î¶² ¾ÆÀÌÅÛÀ» ¿ÀÇÂÇÏ´ÂÁö È®ÀÎÇØ¼­ ÀÎº¥Åä¸®¸¦ Á¤ÇÏ¸é µÈ´Ù.
+        // ì—¬ê¸°ì„  ì–´ë–¤ ì¸ë²¤í† ë¦¬ì— ì•„ì´í…œì„ ë„£ì„ì§€ ì •í•œë‹¤.
+        // ex) ì „ì‚¬ ì¹´ë“œ -> ì „ì‚¬ ì¸ë²¤í† ë¦¬
+        // ì–´ë–¤ ì•„ì´í…œì„ ì˜¤í”ˆí•˜ëŠ”ì§€ í™•ì¸í•´ì„œ ì¸ë²¤í† ë¦¬ë¥¼ ì •í•˜ë©´ ëœë‹¤.
 
         if (boxName == "Warrior Skill")
         {
@@ -288,13 +289,13 @@ public class DrawManager : MonoBehaviour
         }
         else
         {
-            Debug.LogError("¸Â´Â ÀÎº¥Åä¸®°¡ ¾ø½À´Ï´Ù.");
+            Debug.LogError("ë§ëŠ” ì¸ë²¤í† ë¦¬ê°€ ì—†ìŠµë‹ˆë‹¤.");
         }
     }
 
 
-    // »ÌÀº Ä«µå Á¤¸®(ÀÚ·á±¸Á¶¿¡¼­ Áßº¹ °ª Ã£±â)
-    // ¾ÆÀÌÅÛÀÌ ¾øÀ» °æ¿ì ½ÇÇà
+    // ë½‘ì€ ì¹´ë“œ ì •ë¦¬(ìë£Œêµ¬ì¡°ì—ì„œ ì¤‘ë³µ ê°’ ì°¾ê¸°)
+    // ì•„ì´í…œì´ ì—†ì„ ê²½ìš° ì‹¤í–‰
     public void DrawCardOrganize_one()
     {
         /*var duplicates = getDrawResultItem.GroupBy(x => x)
@@ -308,7 +309,7 @@ public class DrawManager : MonoBehaviour
 
         ResultItem = getDrawResultItem.Distinct().ToList();
 
-        // List -> Struct º¯È¯
+        // List -> Struct ë³€í™˜
         for (int i = 0; i < ResultItem.Count; i++)
         {
             ItemStruct itemStruct = new ItemStruct();
@@ -346,17 +347,17 @@ public class DrawManager : MonoBehaviour
 
     private void DrawCardOrganize_two()
     {
-        // °°Àº ¾ÆÀÌÅÛÀÌ ÀÖ´ÂÁö È®ÀÎÇÑ´Ù.
-        // °°Àº ¾ÆÀÌÅÛÀÌ ÀÖÀ¸¸é Value¸¦ ´õÇÑ´Ù.
-        // °°Àº ¾ÆÀÌÅÛÀÌ ¾øÀ¸¸é ºó ½½·Ô¿¡ ¾ÆÀÌÅÛÀ» »ı¼ºÇÑ´Ù.
+        // ê°™ì€ ì•„ì´í…œì´ ìˆëŠ”ì§€ í™•ì¸í•œë‹¤.
+        // ê°™ì€ ì•„ì´í…œì´ ìˆìœ¼ë©´ Valueë¥¼ ë”í•œë‹¤.
+        // ê°™ì€ ì•„ì´í…œì´ ì—†ìœ¼ë©´ ë¹ˆ ìŠ¬ë¡¯ì— ì•„ì´í…œì„ ìƒì„±í•œë‹¤.
         StructResultItem.Clear();
         ResultItem = getDrawResultItem;
 
-        // ÀÎº¥Åä¸®¿¡ ÀÖ´Â ¾ÆÀÌÅÛÀ» ÀúÀåÇÑ´Ù.
+        // ì¸ë²¤í† ë¦¬ì— ìˆëŠ” ì•„ì´í…œì„ ì €ì¥í•œë‹¤.
         List<Item> myInven_warrior = new List<Item>();
         for (int i = 0; i < selectInventory.transform.childCount; i++)
         {
-            // ½½·Ô¿¡ ¾ÆÀÌÅÛÀÌ ÀÖÀ¸¸é Á¢±Ù Á¶°Ç Ãß°¡
+            // ìŠ¬ë¡¯ì— ì•„ì´í…œì´ ìˆìœ¼ë©´ ì ‘ê·¼ ì¡°ê±´ ì¶”ê°€
             if (selectInventory.transform.GetChild(i).childCount != 0)
             {
                 myInven_warrior.Add(selectInventory.transform.GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item);
@@ -364,16 +365,16 @@ public class DrawManager : MonoBehaviour
         }
 
         List<Item> sameItem = new List<Item>();
-        // °°Àº ¾ÆÀÌÅÛÀÌ ÀÖ´ÂÁö ÆÇº°ÇÏ°í value °ªÀ» ´õÇÑ´Ù.
-        for (int i = 0; i <= ResultItem.Count; i++) // 10¹ø ¹İº¹ (»Ì±âÇÑ ¾ÆÀÌÅÛÀÇ ¼ö¸¸Å­)
+        // ê°™ì€ ì•„ì´í…œì´ ìˆëŠ”ì§€ íŒë³„í•˜ê³  value ê°’ì„ ë”í•œë‹¤.
+        for (int i = 0; i <= ResultItem.Count; i++) // 10ë²ˆ ë°˜ë³µ (ë½‘ê¸°í•œ ì•„ì´í…œì˜ ìˆ˜ë§Œí¼)
         {
             int stack = 0;
-            for (int j = 0; j < myInven_warrior.Count; j++) // ÀÎº¥Åä¸®¿¡ ÀÖ´Â ¾ÆÀÌÅÛÀÇ ¼ö¸¸Å­ ¹İº¹
+            for (int j = 0; j < myInven_warrior.Count; j++) // ì¸ë²¤í† ë¦¬ì— ìˆëŠ” ì•„ì´í…œì˜ ìˆ˜ë§Œí¼ ë°˜ë³µ
             {
-                // °°Àº ¾ÆÀÌÅÛÀÌ Á¸ÀçÇÏ¸é
+                // ê°™ì€ ì•„ì´í…œì´ ì¡´ì¬í•˜ë©´
                 if (ResultItem[i].itemID == myInven_warrior[j].itemID)
                 {
-                    // value¸¦ ¿Ã¸°´Ù.
+                    // valueë¥¼ ì˜¬ë¦°ë‹¤.
                     myInven_warrior[j].itemValue += 1;
                     ResultItem.RemoveAt(i);
                     if (ResultItem.Count == 0)
@@ -384,12 +385,12 @@ public class DrawManager : MonoBehaviour
                 }
                 else
                 {
-                    // ´Ù¸£¸é ½ºÅØÀ» ½×´Â´Ù.
+                    // ë‹¤ë¥´ë©´ ìŠ¤í…ì„ ìŒ“ëŠ”ë‹¤.
                     stack++;
-                    // ½ºÅØÀÌ myInven°ú °°À¸¸é
+                    // ìŠ¤í…ì´ myInvenê³¼ ê°™ìœ¼ë©´
                     if (stack == myInven_warrior.Count)
                     {
-                        // Add ÇÑ´Ù.
+                        // Add í•œë‹¤.
                         sameItem.Add(ResultItem[i]);
                         ResultItem.RemoveAt(i);
                         if (i == 0)
@@ -406,25 +407,25 @@ public class DrawManager : MonoBehaviour
             }
         }
 
-        // ¸®½ºÆ® -> ID
+        // ë¦¬ìŠ¤íŠ¸ -> ID
         List<int> idList = new List<int>();
         for (int i = 0; i < sameItem.Count; i++)
         {
             idList.Add(sameItem[i].itemID);
         }
-        // ¸®½ºÆ® -> µñ¼Å³Ê¸®(id, count)
+        // ë¦¬ìŠ¤íŠ¸ -> ë”•ì…”ë„ˆë¦¬(id, count)
         var idListDistinct = idList.GroupBy(x => x)
                                       .Where(g => g.Count() > 1)
                                       .ToDictionary(x => x.Key, x => x.Count());
 
-        // ¾ÆÀÌÅÛ »ı¼ºÇÏ±â
+        // ì•„ì´í…œ ìƒì„±í•˜ê¸°
         if (sameItem.Count != 0)
         {
-            for (int j = 0; j < selectInventory.transform.childCount; j++) // ÀÎº¥ ½½·Ô ¸¸Å­ ¹İº¹ÇØ¼­ ºó ½½·ÔÀ» Ã£´Â´Ù.
+            for (int j = 0; j < selectInventory.transform.childCount; j++) // ì¸ë²¤ ìŠ¬ë¡¯ ë§Œí¼ ë°˜ë³µí•´ì„œ ë¹ˆ ìŠ¬ë¡¯ì„ ì°¾ëŠ”ë‹¤.
             {
-                for (int i = 0; i <= idListDistinct.Count; i++) // ÀÎº¥Åä¸® °¹¼ö ¸¸Å­ ¹İº¹
+                for (int i = 0; i <= idListDistinct.Count; i++) // ì¸ë²¤í† ë¦¬ ê°¯ìˆ˜ ë§Œí¼ ë°˜ë³µ
                 {
-                    // ºó ½½·Ô Ã£±â
+                    // ë¹ˆ ìŠ¬ë¡¯ ì°¾ê¸°
                     if (selectInventory.transform.GetChild(j).childCount == 0)
                     {
                         ItemStruct itemStruct = new ItemStruct();
@@ -433,7 +434,7 @@ public class DrawManager : MonoBehaviour
                         itemStruct.itemID = sameItem[i].itemID;
                         if (idListDistinct.ContainsKey(itemStruct.itemID))
                         {
-                            // Key°¡ Á¸ÀçÇÏ¸é
+                            // Keyê°€ ì¡´ì¬í•˜ë©´
                             itemStruct.itemValue = idListDistinct[itemStruct.itemID];
                         }
                         else
@@ -478,7 +479,7 @@ public class DrawManager : MonoBehaviour
                         itemObjProduce.transform.localPosition = Vector3.zero;
                         itemObjProduce.transform.localScale = new Vector3(0.55f, 0.7f, 0f);
 
-                        // ³Ö¾úÀ¸¸é ¾ÆÀÌÅÛ »èÁ¦
+                        // ë„£ì—ˆìœ¼ë©´ ì•„ì´í…œ ì‚­ì œ
                         sameItem.RemoveAt(i);
                         idListDistinct.Remove(itemStruct.itemID);
                         if (idListDistinct.Count == 0)
@@ -495,29 +496,29 @@ public class DrawManager : MonoBehaviour
 
     }
 
-    // ¾ÆÀÌÅÛ ¿ÀºêÁ§Æ® »ı¼º ¹× ÀÌµ¿ ÇÔ¼ö -- ºó ½½·ÔÀ¸·Î Ä«µåÆÑ Ã³À½ ±¸¸ÅÇßÀ»¶§ ½ÇÇà
+    // ì•„ì´í…œ ì˜¤ë¸Œì íŠ¸ ìƒì„± ë° ì´ë™ í•¨ìˆ˜ -- ë¹ˆ ìŠ¬ë¡¯ìœ¼ë¡œ ì¹´ë“œíŒ© ì²˜ìŒ êµ¬ë§¤í–ˆì„ë•Œ ì‹¤í–‰
     public void ItemProduceAndIventoryMove()
     {
 
-        // ÀÎº¥Åä¸®¿¡ ¾ÆÀÌÅÛÀÌ Á¸ÀçÇÒ °æ¿ì ½ÇÇà
+        // ì¸ë²¤í† ë¦¬ì— ì•„ì´í…œì´ ì¡´ì¬í•  ê²½ìš° ì‹¤í–‰
         int count = selectInventory.transform.childCount;
         for (int i = 0; i < selectInventory.transform.childCount; i++)
         {
             if (selectInventory.transform.GetChild(i).childCount == 0)
             {
-                count -= 1; // ºó ½½·ÔÀÌ ÀÖÀ¸¸é Ãß°¡µÈ´Ù.
+                count -= 1; // ë¹ˆ ìŠ¬ë¡¯ì´ ìˆìœ¼ë©´ ì¶”ê°€ëœë‹¤.
             }
-            if (count == 0) // ¾ÆÀÌÅÛÀÌ ÀÎº¥Åä¸®¿¡ ÇÏ³ªµµ ¾øÀ» °æ¿ì
+            if (count == 0) // ì•„ì´í…œì´ ì¸ë²¤í† ë¦¬ì— í•˜ë‚˜ë„ ì—†ì„ ê²½ìš°
             {
                 DrawCardOrganize_one();
-                // ¾ÆÀÌÅÛ »ı¼º/ÀÌµ¿
+                // ì•„ì´í…œ ìƒì„±/ì´ë™
                 for (int j = 0; j < StructResultItem.Count; j++) // 10
                 {
-                    // ¾ÆÀÌÅÛ ¿ÀºêÁ§Æ®¸¦ º¹Á¦ÇÑ´Ù.
+                    // ì•„ì´í…œ ì˜¤ë¸Œì íŠ¸ë¥¼ ë³µì œí•œë‹¤.
                     GameObject itemObjProduce = (GameObject)Instantiate(prefabItem);
-                    // ItemOnObject ½ºÅ©¸³Æ®¸¦ °¡Á®¿Â´Ù.
+                    // ItemOnObject ìŠ¤í¬ë¦½íŠ¸ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
                     ItemOnObject itemProduce = itemObjProduce.GetComponent<ItemOnObject>();
-                    // ¾ÆÀÌÅÛ Á¤º¸¸¦ º¹»çÇÑ´Ù.
+                    // ì•„ì´í…œ ì •ë³´ë¥¼ ë³µì‚¬í•œë‹¤.
                     itemProduce.item.itemName = StructResultItem[j].itemName;
                     itemProduce.item.ClassType = StructResultItem[j].ClassType;
                     itemProduce.item.itemID = StructResultItem[j].itemID;
@@ -541,12 +542,12 @@ public class DrawManager : MonoBehaviour
                 }
             }
         }
-        // ÀÎº¥Åä¸®¿¡ ¾ÆÀÌÅÛÀÌ ÇÏ³ª¶óµµ ÀÖÀ» °æ¿ì
+        // ì¸ë²¤í† ë¦¬ì— ì•„ì´í…œì´ í•˜ë‚˜ë¼ë„ ìˆì„ ê²½ìš°
         if (count != 0)
         {
-            // °°Àº ¾ÆÀÌÅÛÀÌ ÀÖ´ÂÁö È®ÀÎÇÑ´Ù.
-            // °°Àº ¾ÆÀÌÅÛÀÌ ÀÖÀ¸¸é Value¸¦ ´õÇÑ´Ù.
-            // °°Àº ¾ÆÀÌÅÛÀÌ ¾øÀ¸¸é ºó ½½·Ô¿¡ ¾ÆÀÌÅÛÀ» »ı¼ºÇÑ´Ù.
+            // ê°™ì€ ì•„ì´í…œì´ ìˆëŠ”ì§€ í™•ì¸í•œë‹¤.
+            // ê°™ì€ ì•„ì´í…œì´ ìˆìœ¼ë©´ Valueë¥¼ ë”í•œë‹¤.
+            // ê°™ì€ ì•„ì´í…œì´ ì—†ìœ¼ë©´ ë¹ˆ ìŠ¬ë¡¯ì— ì•„ì´í…œì„ ìƒì„±í•œë‹¤.
             DrawCardOrganize_two();
         }
 
@@ -554,7 +555,7 @@ public class DrawManager : MonoBehaviour
         
     }
 
-    // Ä«µå ±¸¸Å ÈÄ ÀçÈ­ ¾÷µ¥ÀÌÆ® ¿¹Á¤ --------------------------------------------
+    // ì¹´ë“œ êµ¬ë§¤ í›„ ì¬í™” ì—…ë°ì´íŠ¸ ì˜ˆì • --------------------------------------------
 
     // ----------------------------------------------------------------------------
 
