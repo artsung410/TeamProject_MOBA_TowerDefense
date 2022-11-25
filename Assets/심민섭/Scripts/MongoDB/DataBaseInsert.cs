@@ -29,11 +29,15 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Info");
-        MakeUserInfo.instance.User_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Info_DataSet();
+
         var User_Info = new BsonDocument()
         {
             {"user_id",  MakeUserInfo.instance.id},
-            {"user_nickName", MakeUserInfo.instance.nickName}
+            {"user_nickName", MakeUserInfo.instance.nickName},
+            {"first_login",  DataBaseHandler.instance.firstLogin}
         };
 
         Debug.Log("유저 정보 전송");
@@ -42,15 +46,19 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_Card_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Card_Info");
-        MakeUserInfo.instance.User_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Card_Info_DataSet();
+
         var User_Card_Info = new BsonDocument()
         {
+            // 기본 카드 제공
             {"user_id", MakeUserInfo.instance.id},
-            {"total_cnt", MakeUserInfo.instance.haveCardCnt},
-            {"warrior", MakeUserInfo.instance.warriorCardCnt},
-            {"wizard", MakeUserInfo.instance.wizardCardCnt},
-            {"inherence", MakeUserInfo.instance.inherenceCardCnt},
-            {"tower", MakeUserInfo.instance.towerCardCnt},
+            {"total_cnt", 11}, // MakeUserInfo.instance.haveCardCnt
+            {"warrior", 3}, // MakeUserInfo.instance.warriorCardCnt
+            {"wizard", 3}, // MakeUserInfo.instance.wizardCardCnt
+            {"inherence", 1}, // MakeUserInfo.instance.inherenceCardCnt
+            {"tower", 4}, // MakeUserInfo.instance.towerCardCnt
             {"other", MakeUserInfo.instance.otherItemCnt},
         };
 
@@ -60,7 +68,10 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_Other_CardPack_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_CardPack_Info");
-        MakeUserInfo.instance.User_OtherInventory_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_OtherInventory_Card_Info_DataSet();
+
         var User_CardPack_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
@@ -86,35 +97,28 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_WarriorCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Warrior_Card_Info");
-        MakeUserInfo.instance.User_Warrior_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Warrior_Card_Info_DataSet();
+
         var User_Warrior_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
-            {"ChainAttack1", MakeUserInfo.instance.ChainAttack[0]},
+            {"ChainAttack1", 1}, // MakeUserInfo.instance.ChainAttack[0]
             {"ChainAttack2", MakeUserInfo.instance.ChainAttack[1]},
             {"ChainAttack3", MakeUserInfo.instance.ChainAttack[2]},
-            {"ChainAttack4", MakeUserInfo.instance.ChainAttack[3]},
-            {"ChainAttack5", MakeUserInfo.instance.ChainAttack[4]},
-            {"Smash1", MakeUserInfo.instance.Smash[0]},
+            {"Smash1", 1}, // MakeUserInfo.instance.Smash[0]
             {"Smash2", MakeUserInfo.instance.Smash[1]},
             {"Smash3", MakeUserInfo.instance.Smash[2]},
-            {"Smash4", MakeUserInfo.instance.Smash[3]},
-            {"Smash5", MakeUserInfo.instance.Smash[4]},
             {"Whirlwind1", MakeUserInfo.instance.Whirlwind[0]},
             {"Whirlwind2", MakeUserInfo.instance.Whirlwind[1]},
             {"Whirlwind3", MakeUserInfo.instance.Whirlwind[2]},
-            {"Whirlwind4", MakeUserInfo.instance.Whirlwind[3]},
-            {"Whirlwind5", MakeUserInfo.instance.Whirlwind[4]},
-            {"SpritSword1", MakeUserInfo.instance.SpritSword[0]},
+            {"SpritSword1", 1}, // MakeUserInfo.instance.SpritSword[0]
             {"SpritSword2", MakeUserInfo.instance.SpritSword[1]},
             {"SpritSword3", MakeUserInfo.instance.SpritSword[2]},
-            {"SpritSword4", MakeUserInfo.instance.SpritSword[3]},
-            {"SpritSword5", MakeUserInfo.instance.SpritSword[4]},
             {"Leap1", MakeUserInfo.instance.Leap[0]},
             {"Leap2", MakeUserInfo.instance.Leap[1]},
             {"Leap3", MakeUserInfo.instance.Leap[2]},
-            {"Leap4", MakeUserInfo.instance.Leap[3]},
-            {"Leap5", MakeUserInfo.instance.Leap[4]},
         };
         Debug.Log("유저 전사 카드 정보 전송");
         await collection.InsertOneAsync(User_Warrior_Card_Info);
@@ -122,35 +126,28 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_WizardCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Wizard_Card_Info");
-        MakeUserInfo.instance.User_Wizard_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Wizard_Card_Info_DataSet();
+
         var User_Wizard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
-            {"Blaze1", MakeUserInfo.instance.Blaze[0]},
+            {"Blaze1", 1}, // MakeUserInfo.instance.Blaze[0]
             {"Blaze2", MakeUserInfo.instance.Blaze[1]},
             {"Blaze3", MakeUserInfo.instance.Blaze[2]},
-            {"Blaze4", MakeUserInfo.instance.Blaze[3]},
-            {"Blaze5", MakeUserInfo.instance.Blaze[4]},
-            {"Lightning1", MakeUserInfo.instance.Lightning[0]},
+            {"Lightning1", 1}, // MakeUserInfo.instance.Lightning[0]
             {"Lightning2", MakeUserInfo.instance.Lightning[1]},
             {"Lightning3", MakeUserInfo.instance.Lightning[2]},
-            {"Lightning4", MakeUserInfo.instance.Lightning[3]},
-            {"Lightning5", MakeUserInfo.instance.Lightning[4]},
             {"Blink1", MakeUserInfo.instance.Blink[0]},
             {"Blink2", MakeUserInfo.instance.Blink[1]},
             {"Blink3", MakeUserInfo.instance.Blink[2]},
-            {"Blink4", MakeUserInfo.instance.Blink[3]},
-            {"Blink5", MakeUserInfo.instance.Blink[4]},
-            {"IceArrow1", MakeUserInfo.instance.IceArrow[0]},
+            {"IceArrow1", 1}, // MakeUserInfo.instance.IceArrow[0]
             {"IceArrow2", MakeUserInfo.instance.IceArrow[1]},
             {"IceArrow3", MakeUserInfo.instance.IceArrow[2]},
-            {"IceArrow4", MakeUserInfo.instance.IceArrow[3]},
-            {"IceArrow5", MakeUserInfo.instance.IceArrow[4]},
             {"EnergyBolt1", MakeUserInfo.instance.EnergyBolt[0]},
             {"EnergyBolt2", MakeUserInfo.instance.EnergyBolt[1]},
             {"EnergyBolt3", MakeUserInfo.instance.EnergyBolt[2]},
-            {"EnergyBolt4", MakeUserInfo.instance.EnergyBolt[3]},
-            {"EnergyBolt5", MakeUserInfo.instance.EnergyBolt[4]},
         };
         Debug.Log("유저 마법사 카드 정보 전송");
         await collection.InsertOneAsync(User_Wizard_Card_Info);
@@ -158,25 +155,22 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_InherenceCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Inherence_Card_Info");
-        MakeUserInfo.instance.User_Inherence_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Inherence_Card_Info_DataSet();
+
         var User_InherenceCard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
-            {"increasedMinionProduction1", MakeUserInfo.instance.increasedMinionProduction[0]},
+            {"increasedMinionProduction1", 1}, // MakeUserInfo.instance.increasedMinionProduction[0]
             {"increasedMinionProduction2", MakeUserInfo.instance.increasedMinionProduction[1]},
             {"increasedMinionProduction3", MakeUserInfo.instance.increasedMinionProduction[2]},
-            {"increasedMinionProduction4", MakeUserInfo.instance.increasedMinionProduction[3]},
-            {"increasedMinionProduction5", MakeUserInfo.instance.increasedMinionProduction[4]},
             {"increasedMinionAttackPower1", MakeUserInfo.instance.increasedMinionAttackPower[0]},
             {"increasedMinionAttackPower2", MakeUserInfo.instance.increasedMinionAttackPower[1]},
             {"increasedMinionAttackPower3", MakeUserInfo.instance.increasedMinionAttackPower[2]},
-            {"increasedMinionAttackPower4", MakeUserInfo.instance.increasedMinionAttackPower[3]},
-            {"increasedMinionAttackPower5", MakeUserInfo.instance.increasedMinionAttackPower[4]},
             {"dragonSummon1", MakeUserInfo.instance.dragonSummon[0]},
             {"dragonSummon2", MakeUserInfo.instance.dragonSummon[1]},
             {"dragonSummon3", MakeUserInfo.instance.dragonSummon[2]},
-            {"dragonSummon4", MakeUserInfo.instance.dragonSummon[3]},
-            {"dragonSummon5", MakeUserInfo.instance.dragonSummon[4]},
         };
         Debug.Log("유저 공통 카드 정보 전송");
         await collection.InsertOneAsync(User_InherenceCard_Card_Info);
@@ -185,16 +179,19 @@ public class DataBaseInsert : MonoBehaviour
     public async void New_DataInsert_User_TowerCard_Info()
     {
         collection = database.GetCollection<BsonDocument>("User_Tower_Card_Info");
-        MakeUserInfo.instance.User_Tower_Card_Info_DataSet();
+
+        //if (DataBaseHandler.instance.firstLogin == false)
+            MakeUserInfo.instance.User_Tower_Card_Info_DataSet();
+
         var User_TowerCard_Card_Info = new BsonDocument()
         {
             {"user_id", MakeUserInfo.instance.id},
-            {"Tower_Attack_Guard1", MakeUserInfo.instance.towerAttackGuard[0]},
+            {"Tower_Attack_Guard1", 1}, // MakeUserInfo.instance.towerAttackGuard[0]
             {"Tower_Attack_Guard2", MakeUserInfo.instance.towerAttackGuard[1]},
             {"Tower_Attack_Guard3", MakeUserInfo.instance.towerAttackGuard[2]},
             {"Tower_Attack_Guard4", MakeUserInfo.instance.towerAttackGuard[3]},
             {"Tower_Attack_Guard5", MakeUserInfo.instance.towerAttackGuard[4]},
-            {"Tower_Attack_Cannon1", MakeUserInfo.instance.towerAttackCannon[0]},
+            {"Tower_Attack_Cannon1", 1}, // MakeUserInfo.instance.towerAttackCannon[0]
             {"Tower_Attack_Cannon2", MakeUserInfo.instance.towerAttackCannon[1]},
             {"Tower_Attack_Cannon3", MakeUserInfo.instance.towerAttackCannon[2]},
             {"Tower_Attack_Cannon4", MakeUserInfo.instance.towerAttackCannon[3]},
@@ -239,12 +236,12 @@ public class DataBaseInsert : MonoBehaviour
             {"Tower_Attack_Light3", MakeUserInfo.instance.towerAttackLight[2]},
             {"Tower_Attack_Light4", MakeUserInfo.instance.towerAttackLight[3]},
             {"Tower_Attack_Light5", MakeUserInfo.instance.towerAttackLight[4]},
-            {"Tower_Buff_Damage_Increase1", MakeUserInfo.instance.towerBuffDamageIncrease[0]},
+            {"Tower_Buff_Damage_Increase1", 1}, //MakeUserInfo.instance.towerBuffDamageIncrease[0]
             {"Tower_Buff_Damage_Increase2", MakeUserInfo.instance.towerBuffDamageIncrease[1]},
             {"Tower_Buff_Damage_Increase3", MakeUserInfo.instance.towerBuffDamageIncrease[2]},
             {"Tower_Buff_Damage_Increase4", MakeUserInfo.instance.towerBuffDamageIncrease[3]},
             {"Tower_Buff_Damage_Increase5", MakeUserInfo.instance.towerBuffDamageIncrease[4]},
-            {"Tower_Buff_Hp_Regen_Increase1", MakeUserInfo.instance.towerBuffHp_RegenIncrease[0]},
+            {"Tower_Buff_Hp_Regen_Increase1", 1}, // MakeUserInfo.instance.towerBuffHp_RegenIncrease[0]
             {"Tower_Buff_Hp_Regen_Increase2", MakeUserInfo.instance.towerBuffHp_RegenIncrease[1]},
             {"Tower_Buff_Hp_Regen_Increase3", MakeUserInfo.instance.towerBuffHp_RegenIncrease[2]},
             {"Tower_Buff_Hp_Regen_Increase4", MakeUserInfo.instance.towerBuffHp_RegenIncrease[3]},

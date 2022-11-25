@@ -49,6 +49,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private AudioSource matchingAudio;
 
+    // 마우스 커서 담을 변수
+    [SerializeField]
+    private Texture2D originalCursor;
+
+
     private void Awake()
     {
         // 게임이 끝나고 로비로 돌아 올떄를 대비해서 이미 연결이 되어있는지 판단한다.
@@ -64,7 +69,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // 매칭에 연결된 모든 플레이어들을 씬으로 같이 이동하기 위함.
         PhotonNetwork.AutomaticallySyncScene = true;
 
-        //matChingObj.SetActive(false);
+        // 마우스 커서 
+        Cursor.SetCursor(originalCursor, Vector2.zero, CursorMode.Auto);
     }
 
 
@@ -95,7 +101,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         joinButton.interactable = true;
         connectionInfoText.text = "Online : Connected to Master Server";
-        Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
+        // GetCaller 복제
+        GameObject existence = GameObject.FindGameObjectWithTag("GetCaller");
+        if (existence == null)
+        {
+            Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
+            return;
+        }
+        else
+        {
+            Destroy(GameObject.FindGameObjectWithTag("GetCaller").gameObject);
+            Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
+        }
     }
 
     // 연결이 끊켰을경우 / 자동실행

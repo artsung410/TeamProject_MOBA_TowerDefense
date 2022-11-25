@@ -30,11 +30,9 @@ public class WarriorAnimationEvent : MonoBehaviourPun
             }
             else if (_behaviour.enemyCol.gameObject.layer == 8 || _behaviour.enemyCol.gameObject.layer == 13 || _behaviour.enemyCol.gameObject.layer == 17)
             {
+                _behaviour.enemyCol.GetComponent<Enemybase>().tagThrow(_stat.gameObject.tag);
                 _behaviour.enemyCol.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
-                 if(_behaviour.enemyCol.GetComponent<Enemybase>()._eminontpye == EMINIONTYPE.Netural)
-                {
-                    _behaviour.enemyCol.GetComponent<Enemybase>().lastDamageTeam = _behaviour.gameObject.tag;
-                }
+                
                 //Debug.Log($"ÇöÀç Å¸°Ù :{_behaviour.enemyCol.gameObject.name}");
 
             }
@@ -56,7 +54,14 @@ public class WarriorAnimationEvent : MonoBehaviourPun
 
             }
         }
+
     }
 
     #endregion
+    [PunRPC]
+    public void nameThrow()
+    {
+        _behaviour.enemyCol.GetComponent<Enemybase>().lastDamageTeam = _stat.gameObject.tag;
+    }
+
 }

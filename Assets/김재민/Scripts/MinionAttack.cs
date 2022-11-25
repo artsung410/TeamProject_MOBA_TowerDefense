@@ -63,7 +63,7 @@ public class MinionAttack : MonoBehaviourPun
             }
             else if (other.gameObject.layer == 17)
             {
-                other.gameObject.GetComponent<Enemybase>().TakeDamage(satatus.Damage);
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(satatus.Damage * PlayerHUD.Instance.min);
                 other.gameObject.GetComponent<Enemybase>().lastDamageTeam = gameObject.tag;
             }
         }
