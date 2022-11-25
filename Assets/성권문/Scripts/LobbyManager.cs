@@ -49,6 +49,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private AudioSource matchingAudio;
 
+    // 마우스 커서 담을 변수
+    private Texture2D originalCursor;
+    private Texture2D changeCursor;
+    // 로비 씬으로 오면 오리지널 마우스로 변경된다.
+
+
     private void Awake()
     {
         // 게임이 끝나고 로비로 돌아 올떄를 대비해서 이미 연결이 되어있는지 판단한다.
@@ -64,7 +70,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         // 매칭에 연결된 모든 플레이어들을 씬으로 같이 이동하기 위함.
         PhotonNetwork.AutomaticallySyncScene = true;
 
-        //matChingObj.SetActive(false);
+        // 마우스 커서 
+        //Cursor.SetCursor(originalCursor, Vector2.zero, CursorMode.Auto);
     }
 
 
