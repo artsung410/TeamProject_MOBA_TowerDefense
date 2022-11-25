@@ -95,7 +95,18 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     {
         joinButton.interactable = true;
         connectionInfoText.text = "Online : Connected to Master Server";
-        Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
+        // GetCaller 복제
+        GameObject existence = GameObject.FindGameObjectWithTag("GetCaller");
+        if (existence == null)
+        {
+            Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
+            return;
+        }
+        else
+        {
+            Destroy(GameObject.FindGameObjectWithTag("GetCaller").gameObject);
+            Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
+        }
     }
 
     // 연결이 끊켰을경우 / 자동실행
