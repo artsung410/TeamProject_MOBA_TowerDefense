@@ -21,6 +21,7 @@ public class Lightning : SkillHandler
 
     private void Awake()
     {
+        DamageZone = GetComponentInChildren<Collider>().gameObject;
         DamageZone.GetComponent<SphereCollider>().radius = Data.RangeValue_1;
     }
 
@@ -98,7 +99,7 @@ public class Lightning : SkillHandler
 
     public override void SkillUpdatePosition()
     {
-        transform.position = new Vector3(skillPos.x, 0, skillPos.z);
+        transform.position = skillPos;
     }
 
     private void OnTriggerEnter(Collider other)

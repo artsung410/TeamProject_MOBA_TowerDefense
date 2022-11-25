@@ -210,7 +210,7 @@ public class Stats : GoogleSheetManager
                 // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
                 GameManager.Instance.UnlockTower(gameObject.tag, Level);
                 SetStats(Level);
-                photonView.RPC(nameof(_health.HealthUpdate), RpcTarget.All, MaxHealth);
+                photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, MaxHealth);
 
                 // Exp에서 maxExp만큼 뺀다 레벨업을 했으니까
                 Exp = Mathf.Max(Exp - maxExp, 0);

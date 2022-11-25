@@ -93,7 +93,7 @@ public class Leap : SkillHandler
             SkillUpdatePosition();
 
             // 지속시간동안 플레이어가 지정한 장소로 이동한다 => 도약은 애니메이션 처리
-            _behaviour.transform.position = Vector3.Slerp(_behaviour.transform.position, leapPos, Time.deltaTime * 2.5f);
+            _behaviour.transform.position = Vector3.MoveTowards(_behaviour.transform.position, leapPos, Time.deltaTime * 3f);
 
             // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
             _behaviour.ForSkillAgent(leapPos);
@@ -106,11 +106,7 @@ public class Leap : SkillHandler
                 _ani.animator.SetBool("JumpAttack", false);
                 isArrive = true;
             }
-
-            if (isArrive)
-            {
-                SkillHoldingTime(Data.HoldingTime);
-            }
+            SkillHoldingTime(Data.HoldingTime);
         }
 
     }
@@ -135,6 +131,7 @@ public class Leap : SkillHandler
         {
             if (photonView.IsMine)
             {
+                _ani.animator.SetBool("JumpAttack", false);
                 PhotonNetwork.Destroy(gameObject);
             }
         }
@@ -164,11 +161,12 @@ public class Leap : SkillHandler
                 return;
             }
 
-            isArrive = true;
+            _behaviour.transform.forward = mouseDir;
             _behaviour.transform.position = transform.position;
+            _behaviour.ForSkillAgent(transform.position);
             photonView.RPC(nameof(RPC_Activate), RpcTarget.All);
             _ani.animator.SetBool("JumpAttack", false);
-            _behaviour.ForSkillAgent(transform.position);
+            isArrive = true;
         }
     }
 

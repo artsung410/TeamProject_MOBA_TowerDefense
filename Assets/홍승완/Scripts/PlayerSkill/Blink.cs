@@ -95,7 +95,7 @@ public class Blink : SkillHandler
 
             SkillUpdatePosition();
 
-            _behaviour.transform.position = Vector3.MoveTowards(transform.position, arrivalPoint, Time.deltaTime * 80f);
+            _behaviour.transform.position = Vector3.MoveTowards(transform.position, arrivalPoint, Time.deltaTime * 100f);
 
             float dist = Vector3.Distance(_behaviour.transform.position, arrivalPoint);
 

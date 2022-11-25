@@ -554,9 +554,9 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
 
-        playerHealthBar.fillAmount = playerHp.hpSlider3D.value / playerHp.hpSlider3D.maxValue;
-        playerHp2D = playerHp.hpSlider3D.value;
-        playerHealthBarTMpro.text = (int)playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
+        playerHealthBar.fillAmount = playerHp.health / playerHp.MaxHealth;
+        playerHp2D = playerHp.health;
+        playerHealthBarTMpro.text = (int)playerHp2D + " / " + playerHp.MaxHealth;
     }
 
     IEnumerator SetPlayer()
@@ -619,14 +619,14 @@ public class PlayerHUD : MonoBehaviourPun
                 return;
             }
 
-            if (enemyHp.hpSlider3D.value <= 0)
+            if (enemyHp.health <= 0)
             {
                 InfoPanel.SetActive(false);
             }
 
-            InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
-            Hp2D = enemyHp.hpSlider3D.value;
-            InfoHealthBarTMPro.text = (int)Hp2D + " / " + enemyHp.hpSlider3D.maxValue;
+            InfoHealthBar.fillAmount = enemyHp.health / enemyHp.MaxHealth;
+            Hp2D = enemyHp.health;
+            InfoHealthBarTMPro.text = (int)Hp2D + " / " + enemyHp.MaxHealth;
 
             float dmg = currentPlayerforInfo.playerStats.attackDmg;
             float atkSpeed = currentPlayerforInfo.playerStats.attackSpeed;
