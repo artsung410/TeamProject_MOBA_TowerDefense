@@ -40,7 +40,7 @@ public class DataBaseHandler : MonoBehaviour
     }
 
     // 유저 정보 인서트(초기에만 사용해야한다.)
-    /*private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -83,7 +83,7 @@ public class DataBaseHandler : MonoBehaviour
         collection = database.GetCollection<Root>("TestCollection");
         Debug.Log("구조 생성");
         await collection.InsertOneAsync(root);
-    }*/
+    }
 
 
 
