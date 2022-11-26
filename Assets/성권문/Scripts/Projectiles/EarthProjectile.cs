@@ -49,7 +49,7 @@ public class EarthProjectile : Projectiles
 
         if (dir.magnitude <= distanceThisFrame + InterpolateValue)
         {
-            GameObject newEarth = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            GameObject newEarth = PhotonNetwork.Instantiate(ImpactEffect.name, target.position, Quaternion.identity);
             PhotonNetwork.Destroy(gameObject);
             return;
         }
