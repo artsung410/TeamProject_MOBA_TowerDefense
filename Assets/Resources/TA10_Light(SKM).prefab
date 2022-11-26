@@ -207,8 +207,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0040168299127d429b53f7795319c70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerData: {fileID: 11400000, guid: b803d95601e16db499bb62a2bb980c3a, type: 2}
-  currentHealth: 0
+  towerDB:
+    Name: Light_Tower
+    ID: 46
+    GroupID: 10
+    Rank: 1
+    Type: 1
+    Pf: {fileID: 8103812384240647844}
+    Combination_ResultID: 47
+    Combination_Required_Value: 500
+    Normal_Random_Draw_Probability: 2.9166667
+    Normal_Attack_Draw_Probability: 7
+    Normal_Minion_Draw_Probability: 0
+    Normal_Buff_Debuff_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 0
+    Premium_Attack_Draw_Probability: 0
+    Premium_Minion_Draw_Probability: 0
+    Premium_Buff_Debuff_Draw_Probability: 0
+    Attack: 15
+    Attack_Speed: 0.3
+    Hp: 100
+    Range: 20
+    Range_Type: 1
+    Projectile_Type: 2
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 9186049378020338938, guid: 4812022f92dd20f478e34b90c2fddfe7, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: "\uC624 \uB208\uC774 \uBD80\uC2DC\uAC8C \uBC1D\uC740 \uACF5\uACA9\uC774\uAD70\uC694!
+      \uD0DC\uC591\uAD8C!"
+    Sprite_TowerCard: {fileID: 21300000, guid: d092c0f04171dfe44a60ff681f9988bd, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: cdc4d7fe33e13ef418fd915d22ed0aa5, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
+    buffID: 20021
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -216,6 +249,8 @@ MonoBehaviour:
   healthbarImage: {fileID: 4199823900036566432}
   hitbarImage: {fileID: 5673839632260366640}
   ui: {fileID: 7390473180703278600}
+  maxHealth: 0
+  currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 6113905360976690689}

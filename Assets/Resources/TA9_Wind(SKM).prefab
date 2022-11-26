@@ -52,40 +52,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    ID: 45
+    Name: Wind_Tower
+    ID: 41
+    GroupID: 9
+    Rank: 1
+    Type: 1
     Pf: {fileID: 6171984124208090233}
-    Name: Wind_Tower5
-    Combination_ResultID: 0
-    Combination_Required_Value: 0
-    Normal_Random_Draw_Probability: 0
-    Normal_Attack_Draw_Probability: 0
+    Combination_ResultID: 42
+    Combination_Required_Value: 500
+    Normal_Random_Draw_Probability: 2.9166667
+    Normal_Attack_Draw_Probability: 7
     Normal_Minion_Draw_Probability: 0
     Normal_Buff_Debuff_Draw_Probability: 0
-    Premium_Random_Draw_Probability: 0.41666666
-    Premium_Attack_Draw_Probability: 1
+    Premium_Random_Draw_Probability: 0
+    Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 9
-    Rank: 5
-    Type: 1
-    Attack: 70
+    Attack: 30
     Attack_Speed: 0.3
-    Hp: 300
+    Hp: 100
     Range: 20
     Range_Type: 1
     Projectile_Type: 1
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
-    Destroy_Effect_Pf: {fileID: 0}
-    Desc: 0
-    Sprite_TowerCard: {fileID: 21300000, guid: 38af7e4429c58c24ab6856aadb936e84, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
+    Sprite_TowerCard: {fileID: 21300000, guid: c61094d318b6a1447bccc6fa4a647f00, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
-    buffID: 0
-  towerData: {fileID: 11400000, guid: 58a1fa4a1136116428597604363413af, type: 2}
-  currentHealth: 0
+    buffID: 20016
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}

@@ -12,8 +12,7 @@ public class LightningProjectile : Projectiles
 
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
-    float maxHeight = 16f;
-    float minHeight = 7f;
+
     private void Update()
     {
         if (target == null)
