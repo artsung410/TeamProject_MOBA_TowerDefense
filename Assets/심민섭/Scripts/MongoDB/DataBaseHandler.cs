@@ -5,7 +5,7 @@ using MongoDB.Bson;
 using MongoDB.Bson.IO;
 using MongoDB.Driver.Linq;
 using System.Linq;
-
+using System.Threading.Tasks;
 
 public class DataBaseHandler : MonoBehaviour
 {
@@ -18,6 +18,9 @@ public class DataBaseHandler : MonoBehaviour
     IMongoCollection<BsonDocument> collection;
 
     public static DataBaseHandler instance;
+
+    // 첫 로그인인지 확인
+    public bool firstLogin;
 
     private void Awake()
     {
@@ -37,7 +40,7 @@ public class DataBaseHandler : MonoBehaviour
     }
 
     // 유저 정보 인서트(초기에만 사용해야한다.)
-    /*private void Update()
+    private void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
@@ -80,7 +83,7 @@ public class DataBaseHandler : MonoBehaviour
         collection = database.GetCollection<Root>("TestCollection");
         Debug.Log("구조 생성");
         await collection.InsertOneAsync(root);
-    }*/
+    }
 
 
 
@@ -155,7 +158,7 @@ public class DataBaseHandler : MonoBehaviour
     [SerializeField]
     private DataBaseInsert init_UserInfo_Insert;
 
-    public void USER_INIT_INFO_INSERT()
+    public async void USER_INIT_INFO_INSERT()
     {
         collection = database.GetCollection<BsonDocument>("User_Info");
         // 플레이어 오시리스 _id 가져오기
@@ -166,6 +169,7 @@ public class DataBaseHandler : MonoBehaviour
         var document = collection.Find(builder).FirstOrDefault();
         if (document == null)
         {
+            firstLogin = true;
             Debug.Log("초기 데이터를 삽입합니다.");
             init_UserInfo_Insert.New_DataInsert_User_Info();
             init_UserInfo_Insert.New_DataInsert_User_Card_Info();
@@ -174,14 +178,27 @@ public class DataBaseHandler : MonoBehaviour
             init_UserInfo_Insert.New_DataInsert_User_InherenceCard_Info();
             init_UserInfo_Insert.New_DataInsert_User_TowerCard_Info();
             init_UserInfo_Insert.New_DataInsert_Other_CardPack_Info();
+            await FirstLoginITtemInput();
         }
 
         if (document != null)
         {
+            firstLogin = false;
             Debug.Log("아이템을 가져옵니다.");
             // 아이템 데이터 가져오기 시작
             GET_USER_ITEM();
-        }   
+        }
+    }
+
+    // 초기 DB데이터 생성 후, 아이템 생성(첫 로그인때 딱 한번만 실행한다.)
+    private async Task FirstLoginITtemInput()
+    {
+        await Task.Delay(1000);
+        GET_USER_WARRIOR_ITEM();
+        GET_USER_WIZARD_ITEM();
+        GET_USER_IHERENCE_ITEM();
+        GET_USER_TOWER_ITEM();
+        GET_USER_OTHER_ITEM();
     }
 
 

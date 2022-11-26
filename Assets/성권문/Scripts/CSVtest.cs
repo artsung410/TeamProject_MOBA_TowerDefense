@@ -63,7 +63,7 @@ public class CSVtest : MonoBehaviour
         StartCoroutine(GetTowerData());
         StartCoroutine(GetBuffData());
 
-        StartCoroutine(GetMinionData());
+        //StartCoroutine(GetMinionData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
     }

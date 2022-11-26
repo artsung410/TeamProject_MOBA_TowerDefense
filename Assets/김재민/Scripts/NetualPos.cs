@@ -15,7 +15,7 @@ public class NetualPos : MonoBehaviourPun
     Vector3 pos;
     private void Awake()
     {
-        pos = new Vector3(0,0,0);
+        pos = new Vector3(87.775f,2.3f,75.779f); // ¸ÊÁß¾Ó Æ÷Áö¼Ç 
         
     }
     private void OnEnable()
@@ -46,7 +46,7 @@ public class NetualPos : MonoBehaviourPun
             if (distance <= 0.2f)
             {
                 transform.position = Vector3.Lerp(transform.position, pos,1);
-                transform.GetChild(0).GetComponent<OrcFSM>().transform.position = new Vector3(0,0,0);
+                transform.GetChild(0).GetComponent<OrcFSM>().transform.position = pos;
                 transform.GetChild(0).GetComponent<OrcFSM>().StateChange();
                 
                 break;

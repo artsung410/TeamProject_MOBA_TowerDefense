@@ -447,78 +447,80 @@ public class InventoryGetData : MonoBehaviour
             if (packCheck)
             {
                 itemProduce.item.ClassType = "Premium";
-                if (cardPack[i].Contains("warrior"))
+
+                if (cardPack[i].Contains("Warrior"))
                 {
-                    itemProduce.item.itemName = "Warrior Skill";
+                    itemProduce.item.itemName = "Warrior Skill_P";
                     itemProduce.item.itemIcon = warrior_P;
                 }
-                else if (cardPack[i].Contains("wizard"))
+                else if (cardPack[i].Contains("Wizard"))
                 {
-                    itemProduce.item.itemName = "Wizard Skill";
+                    itemProduce.item.itemName = "Wizard Skill_P";
                     itemProduce.item.itemIcon = wizard_P;
                 }
-                else if (cardPack[i].Contains("common"))
+                else if (cardPack[i].Contains("Inherence"))
                 {
-                    itemProduce.item.itemName = "Common Skill";
+                    itemProduce.item.itemName = "Common Skill_P";
                     itemProduce.item.itemIcon = inherence_P;
                 }
-                else if (cardPack[i].Contains("attack"))
+                else if (cardPack[i].Contains("Attack"))
                 {
-                    itemProduce.item.itemName = "Attack Tower";
+                    itemProduce.item.itemName = "Attack Tower_P";
                     itemProduce.item.itemIcon = attack_P;
                 }
-                else if (cardPack[i].Contains("minion"))
+                else if (cardPack[i].Contains("Minion"))
                 {
-                    itemProduce.item.itemName = "Minion Tower";
+                    itemProduce.item.itemName = "Minion Tower_P";
                     itemProduce.item.itemIcon = minion_P;
                 }
-                else if (cardPack[i].Contains("buff"))
+                else if (cardPack[i].Contains("Buff"))
                 {
-                    itemProduce.item.itemName = "Buff Tower";
+                    itemProduce.item.itemName = "Buff Tower_P";
                     itemProduce.item.itemIcon = buff_P;
 
                 }
-                else if (cardPack[i].Contains("random"))
+                else if (cardPack[i].Contains("Random"))
                 {
-                    itemProduce.item.itemName = "Random Tower";
+                    itemProduce.item.itemName = "Random Tower_P";
                     itemProduce.item.itemIcon = random_P;
                 }
             }
             else
             {
                 itemProduce.item.ClassType = "Nomal";
-                if (cardPack[i].Contains("warrior"))
+
+                if (cardPack[i].Contains("Warrior"))
                 {
                     itemProduce.item.itemName = "Warrior Skill";
                     itemProduce.item.itemIcon = warrior_N;
                 }
-                else if (cardPack[i].Contains("wizard"))
+                else if (cardPack[i].Contains("Wizard"))
                 {
                     itemProduce.item.itemName = "Wizard Skill";
                     itemProduce.item.itemIcon = wizard_N;
                 }
-                else if (cardPack[i].Contains("common"))
+                else if (cardPack[i].Contains("Common"))
                 {
                     itemProduce.item.itemName = "Common Skill";
                     itemProduce.item.itemIcon = inherence_N;
                 }
-                else if (cardPack[i].Contains("attack"))
+                else if (cardPack[i].Contains("Attack"))
                 {
                     itemProduce.item.itemName = "Atack Tower";
                     itemProduce.item.itemIcon = attack_N;
                 }
-                else if (cardPack[i].Contains("minion"))
+                else if (cardPack[i].Contains("Minion"))
                 {
                     itemProduce.item.itemName = "Minion Tower";
                     itemProduce.item.itemIcon = minion_N;
                 }
-                else if (cardPack[i].Contains("buff"))
+                else if (cardPack[i].Contains("Buff"))
                 {
                     itemProduce.item.itemName = "Buff Tower";
                     itemProduce.item.itemIcon = buff_N;
 
                 }
-                else if (cardPack[i].Contains("random"))
+                else if (cardPack[i].Contains("Random"))
                 {
                     itemProduce.item.itemName = "Random Tower";
                     itemProduce.item.itemIcon = random_N;

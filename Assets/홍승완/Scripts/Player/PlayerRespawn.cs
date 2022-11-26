@@ -12,9 +12,11 @@ public class PlayerRespawn : MonoBehaviourPun
     // ###############################################
 
     public GameObject Renderer;
+    public GameObject HpBar;
+    public GameObject GrayEffect;
 
     public Health health;
-    public Slider hpBar;
+    //public Slider hpBar;
     [SerializeField] Transform[] respawnPosition;
 
     [SerializeField] float respawnTime;
@@ -31,7 +33,6 @@ public class PlayerRespawn : MonoBehaviourPun
     void Start()
     {
         respawnTime = 5f;
-
         StartCoroutine(RespawnPositionInit());
     }
     IEnumerator RespawnPositionInit()
@@ -54,6 +55,7 @@ public class PlayerRespawn : MonoBehaviourPun
     void Update()
     {
         Respawn();
+        OnGrayscale();
     }
 
     float elapsedTime;
@@ -70,10 +72,18 @@ public class PlayerRespawn : MonoBehaviourPun
                 health.gameObject.transform.position = playerRespawnPosition;
                 elapsedTime = 0f;
                 health.gameObject.SetActive(true);
-                hpBar.gameObject.SetActive(true);
+                HpBar.gameObject.SetActive(true);
                 Renderer.SetActive(true);
                 health.isDeath = false;
             }
+        }
+    }
+
+    public void OnGrayscale()
+    {
+        if (GrayEffect != null)
+        {
+            GrayEffect.SetActive(health.isDeath);
         }
     }
 

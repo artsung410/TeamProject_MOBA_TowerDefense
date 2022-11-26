@@ -27,7 +27,6 @@ public class PlayerButton : MonoBehaviourPun
     public void SelectMatchPopUp()
     {
         Playercount++;
-        Debug.Log($"{Playercount}");
         selectMatch.SetActive(true);
     }
 

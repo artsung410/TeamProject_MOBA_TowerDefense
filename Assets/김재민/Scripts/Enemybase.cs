@@ -67,7 +67,7 @@ public class Enemybase : MonoBehaviourPun
 
     private Monster _monster;
 
-    public bool hit = false;
+    
 
     protected virtual void Awake()
     {
@@ -156,9 +156,14 @@ public class Enemybase : MonoBehaviourPun
         if (isDead == false)
         {
             CurrnetHP -= Damage;
+           GameManager.Instance.winner = lastDamageTeam;
             
             if (CurrnetHP <= 0)
             {
+                if(_eminontpye == EMINIONTYPE.Netural)
+                {
+                    PlayerHUD.Instance.NeutalMonsterDie = true;
+                }
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent == true)
@@ -170,12 +175,20 @@ public class Enemybase : MonoBehaviourPun
                 }
                 _animator.SetTrigger("Die");
                 isDead = true;
-                if(_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
-                {
-                GameManager.Instance.winner = lastDamageTeam;
-                }
+                
             }
         }
+    }
+
+    public void tagThrow(string value)
+    {
+            photonView.RPC(nameof(RPC_tagThrow), RpcTarget.All, value);  
+    }
+
+    [PunRPC]
+    public void RPC_tagThrow(string value)
+    {
+        lastDamageTeam = value;
     }
 
     private void OnMouseDown()
@@ -205,6 +218,11 @@ public class Enemybase : MonoBehaviourPun
             }
             if (CurrnetHP <= 0)
             {
+                if (_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
+                {
+                    GameManager.Instance.winner = lastDamageTeam;
+                    PlayerHUD.Instance.NeutalMonsterDie = true;
+                }
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent.enabled == true)
@@ -215,10 +233,6 @@ public class Enemybase : MonoBehaviourPun
                 gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
-                if (_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
-                {
-                    GameManager.Instance.winner = lastDamageTeam;
-                }
 
                 yield return Delay100;
                 yield break;
@@ -254,9 +268,6 @@ public class Enemybase : MonoBehaviourPun
             _outline.OutlineColor = Color.red;
             _outline.enabled = true;
         }
-
-
-
     }
     private void OnMouseExit()
     {

@@ -15,6 +15,10 @@ public class GameExitButton : MonoBehaviourPunCallbacks
     // 정상적인 게임에서 나가기 설정 (한명이 탈주하면 같은 방 사람들 모두 나가짐)
     public static GameExitButton Instance;
 
+    [Header("GameESCUI")]
+    public GameObject ESCButton;
+    private bool openESCWindow = false;
+
     private void Awake()
     {
         Instance = this;
@@ -24,6 +28,22 @@ public class GameExitButton : MonoBehaviourPunCallbacks
     {
         photonView.RPC("PlayerLeaveGameRoom", RpcTarget.All);
     }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            openESCWindow = !openESCWindow;
+            ESCButton.SetActive(openESCWindow);
+        }
+    }
+
+    private void ESCButton_S()
+    {
+        ESCButton.SetActive(true);
+    }
+
 
     public override void OnLeftRoom()
     {

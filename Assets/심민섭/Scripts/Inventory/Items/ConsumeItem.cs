@@ -109,6 +109,15 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                             // 아이템[999] 배열에 있는 타입과 item.itemType를 비교한다.
                             if (itemTypeOfSlot[i].Equals(item.itemType))
                             {
+                                if (eS.transform.GetChild(1).GetChild(i).childCount == 1)
+                                {
+                                    //Debug.Log(eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.name); // itemIcon(clone)
+                                    if (item.itemName == eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemName)
+                                    {
+                                        return;
+                                    }
+                                }
+
                                 // 장비창 슬롯 하위 오브젝트가 있는가 없는가, 없으면 == 0 있으면 1이상
                                 // 하위 오브젝트가 없으면, 0이면
                                 // 장착 창의 슬롯이 비워있다면 아이템을 장착하는 코드

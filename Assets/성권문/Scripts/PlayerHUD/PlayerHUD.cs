@@ -64,10 +64,6 @@ public class PlayerHUD : MonoBehaviourPun
     public Sprite GameResultWin;
     public Sprite GameResultDef;
     public Sprite GameResultDraw;
-    private bool winPanel = false;
-
-    [Header("GameESCUI")]
-    public GameObject ESCButton;
 
     private Health playerHp;
     private Health enemyHp;
@@ -93,8 +89,10 @@ public class PlayerHUD : MonoBehaviourPun
 
     private int[] playerScores = { 0, 0 };
 
-    float sec = 0;
-    int min = 0;
+    [HideInInspector]
+    public float sec = 0;
+    [HideInInspector]
+    public int min = 0;
 
     [SerializeField]
     public bool BossMonsterSpawnON { get; private set; }
@@ -107,6 +105,7 @@ public class PlayerHUD : MonoBehaviourPun
     WaitForSeconds Delay500 = new WaitForSeconds(5);
 
     public string lastDamageTeam;
+    public bool NeutalMonsterDie = false;
 
 
 
@@ -213,11 +212,6 @@ public class PlayerHUD : MonoBehaviourPun
 
 
         }
-
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            ESCButton_S();
-        }
     }
 
 
@@ -245,12 +239,22 @@ public class PlayerHUD : MonoBehaviourPun
 
     void Timer()
     {
-        if ((int)sec < 0)
+        if (NeutalMonsterDie)
+        {
+            Debug.Log("시작");
+            Debug.Log($"{GameManager.Instance.winner}");
+            onGameEnd.Invoke();
+            // 승패 이미지 호출
+            StartCoroutine(ResultImagePopUp());
+            return;
+        }
+
+        if ((int)sec < 0) // 1 
         {
             sec = 60;
             min--;
         }
-        else if (GameManager.Instance.winner == "Draw")
+        else if (GameManager.Instance.winner == "Draw") // 2
         {
             if ((int)sec >= 60)
             {
@@ -266,7 +270,8 @@ public class PlayerHUD : MonoBehaviourPun
         sec -= Time.deltaTime;
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
 
-        if (min < 0)
+
+        if (min < 0) // 3
         {
             string gameWinMessage = "";
 
@@ -297,6 +302,7 @@ public class PlayerHUD : MonoBehaviourPun
 
             // 승패 이미지 호출
             StartCoroutine(resultImigePopup);
+            
 
             //StartCoroutine(DelayLeaveRoom());
             return;
@@ -340,11 +346,6 @@ public class PlayerHUD : MonoBehaviourPun
 
     #region ⚙️ MainMenu Panel ⚙️
 
-    private void ESCButton_S()
-    {
-        ESCButton.SetActive(true);
-    }
-
     #endregion
 
 
@@ -353,8 +354,12 @@ public class PlayerHUD : MonoBehaviourPun
     // 승패 결과 이미지 팝업 함수
     private IEnumerator ResultImagePopUp()
     {
+
+        Debug.Log("1");
+        Debug.Log("두번째시작");
+        Debug.Log($"{GameManager.Instance.winner}"); // 여기서 draw 로 들어감왜??
         // 오브젝트 활성화
-        GameWinPanel.SetActive(true);
+        GameWinPanel.SetActive(true); 
 
         //GameManager.Instance.winner = "Blue";
 
@@ -388,15 +393,16 @@ public class PlayerHUD : MonoBehaviourPun
                 //GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
             }
-            yield return null;
+            
         }
         else if (GameManager.Instance.winner == "Blue")
         {
+            Debug.Log("2 "); 
             if (PhotonNetwork.IsMasterClient)
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
                 FadeinImige();
-
+                Debug.Log("3");
                 yield return Delay500;
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
@@ -406,7 +412,7 @@ public class PlayerHUD : MonoBehaviourPun
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
                 FadeinImige();
-
+                Debug.Log("4");
                 yield return Delay500;
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
@@ -436,6 +442,7 @@ public class PlayerHUD : MonoBehaviourPun
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
             }
         }
+        yield return null;
     }
 
 
@@ -547,9 +554,9 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
 
-        playerHealthBar.fillAmount = playerHp.hpSlider3D.value / playerHp.hpSlider3D.maxValue;
-        playerHp2D = playerHp.hpSlider3D.value;
-        playerHealthBarTMpro.text = (int)playerHp2D + " / " + playerHp.hpSlider3D.maxValue;
+        playerHealthBar.fillAmount = playerHp.health / playerHp.MaxHealth;
+        playerHp2D = playerHp.health;
+        playerHealthBarTMpro.text = (int)playerHp2D + " / " + playerHp.MaxHealth;
     }
 
     IEnumerator SetPlayer()
@@ -612,14 +619,14 @@ public class PlayerHUD : MonoBehaviourPun
                 return;
             }
 
-            if (enemyHp.hpSlider3D.value <= 0)
+            if (enemyHp.health <= 0)
             {
                 InfoPanel.SetActive(false);
             }
 
-            InfoHealthBar.fillAmount = enemyHp.hpSlider3D.value / enemyHp.hpSlider3D.maxValue;
-            Hp2D = enemyHp.hpSlider3D.value;
-            InfoHealthBarTMPro.text = (int)Hp2D + " / " + enemyHp.hpSlider3D.maxValue;
+            InfoHealthBar.fillAmount = enemyHp.health / enemyHp.MaxHealth;
+            Hp2D = enemyHp.health;
+            InfoHealthBarTMPro.text = (int)Hp2D + " / " + enemyHp.MaxHealth;
 
             float dmg = currentPlayerforInfo.playerStats.attackDmg;
             float atkSpeed = currentPlayerforInfo.playerStats.attackSpeed;

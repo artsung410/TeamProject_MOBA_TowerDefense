@@ -209,18 +209,18 @@ AnimatorController:
   m_Name: Monster_orc
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: Die
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: Attack
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
+    m_Controller: {fileID: 0}
+  - m_Name: Die
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
   m_AnimatorLayers:
   - serializedVersion: 5
     m_Name: Base Layer
@@ -267,19 +267,19 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 2518128532730557851}
-    m_Position: {x: 700, y: 470, z: 0}
+    m_Position: {x: 700, y: 560, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4936659395268901337}
-    m_Position: {x: 130, y: 850, z: 0}
+    m_Position: {x: 120, y: 850, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 3161837061055719010}
-    m_Position: {x: 130, y: 720, z: 0}
+    m_Position: {x: 120, y: 720, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2190771442468379753}
-    m_Position: {x: 130, y: 630, z: 0}
+    m_Position: {x: 120, y: 640, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 5470857698950063473}
-    m_Position: {x: 130, y: 520, z: 0}
+    m_Position: {x: 120, y: 520, z: 0}
   - serializedVersion: 1
     m_State: {fileID: -4615561669204454171}
     m_Position: {x: 120, y: 420, z: 0}
@@ -292,9 +292,9 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 700, y: 340, z: 0}
-  m_EntryPosition: {x: 150, y: 1010, z: 0}
-  m_ExitPosition: {x: 730, y: 590, z: 0}
+  m_AnyStatePosition: {x: 720, y: 740, z: 0}
+  m_EntryPosition: {x: 140, y: 950, z: 0}
+  m_ExitPosition: {x: 720, y: 360, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: -4936659395268901337}
 --- !u!1102 &2190771442468379753

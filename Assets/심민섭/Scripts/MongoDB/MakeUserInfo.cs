@@ -54,21 +54,21 @@ public class MakeUserInfo : MonoBehaviour
 
     private void Start()
     {
-        ChainAttack = new int[5];
-        Smash = new int[5];
-        Whirlwind = new int[5];
-        SpritSword = new int[5];
-        Leap = new int[5];
+        ChainAttack = new int[3];
+        Smash = new int[3];
+        Whirlwind = new int[3];
+        SpritSword = new int[3];
+        Leap = new int[3];
 
-        Blaze = new int[5];
-        Lightning = new int[5];
-        Blink = new int[5];
-        IceArrow = new int[5];
-        EnergyBolt = new int[5];
+        Blaze = new int[3];
+        Lightning = new int[3];
+        Blink = new int[3];
+        IceArrow = new int[3];
+        EnergyBolt = new int[3];
 
-        increasedMinionProduction = new int[5];
-        increasedMinionAttackPower = new int[5];
-        dragonSummon = new int[5];
+        increasedMinionProduction = new int[3];
+        increasedMinionAttackPower = new int[3];
+        dragonSummon = new int[3];
 
         towerAttackGuard = new int[5];
         towerAttackCannon = new int[5];
@@ -120,97 +120,57 @@ public class MakeUserInfo : MonoBehaviour
             {
                 ChainAttack[2] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 4)
-            {
-                ChainAttack[3] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 5)
-            {
-                ChainAttack[4] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 내려찍기
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 6)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 4)
             {
                 Smash[0] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 7)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 5)
             {
                 Smash[1] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 8)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 6)
             {
                 Smash[2] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 9)
-            {
-                Smash[3] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 10)
-            {
-                Smash[4] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 휠윈드
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 11)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 7)
             {
                 Whirlwind[0] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 12)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 8)
             {
                 Whirlwind[1] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 13)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 9)
             {
                 Whirlwind[2] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 14)
-            {
-                Whirlwind[3] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 15)
-            {
-                Whirlwind[4] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 검기
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 16)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 10)
             {
                 SpritSword[0] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 17)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 11)
             {
                 SpritSword[1] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 18)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 12)
             {
                 SpritSword[2] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 19)
-            {
-                SpritSword[3] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 20)
-            {
-                SpritSword[4] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 도약
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 21)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 13)
             {
                 Leap[0] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 22)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 14)
             {
                 Leap[1] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 23)
+            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 15)
             {
                 Leap[2] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 24)
-            {
-                Leap[3] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 25)
-            {
-                Leap[4] = InventoryGetData.instance.warriorInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
         }
     }
@@ -237,97 +197,57 @@ public class MakeUserInfo : MonoBehaviour
             {
                 Blaze[2] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 4)
-            {
-                Blaze[3] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 5)
-            {
-                Blaze[4] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 라이트닝
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 6)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 4)
             {
                 Lightning[0] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 7)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 5)
             {
                 Lightning[1] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 8)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 6)
             {
                 Lightning[2] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 9)
-            {
-                Lightning[3] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 10)
-            {
-                Lightning[4] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 블링크
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 11)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 7)
             {
                 Blink[0] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 12)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 8)
             {
                 Blink[1] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 13)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 9)
             {
                 Blink[2] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 14)
-            {
-                Blink[3] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 15)
-            {
-                Blink[4] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 아이스애로우
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 16)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 10)
             {
                 IceArrow[0] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 17)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 11)
             {
                 IceArrow[1] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 18)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 12)
             {
                 IceArrow[2] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 19)
-            {
-                IceArrow[3] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 20)
-            {
-                IceArrow[4] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 에너지볼트
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 21)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 13)
             {
                 EnergyBolt[0] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 22)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 14)
             {
                 EnergyBolt[1] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 23)
+            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 15)
             {
                 EnergyBolt[2] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 24)
-            {
-                EnergyBolt[3] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 25)
-            {
-                EnergyBolt[4] = InventoryGetData.instance.wizardInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
         }
     }
@@ -353,55 +273,31 @@ public class MakeUserInfo : MonoBehaviour
             {
                 increasedMinionProduction[2] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 4)
-            {
-                increasedMinionProduction[3] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 5)
-            {
-                increasedMinionProduction[4] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 미니언 데미지 증가
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 6)
+            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 4)
             {
                 increasedMinionAttackPower[0] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 7)
+            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 5)
             {
                 increasedMinionAttackPower[1] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 8)
+            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 6)
             {
                 increasedMinionAttackPower[2] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 9)
-            {
-                increasedMinionAttackPower[3] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 10)
-            {
-                increasedMinionAttackPower[4] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
             // 드래곤 소환
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 11)
+            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 7)
             {
                 dragonSummon[0] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 12)
+            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 8)
             {
                 dragonSummon[1] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 13)
+            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 9)
             {
                 dragonSummon[2] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 14)
-            {
-                dragonSummon[3] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
-            }
-            else if (InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemID == 15)
-            {
-                dragonSummon[4] = InventoryGetData.instance.inherenceInventoryData[i].GetComponent<ItemOnObject>().item.itemValue;
             }
         }
     }
