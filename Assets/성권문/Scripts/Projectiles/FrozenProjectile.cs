@@ -7,8 +7,7 @@ public class FrozenProjectile : Projectiles, ISeek
 {
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
-    float maxHeight = 16f;
-    float minHeight = 1f;
+
     private void Update()
     {
         if (target == null)
