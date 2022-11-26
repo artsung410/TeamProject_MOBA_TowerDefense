@@ -52,39 +52,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    ID: 30
+    Name: BlackHole_Tower
+    ID: 26
+    GroupID: 6
+    Rank: 1
+    Type: 1
     Pf: {fileID: 4274299024074093435}
-    Name: BlackHole_Tower5
-    Combination_ResultID: 0
-    Combination_Required_Value: 0
-    Normal_Random_Draw_Probability: 0
-    Normal_Attack_Draw_Probability: 0
+    Combination_ResultID: 27
+    Combination_Required_Value: 500
+    Normal_Random_Draw_Probability: 2.9166667
+    Normal_Attack_Draw_Probability: 7
     Normal_Minion_Draw_Probability: 0
     Normal_Buff_Debuff_Draw_Probability: 0
-    Premium_Random_Draw_Probability: 0.41666666
-    Premium_Attack_Draw_Probability: 1
+    Premium_Random_Draw_Probability: 0
+    Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 6
-    Rank: 5
-    Type: 1
     Attack: 10
-    Attack_Speed: 0.6
-    Hp: 300
+    Attack_Speed: 1.5
+    Hp: 100
     Range: 20
     Range_Type: 3
     Projectile_Type: 2
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 5527006204212594495, guid: b14d036e6e35fe046a8d696a82895d59, type: 3}
-    Destroy_Effect_Pf: {fileID: 0}
-    Desc: 0
-    Sprite_TowerCard: {fileID: 21300000, guid: cbfbaff3a7dce284a98f71eab6013c7d, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: "\uC6B0\uC8FC\uC758 \uADFC\uC6D0\uC744 \uCC3E\uC544\uC11C \uADF8\uB300\uC5D0\uAC8C
+      \uBCF4\uC5EC\uB4DC\uB9BD\uB2C8\uB2E4. \uBB49\uCE60 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? "
+    Sprite_TowerCard: {fileID: 21300000, guid: b664a600adbbe9043b33a2d9cac14fc3, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f505e96280c771c4d9a2954cd518bbdb, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
-  towerData: {fileID: 11400000, guid: 756a7d8f966d7a44083480702873cfd9, type: 2}
-  currentHealth: 0
+    buffID: 0
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -430,6 +431,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2590740425280895843}
     m_Modifications:
+    - target: {fileID: 3204027714071452281, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4367624973842323870, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

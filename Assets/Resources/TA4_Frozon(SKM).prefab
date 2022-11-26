@@ -208,40 +208,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    ID: 0
-    Pf: {fileID: 0}
-    Name: 
-    Combination_ResultID: 0
-    Combination_Required_Value: 0
-    Normal_Random_Draw_Probability: 0
-    Normal_Attack_Draw_Probability: 0
+    Name: FrozenOrb_Tower
+    ID: 16
+    GroupID: 4
+    Rank: 1
+    Type: 1
+    Pf: {fileID: 7524440688518750253}
+    Combination_ResultID: 17
+    Combination_Required_Value: 500
+    Normal_Random_Draw_Probability: 2.9166667
+    Normal_Attack_Draw_Probability: 7
     Normal_Minion_Draw_Probability: 0
     Normal_Buff_Debuff_Draw_Probability: 0
     Premium_Random_Draw_Probability: 0
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 0
-    Rank: 0
-    Type: 0
-    Attack: 0
-    Attack_Speed: 0
-    Hp: 0
-    Range: 0
-    Range_Type: 0
-    Projectile_Type: 0
-    Projectile_Speed: 0
-    Projectile_Pf: {fileID: 0}
-    Destroy_Effect_Pf: {fileID: 0}
-    Desc: 
-    Sprite_TowerCard: {fileID: 0}
-    Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
-    buffID: 0
-  towerData: {fileID: 11400000, guid: 2198c672e9cf9244d9716b0250696589, type: 2}
-  currentHealth: 0
+    Attack: 5
+    Attack_Speed: 0.3
+    Hp: 100
+    Range: 20
+    Range_Type: 2
+    Projectile_Type: 2
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: "\uC5BC\uC74C \uB3D9\uB3D9! \uC0B4 \uC5BC\uC74C \uD30C\uD2F0!"
+    Sprite_TowerCard: {fileID: 21300000, guid: 623a39af688903b498e2e64d80ddc269, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
+    buffID: 20006
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}

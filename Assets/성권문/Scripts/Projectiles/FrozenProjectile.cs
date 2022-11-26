@@ -45,7 +45,7 @@ public class FrozenProjectile : Projectiles, ISeek
 
             if (photonView.IsMine)
             {
-                PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+                PhotonNetwork.Instantiate(ImpactEffect.name, target.position, Quaternion.identity);
             }
 
             PhotonNetwork.Destroy(gameObject);

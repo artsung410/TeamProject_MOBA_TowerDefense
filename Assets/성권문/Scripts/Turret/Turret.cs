@@ -40,7 +40,6 @@ public class Turret : MonoBehaviourPun
     [HideInInspector]
     public float attackSpeed; // 공격속도
 
-    [HideInInspector]
     protected float range; // 공격범위
 
     protected GameObject destroyPF; // 타워파괴 파티클
@@ -82,32 +81,32 @@ public class Turret : MonoBehaviourPun
 
         if(photonView.IsMine)
         {
-            currentHealth = towerDB.Hp;
-
-            // 타워 데이터 -> 투사체의 공격력 적용
-            attack = towerDB.Attack;
-
-            // 타워 데이터 -> 타워의 공격 주기 적용
-            attackSpeed = towerDB.Attack_Speed;
-
-            // 타워 데이터 -> 타워의 공격 범위 적용
-            range = towerDB.Range;
-
-            // 타워 데이터 -> 타워의 파괴 프리팹 적용
-            destroyPF = towerDB.Destroy_Effect_Pf;
-
-            // 타워 데이터 -> 타워의 투사체 적용
-            projectilePF = towerDB.Projectile_Pf;
-
-            // 타워 데이터 -> 타워 투사체 속도적용
-            projectiles_Speed = towerDB.Projectile_Speed;
-
             // 타워 데이터 -> 버프타워 찾아서 버프적용
             if (towerDB.Type == (int)Tower_Type.Buff_Tower || towerDB.Type == (int)Tower_Type.DeBuff_Tower)
             {
                 StartCoroutine(SetBuff());
             }
         }
+
+        currentHealth = maxHealth = towerDB.Hp;
+
+        // 타워 데이터 -> 투사체의 공격력 적용
+        attack = towerDB.Attack;
+
+        // 타워 데이터 -> 타워의 공격 주기 적용
+        attackSpeed = towerDB.Attack_Speed;
+
+        // 타워 데이터 -> 타워의 공격 범위 적용
+        range = towerDB.Range;
+
+        // 타워 데이터 -> 타워의 파괴 프리팹 적용
+        destroyPF = towerDB.Destroy_Effect_Pf;
+
+        // 타워 데이터 -> 타워의 투사체 적용
+        projectilePF = towerDB.Projectile_Pf;
+
+        // 타워 데이터 -> 타워 투사체 속도적용
+        projectiles_Speed = towerDB.Projectile_Speed;
 
         // 타워 아웃라인 컴포넌트 할당
         _outline = GetComponent<Outline>();
@@ -173,6 +172,11 @@ public class Turret : MonoBehaviourPun
             hitbarImage.sprite = healthbarImages[2];
             healthbarImage.sprite = healthbarImages[1];
         }
+        //else
+        //{
+        //    hitbarImage.sprite = healthbarImages[1];
+        //    healthbarImage.sprite = healthbarImages[0];
+        //}
 
         _outline.enabled = false;
         _outline.OutlineWidth = 8f;
@@ -187,7 +191,7 @@ public class Turret : MonoBehaviourPun
             return;
         }
 
-        photonView.RPC("TakeDamage", RpcTarget.All, damage);
+        photonView.RPC(nameof(TakeDamage), RpcTarget.All, damage);
     }
 
     float exp = 100f;
@@ -199,7 +203,7 @@ public class Turret : MonoBehaviourPun
             return;
         }
 
-        currentHealth = Mathf.Max(currentHealth - damage, 0);
+        currentHealth -= damage;
         healthbarImage.fillAmount = currentHealth / maxHealth;
         StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
         if (currentHealth <= 0)
