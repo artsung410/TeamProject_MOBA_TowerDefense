@@ -54,6 +54,46 @@ public class CSVtest : MonoBehaviour
 
     bool isDone = false;
 
+    private static CSVtest _instance;
+
+
+    public static CSVtest Instance
+    {
+        get
+        {
+            // 인스턴스가 없는 경우에 접근하려 하면 인스턴스를 할당해준다.
+            if (!_instance)
+            {
+                _instance = FindObjectOfType(typeof(CSVtest)) as CSVtest;
+
+                if (_instance == null)
+                    Debug.Log("no Singleton obj");
+            }
+            return _instance;
+        }
+        set
+        {
+            _instance = value;
+        }
+    }
+
+    private void Awake()
+    {
+        if (_instance == null)
+        {
+            _instance = this;
+        }
+
+        // 인스턴스가 존재하는 경우 새로생기는 인스턴스를 삭제한다.
+        else if (_instance != this)
+        {
+            Destroy(gameObject);
+        }
+
+        // 아래의 함수를 사용하여 씬이 전환되더라도 선언되었던 인스턴스가 파괴되지 않는다.
+        DontDestroyOnLoad(gameObject);
+    }
+
     IEnumerator GetDescData(string url)
     {
         UnityWebRequest DescDataRequest = UnityWebRequest.Get(url);
@@ -111,6 +151,7 @@ public class CSVtest : MonoBehaviour
     public ItemDataBaseList tower_Minion_DatabaseList;
 
     UnityWebRequest TowerWebData;
+    public Dictionary<int, TowerBlueprint> TowerDic = new Dictionary<int, TowerBlueprint>();
     IEnumerator GetTowerData()                                                                              
     {
         TowerWebData = UnityWebRequest.Get(TowerURL);
@@ -186,6 +227,9 @@ public class CSVtest : MonoBehaviour
 
             // 미니언타워만 해당.
             towerDatabaseListCSV.itemList[i].MinionID = int.Parse(col[32]);
+
+            // 다른 스크립트에서 조회할수 있게 딕셔너리에 담기.
+            TowerDic.Add(towerDatabaseListCSV.itemList[i].ID, towerDatabaseListCSV.itemList[i]);
 
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
             towerDatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
