@@ -31,6 +31,9 @@ public class Enemybase : MonoBehaviourPun
 
     public static event Action<Enemybase, Sprite> minionMouseDownEvent = delegate { };
 
+    [Header("미니언 DB (디버그용, 추후에 Private로 전환예정")]
+    public MinionBlueprint minionDB;
+
     // 이동속도
     public float moveSpeed;
     // 공격사거리
@@ -46,7 +49,7 @@ public class Enemybase : MonoBehaviourPun
     protected float AttackTime;
 
     // 체력
-    public float HP = 100f;
+    public float HP;
 
     public string lastDamageTeam;
 
@@ -66,8 +69,6 @@ public class Enemybase : MonoBehaviourPun
     private Outline _outline;
 
     private Monster _monster;
-
-    
 
     protected virtual void Awake()
     {
@@ -140,6 +141,26 @@ public class Enemybase : MonoBehaviourPun
         {
             Death();
         }
+    }
+
+    public void SetInitData(int id)
+    {
+        photonView.RPC(nameof(RPC_SetInitData), RpcTarget.All, id);
+    }
+
+    [PunRPC]
+    public void RPC_SetInitData(int id)
+    {
+        minionDB = CSVtest.Instance.MinionDic[id];
+
+        Damage = minionDB.Attack;
+        AttackSpeed = minionDB.Attack_Speed;
+        attackRange = minionDB.Range;
+        moveSpeed = minionDB.Move_Speed;
+        HP = minionDB.Hp;
+        minionSprite = minionDB.Icon;
+
+        Debug.Log($"[미니언] { PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
     }
 
     public void TakeDamage(float Damage)

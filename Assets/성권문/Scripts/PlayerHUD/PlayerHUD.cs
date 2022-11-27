@@ -541,7 +541,7 @@ public class PlayerHUD : MonoBehaviourPun
 
     private IEnumerator setHp()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(1.5f);
         playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
         enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
         StopCoroutine(setHp());
@@ -727,6 +727,7 @@ public class PlayerHUD : MonoBehaviourPun
         currentMinionforInfo = minion;
         InfoPanel.SetActive(true);
 
+        InfoIcon.sprite = minion.minionDB.Icon;
         float dmg = minion.Damage;
         float atkSpeed = minion.AttackSpeed;
         float spd = minion.moveSpeed;

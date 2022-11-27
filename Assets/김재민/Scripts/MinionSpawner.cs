@@ -20,7 +20,10 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
 
     [Header("미니언 데이터 저장")]
     public MinionBlueprint[] MinionBluePrints;
-    
+
+    [Header("바뀐 미니언 Id 저장")]
+    public int[] MinionIDs;
+
     [HideInInspector]
     public int BlueSkillWave;
 
@@ -39,14 +42,17 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     float minionSpawnTime = 20f;
 
     public static MinionSpawner Instance;
-    public MinionDatabaseList minionDB;
+    public MinionDatabaseList minionDB_List;
 
 
     private void Awake()
     {
         Instance = this;
-        MinionBluePrints[0] = MinionBluePrints[2] = minionDB.itemList[(int)MinionSort.Forest_Bat]; // 근접
-        MinionBluePrints[1] = MinionBluePrints[3] = minionDB.itemList[(int)MinionSort.Nymph_Fairy]; // 원거리
+        MinionBluePrints[0] = MinionBluePrints[2] = minionDB_List.itemList[(int)MinionSort.Forest_Bat]; // 근접
+        MinionBluePrints[1] = MinionBluePrints[3] = minionDB_List.itemList[(int)MinionSort.Nymph_Fairy]; // 원거리
+
+        MinionIDs[0] = MinionIDs[2] = minionDB_List.itemList[(int)MinionSort.Forest_Bat].ID; // 근접
+        MinionIDs[1] = MinionIDs[3] = minionDB_List.itemList[(int)MinionSort.Nymph_Fairy].ID; // 원거리
     }
 
     void Start()
@@ -86,13 +92,15 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
         {
             if (tag == "Blue") //근접이고 태그가 블루면 
             {
-                MinionBluePrints[0] = minionDB.itemList[minionID - 5001];
+                MinionBluePrints[0] = minionDB_List.itemList[minionID - 5001];
                 BasicMinion[0] = transferedMinionBlue; //  블루 근접미니언
+                MinionIDs[0] = minionID;
             }
             else // 근접이고 태그가 레드면
             {
-                MinionBluePrints[2] = minionDB.itemList[minionID - 5001];
+                MinionBluePrints[2] = minionDB_List.itemList[minionID - 5001];
                 BasicMinion[2] = transferedMinionRed; // 레드 근접미니언
+                MinionIDs[2] = minionID;
             }
         }
 
@@ -100,17 +108,23 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
         {
             if (tag == "Blue") // 원거리면서 태그가 블루면  
             {
-                MinionBluePrints[1] = minionDB.itemList[minionID - 5001];
+                MinionBluePrints[1] = minionDB_List.itemList[minionID - 5001];
                 BasicMinion[1] = transferedMinionBlue; // 블루 원거리 미니언
+                MinionIDs[1] = minionID;
             }
             else
             {
-                MinionBluePrints[3] = minionDB.itemList[minionID - 5001];
+                MinionBluePrints[3] = minionDB_List.itemList[minionID - 5001];
                 BasicMinion[3] = transferedMinionRed; // 레드 원거리 미니언
+                MinionIDs[3] = minionID;
             }
         }
-        SetInitData();
     }
+
+    private GameObject newMinion1;
+    private GameObject newMinion2;
+    private GameObject newMinion3;
+    private GameObject newMinion4;
 
     private void BlueSpawnMinion()
     {
@@ -122,8 +136,11 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
                 return;
             }
 
-            PhotonNetwork.Instantiate(BasicMinion[0].name, GameManager.Instance.spawnPositions[0].position, Quaternion.identity); // 이게 바뀜
-            PhotonNetwork.Instantiate(BasicMinion[1].name, GameManager.Instance.spawnPositions[0].position, Quaternion.identity);
+            newMinion1 = PhotonNetwork.Instantiate(BasicMinion[0].name, GameManager.Instance.spawnPositions[0].position, Quaternion.identity); // 이게 바뀜
+            newMinion1.transform.GetChild(0).GetComponent<Enemybase>().SetInitData(MinionIDs[0]);
+
+            newMinion2 = PhotonNetwork.Instantiate(BasicMinion[1].name, GameManager.Instance.spawnPositions[0].position, Quaternion.identity);
+            newMinion2.transform.GetChild(0).GetComponent<Enemybase>().SetInitData(MinionIDs[1]);
         }
     }
 
@@ -136,26 +153,11 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
                 return;
             }
 
-            PhotonNetwork.Instantiate(BasicMinion[2].name, GameManager.Instance.spawnPositions[1].position, Quaternion.identity); // 이게 바뀜
-            PhotonNetwork.Instantiate(BasicMinion[3].name, GameManager.Instance.spawnPositions[1].position, Quaternion.identity);
-        }
-    }
+            newMinion3 = PhotonNetwork.Instantiate(BasicMinion[2].name, GameManager.Instance.spawnPositions[1].position, Quaternion.identity); // 이게 바뀜
+            newMinion3.transform.GetChild(0).GetComponent<Enemybase>().SetInitData(MinionIDs[2]);
 
-    private void SetInitData()
-    {
-        for(int i = 0; i < BasicMinion.Length; i++)
-        {
-            SetDetaliData(BasicMinion[i], MinionBluePrints[i]);
+            newMinion4 = PhotonNetwork.Instantiate(BasicMinion[3].name, GameManager.Instance.spawnPositions[1].position, Quaternion.identity);
+            newMinion4.transform.GetChild(0).GetComponent<Enemybase>().SetInitData(MinionIDs[3]);
         }
-    }
-
-    private void SetDetaliData(GameObject minion, MinionBlueprint minionBP)
-    {
-        minion.transform.GetChild(0).GetComponent<Enemybase>().Damage = MinionBluePrints[0].Attack = minionBP.Attack;
-        minion.transform.GetChild(0).GetComponent<Enemybase>().AttackSpeed = MinionBluePrints[0].Attack = minionBP.Attack_Speed;
-        minion.transform.GetChild(0).GetComponent<Enemybase>().attackRange = MinionBluePrints[0].Attack = minionBP.Range;
-        minion.transform.GetChild(0).GetComponent<Enemybase>().moveSpeed = MinionBluePrints[0].Attack = minionBP.Move_Speed;
-        minion.transform.GetChild(0).GetComponent<Enemybase>().HP = MinionBluePrints[0].Attack = minionBP.Hp;
-        minion.transform.GetChild(0).GetComponent<Enemybase>().minionSprite = minionBP.Icon;
     }
 }

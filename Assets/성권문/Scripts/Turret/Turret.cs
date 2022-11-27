@@ -128,7 +128,7 @@ public class Turret : MonoBehaviourPun
         // 타워 데이터 -> 타워 투사체 속도적용
         projectiles_Speed = towerDB.Projectile_Speed;
 
-        Debug.Log($"{ PhotonNetwork.LocalPlayer.ActorNumber} 플레이어 {gameObject.name} 세팅 완료");
+        Debug.Log($"[타워]{ PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
     }
 
     private IEnumerator SetBuff()

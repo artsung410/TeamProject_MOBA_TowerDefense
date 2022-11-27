@@ -102,6 +102,7 @@ public class CSVtest : MonoBehaviour
         
         StartCoroutine(GetTowerData());
         StartCoroutine(GetBuffData());
+        StartCoroutine(GetMinionData());
 
         //StartCoroutine(GetMinionData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
@@ -315,6 +316,7 @@ public class CSVtest : MonoBehaviour
     public MinionDatabaseList MinionDatabaseListCSV;
 
     UnityWebRequest MinionWebData;
+    public Dictionary<int, MinionBlueprint> MinionDic = new Dictionary<int, MinionBlueprint>();
     IEnumerator GetMinionData()
     {
         MinionWebData = UnityWebRequest.Get(MinionURL);
@@ -353,6 +355,8 @@ public class CSVtest : MonoBehaviour
             MinionDatabaseListCSV.itemList[i].Hp = float.Parse(col[15]);
             MinionDatabaseListCSV.itemList[i].Exp = float.Parse(col[16]);
             MinionDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[17]);
+
+            MinionDic.Add(MinionDatabaseListCSV.itemList[i].ID, MinionDatabaseListCSV.itemList[i]);
         }
     }
     #endregion Minion 
