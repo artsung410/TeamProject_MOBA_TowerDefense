@@ -47,6 +47,7 @@ public class PlayerHUD : MonoBehaviourPun
     public TextMeshProUGUI InfoHealthBarTMPro;
     public TextMeshProUGUI InfoDpsTMpro;
     public TextMeshProUGUI InfoSpdMpro;
+    public TextMeshProUGUI InfoLevel;
 
     [Header("SkillUI")]
     public GameObject skillTable;
@@ -716,6 +717,7 @@ public class PlayerHUD : MonoBehaviourPun
 
         // 이벤트로 들어온 매개변수 세팅(Item class)
         InfoIcon.sprite = turret.towerDB.Sprite_TowerProtrait;
+        InfoLevel.text = turret.towerDB.Rank.ToString();
     }
 
     public void ActivationMinionInfoUI(Enemybase minion, Sprite icon)
