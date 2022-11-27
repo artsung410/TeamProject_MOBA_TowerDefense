@@ -707,6 +707,7 @@ public class PlayerHUD : MonoBehaviourPun
         InfoPanel.SetActive(true);
 
         InfoIcon.sprite = player.playerIcon;
+        InfoLevel.text = player.playerStats.Level.ToString();
     }
 
     public void ActivationTowerInfoUI(Turret turret)
@@ -726,7 +727,6 @@ public class PlayerHUD : MonoBehaviourPun
         currentMinionforInfo = minion;
         InfoPanel.SetActive(true);
 
-        InfoIcon.sprite = icon;
         float dmg = minion.Damage;
         float atkSpeed = minion.AttackSpeed;
         float spd = minion.moveSpeed;
