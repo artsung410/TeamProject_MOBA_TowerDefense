@@ -654,13 +654,6 @@ public class PlayerHUD : MonoBehaviourPun
             InfoHealthBar.fillAmount = currentTurretforInfo.currentHealth / currentTurretforInfo.maxHealth;
             Hp2D = currentTurretforInfo.currentHealth;
             InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentTurretforInfo.maxHealth;
-
-            // 실시간 dps / speed 동기화
-            float dmg = currentTurretforInfo.attack;
-            float atkSpeed = currentTurretforInfo.attackSpeed;
-            float dps = dmg * atkSpeed;
-            InfoDpsTMpro.text = dps.ToString();
-            InfoSpdMpro.text = 0.ToString();
         }
 
         else if (INFO == InfoState.Minion)
@@ -696,8 +689,6 @@ public class PlayerHUD : MonoBehaviourPun
             Hp2D = currentNexusforInfo.CurrentHp;
             InfoHealthBarTMPro.text = (int)Hp2D + " / " + currentNexusforInfo.MaxHp;
         }
-
-
     }
 
     public void ActivationEnemyInfoUI(Player player)
@@ -716,9 +707,14 @@ public class PlayerHUD : MonoBehaviourPun
         currentTurretforInfo = turret;
         InfoPanel.SetActive(true);
 
-        // 이벤트로 들어온 매개변수 세팅(Item class)
-        InfoIcon.sprite = turret.towerDB.Sprite_TowerProtrait;
+        float dmg = currentTurretforInfo.attack;
+        float atkSpeed = currentTurretforInfo.attackSpeed;
+        float dps = dmg * atkSpeed;
+
+        InfoDpsTMpro.text = dps.ToString();
+        InfoSpdMpro.text = 0.ToString();
         InfoLevel.text = turret.towerDB.Rank.ToString();
+        InfoIcon.sprite = turret.towerDB.Sprite_TowerProtrait;
     }
 
     public void ActivationMinionInfoUI(Enemybase minion, Sprite icon)
@@ -727,14 +723,23 @@ public class PlayerHUD : MonoBehaviourPun
         currentMinionforInfo = minion;
         InfoPanel.SetActive(true);
 
-        InfoIcon.sprite = minion.minionDB.Icon;
         float dmg = minion.Damage;
         float atkSpeed = minion.AttackSpeed;
         float spd = minion.moveSpeed;
-
         float dps = dmg * atkSpeed;
+
         InfoDpsTMpro.text = dps.ToString();
         InfoSpdMpro.text = spd.ToString();
+        InfoLevel.text = minion.minionDB.Rank.ToString();
+
+        if (minion.gameObject.tag == "Blue")
+        {
+            InfoIcon.sprite = minion.minionDB.Icon_Blue;
+        }
+        else
+        {
+            InfoIcon.sprite = minion.minionDB.Icon_Red;
+        }
     }
 
     public void ActivationNexusInfoUI(NexusHp nexus, Sprite icon)

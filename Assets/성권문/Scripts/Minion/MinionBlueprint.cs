@@ -28,5 +28,6 @@ public class MinionBlueprint
     public float Move_Speed;            // 이동속도
     public float Hp;                    // 체력
     public float Exp;                   // 경험치
-    public Sprite Icon;                 // 아이콘
+    public Sprite Icon_Blue;                 // 아이콘
+    public Sprite Icon_Red;                 // 아이콘
 }

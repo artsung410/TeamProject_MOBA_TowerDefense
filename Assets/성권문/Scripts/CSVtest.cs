@@ -354,7 +354,10 @@ public class CSVtest : MonoBehaviour
             MinionDatabaseListCSV.itemList[i].Move_Speed = float.Parse(col[14]);
             MinionDatabaseListCSV.itemList[i].Hp = float.Parse(col[15]);
             MinionDatabaseListCSV.itemList[i].Exp = float.Parse(col[16]);
-            MinionDatabaseListCSV.itemList[i].Icon = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[17]);
+            MinionDatabaseListCSV.itemList[i].Icon_Blue = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[3] + "_Blue");
+            MinionDatabaseListCSV.itemList[i].Icon_Red = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[3] + "_Red");
+
+            Debug.Log(col[17]);
 
             MinionDic.Add(MinionDatabaseListCSV.itemList[i].ID, MinionDatabaseListCSV.itemList[i]);
         }
