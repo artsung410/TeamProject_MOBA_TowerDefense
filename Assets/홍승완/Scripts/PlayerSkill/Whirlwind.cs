@@ -115,7 +115,11 @@ public class Whirlwind : SkillHandler
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 BuffBlueprint buff = CSVtest.Instance.BuffDic[Data.ID + 50];
-                BuffManager.Instance.AddBuff(buff);
+                if (other.gameObject.layer == 7)
+                {
+                    BuffManager.Instance.AddBuff(buff);
+                }
+
                 SkillDamage(damage, other.gameObject);
             }
         }

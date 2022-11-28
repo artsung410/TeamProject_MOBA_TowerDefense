@@ -54,7 +54,6 @@ public class Player : MonoBehaviourPun
         }
     }
 
-    // =========================== 타워 버프 적용 처리 ===========================
     public void incrementBuffValue(int id, float addValue, bool state)
     {
         if (!photonView.IsMine)
@@ -64,16 +63,15 @@ public class Player : MonoBehaviourPun
         }
 
         Debug.Log(gameObject.tag + "내꺼 멎움");
-        
-        //// 스킬용 id : 9 ~
-        //if (id >= 9)
-        //{
-        //    ApplyDebuff(id, addValue, state);
-        //}
-        // 타워용 id : 1 ~ 8
 
-        StartCoroutine(delayApplyBuff(id, addValue, state));
-
+        if (id <= 10000)
+        {
+            ApplyDebuff(id, addValue, state);
+        }
+        else
+        {
+            StartCoroutine(delayApplyBuff(id, addValue, state));
+        }
     }
 
     // 플레이어 스탯 초기화가 이루어진 뒤에 디버프적용
@@ -86,9 +84,7 @@ public class Player : MonoBehaviourPun
     // 스킬 전용 디버프
     public void ApplyDebuff(int id, float addValue, bool state)
     {
-
             photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
-        
     }
 
 // TODO : 버프 상대편한테 적용하게 할것
