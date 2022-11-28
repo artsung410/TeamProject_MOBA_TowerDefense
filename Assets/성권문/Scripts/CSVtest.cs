@@ -399,14 +399,12 @@ public class CSVtest : MonoBehaviour
 
             skillDatas.DataList[i].CardImage = Resources.Load<Sprite>("Sprites/SKillImage/" + dic[i + 1][(int)SkillColData.CardImage]);
             skillDatas.DataList[i].SkillIcon = Resources.Load<Sprite>("Sprites/SkillIcon/" + dic[i + 1][(int)SkillColData.SkillIcon]);
-
-            //skillDatas.DataList[i].Desc = dic[i + 1][(int)SkillColData.Desc];
             skillDatas.DataList[i].Desc = descDic[int.Parse(dic[i + 1][(int)SkillColData.Desc])][(int)DescColData.Text_En];
 
-            // ����� ���� �����ͺ��̽�����Ʈ�� ���(�ϴ��)
             oldData.itemList[i + 1].skillData = skillDatas.DataList[i];
             oldData.itemList[i + 1].itemName = skillDatas.DataList[i].NameLevel;
             oldData.itemList[i + 1].itemIcon = skillDatas.DataList[i].CardImage;
+            oldData.itemList[i + 1].itemDesc = skillDatas.DataList[i].Desc;
         }
     }
 
