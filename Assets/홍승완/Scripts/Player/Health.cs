@@ -83,12 +83,6 @@ public class Health : MonoBehaviourPun
         }
         FrontHealthBar.fillAmount = health / MaxHealth;
         BackHealthBar.fillAmount = FrontHealthBar.fillAmount;
-
-        //Debug.Log($"health : {health}\n" +
-        //    $"maxHealth : {MaxHealth}\n" +
-        //    $"health.fillamount : {FrontHealthBar.fillAmount}\n" +
-        //    $"elapse.fillamount : {BackHealthBar.fillAmount}");
-
         
 #endif
 
@@ -109,9 +103,7 @@ public class Health : MonoBehaviourPun
         //hpSlider3D.value = health;
 
 #endif
-
         Init();
-
     }
 
     float lerpTime;
@@ -157,7 +149,6 @@ public class Health : MonoBehaviourPun
         MaxHealth = maxHP;
         health += (MaxHealth - _prevMaxHealth);
         FrontHealthBar.fillAmount = health / MaxHealth;
-        //elapseBar.fillAmount = healthBar.fillAmount;
         _prevMaxHealth = MaxHealth;
 #endif
     }
@@ -181,7 +172,6 @@ public class Health : MonoBehaviourPun
     }
 
 
-    //[PunRPC]
     public void OnDamage(float damage)
     {
         if (isDeath)

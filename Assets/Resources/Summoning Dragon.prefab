@@ -9671,10 +9671,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b732723d74169449ed4cdc8e2c4bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetDamage: 40
-  SetHodingTime: 0.5
-  SetRange: 12
-  SetLockTime: 0
+  Data:
+    NameLevel: "\uBBF8\uB2C8\uC5B8 \uC18C\uD658_1\uB808\uBCA8"
+    Name: {fileID: 5986862085301851285}
+    ID: 7
+    Probability: 16.666666
+    Classification: 1
+    Rank: 1
+    LockTime: 0.5
+    SkillType: 7
+    Value_1: 5021
+    Value_2: 5028
+    CoolTime: 0
+    Range: 0
+    RangeType: 0
+    RangeValue_1: 0
+    RangeValue_2: 0
+    HoldingTime: 0
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 0
+    CcTime: 0
+    CcValue: 0
+    CardImage: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+    SkillIcon: {fileID: 21300000, guid: 0b40a759a114311418210830c433e3b1, type: 3}
+    Desc: "Summons a minion to help you in subspace.\r"
   TargetOn: 0
 --- !u!114 &6303172857478669785
 MonoBehaviour:
@@ -10999,6 +11021,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eminontpye: 0
+  minionDB:
+    Name: 
+    ID: 0
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Projectile_Speed: 0
+    Projectile_Type: 0
+    Attack: 0
+    Attack_Speed: 0
+    Range: 0
+    Move_Speed: 0
+    Hp: 0
+    Exp: 0
+    Icon_Blue: {fileID: 0}
+    Icon_Red: {fileID: 0}
   moveSpeed: 0
   attackRange: 10
   Damage: 30
@@ -11011,7 +11049,6 @@ MonoBehaviour:
   myTag: 
   isDead: 0
   _capsuleCollider: {fileID: 0}
-  hit: 0
   target: {fileID: 0}
   _skill: {fileID: 2110439575188990720}
 --- !u!114 &3047280084004467347
@@ -11612,8 +11649,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7299062496936519941}
   m_LocalRotation: {x: -0.6392682, y: 0.30221874, z: 0.6392683, w: -0.30221862}
-  m_LocalPosition: {x: 0.0000002897168, y: 1.4112443, z: 2.409167}
-  m_LocalScale: {x: 1, y: 1, z: 1.0000001}
+  m_LocalPosition: {x: 0, y: 1.4112443, z: 2.409167}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5025752531665849213}
