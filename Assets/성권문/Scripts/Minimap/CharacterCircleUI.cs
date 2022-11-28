@@ -52,7 +52,7 @@ public class CharacterCircleUI : MonoBehaviourPun
 
     private void Update()
     {
-        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 100, player.transform.position.z);
+        transform.position = new Vector3(player.transform.position.x, player.transform.position.y + 50f, player.transform.position.z);
     }
 }
 
