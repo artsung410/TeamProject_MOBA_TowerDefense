@@ -17,7 +17,7 @@ public class Turret : MonoBehaviourPun
     public static event Action<GameObject, float> OnTurretDestroyEvent = delegate { };
 
 
-    [Header("타워 DB")]
+    [Header("타워 DB (디버그용, 추후에 Private로 전환예정")]
     public TowerBlueprint towerDB;
     private Outline _outline;
 
@@ -88,6 +88,26 @@ public class Turret : MonoBehaviourPun
             }
         }
 
+        // 타워 아웃라인 컴포넌트 할당
+        _outline = GetComponent<Outline>();
+
+        // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
+        BuffManager.towerBuffAdditionEvent += incrementBuffValue;
+
+        // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
+        PlayerHUD.onGameEnd += Destroy_gameEnd;
+    }
+
+    public void SetInitData(int id)
+    {
+        photonView.RPC(nameof(RPC_SetInitData), RpcTarget.All, id);
+    }
+
+    [PunRPC]
+    public void RPC_SetInitData(int id)
+    {
+        towerDB = CSVtest.Instance.TowerDic[id];
+
         currentHealth = maxHealth = towerDB.Hp;
 
         // 타워 데이터 -> 투사체의 공격력 적용
@@ -108,14 +128,7 @@ public class Turret : MonoBehaviourPun
         // 타워 데이터 -> 타워 투사체 속도적용
         projectiles_Speed = towerDB.Projectile_Speed;
 
-        // 타워 아웃라인 컴포넌트 할당
-        _outline = GetComponent<Outline>();
-
-        // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
-        BuffManager.towerBuffAdditionEvent += incrementBuffValue;
-
-        // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
-        PlayerHUD.onGameEnd += Destroy_gameEnd;
+        Debug.Log($"[타워]{ PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
     }
 
     private IEnumerator SetBuff()
