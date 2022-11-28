@@ -29133,94 +29133,7 @@ MonoBehaviour:
   SlotGridLayout: {fileID: 426573419}
   SlotGridRectTransform: {fileID: 426573418}
   mainInventory: 1
-  ItemsInInventory:
-  - itemName: dragonSummon1
-    ClassType: Inherence
-    itemID: 7
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
-    itemModel: {fileID: 5986862085301851285, guid: d4b27850228cd3c4e864454189048113, type: 3}
-    inGameData: {fileID: 11400000, guid: bb7a043b4c9d28249984ac3fab26f4a2, type: 2}
-    itemValue: 1
-    itemType: 2
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: -1
-    rarity: 100
-    CombinationValue: 0
-    towerData:
-      Name: 
-      ID: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
-      Pf: {fileID: 0}
-      Combination_ResultID: 0
-      Combination_Required_Value: 0
-      Normal_Random_Draw_Probability: 0
-      Normal_Attack_Draw_Probability: 0
-      Normal_Minion_Draw_Probability: 0
-      Normal_Buff_Debuff_Draw_Probability: 0
-      Premium_Random_Draw_Probability: 0
-      Premium_Attack_Draw_Probability: 0
-      Premium_Minion_Draw_Probability: 0
-      Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 0
-      Attack_Speed: 0
-      Hp: 0
-      Range: 0
-      Range_Type: 0
-      Projectile_Type: 0
-      Projectile_Speed: 0
-      Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf: {fileID: 0}
-      Desc: 
-      Sprite_TowerCard: {fileID: 0}
-      Sprite_TowerProtrait: {fileID: 0}
-      AudioClip_Attack_Name: 
-      AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
-      buffID: 0
-      MinionID: 0
-    skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
-      Value_2: 0
-      CoolTime: 0
-      Range: 0
-      RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
-      TickDamage: 0
-      TickCount: 0
-      TickTime: 0
-      CcType: 0
-      CcTime: 0
-      CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: Atk
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 0.5
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0
-    specialPrefabs: []
-    buffDatas: []
+  ItemsInInventory: []
   height: 4
   width: 4
   stackable: 1
@@ -51549,7 +51462,7 @@ MonoBehaviour:
   prefabDraggingItemContainer: {fileID: 4151785056381523517}
   prefabPanel: {fileID: 4151785054912816566}
   slotSize: 55
-  iconSize: 100
+  iconSize: 20
   paddingBetweenX: 5
   paddingBetweenY: 5
   paddingLeft: 0
@@ -51569,13 +51482,13 @@ MonoBehaviour:
   SlotGridRectTransform: {fileID: 1916450619}
   mainInventory: 1
   ItemsInInventory:
-  - itemName: Tower_Attack_Laser1
+  - itemName: Tower_Attack_FrozenOrb1
     ClassType: 
-    itemID: 36
-    itemDesc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-    itemIcon: {fileID: 21300000, guid: 4f7d4be2ecacb7a44a92fc0d6f906507, type: 3}
-    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
-    inGameData: {fileID: 11400000, guid: 3a52a8865d212a4489fd7dfda46f630a, type: 2}
+    itemID: 16
+    itemDesc: "\uC5BC\uC74C \uB3D9\uB3D9! \uC0B4 \uC5BC\uC74C \uD30C\uD2F0!"
+    itemIcon: {fileID: 21300000, guid: 623a39af688903b498e2e64d80ddc269, type: 3}
+    itemModel: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
+    inGameData: {fileID: 11400000, guid: 2198c672e9cf9244d9716b0250696589, type: 2}
     itemValue: 1
     itemType: 10
     itemWeight: 0
@@ -51584,13 +51497,13 @@ MonoBehaviour:
     rarity: 100
     CombinationValue: 500
     towerData:
-      Name: Laser_Tower
-      ID: 36
-      GroupID: 8
+      Name: FrozenOrb_Tower
+      ID: 16
+      GroupID: 4
       Rank: 1
       Type: 1
-      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
-      Combination_ResultID: 37
+      Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
+      Combination_ResultID: 17
       Combination_Required_Value: 500
       Normal_Random_Draw_Probability: 2.9166667
       Normal_Attack_Draw_Probability: 7
@@ -51600,22 +51513,22 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 0.2
+      Attack: 5
       Attack_Speed: 0.3
       Hp: 100
       Range: 20
-      Range_Type: 4
-      Projectile_Type: 1
+      Range_Type: 2
+      Projectile_Type: 2
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 0}
+      Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-      Sprite_TowerCard: {fileID: 21300000, guid: 4f7d4be2ecacb7a44a92fc0d6f906507, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      Desc: "\uC5BC\uC74C \uB3D9\uB3D9! \uC0B4 \uC5BC\uC74C \uD30C\uD2F0!"
+      Sprite_TowerCard: {fileID: 21300000, guid: 623a39af688903b498e2e64d80ddc269, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
       AudioClip_Attack_Name: 0
       AudioClip_Hit_Name: 0
       AudioClip_Normal_Name: "0\r"
-      buffID: 0
+      buffID: 20006
       MinionID: 0
     skillData:
       NameLevel: 
@@ -51646,12 +51559,14 @@ MonoBehaviour:
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_Laser2
+  - itemName: Tower_Attack_Lightning2
     ClassType: 
-    itemID: 37
-    itemDesc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-    itemIcon: {fileID: 21300000, guid: a467719aaf9aa154cad7c4f49d097c30, type: 3}
-    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
+    itemID: 22
+    itemDesc: "\uC9DC\uB9BF\uC9DC\uB9BF!\uCC0C\uB9BF\uCC0C\uB9BF! \uBC88\uAC1C\uB9DB
+      \uAD6C\uC774\uAC00 \uB420 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? \uC624\uAE08\uC774
+      \uC800\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4 \uB4DC\uB9B4\uAC8C\uC694!"
+    itemIcon: {fileID: 21300000, guid: 1610cd11bc8291b4abe4867cb4507246, type: 3}
+    itemModel: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -51661,13 +51576,13 @@ MonoBehaviour:
     rarity: 100
     CombinationValue: 300
     towerData:
-      Name: Laser_Tower2
-      ID: 37
-      GroupID: 8
+      Name: Lightning_Tower2
+      ID: 22
+      GroupID: 5
       Rank: 2
       Type: 1
-      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
-      Combination_ResultID: 38
+      Pf: {fileID: 1910450694411701521, guid: 5aafc2af29311eb4d871a98b6cf898aa, type: 3}
+      Combination_ResultID: 23
       Combination_Required_Value: 300
       Normal_Random_Draw_Probability: 0.8333333
       Normal_Attack_Draw_Probability: 2
@@ -51677,22 +51592,24 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 0.3
+      Attack: 10
       Attack_Speed: 0.3
       Hp: 150
       Range: 20
       Range_Type: 4
-      Projectile_Type: 1
+      Projectile_Type: 2
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 0}
+      Projectile_Pf: {fileID: 6059788832995526943, guid: e62d8cf7728835a49abee313563d9d68, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-      Sprite_TowerCard: {fileID: 21300000, guid: a467719aaf9aa154cad7c4f49d097c30, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      Desc: "\uC9DC\uB9BF\uC9DC\uB9BF!\uCC0C\uB9BF\uCC0C\uB9BF! \uBC88\uAC1C\uB9DB
+        \uAD6C\uC774\uAC00 \uB420 \uC900\uBE44\uAC00 \uB418\uC168\uB098\uC694? \uC624\uAE08\uC774
+        \uC800\uB9AC\uAC8C \uB9CC\uB4E4\uC5B4 \uB4DC\uB9B4\uAC8C\uC694!"
+      Sprite_TowerCard: {fileID: 21300000, guid: 1610cd11bc8291b4abe4867cb4507246, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 9b7294504d3ae0549a589a217b019652, type: 3}
       AudioClip_Attack_Name: 0
       AudioClip_Hit_Name: 0
       AudioClip_Normal_Name: "0\r"
-      buffID: 0
+      buffID: 20002
       MinionID: 0
     skillData:
       NameLevel: 
@@ -51723,12 +51640,13 @@ MonoBehaviour:
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_Laser3
+  - itemName: Tower_Attack_Flame3
     ClassType: 
-    itemID: 38
-    itemDesc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-    itemIcon: {fileID: 21300000, guid: 7d9af09b855dec24a95586933816fca8, type: 3}
-    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
+    itemID: 13
+    itemDesc: "\uBD88\uC758 \uC138\uB840\uB97C \uBC1B\uC544 \uBCF4\uC2E0\uC801\uC774
+      \uC788\uB098\uC694? \uB728\uAC70\uC6B4 \uB9DB\uC744 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
+    itemIcon: {fileID: 21300000, guid: 417c606dc5320b549b2b11069f3ae604, type: 3}
+    itemModel: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -51738,13 +51656,13 @@ MonoBehaviour:
     rarity: 100
     CombinationValue: 200
     towerData:
-      Name: Laser_Tower3
-      ID: 38
-      GroupID: 8
+      Name: Flame_Tower3
+      ID: 13
+      GroupID: 3
       Rank: 3
       Type: 1
-      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
-      Combination_ResultID: 39
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Combination_ResultID: 14
       Combination_Required_Value: 200
       Normal_Random_Draw_Probability: 0.41666666
       Normal_Attack_Draw_Probability: 1
@@ -51754,22 +51672,23 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 7
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 0.4
+      Attack: 20
       Attack_Speed: 0.3
       Hp: 200
       Range: 20
-      Range_Type: 4
-      Projectile_Type: 1
+      Range_Type: 1
+      Projectile_Type: 2
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 0}
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-      Sprite_TowerCard: {fileID: 21300000, guid: 7d9af09b855dec24a95586933816fca8, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      Desc: "\uBD88\uC758 \uC138\uB840\uB97C \uBC1B\uC544 \uBCF4\uC2E0\uC801\uC774
+        \uC788\uB098\uC694? \uB728\uAC70\uC6B4 \uB9DB\uC744 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
+      Sprite_TowerCard: {fileID: 21300000, guid: 417c606dc5320b549b2b11069f3ae604, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
       AudioClip_Attack_Name: 0
       AudioClip_Hit_Name: 0
       AudioClip_Normal_Name: "0\r"
-      buffID: 0
+      buffID: 20013
       MinionID: 0
     skillData:
       NameLevel: 
@@ -51800,53 +51719,55 @@ MonoBehaviour:
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Attack_Laser4
+  - itemName: Tower_Buff_Damage_Increase1
     ClassType: 
-    itemID: 39
-    itemDesc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-    itemIcon: {fileID: 21300000, guid: c8e4e836a57bb754bb4f8acda6cba2fe, type: 3}
-    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemID: 51
+    itemDesc: "\uBD88\uC758 \uD798\uC73C\uB85C \uCE90\uB9AD\uD130\uC758 \uB370\uBBF8\uC9C0\uB97C
+      \uC99D\uAC00 \uC2DC\uD0B5\uB2C8\uB2E4. \uBD88\uD0C0\uB294 \uBF55\uB9DB!"
+    itemIcon: {fileID: 21300000, guid: f351c83c844808c48bc8854351770133, type: 3}
+    itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+    inGameData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 2
     rarity: 100
-    CombinationValue: 100
+    CombinationValue: 500
     towerData:
-      Name: Laser_Tower4
-      ID: 39
-      GroupID: 8
-      Rank: 4
-      Type: 1
-      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
-      Combination_ResultID: 40
-      Combination_Required_Value: 100
-      Normal_Random_Draw_Probability: 0
+      Name: Damage_Increase_Tower
+      ID: 1001
+      GroupID: 11
+      Rank: 1
+      Type: 2
+      Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+      Combination_ResultID: 1002
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
       Normal_Attack_Draw_Probability: 0
       Normal_Minion_Draw_Probability: 0
-      Normal_Buff_Debuff_Draw_Probability: 0
-      Premium_Random_Draw_Probability: 0.8333333
-      Premium_Attack_Draw_Probability: 2
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 0.5
+      Attack: 1
       Attack_Speed: 0.3
-      Hp: 250
+      Hp: 100
       Range: 20
-      Range_Type: 4
-      Projectile_Type: 1
+      Range_Type: 1
+      Projectile_Type: 2
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 0}
+      Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-      Sprite_TowerCard: {fileID: 21300000, guid: c8e4e836a57bb754bb4f8acda6cba2fe, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
+      Desc: "\uBD88\uC758 \uD798\uC73C\uB85C \uCE90\uB9AD\uD130\uC758 \uB370\uBBF8\uC9C0\uB97C
+        \uC99D\uAC00 \uC2DC\uD0B5\uB2C8\uB2E4. \uBD88\uD0C0\uB294 \uBF55\uB9DB!"
+      Sprite_TowerCard: {fileID: 21300000, guid: f351c83c844808c48bc8854351770133, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
       AudioClip_Attack_Name: 0
       AudioClip_Hit_Name: 0
-      AudioClip_Normal_Name: "0\r"
-      buffID: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15001
       MinionID: 0
     skillData:
       NameLevel: 
@@ -51874,15 +51795,26 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
+    itemAttributes:
+    - attributeName: towerHP
+      attributeValue: 300
+    - attributeName: towerATK
+      attributeValue: 1
+    - attributeName: towerRange
+      attributeValue: 300
+    - attributeName: buffValue
+      attributeValue: 5
     specialPrefabs: []
-    buffDatas: []
-  - itemName: Tower_Attack_Laser5
+    buffDatas:
+    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+  - itemName: Tower_DeBuff_Attack_Speed_Decrease2
     ClassType: 
-    itemID: 40
-    itemDesc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-    itemIcon: {fileID: 21300000, guid: 143b0a01b2083c949979cce22fea5690, type: 3}
-    itemModel: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
+    itemID: 87
+    itemDesc: "\uC678\uACC4 \uD589\uC131\uC73C\uB85C \uBD80\uD130 \uB5A8\uC5B4\uC9C4
+      \uAD34\uC774\uD55C \uC11D\uC0C1\uC740 \uC801\uAD70\uC744 \uC0C1\uB300\uB85C
+      \uD6A8\uACFC\uB97C \uBC1C\uD718 \uD569\uB2C8\uB2E4!"
+    itemIcon: {fileID: 21300000, guid: e7d622bcfd0c1de41b1e62d41ca6f398, type: 3}
+    itemModel: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
@@ -51892,255 +51824,18 @@ MonoBehaviour:
     rarity: 100
     CombinationValue: 0
     towerData:
-      Name: Laser_Tower5
-      ID: 40
-      GroupID: 8
-      Rank: 5
-      Type: 1
-      Pf: {fileID: 1265829006435420248, guid: 7d4dbcaa1a132d844b2db7c300883330, type: 3}
-      Combination_ResultID: 0
-      Combination_Required_Value: 0
-      Normal_Random_Draw_Probability: 0
-      Normal_Attack_Draw_Probability: 0
-      Normal_Minion_Draw_Probability: 0
-      Normal_Buff_Debuff_Draw_Probability: 0
-      Premium_Random_Draw_Probability: 0.41666666
-      Premium_Attack_Draw_Probability: 1
-      Premium_Minion_Draw_Probability: 0
-      Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 0.6
-      Attack_Speed: 0.3
-      Hp: 300
-      Range: 20
-      Range_Type: 4
-      Projectile_Type: 1
-      Projectile_Speed: 60
-      Projectile_Pf: {fileID: 0}
-      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
-      Sprite_TowerCard: {fileID: 21300000, guid: 143b0a01b2083c949979cce22fea5690, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
-      AudioClip_Attack_Name: 0
-      AudioClip_Hit_Name: 0
-      AudioClip_Normal_Name: "0\r"
-      buffID: 0
-      MinionID: 0
-    skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
-      Value_2: 0
-      CoolTime: 0
-      Range: 0
-      RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
-      TickDamage: 0
-      TickCount: 0
-      TickTime: 0
-      CcType: 0
-      CcTime: 0
-      CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: Tower_Attack_Wind1
-    ClassType: 
-    itemID: 41
-    itemDesc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
-    itemIcon: {fileID: 21300000, guid: c61094d318b6a1447bccc6fa4a647f00, type: 3}
-    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
-    inGameData: {fileID: 11400000, guid: 58a1fa4a1136116428597604363413af, type: 2}
-    itemValue: 1
-    itemType: 10
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: 4
-    rarity: 100
-    CombinationValue: 500
-    towerData:
-      Name: Wind_Tower
-      ID: 41
-      GroupID: 9
-      Rank: 1
-      Type: 1
-      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
-      Combination_ResultID: 42
-      Combination_Required_Value: 500
-      Normal_Random_Draw_Probability: 2.9166667
-      Normal_Attack_Draw_Probability: 7
-      Normal_Minion_Draw_Probability: 0
-      Normal_Buff_Debuff_Draw_Probability: 0
-      Premium_Random_Draw_Probability: 0
-      Premium_Attack_Draw_Probability: 0
-      Premium_Minion_Draw_Probability: 0
-      Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 30
-      Attack_Speed: 0.3
-      Hp: 100
-      Range: 20
-      Range_Type: 1
-      Projectile_Type: 1
-      Projectile_Speed: 60
-      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
-      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
-      Sprite_TowerCard: {fileID: 21300000, guid: c61094d318b6a1447bccc6fa4a647f00, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
-      AudioClip_Attack_Name: 0
-      AudioClip_Hit_Name: 0
-      AudioClip_Normal_Name: "0\r"
-      buffID: 20016
-      MinionID: 0
-    skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
-      Value_2: 0
-      CoolTime: 0
-      Range: 0
-      RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
-      TickDamage: 0
-      TickCount: 0
-      TickTime: 0
-      CcType: 0
-      CcTime: 0
-      CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: Tower_Attack_Wind4
-    ClassType: 
-    itemID: 44
-    itemDesc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
-    itemIcon: {fileID: 21300000, guid: 4187b0771b5715b40802bf6bfed2a9fd, type: 3}
-    itemModel: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
-    itemValue: 1
-    itemType: 10
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: 5
-    rarity: 100
-    CombinationValue: 100
-    towerData:
-      Name: Wind_Tower4
-      ID: 44
-      GroupID: 9
-      Rank: 4
-      Type: 1
-      Pf: {fileID: 6171984124208090233, guid: ceef42112c60fad45a8d30f684ac79ad, type: 3}
-      Combination_ResultID: 45
-      Combination_Required_Value: 100
-      Normal_Random_Draw_Probability: 0
-      Normal_Attack_Draw_Probability: 0
-      Normal_Minion_Draw_Probability: 0
-      Normal_Buff_Debuff_Draw_Probability: 0
-      Premium_Random_Draw_Probability: 0.8333333
-      Premium_Attack_Draw_Probability: 2
-      Premium_Minion_Draw_Probability: 0
-      Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 60
-      Attack_Speed: 0.3
-      Hp: 250
-      Range: 20
-      Range_Type: 1
-      Projectile_Type: 1
-      Projectile_Speed: 60
-      Projectile_Pf: {fileID: 1786505552601703416, guid: 7b86b521cefe2ff4da20be1dc245f943, type: 3}
-      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uBC14\uB78C\uACFC \uD568\uAED8 \uC0AC\uB77C\uC9C0\uB2E4!"
-      Sprite_TowerCard: {fileID: 21300000, guid: 4187b0771b5715b40802bf6bfed2a9fd, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: b529c086ec5f8a348aa647d4318b5aaf, type: 3}
-      AudioClip_Attack_Name: 0
-      AudioClip_Hit_Name: 0
-      AudioClip_Normal_Name: "0\r"
-      buffID: 20019
-      MinionID: 0
-    skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
-      Value_2: 0
-      CoolTime: 0
-      Range: 0
-      RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
-      TickDamage: 0
-      TickCount: 0
-      TickTime: 0
-      CcType: 0
-      CcTime: 0
-      CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
-  - itemName: Tower_Minion_Wolf2
-    ClassType: 
-    itemID: 92
-    itemDesc: "\uD478\uB978 \uBC14\uC704 \uD611\uACE1\uC5D0 \uBB34\uB9AC \uC9C0\uC5B4
-      \uC0AC\uB294 \uC9D1\uB2E8. \uD611\uACE1\uC744 \uC7A5\uC545\uD55C \uC774 \uB291\uB300
-      \uBB34\uB9AC\uB4E4\uC740 \uC778\uADFC \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C \uACF5\uD3EC\uC640
-      \uACBD\uACC4\uC758 \uB300\uC0C1\uC774\uC8E0. \uC810\uC810 \uC138\uB825\uC744
-      \uB113\uD600 \uAC00\uB358 \uC911  \uC18D\uC0AD\uC774\uB294 \uBAA9\uC18C\uB9AC\uC5D0
-      \uC774\uB04C\uB824 \uC804\uC7A5\uC5D0 \uCC38\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.
-      \"\uC544\uC6B0~~~~~~~\""
-    itemIcon: {fileID: 21300000, guid: 720e664e21810014fb6e998d38af2881, type: 3}
-    itemModel: {fileID: 2719887186148994814, guid: b0704d2253632714ba48b63ee466bd51, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
-    itemValue: 1
-    itemType: 10
-    itemWeight: 0
-    maxStack: 99
-    indexItemInList: 6
-    rarity: 100
-    CombinationValue: 0
-    towerData:
-      Name: Wolf_Tower2
-      ID: 3002
-      GroupID: 19
+      Name: Attack_Speed_Decrease_Tower2
+      ID: 2017
+      GroupID: 18
       Rank: 2
-      Type: 4
-      Pf: {fileID: 2719887186148994814, guid: b0704d2253632714ba48b63ee466bd51, type: 3}
-      Combination_ResultID: 3003
+      Type: 3
+      Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
+      Combination_ResultID: 2018
       Combination_Required_Value: 300
       Normal_Random_Draw_Probability: 0.8333333
       Normal_Attack_Draw_Probability: 0
-      Normal_Minion_Draw_Probability: 3.3333333
-      Normal_Buff_Debuff_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
       Premium_Random_Draw_Probability: 0
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
@@ -52149,24 +51844,20 @@ MonoBehaviour:
       Attack_Speed: 0.3
       Hp: 150
       Range: 20
-      Range_Type: 4
+      Range_Type: 1
       Projectile_Type: 1
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+      Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uD478\uB978 \uBC14\uC704 \uD611\uACE1\uC5D0 \uBB34\uB9AC \uC9C0\uC5B4
-        \uC0AC\uB294 \uC9D1\uB2E8. \uD611\uACE1\uC744 \uC7A5\uC545\uD55C \uC774 \uB291\uB300
-        \uBB34\uB9AC\uB4E4\uC740 \uC778\uADFC \uB3D9\uBB3C\uB4E4\uC5D0\uAC8C \uACF5\uD3EC\uC640
-        \uACBD\uACC4\uC758 \uB300\uC0C1\uC774\uC8E0. \uC810\uC810 \uC138\uB825\uC744
-        \uB113\uD600 \uAC00\uB358 \uC911  \uC18D\uC0AD\uC774\uB294 \uBAA9\uC18C\uB9AC\uC5D0
-        \uC774\uB04C\uB824 \uC804\uC7A5\uC5D0 \uCC38\uAC00 \uB418\uC5C8\uC2B5\uB2C8\uB2E4.
-        \"\uC544\uC6B0~~~~~~~\""
-      Sprite_TowerCard: {fileID: 21300000, guid: 720e664e21810014fb6e998d38af2881, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: e86ee112fa1af9d46936986970168b9c, type: 3}
+      Desc: "\uC678\uACC4 \uD589\uC131\uC73C\uB85C \uBD80\uD130 \uB5A8\uC5B4\uC9C4
+        \uAD34\uC774\uD55C \uC11D\uC0C1\uC740 \uC801\uAD70\uC744 \uC0C1\uB300\uB85C
+        \uD6A8\uACFC\uB97C \uBC1C\uD718 \uD569\uB2C8\uB2E4!"
+      Sprite_TowerCard: {fileID: 21300000, guid: e7d622bcfd0c1de41b1e62d41ca6f398, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
       AudioClip_Attack_Name: 0
       AudioClip_Hit_Name: 0
-      AudioClip_Normal_Name: "Nomal_ES_Minion_Tower\r"
-      buffID: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15037
       MinionID: 0
     skillData:
       NameLevel: 
@@ -52197,65 +51888,61 @@ MonoBehaviour:
     itemAttributes: []
     specialPrefabs: []
     buffDatas: []
-  - itemName: Tower_Minion_Golem4
+  - itemName: Tower_DeBuff_Move_Decrease3
     ClassType: 
-    itemID: 99
-    itemDesc: "\uB545\uC73C\uB85C \uBD80\uD130 \uD0DC\uC5B4\uB09C \uB300\uC9C0\uC758
-      \uC815\uB839\uC778 \uACE8\uB818\uB4E4\uC740 \uC624\uB79C \uC61B\uB0A0 \uBD80\uD130
-      \uB545\uACFC \uC18C\uD1B5\uD558\uBA70  \uB300\uC9C0\uB97C \uAC00\uAFB8\uC5B4
-      \uC654\uC8E0. \uC790\uC2E0\uB4E4\uC758 \uB300\uC9C0\uAC00 \uC810\uC810 \uC624\uC5FC\uB418\uC790
-      \uD749\uD3ED\uD574 \uC9C4 \uADF8\uB4E4\uC740 \uB300\uC9C0\uB97C \uB354\uB7FD\uD788\uB294
-      \uC801\uB4E4\uC744 \uD63C\uB0B4\uC8FC\uAE30 \uC704\uD574 \uC804\uC7A5\uC5D0
-      \uB098\uC11C \uBC84\uB838\uB124\uC694!  \"\uCFF0!\""
-    itemIcon: {fileID: 21300000, guid: e32a7fe0ed86ec642b97bbf0e4c09b9b, type: 3}
-    itemModel: {fileID: 2375627643360651068, guid: 93a798fb4b3843e4a9d0c34642f06e16, type: 3}
+    itemID: 83
+    itemDesc: "\uB2AA\uC9C0\uB300 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uC11C\uC2DD\uD558\uB358
+      \uC545\uB9C8\uC758 \uAF43\uC744 \uC0AC\uC6A9\uD574 \uC801\uAD70\uC744 \uBB34\uB825\uD654
+      \uC2DC\uD0A4\uAE30 \uC704\uD574 \uACF5\uC218\uD574\uC654\uC2B5\uB2C8\uB2E4.
+      \uC801\uAD70\uC774 \uB290\uB9BF\uB290\uB9BF\uD558\uAC8C \uAE30\uC5B4\uAC00\uB294
+      \uBAA8\uC2B5\uC774 \uB208\uC5D0 \uC120\uD558\uB124\uC694!"
+    itemIcon: {fileID: 21300000, guid: d04fe2a383e5c9646b9238f6ae786953, type: 3}
+    itemModel: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
     inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
-    indexItemInList: 7
+    indexItemInList: 4
     rarity: 100
     CombinationValue: 0
     towerData:
-      Name: Golem_Tower4
-      ID: 3009
-      GroupID: 20
-      Rank: 4
-      Type: 4
-      Pf: {fileID: 2375627643360651068, guid: 93a798fb4b3843e4a9d0c34642f06e16, type: 3}
-      Combination_ResultID: 3010
-      Combination_Required_Value: 100
-      Normal_Random_Draw_Probability: 0
+      Name: Move_Decrease_Tower3
+      ID: 2013
+      GroupID: 17
+      Rank: 3
+      Type: 3
+      Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
+      Combination_ResultID: 2014
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
       Normal_Attack_Draw_Probability: 0
       Normal_Minion_Draw_Probability: 0
-      Normal_Buff_Debuff_Draw_Probability: 0
-      Premium_Random_Draw_Probability: 0.8333333
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
       Premium_Attack_Draw_Probability: 0
-      Premium_Minion_Draw_Probability: 3.3333333
-      Premium_Buff_Debuff_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
       Attack: 1
       Attack_Speed: 0.3
-      Hp: 250
+      Hp: 200
       Range: 20
-      Range_Type: 4
+      Range_Type: 1
       Projectile_Type: 1
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+      Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "\uB545\uC73C\uB85C \uBD80\uD130 \uD0DC\uC5B4\uB09C \uB300\uC9C0\uC758
-        \uC815\uB839\uC778 \uACE8\uB818\uB4E4\uC740 \uC624\uB79C \uC61B\uB0A0 \uBD80\uD130
-        \uB545\uACFC \uC18C\uD1B5\uD558\uBA70  \uB300\uC9C0\uB97C \uAC00\uAFB8\uC5B4
-        \uC654\uC8E0. \uC790\uC2E0\uB4E4\uC758 \uB300\uC9C0\uAC00 \uC810\uC810 \uC624\uC5FC\uB418\uC790
-        \uD749\uD3ED\uD574 \uC9C4 \uADF8\uB4E4\uC740 \uB300\uC9C0\uB97C \uB354\uB7FD\uD788\uB294
-        \uC801\uB4E4\uC744 \uD63C\uB0B4\uC8FC\uAE30 \uC704\uD574 \uC804\uC7A5\uC5D0
-        \uB098\uC11C \uBC84\uB838\uB124\uC694!  \"\uCFF0!\""
-      Sprite_TowerCard: {fileID: 21300000, guid: e32a7fe0ed86ec642b97bbf0e4c09b9b, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: f2b0a0241eeb6e044932a56c3625ba16, type: 3}
+      Desc: "\uB2AA\uC9C0\uB300 \uAE4A\uC740 \uACF3\uC5D0\uC11C \uC11C\uC2DD\uD558\uB358
+        \uC545\uB9C8\uC758 \uAF43\uC744 \uC0AC\uC6A9\uD574 \uC801\uAD70\uC744 \uBB34\uB825\uD654
+        \uC2DC\uD0A4\uAE30 \uC704\uD574 \uACF5\uC218\uD574\uC654\uC2B5\uB2C8\uB2E4.
+        \uC801\uAD70\uC774 \uB290\uB9BF\uB290\uB9BF\uD558\uAC8C \uAE30\uC5B4\uAC00\uB294
+        \uBAA8\uC2B5\uC774 \uB208\uC5D0 \uC120\uD558\uB124\uC694!"
+      Sprite_TowerCard: {fileID: 21300000, guid: d04fe2a383e5c9646b9238f6ae786953, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
       AudioClip_Attack_Name: 0
       AudioClip_Hit_Name: 0
       AudioClip_Normal_Name: "0\r"
-      buffID: 0
+      buffID: 15033
       MinionID: 0
     skillData:
       NameLevel: 
