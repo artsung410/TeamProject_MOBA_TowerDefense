@@ -274,6 +274,7 @@ public class CSVtest : MonoBehaviour
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
+    public Dictionary<int, BuffBlueprint> BuffDic = new Dictionary<int, BuffBlueprint>();
 
     UnityWebRequest BuffWebData;
     IEnumerator GetBuffData()
@@ -305,6 +306,8 @@ public class CSVtest : MonoBehaviour
             buffDatabaseListCSV.itemList[i].Target = int.Parse(col[6]);
             buffDatabaseListCSV.itemList[i].Value = float.Parse(col[7]);
             buffDatabaseListCSV.itemList[i].Duration = float.Parse(col[8]);
+
+            BuffDic.Add(buffDatabaseListCSV.itemList[i].ID, buffDatabaseListCSV.itemList[i]);
         }
     }
     #endregion Buff 

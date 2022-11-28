@@ -77,17 +77,6 @@ public class Turret : MonoBehaviourPun
 
     void Awake()
     {
-        // 타워 데이터 -> 타워의 체력 적용
-
-        if(photonView.IsMine)
-        {
-            // 타워 데이터 -> 버프타워 찾아서 버프적용
-            if (towerDB.Type == (int)Tower_Type.Buff_Tower || towerDB.Type == (int)Tower_Type.DeBuff_Tower)
-            {
-                StartCoroutine(SetBuff());
-            }
-        }
-
         // 타워 아웃라인 컴포넌트 할당
         _outline = GetComponent<Outline>();
 
@@ -101,6 +90,16 @@ public class Turret : MonoBehaviourPun
     public void SetInitData(int id)
     {
         photonView.RPC(nameof(RPC_SetInitData), RpcTarget.All, id);
+
+        if (photonView.IsMine)
+        {
+            // 타워 데이터 -> 버프타워 찾아서 버프적용
+            if (towerDB.Type == (int)Tower_Type.Buff_Tower || towerDB.Type == (int)Tower_Type.DeBuff_Tower)
+            {
+                Debug.Log("★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★");
+                StartCoroutine(SetBuff());
+            }
+        }
     }
 
     [PunRPC]
@@ -134,7 +133,8 @@ public class Turret : MonoBehaviourPun
     private IEnumerator SetBuff()
     {
         yield return new WaitForSeconds(0.5f);
-        BuffBlueprint buff = BuffManager.Instance.buffDB_Dic[towerDB.buffID];
+        BuffBlueprint buff = CSVtest.Instance.BuffDic[towerDB.buffID];
+        Debug.Log(buff.Name);
         BuffManager.Instance.AddBuff(buff);
     }
 
