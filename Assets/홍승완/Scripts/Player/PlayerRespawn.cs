@@ -35,7 +35,8 @@ public class PlayerRespawn : MonoBehaviourPun
 
         if (health.gameObject.CompareTag("Blue"))
         {
-            playerRespawnPosition = GameManager.Instance.spawnPositions[0].position;
+            respawnPosition[0] = GameManager.Instance.spawnPositions[0];
+            playerRespawnPosition = respawnPosition[0].position;
 
         }
         else if (health.gameObject.CompareTag("Red"))
@@ -81,6 +82,9 @@ public class PlayerRespawn : MonoBehaviourPun
         }
     }
 
-
+    private void OnDisable()
+    {
+        StopAllCoroutines();
+    }
 
 }
