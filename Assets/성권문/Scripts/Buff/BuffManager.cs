@@ -37,22 +37,9 @@ public class BuffManager : MonoBehaviourPun
     public static BuffManager Instance;
     public Dictionary<BuffBlueprint, float> buffDic = new Dictionary<BuffBlueprint, float>();             // 버프 쿨타임 담을 딕셔너리(버프 정렬시도 유지하도록)
 
-    // 모든 버프데이터를 담을 딕셔너리
-    public Dictionary<int, BuffBlueprint> buffDB_Dic = new Dictionary<int, BuffBlueprint>();
-
     private void Awake()
     {
         Instance = this;
-    }
-
-    private void Start()
-    {
-        int buffCount = buffDB.itemList.Count;
-
-        for (int i = 0; i < buffCount; i++)
-        {
-            buffDB_Dic.Add(buffDB.itemList[i].ID, buffDB.itemList[i]);
-        }
     }
 
     // 버프 시작
@@ -66,6 +53,7 @@ public class BuffManager : MonoBehaviourPun
         else if (buff.Type == (int)Buff_Effect_Type.Debuff)
         {
             photonView.RPC(nameof(RPC_AddDeBuff), RpcTarget.Others, buff.ID);
+            Debug.Log("디버프 적용1");
         }
         else
         {
@@ -79,9 +67,10 @@ public class BuffManager : MonoBehaviourPun
     [PunRPC]
     private void RPC_AddDeBuff(int id)
     {
-        currentBuffDatas.Add(buffDB_Dic[id]);
-        playerBuffAdditionEvent.Invoke(buffDB_Dic[id].GroupID, buffDB_Dic[id].Value, true);
+        currentBuffDatas.Add(CSVtest.Instance.BuffDic[id]);
+        playerBuffAdditionEvent.Invoke(CSVtest.Instance.BuffDic[id].GroupID, CSVtest.Instance.BuffDic[id].Value, true);
         AssemblyBuff();
+        Debug.Log("디버프 적용2");
     }
 
     // 버프 종료
