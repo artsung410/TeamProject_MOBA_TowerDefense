@@ -107,7 +107,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
     public void OnEndDrag(PointerEventData data)
     {
-        // 아이템 삭제 - 휴지통
+        // 아이템 삭제
         Transform trashCan = null;
         if (data.pointerEnter != null)
             trashCan = data.pointerEnter.transform;

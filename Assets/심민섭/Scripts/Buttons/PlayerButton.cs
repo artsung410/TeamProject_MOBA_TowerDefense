@@ -12,6 +12,15 @@ public class PlayerButton : MonoBehaviourPun
     private GameObject selectMatch;
     public int Playercount;
 
+
+    private void OnEnable()
+    {
+        if (gameObject.name == "CollectButton")
+        {
+            gameObject.GetComponent<Button>().interactable = true;
+        }
+    }
+
     private void Start()
     {
         /*if (gameObject.name == "PlayButton")

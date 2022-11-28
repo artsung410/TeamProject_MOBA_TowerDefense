@@ -11,9 +11,6 @@ public class EquimentInventory : MonoBehaviour
         instance = this;
     }
 
-    // 장착 아이템을 저장한다.
-    private List<GameObject> equimentInventoryLIst = new List<GameObject>();
-
     [SerializeField]
     private Sprite warriorImage;
     [SerializeField]
