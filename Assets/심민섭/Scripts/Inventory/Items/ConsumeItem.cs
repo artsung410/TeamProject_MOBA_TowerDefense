@@ -116,6 +116,17 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     {
                                         return;
                                     }
+
+                                    // 미니언 근거리 데이터 range
+                                    int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
+                                    if (minionRangeData == 5)
+                                    {
+                                        return;
+                                    }
+                                    if (minionRangeData == 50)
+                                    {
+                                        return;
+                                    }
                                 }
 
                                 // 장비창 슬롯 하위 오브젝트가 있는가 없는가, 없으면 == 0 있으면 1이상
