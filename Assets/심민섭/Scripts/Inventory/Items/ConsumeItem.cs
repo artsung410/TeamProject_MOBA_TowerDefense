@@ -117,7 +117,13 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                         return;
                                     }
 
-                                    if (item.ClassType == eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.ClassType && item.ClassType == "Short" || item.ClassType == "Long")
+                                    // 미니언 근거리 데이터 range
+                                    int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
+                                    if (minionRangeData == 5)
+                                    {
+                                        return;
+                                    }
+                                    if (minionRangeData == 50)
                                     {
                                         return;
                                     }
