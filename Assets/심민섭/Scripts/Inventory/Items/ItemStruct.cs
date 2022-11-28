@@ -22,6 +22,8 @@ public struct ItemStruct
     public float rarity;
     public int CombinationValue;
 
+    public TowerBlueprint towerData;
+    public PlayerSkillDatas skillData;
     public List<ItemAttribute> itemAttributes;
     public List<GameObject> specialPrefabs;
     public List<BuffData> buffDatas;
