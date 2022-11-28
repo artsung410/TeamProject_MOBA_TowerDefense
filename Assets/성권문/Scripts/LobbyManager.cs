@@ -7,6 +7,7 @@ using LitJson;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using System.Collections;
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -201,8 +202,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
 
         // 배팅 disconnet
-
-
+        StartCoroutine(PostBettingDisconnect());
 
         // 기획팀 사운드 작업본(매칭 효과음)
         matchingAudio.clip = matchingCancleSound;
@@ -210,7 +210,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
     private APIStorage aPIStorage;
-    private IEnumerator PostBettingDisconnect()
+    public IEnumerator PostBettingDisconnect()
     {
         string url = "https://odin-api-sat.browseosiris.com/v1/betting/zera/disconnect";
 
@@ -245,8 +245,8 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
             JsonData jsonPlayer = JsonMapper.ToObject(jsonResult);
             // 데이터 저장
-            aPIStorage.betting_id = jsonPlayer["data"]["betting_id"].ToString();
-            Debug.Log("PostPlaveBetCaller Data Save Complited");
+            aPIStorage.message[0] = jsonPlayer["message"].ToString();
+            Debug.Log("Betting Disconnet Complited!!");
         }
     }
 

@@ -368,6 +368,7 @@ public class Inventory : MonoBehaviour
                 // 실제로 Item 오브젝트를 생성해주는 곳
                 item.transform.SetParent(SlotContainer.transform.GetChild(i));
                 item.GetComponent<RectTransform>().localPosition = Vector3.zero;
+                item.GetComponent<RectTransform>().localScale = new Vector3(0.55f, 0.7f, 0f);
                 // Item 오브젝트 하위 0번째 오브젝트의 Image를 업데이트해주고
                 item.transform.GetChild(0).GetComponent<Image>().sprite = itemOnObject.item.itemIcon;
                 // 아이템이 들어 왔으니까 최대 가지고 있을 수 있는 갯수를 -1해준다.
