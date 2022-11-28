@@ -62,13 +62,11 @@ public class Enemybase : MonoBehaviourPun
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
     protected NavMeshAgent _navMeshAgent;
     protected Animator _animator;
-    protected Transform Diepos;
+    
     public bool isDead = false;
 
     public CapsuleCollider _capsuleCollider;
     private Outline _outline;
-
-    private Monster _monster;
 
     protected virtual void Awake()
     {
