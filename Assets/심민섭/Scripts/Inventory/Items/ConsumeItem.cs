@@ -118,14 +118,15 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     }
 
                                     // 미니언 근거리 데이터 range
-                                    int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
-                                    if (minionRangeData == 5)
+                                    for (int rangeCnt = 0; rangeCnt < CSVtest.Instance.MinionDatabaseListCSV.itemList.Count; rangeCnt++)
                                     {
-                                        return;
-                                    }
-                                    if (minionRangeData == 50)
-                                    {
-                                        return;
+                                        if (item.towerData.MinionID == CSVtest.Instance.MinionDatabaseListCSV.itemList[rangeCnt].ID)
+                                        {
+                                            if (CSVtest.Instance.MinionDatabaseListCSV.itemList[rangeCnt].Range == 5 || CSVtest.Instance.MinionDatabaseListCSV.itemList[rangeCnt].Range == 50)
+                                            {
+                                                return;
+                                            }
+                                        }
                                     }
                                 }
 
