@@ -76,16 +76,7 @@ public class SkillManager : MonoBehaviour
             return;
         }
 
-        // q에 들어가는 스킬은 공통스킬로 고정 -> [0]
-        // 데이터 파싱작업이 안된상태
-        SkillPF[0] = SkillData.skillItems[0].itemModel;
-        Atk[0] = SkillData.skillItems[0].itemAttributes[0].attributeValue;
-        CoolTime[0] = SkillData.skillItems[0].itemAttributes[1].attributeValue;
-        HoldingTime[0] = SkillData.skillItems[0].itemAttributes[2].attributeValue;
-        Range[0] = SkillData.skillItems[0].itemAttributes[3].attributeValue;
-        LockTime[0] = SkillData.skillItems[0].itemAttributes[4].attributeValue;
-
-        for (int i = 1; i < SkillData.skillIndex.Count; i++)
+        for (int i = 0; i < SkillData.skillIndex.Count; i++)
         {
             int idx = SkillData.skillIndex[i];
 
