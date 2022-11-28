@@ -9671,10 +9671,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33b732723d74169449ed4cdc8e2c4bb6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SetDamage: 40
-  SetHodingTime: 0.5
-  SetRange: 12
-  SetLockTime: 0
+  Data:
+    NameLevel: 
+    Name: {fileID: 0}
+    ID: 0
+    Probability: 0
+    Classification: 0
+    Rank: 0
+    LockTime: 0
+    SkillType: 0
+    Value_1: 0
+    Value_2: 0
+    CoolTime: 0
+    Range: 0
+    RangeType: 0
+    RangeValue_1: 0
+    RangeValue_2: 0
+    HoldingTime: 0
+    TickDamage: 0
+    TickCount: 0
+    TickTime: 0
+    CcType: 0
+    CcTime: 0
+    CcValue: 0
+    CardImage: {fileID: 0}
+    SkillIcon: {fileID: 0}
+    Desc: 
   TargetOn: 0
 --- !u!114 &6303172857478669785
 MonoBehaviour:
@@ -10999,6 +11021,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eminontpye: 0
+  minionDB:
+    Name: 
+    ID: 0
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Projectile_Speed: 0
+    Projectile_Type: 0
+    Attack: 0
+    Attack_Speed: 0
+    Range: 0
+    Move_Speed: 0
+    Hp: 0
+    Exp: 0
+    Icon_Blue: {fileID: 0}
+    Icon_Red: {fileID: 0}
   moveSpeed: 0
   attackRange: 10
   Damage: 30
@@ -11011,7 +11049,6 @@ MonoBehaviour:
   myTag: 
   isDead: 0
   _capsuleCollider: {fileID: 0}
-  hit: 0
   target: {fileID: 0}
   _skill: {fileID: 2110439575188990720}
 --- !u!114 &3047280084004467347

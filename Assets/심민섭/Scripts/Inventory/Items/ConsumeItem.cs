@@ -116,6 +116,11 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     {
                                         return;
                                     }
+
+                                    if (item.ClassType == eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.ClassType && item.ClassType == "Short" || item.ClassType == "Long")
+                                    {
+                                        return;
+                                    }
                                 }
 
                                 // 장비창 슬롯 하위 오브젝트가 있는가 없는가, 없으면 == 0 있으면 1이상

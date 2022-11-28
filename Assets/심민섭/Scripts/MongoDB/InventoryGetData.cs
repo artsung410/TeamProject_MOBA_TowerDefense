@@ -427,6 +427,9 @@ public class InventoryGetData : MonoBehaviour
             sendItemValue.Clear();
         }
 
+        cardPack.Clear();
+        sendItemValue.Clear();
+
         // 카드팩(기타) 아이템
         // ㅠㅜ
         foreach (var itemKey in otherItem)

@@ -172,8 +172,26 @@ public class DataBaseUpdater : MonoBehaviour
                         collection.UpdateOne(filter, update);
                     }
                 }
+                
             }
         }
+    }
+
+    // Ä«µåÆÑ »©´Â ÇÔ¼ö
+    public void cardPackSubUpdate(string subName, int subNumber)
+    {
+        // »ç¿ë ¼ö ¸¸Å­ »«´Ù.
+        collection = database.GetCollection<BsonDocument>("User_CardPack_Info");
+        playerStorage = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>();
+        var builder = Builders<BsonDocument>.Filter.Eq("user_id", playerStorage._id);
+        var document = collection.Find(builder).FirstOrDefault();
+
+        var value_index = document.IndexOfName(subName);
+        var value_value = document.GetElement(value_index).Value;
+        var filter = Builders<BsonDocument>.Filter.Eq(document.GetElement(value_index).Name, value_value);
+        var sub = value_value.ToInt32() - subNumber;
+        var update = Builders<BsonDocument>.Update.Set(document.GetElement(value_index).Name, sub);
+        collection.UpdateOne(filter, update);
     }
 
 
