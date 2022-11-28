@@ -220,7 +220,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 int slotIndex = myAllData.cardIndex[idx] - 4;
 
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
-                newTower.GetComponent<Turret>().towerDB = myAllData.towerItems[idx].towerData;
+                newTower.GetComponent<Turret>().SetInitData(myAllData.towerItems[idx].towerData.ID);
                 GameObject body = newTower.GetComponent<Turret>().fowardBody;
 
                 if (body != null)
@@ -236,7 +236,7 @@ public class GameManager : MonoBehaviourPunCallbacks
                 int slotIndex = myAllData.cardIndex[idx] - 4;
 
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);
-                newTower.GetComponent<Turret>().towerDB = myAllData.towerItems[idx].towerData;
+                newTower.GetComponent<Turret>().SetInitData(myAllData.towerItems[idx].towerData.ID);
                 GameObject body = newTower.GetComponent<Turret>().fowardBody;
 
                 if (body != null)

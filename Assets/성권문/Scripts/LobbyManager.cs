@@ -210,6 +210,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
     private APIStorage aPIStorage;
+    
     public IEnumerator PostBettingDisconnect()
     {
         string url = "https://odin-api-sat.browseosiris.com/v1/betting/zera/disconnect";
@@ -249,7 +250,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             Debug.Log("Betting Disconnet Complited!!");
         }
     }
-
 
 
     // 매칭 인원수 텍스트
