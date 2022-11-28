@@ -87,8 +87,16 @@ public class BulletMove : MonoBehaviourPun
             }
             else if (other.gameObject.layer == 17)
             {
-                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage * PlayerHUD.Instance.min);
-                other.gameObject.GetComponent<Enemybase>().lastDamageTeam = gameObject.tag;  
+                other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
+                if (EnemyTag == "Blue")
+                {
+                    other.gameObject.GetComponent<Enemybase>().tagThrow("Red");
+                }
+                else
+                {
+                    other.gameObject.GetComponent<Enemybase>().tagThrow("Blue");
+
+                }
                 PhotonNetwork.Destroy(gameObject);
             }
 

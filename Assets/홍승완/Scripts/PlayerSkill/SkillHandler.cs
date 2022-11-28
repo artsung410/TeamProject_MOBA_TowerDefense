@@ -85,6 +85,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
             if (minion != null)
             {
                 minion.TakeDamage(damage);
+                minion.tagThrow(_stat.gameObject.tag);
             }
         }
     }
@@ -101,6 +102,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
                 {
                     Debug.Log("플레이어 지속데미지 적용 시작");
                     player.DamageOverTime(damage,time);
+                    
                 }
             }
             else if (target.gameObject.layer == 8 || target.gameObject.layer == 13)
@@ -122,7 +124,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
             {
                 Debug.Log("input skillTimeDamage");
                 minion.DamageOverTime(damage, time);
-                minion.lastDamageTeam = GetMytag(_ability);
+                minion.tagThrow(_stat.gameObject.tag);
             }
         }
     }

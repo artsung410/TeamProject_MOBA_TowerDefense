@@ -30,7 +30,10 @@ public class WarriorAnimationEvent : MonoBehaviourPun
             }
             else if (_behaviour.enemyCol.gameObject.layer == 8 || _behaviour.enemyCol.gameObject.layer == 13 || _behaviour.enemyCol.gameObject.layer == 17)
             {
+                if(_behaviour.enemyCol.GetComponent<Enemybase>()._eminontpye == EMINIONTYPE.Netural)
+                {
                 _behaviour.enemyCol.GetComponent<Enemybase>().tagThrow(_stat.gameObject.tag);
+                }
                 _behaviour.enemyCol.GetComponent<Enemybase>().TakeDamage(_stat.attackDmg);
                 
                 //Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
@@ -50,7 +53,7 @@ public class WarriorAnimationEvent : MonoBehaviourPun
                 }
                 // TODO : 2타에서 null오류 진상규명해야함
                 _behaviour.enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);
-                //Debug.Log($"현재 타겟 :{_behaviour.enemyCol.gameObject.name}");
+                
 
             }
         }
@@ -58,10 +61,6 @@ public class WarriorAnimationEvent : MonoBehaviourPun
     }
 
     #endregion
-    [PunRPC]
-    public void nameThrow()
-    {
-        _behaviour.enemyCol.GetComponent<Enemybase>().lastDamageTeam = _stat.gameObject.tag;
-    }
+    
 
 }
