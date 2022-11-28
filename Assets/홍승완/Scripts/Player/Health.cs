@@ -1,3 +1,6 @@
+//#define OLD_VER
+#define NEW_VER
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +17,18 @@ public class Health : MonoBehaviourPun
 
     public static event Action<GameObject, float> OnPlayerDieEvent = delegate { }; // 구독자를 담을 배열?!
 
+#if NEW_VER
+    public GameObject HealthObject;
+    public Sprite[] sprites = new Sprite[3];
+    public Image BackHealthBar;
+    public Image FrontHealthBar;
+
+#endif
+
+#if OLD_VER
     public Slider hpSlider3D;
+
+#endif
     Outline _outline;
     Stats _stats;
     public PlayerAnimation ani;
@@ -24,8 +38,8 @@ public class Health : MonoBehaviourPun
     private bool Maxhp = false;
 
     public float health;
+    public float MaxHealth;
 
-    private float _maxHealth;
     private float _prevMaxHealth;
     public bool isDeath;
 
@@ -33,7 +47,6 @@ public class Health : MonoBehaviourPun
     {
         _outline = GetComponent<Outline>();
         _stats = GetComponent<Stats>();
-       
     }
 
     private void OnEnable()
@@ -47,15 +60,43 @@ public class Health : MonoBehaviourPun
     private void Init()
     {
         isDeath = false;
-        _maxHealth = _stats.MaxHealth;
-        _prevMaxHealth = _maxHealth;
-        health = _maxHealth;
+        MaxHealth = _stats.MaxHealth;
+        _prevMaxHealth = MaxHealth;
+        health = MaxHealth;
+
+#if OLD_VER
+
         hpSlider3D.maxValue = _maxHealth;
         hpSlider3D.value = health;
+#endif
+
+#if NEW_VER
+        if (!photonView.IsMine)
+        {
+            BackHealthBar.sprite = sprites[0];
+            FrontHealthBar.sprite = sprites[1];
+        }
+        else
+        {
+            BackHealthBar.sprite = sprites[1];
+            FrontHealthBar.sprite = sprites[2];
+        }
+        FrontHealthBar.fillAmount = health / MaxHealth;
+        BackHealthBar.fillAmount = FrontHealthBar.fillAmount;
+
+        //Debug.Log($"health : {health}\n" +
+        //    $"maxHealth : {MaxHealth}\n" +
+        //    $"health.fillamount : {FrontHealthBar.fillAmount}\n" +
+        //    $"elapse.fillamount : {BackHealthBar.fillAmount}");
+
+        
+#endif
+
     }
 
     private void Start()
     {
+#if OLD_VER
         isDeath = false;
         _maxHealth = _stats.MaxHealth;
         _prevMaxHealth = _maxHealth;
@@ -64,33 +105,81 @@ public class Health : MonoBehaviourPun
         health = _maxHealth;
         //Debug.Log("start호출");
 
-        hpSlider3D.maxValue = _maxHealth;
-        hpSlider3D.value = health;
+        //hpSlider3D.maxValue = _maxHealth;
+        //hpSlider3D.value = health;
+
+#endif
+
+        Init();
+
     }
 
-    [PunRPC]
-    public void HealthUpdate(float maxHP)
+    float lerpTime;
+    private void FixedUpdate()
     {
+        float backFill = BackHealthBar.fillAmount;
+        float frontFill = FrontHealthBar.fillAmount;
+        if (backFill > frontFill)
+        {
+            lerpTime += Time.deltaTime;
+            if (lerpTime >= 1)
+            {
+                lerpTime = 0f;
+            }
+            float test = lerpTime / 2;
+            test = test * test;
+            BackHealthBar.fillAmount = Mathf.Lerp(backFill, FrontHealthBar.fillAmount, test);
+        }
+    }
+
+
+
+
+    [PunRPC]
+    public void LevelHealthUpdate(float maxHP)
+    {
+#if OLD_VER
         _maxHealth = maxHP;
 
         // 현재 나의 체력에서 증가된 체력량 만큼 조금 채워준다
         health += (_maxHealth - _prevMaxHealth);
+
         hpSlider3D.value = health;
 
-        // 다시 preveMaxHealth를 최신화한다
+        // 다시 prevMaxHealth를 최신화한다
         _prevMaxHealth = _maxHealth;
 
         hpSlider3D.maxValue = _maxHealth;
+
+#endif
+
+#if NEW_VER
+        MaxHealth = maxHP;
+        health += (MaxHealth - _prevMaxHealth);
+        FrontHealthBar.fillAmount = health / MaxHealth;
+        //elapseBar.fillAmount = healthBar.fillAmount;
+        _prevMaxHealth = MaxHealth;
+#endif
     }
 
     // 데미지를 입을때 hp가 감소되는 메서드
     [PunRPC]
     public void ReduceHealthPoint(float damage)
     {
+#if OLD_VER
         health = Mathf.Max(health - damage, 0);
         hpSlider3D.value = health;
         Die();
+
+#endif
+
+#if NEW_VER
+        health = Mathf.Max(health - damage, 0);
+        FrontHealthBar.fillAmount = health / MaxHealth;
+        Die();
+#endif
     }
+
 
     //[PunRPC]
     public void OnDamage(float damage)
@@ -99,12 +188,10 @@ public class Health : MonoBehaviourPun
         {
             return;
         }
-
+        lerpTime = 0f;
         photonView.RPC(nameof(ReduceHealthPoint), RpcTarget.All, damage);
 
     }
-
-    float exp = 10000f;
 
 
     public void Die()
@@ -114,18 +201,24 @@ public class Health : MonoBehaviourPun
             PlayerHUD.Instance.AddScoreToEnemy(gameObject.tag);
             isDeath = true;
             ani.DieMotion();
+#if OLD_VER
             hpSlider3D.gameObject.SetActive(false);
+
+#endif
+#if NEW_VER
+            HealthObject.SetActive(false);
+#endif
             // 죽었을때 Invoke => 실행이 된다
             OnPlayerDieEvent.Invoke(this.gameObject, _stats.enemyExp);
-            //StartCoroutine(DelayDisapearBody());
             gameObject.SetActive(false);
+
         }
     }
 
     public void Regenation(float recovery)
     {
         // TODO : 포톤에러로 인한 임시 주석처리
-        //photonView.RPC(nameof(PRC_regeneration), RpcTarget.All, recovery);
+        photonView.RPC(nameof(PRC_regeneration), RpcTarget.All, recovery);
     }
     
     
@@ -139,8 +232,15 @@ public class Health : MonoBehaviourPun
             overhp = health - _stats.MaxHealth;
             health -= overhp; // 맥스 체력으로 바꿔줌
         }
+#if OLD_VER
         hpSlider3D.value = health;
-        //Debug.Log($"health : {health} ");
+
+#endif
+
+#if NEW_VER
+        FrontHealthBar.fillAmount = health / MaxHealth;
+        //elapseBar.fillAmount = healthBar.fillAmount;
+#endif
     }
 
 

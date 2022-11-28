@@ -12,8 +12,7 @@ public class BlackholeProjectile : Projectiles
 
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
-    float maxHeight = 16f;
-    float minHeight = 1f;
+
     private void Update()
     {
         if (target == null)
@@ -49,7 +48,7 @@ public class BlackholeProjectile : Projectiles
 
         if (dir.magnitude <= distanceThisFrame + InterpolateValue || transform.position.y <= InterpolateValue)
         {
-            GameObject newBlackhole = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            GameObject newBlackhole = PhotonNetwork.Instantiate(ImpactEffect.name, target.position, Quaternion.identity);
             BlackholeExplosion blackholeExplosion = newBlackhole.GetComponent<BlackholeExplosion>();
             blackholeExplosion.damage = damage;
             PhotonNetwork.Destroy(gameObject);

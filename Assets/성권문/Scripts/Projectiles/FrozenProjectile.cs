@@ -7,8 +7,7 @@ public class FrozenProjectile : Projectiles, ISeek
 {
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
-    float maxHeight = 16f;
-    float minHeight = 1f;
+
     private void Update()
     {
         if (target == null)
@@ -45,7 +44,7 @@ public class FrozenProjectile : Projectiles, ISeek
 
             if (photonView.IsMine)
             {
-                PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+                PhotonNetwork.Instantiate(ImpactEffect.name, target.position, Quaternion.identity);
             }
 
             PhotonNetwork.Destroy(gameObject);

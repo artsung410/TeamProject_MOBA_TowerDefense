@@ -20,11 +20,20 @@ public class Enemybase : MonoBehaviourPun
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
     // ###############################################
+    // ###############################################
+    //             NAME : Artsung                      
+    //             MAIL : artsung410@gmail.com
+    //             2022-11-25 /11:59 / MinionBlueprint 추가
+    // ###############################################
 
     // 경험치관련 이벤트
     public static event Action<GameObject, float> OnMinionDieEvent = delegate { };
 
     public static event Action<Enemybase, Sprite> minionMouseDownEvent = delegate { };
+
+    [Header("미니언 DB (디버그용, 추후에 Private로 전환예정")]
+    public MinionBlueprint minionDB;
+
     // 이동속도
     public float moveSpeed;
     // 공격사거리
@@ -40,7 +49,7 @@ public class Enemybase : MonoBehaviourPun
     protected float AttackTime;
 
     // 체력
-    public float HP = 100f;
+    public float HP;
 
     public string lastDamageTeam;
 
@@ -61,12 +70,6 @@ public class Enemybase : MonoBehaviourPun
 
     private Monster _monster;
 
-    
-
-
-
-
-
     protected virtual void Awake()
     {
         _eminontpye = EMINIONTYPE.Nomal;
@@ -74,7 +77,6 @@ public class Enemybase : MonoBehaviourPun
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
-        
     }
 
     protected virtual void OnEnable() // 생성
@@ -141,6 +143,26 @@ public class Enemybase : MonoBehaviourPun
         }
     }
 
+    public void SetInitData(int id)
+    {
+        photonView.RPC(nameof(RPC_SetInitData), RpcTarget.All, id);
+    }
+
+    [PunRPC]
+    public void RPC_SetInitData(int id)
+    {
+        minionDB = CSVtest.Instance.MinionDic[id];
+
+        Damage = minionDB.Attack;
+        AttackSpeed = minionDB.Attack_Speed;
+        attackRange = minionDB.Range;
+        moveSpeed = minionDB.Move_Speed;
+        HP = minionDB.Hp;
+        minionSprite = minionDB.Icon_Blue;
+
+        Debug.Log($"[미니언] { PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
+    }
+
     public void TakeDamage(float Damage)
     {
 
@@ -176,10 +198,7 @@ public class Enemybase : MonoBehaviourPun
                 isDead = true;
                 
             }
-            
-
         }
-
     }
 
     public void tagThrow(string value)
@@ -197,6 +216,7 @@ public class Enemybase : MonoBehaviourPun
     {
         minionMouseDownEvent.Invoke(this, minionSprite);
     }
+
     public void Death()
     {
         Destroy(transform.parent.gameObject);
@@ -284,7 +304,4 @@ public class Enemybase : MonoBehaviourPun
         _navMeshAgent.isStopped = false;
         _navMeshAgent.SetDestination(destination);
     }
-
-    
-
 }

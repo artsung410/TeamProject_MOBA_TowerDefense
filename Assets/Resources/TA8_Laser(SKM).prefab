@@ -210,38 +210,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    Name: Laser_Tower3
-    ID: 38
+    Name: Laser_Tower
+    ID: 36
+    GroupID: 8
+    Rank: 1
+    Type: 1
     Pf: {fileID: 1265829006435420248}
-    Combination_ResultID: 39
-    Combination_Required_Value: 200
-    Normal_Random_Draw_Probability: 0.41666666
-    Normal_Attack_Draw_Probability: 1
+    Combination_ResultID: 37
+    Combination_Required_Value: 500
+    Normal_Random_Draw_Probability: 2.9166667
+    Normal_Attack_Draw_Probability: 7
     Normal_Minion_Draw_Probability: 0
     Normal_Buff_Debuff_Draw_Probability: 0
-    Premium_Random_Draw_Probability: 2.9166667
-    Premium_Attack_Draw_Probability: 7
+    Premium_Random_Draw_Probability: 0
+    Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 8
-    Rank: 3
-    Type: 1
-    Attack: 10
+    Attack: 0.2
     Attack_Speed: 0.3
-    Hp: 200
+    Hp: 100
     Range: 20
     Range_Type: 4
     Projectile_Type: 1
     Projectile_Speed: 60
     Projectile_Pf: {fileID: 0}
     Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-    Desc: 30019
-    Sprite_TowerCard: {fileID: 21300000, guid: 7d9af09b855dec24a95586933816fca8, type: 3}
+    Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
+    Sprite_TowerCard: {fileID: 21300000, guid: 4f7d4be2ecacb7a44a92fc0d6f906507, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
     AudioClip_Attack_Name: 0
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "0\r"
     buffID: 0
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}

@@ -253,39 +253,42 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    Name: 
-    ID: 0
-    GroupID: 0
-    Rank: 0
-    Type: 0
-    Pf: {fileID: 0}
-    Combination_ResultID: 0
-    Combination_Required_Value: 0
-    Normal_Random_Draw_Probability: 0
-    Normal_Attack_Draw_Probability: 0
+
+    Name: Flame_Tower
+    ID: 11
+    GroupID: 3
+    Rank: 1
+    Type: 1
+    Pf: {fileID: 7185640794416597223}
+    Combination_ResultID: 12
+    Combination_Required_Value: 500
+    Normal_Random_Draw_Probability: 2.9166667
+    Normal_Attack_Draw_Probability: 7
     Normal_Minion_Draw_Probability: 0
     Normal_Buff_Debuff_Draw_Probability: 0
     Premium_Random_Draw_Probability: 0
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    Attack: 0
-    Attack_Speed: 0
-    Hp: 0
-    Range: 0
-    Range_Type: 0
-    Projectile_Type: 0
-    Projectile_Speed: 0
-    Projectile_Pf: {fileID: 0}
-    Destroy_Effect_Pf: {fileID: 0}
-    Desc: 
-    Sprite_TowerCard: {fileID: 0}
-    Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
-    buffID: 0
-    Camp_GroupID: 0
+
+    Attack: 10
+    Attack_Speed: 0.3
+    Hp: 100
+    Range: 20
+    Range_Type: 1
+    Projectile_Type: 2
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: "\uBD88\uC758 \uC138\uB840\uB97C \uBC1B\uC544 \uBCF4\uC2E0\uC801\uC774
+      \uC788\uB098\uC694? \uB728\uAC70\uC6B4 \uB9DB\uC744 \uBCF4\uC5EC\uB4DC\uB9B4\uAC8C\uC694!"
+    Sprite_TowerCard: {fileID: 21300000, guid: f634ee18e67349543a72b575ec92f985, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
+    buffID: 20011
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}

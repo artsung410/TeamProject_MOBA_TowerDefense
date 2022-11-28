@@ -72,7 +72,7 @@ public class Turret_Cannon : Turret
     {
         if(photonView.IsMine)
         {
-            NewDangerZone = PhotonNetwork.Instantiate(DangerZonePF.name, new Vector3(target.position.x, 0.5f, target.position.z), Quaternion.identity);
+            NewDangerZone = PhotonNetwork.Instantiate(DangerZonePF.name, new Vector3(target.position.x, target.position.y + 0.5f, target.position.z), Quaternion.identity);
             shotTransform = NewDangerZone.transform;
         }
     }

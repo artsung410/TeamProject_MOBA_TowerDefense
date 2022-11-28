@@ -12,8 +12,7 @@ public class FireProjectile : Projectiles
 {
     float elapsedTime = 0f;
     float InterpolateValue = 1f;
-    float maxHeight = 16f;
-    float minHeight = 1f;
+
     private void Update()
     {
         if (target == null)
@@ -47,9 +46,9 @@ public class FireProjectile : Projectiles
             return;
         }
 
-        if (dir.magnitude <= distanceThisFrame + InterpolateValue || transform.position.y <= InterpolateValue)
+        if (dir.magnitude <= distanceThisFrame + InterpolateValue)
         {
-            GameObject newFire = PhotonNetwork.Instantiate(ImpactEffect.name, new Vector3(transform.position.x, minHeight, transform.position.z), Quaternion.identity);
+            GameObject newFire = PhotonNetwork.Instantiate(ImpactEffect.name, target.position, Quaternion.identity);
             MagicExplosion magicExplosion = newFire.GetComponent<MagicExplosion>();
             magicExplosion.damage = damage;
             magicExplosion.enemyTag = enemyTag;

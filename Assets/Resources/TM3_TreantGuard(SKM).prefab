@@ -51,39 +51,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    Name: 
-    ID: 0
-    GroupID: 0
-    Rank: 0
-    Type: 0
-    Pf: {fileID: 0}
-    Combination_ResultID: 0
-    Combination_Required_Value: 0
+    Name: TreantGuard_Tower4
+    ID: 3014
+    GroupID: 21
+    Rank: 4
+    Type: 4
+    Pf: {fileID: 1862620217445196292}
+    Combination_ResultID: 3015
+    Combination_Required_Value: 100
     Normal_Random_Draw_Probability: 0
     Normal_Attack_Draw_Probability: 0
     Normal_Minion_Draw_Probability: 0
     Normal_Buff_Debuff_Draw_Probability: 0
-    Premium_Random_Draw_Probability: 0
+    Premium_Random_Draw_Probability: 0.8333333
     Premium_Attack_Draw_Probability: 0
-    Premium_Minion_Draw_Probability: 0
+    Premium_Minion_Draw_Probability: 3.3333333
     Premium_Buff_Debuff_Draw_Probability: 0
-    Attack: 0
-    Attack_Speed: 0
-    Hp: 0
-    Range: 0
-    Range_Type: 0
-    Projectile_Type: 0
-    Projectile_Speed: 0
-    Projectile_Pf: {fileID: 0}
-    Destroy_Effect_Pf: {fileID: 0}
-    Desc: 
-    Sprite_TowerCard: {fileID: 0}
-    Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
+    Attack: 1
+    Attack_Speed: 0.3
+    Hp: 250
+    Range: 20
+    Range_Type: 4
+    Projectile_Type: 1
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: "\uB108\uB4DC\uB808 \uC232\uC5D0 \uC218\uD638\uC790\uC778 \uADF8\uB294
+      \uC232\uC758 \uCE68\uC785\uC790\uB97C \uC81C\uAC70\uD558\uAE30 \uC704\uD574
+      \uC6C0\uC9C1\uC785\uB2C8\uB2E4. \"\uC6C0 \uB77C\uCC60!"
+    Sprite_TowerCard: {fileID: 21300000, guid: b1b6996794984ad42ba0f972ef7a7b48, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: a5b60337856a46d4b9143fda34cebf2a, type: 3}
+    AudioClip_Attack_Name: 0
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
     buffID: 0
-    Camp_GroupID: 0
+    MinionID: 5049
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -100,13 +102,10 @@ MonoBehaviour:
   firePoint: {fileID: 1132625977036601116}
   DangerZonePF: {fileID: 0}
   smokeParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
-  MinionDB:
+  MinionBluePrint:
     Name: 
     ID: 0
     GroupID: 0
-    Camp_GroupID: 0
-    Camp: 0
-    Pf: {fileID: 0}
     Rank: 0
     Type: 0
     Projectile_Speed: 0

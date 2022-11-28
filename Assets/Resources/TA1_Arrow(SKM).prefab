@@ -253,39 +253,41 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    Name: 
-    ID: 0
-    GroupID: 0
-    Rank: 0
-    Type: 0
-    Pf: {fileID: 0}
-    Combination_ResultID: 0
-    Combination_Required_Value: 0
-    Normal_Random_Draw_Probability: 0
-    Normal_Attack_Draw_Probability: 0
+    Name: Guard_Tower
+    ID: 1
+    GroupID: 1
+    Rank: 1
+    Type: 1
+    Pf: {fileID: 165880}
+    Combination_ResultID: 2
+    Combination_Required_Value: 500
+    Normal_Random_Draw_Probability: 2.9166667
+    Normal_Attack_Draw_Probability: 7
     Normal_Minion_Draw_Probability: 0
     Normal_Buff_Debuff_Draw_Probability: 0
     Premium_Random_Draw_Probability: 0
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    Attack: 0
-    Attack_Speed: 0
-    Hp: 0
-    Range: 0
-    Range_Type: 0
-    Projectile_Type: 0
-    Projectile_Speed: 0
-    Projectile_Pf: {fileID: 0}
-    Destroy_Effect_Pf: {fileID: 0}
-    Desc: 
-    Sprite_TowerCard: {fileID: 0}
-    Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
+    Attack: 10
+    Attack_Speed: 0.3
+    Hp: 100
+    Range: 20
+    Range_Type: 1
+    Projectile_Type: 1
+    Projectile_Speed: 60
+    Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+    Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+    Desc: "\uAC00\uC7A5 \uAE30\uBCF8\uC801\uC778 \uACF5\uACA9 \uD0C0\uC6CC\uC785\uB2C8\uB2E4.
+      \uD654\uC0B4\uC744 \uBC1C\uC0AC\uD558\uC5EC \uC801\uB4E4\uC758 \uACF5\uACA9\uC744
+      \uBC29\uC5B4\uD569\uB2C8\uB2E4. \"\uD53C\uC735~ \uD53C\uC735~\" "
+    Sprite_TowerCard: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
+    Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+    AudioClip_Attack_Name: ES_Guard_Tower
+    AudioClip_Hit_Name: 0
+    AudioClip_Normal_Name: "0\r"
     buffID: 0
-    Camp_GroupID: 0
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -883,12 +885,24 @@ PrefabInstance:
     m_TransformParent: {fileID: 471166}
     m_Modifications:
     - target: {fileID: 565790850083912597, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 565790850083912597, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 565790850083912597, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 565790850083912597, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_FillAmount
-      value: 0.838
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3204027714071452281, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4367624973842323870, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_Pivot.x
@@ -979,12 +993,24 @@ PrefabInstance:
       value: HealthCanvas(SKM)
       objectReference: {fileID: 0}
     - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: ce02418f40f479a4299334d14462cbdc, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8299946404883953413, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_FillAmount
-      value: 0.676
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
