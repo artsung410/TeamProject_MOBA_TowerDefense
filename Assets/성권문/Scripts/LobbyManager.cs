@@ -190,7 +190,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     }
 
-    private bool matchingCancle = false;
+    private bool matchingCancle;
     // 매칭 메소드
     public void CancelMatching()
     {
@@ -202,7 +202,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
 
         // 배팅 disconnet
-        StartCoroutine(PostBettingDisconnect());
+        //StartCoroutine(PostBettingDisconnect());
 
         // 기획팀 사운드 작업본(매칭 효과음)
         matchingAudio.clip = matchingCancleSound;
