@@ -575,6 +575,8 @@ public class InventoryGetData : MonoBehaviour
                 itemStruct.indexItemInList = sendItems[i].indexItemInList;
                 itemStruct.rarity = sendItems[i].rarity;
                 itemStruct.itemAttributes = sendItems[i].itemAttributes;
+                itemStruct.towerData = sendItems[i].towerData;
+                itemStruct.skillData = sendItems[i].skillData;
                 itemStruct.specialPrefabs = sendItems[i].specialPrefabs;
                 itemStruct.buffDatas = sendItems[i].buffDatas;
 
@@ -595,6 +597,8 @@ public class InventoryGetData : MonoBehaviour
                 itemProduce.item.indexItemInList = itemStruct.indexItemInList;
                 itemProduce.item.rarity = itemStruct.rarity;
                 itemProduce.item.itemAttributes = itemStruct.itemAttributes;
+                itemProduce.item.towerData = itemStruct.towerData;
+                itemProduce.item.skillData = itemStruct.skillData;
                 itemProduce.item.specialPrefabs = itemStruct.specialPrefabs;
                 itemProduce.item.buffDatas = itemStruct.buffDatas;
 
