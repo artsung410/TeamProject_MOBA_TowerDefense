@@ -21,11 +21,17 @@ public class MinionAtkUp : SkillHandler
     public override void SkillHoldingTime(float time)
     {
         elapsedTime += Time.deltaTime;
+
+        if (elapsedTime >= Data.LockTime)
+        {
+            _ability.OnLock(true);
+        }
+
         if (elapsedTime >= time)
         {
-                minionBuffReset();
-                PhotonNetwork.Destroy(gameObject);
-           
+            minionBuffReset();
+            PhotonNetwork.Destroy(gameObject);
+
         }
     }
 
@@ -45,6 +51,7 @@ public class MinionAtkUp : SkillHandler
         minionBuff(atkBuff); // 미니언 버프 적용
         //BuffManager.Instance.AddBuff((BuffData)buff);
         BuffManager.Instance.AssemblyBuff();
+        _ability.OnLock(true);
 
     }
 
@@ -55,10 +62,10 @@ public class MinionAtkUp : SkillHandler
             return;
         }
         //플레이어 죽으면 삭제
-        SkillHoldingTime(20f);
+        SkillHoldingTime(Data.HoldingTime);
     }
     // 태그 찾아줌 
-    
+
 
     private void minionBuff(float attackUp)
     {

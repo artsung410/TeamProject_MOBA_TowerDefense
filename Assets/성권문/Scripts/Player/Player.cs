@@ -126,12 +126,10 @@ public class Player : MonoBehaviourPun
             if (state)
             {
                 playerStats.MoveSpeed *= (1 + addValue); // 버프적용
-                Debug.Log($"현재 이동속도 : {playerStats.MoveSpeed}");
             }
             else
             {
                 playerStats.MoveSpeed /= (1 + addValue);  // 원상복구
-                Debug.Log($"현재 이동속도 : {playerStats.MoveSpeed}");
             }
         }
 

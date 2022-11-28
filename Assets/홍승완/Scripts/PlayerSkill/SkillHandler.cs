@@ -26,9 +26,6 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected string _myTag;
     protected string enemyTag;
 
-    // TODO : skilldata scriptableObj사용할수있게 개조하기
-    //protected ScriptableObject data;
-
     public PlayerSkillDatas Data;
 
     // 플레이어 HeroAbility를 받아옴

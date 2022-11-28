@@ -85,7 +85,7 @@ public class HeroAbility : MonoBehaviourPun
                 Debug.Log("try");
                 // TODO : Q스킬 현재 제외(i = 1인 이유)
 
-                for (int i = 1; i < 4; i++)
+                for (int i = 0; i < 4; i++)
                 {
                     Debug.Log(SkillManager.Instance.Datas[i].Name.name);
                     AbilityPrefabs[i] = SkillManager.Instance.Datas[i].Name;
@@ -117,7 +117,7 @@ public class HeroAbility : MonoBehaviourPun
                 return;
             }
 
-            //AbilityQ();
+            AbilityQ();
             AbilityW();
             AbilityE();
             AbilityR();

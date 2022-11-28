@@ -20,8 +20,7 @@ public class IceArrow : SkillHandler
     private float damage;
     private float width;
     private float vertical;
-
-    public BuffData deBuff;
+    private bool isHit;
 
     private void Awake()
     {
@@ -100,9 +99,15 @@ public class IceArrow : SkillHandler
     {
         if (photonView.IsMine)
         {
+            if (other.CompareTag(_behaviour.tag))
+            {
+                return;
+            }
+
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
-                //BuffManager.Instance.AddBuff(deBuff);
+                BuffBlueprint buff = BuffManager.Instance.buffDB_Dic[Data.ID + 100]; // 이동속도 감소
+                BuffManager.Instance.AddBuff(buff);
                 SkillDamage(damage, other.gameObject);
                 _ability.OnLock(false);
                 PhotonNetwork.Destroy(gameObject);

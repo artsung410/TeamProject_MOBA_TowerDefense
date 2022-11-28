@@ -31,8 +31,8 @@ public class MinionSpawnUp : SkillHandler
 
         if (GetMytag(_ability) == "Blue")
         {
-        MinionSpawner.GetComponent<MinionSpawner>().BlueSkillWave = 3;
-        MinionSpawner.GetComponent <MinionSpawner>().tag = GetMytag(_ability); 
+            MinionSpawner.GetComponent<MinionSpawner>().BlueSkillWave = 3;
+            MinionSpawner.GetComponent<MinionSpawner>().tag = GetMytag(_ability);
 
         }
         else if (GetMytag(_ability) == "Red")
@@ -44,16 +44,16 @@ public class MinionSpawnUp : SkillHandler
     }
     private void Update()
     {
-        SkillHoldingTime(60f);
+        SkillHoldingTime(Data.HoldingTime);
     }
 
-    
+
     public override void SkillHoldingTime(float time)
     {
         elaspedTime += Time.deltaTime;
         if (elaspedTime >= time)
         {
-            
+
             elaspedTime = 0;
             PhotonNetwork.Destroy(gameObject);
 

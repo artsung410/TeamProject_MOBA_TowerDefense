@@ -107,6 +107,7 @@ public class CSVtest : MonoBehaviour
         //StartCoroutine(GetMinionData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
+        StartCoroutine(GetCommonSkillData(commonSkillURL));
     }
 
     private void SplitDescData(string tsv)
@@ -269,7 +270,7 @@ public class CSVtest : MonoBehaviour
 
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:I68";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:I74";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
@@ -368,6 +369,7 @@ public class CSVtest : MonoBehaviour
 
     private const string wizardSkillURL = "https://docs.google.com/spreadsheets/d/1PnBV0AFMfz3PdaEXZJcOPjnQCCQCOGoV/export?format=tsv&range=A4:Y18";
     private const string warriorSkillURL = "https://docs.google.com/spreadsheets/d/1ggp4p3CU3bRVbeF-Eq6UshL67FK0VHwV/export?format=tsv&range=A4:Y18";
+    private const string commonSkillURL = "https://docs.google.com/spreadsheets/d/1cJp9QbYYOzvVO9TVZUfe9XsWLgEMnlc3/export?format=tsv&range=A4:Y12";
 
     Dictionary<int, List<string>> WarriorSkillDatas = new Dictionary<int, List<string>>();
     List<List<string>> WarriorSkillRowDatas = new List<List<string>>();
@@ -375,11 +377,16 @@ public class CSVtest : MonoBehaviour
     Dictionary<int, List<string>> WizardSkillDatas = new Dictionary<int, List<string>>();
     List<List<string>> WizardSkillRowDatas = new List<List<string>>();
 
+    Dictionary<int, List<string>> CommonSkillDatas = new Dictionary<int, List<string>>();
+    List<List<string>> CommonSkillRowDatas = new List<List<string>>();
+
     [Header("[스킬]")]
     public SkillDatas WarriorSkillParsing;
     public SkillDatas WizardSkillParsing;
+    public SkillDatas CommonSkillParsing;
     public ItemDataBaseList WarriorDatabaseList;
     public ItemDataBaseList WizardDatabaseList;
+    public ItemDataBaseList CommonDatabaseList;
 
     IEnumerator GetWizardSkillData(string url)
     {
@@ -395,6 +402,13 @@ public class CSVtest : MonoBehaviour
         yield return WarriorSkillDataRequest.SendWebRequest();
         SplitSkillDatas(WarriorSkillDataRequest.downloadHandler.text, WarriorSkillDatas, WarriorSkillRowDatas, WarriorSkillParsing, WarriorDatabaseList);
 
+    }
+
+    IEnumerator GetCommonSkillData(string url)
+    {
+        UnityWebRequest CommonSkillDataRequest = UnityWebRequest.Get(url);
+        yield return CommonSkillDataRequest.SendWebRequest();
+        SplitSkillDatas(CommonSkillDataRequest.downloadHandler.text, CommonSkillDatas, CommonSkillRowDatas, CommonSkillParsing, CommonDatabaseList);
     }
 
     private void SplitSkillDatas(string tsv, Dictionary<int, List<string>> dic, List<List<string>> list, SkillDatas job, ItemDataBaseList oldData)
@@ -456,6 +470,7 @@ public class CSVtest : MonoBehaviour
             oldData.itemList[i + 1].itemName = skillDatas.DataList[i].NameLevel;
             oldData.itemList[i + 1].itemIcon = skillDatas.DataList[i].CardImage;
             oldData.itemList[i + 1].itemDesc = skillDatas.DataList[i].Desc;
+            oldData.itemList[i + 1].itemModel = skillDatas.DataList[i].Name;
         }
     }
 
