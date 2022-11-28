@@ -109,7 +109,6 @@ public class Stats : GoogleSheetManager
         SetCharactorDatas(GetCharactorData.downloadHandler.text);
 
         StatInit();
-        //Debug.Log("플레이어 스탯 초기화 ####");
     }
     public void StatInit()
     {
@@ -126,11 +125,9 @@ public class Stats : GoogleSheetManager
         // 실험결과 코루틴 부분이 start보다 나중에 완료 되었다
     }
 
-
-
     private void OnEnable()
     {
-        
+        SetStats(Level);
     }
 
     private void Start()
@@ -150,11 +147,6 @@ public class Stats : GoogleSheetManager
         //Debug.Log("start부분 초기화 완료");
     }
 
-    private void Update()
-    {
-        
-    }
-
     // 레벨에 따른 스텟 증가
     public void SetStats(int level)
     {
@@ -171,7 +163,6 @@ public class Stats : GoogleSheetManager
         enemyExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Exp_Enemy]);
     }
 
-    //[PunRPC]
     public void PlayerLevelUpFactory(GameObject expBag, float exp)
     {
         if (expBag == null)
@@ -219,6 +210,18 @@ public class Stats : GoogleSheetManager
 
     }
 
+    private void Update()
+    {
+        if (gameObject.tag == "Blue")
+        {
+            GameManager.Instance.PlayerLevel1 = Level;
+        }
+        else
+        {
+            GameManager.Instance.PlayerLevel2 = Level;
+        }
+    }
+
 
     private void OnDrawGizmos()
     {
@@ -230,6 +233,10 @@ public class Stats : GoogleSheetManager
     private void OnDisable()
     {
         //StopAllCoroutines();
+        // 구독자 해지
+        Health.OnPlayerDieEvent -= PlayerLevelUpFactory;
+        Enemybase.OnMinionDieEvent -= PlayerLevelUpFactory;
+        Turret.OnTurretDestroyEvent -= PlayerLevelUpFactory;
     }
 
 

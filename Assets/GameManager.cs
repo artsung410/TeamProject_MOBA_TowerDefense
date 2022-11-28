@@ -30,6 +30,8 @@ public class GameManager : MonoBehaviourPunCallbacks
     public static event Action<int> onHpEvent = delegate { };
     public event Action onPlayerEvnet = delegate { };
 
+    public int PlayerLevel1;
+    public int PlayerLevel2;
 
     public static GameManager Instance
     {
