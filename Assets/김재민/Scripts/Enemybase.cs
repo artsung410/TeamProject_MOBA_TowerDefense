@@ -174,9 +174,17 @@ public class Enemybase : MonoBehaviourPun
     {
         if (isDead == false)
         {
-            CurrnetHP -= Damage;
-           GameManager.Instance.winner = lastDamageTeam;
-            
+            if (_eminontpye != EMINIONTYPE.Netural)
+            {
+                CurrnetHP -= Damage;
+            }
+            else
+            { 
+                CurrnetHP -= Damage * (PlayerHUD.Instance.min + 1 ); // 1안더해주면 0분일때 데미지 안드감
+                _animator.SetTrigger("TakeDamage");
+            }
+            GameManager.Instance.winner = lastDamageTeam;
+
             if (CurrnetHP <= 0)
             {
                 if(_eminontpye == EMINIONTYPE.Netural)
