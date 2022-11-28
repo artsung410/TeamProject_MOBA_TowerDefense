@@ -107,6 +107,17 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
     public void OnEndDrag(PointerEventData data)
     {
+        // 아이템 삭제 - 휴지통
+        Transform trashCan = null;
+        if (data.pointerEnter != null)
+            trashCan = data.pointerEnter.transform;
+        if (trashCan.gameObject.name == "TrashCan")
+        {
+            Destroy(draggedItemBox.GetChild(0).gameObject);
+        }
+        // -------------------------------------------------------
+
+
         if (data.button == PointerEventData.InputButton.Left)
         {
             canvasGroup.blocksRaycasts = true;

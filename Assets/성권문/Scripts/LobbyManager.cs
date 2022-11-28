@@ -7,6 +7,7 @@ using LitJson;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using UnityEngine.Networking;
+using System.Collections;
 
 // ###############################################
 //             NAME : ARTSUNG                      
@@ -201,8 +202,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         PhotonNetwork.LeaveRoom();
 
         // 배팅 disconnet
-
-
+        StartCoroutine(PostBettingDisconnect());
 
         // 기획팀 사운드 작업본(매칭 효과음)
         matchingAudio.clip = matchingCancleSound;
@@ -210,46 +210,46 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     }
 
     private APIStorage aPIStorage;
-    //private IEnumerator PostBettingDisconnect()
-    //{
-    //    string url = "https://odin-api-sat.browseosiris.com/v1/betting/zera/disconnect";
+    
+    public IEnumerator PostBettingDisconnect()
+    {
+        string url = "https://odin-api-sat.browseosiris.com/v1/betting/zera/disconnect";
 
-    //    aPIStorage = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>();
+        aPIStorage = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>();
 
-    //    // 여기선 두명의 세션 아이디를 가져와야함.
-    //    WWWForm form = new WWWForm();
+        // 여기선 두명의 세션 아이디를 가져와야함.
+        WWWForm form = new WWWForm();
 
-    //    disconnect disc = new disconnect();
-    //    disc.betting_id = aPIStorage.betting_id;
+        disconnect disc = new disconnect();
+        disc.betting_id = aPIStorage.betting_id;
 
-    //    // 직렬화
-    //    var serializeObject = JsonConvert.SerializeObject(disc);
+        // 직렬화
+        var serializeObject = JsonConvert.SerializeObject(disc);
 
-    //    using (UnityWebRequest www = UnityWebRequest.Post(url, serializeObject))
-    //    {
-    //        byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(serializeObject);
-    //        www.uploadHandler.Dispose();
-    //        www.uploadHandler = new UploadHandlerRaw(jsonToSend);
+        using (UnityWebRequest www = UnityWebRequest.Post(url, serializeObject))
+        {
+            byte[] jsonToSend = new System.Text.UTF8Encoding().GetBytes(serializeObject);
+            www.uploadHandler.Dispose();
+            www.uploadHandler = new UploadHandlerRaw(jsonToSend);
 
-    //        www.SetRequestHeader("api-key", aPIStorage.apiKey);
-    //        www.SetRequestHeader("Content-Type", "application/json");
+            www.SetRequestHeader("api-key", aPIStorage.apiKey);
+            www.SetRequestHeader("Content-Type", "application/json");
 
-    //        yield return www.SendWebRequest();
-    //        if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
-    //        {
-    //            Debug.Log(www.error);
-    //            yield break;
-    //        }
+            yield return www.SendWebRequest();
+            if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
+            {
+                Debug.Log(www.error);
+                yield break;
+            }
 
-    //        // 데이터 파싱
-    //        string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
-    //        JsonData jsonPlayer = JsonMapper.ToObject(jsonResult);
-    //        // 데이터 저장
-    //        aPIStorage.betting_id = jsonPlayer["data"]["betting_id"].ToString();
-    //        Debug.Log("PostPlaveBetCaller Data Save Complited");
-    //    }
-    //}
-
+            // 데이터 파싱
+            string jsonResult = System.Text.Encoding.UTF8.GetString(www.downloadHandler.data);
+            JsonData jsonPlayer = JsonMapper.ToObject(jsonResult);
+            // 데이터 저장
+            aPIStorage.message[0] = jsonPlayer["message"].ToString();
+            Debug.Log("Betting Disconnet Complited!!");
+        }
+    }
 
 
     // 매칭 인원수 텍스트
