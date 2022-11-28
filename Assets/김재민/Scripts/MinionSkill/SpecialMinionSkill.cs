@@ -16,7 +16,6 @@ public class SpecialMinionSkill : SkillHandler
     // 플레이어 위치를 돌아야함 거리를 알아야함
     float speed = 100f;
     float distance = 5f;
-    //string enemyTag;
     float elapsedTime;
     public bool TargetOn;
 
@@ -35,26 +34,12 @@ public class SpecialMinionSkill : SkillHandler
     {
 
         if (_ability == null) return;
-        //TagProcessing(_ability);
+        _ability.OnLock(true);
         gameObject.tag = GetMytag(_ability);
         InvokeRepeating(nameof(nearFindObject), 0, 0.5f);
 
 
     }
-
-    // SkillHandler에서 tag처리중
-    //private void TagProcessing(HeroAbility ability)// 적태그 알아야함 감지때문
-    //{
-
-    //    if (ability.CompareTag("Blue"))
-    //    {
-    //        enemyTag = "Red";
-    //    }
-    //    else if (ability.CompareTag("Red"))
-    //    {
-    //        enemyTag = "Blue";
-    //    }
-    //}
 
     void FixedUpdate()
     {
@@ -70,7 +55,11 @@ public class SpecialMinionSkill : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-
+            elapsedTime += Time.deltaTime;
+            if (elapsedTime >= Data.LockTime)
+            {
+                _ability.OnLock(false);
+            }
         }
     }
 

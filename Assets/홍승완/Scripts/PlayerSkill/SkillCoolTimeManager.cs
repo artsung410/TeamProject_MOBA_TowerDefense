@@ -34,10 +34,8 @@ public class SkillCoolTimeManager : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         // q스킬 제외중
-        //coolTimeImgs[0] = PlayerHUD.Instance.skillTable.transform.GetChild(0).GetChild(2).gameObject.GetComponent<Image>();
-        //skillCoolTimeArr[0] = SkillManager.Instance.CoolTime[0];
 
-        for (int i = 1; i < 4; i++)
+        for (int i = 0; i < 4; i++)
         {
             coolTimeImgs[i] = PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>();
             Debug.Log($" i : {i}\n" +
@@ -55,7 +53,7 @@ public class SkillCoolTimeManager : MonoBehaviour
     private void Update()
     {
         //TODO : 이벤트함수로 만들어 호출하기
-        //CoolTimeCheckQ();
+        CoolTimeCheckQ();
         CoolTimeCheckW();
         CoolTimeCheckE();
         CoolTimeCheckR();

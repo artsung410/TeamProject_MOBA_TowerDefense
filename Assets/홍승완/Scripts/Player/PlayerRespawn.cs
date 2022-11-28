@@ -23,12 +23,6 @@ public class PlayerRespawn : MonoBehaviourPun
     Vector3 playerRespawnPosition;
 
 
-    private void Awake()
-    {
-        //health = transform.GetChild(2).GetComponent<Health>();
-        //hpBar = transform.GetChild(0).GetChild(0).GetComponent<Slider>();
-    }
-
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +35,7 @@ public class PlayerRespawn : MonoBehaviourPun
 
         if (health.gameObject.CompareTag("Blue"))
         {
-            playerRespawnPosition = new Vector3(GameManager.Instance.spawnPositions[0].position.x, GameManager.Instance.spawnPositions[0].position.y, GameManager.Instance.spawnPositions[0].position.z);
+            playerRespawnPosition = GameManager.Instance.spawnPositions[0].position;
 
         }
         else if (health.gameObject.CompareTag("Red"))

@@ -106,6 +106,11 @@ public class Lightning : SkillHandler
     {
         if (photonView.IsMine)
         {
+            if (other.CompareTag(_behaviour.tag))
+            {
+                return;
+            }
+
             // 중립 몬스터 : 태그없음, layer 17
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
