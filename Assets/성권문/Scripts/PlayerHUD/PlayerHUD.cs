@@ -294,7 +294,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 gameWinMessage = GameManager.Instance.winner;
                 GameManager.Instance.isGameEnd = true;
             }
-            photonView.RPC("RPCInitScore", RpcTarget.All);
+            photonView.RPC(nameof(RPCInitScore), RpcTarget.All);
 
             //photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
             min = 0;
@@ -318,42 +318,15 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         if (stream.IsWriting)
         {
             // We own this player: send the others our data
-            //stream.SendNext(IsFiring);
-            //stream.SendNext(Health);
             stream.SendNext(timerTMPro.text);
         }
         else
         {
             // Network player, receive data
-            //this.IsFiring = (bool)stream.ReceiveNext();
-            //this.Health = (float)stream.ReceiveNext();
             this.timerTMPro.text = (string)stream.ReceiveNext();
         }
     }
 
-    //[PunRPC]
-    //public void RPC_timer()
-    //{
-    //    if ((int)sec < 0) // 1 
-    //    {
-    //        sec = 60;
-    //        min--;
-    //    }
-    //    else if (GameManager.Instance.winner == "Draw") // 2
-    //    {
-    //        if ((int)sec >= 60)
-    //        {
-    //            sec = 0;
-    //            min++;
-    //        }
-    //        sec += Time.deltaTime;
-    //        timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-    //        return;
-    //    }
-
-    //    sec -= Time.deltaTime;
-    //    timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-    //}
 
     public void AddScoreToEnemy(string tag)
     {
@@ -588,7 +561,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     {
         yield return new WaitForSeconds(1.5f);
         playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
-        enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
+        enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>(); 
         StopCoroutine(setHp());
     }
 
