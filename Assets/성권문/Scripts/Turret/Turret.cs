@@ -81,6 +81,9 @@ public class Turret : MonoBehaviourPun
 
     void Awake()
     {
+        // 오디오 할당
+        audioSource = GetComponent<AudioSource>();
+
         // 타워 아웃라인 컴포넌트 할당
         _outline = GetComponent<Outline>();
 
@@ -224,10 +227,13 @@ public class Turret : MonoBehaviourPun
         {
             // 타워 파괴시 경험치
             OnTurretDestroyEvent.Invoke(gameObject, exp);
-
-            if(photonView.IsMine)
+            if (photonView.IsMine)
             {
                 newDestroyParticle = PhotonNetwork.Instantiate(destroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+                AudioSource explosionAudiosource = newDestroyParticle.GetComponent<AudioSource>();
+                explosionAudiosource.clip = towerDB.AudioClip_Destroy;
+                explosionAudiosource.Play();
+
                 StartCoroutine(Destruction(newDestroyParticle));
 
                 if (newEffectParticles != null)

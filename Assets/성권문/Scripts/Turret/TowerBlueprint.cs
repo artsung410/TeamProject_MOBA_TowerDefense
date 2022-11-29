@@ -59,8 +59,8 @@ public class TowerBlueprint
     [TextArea] public string Desc;                           // 타워 설명
     public Sprite Sprite_TowerCard;                          // 타워카드 이미지
     public Sprite Sprite_TowerProtrait;                      // 타워상태 이미지
-    public string AudioClip_Attack_Name;                     // 공격 사운드 이름
-    public string AudioClip_Hit_Name;                        // 피격 사운드 이름
+    public AudioClip AudioClip_Attack;                     // 공격 사운드 이름
+    public AudioClip AudioClip_Destroy;                        // 피격 사운드 이름
 
     [Header("[버프타워만]")]
     public int buffID;                                       // 버프 타워만 해당.

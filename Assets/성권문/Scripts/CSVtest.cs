@@ -147,7 +147,7 @@ public class CSVtest : MonoBehaviour
 
     #region Tower
 
-    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=625995306&range=A5:AM124";
+    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=625995306&range=A5:AL124";
     
     [Header("[타워]")]
     public TowerDatabaseList towerDatabaseListCSV;
@@ -221,12 +221,10 @@ public class CSVtest : MonoBehaviour
 
             // 부가옵션
             towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf = Resources.Load<GameObject>(col[30]);
-
             towerDatabaseListCSV.itemList[i].Sprite_TowerCard = Resources.Load<Sprite>("Sprites/TowerImage/" + col[34]);
-
             towerDatabaseListCSV.itemList[i].Sprite_TowerProtrait = Resources.Load<Sprite>("Sprites/TowerIcon/" + col[35]);
-            towerDatabaseListCSV.itemList[i].AudioClip_Attack_Name = col[36];
-            towerDatabaseListCSV.itemList[i].AudioClip_Hit_Name = col[37];
+            towerDatabaseListCSV.itemList[i].AudioClip_Attack = Resources.Load<AudioClip>("Sounds/" + col[36]);
+            towerDatabaseListCSV.itemList[i].AudioClip_Destroy = Resources.Load<AudioClip>("Sounds/ES_Break");
 
             // 버프타워만 해당
             towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
