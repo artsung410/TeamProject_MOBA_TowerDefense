@@ -18,9 +18,10 @@ public class SpecialMinionSkill : SkillHandler
     float distance = 5f;
     float elapsedTime;
     public bool TargetOn;
-
-
     [SerializeField]
+    private GameObject dragon;
+
+
 
 
     //public static SpecialMinionSkill Instance { get; private set; }
@@ -32,7 +33,8 @@ public class SpecialMinionSkill : SkillHandler
     }
     private void Start()
     {
-
+        dragon = transform.GetChild(0).gameObject;
+        elapsedTime = 0f;
         if (_ability == null) return;
         _ability.OnLock(true);
         gameObject.tag = GetMytag(_ability);
@@ -55,16 +57,22 @@ public class SpecialMinionSkill : SkillHandler
         if (photonView.IsMine)
         {
             SkillUpdatePosition();
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime >= Data.LockTime)
-            {
-                _ability.OnLock(false);
-            }
+            SkillHoldingTime(15f);   
         }
     }
 
     public override void SkillHoldingTime(float time) // 지속시간
     {
+        elapsedTime += Time.deltaTime;
+        if (elapsedTime >= Data.LockTime)
+        {
+            _ability.OnLock(false);
+        }
+        if(elapsedTime >= time)
+        {
+            PhotonNetwork.Destroy(gameObject);
+            PhotonNetwork.Destroy(dragon);
+        }
 
     }
 
@@ -106,6 +114,7 @@ public class SpecialMinionSkill : SkillHandler
                     if (transform.GetChild(0) != null)
                     {
                         gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpecialAttack>().target = col.transform;
+                        gameObject.transform.GetChild(0).GetChild(0).transform.position = col.transform.position;
                         TargetOn = true;
                         RunAway();
                     }

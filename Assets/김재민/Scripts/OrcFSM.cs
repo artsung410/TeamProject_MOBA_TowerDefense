@@ -15,7 +15,7 @@ public class OrcFSM : Enemybase
     [SerializeField]
     private bool TargetOn = false;
 
-    int mask = (1<<7) | (1<<8) |(1<<13);
+    int mask = (1 << 7) | (1 << 8) | (1 << 13);
 
 
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
@@ -38,7 +38,7 @@ public class OrcFSM : Enemybase
     protected override void Awake()
     {
         base.Awake();
-        
+
         _estate = ESTATE.Move;
         CurrnetHP = HP;
     }
@@ -60,11 +60,16 @@ public class OrcFSM : Enemybase
         ResetPos = GameObject.FindGameObjectWithTag("Center").gameObject.transform; // 타켓없을때 중앙포지션
 
     }
+
+    private void Update()
+    {
+
+    }
     public void StateChange()
     {
         switch (_estate) // 코루틴순서  
         {
-            case ESTATE.Attack: 
+            case ESTATE.Attack:
                 if (Imove != null)
                 {
 
@@ -94,12 +99,12 @@ public class OrcFSM : Enemybase
             {
                 TargetOn = false; //타켓온 해제
                 Target = ResetPos.transform; // 중심포지션으로 바꿈
-               yield return null;
+                yield return null;
             }
-            transform.LookAt(new Vector3(Target.position.x,transform.position.y,Target.position.z)); //타켓을 바라봄
+            transform.LookAt(new Vector3(Target.position.x, transform.position.y, Target.position.z)); //타켓을 바라봄
             _navMeshAgent.SetDestination(Target.position); // 타겟쪽으로 걸어감
             float distanceNosql = Vector2.Distance(new Vector2(Target.transform.position.x, Target.transform.position.z), new Vector2(transform.position.x, transform.position.z));
-            if(distanceNosql >= attackRange * 2)
+            if (distanceNosql >= attackRange * 2)
             {
                 Target = null;
             }
@@ -124,13 +129,13 @@ public class OrcFSM : Enemybase
                 StateChange();
 
             }
-            transform.LookAt(new Vector3(Target.position.x,transform.position.y, Target.position.z)); //타켓을 바라봄
-            float atkDistanceNoSql = Vector2.Distance(new Vector2(Target.transform.position.x, Target.transform.position.z) , new Vector2(transform.position.x, transform.position.z));
+            transform.LookAt(new Vector3(Target.position.x, transform.position.y, Target.position.z)); //타켓을 바라봄
+            float atkDistanceNoSql = Vector2.Distance(new Vector2(Target.transform.position.x, Target.transform.position.z), new Vector2(transform.position.x, transform.position.z));
             _navMeshAgent.isStopped = true; //멈춰서
             Animationact("Attack", true); // 공격애니메이션 재생
             if (atkDistanceNoSql >= attackRange) //공격사거리가 멀어지면
             {
-                Animationact("Attack",false); // 공격애니메이션 끄고 
+                Animationact("Attack", false); // 공격애니메이션 끄고 
                 _estate = ESTATE.Move; // 무브상태로 전환 따라가야하기때문
                 TargetOn = false;
                 StateChange();
@@ -148,34 +153,40 @@ public class OrcFSM : Enemybase
         Collider[] Enemys = Physics.OverlapSphere(transform.position, 20f, mask);
         foreach (Collider col in Enemys)
         {
-            if(col.gameObject.name == "monster_orc") // 자신제외하고
+            if (col.gameObject.name == "monster_orc") // 자신제외하고
             {
                 continue;
             }
-            Target = Enemys[0].transform; // 
-            float shortDistacenosql = Vector2.SqrMagnitude(new Vector2(Target.transform.position.x, Target.transform.position.z) - new Vector2(transform.position.x, transform.position.z));
-            float distanceNoSql = Vector2.SqrMagnitude(new Vector2(col.transform.position.x, col.transform.position.z) - new Vector2(transform.position.x, transform.position.z));
-            float shortDistance = shortDistacenosql * shortDistacenosql;
-            float distance = distanceNoSql * distanceNoSql;
-            if (distance < shortDistance)
+
+            if (col.gameObject.layer == 7)
+
             {
-                Target = col.transform;
-                shortDistance = distance;
-                TargetOn = true;
+                Target = Enemys[0].transform; // 
+                float shortDistacenosql = Vector2.SqrMagnitude(new Vector2(Target.transform.position.x, Target.transform.position.z) - new Vector2(transform.position.x, transform.position.z));
+                float distanceNoSql = Vector2.SqrMagnitude(new Vector2(col.transform.position.x, col.transform.position.z) - new Vector2(transform.position.x, transform.position.z));
+                float shortDistance = shortDistacenosql * shortDistacenosql;
+                float distance = distanceNoSql * distanceNoSql;
+                if (distance < shortDistance)
+                {
+                    Target = col.transform;
+                    shortDistance = distance;
+                    TargetOn = true;
+                }
+
             }
 
         }
 
     }
 
-    private void Animationact(string animation,bool value) //애니메이션 동기화
+    private void Animationact(string animation, bool value) //애니메이션 동기화
     {
-        photonView.RPC(nameof(RPC_Animaion),RpcTarget.All,animation,value);
+        photonView.RPC(nameof(RPC_Animaion), RpcTarget.All, animation, value);
     }
 
 
     [PunRPC]
-    private void RPC_Animaion(string animation,bool value)
+    private void RPC_Animaion(string animation, bool value)
     {
         _animator.SetBool(animation, value);
     }
