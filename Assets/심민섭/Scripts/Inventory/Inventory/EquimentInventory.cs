@@ -33,6 +33,60 @@ public class EquimentInventory : MonoBehaviour
         setItemComplited = false;
     }
 
+    [SerializeField]
+    private GameObject activeSkillText;
+    [SerializeField]
+    private GameObject passiveSkillText;
+    [SerializeField]
+    private GameObject attackTowerText;
+    [SerializeField]
+    private GameObject minionTowerText;
+    [SerializeField]
+    private GameObject passiveTowerText;
+
+    // 1. 장착 슬롯이 변동 있는지 확인해서 업데이트한다.
+    public void cardMonitorUpdate()
+    {
+        int activeSkill = 0;
+        int passiveSkill = 0;
+        int activeTower = 0;
+        int minionTower = 0;
+        int passiveTower = 0;
+        // 현재 장착된 슬롯 수 저장
+        for (int i = 0; i < gameObject.transform.GetChild(1).childCount; i++)
+        {
+            if (gameObject.transform.GetChild(1).GetChild(i).childCount != 0) // 아이템이 있으면
+            {
+                // 아이템의 obj타입을 확인한다.
+                if (gameObject.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Active_S")
+                {
+                    activeSkill += 1;
+                }
+                else if (gameObject.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Passive_S")
+                {
+                    passiveSkill += 1;
+                }
+                else if (gameObject.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Active_T")
+                {
+                    activeTower += 1;
+                }
+                else if (gameObject.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T")
+                {
+                    minionTower += 1;
+                }
+                else if (gameObject.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Passive_T")
+                {
+                    passiveTower += 1;
+                }
+            }
+        }
+        activeSkillText.GetComponent<Text>().text = activeSkill.ToString();
+        passiveSkillText.GetComponent<Text>().text = passiveSkill.ToString();
+        attackTowerText.GetComponent<Text>().text = activeTower.ToString();
+        minionTowerText.GetComponent<Text>().text = minionTower.ToString();
+        passiveTowerText.GetComponent<Text>().text = passiveTower.ToString();
+    }
+
     private void Update()
     {
         // 1, 2, 3 슬롯 확인
