@@ -46,19 +46,29 @@ public class PlayerAnimation : MonoBehaviourPun
     void Update()
     {
 
-        if (hp.isDeath)
+        //if (hp.isDeath)
+        //{
+        //    elapsedTime += Time.deltaTime;
+        //    if (elapsedTime >= 3f)
+        //    {
+        //        elapsedTime = 0f;
+        //        gameObject.SetActive(false);
+        //    }
+        //}
+        //else
+        //{
+        //    if (photonView.IsMine)
+        //    {
+        //        MoveAniMotion();
+        //        CombatMotion();
+        //    }
+        //}
+
+        if (photonView.IsMine)
         {
-            elapsedTime += Time.deltaTime;
-            if (elapsedTime >= 3f)
+            if (!hp.isDeath)
             {
-                elapsedTime = 0f;
-                gameObject.SetActive(false);
-            }
-        }
-        else
-        {
-            if (photonView.IsMine)
-            {
+                AliveMotion();
                 MoveAniMotion();
                 CombatMotion();
             }
@@ -70,6 +80,7 @@ public class PlayerAnimation : MonoBehaviourPun
     {
         if (hp.isDeath)
         {
+            animator.SetBool("Attack", false);
             animator.SetBool("Die", true);
         }
     }
@@ -134,7 +145,7 @@ public class PlayerAnimation : MonoBehaviourPun
                 {
                     _playerScript.IsAttack = false;
                 }
-
+                Debug.Log("공격 중지");
                 animator.SetBool("Attack", false);
 
                 if (playerStats.AttackType == HeroType.Warrior)

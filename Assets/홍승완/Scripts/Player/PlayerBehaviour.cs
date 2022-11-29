@@ -91,7 +91,6 @@ public class PlayerBehaviour : MonoBehaviourPun
     {
         // 되살아났을때 null
         targetedEnemy = null;
-        //StartCoroutine(DetectEnemyRange());
     }
 
     private void Start()
@@ -133,7 +132,6 @@ public class PlayerBehaviour : MonoBehaviourPun
             }
         }
 
-        //photonView.RPC(nameof(RPC_ApplyTargetNull), RpcTarget.All);
     }
 
     /// <summary>
@@ -405,6 +403,11 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void AutoSearchTarget()
     {
+        // TODO : 가장 가까운 적을 탐색하되 기존 타겟은 계속 타격하고 타겟이 없어지면 탐색
+        if (targetedEnemy != null)
+        {
+            return;
+        }
         detectiveRange = _statScript.attackRange;
         Collider[] colliders = Physics.OverlapSphere(this.transform.position, detectiveRange);
         GameObject shortTarget = null;

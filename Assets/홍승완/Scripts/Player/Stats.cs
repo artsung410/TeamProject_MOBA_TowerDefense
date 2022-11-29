@@ -45,7 +45,7 @@ public class Stats : GoogleSheetManager
     public float MoveSpeed = 1;
 
     [Header("레벨")]
-    public int Level;
+    public int Level = 1;
 
     [Header("경험치")]
     public float Exp;
@@ -120,14 +120,15 @@ public class Stats : GoogleSheetManager
         maxExp = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Max_Exp]);
         charID = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Character_ID]);
         enemyExp = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Exp_Enemy]);
-
-        //Debug.Log("코루틴 부분 초기화 완료");
-        // 실험결과 코루틴 부분이 start보다 나중에 완료 되었다
     }
 
     private void OnEnable()
     {
-        SetStats(Level);
+        if (CharactorLevelData.ContainsKey(Level))
+        {
+            Debug.Log("stat OnEnable Check");
+            SetStats(Level);
+        }
     }
 
     private void Start()
@@ -181,6 +182,7 @@ public class Stats : GoogleSheetManager
 
         // TODO : 상대방 죽음 이벤트에 넣어둠 추후 개선 사항
         _playerScript.targetedEnemy = null;
+        Debug.Log($"현재 타겟은? : {_playerScript.targetedEnemy}");
 
         // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
         if (dist <= ExpDetectRange)
@@ -227,16 +229,6 @@ public class Stats : GoogleSheetManager
     {
         Gizmos.color = new Color(1, 0, 0, 0.2f);
         Gizmos.DrawSphere(transform.position, attackRange);
-    }
-
-
-    private void OnDisable()
-    {
-        //StopAllCoroutines();
-        // 구독자 해지
-        Health.OnPlayerDieEvent -= PlayerLevelUpFactory;
-        Enemybase.OnMinionDieEvent -= PlayerLevelUpFactory;
-        Turret.OnTurretDestroyEvent -= PlayerLevelUpFactory;
     }
 
 
