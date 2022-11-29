@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using System;
 
-public class PlayerHUD : MonoBehaviourPun
+public class PlayerHUD : MonoBehaviourPun, IPunObservable
 {
     public static event Action onGameEnd = delegate { };
     enum PlayerColor
@@ -188,7 +188,10 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
 
-        Timer();
+        if (photonView.IsMine)
+        {
+            Timer();
+        }
     }
 
     void Update()
@@ -267,10 +270,9 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
 
-
         sec -= Time.deltaTime;
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-
+        //photonView.RPC(nameof(RPC_timer), RpcTarget.All);
 
         if (min < 0) // 3
         {
@@ -309,6 +311,49 @@ public class PlayerHUD : MonoBehaviourPun
             return;
         }
     }
+
+    // IPunObservable 인터페이스를 구현해야한다.
+    public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
+    {
+        if (stream.IsWriting)
+        {
+            // We own this player: send the others our data
+            //stream.SendNext(IsFiring);
+            //stream.SendNext(Health);
+            stream.SendNext(timerTMPro.text);
+        }
+        else
+        {
+            // Network player, receive data
+            //this.IsFiring = (bool)stream.ReceiveNext();
+            //this.Health = (float)stream.ReceiveNext();
+            this.timerTMPro.text = (string)stream.ReceiveNext();
+        }
+    }
+
+    //[PunRPC]
+    //public void RPC_timer()
+    //{
+    //    if ((int)sec < 0) // 1 
+    //    {
+    //        sec = 60;
+    //        min--;
+    //    }
+    //    else if (GameManager.Instance.winner == "Draw") // 2
+    //    {
+    //        if ((int)sec >= 60)
+    //        {
+    //            sec = 0;
+    //            min++;
+    //        }
+    //        sec += Time.deltaTime;
+    //        timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+    //        return;
+    //    }
+
+    //    sec -= Time.deltaTime;
+    //    timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+    //}
 
     public void AddScoreToEnemy(string tag)
     {
