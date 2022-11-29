@@ -114,7 +114,7 @@ MonoBehaviour:
     AudioClip_Hit_Name: 
     AudioClip_Normal_Name: 
     buffID: 0
-    Camp_GroupID: 0
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -131,13 +131,10 @@ MonoBehaviour:
   firePoint: {fileID: 9052330861811738752}
   DangerZonePF: {fileID: 0}
   smokeParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
-  MinionDB:
+  MinionBluePrint:
     Name: 
     ID: 0
     GroupID: 0
-    Camp_GroupID: 0
-    Camp: 0
-    Pf: {fileID: 0}
     Rank: 0
     Type: 0
     Projectile_Speed: 0
@@ -148,7 +145,8 @@ MonoBehaviour:
     Move_Speed: 0
     Hp: 0
     Exp: 0
-    Icon: {fileID: 0}
+    Icon_Blue: {fileID: 0}
+    Icon_Red: {fileID: 0}
   bluePF: {fileID: 1609328083060089661, guid: 1882b09f2175ec94480b75999066afd9, type: 3}
   redPF: {fileID: 4152114453513019565, guid: f7687e7878ffb2c46a5af78e29682ab7, type: 3}
 --- !u!114 &1473713780714943513
