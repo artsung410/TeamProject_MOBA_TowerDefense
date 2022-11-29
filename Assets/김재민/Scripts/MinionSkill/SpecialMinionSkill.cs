@@ -33,7 +33,7 @@ public class SpecialMinionSkill : SkillHandler
     }
     private void Start()
     {
-        dragon = transform.GetChild(0).gameObject;
+        
         elapsedTime = 0f;
         if (_ability == null) return;
         _ability.OnLock(true);
@@ -71,7 +71,7 @@ public class SpecialMinionSkill : SkillHandler
         if(elapsedTime >= time)
         {
             PhotonNetwork.Destroy(gameObject);
-            PhotonNetwork.Destroy(dragon);
+            
         }
 
     }
@@ -114,7 +114,7 @@ public class SpecialMinionSkill : SkillHandler
                     if (transform.GetChild(0) != null)
                     {
                         gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpecialAttack>().target = col.transform;
-                        gameObject.transform.GetChild(0).GetChild(0).transform.position = col.transform.position;
+                        gameObject.transform.GetChild(0).transform.position = col.transform.position;   
                         TargetOn = true;
                         RunAway();
                     }
@@ -122,8 +122,6 @@ public class SpecialMinionSkill : SkillHandler
             }
         }
     }
-
-
 
 
 }

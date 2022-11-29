@@ -188,10 +188,9 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             return;
         }
 
-        if (photonView.IsMine)
-        {
+   
             Timer();
-        }
+        
     }
 
     void Update()
@@ -253,6 +252,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             return;
         }
 
+
         if ((int)sec < 0) // 1 
         {
             sec = 60;
@@ -260,13 +260,14 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         }
         else if (GameManager.Instance.winner == "Draw") // 2
         {
+            Debug.Log($"{GameManager.Instance.winner}");
             if ((int)sec >= 60)
             {
                 sec = 0;
                 min++;
             }
             sec += Time.deltaTime;
-            timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+            timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);   
             return;
         }
 
@@ -281,6 +282,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             if (playerScores[(int)PlayerColor.Blue] == playerScores[(int)PlayerColor.Red])
             {
                 GameManager.Instance.winner = "Draw";
+                gameWinMessage = "Draw";
             }
             else if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
             {
@@ -331,29 +333,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         }
     }
 
-    //[PunRPC]
-    //public void RPC_timer()
-    //{
-    //    if ((int)sec < 0) // 1 
-    //    {
-    //        sec = 60;
-    //        min--;
-    //    }
-    //    else if (GameManager.Instance.winner == "Draw") // 2
-    //    {
-    //        if ((int)sec >= 60)
-    //        {
-    //            sec = 0;
-    //            min++;
-    //        }
-    //        sec += Time.deltaTime;
-    //        timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-    //        return;
-    //    }
-
-    //    sec -= Time.deltaTime;
-    //    timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-    //}
 
     public void AddScoreToEnemy(string tag)
     {
