@@ -95,7 +95,7 @@ public class Blink : SkillHandler
 
             SkillUpdatePosition();
 
-            _behaviour.transform.position = Vector3.MoveTowards(transform.position, arrivalPoint, Time.deltaTime * 100f);
+            _behaviour.transform.position = Vector3.MoveTowards(transform.position, arrivalPoint, Time.deltaTime * 1000f);
 
             float dist = Vector3.Distance(_behaviour.transform.position, arrivalPoint);
 
@@ -164,7 +164,7 @@ public class Blink : SkillHandler
     {
         if (photonView.IsMine)
         {
-            if (collision.gameObject.tag == "Ground" || collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7)
+            if (collision.gameObject.tag == "Water" || collision.gameObject.tag == "Ground" || collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7)
             {
                 return;
             }

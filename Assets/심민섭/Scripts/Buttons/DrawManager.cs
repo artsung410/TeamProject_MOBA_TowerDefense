@@ -197,6 +197,8 @@ public class DrawManager : MonoBehaviour
                 Destroy(boxItem.gameObject);
             }
         }
+
+        DataBaseUpdater.instance.cardPackSubUpdate(boxName, boxCount);
     }
 
     // 개수 10개 이하로 인해 버튼 비활성화 함수
