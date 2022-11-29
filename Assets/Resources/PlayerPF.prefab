@@ -340,8 +340,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Renderer: {fileID: 7714865301472228472}
+  HpBar: {fileID: 0}
+  GrayEffect: {fileID: 0}
   health: {fileID: 2411907287711231227}
-  hpBar: {fileID: 3706070186879944762}
   respawnPosition:
   - {fileID: 0}
   - {fileID: 0}
@@ -2615,7 +2616,6 @@ GameObject:
   - component: {fileID: 1176584555469497926}
   - component: {fileID: 250421915684997273}
   - component: {fileID: 3475299997868414608}
-  - component: {fileID: 5113647028043652480}
   - component: {fileID: 3026606992103964819}
   - component: {fileID: 8155798577325180854}
   - component: {fileID: 962274781265193606}
@@ -2706,6 +2706,7 @@ MonoBehaviour:
   playerStats: {fileID: 3475299997868414608}
   playerHealth: {fileID: 2411907287711231227}
   playerIcon: {fileID: 21300000, guid: d21153ca7898a9b44a62e9924f8df8b3, type: 3}
+  playerBehaviour: {fileID: 250421915684997273}
 --- !u!114 &250421915684997273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2729,6 +2730,9 @@ MonoBehaviour:
   perfomRangeAttack: 0
   EnemyTag: 
   IsAttack: 0
+  isStun: 0
+  StunTime: 0
+  enemyCol: {fileID: 0}
   cursorMoveNamal: {fileID: 2800000, guid: a7feead970b2da746b849b90388a48bb, type: 3}
   cursorMoveAlly: {fileID: 2800000, guid: 186cc316afcf17046bbad3d34670c7e7, type: 3}
   cursorMoveEnemy: {fileID: 2800000, guid: d3b0eeaa95872d149b13d249f5629a90, type: 3}
@@ -2738,9 +2742,9 @@ MonoBehaviour:
   cursorMode: 0
   hotSpot: {x: 0, y: 0}
   moveMouseCanvas: {fileID: 0}
-  moveMouseObj: {fileID: 0}
+  moveMouseObj1: {fileID: 0}
+  moveMouseObj2: {fileID: 0}
   moveMousePointer: {fileID: 0}
-  enemyCol: {fileID: 0}
 --- !u!114 &3475299997868414608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2762,18 +2766,7 @@ MonoBehaviour:
   Level: 0
   Exp: 0
   ExpDetectRange: 0
---- !u!114 &5113647028043652480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7001467603103953037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 585b1c39f8e941b40bc372fc4be3da8c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  maxExp: 0
 --- !u!114 &3026606992103964819
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2803,9 +2796,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AbilityPrefabs: []
+  TestAbilityPF: {fileID: 0}
+  TestDamage: 0
+  TestHoldingTime: 0
+  TestRange: 0
   skillSpawn: {fileID: 386571534135840048}
   coolTimeManager: {fileID: 5572691436845342093}
   skillMotion: {fileID: 7525234218252226827}
+  ChractorRenderer: {fileID: 0}
+  ChractorHpBar: {fileID: 0}
+  ChractorCol: {fileID: 0}
+  isActive: 0
 --- !u!136 &962274781265193606
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -2848,9 +2849,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9ce8974c1a223549b1452cae8fe44b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hpSlider3D: {fileID: 3706070186879944762}
+  HealthObject: {fileID: 0}
+  sprites:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  BackHealthBar: {fileID: 0}
+  FrontHealthBar: {fileID: 0}
   ani: {fileID: 7525234218252226827}
   health: 0
+  MaxHealth: 0
   isDeath: 0
 --- !u!114 &8725561513336734100
 MonoBehaviour:

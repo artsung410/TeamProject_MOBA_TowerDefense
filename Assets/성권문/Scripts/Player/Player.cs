@@ -16,13 +16,17 @@ public class Player : MonoBehaviourPun
     public Stats playerStats;
     public Health playerHealth;
     public Sprite playerIcon;
+    public PlayerBehaviour playerBehaviour;
 
     private float defaultRecoveryValue = 1.5f;
     private float addRecoveryValue = 0f;
+    private float prevMoveSpeed;
+
     private void Awake()
     {
         BuffManager.playerBuffAdditionEvent += incrementBuffValue;
     }
+
     private void OnEnable()
     {
         GameManager.Instance.CurrentPlayers.Add(gameObject);
@@ -89,6 +93,8 @@ public class Player : MonoBehaviourPun
 
 // TODO : 버프 상대편한테 적용하게 할것
 // TODO : 캐릭터 setactive false되도 스크립트 유지하게함
+
+
 [PunRPC]
     public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
@@ -105,7 +111,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Group.HP_Regen_Increase || id == (int)Buff_Group.HP_Regen_Decrease)
+        else if (id == (int)Buff_Group.HP_Regen_Increase || id == (int)Buff_Group.HP_Regen_Decrease || id == (int)Buff_Group.Burn)
         {
             if (state)
             {
@@ -117,7 +123,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Group.Move_Speed_Increase || id == (int)Buff_Group.Move_Speed_Decrese)
+        else if (id == (int)Buff_Group.Move_Speed_Increase || id == (int)Buff_Group.Move_Speed_Decrese || id == (int)Buff_Group.Freezing)
         {
             if (state)
             {
@@ -138,6 +144,18 @@ public class Player : MonoBehaviourPun
             else
             {
                 playerStats.attackSpeed /= addValue;
+            }
+        }
+
+        else if (id == (int)Buff_Group.Stun)
+        {
+            if (state)
+            {
+                playerBehaviour.OnStun(state, 10f);
+            }
+            else
+            {
+                playerBehaviour.OnStun(state, 0f);
             }
         }
 

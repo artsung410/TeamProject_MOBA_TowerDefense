@@ -177,6 +177,7 @@ public class CSVtest : MonoBehaviour
             // 기본정보
             towerDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
             towerDatabaseListCSV.itemList[i].Pf = Resources.Load<GameObject>(col[3]);
+            towerDatabaseListCSV.itemList[i].NickName = col[5];
             towerDatabaseListCSV.itemList[i].Name = col[4];
 
             // 조합
@@ -211,7 +212,7 @@ public class CSVtest : MonoBehaviour
 
             if (int.Parse(col[33]) != 0)
             {
-                towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_Ko];
+                towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_En];
             }
 
             // 부가옵션
@@ -270,7 +271,7 @@ public class CSVtest : MonoBehaviour
 
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:I74";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:I83";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;

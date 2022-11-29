@@ -31,6 +31,9 @@ public class Projectiles : MonoBehaviourPun, ISeek
     [HideInInspector]
     public Transform target;
 
+    [HideInInspector]
+    public int EffectID;
+
     public GameObject ImpactEffect;
 
     protected void Damage(Transform enemy)

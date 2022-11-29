@@ -20,6 +20,7 @@ public class TowerBlueprint
 {
     [Header("[기본정보]")]
     public string Name;                                      // 타워 이름
+    public string NickName;                                  // 타워 닉네임
     public int ID;                                           // 고유 아이디
     public int GroupID;                                      // 그룹 아이디 
     public int Rank;                                         // 등급

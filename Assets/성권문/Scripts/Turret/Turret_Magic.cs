@@ -74,6 +74,13 @@ public class Turret_Magic : Turret
         {
             projectile.speed = projectiles_Speed;
             projectile.enemyTag = enemyTag;
+            projectile.EffectID = towerDB.buffID;
+
+            if (towerDB.buffID != 0)
+            {
+                projectile.EffectID = towerDB.buffID;
+            }
+
             projectile.Seek(attack, target);
         }
     }
