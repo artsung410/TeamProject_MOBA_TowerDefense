@@ -56,7 +56,7 @@ public class GetAPICaller : MonoBehaviourPun
         // 인스턴스가 존재하는 경우 새로생기는 인스턴스를 삭제한다.
         else if (_instance != this)
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
 
         // 아래의 함수를 사용하여 씬이 전환되더라도 선언되었던 인스턴스가 파괴되지 않는다.
@@ -69,69 +69,6 @@ public class GetAPICaller : MonoBehaviourPun
         }
         //Debug.Log(PhotonNetwork.CountOfPlayers);
         StartCoroutine(getUserProfileCaller());
-    }
-
-    //private void Start()
-    //{
-    //    DontDestroyOnLoad(gameObject);
-    //    //text = GameObject.FindGameObjectWithTag("TestText").GetComponent<Text>();
-    //}
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //text.text = $"_id : {playerStorage._id}\nseid : {playerStorage.session_id}\nzera : {playerStorage.zera}\nace : {playerStorage.ace}\nplayerNumber : {playerStorage.playerNumber}";
-            /*GameObject playerQueueObj = GameObject.FindGameObjectWithTag("PlayerQueue").gameObject;
-            PlayerQueue palyerQueue = playerQueueObj.GetComponent<PlayerQueue>();
-
-            for (int i = 0; i < palyerQueue.queue.Count; i++)
-            {
-                if (true == palyerQueue.queue.Contains(-1))
-                {
-                    palyerQueue.queue.Dequeue();
-                    palyerQueue.queue.Enqueue(playerStorage.userName);
-                    playerStorage.playerNumber = i;
-                    return;
-                }
-                else if (false == palyerQueue.queue.Contains(-1))
-                {
-                    palyerQueue.queue.Enqueue(playerStorage.userName);
-                    playerStorage.playerNumber = i + 1;
-                    return;
-                }
-            }*/
-
-            // 플레이어 닉네임을 넣는다.
-            //aPIStorage.queue.Enqueue(playerStorage.userName);
-            /*for (int i = 0; i < aPIStorage.queue.Count; i++)
-            {
-                if (true == aPIStorage.queue.Contains(playerStorage.userName))
-                {
-                    playerStorage.playerNumber = i;
-                    getAPIComplite = false;
-                    return;
-                }
-            }*/
-        }
-
-        /*if (getAPIComplite)
-        {
-            GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
-            APIStorage aPIStorage = apiStorageObj.GetComponent<APIStorage>();
-
-            // 플레이어 닉네임을 넣는다.
-            aPIStorage.queue.Enqueue(playerStorage.userName);
-            for (int i = 0; i < aPIStorage.queue.Count; i++)
-            {
-                if (true == aPIStorage.queue.Contains(playerStorage.userName))
-                {
-                    playerStorage.playerNumber = i;
-                    getAPIComplite = false;
-                    return;
-                }
-            }
-        }*/
     }
 
     // 호출 정보 : StatusCode, _id, username

@@ -26,6 +26,12 @@ public class GameExitButton : MonoBehaviourPunCallbacks
 
     public void LeaveRoom()
     {
+        if (!GameManager.Instance.isGameEnd)
+        {
+            Destroy(GameObject.FindGameObjectWithTag("APIStorage").gameObject);
+            Destroy(GameObject.FindGameObjectWithTag("GetCaller").gameObject);
+        }
+
         photonView.RPC("PlayerLeaveGameRoom", RpcTarget.All);
     }
 

@@ -55,14 +55,13 @@ public class PlayerInventory : MonoBehaviour
         characterSystemInventory.openInventory();
     }
 
-
-    // 백버튼을 바꾸다니..에휴
     public void BackButton()
     {
         mainInventory.closeInventory();
         characterSystemInventory.closeInventory();
     }
 
+    private bool isPass;
     // 인벤토리의 백버튼 눌렀을떄
     public void closeInventory()
     {
@@ -87,12 +86,15 @@ public class PlayerInventory : MonoBehaviour
             backwarning2.SetActive(true);
             EquimentInventory.instance.setItemComplited = true;
             EquimentInventory.instance.AllItemCheck();
+            isPass = true;
         }
         else
         {
             // 경고문 팝업
             backWarning1.SetActive(true);
         }
+
+        isPass = false;
     }
 
     [SerializeField]
@@ -113,19 +115,29 @@ public class PlayerInventory : MonoBehaviour
         // InputManager의 InventoryKeyCode "B"
         if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode) && !reportActive.activeSelf)
         {
-            // 인벤토리가 닫혀있으면
-            if (!inventory.activeSelf && !characterSystem.activeSelf)
+            closeInventory();
+            if (isPass)
             {
-                // 인벤토리를 연다.
-                mainInventory.openInventory();
-                characterSystemInventory.openInventory();
+                // 인벤토리가 닫혀있으면
+                if (!inventory.activeSelf && !characterSystem.activeSelf)
+                {
+                    // 인벤토리를 연다.
+                    mainInventory.openInventory();
+                    characterSystemInventory.openInventory();
+                }
+                else
+                {
+                    // 인벤토리를 닫는다.
+                    mainInventory.closeInventory();
+                    characterSystemInventory.closeInventory();
+                }
+                isPass = false;
             }
             else
             {
-                // 인벤토리를 닫는다.
-                mainInventory.closeInventory();
-                characterSystemInventory.closeInventory();
+                return;
             }
+
         }
     }
 }
