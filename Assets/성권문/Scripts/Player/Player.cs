@@ -16,13 +16,17 @@ public class Player : MonoBehaviourPun
     public Stats playerStats;
     public Health playerHealth;
     public Sprite playerIcon;
+    public PlayerBehaviour playerBehaviour;
 
     private float defaultRecoveryValue = 1.5f;
     private float addRecoveryValue = 0f;
+    private float prevMoveSpeed;
+
     private void Awake()
     {
         BuffManager.playerBuffAdditionEvent += incrementBuffValue;
     }
+
     private void OnEnable()
     {
         GameManager.Instance.CurrentPlayers.Add(gameObject);
@@ -54,7 +58,6 @@ public class Player : MonoBehaviourPun
         }
     }
 
-    // =========================== 타워 버프 적용 처리 ===========================
     public void incrementBuffValue(int id, float addValue, bool state)
     {
         if (!photonView.IsMine)
@@ -64,16 +67,15 @@ public class Player : MonoBehaviourPun
         }
 
         Debug.Log(gameObject.tag + "내꺼 멎움");
-        
-        //// 스킬용 id : 9 ~
-        //if (id >= 9)
-        //{
-        //    ApplyDebuff(id, addValue, state);
-        //}
-        // 타워용 id : 1 ~ 8
 
-        StartCoroutine(delayApplyBuff(id, addValue, state));
-
+        if (id <= 10000)
+        {
+            ApplyDebuff(id, addValue, state);
+        }
+        else
+        {
+            StartCoroutine(delayApplyBuff(id, addValue, state));
+        }
     }
 
     // 플레이어 스탯 초기화가 이루어진 뒤에 디버프적용
@@ -86,13 +88,13 @@ public class Player : MonoBehaviourPun
     // 스킬 전용 디버프
     public void ApplyDebuff(int id, float addValue, bool state)
     {
-
             photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
-        
     }
 
 // TODO : 버프 상대편한테 적용하게 할것
 // TODO : 캐릭터 setactive false되도 스크립트 유지하게함
+
+
 [PunRPC]
     public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
@@ -109,7 +111,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Group.HP_Regen_Increase || id == (int)Buff_Group.HP_Regen_Decrease)
+        else if (id == (int)Buff_Group.HP_Regen_Increase || id == (int)Buff_Group.HP_Regen_Decrease || id == (int)Buff_Group.Burn)
         {
             if (state)
             {
@@ -121,7 +123,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        else if (id == (int)Buff_Group.Move_Speed_Increase || id == (int)Buff_Group.Move_Speed_Decrese)
+        else if (id == (int)Buff_Group.Move_Speed_Increase || id == (int)Buff_Group.Move_Speed_Decrese || id == (int)Buff_Group.Freezing)
         {
             if (state)
             {
@@ -142,6 +144,18 @@ public class Player : MonoBehaviourPun
             else
             {
                 playerStats.attackSpeed /= addValue;
+            }
+        }
+
+        else if (id == (int)Buff_Group.Stun)
+        {
+            if (state)
+            {
+                playerBehaviour.OnStun(state, 10f);
+            }
+            else
+            {
+                playerBehaviour.OnStun(state, 0f);
             }
         }
 

@@ -52,6 +52,7 @@ public class LightningProjectile : Projectiles
             MagicExplosion magicExplosion = newLightning.GetComponent<MagicExplosion>();
             magicExplosion.enemyTag = enemyTag;
             magicExplosion.damage = damage;
+            magicExplosion.EffectID = EffectID;
             PhotonNetwork.Destroy(gameObject);
             return;
         }

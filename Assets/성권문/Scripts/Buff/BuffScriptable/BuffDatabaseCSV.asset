@@ -22,9 +22,9 @@ MonoBehaviour:
     Target: 1
     Value: 1.2
     Duration: 0
-  - Name: Attack_Increase 2
+  - Name: Attack_Increase2
     ID: 15002
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 5d62009baf2e7074fbaff7c3aefe964c, type: 3}
     GroupID: 1
     Rank: 2
     Type: 2
@@ -420,93 +420,93 @@ MonoBehaviour:
     Duration: 0.5
   - Name: Freezing1
     ID: 20006
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 002a4848c36c8b84786c27a9dbd2416a, type: 3}
     GroupID: 10
     Rank: 1
-    Type: 1
+    Type: 3
     Target: 2
     Value: -0.2
-    Duration: 0.3
+    Duration: 1.3
   - Name: Freezing2
     ID: 20007
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 002a4848c36c8b84786c27a9dbd2416a, type: 3}
     GroupID: 10
     Rank: 2
-    Type: 1
+    Type: 3
     Target: 2
     Value: -0.3
-    Duration: 0.3
+    Duration: 1.5
   - Name: Freezing3
     ID: 20008
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 002a4848c36c8b84786c27a9dbd2416a, type: 3}
     GroupID: 10
     Rank: 3
-    Type: 1
+    Type: 3
     Target: 2
     Value: -0.4
-    Duration: 0.4
+    Duration: 1.7
   - Name: Freezing4
     ID: 20009
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 002a4848c36c8b84786c27a9dbd2416a, type: 3}
     GroupID: 10
     Rank: 4
-    Type: 1
+    Type: 3
     Target: 2
     Value: -0.5
-    Duration: 0.4
+    Duration: 2
   - Name: Freezing5
     ID: 20010
-    Icon: {fileID: 0}
+    Icon: {fileID: 21300000, guid: 002a4848c36c8b84786c27a9dbd2416a, type: 3}
     GroupID: 10
     Rank: 5
-    Type: 1
+    Type: 3
     Target: 2
     Value: -0.5
-    Duration: 0.6
+    Duration: 3
   - Name: Burn1
     ID: 20011
     Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
     GroupID: 11
     Rank: 1
-    Type: 1
+    Type: 3
     Target: 2
-    Value: 0.2
+    Value: -10
     Duration: 3
   - Name: Burn2
     ID: 20012
     Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
     GroupID: 11
     Rank: 2
-    Type: 1
+    Type: 3
     Target: 2
-    Value: 0.3
+    Value: -15
     Duration: 4
   - Name: Burn3
     ID: 20013
     Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
     GroupID: 11
     Rank: 3
-    Type: 1
+    Type: 3
     Target: 2
-    Value: 0.4
+    Value: -20
     Duration: 5
   - Name: Burn4
     ID: 20014
     Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
     GroupID: 11
     Rank: 4
-    Type: 1
+    Type: 3
     Target: 2
-    Value: 0.5
+    Value: -25
     Duration: 6
   - Name: Burn5
     ID: 20015
     Icon: {fileID: 21300000, guid: 24b69d349f8ec4f4f855afcd5b921324, type: 3}
     GroupID: 11
     Rank: 5
-    Type: 1
+    Type: 3
     Target: 2
-    Value: 0.6
+    Value: -30
     Duration: 7
   - Name: Neutralize1
     ID: 20016
@@ -605,7 +605,7 @@ MonoBehaviour:
     Rank: 1
     Type: 3
     Target: 2
-    Value: 0.4
+    Value: -0.4
     Duration: 3
   - Name: Move_Speed_Decrese2
     ID: 111
@@ -614,7 +614,7 @@ MonoBehaviour:
     Rank: 2
     Type: 3
     Target: 2
-    Value: 0.5
+    Value: -0.5
     Duration: 4
   - Name: Move_Speed_Decrese3
     ID: 112
@@ -623,7 +623,7 @@ MonoBehaviour:
     Rank: 3
     Type: 3
     Target: 2
-    Value: 0.6
+    Value: -0.6
     Duration: 5
   - Name: Move_Speed_Decrese1
     ID: 57
@@ -632,23 +632,104 @@ MonoBehaviour:
     Rank: 1
     Type: 3
     Target: 2
-    Value: 0.5
+    Value: -0.5
     Duration: 5
-  - Name: Move_Speed_Decrese1
+  - Name: Move_Speed_Decrese2
     ID: 58
     Icon: {fileID: 21300000, guid: 3357e5483e6eb464ca633629386ca41f, type: 3}
     GroupID: 7
-    Rank: 1
+    Rank: 2
     Type: 3
     Target: 2
-    Value: 0.5
+    Value: -0.5
     Duration: 5
-  - Name: Move_Speed_Decrese1
+  - Name: Move_Speed_Decrese3
     ID: 59
     Icon: {fileID: 21300000, guid: 3357e5483e6eb464ca633629386ca41f, type: 3}
     GroupID: 7
-    Rank: 1
+    Rank: 3
     Type: 3
     Target: 2
-    Value: 0.5
+    Value: -0.5
     Duration: 5
+  - Name: Minion_Attack_Increase1
+    ID: 40001
+    Icon: {fileID: 21300000, guid: 91fba1bcd39136242ac732a73db755a4, type: 3}
+    GroupID: 14
+    Rank: 1
+    Type: 2
+    Target: 3
+    Value: 1.2
+    Duration: 20
+  - Name: Minion_Attack_Increase2
+    ID: 40002
+    Icon: {fileID: 21300000, guid: 91fba1bcd39136242ac732a73db755a4, type: 3}
+    GroupID: 14
+    Rank: 2
+    Type: 2
+    Target: 3
+    Value: 1.3
+    Duration: 20
+  - Name: Minion_Attack_Increase3
+    ID: 40003
+    Icon: {fileID: 21300000, guid: 91fba1bcd39136242ac732a73db755a4, type: 3}
+    GroupID: 14
+    Rank: 3
+    Type: 2
+    Target: 3
+    Value: 1.5
+    Duration: 20
+  - Name: Minion_AtkSpd_Increase1
+    ID: 40004
+    Icon: {fileID: 21300000, guid: 9eda0586693ae154aa936f8c93f3730e, type: 3}
+    GroupID: 15
+    Rank: 1
+    Type: 2
+    Target: 3
+    Value: 1.4
+    Duration: 20
+  - Name: Minion_AtkSpd_Increase2
+    ID: 40005
+    Icon: {fileID: 21300000, guid: 9eda0586693ae154aa936f8c93f3730e, type: 3}
+    GroupID: 15
+    Rank: 2
+    Type: 2
+    Target: 3
+    Value: 1.4
+    Duration: 20
+  - Name: Minion_AtkSpd_Increase3
+    ID: 40006
+    Icon: {fileID: 21300000, guid: 9eda0586693ae154aa936f8c93f3730e, type: 3}
+    GroupID: 15
+    Rank: 3
+    Type: 2
+    Target: 3
+    Value: 1.5
+    Duration: 20
+  - Name: Minion_Output_Increase1
+    ID: 40007
+    Icon: {fileID: 21300000, guid: 2eb0afb58b08ac84295fa2ea026a77b7, type: 3}
+    GroupID: 16
+    Rank: 1
+    Type: 2
+    Target: 3
+    Value: 2
+    Duration: 5
+  - Name: Minion_Output_Increase2
+    ID: 40008
+    Icon: {fileID: 21300000, guid: 2eb0afb58b08ac84295fa2ea026a77b7, type: 3}
+    GroupID: 16
+    Rank: 2
+    Type: 2
+    Target: 3
+    Value: 2
+    Duration: 7
+  - Name: Minion_Output_Increase3
+    ID: 40009
+    Icon: {fileID: 21300000, guid: 2eb0afb58b08ac84295fa2ea026a77b7, type: 3}
+    GroupID: 16
+    Rank: 3
+    Type: 2
+    Target: 3
+    Value: 2.5
+    Duration: 10

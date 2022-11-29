@@ -41,6 +41,7 @@ public class FrozenProjectile : Projectiles, ISeek
             FrozenExplosion frozonExplosion = ImpactEffect.GetComponent<FrozenExplosion>();
             frozonExplosion.enemyTag = enemyTag;
             frozonExplosion.damage = damage;
+            frozonExplosion.EffectID = EffectID;
 
             if (photonView.IsMine)
             {

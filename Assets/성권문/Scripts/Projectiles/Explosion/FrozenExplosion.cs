@@ -15,6 +15,7 @@ public class FrozenExplosion : MonoBehaviourPun
     [HideInInspector]
     public float damage;
 
+    public int EffectID;
     private void OnEnable()
     {
         StartCoroutine(Destruction());
@@ -47,6 +48,7 @@ public class FrozenExplosion : MonoBehaviourPun
             PieceExplosion snowflake = pieceParticle.transform.GetChild(i).GetComponent<PieceExplosion>();
             snowflake.damage = 5f;
             snowflake.enemyTag = enemyTag;
+            snowflake.EffectID = EffectID;
             pieceParticle.transform.GetChild(i).gameObject.SetActive(true);
             yield return new WaitForSeconds(0.1f);
         }
