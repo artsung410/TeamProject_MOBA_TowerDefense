@@ -320,8 +320,8 @@ public class DrawManager : MonoBehaviour
             itemStruct.itemID = ResultItem[i].itemID;
             itemStruct.itemDesc = ResultItem[i].itemDesc;
             itemStruct.itemIcon = ResultItem[i].itemIcon;
-            itemStruct.itemModel = ResultItem[i].itemModel;
-            itemStruct.inGameData = ResultItem[i].inGameData;
+            //itemStruct.itemModel = ResultItem[i].itemModel;
+            itemStruct.objType = ResultItem[i].objType;
             itemStruct.itemValue = 0;
             if (getDrawResultItem.Count != 0)
             {
@@ -340,9 +340,6 @@ public class DrawManager : MonoBehaviour
             itemStruct.maxStack = ResultItem[i].maxStack;
             itemStruct.indexItemInList = ResultItem[i].indexItemInList;
             itemStruct.rarity = ResultItem[i].rarity;
-            itemStruct.itemAttributes = ResultItem[i].itemAttributes;
-            itemStruct.specialPrefabs = ResultItem[i].specialPrefabs;
-            itemStruct.buffDatas = ResultItem[i].buffDatas;
             StructResultItem.Add(itemStruct);
         }
     }
@@ -445,16 +442,12 @@ public class DrawManager : MonoBehaviour
                         }
                         itemStruct.itemDesc = sameItem[i].itemDesc;
                         itemStruct.itemIcon = sameItem[i].itemIcon;
-                        itemStruct.itemModel = sameItem[i].itemModel;
-                        itemStruct.inGameData = sameItem[i].inGameData;
+                        itemStruct.objType = sameItem[i].objType;
                         itemStruct.itemType = sameItem[i].itemType;
                         itemStruct.itemWeight = sameItem[i].itemWeight;
                         itemStruct.maxStack = sameItem[i].maxStack;
                         itemStruct.indexItemInList = sameItem[i].indexItemInList;
                         itemStruct.rarity = sameItem[i].rarity;
-                        itemStruct.itemAttributes = sameItem[i].itemAttributes;
-                        itemStruct.specialPrefabs = sameItem[i].specialPrefabs;
-                        itemStruct.buffDatas = sameItem[i].buffDatas;
 
                         StructResultItem.Add(itemStruct);
 
@@ -465,17 +458,13 @@ public class DrawManager : MonoBehaviour
                         itemProduce.item.itemID = StructResultItem[i].itemID;
                         itemProduce.item.itemDesc = StructResultItem[i].itemDesc;
                         itemProduce.item.itemIcon = StructResultItem[i].itemIcon;
-                        itemProduce.item.itemModel = StructResultItem[i].itemModel;
-                        itemProduce.item.inGameData = StructResultItem[i].inGameData;
+                        itemProduce.item.objType = StructResultItem[i].objType;
                         itemProduce.item.itemValue = StructResultItem[i].itemValue;
                         itemProduce.item.itemType = StructResultItem[i].itemType;
                         itemProduce.item.itemWeight = StructResultItem[i].itemWeight;
                         itemProduce.item.maxStack = StructResultItem[i].maxStack;
                         itemProduce.item.indexItemInList = StructResultItem[i].indexItemInList;
                         itemProduce.item.rarity = StructResultItem[i].rarity;
-                        itemProduce.item.itemAttributes = StructResultItem[i].itemAttributes;
-                        itemProduce.item.specialPrefabs = StructResultItem[i].specialPrefabs;
-                        itemProduce.item.buffDatas = StructResultItem[i].buffDatas;
 
                         itemObjProduce.transform.SetParent(selectInventory.transform.GetChild(j));
                         itemObjProduce.transform.localPosition = Vector3.zero;
@@ -526,17 +515,13 @@ public class DrawManager : MonoBehaviour
                     itemProduce.item.itemID = StructResultItem[j].itemID;
                     itemProduce.item.itemDesc = StructResultItem[j].itemDesc;
                     itemProduce.item.itemIcon = StructResultItem[j].itemIcon;
-                    itemProduce.item.itemModel = StructResultItem[j].itemModel;
-                    itemProduce.item.inGameData = StructResultItem[j].inGameData;
+                    itemProduce.item.objType = StructResultItem[j].objType;
                     itemProduce.item.itemValue = StructResultItem[j].itemValue;
                     itemProduce.item.itemType = StructResultItem[j].itemType;
                     itemProduce.item.itemWeight = StructResultItem[j].itemWeight;
                     itemProduce.item.maxStack = StructResultItem[j].maxStack;
                     itemProduce.item.indexItemInList = StructResultItem[j].indexItemInList;
                     itemProduce.item.rarity = StructResultItem[j].rarity;
-                    itemProduce.item.itemAttributes = StructResultItem[j].itemAttributes;
-                    itemProduce.item.specialPrefabs = StructResultItem[j].specialPrefabs;
-                    itemProduce.item.buffDatas = StructResultItem[j].buffDatas;
 
                     itemObjProduce.transform.SetParent(selectInventory.transform.GetChild(j));
                     itemObjProduce.transform.localPosition = Vector3.zero;

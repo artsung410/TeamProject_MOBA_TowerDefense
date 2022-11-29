@@ -12,8 +12,7 @@ public struct ItemStruct
     public int itemID;
     public string itemDesc;
     public Sprite itemIcon;
-    public GameObject itemModel;
-    public ScriptableObject inGameData;
+    public string objType;
     public int itemValue;
     public ItemType itemType;
     public float itemWeight;
@@ -24,8 +23,5 @@ public struct ItemStruct
 
     public TowerBlueprint towerData;
     public PlayerSkillDatas skillData;
-    public List<ItemAttribute> itemAttributes;
-    public List<GameObject> specialPrefabs;
-    public List<BuffData> buffDatas;
 
 }

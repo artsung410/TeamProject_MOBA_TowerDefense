@@ -340,7 +340,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                 }
 
                 if (newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WarriorSlot" || newSlot.tag == "WizardSlot" || newSlot.tag == "AssassinSlot"
-                    || newSlot.tag == "InherenceSlot")
+                    || newSlot.tag == "InherenceSlot" || newSlot.tag == "Slot")
                 {
                     // 갯수가 1보다 크면
                     if (dragItem.item.itemValue > 1)

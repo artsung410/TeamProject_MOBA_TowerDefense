@@ -118,7 +118,7 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     }
 
                                     // 미니언 근거리 데이터 range
-                                    if (item.itemType == ItemType.Tower)
+                                    if (item.itemType == ItemType.Tower && item.objType == "Minion")
                                     {
                                         int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
                                         if (minionRangeData == 5)
@@ -166,6 +166,8 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                         if (eS.transform.GetChild(1).GetChild(i).childCount == 0)
                                         {
                                             Instantiate(this.gameObject.transform, eS.transform.GetChild(1).GetChild(i));
+                                            // 장착 슬롯 크기 지정
+                                            eS.transform.GetChild(1).GetChild(i).GetChild(0).localScale = new Vector3(0.9166667f, 1.05f, 0f);
                                             //Debug.Log(eS.transform.GetChild(1).GetChild(i).GetChild(0).name);
                                             if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemValue >= 1)
                                             {

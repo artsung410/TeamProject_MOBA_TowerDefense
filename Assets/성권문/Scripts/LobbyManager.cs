@@ -119,11 +119,11 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             matchingCancle = false;
             return;
         }
-        else
+        /*else if (existence != null)
         {
             Destroy(GameObject.FindGameObjectWithTag("GetCaller").gameObject);
             Instantiate(playerStoragePre, Vector3.zero, Quaternion.identity);
-        }
+        }*/
     }
 
     // 연결이 끊켰을경우 / 자동실행

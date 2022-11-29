@@ -915,4 +915,9 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     }
 
     #endregion
+
+    private void OnDisable()
+    {
+        Instance = null;
+    }
 }

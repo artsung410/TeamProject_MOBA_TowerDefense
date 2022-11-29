@@ -234,7 +234,6 @@ public class CSVtest : MonoBehaviour
             TowerDic.Add(towerDatabaseListCSV.itemList[i].ID, towerDatabaseListCSV.itemList[i]);
 
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
-            towerDatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
             towerDatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
             towerDatabaseList.itemList[i + 1].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
 
@@ -242,7 +241,6 @@ public class CSVtest : MonoBehaviour
             if (i < 50)
             {
                 tower_Attack_DatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
-                tower_Attack_DatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Attack_DatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
                 tower_Attack_DatabaseList.itemList[i + 1].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
@@ -250,7 +248,6 @@ public class CSVtest : MonoBehaviour
             else if (i >= 50 && i < 90)
             {
                 tower_Buff_DatabaseList.itemList[i - 49].towerData = towerDatabaseListCSV.itemList[i];
-                tower_Buff_DatabaseList.itemList[i - 49].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Buff_DatabaseList.itemList[i - 49].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
                 tower_Buff_DatabaseList.itemList[i - 49].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
@@ -258,7 +255,6 @@ public class CSVtest : MonoBehaviour
             else
             {
                 tower_Minion_DatabaseList.itemList[i - 89].towerData = towerDatabaseListCSV.itemList[i];
-                tower_Minion_DatabaseList.itemList[i - 89].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Minion_DatabaseList.itemList[i - 89].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
                 tower_Minion_DatabaseList.itemList[i - 89].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
@@ -473,7 +469,6 @@ public class CSVtest : MonoBehaviour
             oldData.itemList[i + 1].itemName = skillDatas.DataList[i].NameLevel;
             oldData.itemList[i + 1].itemIcon = skillDatas.DataList[i].CardImage;
             oldData.itemList[i + 1].itemDesc = skillDatas.DataList[i].Desc;
-            oldData.itemList[i + 1].itemModel = skillDatas.DataList[i].Name;
         }
     }
 
