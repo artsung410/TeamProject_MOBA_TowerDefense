@@ -223,7 +223,7 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Sprite_TowerProtrait = Resources.Load<Sprite>("Sprites/TowerIcon/" + col[35]);
             towerDatabaseListCSV.itemList[i].AudioClip_Attack_Name = col[36];
             towerDatabaseListCSV.itemList[i].AudioClip_Hit_Name = col[37];
-            towerDatabaseListCSV.itemList[i].AudioClip_Normal_Name = col[38];
+            //towerDatabaseListCSV.itemList[i].AudioClip_Normal_Name = col[38];
 
             // 버프타워만 해당
             towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
