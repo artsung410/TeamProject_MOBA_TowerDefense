@@ -95,8 +95,8 @@ public class PlayerInventory : MonoBehaviour
         }
     }
 
-
-    // Update is called once per frame
+    [SerializeField]
+    private GameObject reportActive;
     void Update()
     {
         // 왼쪽 마우스 클릭 이벤트있으면 호출할 떄 사용할 거임
@@ -111,7 +111,7 @@ public class PlayerInventory : MonoBehaviour
         }
         
         // InputManager의 InventoryKeyCode "B"
-        if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode))
+        if (Input.GetKeyDown(inputManagerDatabase.InventoryKeyCode) && !reportActive.activeSelf)
         {
             // 인벤토리가 닫혀있으면
             if (!inventory.activeSelf && !characterSystem.activeSelf)
