@@ -188,10 +188,10 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             return;
         }
 
-        if (photonView.IsMine)
-        {
+
             Timer();
-        }
+            Debug.Log($"시간 : {timerTMPro.text}");
+        
     }
 
     void Update()
@@ -306,7 +306,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             // 승패 이미지 호출
             StartCoroutine(resultImigePopup);
             
-
             //StartCoroutine(DelayLeaveRoom());
             return;
         }
@@ -315,12 +314,12 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     // IPunObservable 인터페이스를 구현해야한다.
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
-        if (stream.IsWriting)
+        if (stream.IsWriting && PhotonNetwork.IsMasterClient)
         {
             // We own this player: send the others our data
             stream.SendNext(timerTMPro.text);
         }
-        else
+        else if(stream.IsReading)
         {
             // Network player, receive data
             this.timerTMPro.text = (string)stream.ReceiveNext();

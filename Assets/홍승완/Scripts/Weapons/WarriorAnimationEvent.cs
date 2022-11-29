@@ -12,8 +12,15 @@ public class WarriorAnimationEvent : MonoBehaviourPun
 
     public PlayerBehaviour _behaviour;
     public Stats _stat;
+    public BoxCollider swordCol;
+
 
     #region 애니메이션 이벤트 함수
+    public void OnSwordCol()
+    {
+        swordCol.enabled = true;
+    }
+
     public void SwordSwingAtTheEnemy()
     {
         if (photonView.IsMine)
@@ -52,10 +59,10 @@ public class WarriorAnimationEvent : MonoBehaviourPun
                     return;
                 }
                 // TODO : 2타에서 null오류 진상규명해야함
-                _behaviour.enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);
-                
-
+                _behaviour.enemyCol.GetComponent<NexusHp>().TakeOnDagmage(_stat.attackDmg);                
             }
+
+            swordCol.enabled = false;
         }
 
     }
