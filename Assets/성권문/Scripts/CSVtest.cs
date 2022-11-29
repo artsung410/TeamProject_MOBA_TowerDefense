@@ -44,14 +44,6 @@ public enum DescColData
 
 public class CSVtest : MonoBehaviour
 {
-    #region DescParsing
-
-    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D44";
-
-    // Ű����� ID, List���� Name KoTooltip, EnTooltip�� ����
-    Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
-    List<List<string>> descList = new List<List<string>>();
-
     bool isDone = false;
 
     private static CSVtest _instance;
@@ -94,6 +86,21 @@ public class CSVtest : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        StartCoroutine(GetDescData(descURL));
+    }
+
+    #region DescParsing
+
+    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D57";
+
+    // Ű����� ID, List���� Name KoTooltip, EnTooltip�� ����
+    Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
+    List<List<string>> descList = new List<List<string>>();
+
+
+
     IEnumerator GetDescData(string url)
     {
         UnityWebRequest DescDataRequest = UnityWebRequest.Get(url);
@@ -135,10 +142,7 @@ public class CSVtest : MonoBehaviour
 
 
                        
-    private void Start()
-    {
-        StartCoroutine(GetDescData(descURL));
-    }
+
 
 
     #region Tower
@@ -223,7 +227,6 @@ public class CSVtest : MonoBehaviour
             towerDatabaseListCSV.itemList[i].Sprite_TowerProtrait = Resources.Load<Sprite>("Sprites/TowerIcon/" + col[35]);
             towerDatabaseListCSV.itemList[i].AudioClip_Attack_Name = col[36];
             towerDatabaseListCSV.itemList[i].AudioClip_Hit_Name = col[37];
-            //towerDatabaseListCSV.itemList[i].AudioClip_Normal_Name = col[38];
 
             // 버프타워만 해당
             towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
@@ -267,7 +270,7 @@ public class CSVtest : MonoBehaviour
 
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:I83";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:J83";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
@@ -303,6 +306,7 @@ public class CSVtest : MonoBehaviour
             buffDatabaseListCSV.itemList[i].Target = int.Parse(col[6]);
             buffDatabaseListCSV.itemList[i].Value = float.Parse(col[7]);
             buffDatabaseListCSV.itemList[i].Duration = float.Parse(col[8]);
+            buffDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[9])][(int)DescColData.Text_En];
 
             BuffDic.Add(buffDatabaseListCSV.itemList[i].ID, buffDatabaseListCSV.itemList[i]);
         }

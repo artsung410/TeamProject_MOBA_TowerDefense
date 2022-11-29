@@ -706,7 +706,6 @@ GameObject:
   - component: {fileID: 4935817440053496764}
   - component: {fileID: 4981873023818717488}
   - component: {fileID: 4935817440053496704}
-  - component: {fileID: 9081092094882671898}
   - component: {fileID: 4935817440053496767}
   - component: {fileID: 4935817440053496766}
   - component: {fileID: 4935817440053496765}
@@ -770,9 +769,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    ID: 1015
-    Pf: {fileID: 4933512244754295010}
     Name: Speed_Increase_Tower5
+    NickName: 
+    ID: 1015
+    GroupID: 13
+    Rank: 5
+    Type: 2
+    Pf: {fileID: 4933512244754295010}
     Combination_ResultID: 0
     Combination_Required_Value: 0
     Normal_Random_Draw_Probability: 0
@@ -783,9 +786,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 1.25
-    GroupID: 13
-    Rank: 5
-    Type: 2
     Attack: 1
     Attack_Speed: 0.3
     Hp: 300
@@ -802,8 +802,7 @@ MonoBehaviour:
     AudioClip_Hit_Name: 0
     AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
     buffID: 15015
-  towerData: {fileID: 11400000, guid: 1fca83b002b9bc446af66ad6b4bef72b, type: 2}
-  currentHealth: 0
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -819,20 +818,6 @@ MonoBehaviour:
   partToRotate: {fileID: 4935573545647232470}
   firePoint: {fileID: 0}
   DangerZonePF: {fileID: 0}
---- !u!114 &9081092094882671898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4933512244754295010}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a437a1ecf30c04aadad3ff27c879f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawnPoint: {fileID: 8403333243244771268}
-  Particles: {fileID: 5659616593345616069, guid: e80717a12ad41eb4781c76363509ca31, type: 3}
 --- !u!114 &4935817440053496767
 MonoBehaviour:
   m_ObjectHideFlags: 0
