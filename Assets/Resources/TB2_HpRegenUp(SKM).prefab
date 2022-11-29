@@ -345,7 +345,6 @@ GameObject:
   - component: {fileID: 5204703754007221166}
   - component: {fileID: 5192828477049226276}
   - component: {fileID: 4796795173273586260}
-  - component: {fileID: 1768211723522632502}
   - component: {fileID: 2683629979521095614}
   - component: {fileID: 4229422316283594072}
   - component: {fileID: 8899733340466643195}
@@ -439,6 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDB:
     Name: 
+    NickName: 
     ID: 0
     GroupID: 0
     Rank: 0
@@ -486,20 +486,6 @@ MonoBehaviour:
   partToRotate: {fileID: 5648041624424226095}
   firePoint: {fileID: 0}
   DangerZonePF: {fileID: 0}
---- !u!114 &1768211723522632502
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5207905325902075130}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a437a1ecf30c04aadad3ff27c879f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawnPoint: {fileID: 5648041624424226095}
-  Particles: {fileID: 1044782274538101236, guid: d02bf454aebfef54e89ace6ee5c3973b, type: 3}
 --- !u!114 &2683629979521095614
 MonoBehaviour:
   m_ObjectHideFlags: 0
