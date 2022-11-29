@@ -42,7 +42,7 @@ public class BulletMove : MonoBehaviourPun
         else
         {
             rigidbody.velocity = transform.forward * ballVelocity;
-            var ballTargetRotation = Quaternion.LookRotation(tg.transform.position + new Vector3(0, 0.8f) - transform.position);
+            var ballTargetRotation = Quaternion.LookRotation(tg.transform.position + new Vector3(0, 1.5f) - transform.position);
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
             transform.LookAt(tg.transform.position);
 

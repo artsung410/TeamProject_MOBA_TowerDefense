@@ -144,7 +144,11 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
     protected string GetMytag(HeroAbility ability)
     {
+        if(ability != null)
+        {
         _myTag = ability.tag;
+            
+        }
         return _myTag;
 
     }

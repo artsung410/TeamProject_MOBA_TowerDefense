@@ -31,6 +31,7 @@ public class EnemySatatus : Enemybase
         base.Awake();
         _estate = ESTATE.move;
         CurrnetHP = HP;
+        
 
     }
     protected override void OnEnable()

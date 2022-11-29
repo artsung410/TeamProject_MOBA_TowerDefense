@@ -1705,7 +1705,7 @@ GameObject:
   - component: {fileID: 3491816667868540865}
   - component: {fileID: 3032311748950278219}
   - component: {fileID: 3643599830082336781}
-  - component: {fileID: 7976850781371363249}
+  - component: {fileID: 8993050745666333777}
   m_Layer: 17
   m_Name: monster_orc
   m_TagString: Untagged
@@ -1894,10 +1894,13 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: Die
+  - Type: 9
+    SynchronizeType: 0
+    Name: TakeDamage
   m_SynchronizeLayers:
   - SynchronizeType: 0
     LayerIndex: 0
---- !u!54 &7976850781371363249
+--- !u!54 &8993050745666333777
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1905,13 +1908,13 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5868288732579728798}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 80
+  m_Constraints: 0
   m_CollisionDetection: 0
 --- !u!1 &5897470653991863373
 GameObject:

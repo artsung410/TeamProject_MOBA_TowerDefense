@@ -62,14 +62,16 @@ public class Enemybase : MonoBehaviourPun
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
     protected NavMeshAgent _navMeshAgent;
     protected Animator _animator;
-    
+    protected Rigidbody rigidbody;
     public bool isDead = false;
 
     public CapsuleCollider _capsuleCollider;
     private Outline _outline;
-
+    
     protected virtual void Awake()
     {
+
+        rigidbody = GetComponent<Rigidbody>();  
         _eminontpye = EMINIONTYPE.Nomal;
         _outline = GetComponent<Outline>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
@@ -95,6 +97,7 @@ public class Enemybase : MonoBehaviourPun
             _outline.OutlineWidth = 8f;
         }
         CurrnetHP = HP;
+        
         if (PhotonNetwork.IsMasterClient)
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
@@ -183,12 +186,13 @@ public class Enemybase : MonoBehaviourPun
                 CurrnetHP -= Damage * (PlayerHUD.Instance.min + 1 ); // 1안더해주면 0분일때 데미지 안드감
                 _animator.SetTrigger("TakeDamage");
             }
-            GameManager.Instance.winner = lastDamageTeam;
+            
 
             if (CurrnetHP <= 0)
             {
                 if(_eminontpye == EMINIONTYPE.Netural)
                 {
+                    GameManager.Instance.winner = lastDamageTeam;
                     PlayerHUD.Instance.NeutalMonsterDie = true;
                 }
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
@@ -237,7 +241,7 @@ public class Enemybase : MonoBehaviourPun
     public IEnumerator RPC_DamageOverTime(float Damage, float Time)
     {
         Debug.Log("courutine start");
-        while (true)
+        while (false == isDead)
         {
             if (isDead)
             {
@@ -257,7 +261,6 @@ public class Enemybase : MonoBehaviourPun
                     _navMeshAgent.isStopped = true;
 
                 }
-                gameObject.GetComponent<EnemySatatus>().enabled = false;
                 _animator.SetTrigger("Die");
                 isDead = true;
 
@@ -310,4 +313,18 @@ public class Enemybase : MonoBehaviourPun
         _navMeshAgent.isStopped = false;
         _navMeshAgent.SetDestination(destination);
     }
+
+    public void AtkSpeedUp(float atkSpeedBuff)
+    {
+        float value = atkSpeedBuff / 100f;
+        AttackSpeed = (1f+value);
+        _animator.SetFloat("Speed", AttackSpeed);
+        Debug.Log($"{AttackSpeed}");
+    }
+    
+    public void atkSpeedReset()
+    {
+        _animator.SetFloat("Speed", 1f);
+    }
+
 }

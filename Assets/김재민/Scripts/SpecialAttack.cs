@@ -81,7 +81,7 @@ public class SpecialAttack : Enemybase
 
       
         _navMeshAgent.SetDestination(target.position);
-            transform.LookAt(new Vector3(target.position.x, 0, target.position.z));
+            transform.LookAt(new Vector3(target.position.x, transform.position.y, target.position.z));
             float vecDistance = Vector3.SqrMagnitude(target.position - transform.position);
             if (vecDistance <= attackRange * attackRange)
             {
