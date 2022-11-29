@@ -14,6 +14,7 @@ public class MinionAtkUp : SkillHandler
     private float elapsedTime;
     private float holdlingTime;
     private float prevDamage;
+    private float prevAtkSpeed;
     private float atkBuff;
     private float atkSpeedBuff;
     public ScriptableObject buff;
@@ -103,6 +104,7 @@ public class MinionAtkUp : SkillHandler
         {
             if (minion.layer == 8)
             {
+                prevAtkSpeed = minion.GetComponent<Enemybase>().AttackSpeed;
                 prevDamage = minion.GetComponent<Enemybase>().Damage;
                 minion.GetComponent<Enemybase>().Damage += attackUp;
                 minion.GetComponent<Enemybase>().AtkSpeedUp(atkSpeedBuff);
@@ -121,7 +123,7 @@ public class MinionAtkUp : SkillHandler
             if (minion.layer == 8)
             {
                 minion.GetComponent<Enemybase>().Damage = prevDamage;
-                minion.GetComponent<Enemybase>().atkSpeedReset();
+                minion.GetComponent<Enemybase>().atkSpeedReset(prevAtkSpeed);
             }
         }
     }
