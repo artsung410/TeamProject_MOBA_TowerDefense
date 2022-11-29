@@ -219,6 +219,8 @@ public class GetAPICaller : MonoBehaviourPun
             JsonData jsonPlayer = JsonMapper.ToObject(jsonResult);
             // 데이터 저장
             playerStorage.bet_id = jsonPlayer["data"]["bets"][0]["_id"].ToString();
+            string winAmount = $"{float.Parse(jsonPlayer["data"]["bets"][0]["win_amount"].ToString()):0}";
+            playerStorage.win_amount = winAmount;
             Debug.Log("getSettingsCaller Data Save Complited");
         }
     }
