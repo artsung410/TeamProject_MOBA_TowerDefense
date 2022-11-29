@@ -190,6 +190,14 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
                             if (inventory.stackable && sameItem && firstItemStack && secondItemStack)
                             {
+                                // 카드 한장을 장착하고 같은 카드를 장착인벤에 있는 같은 카드로 합칠때 장착 슬롯이고 같은 카드가 있으면 되돌아 온다.
+                                /*if (firstItem.itemID == secondItem.itemID && secondItemGameObject.transform.parent.parent.parent.gameObject.tag == "EquipmentSystem" || secondItemGameObject.transform.parent.parent.gameObject.name == "Tower Slots")
+                                {
+                                    firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                    firstItemRectTransform.localPosition = Vector3.zero;
+                                    return;
+                                }*/
+
                                 if (fitsIntoStack && !sameItemRerferenced)
                                 {
                                     secondItem.itemValue = firstItem.itemValue + secondItem.itemValue;
@@ -203,13 +211,10 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                         dup.transform.parent.parent.parent.parent.parent.GetComponent<Inventory>().updateItemList();
                                     }
                                 }
-
                                 else
                                 {
-                                    //creates the rest of the item
                                     int rest = (firstItem.itemValue + secondItem.itemValue) % firstItem.maxStack;
 
-                                    //fill up the other stack and adds the rest to the other stack 
                                     if (!fitsIntoStack && rest > 0)
                                     {
                                         firstItem.itemValue = firstItem.maxStack;
@@ -380,7 +385,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         if (sameItemType && !sameItemRerferenced) //
                         {
                             Transform temp1 = secondItemGameObject.transform.parent.parent.parent;
-                            Transform temp2 = oldSlot.transform.parent.parent;                            
+                            Transform temp2 = oldSlot.transform.parent.parent;
 
                             firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                             secondItemGameObject.transform.SetParent(oldSlot.transform);
@@ -525,7 +530,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             {
                                 //if you are dragging an item from equipmentsystem to the inventory and try to swap it with the same itemtype
                                 if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
-                                {                                  
+                                {
 
                                     firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                     secondItemGameObject.transform.SetParent(oldSlot.transform);
@@ -561,7 +566,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             firstItemRectTransform.localPosition = Vector3.zero;
                         }
                         else
-                        {                            
+                        {
                             firstItemGameObject.transform.SetParent(newSlot.transform);
                             firstItemRectTransform.localPosition = Vector3.zero;
 
@@ -574,6 +579,8 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
             }
         }
         inventory.OnUpdateItemList();
+        // 카드 현황 업데이트
+        EquimentInventory.instance.cardMonitorUpdate();
     }
 
 }

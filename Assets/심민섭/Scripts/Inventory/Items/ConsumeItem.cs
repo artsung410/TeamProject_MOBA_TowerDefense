@@ -118,16 +118,23 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     }
 
                                     // 미니언 근거리 데이터 range
-                                    if (item.itemType == ItemType.Tower && item.objType == "Minion")
+                                    if (item.itemType == ItemType.Tower && item.objType == "Minion_T")
                                     {
-                                        int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
-                                        if (minionRangeData == 5)
+                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 5)
                                         {
-                                            return;
+                                            int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
+                                            if (minionRangeData == 5)
+                                            {
+                                                return;
+                                            }
                                         }
-                                        if (minionRangeData == 50)
+                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 50)
                                         {
-                                            return;
+                                            int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
+                                            if (minionRangeData == 50)
+                                            {
+                                                return;
+                                            }
                                         }
                                     }
                                     
@@ -180,6 +187,8 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     eS.gameObject.GetComponent<Inventory>().updateItemList();
                                     inventory.updateItemList();
                                     gearable = true;
+                                    // 카드 현황 업데이트
+                                    EquimentInventory.instance.cardMonitorUpdate();
                                     /*if (duplication != null)
                                         Destroy(duplication.gameObject);*/
                                     break;

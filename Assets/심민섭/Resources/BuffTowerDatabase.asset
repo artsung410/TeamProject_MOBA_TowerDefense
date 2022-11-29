@@ -18,699 +18,3082 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 0
     itemType: 0
     itemWeight: 0
     maxStack: 0
     indexItemInList: 0
     rarity: 0
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack_Name: 
+      AudioClip_Hit_Name: 
+      AudioClip_Normal_Name: 
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Damage_Increase1
     ClassType: 
     itemID: 1
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3eeef1fa7999ca24299867c6f83f56e7, type: 3}
-    itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
-    inGameData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
+    itemDesc: "Increases the character's damage with the power of fire. Burning mulberry
+      flavor!\r"
+    itemIcon: {fileID: 21300000, guid: f351c83c844808c48bc8854351770133, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes:
-    - attributeName: towerHP
-      attributeValue: 300
-    - attributeName: towerATK
-      attributeValue: 1
-    - attributeName: towerRange
-      attributeValue: 300
-    - attributeName: buffValue
-      attributeValue: 5
-    specialPrefabs: []
-    buffDatas:
-    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Increase_Tower
+      NickName: Commander
+      ID: 1001
+      GroupID: 11
+      Rank: 1
+      Type: 2
+      Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+      Combination_ResultID: 1002
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Increases the character's damage with the power of fire. Burning mulberry
+        flavor!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: f351c83c844808c48bc8854351770133, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15001
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Damage_Increase2
     ClassType: 
     itemID: 2
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 324e15b61b81fd14481b922b487ba68b, type: 3}
-    itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
-    inGameData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
+    itemDesc: "Increases the character's damage with the power of fire. Burning mulberry
+      flavor!\r"
+    itemIcon: {fileID: 21300000, guid: 4c9e185b1c5755946a72464ce967ede4, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes:
-    - attributeName: towerHP
-      attributeValue: 300
-    - attributeName: towerATK
-      attributeValue: 1
-    - attributeName: towerRange
-      attributeValue: 300
-    - attributeName: buffValue
-      attributeValue: 5
-    specialPrefabs: []
-    buffDatas:
-    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Increase_Tower2
+      NickName: Commander
+      ID: 1002
+      GroupID: 11
+      Rank: 2
+      Type: 2
+      Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+      Combination_ResultID: 1003
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Increases the character's damage with the power of fire. Burning mulberry
+        flavor!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 4c9e185b1c5755946a72464ce967ede4, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15002
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Damage_Increase3
     ClassType: 
     itemID: 3
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 324e15b61b81fd14481b922b487ba68b, type: 3}
-    itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
-    inGameData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
+    itemDesc: "Increases the character's damage with the power of fire. Burning mulberry
+      flavor!\r"
+    itemIcon: {fileID: 21300000, guid: 6492c1ec9ff7ab54990891fd13bd05ac, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes:
-    - attributeName: towerHP
-      attributeValue: 300
-    - attributeName: towerATK
-      attributeValue: 1
-    - attributeName: towerRange
-      attributeValue: 300
-    - attributeName: buffValue
-      attributeValue: 5
-    specialPrefabs: []
-    buffDatas:
-    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Increase_Tower3
+      NickName: Commander
+      ID: 1003
+      GroupID: 11
+      Rank: 3
+      Type: 2
+      Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+      Combination_ResultID: 1004
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Increases the character's damage with the power of fire. Burning mulberry
+        flavor!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 6492c1ec9ff7ab54990891fd13bd05ac, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15003
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Damage_Increase4
     ClassType: 
     itemID: 4
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 324e15b61b81fd14481b922b487ba68b, type: 3}
-    itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
-    inGameData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
+    itemDesc: "Increases the character's damage with the power of fire. Burning mulberry
+      flavor!\r"
+    itemIcon: {fileID: 21300000, guid: 40292c8c2399a0246bce3b7d7689c4b6, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes:
-    - attributeName: towerHP
-      attributeValue: 300
-    - attributeName: towerATK
-      attributeValue: 1
-    - attributeName: towerRange
-      attributeValue: 300
-    - attributeName: buffValue
-      attributeValue: 5
-    specialPrefabs: []
-    buffDatas:
-    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Increase_Tower4
+      NickName: Commander
+      ID: 1004
+      GroupID: 11
+      Rank: 4
+      Type: 2
+      Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+      Combination_ResultID: 1005
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 2.5
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Increases the character's damage with the power of fire. Burning mulberry
+        flavor!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 40292c8c2399a0246bce3b7d7689c4b6, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15004
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Damage_Increase5
     ClassType: 
     itemID: 5
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 324e15b61b81fd14481b922b487ba68b, type: 3}
-    itemModel: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
-    inGameData: {fileID: 11400000, guid: 4515602cdc85887458315d5549fa8910, type: 2}
+    itemDesc: "Increases the character's damage with the power of fire. Burning mulberry
+      flavor!\r"
+    itemIcon: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes:
-    - attributeName: towerHP
-      attributeValue: 300
-    - attributeName: towerATK
-      attributeValue: 1
-    - attributeName: towerRange
-      attributeValue: 300
-    - attributeName: buffValue
-      attributeValue: 5
-    specialPrefabs: []
-    buffDatas:
-    - {fileID: 11400000, guid: 2e572d6d4d328354295fe7084720a059, type: 2}
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Increase_Tower5
+      NickName: Commander
+      ID: 1005
+      GroupID: 11
+      Rank: 5
+      Type: 2
+      Pf: {fileID: 8588469063931012877, guid: a2cda2653fc7be340a8e7d417c9b3430, type: 3}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8149904810610218730, guid: bc7328dcab9022542a073efce2abdc20, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Increases the character's damage with the power of fire. Burning mulberry
+        flavor!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 29ff5921ff645444b9a1a2bf4fdbb6c9, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c1f75aa34fc48514ba6b7d45b9bae068, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15005
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Hp_Regen_Increase1
     ClassType: 
     itemID: 6
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+    itemIcon: {fileID: 21300000, guid: 49535959013910a41bed75876222126e, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Hp_Regen_Increase_Tower
+      NickName: Holy Fire
+      ID: 1006
+      GroupID: 12
+      Rank: 1
+      Type: 2
+      Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+      Combination_ResultID: 1006
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 49535959013910a41bed75876222126e, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15006
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Hp_Regen_Increase2
     ClassType: 
     itemID: 7
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+    itemIcon: {fileID: 21300000, guid: 46ddddc378163a646981226725a175dd, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Hp_Regen_Increase_Tower2
+      NickName: Holy Fire
+      ID: 1007
+      GroupID: 12
+      Rank: 2
+      Type: 2
+      Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+      Combination_ResultID: 1007
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 46ddddc378163a646981226725a175dd, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15007
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Hp_Regen_Increase3
     ClassType: 
     itemID: 8
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+    itemIcon: {fileID: 21300000, guid: 91db5eadc594473428ac33a75108e7a4, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Hp_Regen_Increase_Tower3
+      NickName: Holy Fire
+      ID: 1008
+      GroupID: 12
+      Rank: 3
+      Type: 2
+      Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+      Combination_ResultID: 1008
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 91db5eadc594473428ac33a75108e7a4, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15008
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Hp_Regen_Increase4
     ClassType: 
     itemID: 9
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+    itemIcon: {fileID: 21300000, guid: 8db79c5610e949b439169a90f636405a, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Hp_Regen_Increase_Tower4
+      NickName: Holy Fire
+      ID: 1009
+      GroupID: 12
+      Rank: 4
+      Type: 2
+      Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+      Combination_ResultID: 1009
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 2.5
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 8db79c5610e949b439169a90f636405a, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15009
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Hp_Regen_Increase5
     ClassType: 
     itemID: 10
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+    itemIcon: {fileID: 21300000, guid: 76d27766d70606c43a3d7256da77e2a5, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Hp_Regen_Increase_Tower5
+      NickName: Holy Fire
+      ID: 1010
+      GroupID: 12
+      Rank: 5
+      Type: 2
+      Pf: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
+      Combination_ResultID: 1010
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 2580923390648891029, guid: 145627e5fd39c18409fd9da33f22bf7b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Puppyo! Take charge of your stamina! Puppyo!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 76d27766d70606c43a3d7256da77e2a5, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2ffbc5dfc35cd1f4e82c280efd2a417d, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15010
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Speed_Increase1
     ClassType: 
     itemID: 11
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 4acab26f87725e44b99c74759b265c3c, type: 3}
-    itemModel: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
-    inGameData: {fileID: 11400000, guid: 1fca83b002b9bc446af66ad6b4bef72b, type: 2}
+    itemDesc: "Usain Thunder!\r"
+    itemIcon: {fileID: 21300000, guid: 074373cf7928961448f5b8f87bbd2d10, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Speed_Increase_Tower
+      NickName: Speed Tower
+      ID: 1011
+      GroupID: 13
+      Rank: 1
+      Type: 2
+      Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
+      Combination_ResultID: 1012
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Usain Thunder!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 074373cf7928961448f5b8f87bbd2d10, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15011
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Speed_Increase2
     ClassType: 
     itemID: 12
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Usain Thunder!\r"
+    itemIcon: {fileID: 21300000, guid: 0a758b1541a4b64468c7f00f3caad9d1, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Speed_Increase_Tower2
+      NickName: Speed Tower
+      ID: 1012
+      GroupID: 13
+      Rank: 2
+      Type: 2
+      Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
+      Combination_ResultID: 1013
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Usain Thunder!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 0a758b1541a4b64468c7f00f3caad9d1, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15012
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Speed_Increase3
     ClassType: 
     itemID: 13
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Usain Thunder!\r"
+    itemIcon: {fileID: 21300000, guid: 8fb5eb7f6b222e944913c1f84121a3b2, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Speed_Increase_Tower3
+      NickName: Speed Tower
+      ID: 1013
+      GroupID: 13
+      Rank: 3
+      Type: 2
+      Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
+      Combination_ResultID: 1014
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Usain Thunder!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 8fb5eb7f6b222e944913c1f84121a3b2, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15013
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Speed_Increase4
     ClassType: 
     itemID: 14
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Usain Thunder!\r"
+    itemIcon: {fileID: 21300000, guid: 85ce1b77c4b5bdd46bf79c61c989a21a, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Speed_Increase_Tower4
+      NickName: Speed Tower
+      ID: 1014
+      GroupID: 13
+      Rank: 4
+      Type: 2
+      Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
+      Combination_ResultID: 1015
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 2.5
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Usain Thunder!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 85ce1b77c4b5bdd46bf79c61c989a21a, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15014
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Speed_Increase5
     ClassType: 
     itemID: 15
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Usain Thunder!\r"
+    itemIcon: {fileID: 21300000, guid: e87d5e740d7179b4c9bd5fc253db292f, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Speed_Increase_Tower5
+      NickName: Speed Tower
+      ID: 1015
+      GroupID: 13
+      Rank: 5
+      Type: 2
+      Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3261900519273159858, guid: 74be25f842d03a249a21b826b723939c, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Usain Thunder!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: e87d5e740d7179b4c9bd5fc253db292f, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15015
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Attack_Speed_Increase1
     ClassType: 
     itemID: 16
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: a9c49ee7905c32d429a62c7611885e46, type: 3}
-    itemModel: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
-    inGameData: {fileID: 11400000, guid: 80cd0be274fc74743bd1a1838d176872, type: 2}
+    itemDesc: "you one me two generations your generation me six generations\r"
+    itemIcon: {fileID: 21300000, guid: 5437999f885c1f84caea03651911ade1, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Increase_Tower
+      NickName: Obelisk
+      ID: 1016
+      GroupID: 14
+      Rank: 1
+      Type: 2
+      Pf: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
+      Combination_ResultID: 1017
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "you one me two generations your generation me six generations\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 5437999f885c1f84caea03651911ade1, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15016
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Attack_Speed_Increase2
     ClassType: 
     itemID: 17
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "you one me two generations your generation me six generations\r"
+    itemIcon: {fileID: 21300000, guid: ddf0f94c7ff4e4645acf9e002b19cd1f, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Increase_Tower2
+      NickName: Obelisk
+      ID: 1017
+      GroupID: 14
+      Rank: 2
+      Type: 2
+      Pf: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
+      Combination_ResultID: 1018
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "you one me two generations your generation me six generations\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: ddf0f94c7ff4e4645acf9e002b19cd1f, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15017
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Attack_Speed_Increase3
     ClassType: 
     itemID: 18
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "you one me two generations your generation me six generations\r"
+    itemIcon: {fileID: 21300000, guid: 9e01c11e96741724da7b6bbf167e2621, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Increase_Tower3
+      NickName: Obelisk
+      ID: 1018
+      GroupID: 14
+      Rank: 3
+      Type: 2
+      Pf: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
+      Combination_ResultID: 1019
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "you one me two generations your generation me six generations\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 9e01c11e96741724da7b6bbf167e2621, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15018
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Attack_Speed_Increase4
     ClassType: 
     itemID: 19
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "you one me two generations your generation me six generations\r"
+    itemIcon: {fileID: 21300000, guid: f5dbf9cc223494447b7472a309c8e64e, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Increase_Tower4
+      NickName: Obelisk
+      ID: 1019
+      GroupID: 14
+      Rank: 4
+      Type: 2
+      Pf: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
+      Combination_ResultID: 1020
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 2.5
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "you one me two generations your generation me six generations\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: f5dbf9cc223494447b7472a309c8e64e, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15019
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_Buff_Attack_Speed_Increase5
     ClassType: 
     itemID: 20
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "you one me two generations your generation me six generations\r"
+    itemIcon: {fileID: 21300000, guid: 14a2823e390979b4191eb08c8135e6af, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Increase_Tower5
+      NickName: Obelisk
+      ID: 1020
+      GroupID: 14
+      Rank: 5
+      Type: 2
+      Pf: {fileID: 7418510190786929041, guid: c700bba32eed8d34bb0e91144d9b33d5, type: 3}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3440883428124762949, guid: a91cd0348c30e1f42993895a37f5dc5f, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "you one me two generations your generation me six generations\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 14a2823e390979b4191eb08c8135e6af, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 5a89aee143a8be84586063a6ecd805e8, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+      buffID: 15020
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Damage_Decrease1
     ClassType: 
     itemID: 21
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 35917955a7103f548adc83ab39b843c2, type: 3}
-    itemModel: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
-    inGameData: {fileID: 11400000, guid: e9baa0ef5cd379a4190331b7236a456b, type: 2}
+    itemDesc: "Break the opponent's will with the cursed power given to the tower
+      Decreases attack power.\r"
+    itemIcon: {fileID: 21300000, guid: 23e64726bf8ac5645a8be443823629e1, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Decrease_Tower
+      NickName: Breaker
+      ID: 2001
+      GroupID: 15
+      Rank: 1
+      Type: 3
+      Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
+      Combination_ResultID: 2002
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Break the opponent's will with the cursed power given to the tower Decreases
+        attack power.\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 23e64726bf8ac5645a8be443823629e1, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15021
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Damage_Decrease2
     ClassType: 
     itemID: 22
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Break the opponent's will with the cursed power given to the tower
+      Decreases attack power.\r"
+    itemIcon: {fileID: 21300000, guid: 77609a7756fb1d842b7db42890e7b50c, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Decrease_Tower2
+      NickName: Breaker
+      ID: 2002
+      GroupID: 15
+      Rank: 2
+      Type: 3
+      Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
+      Combination_ResultID: 2003
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Break the opponent's will with the cursed power given to the tower Decreases
+        attack power.\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 77609a7756fb1d842b7db42890e7b50c, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15022
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Damage_Decrease3
     ClassType: 
     itemID: 23
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 4acab26f87725e44b99c74759b265c3c, type: 3}
-    itemModel: {fileID: 4933512244754295010, guid: ed1339ea448c68d4aa2e47f5262e9220, type: 3}
-    inGameData: {fileID: 11400000, guid: 1fca83b002b9bc446af66ad6b4bef72b, type: 2}
+    itemDesc: "Break the opponent's will with the cursed power given to the tower
+      Decreases attack power.\r"
+    itemIcon: {fileID: 21300000, guid: 7eaa5544f893c914eb2f7870a10e650d, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Decrease_Tower3
+      NickName: Breaker
+      ID: 2003
+      GroupID: 15
+      Rank: 3
+      Type: 3
+      Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
+      Combination_ResultID: 2004
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Break the opponent's will with the cursed power given to the tower Decreases
+        attack power.\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 7eaa5544f893c914eb2f7870a10e650d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15023
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Damage_Decrease4
     ClassType: 
     itemID: 24
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Break the opponent's will with the cursed power given to the tower
+      Decreases attack power.\r"
+    itemIcon: {fileID: 21300000, guid: 041c82a65156306419036c1c97942e4c, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Decrease_Tower4
+      NickName: Breaker
+      ID: 2004
+      GroupID: 15
+      Rank: 4
+      Type: 3
+      Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
+      Combination_ResultID: 2005
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 2.5
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Break the opponent's will with the cursed power given to the tower Decreases
+        attack power.\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 041c82a65156306419036c1c97942e4c, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15024
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Damage_Decrease5
     ClassType: 
     itemID: 25
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Break the opponent's will with the cursed power given to the tower
+      Decreases attack power.\r"
+    itemIcon: {fileID: 21300000, guid: 74cc02e414ebd1e4d8dc58fab8952f3b, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Damage_Decrease_Tower5
+      NickName: Breaker
+      ID: 2005
+      GroupID: 15
+      Rank: 5
+      Type: 3
+      Pf: {fileID: 9024452039152051711, guid: 17351aa25a2a78e428499f639cd87053, type: 3}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7022825616105509796, guid: 9ea96139371895c4e84b7caf7351e835, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Break the opponent's will with the cursed power given to the tower Decreases
+        attack power.\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 74cc02e414ebd1e4d8dc58fab8952f3b, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c2d8b20965c708f4398f86d6d9392ca5, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15025
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_HpRegen_Decrease1
     ClassType: 
     itemID: 26
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: c8f84e03591075843b5411cb2c8d46e6, type: 3}
-    itemModel: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
-    inGameData: {fileID: 11400000, guid: 869c2c349cfaa004e98f0bcf6f4a5968, type: 2}
+    itemDesc: "Would you like to taste poison?\r"
+    itemIcon: {fileID: 21300000, guid: c46d79bc4acc5704ab5754b0221ec3ff, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: HP_Regen_Decrease_Tower
+      NickName: Scorpion
+      ID: 2006
+      GroupID: 16
+      Rank: 1
+      Type: 3
+      Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
+      Combination_ResultID: 2007
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Would you like to taste poison?\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: c46d79bc4acc5704ab5754b0221ec3ff, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15026
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_HpRegen_Decrease2
     ClassType: 
     itemID: 27
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Would you like to taste poison?\r"
+    itemIcon: {fileID: 21300000, guid: 80cbd928531f68d4196460fa52448e34, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: HP_Regen_Decrease_Tower2
+      NickName: Scorpion
+      ID: 2007
+      GroupID: 16
+      Rank: 2
+      Type: 3
+      Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
+      Combination_ResultID: 2008
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Would you like to taste poison?\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 80cbd928531f68d4196460fa52448e34, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15027
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_HpRegen_Decrease3
     ClassType: 
     itemID: 28
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Would you like to taste poison?\r"
+    itemIcon: {fileID: 21300000, guid: 1b00ce1b26bdf23408343b2b6ade09b3, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: HP_Regen_Decrease_Tower3
+      NickName: Scorpion
+      ID: 2008
+      GroupID: 16
+      Rank: 3
+      Type: 3
+      Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
+      Combination_ResultID: 2009
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Would you like to taste poison?\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 1b00ce1b26bdf23408343b2b6ade09b3, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15028
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_HpRegen_Decrease4
     ClassType: 
     itemID: 29
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Would you like to taste poison?\r"
+    itemIcon: {fileID: 21300000, guid: 3d47eefa154654d42b254dc75214fbc9, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: HP_Regen_Decrease_Tower4
+      NickName: Scorpion
+      ID: 2009
+      GroupID: 16
+      Rank: 4
+      Type: 3
+      Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
+      Combination_ResultID: 2010
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 2.5
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Would you like to taste poison?\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 3d47eefa154654d42b254dc75214fbc9, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15029
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_HpRegen_Decrease5
     ClassType: 
     itemID: 30
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Would you like to taste poison?\r"
+    itemIcon: {fileID: 21300000, guid: 0a0716ae920665248bec7acc6ad59a2c, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: HP_Regen_Decrease_Tower5
+      NickName: Scorpion
+      ID: 2010
+      GroupID: 16
+      Rank: 5
+      Type: 3
+      Pf: {fileID: 3078019373379499688, guid: acb36767b28b3b842b5f858907e808e2, type: 3}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 6856995145637664999, guid: dcfd0b8b36547be439dd8edcf8ac7f74, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Would you like to taste poison?\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 0a0716ae920665248bec7acc6ad59a2c, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 6773f61654e14ea4d92b5c7857d6f2c7, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15030
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Move_Decrease1
     ClassType: 
     itemID: 31
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: fd0be53c559e1754ea87cad19ce5bb76, type: 3}
-    itemModel: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
-    inGameData: {fileID: 11400000, guid: e566f92fd7b600340a77355d856d28cf, type: 2}
+    itemDesc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+      of the swamp. I've been working hard to make it happen. It's nice to see the
+      enemy crawling slowly!\r"
+    itemIcon: {fileID: 21300000, guid: b80f54dae95a57f43a46494a606c8af2, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Move_Decrease_Tower
+      NickName: Dionaea
+      ID: 2011
+      GroupID: 17
+      Rank: 1
+      Type: 3
+      Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
+      Combination_ResultID: 2012
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+        of the swamp. I've been working hard to make it happen. It's nice to see
+        the enemy crawling slowly!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: b80f54dae95a57f43a46494a606c8af2, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15031
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Move_Decrease2
     ClassType: 
     itemID: 32
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+      of the swamp. I've been working hard to make it happen. It's nice to see the
+      enemy crawling slowly!\r"
+    itemIcon: {fileID: 21300000, guid: a23d6ef9b9d2358448fc31bd312389ad, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Move_Decrease_Tower2
+      NickName: Dionaea
+      ID: 2012
+      GroupID: 17
+      Rank: 2
+      Type: 3
+      Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
+      Combination_ResultID: 2013
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+        of the swamp. I've been working hard to make it happen. It's nice to see
+        the enemy crawling slowly!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: a23d6ef9b9d2358448fc31bd312389ad, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15032
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Move_Decrease3
     ClassType: 
     itemID: 33
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+      of the swamp. I've been working hard to make it happen. It's nice to see the
+      enemy crawling slowly!\r"
+    itemIcon: {fileID: 21300000, guid: d04fe2a383e5c9646b9238f6ae786953, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Move_Decrease_Tower3
+      NickName: Dionaea
+      ID: 2013
+      GroupID: 17
+      Rank: 3
+      Type: 3
+      Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
+      Combination_ResultID: 2014
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+        of the swamp. I've been working hard to make it happen. It's nice to see
+        the enemy crawling slowly!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: d04fe2a383e5c9646b9238f6ae786953, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15033
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Move_Decrease4
     ClassType: 
     itemID: 34
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+      of the swamp. I've been working hard to make it happen. It's nice to see the
+      enemy crawling slowly!\r"
+    itemIcon: {fileID: 21300000, guid: 6385a4d4f59103540b29c77aebf2ed6f, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Move_Decrease_Tower4
+      NickName: Dionaea
+      ID: 2014
+      GroupID: 17
+      Rank: 4
+      Type: 3
+      Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
+      Combination_ResultID: 2015
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 2.5
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+        of the swamp. I've been working hard to make it happen. It's nice to see
+        the enemy crawling slowly!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 6385a4d4f59103540b29c77aebf2ed6f, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15034
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Move_Decrease5
     ClassType: 
     itemID: 35
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+      of the swamp. I've been working hard to make it happen. It's nice to see the
+      enemy crawling slowly!\r"
+    itemIcon: {fileID: 21300000, guid: 800c19b478ebd6c49a16dc97f89bcd16, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Move_Decrease_Tower5
+      NickName: Dionaea
+      ID: 2015
+      GroupID: 17
+      Rank: 5
+      Type: 3
+      Pf: {fileID: 74654566039358036, guid: 1c7efcbe4d43c4046b6c28e442bbc0c9, type: 3}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 5221850583486057245, guid: f048232064748ad48b177497559da88b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Incapacitate enemies using the Devil Flower that inhabited the depths
+        of the swamp. I've been working hard to make it happen. It's nice to see
+        the enemy crawling slowly!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 800c19b478ebd6c49a16dc97f89bcd16, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15035
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Attack_Speed_Decrease1
     ClassType: 
     itemID: 36
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: b482d81288f6ccd4186d406d57fea7e7, type: 3}
-    itemModel: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
-    inGameData: {fileID: 11400000, guid: c2a5285e012dd3149ab4e7dd1d5b6ca6, type: 2}
+    itemDesc: A strange stone statue that fell from an alien planet against the enemy
+      It works!
+    itemIcon: {fileID: 21300000, guid: 84da24d6236149f4b90c07687c1b747c, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Decrease_Tower
+      NickName: Stone Satue
+      ID: 2016
+      GroupID: 18
+      Rank: 1
+      Type: 3
+      Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
+      Combination_ResultID: 2017
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 8.75
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: A strange stone statue that fell from an alien planet against the enemy
+        It works!
+      Sprite_TowerCard: {fileID: 21300000, guid: 84da24d6236149f4b90c07687c1b747c, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15036
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Attack_Speed_Decrease2
     ClassType: 
     itemID: 37
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: A strange stone statue that fell from an alien planet against the enemy
+      It works!
+    itemIcon: {fileID: 21300000, guid: e7d622bcfd0c1de41b1e62d41ca6f398, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Decrease_Tower2
+      NickName: Stone Satue
+      ID: 2017
+      GroupID: 18
+      Rank: 2
+      Type: 3
+      Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
+      Combination_ResultID: 2018
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 2.5
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 150
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: A strange stone statue that fell from an alien planet against the enemy
+        It works!
+      Sprite_TowerCard: {fileID: 21300000, guid: e7d622bcfd0c1de41b1e62d41ca6f398, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15037
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Attack_Speed_Decrease3
     ClassType: 
     itemID: 38
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: A strange stone statue that fell from an alien planet against the enemy
+      It works!
+    itemIcon: {fileID: 21300000, guid: dfb569776350dd44bb321ab8051451e3, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Decrease_Tower3
+      NickName: Stone Satue
+      ID: 2018
+      GroupID: 18
+      Rank: 3
+      Type: 3
+      Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
+      Combination_ResultID: 2019
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 1.25
+      Premium_Random_Draw_Probability: 2.9166667
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 8.75
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 200
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: A strange stone statue that fell from an alien planet against the enemy
+        It works!
+      Sprite_TowerCard: {fileID: 21300000, guid: dfb569776350dd44bb321ab8051451e3, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15038
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Attack_Speed_Decrease4
-    ClassType: 
+    ClassType: Passive_T
     itemID: 39
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: A strange stone statue that fell from an alien planet against the enemy
+      It works!
+    itemIcon: {fileID: 21300000, guid: 5ae95815f348d3f4e9f37fb9c982c9a9, type: 3}
+    objType: 
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Decrease_Tower4
+      NickName: Stone Satue
+      ID: 2019
+      GroupID: 18
+      Rank: 4
+      Type: 3
+      Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
+      Combination_ResultID: 2020
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.8333333
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 2.5
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: A strange stone statue that fell from an alien planet against the enemy
+        It works!
+      Sprite_TowerCard: {fileID: 21300000, guid: 5ae95815f348d3f4e9f37fb9c982c9a9, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15039
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   - itemName: Tower_DeBuff_Attack_Speed_Decrease5
     ClassType: 
     itemID: 40
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 3d047ea9f13c8ce48b872d1051b1883e, type: 3}
-    itemModel: {fileID: 5207905325902075130, guid: d3dfe5623001e8848ac46b84e4703c24, type: 3}
-    inGameData: {fileID: 11400000, guid: 24da181711873f441a0b18975a2a41e5, type: 2}
+    itemDesc: A strange stone statue that fell from an alien planet against the enemy
+      It works!
+    itemIcon: {fileID: 21300000, guid: 42eda0340168cfc43bf31250dac50a6e, type: 3}
+    objType: Passive_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 99
     rarity: 100
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
+    CombinationValue: 0
+    towerData:
+      Name: Attack_Speed_Decrease_Tower5
+      NickName: Stone Satue
+      ID: 2020
+      GroupID: 18
+      Rank: 5
+      Type: 3
+      Pf: {fileID: 7968371355090992170, guid: eedcac876cc75164f819f99e378d728f, type: 3}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.41666666
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 1.25
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 8251383449098564596, guid: 5cf32676c01e9c8499b8388b5e980a85, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: A strange stone statue that fell from an alien planet against the enemy
+        It works!
+      Sprite_TowerCard: {fileID: 21300000, guid: 42eda0340168cfc43bf31250dac50a6e, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 2e21707d958fcd945b0faf6aaf86488c, type: 3}
+      AudioClip_Attack_Name: 0
+      AudioClip_Hit_Name: 0
+      AudioClip_Normal_Name: "0\r"
+      buffID: 15040
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
