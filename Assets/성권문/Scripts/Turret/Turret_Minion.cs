@@ -34,6 +34,7 @@ public class Turret_Minion : Turret
             minionTowerEvent.Invoke(towerDB.MinionID, bluePF, redPF, gameObject.tag);
         }
 
+        // 이펙트 파티클 생성
         Vector3 interpolationPos = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
         InitEffectParticles(interpolationPos);
     }

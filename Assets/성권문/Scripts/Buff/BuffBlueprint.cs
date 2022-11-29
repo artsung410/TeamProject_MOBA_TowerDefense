@@ -47,4 +47,5 @@ public class BuffBlueprint
     public int Target;              // 타겟
     public float Value;             // 이펙트 값
     public float Duration;          // 이펙트 지속시간
+    public string Desc;             // 버프 설명란
 }
