@@ -393,6 +393,11 @@ public class PlayerBehaviour : MonoBehaviourPun
                     isAKey = false;
                 }
 
+                if (Hit.collider.CompareTag(EnemyTag) || Hit.collider.gameObject.layer == 17)
+                {
+                    targetedEnemy = Hit.collider.gameObject;
+                }
+
                 if (targetedEnemy != null)
                 {
                     return;
