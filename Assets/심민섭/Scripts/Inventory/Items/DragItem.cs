@@ -372,9 +372,13 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         }
                     }
                 }
-
-                if (newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WarriorSlot" || newSlot.tag == "WizardSlot" || newSlot.tag == "AssassinSlot"
-                    || newSlot.tag == "InherenceSlot" || newSlot.tag == "Slot")
+                Debug.Log(newSlot.parent.gameObject.name);
+                Debug.Log(newSlot.tag);
+                if (newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WarriorSlot" 
+                    || newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WizardSlot" 
+                    || newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "AssassinSlot"
+                    || newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "InherenceSlot" 
+                    || newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "Slot")
                 {
                     int count = 0;
                     bool isItemID = false;
@@ -525,7 +529,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                 }
 
                 //dragging into a equipmentsystem/charactersystem
-                /*if (Inventory.GetComponent<EquipmentSystem>() != null)
+                if (Inventory.GetComponent<EquipmentSystem>() != null)
                 {
                     ItemType[] itemTypeOfSlots = GameObject.FindGameObjectWithTag("EquipmentSystem").GetComponent<EquipmentSystem>().itemTypeOfSlots;
                     int newSlotChildCount = newSlot.transform.parent.childCount;
@@ -596,7 +600,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         }
                     }
 
-                }*/
+                }
 
                 /*if (Inventory.GetComponent<CraftSystem>() != null)
                 {
