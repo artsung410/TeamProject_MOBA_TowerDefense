@@ -464,5 +464,11 @@ public class CSVtest : MonoBehaviour
         }
     }
 
-    #endregion 
+    #endregion
+
+    #region Sound
+    // 사운드 클립 파싱
+    [Header("[사운드]")]
+    public string temp;
+    #endregion
 }
