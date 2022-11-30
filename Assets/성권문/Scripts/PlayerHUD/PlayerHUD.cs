@@ -188,7 +188,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             return;
         }
 
-
         if (PhotonNetwork.IsMasterClient)
         {
             // 시간 계산 하는부분
@@ -214,6 +213,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         }
         // 시간을 이용한 구현부분
         Timer(min, sec);
+
     }
 
     void Update()
@@ -283,6 +283,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             if (playerScores[(int)PlayerColor.Blue] == playerScores[(int)PlayerColor.Red])
             {
                 GameManager.Instance.winner = "Draw";
+                gameWinMessage = GameManager.Instance.winner;
                 StartCoroutine(resultImigePopup);
                 return;
             }
@@ -935,4 +936,9 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     }
 
     #endregion
+
+    private void OnDisable()
+    {
+        Instance = null;
+    }
 }

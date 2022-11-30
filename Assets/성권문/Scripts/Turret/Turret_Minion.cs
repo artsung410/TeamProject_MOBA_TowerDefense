@@ -12,7 +12,6 @@ using System;
 public class Turret_Minion : Turret
 {
     public static event Action<int, GameObject, GameObject, string> minionTowerEvent = delegate { };
-    public GameObject smokeParticles;
 
     [Header("미니언 타워 속성")]
     public MinionBlueprint MinionBluePrint;
@@ -35,9 +34,9 @@ public class Turret_Minion : Turret
             minionTowerEvent.Invoke(towerDB.MinionID, bluePF, redPF, gameObject.tag);
         }
 
-        // 스모크 효과 생성
-        GameObject particle = PhotonNetwork.Instantiate(smokeParticles.name, new Vector3(transform.position.x, transform.position.y + 5, transform.position.z), Quaternion.identity);
-        particle.transform.Rotate(new Vector3(0, -90f, 0));
+        // 이펙트 파티클 생성
+        Vector3 interpolationPos = new Vector3(transform.position.x, transform.position.y + 5, transform.position.z);
+        InitEffectParticles(interpolationPos);
     }
 
     // 가장 가까운 적을 찾는다, 단 자주찾지는 않는다. 

@@ -13,6 +13,7 @@ public class NetualPos : MonoBehaviourPun
 
     IEnumerator poschagnge;
     Vector3 pos;
+    float attackArea = 10f;
     private void Awake()
     {
         pos = new Vector3(87.775f,2.3f,75.779f); // 맵중앙 포지션 
@@ -34,6 +35,11 @@ public class NetualPos : MonoBehaviourPun
     
     void Update()
     {
+        float distacne = Vector3.SqrMagnitude(pos - transform.position); // 거리 구해서
+        if(distacne >= attackArea * attackArea) // 공격 구역보다 크거나 같으면 센터로 리스폰
+        {
+            transform.GetChild(0).GetComponent<OrcFSM>().transform.position = pos;
+        }
         
     }
 

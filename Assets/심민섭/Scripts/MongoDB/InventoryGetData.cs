@@ -570,18 +570,14 @@ public class InventoryGetData : MonoBehaviour
                 itemStruct.itemValue = sendItemValue[i];
                 itemStruct.itemDesc = sendItems[i].itemDesc;
                 itemStruct.itemIcon = sendItems[i].itemIcon;
-                itemStruct.itemModel = sendItems[i].itemModel;
-                itemStruct.inGameData = sendItems[i].inGameData;
+                itemStruct.objType = sendItems[i].objType;
                 itemStruct.itemType = sendItems[i].itemType;
                 itemStruct.itemWeight = sendItems[i].itemWeight;
                 itemStruct.maxStack = sendItems[i].maxStack;
                 itemStruct.indexItemInList = sendItems[i].indexItemInList;
                 itemStruct.rarity = sendItems[i].rarity;
-                itemStruct.itemAttributes = sendItems[i].itemAttributes;
                 itemStruct.towerData = sendItems[i].towerData;
                 itemStruct.skillData = sendItems[i].skillData;
-                itemStruct.specialPrefabs = sendItems[i].specialPrefabs;
-                itemStruct.buffDatas = sendItems[i].buffDatas;
 
                 // 아이템 틀 만들고 데이터 넣어주기
                 GameObject itemObjProduce = (GameObject)Instantiate(prefabItem);
@@ -591,19 +587,15 @@ public class InventoryGetData : MonoBehaviour
                 itemProduce.item.itemID = itemStruct.itemID;
                 itemProduce.item.itemDesc = itemStruct.itemDesc;
                 itemProduce.item.itemIcon = itemStruct.itemIcon;
-                itemProduce.item.itemModel = itemStruct.itemModel;
-                itemProduce.item.inGameData = itemStruct.inGameData;
+                itemProduce.item.objType = itemStruct.objType;
                 itemProduce.item.itemValue = itemStruct.itemValue;
                 itemProduce.item.itemType = itemStruct.itemType;
                 itemProduce.item.itemWeight = itemStruct.itemWeight;
                 itemProduce.item.maxStack = itemStruct.maxStack;
                 itemProduce.item.indexItemInList = itemStruct.indexItemInList;
                 itemProduce.item.rarity = itemStruct.rarity;
-                itemProduce.item.itemAttributes = itemStruct.itemAttributes;
                 itemProduce.item.towerData = itemStruct.towerData;
                 itemProduce.item.skillData = itemStruct.skillData;
-                itemProduce.item.specialPrefabs = itemStruct.specialPrefabs;
-                itemProduce.item.buffDatas = itemStruct.buffDatas;
 
                 // 아이템 만들었으면 인벤토리로 옮겨 줘야겠지?
                 itemObjProduce.transform.SetParent(inventory.transform.GetChild(i));

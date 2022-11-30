@@ -10,6 +10,7 @@ public class PieceExplosion : MonoBehaviourPun
     public string enemyTag;
 
     public float damage;
+    public int EffectID;
 
     private void OnEnable()
     {
@@ -51,6 +52,7 @@ public class PieceExplosion : MonoBehaviourPun
             if (player != null && player.gameObject.activeSelf)
             {
                 player.OnDamage(damage);
+                BuffManager.Instance.AddBuff(CSVtest.Instance.BuffDic[EffectID]);
             }
             else
             {

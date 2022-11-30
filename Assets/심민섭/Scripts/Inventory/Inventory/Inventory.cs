@@ -301,7 +301,7 @@ public class Inventory : MonoBehaviour
         {
             if (SlotContainer.transform.GetChild(i).childCount > 0)
             {
-                SlotContainer.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(iconSize + 20, iconSize + 70);
+                SlotContainer.transform.GetChild(i).GetChild(0).GetChild(0).GetComponent<RectTransform>().sizeDelta = new Vector2(iconSize, iconSize);
             }
         }
         updateItemSize();

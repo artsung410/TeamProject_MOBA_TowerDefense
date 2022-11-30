@@ -18,8 +18,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 0
     itemType: 0
     itemWeight: 0
@@ -29,6 +28,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -87,16 +87,12 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
   - itemName: increasedMinionProduction1
     ClassType: Inherence
     itemID: 1
     itemDesc: "Empower your nexus to increase your minions.\r"
     itemIcon: {fileID: 21300000, guid: fcb5d049033735c4c9741bb4098ce0c4, type: 3}
-    itemModel: {fileID: 3776376177072238161, guid: 650f568cfe4d6d74e883f4a208006059, type: 3}
-    inGameData: {fileID: 11400000, guid: 58cb39aa3e01676458d4762069cac812, type: 2}
+    objType: Passive_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -106,6 +102,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -139,7 +136,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uC0DD\uC0B0\uB7C9 \uC99D\uAC00_1\uB808\uBCA8"
+      NameLevel: increasedMinionProduction1
       Name: {fileID: 3776376177072238161, guid: 650f568cfe4d6d74e883f4a208006059, type: 3}
       ID: 1
       Probability: 16.666666
@@ -164,24 +161,12 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: fcb5d049033735c4c9741bb4098ce0c4, type: 3}
       SkillIcon: {fileID: 21300000, guid: de220c3a7f7646f4b8625947a8bfa682, type: 3}
       Desc: "Empower your nexus to increase your minions.\r"
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 60
-    - attributeName: HoldingTime
-      attributeValue: 60
-    - attributeName: SkillRange
-      attributeValue: 12
-    specialPrefabs: []
-    buffDatas: []
   - itemName: increasedMinionProduction2
     ClassType: Inherence
     itemID: 2
     itemDesc: "Empower your nexus to increase your minions.\r"
     itemIcon: {fileID: 21300000, guid: 1d3241f7f613ec3429f8c9a9f3a05eb4, type: 3}
-    itemModel: {fileID: 3776376177072238161, guid: 650f568cfe4d6d74e883f4a208006059, type: 3}
-    inGameData: {fileID: 11400000, guid: 58cb39aa3e01676458d4762069cac812, type: 2}
+    objType: Passive_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -191,6 +176,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -224,7 +210,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uC0DD\uC0B0\uB7C9 \uC99D\uAC00_2\uB808\uBCA8"
+      NameLevel: increasedMinionProduction2
       Name: {fileID: 3776376177072238161, guid: 650f568cfe4d6d74e883f4a208006059, type: 3}
       ID: 2
       Probability: 13.333333
@@ -249,24 +235,12 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: 1d3241f7f613ec3429f8c9a9f3a05eb4, type: 3}
       SkillIcon: {fileID: 21300000, guid: de220c3a7f7646f4b8625947a8bfa682, type: 3}
       Desc: "Empower your nexus to increase your minions.\r"
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 60
-    - attributeName: HoldingTime
-      attributeValue: 60
-    - attributeName: SkillRange
-      attributeValue: 12
-    specialPrefabs: []
-    buffDatas: []
   - itemName: increasedMinionProduction3
     ClassType: Inherence
     itemID: 3
     itemDesc: "Empower your nexus to increase your minions.\r"
     itemIcon: {fileID: 21300000, guid: 085bd794960d3874f8b57a7d6618d2b4, type: 3}
-    itemModel: {fileID: 3776376177072238161, guid: 650f568cfe4d6d74e883f4a208006059, type: 3}
-    inGameData: {fileID: 11400000, guid: 58cb39aa3e01676458d4762069cac812, type: 2}
+    objType: Passive_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -276,6 +250,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -309,7 +284,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uC0DD\uC0B0\uB7C9 \uC99D\uAC00_3\uB808\uBCA8"
+      NameLevel: increasedMinionProduction3
       Name: {fileID: 3776376177072238161, guid: 650f568cfe4d6d74e883f4a208006059, type: 3}
       ID: 3
       Probability: 3.3333333
@@ -334,25 +309,13 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: 085bd794960d3874f8b57a7d6618d2b4, type: 3}
       SkillIcon: {fileID: 21300000, guid: de220c3a7f7646f4b8625947a8bfa682, type: 3}
       Desc: "Empower your nexus to increase your minions.\r"
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 60
-    - attributeName: HoldingTime
-      attributeValue: 60
-    - attributeName: SkillRange
-      attributeValue: 12
-    specialPrefabs: []
-    buffDatas: []
   - itemName: increasedMinionAttackPower1
     ClassType: Inherence
     itemID: 4
     itemDesc: "Encourages allies to increase attack power for a certain period of
       time.\r"
     itemIcon: {fileID: 21300000, guid: 4d67bc0399605114cbf8d8bb56dcecef, type: 3}
-    itemModel: {fileID: 4699022077222962073, guid: 32d26ab99f371f34fb9d02cbdfdbad39, type: 3}
-    inGameData: {fileID: 11400000, guid: bb7a043b4c9d28249984ac3fab26f4a2, type: 2}
+    objType: Passive_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -362,6 +325,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -395,7 +359,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uACF5\uACA9\uB825 \uC99D\uAC00_1\uB808\uBCA8"
+      NameLevel: increasedMinionAttackPower1
       Name: {fileID: 4699022077222962073, guid: 32d26ab99f371f34fb9d02cbdfdbad39, type: 3}
       ID: 4
       Probability: 16.666666
@@ -420,23 +384,13 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: 4d67bc0399605114cbf8d8bb56dcecef, type: 3}
       SkillIcon: {fileID: 21300000, guid: d5fd9a4572a729f4591c714286da8c15, type: 3}
       Desc: "Encourages allies to increase attack power for a certain period of time.\r"
-    itemAttributes:
-    - attributeName: Atk
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 20
-    - attributeName: HoldingTime
-      attributeValue: 20
-    specialPrefabs: []
-    buffDatas: []
   - itemName: increasedMinionAttackPower2
     ClassType: Inherence
     itemID: 5
     itemDesc: "Encourages allies to increase attack power for a certain period of
       time.\r"
     itemIcon: {fileID: 21300000, guid: f9228bf5406f30d4a9ab277df755e488, type: 3}
-    itemModel: {fileID: 4699022077222962073, guid: 32d26ab99f371f34fb9d02cbdfdbad39, type: 3}
-    inGameData: {fileID: 11400000, guid: bb7a043b4c9d28249984ac3fab26f4a2, type: 2}
+    objType: Passive_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -446,6 +400,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -479,7 +434,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uACF5\uACA9\uB825 \uC99D\uAC00_2\uB808\uBCA8"
+      NameLevel: increasedMinionAttackPower2
       Name: {fileID: 4699022077222962073, guid: 32d26ab99f371f34fb9d02cbdfdbad39, type: 3}
       ID: 5
       Probability: 13.333333
@@ -504,23 +459,13 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: f9228bf5406f30d4a9ab277df755e488, type: 3}
       SkillIcon: {fileID: 21300000, guid: d5fd9a4572a729f4591c714286da8c15, type: 3}
       Desc: "Encourages allies to increase attack power for a certain period of time.\r"
-    itemAttributes:
-    - attributeName: Atk
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 20
-    - attributeName: HoldingTime
-      attributeValue: 20
-    specialPrefabs: []
-    buffDatas: []
   - itemName: increasedMinionAttackPower3
     ClassType: Inherence
     itemID: 6
     itemDesc: "Encourages allies to increase attack power for a certain period of
       time.\r"
     itemIcon: {fileID: 21300000, guid: 650724a164ebf064eae7507ef12751d5, type: 3}
-    itemModel: {fileID: 4699022077222962073, guid: 32d26ab99f371f34fb9d02cbdfdbad39, type: 3}
-    inGameData: {fileID: 11400000, guid: bb7a043b4c9d28249984ac3fab26f4a2, type: 2}
+    objType: Passive_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -530,6 +475,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -563,7 +509,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uACF5\uACA9\uB825 \uC99D\uAC00_3\uB808\uBCA8"
+      NameLevel: increasedMinionAttackPower3
       Name: {fileID: 4699022077222962073, guid: 32d26ab99f371f34fb9d02cbdfdbad39, type: 3}
       ID: 6
       Probability: 3.3333333
@@ -588,22 +534,12 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: 650724a164ebf064eae7507ef12751d5, type: 3}
       SkillIcon: {fileID: 21300000, guid: d5fd9a4572a729f4591c714286da8c15, type: 3}
       Desc: "Encourages allies to increase attack power for a certain period of time.\r"
-    itemAttributes:
-    - attributeName: Atk
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 20
-    - attributeName: HoldingTime
-      attributeValue: 20
-    specialPrefabs: []
-    buffDatas: []
   - itemName: dragonSummon1
     ClassType: Inherence
     itemID: 7
     itemDesc: "Summons a minion to help you in subspace.\r"
     itemIcon: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
-    itemModel: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
-    inGameData: {fileID: 11400000, guid: bb7a043b4c9d28249984ac3fab26f4a2, type: 2}
+    objType: Active_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -613,6 +549,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -646,7 +583,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uC18C\uD658_1\uB808\uBCA8"
+      NameLevel: dragonSummon1
       Name: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
       ID: 7
       Probability: 16.666666
@@ -671,26 +608,12 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
       SkillIcon: {fileID: 21300000, guid: 0b40a759a114311418210830c433e3b1, type: 3}
       Desc: "Summons a minion to help you in subspace.\r"
-    itemAttributes:
-    - attributeName: Atk
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 0.5
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0
-    specialPrefabs: []
-    buffDatas: []
   - itemName: dragonSummon2
     ClassType: Inherence
     itemID: 8
     itemDesc: "Summons a minion to help you in subspace.\r"
     itemIcon: {fileID: 21300000, guid: 1e669b533ccafdd4daaad0582455a3a9, type: 3}
-    itemModel: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
-    inGameData: {fileID: 11400000, guid: bb7a043b4c9d28249984ac3fab26f4a2, type: 2}
+    objType: Active_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -700,6 +623,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -733,7 +657,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uC18C\uD658_2\uB808\uBCA8"
+      NameLevel: dragonSummon2
       Name: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
       ID: 8
       Probability: 13.333333
@@ -758,26 +682,12 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: 1e669b533ccafdd4daaad0582455a3a9, type: 3}
       SkillIcon: {fileID: 21300000, guid: 0b40a759a114311418210830c433e3b1, type: 3}
       Desc: "Summons a minion to help you in subspace.\r"
-    itemAttributes:
-    - attributeName: Atk
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 0.5
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0
-    specialPrefabs: []
-    buffDatas: []
   - itemName: dragonSummon3
     ClassType: Inherence
     itemID: 9
     itemDesc: "Summons a minion to help you in subspace.\r"
     itemIcon: {fileID: 21300000, guid: 8b6d43a312ae32245871daf4da2aaeb8, type: 3}
-    itemModel: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
-    inGameData: {fileID: 11400000, guid: bb7a043b4c9d28249984ac3fab26f4a2, type: 2}
+    objType: Active_S
     itemValue: 1
     itemType: 2
     itemWeight: 0
@@ -787,6 +697,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -820,7 +731,7 @@ MonoBehaviour:
       buffID: 0
       MinionID: 0
     skillData:
-      NameLevel: "\uBBF8\uB2C8\uC5B8 \uC18C\uD658_3\uB808\uBCA8"
+      NameLevel: dragonSummon3
       Name: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
       ID: 9
       Probability: 3.3333333
@@ -845,16 +756,3 @@ MonoBehaviour:
       CardImage: {fileID: 21300000, guid: 8b6d43a312ae32245871daf4da2aaeb8, type: 3}
       SkillIcon: {fileID: 21300000, guid: 0b40a759a114311418210830c433e3b1, type: 3}
       Desc: "Summons a minion to help you in subspace.\r"
-    itemAttributes:
-    - attributeName: Atk
-      attributeValue: 40
-    - attributeName: CoolTime
-      attributeValue: 0.5
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0
-    specialPrefabs: []
-    buffDatas: []

@@ -118,16 +118,26 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     }
 
                                     // 미니언 근거리 데이터 range
-                                    for (int rangeCnt = 0; rangeCnt < CSVtest.Instance.MinionDatabaseListCSV.itemList.Count; rangeCnt++)
+                                    if (item.itemType == ItemType.Tower && item.objType == "Minion_T")
                                     {
-                                        if (item.towerData.MinionID == CSVtest.Instance.MinionDatabaseListCSV.itemList[rangeCnt].ID)
+                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 5)
                                         {
-                                            if (CSVtest.Instance.MinionDatabaseListCSV.itemList[rangeCnt].Range == 5 || CSVtest.Instance.MinionDatabaseListCSV.itemList[rangeCnt].Range == 50)
+                                            int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
+                                            if (minionRangeData == 5)
+                                            {
+                                                return;
+                                            }
+                                        }
+                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 50)
+                                        {
+                                            int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
+                                            if (minionRangeData == 50)
                                             {
                                                 return;
                                             }
                                         }
                                     }
+                                    
                                 }
 
                                 // 장비창 슬롯 하위 오브젝트가 있는가 없는가, 없으면 == 0 있으면 1이상
@@ -163,6 +173,8 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                         if (eS.transform.GetChild(1).GetChild(i).childCount == 0)
                                         {
                                             Instantiate(this.gameObject.transform, eS.transform.GetChild(1).GetChild(i));
+                                            // 장착 슬롯 크기 지정
+                                            eS.transform.GetChild(1).GetChild(i).GetChild(0).localScale = new Vector3(0.9166667f, 1.05f, 0f);
                                             //Debug.Log(eS.transform.GetChild(1).GetChild(i).GetChild(0).name);
                                             if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemValue >= 1)
                                             {
@@ -175,6 +187,8 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     eS.gameObject.GetComponent<Inventory>().updateItemList();
                                     inventory.updateItemList();
                                     gearable = true;
+                                    // 카드 현황 업데이트
+                                    EquimentInventory.instance.cardMonitorUpdate();
                                     /*if (duplication != null)
                                         Destroy(duplication.gameObject);*/
                                     break;
@@ -267,119 +281,4 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
 
         } // 큰 if 문 끝.
     }
-
-    /*public void consumeIt()
-    {
-        Inventory inventory = transform.parent.parent.parent.GetComponent<Inventory>();
-
-        bool gearable = false;
-
-        if (GameObject.FindGameObjectWithTag("EquipmentSystem") != null)
-            eS = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInventory>().characterSystem.GetComponent<EquipmentSystem>();
-
-        if (eS != null)
-            itemTypeOfSlot = eS.itemTypeOfSlots;
-
-        Item itemFromDup = null;
-        if (duplication != null)
-            itemFromDup = duplication.GetComponent<ItemOnObject>().item;       
-
-        bool stop = false;
-        if (eS != null)
-        {
-            
-            for (int i = 0; i < eS.slotsInTotal; i++)
-            {
-                if (itemTypeOfSlot[i].Equals(item.itemType))
-                {
-                    if (eS.transform.GetChild(1).GetChild(i).childCount == 0)
-                    {
-                        stop = true;
-                        this.gameObject.transform.SetParent(eS.transform.GetChild(1).GetChild(i));
-                        this.gameObject.GetComponent<RectTransform>().localPosition = Vector3.zero;
-                        eS.gameObject.GetComponent<Inventory>().updateItemList();
-                        inventory.updateItemList();
-                        inventory.EquiptItem(item);
-                        gearable = true;
-                        if (duplication != null)
-                            Destroy(duplication.gameObject);
-                        break;
-                    }
-                }
-            }
-
-            if (!stop)
-            {
-                for (int i = 0; i < eS.slotsInTotal; i++)
-                {
-                    if (itemTypeOfSlot[i].Equals(item.itemType))
-                    {
-                        if (eS.transform.GetChild(1).GetChild(i).childCount != 0)
-                        {
-                            GameObject otherItemFromCharacterSystem = eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject;
-                            Item otherSlotItem = otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item;
-                            if (item.itemType == ItemType.UFPS_Weapon)
-                            {
-                                inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
-                                inventory.EquiptItem(item);
-                            }
-                            else
-                            {
-                                inventory.EquiptItem(item);
-                                if (item.itemType != ItemType.Backpack)
-                                    inventory.UnEquipItem1(otherItemFromCharacterSystem.GetComponent<ItemOnObject>().item);
-                            }
-                            gearable = true;
-                            if (duplication != null)
-                                Destroy(duplication.gameObject);
-                            eS.gameObject.GetComponent<Inventory>().updateItemList();
-                            inventory.OnUpdateItemList();
-                            break;                           
-                        }
-                    }
-                }
-            }
-
-
-        }
-        if (!gearable && item.itemType != ItemType.UFPS_Ammo && item.itemType != ItemType.UFPS_Grenade)
-        {
-
-            if (duplication != null)
-                itemFromDup = duplication.GetComponent<ItemOnObject>().item;
-
-            inventory.ConsumeItem(item);
-
-
-            item.itemValue--;
-            if (itemFromDup != null)
-            {
-                duplication.GetComponent<ItemOnObject>().item.itemValue--;
-                if (itemFromDup.itemValue <= 0)
-                {
-                    if (tooltip != null)
-                        tooltip.deactivateTooltip();
-                    inventory.deleteItemFromInventory(item);
-                    Destroy(duplication.gameObject);
-
-                }
-            }
-            if (item.itemValue <= 0)
-            {
-                if (tooltip != null)
-                    tooltip.deactivateTooltip();
-                inventory.deleteItemFromInventory(item);
-                Destroy(this.gameObject); 
-            }
-
-        }        
-    }*/
-
-    /*public void createDuplication(GameObject Item)
-    {
-        Item item = Item.GetComponent<ItemOnObject>().item;
-        GameObject dup = mainInventory.GetComponent<Inventory>().addItemToInventory(item.itemID, item.itemValue);
-        Item.GetComponent<ConsumeItem>().duplication = dup;
-        dup.GetComponent<ConsumeItem>().duplication = Item;
-    }*/
 }

@@ -10,8 +10,6 @@ using Photon.Pun;
 
 public class Turret_Magic : Turret
 {
-    public GameObject smokeParticles;
-
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -22,14 +20,13 @@ public class Turret_Magic : Turret
             return;
         }
 
-        if (smokeParticles == null)
+        if (effectParticles == null)
         {
             return;
         }
 
-        // 스모크 효과 생성
-        GameObject particle = PhotonNetwork.Instantiate(smokeParticles.name, firePoint.position, Quaternion.identity);
-        particle.transform.Rotate(new Vector3(0, -90f, 0));
+        // 이펙트 파티클 생성
+        InitEffectParticles(firePoint.position);
     }
 
     private void FixedUpdate()
@@ -74,6 +71,13 @@ public class Turret_Magic : Turret
         {
             projectile.speed = projectiles_Speed;
             projectile.enemyTag = enemyTag;
+            projectile.EffectID = towerDB.buffID;
+
+            if (towerDB.buffID != 0)
+            {
+                projectile.EffectID = towerDB.buffID;
+            }
+
             projectile.Seek(attack, target);
         }
     }

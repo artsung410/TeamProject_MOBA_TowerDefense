@@ -107,8 +107,14 @@ public class IceArrow : SkillHandler
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 BuffBlueprint buff = CSVtest.Instance.BuffDic[Data.ID + 100]; // 이동속도 감소
-                BuffManager.Instance.AddBuff(buff);
+
+                if (other.gameObject.layer == 7)
+                {
+                    BuffManager.Instance.AddBuff(buff);
+                }
+
                 SkillDamage(damage, other.gameObject);
+
                 _ability.OnLock(false);
                 PhotonNetwork.Destroy(gameObject);
             }

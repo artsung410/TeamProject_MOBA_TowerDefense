@@ -12,6 +12,12 @@ public class DragonAttack : MonoBehaviourPun
     //             MAIL : woals1566@gmail.com         
     // ###############################################
 
+
+    private void Start()
+    {
+        Debug.Log($"{EnemyTag}");
+    }
+
     private void OnTriggerEnter(Collider other) // 데미지 처리 박스트리거 이용함
     {
 

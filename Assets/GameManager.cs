@@ -161,7 +161,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("플레이어1");
 
-            GameObject tower = myAllData.cardPrefab[0];
+            GameObject tower = myAllData.towerItems[0].towerData.Pf;
             int slotIndex = myAllData.cardIndex[0] - 4;
 
             // towerDB 적용
@@ -183,7 +183,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             Debug.Log("플레이어2");
 
-            GameObject tower = myAllData.cardPrefab[0];
+            GameObject tower = myAllData.towerItems[0].towerData.Pf;
             int slotIndex = myAllData.cardIndex[0] - 4;
 
             // towerDB 적용
@@ -218,7 +218,7 @@ public class GameManager : MonoBehaviourPunCallbacks
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1)
             {
-                GameObject tower = myAllData.cardPrefab[idx];
+                GameObject tower = myAllData.towerItems[idx].towerData.Pf;
                 int slotIndex = myAllData.cardIndex[idx] - 4;
 
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex].position, Quaternion.identity);
@@ -234,7 +234,7 @@ public class GameManager : MonoBehaviourPunCallbacks
             }
             else
             {
-                GameObject tower = myAllData.cardPrefab[idx];
+                GameObject tower = myAllData.towerItems[idx].towerData.Pf;
                 int slotIndex = myAllData.cardIndex[idx] - 4;
 
                 GameObject newTower = PhotonNetwork.Instantiate(tower.name, tiles[slotIndex + 4].position, Quaternion.identity);

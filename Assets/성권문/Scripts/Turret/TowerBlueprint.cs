@@ -20,6 +20,7 @@ public class TowerBlueprint
 {
     [Header("[기본정보]")]
     public string Name;                                      // 타워 이름
+    public string NickName;                                  // 타워 닉네임
     public int ID;                                           // 고유 아이디
     public int GroupID;                                      // 그룹 아이디 
     public int Rank;                                         // 등급
@@ -55,16 +56,15 @@ public class TowerBlueprint
 
     [Header("[부가 옵션]")]
     public GameObject Destroy_Effect_Pf;                     // 타워 파괴 이펙트
-    [TextArea] public string Desc;                                      // 타워 설명
+    [TextArea] public string Desc;                           // 타워 설명
     public Sprite Sprite_TowerCard;                          // 타워카드 이미지
     public Sprite Sprite_TowerProtrait;                      // 타워상태 이미지
     public string AudioClip_Attack_Name;                     // 공격 사운드 이름
     public string AudioClip_Hit_Name;                        // 피격 사운드 이름
-    public string AudioClip_Normal_Name;                     // 공격 사운드 이름
 
     [Header("[버프타워만]")]
     public int buffID;                                       // 버프 타워만 해당.
 
     [Header("[미니언타워만]")]
-    public int MinionID;                                 // 미니언 타워만 해당.
+    public int MinionID;                                     // 미니언 타워만 해당.
 }

@@ -20,4 +20,6 @@ public class PlayerStorage : MonoBehaviour
     public string ace;
     [SerializeField]
     public string bet_id;
+    [SerializeField]
+    public string win_amount;
 }

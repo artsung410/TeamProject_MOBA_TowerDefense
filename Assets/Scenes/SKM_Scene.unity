@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.37311953, g: 0.38074014, b: 0.3587274, a: 1}
+  m_IndirectSpecularColor: {r: 0.3731193, g: 0.38073996, b: 0.35872698, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -185,6 +185,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -202,14 +203,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -437,7 +438,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Reprot
+  m_text: Report
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -687,14 +688,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -734,6 +735,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -2665,6 +2667,7 @@ GameObject:
   - component: {fileID: 503175617}
   - component: {fileID: 503175619}
   - component: {fileID: 503175618}
+  - component: {fileID: 503175620}
   m_Layer: 5
   m_Name: Dappx - Text
   m_TagString: Untagged
@@ -2734,6 +2737,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 503175616}
   m_CullTransparentMesh: 1
+--- !u!114 &503175620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 503175616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ace4b96da869d24448a0c8f3992b0aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &544088655
 GameObject:
   m_ObjectHideFlags: 0
@@ -3465,8 +3480,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 1
     itemType: 0
     itemWeight: 0
@@ -3476,6 +3490,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -3505,7 +3520,6 @@ MonoBehaviour:
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
       buffID: 0
       MinionID: 0
     skillData:
@@ -3534,9 +3548,6 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
   tooltip: {fileID: 325668187}
 --- !u!1 &693080978
 GameObject:
@@ -3928,6 +3939,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -3945,14 +3957,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4477,14 +4489,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4524,6 +4536,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6107,7 +6120,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1238236486
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6746,14 +6759,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6793,6 +6806,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6850,14 +6864,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6897,6 +6911,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6963,6 +6978,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -6980,14 +6996,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7058,14 +7074,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -7105,6 +7121,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -7479,8 +7496,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 1
     itemType: 0
     itemWeight: 0
@@ -7490,6 +7506,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -7519,7 +7536,6 @@ MonoBehaviour:
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
       buffID: 0
       MinionID: 0
     skillData:
@@ -7548,9 +7564,6 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
   tooltip: {fileID: 325668187}
 --- !u!1 &1599857474
 GameObject:
@@ -7637,8 +7650,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 30
-  m_fontSizeBase: 30
+  m_fontSize: 20
+  m_fontSizeBase: 20
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -7867,6 +7880,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   buffDB: {fileID: 11400000, guid: 983d0727b2489a24f92e2f2be10caf30, type: 2}
   currentBuffDatas: []
+  currentBuffIds: 
 --- !u!114 &1639609453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9197,14 +9211,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -9244,6 +9258,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -9978,8 +9993,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 1
     itemType: 0
     itemWeight: 0
@@ -9989,6 +10003,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -10018,7 +10033,6 @@ MonoBehaviour:
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
       buffID: 0
       MinionID: 0
     skillData:
@@ -10047,9 +10061,6 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
   tooltip: {fileID: 325668187}
 --- !u!1 &1881721516
 GameObject:
@@ -10539,7 +10550,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -90, y: -500}
+  m_AnchoredPosition: {x: -90, y: -525.8}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1942821885
@@ -10894,14 +10905,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 4be5450a84506d641a80860b6681e3cf, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -10941,6 +10952,7 @@ MonoBehaviour:
     Target: 0
     Value: 0
     Duration: 0
+    Desc: 
   tooltip: {fileID: 325668187}
   coolTime: 0
   elapsedTime: 0
@@ -11275,8 +11287,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 1
     itemType: 0
     itemWeight: 0
@@ -11286,6 +11297,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -11315,7 +11327,6 @@ MonoBehaviour:
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
       buffID: 0
       MinionID: 0
     skillData:
@@ -11344,9 +11355,6 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
   tooltip: {fileID: 325668187}
 --- !u!1 &2109399003
 GameObject:
@@ -12237,7 +12245,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.103773594, g: 0.103773594, b: 0.103773594, a: 0.627451}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14317,8 +14325,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 1
     itemType: 0
     itemWeight: 0
@@ -14328,6 +14335,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -14357,7 +14365,6 @@ MonoBehaviour:
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
       buffID: 0
       MinionID: 0
     skillData:
@@ -14386,9 +14393,6 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
 --- !u!1 &6557847400378522681
 GameObject:
   m_ObjectHideFlags: 0
@@ -14446,8 +14450,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 1
     itemType: 0
     itemWeight: 0
@@ -14457,6 +14460,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -14486,7 +14490,6 @@ MonoBehaviour:
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
       buffID: 0
       MinionID: 0
     skillData:
@@ -14515,9 +14518,6 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
 --- !u!224 &7993770671253027231
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14556,8 +14556,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 1
     itemType: 0
     itemWeight: 0
@@ -14567,6 +14566,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -14596,7 +14596,6 @@ MonoBehaviour:
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
       buffID: 0
       MinionID: 0
     skillData:
@@ -14625,9 +14624,6 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
 --- !u!1 &8168867234493445345
 GameObject:
   m_ObjectHideFlags: 0
@@ -15444,8 +15440,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 1
     itemType: 0
     itemWeight: 0
@@ -15455,6 +15450,7 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
       GroupID: 0
       Rank: 0
@@ -15484,7 +15480,6 @@ MonoBehaviour:
       Sprite_TowerProtrait: {fileID: 0}
       AudioClip_Attack_Name: 
       AudioClip_Hit_Name: 
-      AudioClip_Normal_Name: 
       buffID: 0
       MinionID: 0
     skillData:
@@ -15513,6 +15508,3 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []

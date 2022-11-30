@@ -52,6 +52,7 @@ public class FireProjectile : Projectiles
             MagicExplosion magicExplosion = newFire.GetComponent<MagicExplosion>();
             magicExplosion.damage = damage;
             magicExplosion.enemyTag = enemyTag;
+            magicExplosion.EffectID = EffectID;
             PhotonNetwork.Destroy(gameObject);
             return;
         }
