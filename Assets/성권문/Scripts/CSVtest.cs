@@ -88,6 +88,8 @@ public class CSVtest : MonoBehaviour
         StartCoroutine(GetDescData(descURL));
     }
 
+
+
     #region DescParsing
 
     private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D57";

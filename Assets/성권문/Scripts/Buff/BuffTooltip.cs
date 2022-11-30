@@ -13,11 +13,36 @@ public class BuffTooltip : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI skillColltimeText;
 
-    public void SetupTooltip(string name, string des)
+    public void SetupBuffTooltip(string className, BuffBlueprint buff)
     {
-        nameText.text = name;
-        descriptionText.text = des;
+        nameText.text = buff.Name;
+        skillColltimeText.enabled = false;
+        string valueText = buff.Value.ToString();
+        string buffDescText = buff.Desc;
+
+        if (buff.Type == (int)Buff_Effect_Type.Buff)
+        {
+            string desc = buffDescText + $"<color=#228B22> +{valueText} </color>";
+            //descriptionText.text = buff.Desc + "<color=#228B22>" + "+" + valueText + "</color>";
+            descriptionText.text = desc.Replace("\r", "");
+        }
+        else
+        {
+            //descriptionText.text = buff.Desc + "<color=#DC143C>" + valueText + "</color>";
+            descriptionText.text = $"{buffDescText} <color=#DC143C> +{valueText} </color>";
+        }
+    }
+
+    public void SetupSkillTooltip(string className, Item item)
+    {
+        nameText.text = item.skillData.Name.name;
+        descriptionText.text = item.skillData.Desc;
+        skillColltimeText.enabled = true;
+        string valueText = item.skillData.CoolTime.ToString();
+        skillColltimeText.text = "( " + valueText + " Sec )";
+        skillColltimeText.color = Color.magenta;
     }
 
     float halfwidth;
