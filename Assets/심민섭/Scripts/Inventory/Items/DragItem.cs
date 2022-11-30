@@ -117,30 +117,38 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         }
         // -------------------------------------------------------
 
-        // 아이템이 슬롯에 있는 지 확인
-        int skill_stack = 0;
-        for (int i = 1; i < 4; i++)
-        {
-            if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
-            {
-                skill_stack++;
-            }
-        }
-        int tower_stack = 0;
-        for (int i = 4; i < 8; i++)
-        {
-            if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
-            {
-                tower_stack++;
-            }
-        }
-
         if (data.button == PointerEventData.InputButton.Left)
         {
             canvasGroup.blocksRaycasts = true;
             Transform newSlot = null;
             if (data.pointerEnter != null)
                 newSlot = data.pointerEnter.transform;
+
+            Debug.Log(newSlot.transform.parent.gameObject.tag);
+            Debug.Log(newSlot.transform.parent.parent.gameObject.tag);
+            //if (newSlot.transform.parent.gameObject.tag == "EquipmentSystem")
+
+            int skill_stack = 0;
+            int tower_stack = 0;
+            // 아이템이 슬롯에 있는 지 확인
+            if (newSlot.transform.parent.parent.gameObject.tag == "EquipmentSystem")
+            {
+                for (int i = 1; i < 4; i++)
+                {
+                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                    {
+                        skill_stack++;
+                    }
+                }
+                for (int i = 4; i < 8; i++)
+                {
+                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                    {
+                        tower_stack++;
+                    }
+                }
+            }
+            
 
             if (newSlot != null)
             {

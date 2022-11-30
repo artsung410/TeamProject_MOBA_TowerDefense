@@ -56,13 +56,11 @@ public class ShowTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             tooltip.deactivateTooltip();
         }
+        Debug.Log(this.gameObject.transform.parent.parent.parent.parent.parent.parent.gameObject.name);
 
-        if (GameObject.FindGameObjectWithTag("Canvas").transform.GetChild(3).GetChild(2).GetChild(0).gameObject.activeSelf == true)
+        if (this.gameObject.transform.parent.parent.parent.parent.parent.parent.gameObject.name == "OtherTab")
         {
-            if (this.gameObject.transform.parent.parent.parent.parent.parent.parent.gameObject.name == "OtherTab")
-            {
-                tooltip.deactivateTooltip();
-            }
+            tooltip.deactivateTooltip();
         }
     }
 

@@ -509,7 +509,7 @@ public class InventoryGetData : MonoBehaviour
                 }
                 else if (cardPack[i].Contains("Attack"))
                 {
-                    itemProduce.item.itemName = "Atack Tower";
+                    itemProduce.item.itemName = "Attack Tower";
                     itemProduce.item.itemIcon = attack_N;
                 }
                 else if (cardPack[i].Contains("Minion"))
