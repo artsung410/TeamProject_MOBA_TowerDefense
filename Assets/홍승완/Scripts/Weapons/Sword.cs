@@ -17,11 +17,6 @@ public class Sword : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == null)
-        {
-            return;
-        }
-
         if (other.tag == _playerScript.EnemyTag || other.gameObject.layer == 17)
         {
             if (_playerScript != null)

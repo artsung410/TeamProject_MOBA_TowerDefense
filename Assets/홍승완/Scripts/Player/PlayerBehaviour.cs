@@ -485,7 +485,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 타워 보간
         else if (targetedEnemy.layer == 6)
         {
-            interpolationRange = 1f;
+            interpolationRange = 0.5f;
         }
         // 넥서스 보간
         else if (targetedEnemy.layer == 12)
