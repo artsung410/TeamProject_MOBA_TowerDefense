@@ -8,41 +8,58 @@ using TMPro;
     //             NAME : ARTSUNG                      
     //             MAIL : artsung410@gmail.com         
     // ###############################################
-
+    
 public class BuffTooltip : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
-    public TextMeshProUGUI skillColltimeText;
+    public TextMeshProUGUI serveText;
+    public Image itemImage;
 
-    public void SetupBuffTooltip(string className, BuffBlueprint buff)
+    // 버프 툴팁 적용
+    public void SetupBuffTooltip(BuffBlueprint buff)
     {
-        nameText.text = buff.Name;
-        skillColltimeText.enabled = false;
+        itemImage.sprite = buff.Icon;
         string valueText = buff.Value.ToString();
         string buffDescText = buff.Desc;
 
         if (buff.Type == (int)Buff_Effect_Type.Buff)
         {
-            string desc = buffDescText + $"<color=#228B22> +{valueText} </color>";
-            //descriptionText.text = buff.Desc + "<color=#228B22>" + "+" + valueText + "</color>";
-            descriptionText.text = desc.Replace("\r", "");
+            nameText.text = $"<color=#00FF00>{buff.ToolTipName}</color>";                      
+            string desc = buffDescText + $"<color=#00FF00> +{valueText}</color>";       
+            descriptionText.text = desc.Replace("\r", "");                             
+            serveText.text = "Type : Buff";                                           
         }
         else
         {
-            //descriptionText.text = buff.Desc + "<color=#DC143C>" + valueText + "</color>";
-            descriptionText.text = $"{buffDescText} <color=#DC143C> +{valueText} </color>";
+            nameText.text = $"<color=#DC143C>{buff.ToolTipName}</color>";
+            string desc = buffDescText + $"<color=#DC143C> {valueText}</color>";
+            descriptionText.text = desc.Replace("\r", "");
+            serveText.text = "Type : Debuff";
         }
     }
 
-    public void SetupSkillTooltip(string className, Item item)
+
+    // 스킬 툴팁 적용
+    public void SetupSkillTooltip(string keyName, Item item)
     {
-        nameText.text = item.skillData.Name.name;
+        // ex. [Q] 마구휘두루기
+        string tempNameText = $"<color=#FFD700>[{keyName}] {item.skillData.Name.name}</color>";
+
+        // ex. Rank : 1        CoolTime : 7sec
+        string tempServeText = $"Rank : {item.skillData.Rank}    /    CoolTime : {item.skillData.CoolTime}";
+
+        // 툴팁 제목 적용
+        nameText.text = tempNameText.Replace("\r", "");
+
+        // 툴팁 부제목 적용
+        serveText.text = tempServeText.Replace("\r", "");
+
+        // 툴팁 아이콘 적용
+        itemImage.sprite = item.skillData.SkillIcon;
+
+        // 툴팁 설명 적용
         descriptionText.text = item.skillData.Desc;
-        skillColltimeText.enabled = true;
-        string valueText = item.skillData.CoolTime.ToString();
-        skillColltimeText.text = "( " + valueText + " Sec )";
-        skillColltimeText.color = Color.magenta;
     }
 
     float halfwidth;

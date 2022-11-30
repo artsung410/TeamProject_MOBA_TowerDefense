@@ -17,7 +17,7 @@ public class SkillButton : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         if (item != null)
         {
             tooltip.gameObject.SetActive(true);
-            tooltip.SetupSkillTooltip(GetType().Name, item);
+            tooltip.SetupSkillTooltip(name, item);
             Debug.Log(GetType().Name);
         }
     }

@@ -22,7 +22,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             tooltip.gameObject.SetActive(true);
             //TODO: 버프 스크립트 적용하기.
-            tooltip.SetupBuffTooltip(GetType().Name, buff);
+            tooltip.SetupBuffTooltip(buff);
             Debug.Log(GetType().Name);
         }
     }

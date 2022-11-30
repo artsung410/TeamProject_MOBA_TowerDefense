@@ -261,7 +261,7 @@ public class CSVtest : MonoBehaviour
 
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:J83";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:K83";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
@@ -298,6 +298,7 @@ public class CSVtest : MonoBehaviour
             buffDatabaseListCSV.itemList[i].Value = float.Parse(col[7]);
             buffDatabaseListCSV.itemList[i].Duration = float.Parse(col[8]);
             buffDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[9])][(int)DescColData.Text_En];
+            buffDatabaseListCSV.itemList[i].ToolTipName = col[10];
 
             BuffDic.Add(buffDatabaseListCSV.itemList[i].ID, buffDatabaseListCSV.itemList[i]);
         }
