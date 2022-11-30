@@ -12,7 +12,6 @@ public class Turret_Magic : Turret
 {
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
 
         if (!photonView.IsMine)

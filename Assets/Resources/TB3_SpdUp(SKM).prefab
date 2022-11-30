@@ -798,9 +798,8 @@ MonoBehaviour:
     Desc: 30024
     Sprite_TowerCard: {fileID: 21300000, guid: e87d5e740d7179b4c9bd5fc253db292f, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 13ede32564cdcec4abc359b22fdf6203, type: 3}
-    AudioClip_Attack_Name: 0
-    AudioClip_Hit_Name: 0
-    AudioClip_Normal_Name: "Nomal_ES_Buff_Tower\r"
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 15015
     MinionID: 0
   healthbarImages:
@@ -810,13 +809,14 @@ MonoBehaviour:
   healthbarImage: {fileID: 2195280568747848853}
   hitbarImage: {fileID: 7674827057100093445}
   ui: {fileID: 4805285473087307581}
+  effectParticles: {fileID: 5659616593345616069, guid: e80717a12ad41eb4781c76363509ca31, type: 3}
   maxHealth: 0
   currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 4932657431593035322}
   partToRotate: {fileID: 4935573545647232470}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 8403333243244771268}
   DangerZonePF: {fileID: 0}
 --- !u!114 &4935817440053496767
 MonoBehaviour:

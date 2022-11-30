@@ -25,9 +25,7 @@ public class Turret_Laser : Turret
             return;
         }
 
-        // 스모크 효과 생성
-        GameObject particle = PhotonNetwork.Instantiate(smokeParticles.name, firePoint.position, Quaternion.identity);
-        particle.transform.Rotate(new Vector3(0, -90f, 0));
+        InitEffectParticles(firePoint.position);
     }
 
     float elapsedTime = 0f;

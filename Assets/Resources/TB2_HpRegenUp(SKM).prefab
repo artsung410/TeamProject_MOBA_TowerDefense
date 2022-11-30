@@ -466,9 +466,8 @@ MonoBehaviour:
     Desc: 
     Sprite_TowerCard: {fileID: 0}
     Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
     MinionID: 0
   healthbarImages:
@@ -478,13 +477,14 @@ MonoBehaviour:
   healthbarImage: {fileID: 5459896921667559}
   hitbarImage: {fileID: 8423463305134160759}
   ui: {fileID: 6686609703515487311}
+  effectParticles: {fileID: 1044782274538101236, guid: d02bf454aebfef54e89ace6ee5c3973b, type: 3}
   maxHealth: 0
   currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 0}
   partToRotate: {fileID: 5648041624424226095}
-  firePoint: {fileID: 0}
+  firePoint: {fileID: 5648041624424226095}
   DangerZonePF: {fileID: 0}
 --- !u!114 &2683629979521095614
 MonoBehaviour:
