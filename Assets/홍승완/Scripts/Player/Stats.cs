@@ -166,47 +166,45 @@ public class Stats : GoogleSheetManager
 
     public void PlayerLevelUpFactory(GameObject expBag, float exp)
     {
-        if (expBag == null)
+        if ((object)expBag != null)
         {
-            return;
-        }
-
-        // expBag와 나의 tag가 같으면 같은팀이니까 return한다
-        if (expBag.tag == gameObject.tag)
-        {
-            return;
-        }
-
-        // expBag과 나와의 거리를 계산한다
-        float dist = Vector3.Distance(expBag.transform.position, this.transform.position);
-
-        // TODO : 상대방 죽음 이벤트에 넣어둠 추후 개선 사항
-        _playerScript.targetedEnemy = null;
-        Debug.Log($"현재 타겟은? : {_playerScript.targetedEnemy}");
-
-        // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
-        if (dist <= ExpDetectRange)
-        {
-            Exp += exp;
-            // 경험치가 최대 경험치보다 높으면 레벨업을 한다
-            while (Exp >= maxExp)
+            // expBag와 나의 tag가 같으면 같은팀이니까 return한다
+            if (expBag.tag == gameObject.tag)
             {
-                // 10레벨 달성시 레벨업하지않고 경험치바는 차되 최대치 이상으론 차지 않는다
-                if (CharactorLevelData.ContainsKey(Level + 1) == false)
+                return;
+            }
+
+            // expBag과 나와의 거리를 계산한다
+            float dist = Vector3.Distance(expBag.transform.position, this.transform.position);
+
+            // TODO : 상대방 죽음 이벤트에 넣어둠 추후 개선 사항
+            _playerScript.targetedEnemy = null;
+            Debug.Log($"현재 타겟은? : {_playerScript.targetedEnemy}");
+
+            // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
+            if (dist <= ExpDetectRange)
+            {
+                Exp += exp;
+                // 경험치가 최대 경험치보다 높으면 레벨업을 한다
+                while (Exp >= maxExp)
                 {
-                    Exp = Mathf.Clamp(Exp, minExp, maxExp);
-                    return;
+                    // 10레벨 달성시 레벨업하지않고 경험치바는 차되 최대치 이상으론 차지 않는다
+                    if (CharactorLevelData.ContainsKey(Level + 1) == false)
+                    {
+                        Exp = Mathf.Clamp(Exp, minExp, maxExp);
+                        return;
+                    }
+
+                    Level++;
+
+                    // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
+                    GameManager.Instance.UnlockTower(gameObject.tag, Level);
+                    SetStats(Level);
+                    photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, MaxHealth);
+
+                    // Exp에서 maxExp만큼 뺀다 레벨업을 했으니까
+                    Exp = Mathf.Max(Exp - maxExp, 0);
                 }
-
-                Level++;
-
-                // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
-                GameManager.Instance.UnlockTower(gameObject.tag, Level);
-                SetStats(Level);
-                photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, MaxHealth);
-
-                // Exp에서 maxExp만큼 뺀다 레벨업을 했으니까
-                Exp = Mathf.Max(Exp - maxExp, 0);
             }
         }
 

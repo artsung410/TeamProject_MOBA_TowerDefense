@@ -44,10 +44,16 @@ public enum DescColData
 
 public class CSVtest : MonoBehaviour
 {
-    bool isDone = false;
+    #region DescParsing
+
+    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D44";
+
+    // Ű����� ID, List���� Name KoTooltip, EnTooltip�� ����
+    Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
+    List<List<string>> descList = new List<List<string>>();
+
 
     private static CSVtest _instance;
-
 
     public static CSVtest Instance
     {
@@ -361,6 +367,7 @@ public class CSVtest : MonoBehaviour
             MinionDatabaseListCSV.itemList[i].Exp = float.Parse(col[16]);
             MinionDatabaseListCSV.itemList[i].Icon_Blue = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[3] + "_Blue");
             MinionDatabaseListCSV.itemList[i].Icon_Red = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[3] + "_Red");
+
             MinionDic.Add(MinionDatabaseListCSV.itemList[i].ID, MinionDatabaseListCSV.itemList[i]);
         }
     }
