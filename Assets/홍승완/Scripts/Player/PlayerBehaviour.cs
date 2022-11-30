@@ -33,7 +33,6 @@ public class PlayerBehaviour : MonoBehaviourPun
     public bool perfomMeleeAttack = false;
     public bool perfomRangeAttack = false;
     public string EnemyTag;
-    public bool IsAttack;
     public bool isStun; // 스턴상태시 -> true
     public float StunTime;
     
@@ -333,9 +332,18 @@ public class PlayerBehaviour : MonoBehaviourPun
             }
 
         }
+        else
+        {
+            if (_statScript.AttackType == HeroType.Warrior)
+            {
+                perfomMeleeAttack = false;
+            }
+            else if (_statScript.AttackType == HeroType.Wizard)
+            {
+                perfomRangeAttack = false;
+            }
+        }
     }
-
-    // TODO : 공격 타입에 따른 공격방식 개선
 
     private void GetTargetedObject()
     {
@@ -370,13 +378,12 @@ public class PlayerBehaviour : MonoBehaviourPun
             // 커서를 일반 커서로 바꾼다.
             Cursor.SetCursor(cursorMoveNamal, hotSpot, cursorMode);
             // A키가 눌리고 왼쪽 클릭이 되었다면 실행
+
             
             inputA = false;
             // 누른 위치로 이동한다
             if (Physics.Raycast(Cam.ScreenPointToRay(Input.mousePosition), out Hit, Mathf.Infinity))
             {
-                MoveOntheGround(Hit);
-
                 if (isAKey)
                 {
                     moveMouseObj1.gameObject.SetActive(false);
@@ -385,9 +392,18 @@ public class PlayerBehaviour : MonoBehaviourPun
                     StartCoroutine(moveMousePointer.MoveMouseCursorPoint());
                     isAKey = false;
                 }
+
+                if (targetedEnemy != null)
+                {
+                    return;
+                }
+
+                MoveOntheGround(Hit);
+                GetTargetedObject();
+
             }
             // SMS End ---------------------------------------------------//
-
+            
             InvokeRepeating(nameof(AutoSearchTarget), 0, 0.5f);
         }
     }

@@ -1979,6 +1979,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerScript: {fileID: 250421915684997273}
   _playerHP: {fileID: 2411907287711231227}
+  Animation: {fileID: 7525234218252226827}
 --- !u!54 &9144677756653274395
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3042,7 +3043,6 @@ MonoBehaviour:
   perfomMeleeAttack: 0
   perfomRangeAttack: 0
   EnemyTag: 
-  IsAttack: 0
   isStun: 0
   StunTime: 0
   enemyCol: {fileID: 0}
@@ -3631,6 +3631,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 2
     Name: JumpAttack
+  - Type: 4
+    SynchronizeType: 0
+    Name: isStun
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -3701,6 +3704,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 8288105577297847703}
   Chractor: {fileID: 7001467603103953037}
+  IsAttack: 0
 --- !u!114 &8808698123132653585
 MonoBehaviour:
   m_ObjectHideFlags: 0
