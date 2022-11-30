@@ -268,9 +268,8 @@ MonoBehaviour:
     Desc: 
     Sprite_TowerCard: {fileID: 0}
     Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
     MinionID: 0
   healthbarImages:
@@ -280,13 +279,14 @@ MonoBehaviour:
   healthbarImage: {fileID: 6763650667493500468}
   hitbarImage: {fileID: 2965641185974102692}
   ui: {fileID: 73651697690766748}
+  effectParticles: {fileID: 7379403800425520796, guid: d4014def249e6254c9cf12422d5270e8, type: 3}
   maxHealth: 0
   currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 1018429317617624115}
   partToRotate: {fileID: 1860436717250118051}
-  firePoint: {fileID: 1860436717250118051}
+  firePoint: {fileID: 3934667427145118916}
   DangerZonePF: {fileID: 0}
 --- !u!114 &7700773853899705430
 MonoBehaviour:
@@ -365,6 +365,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1892187094370971551}
     m_Modifications:
+    - target: {fileID: 3204027714071452281, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4367624973842323870, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
