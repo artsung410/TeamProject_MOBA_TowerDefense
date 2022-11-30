@@ -189,9 +189,31 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         }
 
 
-            Timer();
-            Debug.Log($"시간 : {timerTMPro.text}");
-        
+        if (PhotonNetwork.IsMasterClient)
+        {
+            // 시간 계산 하는부분
+            if (GameManager.Instance.winner == "Draw") // 2
+            {
+                if ((int)sec >= 60)
+                {
+                    sec = 0;
+                    min++;
+                }
+                sec += Time.deltaTime;
+            }
+            else
+            {
+                if ((int)sec < 0) // 1 
+                {
+                    sec = 60;
+                    min--;
+                }
+                sec -= Time.deltaTime;
+
+            }
+        }
+        // 시간을 이용한 구현부분
+        Timer(min, sec);
     }
 
     void Update()
@@ -214,7 +236,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 ChatingUi = false;
             }
 
-
         }
     }
 
@@ -232,7 +253,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             skillTable.transform.GetChild(slotIndex).GetChild(0).gameObject.SetActive(true);
             skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Skillicon>().item = item;
             skillTable.transform.GetChild(slotIndex).GetComponent<SkillButton>().item = item;
-            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Image>().sprite = item.itemIcon;
+            skillTable.transform.GetChild(slotIndex).GetChild(0).GetComponent<Image>().sprite = SkillManager.Instance.Datas[i].SkillIcon;
         }
     }
 
@@ -241,8 +262,10 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
     #region 🕦 Timer & Scroe Panel 🕦
 
-    void Timer()
+    void Timer(int min, float sec)
     {
+        timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+
         if (NeutalMonsterDie)
         {
             Debug.Log("시작");
@@ -253,27 +276,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             return;
         }
 
-        if ((int)sec < 0) // 1 
-        {
-            sec = 60;
-            min--;
-        }
-        else if (GameManager.Instance.winner == "Draw") // 2
-        {
-            if ((int)sec >= 60)
-            {
-                sec = 0;
-                min++;
-            }
-            sec += Time.deltaTime;
-            timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-            return;
-        }
-
-        sec -= Time.deltaTime;
-        timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-        //photonView.RPC(nameof(RPC_timer), RpcTarget.All);
-
         if (min < 0) // 3
         {
             string gameWinMessage = "";
@@ -281,6 +283,8 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             if (playerScores[(int)PlayerColor.Blue] == playerScores[(int)PlayerColor.Red])
             {
                 GameManager.Instance.winner = "Draw";
+                StartCoroutine(resultImigePopup);
+                return;
             }
             else if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
             {
@@ -299,30 +303,75 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             //photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
             min = 0;
             sec = 0;
-            timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+            //timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
 
             onGameEnd.Invoke();
 
-            // 승패 이미지 호출
+            //승패 이미지 호출
             StartCoroutine(resultImigePopup);
-            
-            //StartCoroutine(DelayLeaveRoom());
-            return;
+            StartCoroutine(DelayLeaveRoom());
         }
     }
 
-    // IPunObservable 인터페이스를 구현해야한다.
+    //public void test(int min, float sec)
+    //{
+    //    Debug.Log($"min : {min}\n" +
+    //        $"sec : {sec}");
+
+    //    if (min < 0) // 3
+    //    {
+    //        string gameWinMessage = "";
+
+    //        if (playerScores[(int)PlayerColor.Blue] == playerScores[(int)PlayerColor.Red])
+    //        {
+    //            GameManager.Instance.winner = "Draw";
+    //        }
+    //        else if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
+    //        {
+    //            GameManager.Instance.winner = "Blue";
+    //            gameWinMessage = GameManager.Instance.winner;
+    //            GameManager.Instance.isGameEnd = true;
+    //        }
+    //        else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
+    //        {
+    //            GameManager.Instance.winner = "Red";
+    //            gameWinMessage = GameManager.Instance.winner;
+    //            GameManager.Instance.isGameEnd = true;
+    //        }
+    //        photonView.RPC(nameof(RPCInitScore), RpcTarget.All);
+
+    //        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
+    //        min = 0;
+    //        sec = 0;
+    //        timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
+
+    //        onGameEnd.Invoke();
+
+    //         승패 이미지 호출
+    //        StartCoroutine(resultImigePopup);
+
+    //        StartCoroutine(DelayLeaveRoom());
+    //        return;
+    //    }
+    //}
+
+    // 시간만 동기화 해줬다
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting && PhotonNetwork.IsMasterClient)
         {
             // We own this player: send the others our data
-            stream.SendNext(timerTMPro.text);
+            //stream.SendNext(timerTMPro.text);
+            stream.SendNext(sec);
+            stream.SendNext(min);
         }
         else if(stream.IsReading)
         {
             // Network player, receive data
-            this.timerTMPro.text = (string)stream.ReceiveNext();
+            //this.timerTMPro.text = (string)stream.ReceiveNext();
+            this.sec = (float)stream.ReceiveNext();
+            this.min = (int)stream.ReceiveNext();
+            
         }
     }
 
@@ -471,8 +520,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         Image gameWinPanel = GameWinPanel.GetComponent<Image>();
         while (fadeValue <= 1.0f)
         {
-            fadeValue += 0.5f;
-
+            fadeValue += 0.01f;
 
             yield return new WaitForSeconds(0.01f);
 
