@@ -38,6 +38,10 @@ public class Stats : GoogleSheetManager
     public float attackSpeed = 1;
     public float attackRange = 1;
 
+    public float buffDmg = 0f;
+    public float buffMoveSpeed = 0f;
+    public float buffAtkSpeed = 0f;
+
     [Header("공격 방식")]
     public HeroType AttackType;
 
@@ -73,7 +77,7 @@ public class Stats : GoogleSheetManager
         {
             StartCoroutine(GetLevelData(warriorURL));
         }
-        else if(AttackType == HeroType.Wizard)
+        else if (AttackType == HeroType.Wizard)
         {
             StartCoroutine(GetLevelData(magicionURL));
         }
@@ -153,11 +157,11 @@ public class Stats : GoogleSheetManager
     {
         MaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
 
-        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
+        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]) + buffDmg;
         attackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
-        attackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
+        attackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]) + buffAtkSpeed;
 
-        MoveSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Move_Speed]);
+        MoveSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Move_Speed]) + buffMoveSpeed;
 
         maxExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Max_Exp]);
         charID = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Character_ID]);
@@ -208,19 +212,6 @@ public class Stats : GoogleSheetManager
         }
 
     }
-
-    private void Update()
-    {
-        if (gameObject.tag == "Blue")
-        {
-            GameManager.Instance.PlayerLevel1 = Level;
-        }
-        else
-        {
-            GameManager.Instance.PlayerLevel2 = Level;
-        }
-    }
-
 
     private void OnDrawGizmos()
     {

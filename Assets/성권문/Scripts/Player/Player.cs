@@ -13,13 +13,19 @@ using UnityEngine.UI;
 public class Player : MonoBehaviourPun
 {
     public static event Action<Player> PlayerMouseDownEvent = delegate { };
+    public static event Action<float, bool> PlayerBuffValueApplyEvent = delegate { };
+
     public Stats playerStats;
     public Health playerHealth;
     public Sprite playerIcon;
     public PlayerBehaviour playerBehaviour;
 
     private float defaultRecoveryValue = 1.5f;
+    private float addAtkValue = 0f;
     private float addRecoveryValue = 0f;
+    private float addMoveSpdValue = 0f;
+    private float addAtkSpdValue = 0f;
+
     private float prevMoveSpeed;
 
     private void Awake()
@@ -62,11 +68,8 @@ public class Player : MonoBehaviourPun
     {
         if (!photonView.IsMine)
         {
-            Debug.Log(gameObject.tag + "³»²¨ ¾Æ´Ô");
             return;
         }
-
-        Debug.Log(gameObject.tag + "³»²¨ ¸Ü¿ò");
 
         if (id <= 10000)
         {
@@ -103,11 +106,11 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerStats.attackDmg += addValue;
+                playerStats.buffDmg += addValue;
             }
             else
             {
-                playerStats.attackDmg -= addValue;
+                playerStats.buffDmg = 0f;
             }
         }
 
@@ -119,7 +122,7 @@ public class Player : MonoBehaviourPun
             }
             else
             {
-                addRecoveryValue -= addValue;
+                addRecoveryValue = 0f;
             }
         }
 
@@ -127,11 +130,16 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerStats.MoveSpeed *= (1 + addValue); // ¹öÇÁÀû¿ë
+                float temp = playerStats.MoveSpeed;
+                temp *= (addValue);
+                Debug.Log($"addValue : {addValue} temp : { temp }");
+                playerStats.buffMoveSpeed += temp;
+                Debug.Log($"playerStats.buffMoveSpeed : {playerStats.buffMoveSpeed}");
+
             }
             else
             {
-                playerStats.MoveSpeed /= (1 + addValue);  // ¿ø»óº¹±¸
+                playerStats.buffMoveSpeed = 0f;
             }
         }
 
@@ -139,11 +147,13 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerStats.attackSpeed *= addValue;
+                float temp = playerStats.attackSpeed;
+                temp *= (addValue);
+                playerStats.buffAtkSpeed += temp;
             }
             else
             {
-                playerStats.attackSpeed /= addValue;
+                playerStats.buffAtkSpeed = 0f;
             }
         }
 
@@ -158,6 +168,8 @@ public class Player : MonoBehaviourPun
                 playerBehaviour.OnStun(state, 0f);
             }
         }
+
+        playerStats.SetPlayerStats();
 
     }
 }
