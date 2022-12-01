@@ -648,22 +648,22 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     private void UpdateStatusUI()
     {
         // 경험치
-        playerExperienceBarTMpro.text = $"{playerStat.Exp} / {playerStat.maxExp}";
+        playerExperienceBarTMpro.text = $"{playerStat.acquiredExp} / {playerStat.maxExp}";
 
         // 경험치 바
-        playerExperienceBar.fillAmount = playerStat.Exp / playerStat.maxExp;
+        playerExperienceBar.fillAmount = playerStat.acquiredExp / playerStat.maxExp;
 
         // DPS
         PlayerDpsText.text = $"{playerStat.attackDmg / playerStat.attackSpeed}";
 
         // 이동속도
-        PlayerSpeedText.text = $"{playerStat.MoveSpeed}";
+        PlayerSpeedText.text = $"{playerStat.moveSpeed}";
 
         // 초상화
         PlayerPortrait.sprite = playerScript.playerIcon;
 
         // 레벨
-        PlayerLevelText.text = $"{playerStat.Level}";
+        PlayerLevelText.text = $"{playerStat.level}";
     }
 
     #endregion
@@ -697,7 +697,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
             float dmg = currentPlayerforInfo.playerStats.attackDmg;
             float atkSpeed = currentPlayerforInfo.playerStats.attackSpeed;
-            float moveSpeed = currentPlayerforInfo.playerStats.MoveSpeed;
+            float moveSpeed = currentPlayerforInfo.playerStats.moveSpeed;
             float dps = dmg * atkSpeed;
 
             InfoDpsTMpro.text = dps.ToString();
@@ -764,7 +764,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         InfoPanel.SetActive(true);
 
         InfoIcon.sprite = player.playerIcon;
-        InfoLevel.text = player.playerStats.Level.ToString();
+        InfoLevel.text = player.playerStats.level.ToString();
     }
 
     public void ActivationTowerInfoUI(Turret turret)

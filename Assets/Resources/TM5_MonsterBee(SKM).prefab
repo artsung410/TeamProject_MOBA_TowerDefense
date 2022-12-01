@@ -83,6 +83,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDB:
     Name: 
+    NickName: 
     ID: 0
     GroupID: 0
     Rank: 0
@@ -110,9 +111,8 @@ MonoBehaviour:
     Desc: 
     Sprite_TowerCard: {fileID: 0}
     Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
     MinionID: 0
   healthbarImages:
@@ -122,6 +122,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 8943578516525596410}
   hitbarImage: {fileID: 641969409801007722}
   ui: {fileID: 2361294545513903442}
+  effectParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
   maxHealth: 0
   currentHealth: 0
   attack: 0
@@ -130,7 +131,6 @@ MonoBehaviour:
   partToRotate: {fileID: 9052330861811738752}
   firePoint: {fileID: 9052330861811738752}
   DangerZonePF: {fileID: 0}
-  smokeParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
   MinionBluePrint:
     Name: 
     ID: 0

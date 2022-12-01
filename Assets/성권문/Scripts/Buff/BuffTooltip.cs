@@ -20,21 +20,17 @@ public class BuffTooltip : MonoBehaviour
     public void SetupBuffTooltip(BuffBlueprint buff)
     {
         itemImage.sprite = buff.Icon;
-        string valueText = buff.Value.ToString();
         string buffDescText = buff.Desc;
+        descriptionText.text = buffDescText.Replace("\r", "");
 
         if (buff.Type == (int)Buff_Effect_Type.Buff)
         {
-            nameText.text = $"<color=#00FF00>{buff.ToolTipName}</color>";                      
-            string desc = buffDescText + $"<color=#00FF00> +{valueText}</color>";       
-            descriptionText.text = desc.Replace("\r", "");                             
+            nameText.text = $"<color=#00FF00>{buff.ToolTipName}</color>";                            
             serveText.text = "Type : Buff";                                           
         }
         else
         {
             nameText.text = $"<color=#DC143C>{buff.ToolTipName}</color>";
-            string desc = buffDescText + $"<color=#DC143C> {valueText}</color>";
-            descriptionText.text = desc.Replace("\r", "");
             serveText.text = "Type : Debuff";
         }
     }
