@@ -15,7 +15,7 @@ public class OrcFSM : Enemybase
     [SerializeField]
     private bool TargetOn = false;
 
-    int mask = (1 << 7) | (1 << 8) | (1 << 13);
+    int mask = (1 << 7);
 
 
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
@@ -92,29 +92,45 @@ public class OrcFSM : Enemybase
     }
     private IEnumerator move() // 1 
     {
-        while (_estate == ESTATE.Move)
+        while (_estate == ESTATE.Move) // 
         {
             _navMeshAgent.isStopped = false;
+            
             if (Target == null) // 타겟이 널이면
             {
                 TargetOn = false; //타켓온 해제
                 Target = ResetPos.transform; // 중심포지션으로 바꿈
-                yield return null;
             }
+
             transform.LookAt(new Vector3(Target.position.x, transform.position.y, Target.position.z)); //타켓을 바라봄
             _navMeshAgent.SetDestination(Target.position); // 타겟쪽으로 걸어감
-            float distanceNosql = Vector2.Distance(new Vector2(Target.transform.position.x, Target.transform.position.z), new Vector2(transform.position.x, transform.position.z));
-            if (distanceNosql >= attackRange * 2)
+            float distanceNosql = Vector2.Distance(new Vector2(Target.transform.position.x, Target.transform.position.z), new Vector2(transform.position.x, transform.position.z)); // 거리구함
+            if (distanceNosql >= attackRange * 2) // 거리가 공격범위에 2배면 TargetNull로 만들엇 ㅓ센터가게끔 설정
             {
                 Target = null;
             }
 
-            if (distanceNosql <= attackRange) //공격사거리보다 작으면
+            if (distanceNosql <= attackRange && Target != ResetPos) //공격사거리거나 센터가 아닐때만 공격
             {
                 _estate = ESTATE.Attack; //공격상태로 전환
                 StateChange(); // FSM실행
                 break;
             }
+            else if (distanceNosql <= attackRange && Target == ResetPos)
+            {
+                
+                TargetOn = false; 
+                _animator.SetBool("Idle",true);
+                transform.LookAt(new Vector3(Target.position.x, transform.position.y, Target.transform.position.z));
+                
+            }
+            else
+            {
+                _animator.SetBool("Idle",false);
+            }
+
+            
+
             yield return null;
         }
     }
@@ -123,12 +139,14 @@ public class OrcFSM : Enemybase
     {
         while (_estate == ESTATE.Attack)
         {
+            
             if (Target == null)
             {
                 _estate = ESTATE.Move;
                 StateChange();
 
             }
+
             transform.LookAt(new Vector3(Target.position.x, transform.position.y, Target.position.z)); //타켓을 바라봄
             float atkDistanceNoSql = Vector2.Distance(new Vector2(Target.transform.position.x, Target.transform.position.z), new Vector2(transform.position.x, transform.position.z));
             _navMeshAgent.isStopped = true; //멈춰서
@@ -170,12 +188,15 @@ public class OrcFSM : Enemybase
                 {
                     Target = col.transform;
                     shortDistance = distance;
+                    _animator.SetBool("Idle", false);
                     TargetOn = true;
+
                 }
 
             }
 
         }
+       
 
     }
 

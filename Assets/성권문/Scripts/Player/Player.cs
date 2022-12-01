@@ -13,13 +13,19 @@ using UnityEngine.UI;
 public class Player : MonoBehaviourPun
 {
     public static event Action<Player> PlayerMouseDownEvent = delegate { };
+    public static event Action<float, bool> PlayerBuffValueApplyEvent = delegate { };
+
     public Stats playerStats;
     public Health playerHealth;
     public Sprite playerIcon;
     public PlayerBehaviour playerBehaviour;
 
     private float defaultRecoveryValue = 1.5f;
+    private float addAtkValue = 0f;
     private float addRecoveryValue = 0f;
+    private float addMoveSpdValue = 0f;
+    private float addAtkSpdValue = 0f;
+
     private float prevMoveSpeed;
 
     private void Awake()
@@ -62,11 +68,8 @@ public class Player : MonoBehaviourPun
     {
         if (!photonView.IsMine)
         {
-            Debug.Log(gameObject.tag + "³»²¨ ¾Æ´Ô");
             return;
         }
-
-        Debug.Log(gameObject.tag + "³»²¨ ¸Ü¿ò");
 
         if (id <= 10000)
         {
@@ -78,36 +81,36 @@ public class Player : MonoBehaviourPun
         }
     }
 
-    // ÇÃ·¹ÀÌ¾î ½ºÅÈ ÃÊ±âÈ­°¡ ÀÌ·ç¾îÁø µÚ¿¡ µð¹öÇÁÀû¿ë
+    // í”Œë ˆì´ì–´ ìŠ¤íƒ¯ ì´ˆê¸°í™”ê°€ ì´ë£¨ì–´ì§„ ë’¤ì— ë””ë²„í”„ì ìš©
     IEnumerator delayApplyBuff(int id, float addValue, bool state)
     {
         yield return new WaitForSeconds(2f);
         photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
     }
 
-    // ½ºÅ³ Àü¿ë µð¹öÇÁ
+    // ìŠ¤í‚¬ ì „ìš© ë””ë²„í”„
     public void ApplyDebuff(int id, float addValue, bool state)
     {
             photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
     }
 
-// TODO : ¹öÇÁ »ó´ëÆíÇÑÅ× Àû¿ëÇÏ°Ô ÇÒ°Í
-// TODO : Ä³¸¯ÅÍ setactive falseµÇµµ ½ºÅ©¸³Æ® À¯ÁöÇÏ°ÔÇÔ
+// TODO : ë²„í”„ ìƒëŒ€íŽ¸í•œí…Œ ì ìš©í•˜ê²Œ í• ê²ƒ
+// TODO : ìºë¦­í„° setactive falseë˜ë„ ìŠ¤í¬ë¦½íŠ¸ ìœ ì§€í•˜ê²Œí•¨
 
 
 [PunRPC]
     public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
-        // ÇÃ·¹ÀÌ¾î ¹öÇÁ Àû¿ë
+        // í”Œë ˆì´ì–´ ë²„í”„ ì ìš©
         if (id == (int)Buff_Group.Attack_Increase || id == (int)Buff_Group.Attack_Decrese)
         {
             if (state)
             {
-                playerStats.attackDmg += addValue;
+                playerStats.buffAttackDamge += addValue;
             }
             else
             {
-                playerStats.attackDmg -= addValue;
+                playerStats.buffAttackDamge = 0f;
             }
         }
 
@@ -119,7 +122,7 @@ public class Player : MonoBehaviourPun
             }
             else
             {
-                addRecoveryValue -= addValue;
+                addRecoveryValue = 0f;
             }
         }
 
@@ -127,11 +130,16 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerStats.MoveSpeed *= (1 + addValue); // ¹öÇÁÀû¿ë
+                float temp = playerStats.buffMoveSpeed;
+                temp *= (addValue);
+                Debug.Log($"addValue : {addValue} temp : { temp }");
+                playerStats.buffMoveSpeed += temp;
+                Debug.Log($"playerStats.buffMoveSpeed : {playerStats.buffMoveSpeed}");
+
             }
             else
             {
-                playerStats.MoveSpeed /= (1 + addValue);  // ¿ø»óº¹±¸
+                playerStats.buffMoveSpeed = 0f;
             }
         }
 
@@ -139,11 +147,13 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerStats.attackSpeed *= addValue;
+                float temp = playerStats.attackSpeed;
+                temp *= (addValue);
+                playerStats.buffAttackSpeed += temp;
             }
             else
             {
-                playerStats.attackSpeed /= addValue;
+                playerStats.buffAttackSpeed = 0f;
             }
         }
 
@@ -158,6 +168,8 @@ public class Player : MonoBehaviourPun
                 playerBehaviour.OnStun(state, 0f);
             }
         }
+
+        playerStats.SetPlayerStats();
 
     }
 }

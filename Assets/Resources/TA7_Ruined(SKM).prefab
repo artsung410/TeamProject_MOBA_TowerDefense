@@ -238,9 +238,8 @@ MonoBehaviour:
       \uC544\uC57C \uD558\uC2E4\uAEBC\uC5D0\uC694! \uBC1C \uBC11\uC744 \uC870\uC2EC\uD558\uC138\uC694!"
     Sprite_TowerCard: {fileID: 21300000, guid: 1ebeafe900f46e741978c8ffc244f5c5, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 59073d8d2d98a6c4199fb49f90ec88ad, type: 3}
-    AudioClip_Attack_Name: 0
-    AudioClip_Hit_Name: 0
-    AudioClip_Normal_Name: "0\r"
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
     MinionID: 0
   healthbarImages:
@@ -250,6 +249,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 719757788099483588}
   hitbarImage: {fileID: 9009544948486511444}
   ui: {fileID: 6135572040549358700}
+  effectParticles: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
   attack: 0
@@ -258,7 +258,6 @@ MonoBehaviour:
   partToRotate: {fileID: 945295095269005272}
   firePoint: {fileID: 945295095269005272}
   DangerZonePF: {fileID: 0}
-  smokeParticles: {fileID: 0}
 --- !u!114 &6287557525626744604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -309,7 +308,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8.616446, y: 12.974411, z: 8.029135}
+  m_Size: {x: 10, y: 12.974411, z: 10}
   m_Center: {x: 0.28587222, y: 6.389597, z: -0.16141307}
 --- !u!82 &8772673496463367626
 AudioSource:

@@ -98,7 +98,7 @@ public class SpecialMinionSkill : SkillHandler
 
    private void nearFindObject()
     {
-        Collider[] Enemys = Physics.OverlapSphere(transform.position, 10f);
+        Collider[] Enemys = Physics.OverlapSphere(transform.position, 15f);
         foreach (Collider col in Enemys)
         {
             if (col.gameObject.tag == GetMytag(_ability))

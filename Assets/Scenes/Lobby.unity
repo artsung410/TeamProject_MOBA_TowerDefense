@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2038,6 +2038,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 72955762}
   m_CullTransparentMesh: 1
+--- !u!1 &73203022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 73203023}
+  - component: {fileID: 73203025}
+  - component: {fileID: 73203024}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &73203023
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73203022}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1843982668}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &73203024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73203022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4f40ccbe9d92a784da22db7a00ff9673, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &73203025
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 73203022}
+  m_CullTransparentMesh: 1
 --- !u!1 &73606177
 GameObject:
   m_ObjectHideFlags: 0
@@ -3072,6 +3148,82 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &132591460
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 132591461}
+  - component: {fileID: 132591463}
+  - component: {fileID: 132591462}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &132591461
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132591460}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1843982668}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &132591462
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132591460}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &132591463
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 132591460}
+  m_CullTransparentMesh: 1
 --- !u!1 &135991936
 GameObject:
   m_ObjectHideFlags: 0
@@ -5917,6 +6069,264 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 235629007}
   m_CullTransparentMesh: 1
+--- !u!1 &237435969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 237435970}
+  - component: {fileID: 237435975}
+  - component: {fileID: 237435974}
+  - component: {fileID: 237435973}
+  - component: {fileID: 237435972}
+  - component: {fileID: 237435971}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &237435970
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237435969}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1088753766}
+  - {fileID: 749734790}
+  - {fileID: 261960198}
+  m_Father: {fileID: 702990705}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &237435971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237435969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &237435972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237435969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Smash1
+    ClassType: Warrior
+    itemID: 4
+    itemDesc: "Slashes the sword down in front of it, unleashing a sword strike.\r"
+    itemIcon: {fileID: 21300000, guid: ea314719817bd7648a7767349e296649, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 0
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: Smash1
+      Name: {fileID: 7570805014596217275, guid: fb308a3f5891ab946b182edb8bc667d7, type: 3}
+      ID: 4
+      Probability: 10
+      Classification: 2
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 1
+      Value_1: 100
+      Value_2: 0
+      CoolTime: 7
+      Range: 8
+      RangeType: 0
+      RangeValue_1: 8
+      RangeValue_2: 60
+      HoldingTime: 0.5
+      TickDamage: 10
+      TickCount: 5
+      TickTime: 5
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 21300000, guid: ea314719817bd7648a7767349e296649, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 53973d86876c76e4fbb17789848ad997, type: 3}
+      Desc: "Slashes the sword down in front of it, unleashing a sword strike.\r"
+--- !u!114 &237435973
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237435969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &237435974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237435969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &237435975
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 237435969}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &243225503
 GameObject:
   m_ObjectHideFlags: 0
@@ -6148,6 +6558,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 254330587}
+  m_CullTransparentMesh: 1
+--- !u!1 &261960197
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 261960198}
+  - component: {fileID: 261960200}
+  - component: {fileID: 261960199}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &261960198
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261960197}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 237435970}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &261960199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261960197}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &261960200
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 261960197}
   m_CullTransparentMesh: 1
 --- !u!1 &265901381
 GameObject:
@@ -9543,6 +10029,82 @@ MonoBehaviour:
   m_Spacing: {x: 3, y: 33}
   m_Constraint: 0
   m_ConstraintCount: 2
+--- !u!1 &426870711
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 426870712}
+  - component: {fileID: 426870714}
+  - component: {fileID: 426870713}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &426870712
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426870711}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 774150443}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &426870713
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426870711}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &426870714
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 426870711}
+  m_CullTransparentMesh: 1
 --- !u!1 &428435742
 GameObject:
   m_ObjectHideFlags: 0
@@ -10195,6 +10757,86 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2193615623343743060, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
   m_PrefabInstance: {fileID: 1609580462}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &444687255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 444687256}
+  - component: {fileID: 444687258}
+  - component: {fileID: 444687257}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &444687256
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444687255}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1394380765}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &444687257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444687255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &444687258
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 444687255}
+  m_CullTransparentMesh: 1
 --- !u!1 &445890147
 GameObject:
   m_ObjectHideFlags: 0
@@ -10614,6 +11256,266 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 474396531}
   m_CullTransparentMesh: 1
+--- !u!1 &481448693
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 481448694}
+  - component: {fileID: 481448699}
+  - component: {fileID: 481448698}
+  - component: {fileID: 481448697}
+  - component: {fileID: 481448696}
+  - component: {fileID: 481448695}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &481448694
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481448693}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1884729948}
+  - {fileID: 575884659}
+  - {fileID: 668485231}
+  m_Father: {fileID: 1874435298}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &481448695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481448693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &481448696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481448693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Attack_Guard1
+    ClassType: 
+    itemID: 1
+    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+      \"Pyung~ Pyung~\"\r"
+    itemIcon: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
+    objType: Active_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: -1
+    rarity: 10
+    CombinationValue: 500
+    towerData:
+      Name: Arrow_Tower1
+      NickName: Arrow Tower
+      ID: 1
+      GroupID: 1
+      Rank: 1
+      Type: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Combination_ResultID: 2
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+        \"Pyung~ Pyung~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+--- !u!114 &481448697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481448693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &481448698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481448693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &481448699
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 481448693}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &481565844
 GameObject:
   m_ObjectHideFlags: 0
@@ -11062,7 +11964,226 @@ MonoBehaviour:
   SlotGridLayout: {fileID: 1436696433}
   SlotGridRectTransform: {fileID: 1436696432}
   mainInventory: 1
-  ItemsInInventory: []
+  ItemsInInventory:
+  - itemName: ChainAttack1
+    ClassType: Warrior
+    itemID: 1
+    itemDesc: "Swings a sword in front of you, dealing damage to enemies.\r"
+    itemIcon: {fileID: 21300000, guid: 4f40ccbe9d92a784da22db7a00ff9673, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: -1
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: ChainAttack1
+      Name: {fileID: 5184541198715492353, guid: a96ebfa039add3f48af4252618ac79f8, type: 3}
+      ID: 1
+      Probability: 10
+      Classification: 2
+      Rank: 1
+      LockTime: 2
+      SkillType: 1
+      Value_1: 125
+      Value_2: 0
+      CoolTime: 3
+      Range: 8
+      RangeType: 0
+      RangeValue_1: 8
+      RangeValue_2: 2
+      HoldingTime: 2
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 21300000, guid: 4f40ccbe9d92a784da22db7a00ff9673, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 8e5e7b061267edc48b628ad26a21b2d8, type: 3}
+      Desc: "Swings a sword in front of you, dealing damage to enemies.\r"
+  - itemName: Smash1
+    ClassType: Warrior
+    itemID: 4
+    itemDesc: "Slashes the sword down in front of it, unleashing a sword strike.\r"
+    itemIcon: {fileID: 21300000, guid: ea314719817bd7648a7767349e296649, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 0
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: Smash1
+      Name: {fileID: 7570805014596217275, guid: fb308a3f5891ab946b182edb8bc667d7, type: 3}
+      ID: 4
+      Probability: 10
+      Classification: 2
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 1
+      Value_1: 100
+      Value_2: 0
+      CoolTime: 7
+      Range: 8
+      RangeType: 0
+      RangeValue_1: 8
+      RangeValue_2: 60
+      HoldingTime: 0.5
+      TickDamage: 10
+      TickCount: 5
+      TickTime: 5
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 21300000, guid: ea314719817bd7648a7767349e296649, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 53973d86876c76e4fbb17789848ad997, type: 3}
+      Desc: "Slashes the sword down in front of it, unleashing a sword strike.\r"
+  - itemName: Whirlwind1
+    ClassType: Warrior
+    itemID: 7
+    itemDesc: "Creates a gust of wind with a sword, dealing damage to nearby enemies.\r"
+    itemIcon: {fileID: 21300000, guid: 4bfd43283db1aed48ad40ce929b27677, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 1
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: Whirlwind1
+      Name: {fileID: 3005192478522135544, guid: 8191e680bd7102c408838da0a0956504, type: 3}
+      ID: 7
+      Probability: 10
+      Classification: 2
+      Rank: 1
+      LockTime: 4
+      SkillType: 1
+      Value_1: 30
+      Value_2: 0
+      CoolTime: 10
+      Range: 8
+      RangeType: 0
+      RangeValue_1: 4
+      RangeValue_2: 0
+      HoldingTime: 4
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 1
+      CcTime: 5
+      CcValue: 30
+      CardImage: {fileID: 21300000, guid: 4bfd43283db1aed48ad40ce929b27677, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 141bfebed7377bc43a016fd6312d8eee, type: 3}
+      Desc: "Creates a gust of wind with a sword, dealing damage to nearby enemies.\r"
   height: 4
   width: 4
   stackable: 1
@@ -11865,6 +12986,266 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstLogin: 0
   init_UserInfo_Insert: {fileID: 522595142}
+--- !u!1 &524187330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524187331}
+  - component: {fileID: 524187336}
+  - component: {fileID: 524187335}
+  - component: {fileID: 524187334}
+  - component: {fileID: 524187333}
+  - component: {fileID: 524187332}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &524187331
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524187330}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2096481376}
+  - {fileID: 746922359}
+  - {fileID: 582176183}
+  m_Father: {fileID: 1050297763}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &524187332
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524187330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &524187333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524187330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Attack_Guard2
+    ClassType: 
+    itemID: 2
+    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+      \"Pyung~ Pyung~\"\r"
+    itemIcon: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
+    objType: Active_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 0
+    rarity: 10
+    CombinationValue: 300
+    towerData:
+      Name: Arrow_Tower2
+      NickName: Arrow Tower
+      ID: 2
+      GroupID: 1
+      Rank: 2
+      Type: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Combination_ResultID: 3
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 45
+      Attack_Speed: 0.3
+      Hp: 350
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+        \"Pyung~ Pyung~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+--- !u!114 &524187334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524187330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &524187335
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524187330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &524187336
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 524187330}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &524836012
 GameObject:
   m_ObjectHideFlags: 0
@@ -13447,6 +14828,86 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_IsOn: 1
+--- !u!1 &575884658
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 575884659}
+  - component: {fileID: 575884661}
+  - component: {fileID: 575884660}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &575884659
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575884658}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 481448694}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &575884660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575884658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &575884661
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 575884658}
+  m_CullTransparentMesh: 1
 --- !u!1 &578284353
 GameObject:
   m_ObjectHideFlags: 0
@@ -13598,6 +15059,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 578863776}
+  m_CullTransparentMesh: 1
+--- !u!1 &582176182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 582176183}
+  - component: {fileID: 582176185}
+  - component: {fileID: 582176184}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &582176183
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582176182}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 524187331}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &582176184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582176182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &582176185
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582176182}
   m_CullTransparentMesh: 1
 --- !u!1 &582331120
 GameObject:
@@ -15567,6 +17104,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 667376888}
   m_CullTransparentMesh: 1
+--- !u!1 &668485230
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 668485231}
+  - component: {fileID: 668485233}
+  - component: {fileID: 668485232}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &668485231
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668485230}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 481448694}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &668485232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668485230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &668485233
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 668485230}
+  m_CullTransparentMesh: 1
 --- !u!1 &676099262
 GameObject:
   m_ObjectHideFlags: 0
@@ -16254,7 +17867,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 237435970}
   m_Father: {fileID: 1436696432}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17511,6 +19125,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 738491853}
   m_CullTransparentMesh: 1
+--- !u!1 &740925383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 740925384}
+  - component: {fileID: 740925386}
+  - component: {fileID: 740925385}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &740925384
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740925383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1107568023}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &740925385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740925383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &740925386
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 740925383}
+  m_CullTransparentMesh: 1
 --- !u!1 &744887681
 GameObject:
   m_ObjectHideFlags: 0
@@ -17586,6 +19276,242 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 744887681}
+  m_CullTransparentMesh: 1
+--- !u!1 &746922358
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 746922359}
+  - component: {fileID: 746922361}
+  - component: {fileID: 746922360}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &746922359
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746922358}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 524187331}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &746922360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746922358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &746922361
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 746922358}
+  m_CullTransparentMesh: 1
+--- !u!1 &749734789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 749734790}
+  - component: {fileID: 749734792}
+  - component: {fileID: 749734791}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &749734790
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749734789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 237435970}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 4}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &749734791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749734789}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &749734792
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749734789}
+  m_CullTransparentMesh: 1
+--- !u!1 &753553885
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 753553886}
+  - component: {fileID: 753553888}
+  - component: {fileID: 753553887}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &753553886
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753553885}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1904730450}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &753553887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753553885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &753553888
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 753553885}
   m_CullTransparentMesh: 1
 --- !u!1 &753824818
 GameObject:
@@ -18171,6 +20097,266 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   originalImageName: {fileID: 21300000, guid: d7d3f9d467a93834daae71294b6dbb44, type: 3}
   changeImageName: {fileID: 21300000, guid: 3b888818aaff8ca48892501982629dbc, type: 3}
+--- !u!1 &774150442
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 774150443}
+  - component: {fileID: 774150448}
+  - component: {fileID: 774150447}
+  - component: {fileID: 774150446}
+  - component: {fileID: 774150445}
+  - component: {fileID: 774150444}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &774150443
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774150442}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 426870712}
+  - {fileID: 1109813405}
+  - {fileID: 1395274934}
+  m_Father: {fileID: 1297750165}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &774150444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774150442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &774150445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774150442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Attack_Guard4
+    ClassType: 
+    itemID: 4
+    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+      \"Pyung~ Pyung~\"\r"
+    itemIcon: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
+    objType: Active_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 2
+    rarity: 10
+    CombinationValue: 100
+    towerData:
+      Name: Arrow_Tower4
+      NickName: Arrow Tower
+      ID: 4
+      GroupID: 1
+      Rank: 4
+      Type: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Combination_ResultID: 5
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.375
+      Premium_Attack_Draw_Probability: 0.9
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 75
+      Attack_Speed: 0.3
+      Hp: 450
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+        \"Pyung~ Pyung~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+--- !u!114 &774150446
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774150442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &774150447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774150442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &774150448
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 774150442}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &777877911
 GameObject:
   m_ObjectHideFlags: 0
@@ -20835,7 +23021,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1843982668}
   m_Father: {fileID: 1436696432}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24564,7 +26751,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 524187331}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -25276,6 +27464,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1088216017}
   m_CullTransparentMesh: 1
+--- !u!1 &1088753765
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1088753766}
+  - component: {fileID: 1088753768}
+  - component: {fileID: 1088753767}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1088753766
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088753765}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 237435970}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1088753767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088753765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: ea314719817bd7648a7767349e296649, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1088753768
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1088753765}
+  m_CullTransparentMesh: 1
 --- !u!1 &1091567783
 GameObject:
   m_ObjectHideFlags: 0
@@ -25545,6 +27809,266 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1105526138}
   m_CullTransparentMesh: 1
+--- !u!1 &1107568022
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1107568023}
+  - component: {fileID: 1107568028}
+  - component: {fileID: 1107568027}
+  - component: {fileID: 1107568026}
+  - component: {fileID: 1107568025}
+  - component: {fileID: 1107568024}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1107568023
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107568022}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1214449786}
+  - {fileID: 1564110935}
+  - {fileID: 740925384}
+  m_Father: {fileID: 2009942943}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1107568024
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107568022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &1107568025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107568022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Tower_Attack_Guard3
+    ClassType: 
+    itemID: 3
+    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+      \"Pyung~ Pyung~\"\r"
+    itemIcon: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
+    objType: Active_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 1
+    rarity: 10
+    CombinationValue: 200
+    towerData:
+      Name: Arrow_Tower3
+      NickName: Arrow Tower
+      ID: 3
+      GroupID: 1
+      Rank: 3
+      Type: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Combination_ResultID: 4
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 3.75
+      Premium_Attack_Draw_Probability: 9
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 60
+      Attack_Speed: 0.3
+      Hp: 400
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+        \"Pyung~ Pyung~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+--- !u!114 &1107568026
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107568022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &1107568027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107568022}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1107568028
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1107568022}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1107736114
 GameObject:
   m_ObjectHideFlags: 0
@@ -25624,6 +28148,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107736114}
+  m_CullTransparentMesh: 1
+--- !u!1 &1109813404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1109813405}
+  - component: {fileID: 1109813407}
+  - component: {fileID: 1109813406}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1109813405
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109813404}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 774150443}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1109813406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109813404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &1109813407
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1109813404}
   m_CullTransparentMesh: 1
 --- !u!1 &1109895001
 GameObject:
@@ -27086,6 +29690,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138867446}
   m_CullTransparentMesh: 1
+--- !u!1 &1140596293
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1140596294}
+  - component: {fileID: 1140596296}
+  - component: {fileID: 1140596295}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1140596294
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140596293}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1904730450}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 4}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1140596295
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140596293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &1140596296
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140596293}
+  m_CullTransparentMesh: 1
 --- !u!1 &1142747764
 GameObject:
   m_ObjectHideFlags: 0
@@ -27952,6 +30636,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1210990694}
+  m_CullTransparentMesh: 1
+--- !u!1 &1214449785
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1214449786}
+  - component: {fileID: 1214449788}
+  - component: {fileID: 1214449787}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1214449786
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214449785}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1107568023}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1214449787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214449785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1214449788
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1214449785}
   m_CullTransparentMesh: 1
 --- !u!1 &1216208437
 GameObject:
@@ -29101,7 +31861,80 @@ MonoBehaviour:
   SlotGridLayout: {fileID: 426573419}
   SlotGridRectTransform: {fileID: 426573418}
   mainInventory: 1
-  ItemsInInventory: []
+  ItemsInInventory:
+  - itemName: dragonSummon1
+    ClassType: Inherence
+    itemID: 7
+    itemDesc: "Summons a minion to help you in subspace.\r"
+    itemIcon: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: -1
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: dragonSummon1
+      Name: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
+      ID: 7
+      Probability: 16.666666
+      Classification: 1
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 7
+      Value_1: 5021
+      Value_2: 5028
+      CoolTime: 20
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 0b40a759a114311418210830c433e3b1, type: 3}
+      Desc: "Summons a minion to help you in subspace.\r"
   height: 4
   width: 4
   stackable: 1
@@ -31242,7 +34075,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 774150443}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32997,6 +35831,416 @@ Transform:
   m_Father: {fileID: 654707144}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1394380764
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1394380765}
+  - component: {fileID: 1394380770}
+  - component: {fileID: 1394380769}
+  - component: {fileID: 1394380768}
+  - component: {fileID: 1394380767}
+  - component: {fileID: 1394380766}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1394380765
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394380764}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2043955973}
+  - {fileID: 444687256}
+  - {fileID: 1405779870}
+  m_Father: {fileID: 1880794651}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1394380766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394380764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &1394380767
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394380764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: dragonSummon1
+    ClassType: Inherence
+    itemID: 7
+    itemDesc: "Summons a minion to help you in subspace.\r"
+    itemIcon: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: -1
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: dragonSummon1
+      Name: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
+      ID: 7
+      Probability: 16.666666
+      Classification: 1
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 7
+      Value_1: 5021
+      Value_2: 5028
+      CoolTime: 20
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 0b40a759a114311418210830c433e3b1, type: 3}
+      Desc: "Summons a minion to help you in subspace.\r"
+--- !u!114 &1394380768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394380764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &1394380769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394380764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1394380770
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1394380764}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!1 &1395274933
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1395274934}
+  - component: {fileID: 1395274936}
+  - component: {fileID: 1395274935}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1395274934
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395274933}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 774150443}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1395274935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395274933}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1395274936
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395274933}
+  m_CullTransparentMesh: 1
+--- !u!1 &1405779869
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1405779870}
+  - component: {fileID: 1405779872}
+  - component: {fileID: 1405779871}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1405779870
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405779869}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1394380765}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1405779871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405779869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1405779872
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1405779869}
+  m_CullTransparentMesh: 1
 --- !u!1 &1406483694
 GameObject:
   m_ObjectHideFlags: 0
@@ -35715,6 +38959,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559550331}
+  m_CullTransparentMesh: 1
+--- !u!1 &1564110934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1564110935}
+  - component: {fileID: 1564110937}
+  - component: {fileID: 1564110936}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1564110935
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564110934}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1107568023}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1564110936
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564110934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &1564110937
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1564110934}
   m_CullTransparentMesh: 1
 --- !u!1 &1569736309
 GameObject:
@@ -38837,6 +42161,86 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688046308}
+  m_CullTransparentMesh: 1
+--- !u!1 &1692773607
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1692773608}
+  - component: {fileID: 1692773610}
+  - component: {fileID: 1692773609}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1692773608
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692773607}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1843982668}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 4}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1692773609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692773607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &1692773610
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692773607}
   m_CullTransparentMesh: 1
 --- !u!1 &1697968112
 GameObject:
@@ -42454,6 +45858,264 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843087112}
   m_CullTransparentMesh: 1
+--- !u!1 &1843982667
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1843982668}
+  - component: {fileID: 1843982673}
+  - component: {fileID: 1843982672}
+  - component: {fileID: 1843982671}
+  - component: {fileID: 1843982670}
+  - component: {fileID: 1843982669}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1843982668
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843982667}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 73203023}
+  - {fileID: 1692773608}
+  - {fileID: 132591461}
+  m_Father: {fileID: 900485626}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1843982669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843982667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &1843982670
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843982667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: ChainAttack1
+    ClassType: Warrior
+    itemID: 1
+    itemDesc: "Swings a sword in front of you, dealing damage to enemies.\r"
+    itemIcon: {fileID: 21300000, guid: 4f40ccbe9d92a784da22db7a00ff9673, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: -1
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: ChainAttack1
+      Name: {fileID: 5184541198715492353, guid: a96ebfa039add3f48af4252618ac79f8, type: 3}
+      ID: 1
+      Probability: 10
+      Classification: 2
+      Rank: 1
+      LockTime: 2
+      SkillType: 1
+      Value_1: 125
+      Value_2: 0
+      CoolTime: 3
+      Range: 8
+      RangeType: 0
+      RangeValue_1: 8
+      RangeValue_2: 2
+      HoldingTime: 2
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 21300000, guid: 4f40ccbe9d92a784da22db7a00ff9673, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 8e5e7b061267edc48b628ad26a21b2d8, type: 3}
+      Desc: "Swings a sword in front of you, dealing damage to enemies.\r"
+--- !u!114 &1843982671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843982667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &1843982672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843982667}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1843982673
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843982667}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1844471044
 GameObject:
   m_ObjectHideFlags: 0
@@ -43454,7 +47116,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 481448694}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -43982,7 +47645,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1394380765}
   m_Father: {fileID: 426573418}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -44180,6 +47844,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883661673}
+  m_CullTransparentMesh: 1
+--- !u!1 &1884729947
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1884729948}
+  - component: {fileID: 1884729950}
+  - component: {fileID: 1884729949}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1884729948
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884729947}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 481448694}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1884729949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884729947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1884729950
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884729947}
   m_CullTransparentMesh: 1
 --- !u!1 &1886535935
 GameObject:
@@ -44932,6 +48672,82 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cancelObj: {fileID: 1879250479}
+--- !u!1 &1900261201
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1900261202}
+  - component: {fileID: 1900261204}
+  - component: {fileID: 1900261203}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1900261202
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900261201}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1904730450}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1900261203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900261201}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 4bfd43283db1aed48ad40ce929b27677, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1900261204
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1900261201}
+  m_CullTransparentMesh: 1
 --- !u!1 &1903466283
 GameObject:
   m_ObjectHideFlags: 0
@@ -45008,6 +48824,264 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1903466283}
   m_CullTransparentMesh: 1
+--- !u!1 &1904730449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904730450}
+  - component: {fileID: 1904730455}
+  - component: {fileID: 1904730454}
+  - component: {fileID: 1904730453}
+  - component: {fileID: 1904730452}
+  - component: {fileID: 1904730451}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1904730450
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904730449}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1900261202}
+  - {fileID: 1140596294}
+  - {fileID: 753553886}
+  m_Father: {fileID: 2083364185}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1904730451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904730449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &1904730452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904730449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: Whirlwind1
+    ClassType: Warrior
+    itemID: 7
+    itemDesc: "Creates a gust of wind with a sword, dealing damage to nearby enemies.\r"
+    itemIcon: {fileID: 21300000, guid: 4bfd43283db1aed48ad40ce929b27677, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 1
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: Whirlwind1
+      Name: {fileID: 3005192478522135544, guid: 8191e680bd7102c408838da0a0956504, type: 3}
+      ID: 7
+      Probability: 10
+      Classification: 2
+      Rank: 1
+      LockTime: 4
+      SkillType: 1
+      Value_1: 30
+      Value_2: 0
+      CoolTime: 10
+      Range: 8
+      RangeType: 0
+      RangeValue_1: 4
+      RangeValue_2: 0
+      HoldingTime: 4
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 1
+      CcTime: 5
+      CcValue: 30
+      CardImage: {fileID: 21300000, guid: 4bfd43283db1aed48ad40ce929b27677, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 141bfebed7377bc43a016fd6312d8eee, type: 3}
+      Desc: "Creates a gust of wind with a sword, dealing damage to nearby enemies.\r"
+--- !u!114 &1904730453
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904730449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &1904730454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904730449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &1904730455
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904730449}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1906182639
 GameObject:
   m_ObjectHideFlags: 0
@@ -47987,7 +52061,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1107568023}
   m_Father: {fileID: 1916450619}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49040,6 +53115,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2041939304}
   m_CullTransparentMesh: 1
+--- !u!1 &2043955972
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2043955973}
+  - component: {fileID: 2043955975}
+  - component: {fileID: 2043955974}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2043955973
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043955972}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1394380765}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2043955974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043955972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2043955975
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043955972}
+  m_CullTransparentMesh: 1
 --- !u!1 &2049375722
 GameObject:
   m_ObjectHideFlags: 0
@@ -49630,7 +53781,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1904730450}
   m_Father: {fileID: 1436696432}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50076,6 +54228,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2093583522}
+  m_CullTransparentMesh: 1
+--- !u!1 &2096481375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2096481376}
+  - component: {fileID: 2096481378}
+  - component: {fileID: 2096481377}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2096481376
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096481375}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 524187331}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2096481377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096481375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &2096481378
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2096481375}
   m_CullTransparentMesh: 1
 --- !u!1 &2098704845
 GameObject:
@@ -51477,7 +55705,307 @@ MonoBehaviour:
   SlotGridLayout: {fileID: 1916450620}
   SlotGridRectTransform: {fileID: 1916450619}
   mainInventory: 1
-  ItemsInInventory: []
+  ItemsInInventory:
+  - itemName: Tower_Attack_Guard1
+    ClassType: 
+    itemID: 1
+    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+      \"Pyung~ Pyung~\"\r"
+    itemIcon: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
+    objType: Active_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: -1
+    rarity: 10
+    CombinationValue: 500
+    towerData:
+      Name: Arrow_Tower1
+      NickName: Arrow Tower
+      ID: 1
+      GroupID: 1
+      Rank: 1
+      Type: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Combination_ResultID: 2
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 30
+      Attack_Speed: 0.3
+      Hp: 300
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+        \"Pyung~ Pyung~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: d63d3e097a0d9ef45955f4cbc95fec63, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  - itemName: Tower_Attack_Guard2
+    ClassType: 
+    itemID: 2
+    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+      \"Pyung~ Pyung~\"\r"
+    itemIcon: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
+    objType: Active_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 0
+    rarity: 10
+    CombinationValue: 300
+    towerData:
+      Name: Arrow_Tower2
+      NickName: Arrow Tower
+      ID: 2
+      GroupID: 1
+      Rank: 2
+      Type: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Combination_ResultID: 3
+      Combination_Required_Value: 300
+      Normal_Random_Draw_Probability: 0.8333333
+      Normal_Attack_Draw_Probability: 2
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 45
+      Attack_Speed: 0.3
+      Hp: 350
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+        \"Pyung~ Pyung~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  - itemName: Tower_Attack_Guard3
+    ClassType: 
+    itemID: 3
+    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+      \"Pyung~ Pyung~\"\r"
+    itemIcon: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
+    objType: Active_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 1
+    rarity: 10
+    CombinationValue: 200
+    towerData:
+      Name: Arrow_Tower3
+      NickName: Arrow Tower
+      ID: 3
+      GroupID: 1
+      Rank: 3
+      Type: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Combination_ResultID: 4
+      Combination_Required_Value: 200
+      Normal_Random_Draw_Probability: 0.41666666
+      Normal_Attack_Draw_Probability: 1
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 3.75
+      Premium_Attack_Draw_Probability: 9
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 60
+      Attack_Speed: 0.3
+      Hp: 400
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+        \"Pyung~ Pyung~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  - itemName: Tower_Attack_Guard4
+    ClassType: 
+    itemID: 4
+    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+      \"Pyung~ Pyung~\"\r"
+    itemIcon: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
+    objType: Active_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 2
+    rarity: 10
+    CombinationValue: 100
+    towerData:
+      Name: Arrow_Tower4
+      NickName: Arrow Tower
+      ID: 4
+      GroupID: 1
+      Rank: 4
+      Type: 1
+      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
+      Combination_ResultID: 5
+      Combination_Required_Value: 100
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0.375
+      Premium_Attack_Draw_Probability: 0.9
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 75
+      Attack_Speed: 0.3
+      Hp: 450
+      Range: 20
+      Range_Type: 1
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
+        \"Pyung~ Pyung~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
   height: 4
   width: 4
   stackable: 1

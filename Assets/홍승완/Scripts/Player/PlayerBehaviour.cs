@@ -162,7 +162,7 @@ public class PlayerBehaviour : MonoBehaviourPun
             _rigid.angularVelocity = Vector3.zero;
 
             CurrentPlayerPos = transform.position;
-            _agent.speed = _statScript.MoveSpeed;
+            _agent.speed = _statScript.moveSpeed;
             // s키 누르면 행동 멈춤
             if (Input.GetKeyDown(KeyCode.S))
             {
@@ -283,14 +283,14 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 타겟이 있을때
         if (targetedEnemy != null)
         {
-            float dist = Vector3.Distance(transform.position, targetedEnemy.transform.position) - 0.5f - interpolationRange;
+            float dist = Vector3.Distance(transform.position, targetedEnemy.transform.position) - interpolationRange;
 
             // 타겟이 공격범위 밖일때
             if (dist > _statScript.attackRange)
             {
                 // 그 위치로 이동한다
                 _agent.SetDestination(targetedEnemy.transform.position);
-                _agent.stoppingDistance = _statScript.attackRange + interpolationRange;
+                _agent.stoppingDistance = _statScript.attackRange;
 
                 Quaternion rotationToLookAt = Quaternion.LookRotation(targetedEnemy.transform.position - transform.position);
 
@@ -306,7 +306,7 @@ public class PlayerBehaviour : MonoBehaviourPun
             {
                 // 움직이지 않게 현재 위치로 고정
                 _agent.SetDestination(transform.position);
-                _agent.stoppingDistance = _statScript.attackRange;
+                _agent.stoppingDistance = dist;
 
                 // 타겟을 바라본다
                 Quaternion rotationToLookAt = Quaternion.LookRotation(targetedEnemy.transform.position - transform.position);
@@ -496,7 +496,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 플레이어 보간
         if (targetedEnemy.layer == 7)
         {
-            interpolationRange = 1f;
+            interpolationRange = 0.5f;
         }
         // 미니언 보간
         else if (targetedEnemy.layer == 8)
@@ -506,7 +506,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 타워 보간
         else if (targetedEnemy.layer == 6)
         {
-            interpolationRange = 0.5f;
+            interpolationRange = 3f;
         }
         // 넥서스 보간
         else if (targetedEnemy.layer == 12)
