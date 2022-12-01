@@ -55,11 +55,11 @@ public class Stats : MonoBehaviourPun
     public int enemyExp;
 
     [Header("버프변수")]
-    public float buffMaxHealth;
-    public float buffAttackDamge;
-    public float buffAttackSpeed;
-    public float buffAttackRange;
-    public float buffMoveSpeed;
+    public float buffMaxHealth = 0f;
+    public float buffAttackDamge = 0f;
+    public float buffAttackSpeed = 0f;
+    public float buffAttackRange = 0f;
+    public float buffMoveSpeed = 0f;
 
     private PlayerStatDatas myStat;
     private PlayerBehaviour _playerScript;
@@ -103,6 +103,7 @@ public class Stats : MonoBehaviourPun
         enemyExp = myStat.expEnemy;
         expDetectRange = 25f;
     }
+
 
     public void SetBuff()
     {

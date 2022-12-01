@@ -798,13 +798,24 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         InfoSpdMpro.text = spd.ToString();
         InfoLevel.text = minion.minionDB.Rank.ToString();
 
+        // 들어온 아이콘이 용일때 리턴
+        if(icon.name == "Dragonknight18")
+        {
+            InfoIcon.sprite = icon;
+            return;
+        }
+
         if (minion.gameObject.tag == "Blue")
         {
             InfoIcon.sprite = minion.minionDB.Icon_Blue;
         }
-        else
+        else if (minion.gameObject.tag == "Red")
         {
             InfoIcon.sprite = minion.minionDB.Icon_Red;
+        }
+        else
+        {
+            InfoIcon.sprite = icon;
         }
     }
 

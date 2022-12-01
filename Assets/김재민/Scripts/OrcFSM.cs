@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+using UnityEngine.UI;
+using TMPro;
 
 public class OrcFSM : Enemybase
 {
@@ -14,6 +16,12 @@ public class OrcFSM : Enemybase
     private Transform ResetPos;
     [SerializeField]
     private bool TargetOn = false;
+
+    public GameObject HealthUI;
+    public Image healthbarImage;
+    public Image hitbarImage;
+    public TextMeshProUGUI HealthText1;
+    public TextMeshProUGUI HealthText2;
 
     int mask = (1 << 7);
 
@@ -41,6 +49,8 @@ public class OrcFSM : Enemybase
 
         _estate = ESTATE.Move;
         CurrnetHP = HP;
+
+        setNeturalMonsterHealthBar();
     }
 
     protected override void OnEnable()
@@ -61,10 +71,6 @@ public class OrcFSM : Enemybase
 
     }
 
-    private void Update()
-    {
-
-    }
     public void StateChange()
     {
         switch (_estate) // 코루틴순서  
@@ -227,4 +233,38 @@ public class OrcFSM : Enemybase
         transform.GetChild(2).GetComponent<BoxCollider>().enabled = false;
     }
 
+    public void setNeturalMonsterHealthBar()
+    {
+        healthbarImage.fillAmount = CurrnetHP / HP;
+
+        if ((CurrnetHP <= 0))
+        {
+            HealthText1.text = HealthText2.text = $"0 / 0";
+        }
+        else
+        {
+            HealthText1.text = HealthText2.text = $"{ CurrnetHP} / {HP}";
+        }
+
+        StartCoroutine(ApplyHitBar(healthbarImage.fillAmount));
+    }
+
+    private IEnumerator ApplyHitBar(float value)
+    {
+        float prevValue = hitbarImage.fillAmount;
+        float delta = prevValue / 400f;
+
+        while (true)
+        {
+            yield return YieldInstructionCache.WaitForSeconds(0.01f);
+            prevValue -= delta;
+            hitbarImage.fillAmount = prevValue;
+
+            if (prevValue - value < 0.001f)
+            {
+                hitbarImage.fillAmount = healthbarImage.fillAmount;
+                break;
+            }
+        }
+    }
 }
