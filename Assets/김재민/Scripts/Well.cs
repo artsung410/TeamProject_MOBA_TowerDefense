@@ -43,7 +43,7 @@ public class Well : MonoBehaviourPun
                 if (col.GetComponent<Health>().health < col.GetComponent<Stats>().MaxHealth)
                 {
                     photonView.RPC("effectSwich", RpcTarget.All, true);
-                    col.GetComponent<Health>().Regenation(25f);
+                    col.GetComponent<Health>().Regenation(250f);
 
                 }
                 else

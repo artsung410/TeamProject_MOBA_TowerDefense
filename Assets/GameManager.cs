@@ -46,7 +46,9 @@ public class GameManager : MonoBehaviourPunCallbacks
     public ItemDataBaseList itemDB;
     public Transform[] tiles;
     private static GameManager instance;
+
     public Transform[] spawnPositions; // 플레이어가 생성할 위치
+    public Transform[] SpawnMinionPosition; // 미니언 스폰 위치
 
     // TODO : 생성할 플레이어 프리팹 정보를 캐릭터 선택단계에서 가져오기
     public Dictionary<string, GameObject> mySelect = new Dictionary<string, GameObject>();
@@ -63,7 +65,7 @@ public class GameManager : MonoBehaviourPunCallbacks
     // turret.cs, player.cs에서 onEnable하자마자 담겨질 리스트.
     public List<GameObject> CurrentTurrets = new List<GameObject>(8);// 각 월드에서 생성된 모든 터렛들.
     public List<GameObject> CurrentPlayers = new List<GameObject>(2); // 각 월드에서 생성된 모든 플레이어들.
-    //public List<GameObject> CurrentMinions = new List<GameObject>(); // 각 월드에서 생성된 모든 미니언들.
+    
 
     // 플레이어 미니맵에 띄우기
     public GameObject CharacterCircle;

@@ -62,7 +62,6 @@ public class Enemybase : MonoBehaviourPun
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
     protected NavMeshAgent _navMeshAgent;
     protected Animator _animator;
-    protected Rigidbody rigidbody;
     public bool isDead = false;
 
     public CapsuleCollider _capsuleCollider;
@@ -70,8 +69,6 @@ public class Enemybase : MonoBehaviourPun
     
     protected virtual void Awake()
     {
-
-        rigidbody = GetComponent<Rigidbody>();  
         _eminontpye = EMINIONTYPE.Nomal;
         _outline = GetComponent<Outline>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
