@@ -169,7 +169,6 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        playerStats.SetPlayerStats();
-
+        playerStats.SetPlayerStats(playerStats.AttackType, playerStats.Level);
     }
 }

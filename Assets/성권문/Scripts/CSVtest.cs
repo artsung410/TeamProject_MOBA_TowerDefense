@@ -42,6 +42,21 @@ public enum DescColData
     Text_En,
 }
 
+public enum StatColData
+{
+    ID,             // int
+    Name,           // string
+    NameLevel,      // string
+    HP,             // float
+    Dmg,            // float
+    Range,          // float
+    Atk_Speed,      // float
+    Move_Speed,     // float
+    Max_Exp,        // int
+    Character_ID,   // int
+    Exp_Enemy,      // int   
+}
+
 
 public class CSVtest : MonoBehaviour
 {
@@ -113,6 +128,9 @@ public class CSVtest : MonoBehaviour
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
         StartCoroutine(GetCommonSkillData(commonSkillURL));
+
+        StartCoroutine(GetWarriorStatData(warriorStatURL));
+        StartCoroutine(GetWizardStatData(wizardStatURL));
     }
 
     private void SplitDescData(string tsv)
@@ -124,7 +142,7 @@ public class CSVtest : MonoBehaviour
         // row��ŭ �ݺ���
         for (int i = 0; i < rowSize; i++)
         {
-            
+
             string[] col = row[i].Split('\t');
             descList.Add(new List<string>());
             for (int j = 0; j < colSize; j++)
@@ -141,7 +159,7 @@ public class CSVtest : MonoBehaviour
     #region Tower
 
     private const string TowerURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=625995306&range=A5:AL124";
-    
+
     [Header("[타워]")]
     public TowerDatabaseList towerDatabaseListCSV;
     public ItemDataBaseList towerDatabaseList;
@@ -151,7 +169,7 @@ public class CSVtest : MonoBehaviour
 
     UnityWebRequest TowerWebData;
     public Dictionary<int, TowerBlueprint> TowerDic = new Dictionary<int, TowerBlueprint>();
-    IEnumerator GetTowerData()                                                                              
+    IEnumerator GetTowerData()
     {
         TowerWebData = UnityWebRequest.Get(TowerURL);
         yield return TowerWebData.SendWebRequest();
@@ -159,7 +177,7 @@ public class CSVtest : MonoBehaviour
         string DB = TowerWebData.downloadHandler.text;
         SetTowerData(DB);
     }
-        
+
 
     public void SetTowerData(string tsv)
     {
@@ -422,10 +440,10 @@ public class CSVtest : MonoBehaviour
             }
             dic.Add(i + 1, list[i]);
         }
-        CharactorDataInput(rowSize, job, dic, oldData);
+        CharactorSkillDataInput(rowSize, job, dic, oldData);
     }
 
-    public void CharactorDataInput(int size, SkillDatas skillDatas, Dictionary<int, List<string>> dic, ItemDataBaseList oldData)
+    public void CharactorSkillDataInput(int size, SkillDatas skillDatas, Dictionary<int, List<string>> dic, ItemDataBaseList oldData)
     {
         for (int i = 0; i < size; i++)
         {
@@ -470,6 +488,74 @@ public class CSVtest : MonoBehaviour
 
     }
 
+    #endregion
+
+    #region Charactor
+    private const string warriorStatURL = "https://docs.google.com/spreadsheets/d/1cMpFR0mXGTAqoFxhMgu32bFFhkJuvxmy/export?format=tsv&gid=511513918&range=A4:K10";
+    private const string wizardStatURL = "https://docs.google.com/spreadsheets/d/1cMpFR0mXGTAqoFxhMgu32bFFhkJuvxmy/export?format=tsv&gid=511513918&range=A11:K17";
+
+    Dictionary<int, List<string>> warriorStatDatas = new Dictionary<int, List<string>>();
+    List<List<string>> warriorStatRowDatas = new List<List<string>>();
+
+    Dictionary<int, List<string>> wizardStatDatas = new Dictionary<int, List<string>>();
+    List<List<string>> wizardStatRowDatas = new List<List<string>>();
+
+    [Header("[스탯]")]
+    public StatDatas warriorStatParsing;
+    public StatDatas wizardStatParsing;
+
+    IEnumerator GetWizardStatData(string url)
+    {
+        UnityWebRequest wizardStatDataRequest = UnityWebRequest.Get(url);
+        yield return wizardStatDataRequest.SendWebRequest();
+        SplitStatDatas(wizardStatDataRequest.downloadHandler.text, wizardStatDatas, wizardStatRowDatas, wizardStatParsing);
+    }
+
+    IEnumerator GetWarriorStatData(string url)
+    {
+        UnityWebRequest warriorStatDataRequest = UnityWebRequest.Get(url);
+        yield return warriorStatDataRequest.SendWebRequest();
+        SplitStatDatas(warriorStatDataRequest.downloadHandler.text, warriorStatDatas, warriorStatRowDatas, warriorStatParsing);
+    }
+
+    private void SplitStatDatas(string tsv, Dictionary<int, List<string>> dic, List<List<string>> list, StatDatas job)
+    {
+        string[] row = tsv.Split('\n');
+        int rowSize = row.Length;
+        int colSize = row[0].Split('\t').Length;
+
+
+        for (int i = 0; i < rowSize; i++)
+        {
+            list.Add(new List<string>());
+            string[] col = row[i].Split('\t');
+            for (int j = 0; j < colSize; j++)
+            {
+                list[i].Add(col[j]);
+            }
+            dic.Add(i + 1, list[i]);
+        }
+
+        CharactorStatDataInput(rowSize, dic, job);
+    }
+
+    private void CharactorStatDataInput(int size, Dictionary<int, List<string>> dic, StatDatas statDatas)
+    {
+        for (int i = 0; i < size; i++)
+        {
+            statDatas.dataList[i].id = int.Parse(dic[i + 1][(int)StatColData.ID]);
+            statDatas.dataList[i].name = dic[i + 1][(int)StatColData.Name];
+            statDatas.dataList[i].nameLevel = dic[i + 1][(int)StatColData.NameLevel];
+            statDatas.dataList[i].hp = float.Parse(dic[i + 1][(int)StatColData.HP]);
+            statDatas.dataList[i].damage = float.Parse(dic[i + 1][(int)StatColData.Dmg]);
+            statDatas.dataList[i].range = float.Parse(dic[i + 1][(int)StatColData.Range]);
+            statDatas.dataList[i].attackSpeed = float.Parse(dic[i + 1][(int)StatColData.Atk_Speed]);
+            statDatas.dataList[i].moveSpeed = float.Parse(dic[i + 1][(int)StatColData.Move_Speed]);
+            statDatas.dataList[i].maxExp = int.Parse(dic[i + 1][(int)StatColData.Max_Exp]);
+            statDatas.dataList[i].charID = int.Parse(dic[i + 1][(int)StatColData.Character_ID]);
+            statDatas.dataList[i].expEnemy = int.Parse(dic[i + 1][(int)StatColData.Exp_Enemy]);
+        }
+    }
     #endregion
 
     #region Sound

@@ -663,7 +663,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         PlayerPortrait.sprite = playerScript.playerIcon;
 
         // 레벨
-        PlayerLevelText.text = $"{playerStat.level}";
+        PlayerLevelText.text = $"{playerStat.Level}";
     }
 
     #endregion
@@ -764,7 +764,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         InfoPanel.SetActive(true);
 
         InfoIcon.sprite = player.playerIcon;
-        InfoLevel.text = player.playerStats.level.ToString();
+        InfoLevel.text = player.playerStats.Level.ToString();
     }
 
     public void ActivationTowerInfoUI(Turret turret)
