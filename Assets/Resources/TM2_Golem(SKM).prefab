@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDB:
     Name: Golem_Tower3
+    NickName: 
     ID: 3008
     GroupID: 20
     Rank: 3
@@ -85,9 +86,8 @@ MonoBehaviour:
       \uB098\uC11C \uBC84\uB838\uB124\uC694!  \"\uCFF0!\""
     Sprite_TowerCard: {fileID: 21300000, guid: 74ad5ded477cea441baf23ee9a662516, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: f2b0a0241eeb6e044932a56c3625ba16, type: 3}
-    AudioClip_Attack_Name: 0
-    AudioClip_Hit_Name: 0
-    AudioClip_Normal_Name: "0\r"
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
     MinionID: 5028
   healthbarImages:
@@ -97,6 +97,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 8177649899960501230}
   hitbarImage: {fileID: 399021298336796542}
   ui: {fileID: 3288789807510669382}
+  effectParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
   maxHealth: 0
   currentHealth: 0
   attack: 0
@@ -105,7 +106,6 @@ MonoBehaviour:
   partToRotate: {fileID: 4307571070495875870}
   firePoint: {fileID: 4307571070495875870}
   DangerZonePF: {fileID: 0}
-  smokeParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
   MinionBluePrint:
     Name: 
     ID: 0
@@ -120,7 +120,8 @@ MonoBehaviour:
     Move_Speed: 0
     Hp: 0
     Exp: 0
-    Icon: {fileID: 0}
+    Icon_Blue: {fileID: 0}
+    Icon_Red: {fileID: 0}
   bluePF: {fileID: 8735612959649956522, guid: 00ef8b89a479fab4682198eb7e069542, type: 3}
   redPF: {fileID: 5563517197917486334, guid: f6b690a533f2b9b44832751b33e55a31, type: 3}
 --- !u!114 &2920730327965026203

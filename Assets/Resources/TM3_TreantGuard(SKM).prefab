@@ -52,6 +52,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDB:
     Name: TreantGuard_Tower4
+    NickName: 
     ID: 3014
     GroupID: 21
     Rank: 4
@@ -81,9 +82,8 @@ MonoBehaviour:
       \uC6C0\uC9C1\uC785\uB2C8\uB2E4. \"\uC6C0 \uB77C\uCC60!"
     Sprite_TowerCard: {fileID: 21300000, guid: b1b6996794984ad42ba0f972ef7a7b48, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: a5b60337856a46d4b9143fda34cebf2a, type: 3}
-    AudioClip_Attack_Name: 0
-    AudioClip_Hit_Name: 0
-    AudioClip_Normal_Name: "0\r"
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
     MinionID: 5049
   healthbarImages:
@@ -93,6 +93,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 2120377091588656504}
   hitbarImage: {fileID: 7608925284339614184}
   ui: {fileID: 4734952393571714768}
+  effectParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
   maxHealth: 0
   currentHealth: 0
   attack: 0
@@ -101,7 +102,6 @@ MonoBehaviour:
   partToRotate: {fileID: 1132625977036601116}
   firePoint: {fileID: 1132625977036601116}
   DangerZonePF: {fileID: 0}
-  smokeParticles: {fileID: 7666802063442536192, guid: 3e1d09cbea2bd164cbc98fd7e42098e7, type: 3}
   MinionBluePrint:
     Name: 
     ID: 0
@@ -116,7 +116,8 @@ MonoBehaviour:
     Move_Speed: 0
     Hp: 0
     Exp: 0
-    Icon: {fileID: 0}
+    Icon_Blue: {fileID: 0}
+    Icon_Red: {fileID: 0}
   bluePF: {fileID: 1666531367279977210, guid: 703421d756817bc4da73b7e0c9f0d9d3, type: 3}
   redPF: {fileID: 9020345512625043136, guid: 909f83ff47d7bd6448d8faf5ed05f71d, type: 3}
 --- !u!114 &4923388937230517865
