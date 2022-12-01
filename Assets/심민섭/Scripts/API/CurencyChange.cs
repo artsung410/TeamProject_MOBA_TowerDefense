@@ -22,7 +22,7 @@ public class CurencyChange : MonoBehaviour
 
         if (gameObject.name == "Dappx - Text")
         {
-            gameObject.GetComponent<Text>().text = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>().amount_won;
+            gameObject.GetComponent<Text>().text = "0(юс╫ц)";//GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>().amount_won;
         }
     }
 }

@@ -48,6 +48,8 @@ public class GetAPICaller : MonoBehaviourPun
 
     private void Awake()
     {
+        CSVtest.onDataParsingEvent += DbInit;
+
         if (_instance == null)
         {
             _instance = this;
@@ -68,6 +70,11 @@ public class GetAPICaller : MonoBehaviourPun
             playerStorage.playerNumber = PhotonNetwork.CountOfPlayers;
         }
         //Debug.Log(PhotonNetwork.CountOfPlayers);
+
+    }
+
+    public void DbInit()
+    {
         StartCoroutine(getUserProfileCaller());
     }
 

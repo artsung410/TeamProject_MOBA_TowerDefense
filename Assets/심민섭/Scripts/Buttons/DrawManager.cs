@@ -285,7 +285,7 @@ public class DrawManager : MonoBehaviour
         {
             selectInventory = towerInventory;
         }
-        else if (boxName == "Buff Tower" || boxName == "Buff Tower_P")
+        else if (boxName == "Buff  & Debuff Tower" || boxName == "Buff  & Debuff Tower_P")
         {
             selectInventory = towerInventory;
         }
@@ -336,6 +336,8 @@ public class DrawManager : MonoBehaviour
                 }
             }
             itemStruct.itemType = ResultItem[i].itemType;
+            itemStruct.towerData = ResultItem[i].towerData;
+            itemStruct.skillData = ResultItem[i].skillData;
             itemStruct.itemWeight = ResultItem[i].itemWeight;
             itemStruct.maxStack = ResultItem[i].maxStack;
             itemStruct.indexItemInList = ResultItem[i].indexItemInList;
@@ -444,6 +446,8 @@ public class DrawManager : MonoBehaviour
                         itemStruct.itemIcon = sameItem[i].itemIcon;
                         itemStruct.objType = sameItem[i].objType;
                         itemStruct.itemType = sameItem[i].itemType;
+                        itemStruct.towerData = sameItem[i].towerData;
+                        itemStruct.skillData = sameItem[i].skillData;
                         itemStruct.itemWeight = sameItem[i].itemWeight;
                         itemStruct.maxStack = sameItem[i].maxStack;
                         itemStruct.indexItemInList = sameItem[i].indexItemInList;
@@ -461,6 +465,8 @@ public class DrawManager : MonoBehaviour
                         itemProduce.item.objType = StructResultItem[i].objType;
                         itemProduce.item.itemValue = StructResultItem[i].itemValue;
                         itemProduce.item.itemType = StructResultItem[i].itemType;
+                        itemProduce.item.towerData = StructResultItem[i].towerData;
+                        itemProduce.item.skillData = StructResultItem[i].skillData;
                         itemProduce.item.itemWeight = StructResultItem[i].itemWeight;
                         itemProduce.item.maxStack = StructResultItem[i].maxStack;
                         itemProduce.item.indexItemInList = StructResultItem[i].indexItemInList;
@@ -518,6 +524,8 @@ public class DrawManager : MonoBehaviour
                     itemProduce.item.objType = StructResultItem[j].objType;
                     itemProduce.item.itemValue = StructResultItem[j].itemValue;
                     itemProduce.item.itemType = StructResultItem[j].itemType;
+                    itemProduce.item.towerData = StructResultItem[j].towerData;
+                    itemProduce.item.skillData = StructResultItem[j].skillData;
                     itemProduce.item.itemWeight = StructResultItem[j].itemWeight;
                     itemProduce.item.maxStack = StructResultItem[j].maxStack;
                     itemProduce.item.indexItemInList = StructResultItem[j].indexItemInList;

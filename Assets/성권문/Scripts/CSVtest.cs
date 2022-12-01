@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.IO;
+using System;
 
 public enum SkillColData
 {
@@ -45,7 +46,7 @@ public enum DescColData
 public class CSVtest : MonoBehaviour
 {
     private static CSVtest _instance;
-
+    public static event Action onDataParsingEvent = delegate { };
     public static CSVtest Instance
     {
         get
@@ -90,7 +91,7 @@ public class CSVtest : MonoBehaviour
 
     #region DescParsing
 
-    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D57";
+    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D109";
 
     // Ű����� ID, List���� Name KoTooltip, EnTooltip�� ����
     Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
@@ -400,6 +401,8 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest CommonSkillDataRequest = UnityWebRequest.Get(url);
         yield return CommonSkillDataRequest.SendWebRequest();
         SplitSkillDatas(CommonSkillDataRequest.downloadHandler.text, CommonSkillDatas, CommonSkillRowDatas, CommonSkillParsing, CommonDatabaseList);
+        onDataParsingEvent.Invoke();
+        Debug.Log("파싱 완료.. Invoke중");
     }
 
     private void SplitSkillDatas(string tsv, Dictionary<int, List<string>> dic, List<List<string>> list, SkillDatas job, ItemDataBaseList oldData)
@@ -462,6 +465,8 @@ public class CSVtest : MonoBehaviour
             oldData.itemList[i + 1].itemIcon = skillDatas.DataList[i].CardImage;
             oldData.itemList[i + 1].itemDesc = skillDatas.DataList[i].Desc;
         }
+
+
     }
 
     #endregion

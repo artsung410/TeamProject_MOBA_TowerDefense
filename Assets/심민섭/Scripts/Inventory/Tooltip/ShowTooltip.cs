@@ -56,12 +56,11 @@ public class ShowTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             tooltip.deactivateTooltip();
         }
-        Debug.Log(this.gameObject.transform.parent.parent.parent.parent.parent.parent.gameObject.name);
 
-        if (this.gameObject.transform.parent.parent.parent.parent.parent.parent.gameObject.name == "OtherTab")
+        /*if (this.gameObject.transform.parent.parent.parent.parent.parent.parent.gameObject.name == "OtherTab")
         {
             tooltip.deactivateTooltip();
-        }
+        }*/
     }
 
     public void OnPointerExit(PointerEventData data)
