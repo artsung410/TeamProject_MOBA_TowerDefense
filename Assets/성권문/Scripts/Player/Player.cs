@@ -106,11 +106,11 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerStats.buffDmg += addValue;
+                playerStats.buffAttackDamge += addValue;
             }
             else
             {
-                playerStats.buffDmg = 0f;
+                playerStats.buffAttackDamge = 0f;
             }
         }
 
@@ -130,7 +130,7 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                float temp = playerStats.MoveSpeed;
+                float temp = playerStats.buffMoveSpeed;
                 temp *= (addValue);
                 Debug.Log($"addValue : {addValue} temp : { temp }");
                 playerStats.buffMoveSpeed += temp;
@@ -149,11 +149,11 @@ public class Player : MonoBehaviourPun
             {
                 float temp = playerStats.attackSpeed;
                 temp *= (addValue);
-                playerStats.buffAtkSpeed += temp;
+                playerStats.buffAttackSpeed += temp;
             }
             else
             {
-                playerStats.buffAtkSpeed = 0f;
+                playerStats.buffAttackSpeed = 0f;
             }
         }
 

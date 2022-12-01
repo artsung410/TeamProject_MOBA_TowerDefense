@@ -38,10 +38,6 @@ public class Stats : GoogleSheetManager
     public float attackSpeed = 1;
     public float attackRange = 1;
 
-    public float buffDmg = 0f;
-    public float buffMoveSpeed = 0f;
-    public float buffAtkSpeed = 0f;
-
     [Header("공격 방식")]
     public HeroType AttackType;
 
