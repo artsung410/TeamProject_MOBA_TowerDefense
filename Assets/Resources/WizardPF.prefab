@@ -1675,6 +1675,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 803498449053986049}
   Chractor: {fileID: 6935948097432658152}
+  IsAttack: 0
 --- !u!114 &748268626506911636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3280,7 +3281,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerStats: {fileID: 6994365721379009202}
   playerHealth: {fileID: 6994365721379009212}
-  playerIcon: {fileID: 21300000, guid: 00efbf51b1d1fc54baf50688536b056d, type: 3}
+  playerIcon: {fileID: 21300000, guid: f8f360ec5d963e4468f249f326ea8b61, type: 3}
   playerBehaviour: {fileID: 6994365721379009201}
 --- !u!114 &6994365721379009207
 MonoBehaviour:
@@ -3328,7 +3329,6 @@ MonoBehaviour:
   perfomMeleeAttack: 0
   perfomRangeAttack: 0
   EnemyTag: 
-  IsAttack: 0
   isStun: 0
   StunTime: 0
   enemyCol: {fileID: 0}
@@ -3356,16 +3356,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6153a793d6f840c4798dc50935550758, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxHealth: 1
+  maxHealth: 0
   attackDmg: 1
   attackSpeed: 1
   attackRange: 1
   AttackType: 1
-  MoveSpeed: 1
+  moveSpeed: 0
   Level: 0
-  Exp: 0
-  ExpDetectRange: 0
+  acquiredExp: 0
+  expDetectRange: 0
   maxExp: 0
+  enemyExp: 0
+  buffMaxHealth: 0
+  buffAttackDamge: 0
+  buffAttackSpeed: 0
+  buffAttackRange: 0
+  buffMoveSpeed: 0
 --- !u!114 &6994365721379009203
 MonoBehaviour:
   m_ObjectHideFlags: 0

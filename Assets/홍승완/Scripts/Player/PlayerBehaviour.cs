@@ -284,7 +284,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         if (targetedEnemy != null)
         {
             float dist = Vector3.Distance(transform.position, targetedEnemy.transform.position) - interpolationRange;
-
+            Debug.Log($"타겟과의 거리 : {dist}");
             // 타겟이 공격범위 밖일때
             if (dist > _statScript.attackRange)
             {
@@ -516,7 +516,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 중립몬스터 보간
         else if (targetedEnemy.layer == 17)
         {
-            interpolationRange = 1f;
+            interpolationRange = 2f;
         }
     }
 
