@@ -29,31 +29,35 @@ public class Stats : GoogleSheetManager
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    [Header("Ã¼·Â ½ºÅÈ")]
+    [Header("ì²´ë ¥ ìŠ¤íƒ¯")]
     public float maxHealth = 1;
     //public float health;
 
-    [Header("°ø°İ ½ºÅÈ")]
+    [Header("ê³µê²© ìŠ¤íƒ¯")]
     public float attackDmg = 1;
     public float attackSpeed = 1;
     public float attackRange = 1;
 
-    [Header("°ø°İ ¹æ½Ä")]
+    public float buffDmg = 0f;
+    public float buffMoveSpeed = 0f;
+    public float buffAtkSpeed = 0f;
+
+    [Header("ê³µê²© ë°©ì‹")]
     public HeroType AttackType;
 
-    [Header("ÀÌµ¿ °ü·Ã")]
+    [Header("ì´ë™ ê´€ë ¨")]
     public float moveSpeed = 1;
 
-    [Header("·¹º§")]
+    [Header("ë ˆë²¨")]
     public int level = 1;
 
-    [Header("°æÇèÄ¡")]
+    [Header("ê²½í—˜ì¹˜")]
     public float acquiredExp;
     public float expDetectRange;
     public int maxExp;
     public int enemyExp;
 
-    [Header("¹öÇÁº¯¼ö")]
+    [Header("ë²„í”„ë³€ìˆ˜")]
     public float buffMaxHealth;
     public float buffAttackDamge;
     public float buffAttackSpeed;
@@ -81,17 +85,17 @@ public class Stats : GoogleSheetManager
         _playerScript = GetComponent<PlayerBehaviour>();
         _health = GetComponent<Health>();
 
-        // Å¸ÀÔ¿¡ µû¶ó °¡Á®¿À´Â ½ºÅÈÀÌ ´Ù¸£´Ù
+        // íƒ€ì…ì— ë”°ë¼ ê°€ì ¸ì˜¤ëŠ” ìŠ¤íƒ¯ì´ ë‹¤ë¥´ë‹¤
         if (AttackType == HeroType.Warrior)
         {
             StartCoroutine(GetLevelData(warriorURL));
         }
-        else if(AttackType == HeroType.Wizard)
+        else if (AttackType == HeroType.Wizard)
         {
             StartCoroutine(GetLevelData(magicionURL));
         }
 
-        // ±¸µ¶ÀÚ µî·Ï
+        // êµ¬ë…ì ë“±ë¡
         Health.OnPlayerDieEvent += PlayerLevelUpFactory;
         Enemybase.OnMinionDieEvent += PlayerLevelUpFactory;
         Turret.OnTurretDestroyEvent += PlayerLevelUpFactory;
@@ -170,7 +174,6 @@ public class Stats : GoogleSheetManager
         maxExp = 100;
         _parseCharID = 1;
         enemyExp = 100;
-
         expDetectRange = 20f;
 
         SetPlayerStats();
@@ -180,26 +183,26 @@ public class Stats : GoogleSheetManager
     {
         if ((object)expBag != null)
         {
-            // expBag¿Í ³ªÀÇ tag°¡ °°À¸¸é °°ÀºÆÀÀÌ´Ï±î returnÇÑ´Ù
+            // expBagì™€ ë‚˜ì˜ tagê°€ ê°™ìœ¼ë©´ ê°™ì€íŒ€ì´ë‹ˆê¹Œ returní•œë‹¤
             if (expBag.tag == gameObject.tag)
             {
                 return;
             }
 
-            // expBag°ú ³ª¿ÍÀÇ °Å¸®¸¦ °è»êÇÑ´Ù
+            // expBagê³¼ ë‚˜ì™€ì˜ ê±°ë¦¬ë¥¼ ê³„ì‚°í•œë‹¤
             float dist = Vector3.Distance(expBag.transform.position, this.transform.position);
 
-            // TODO : »ó´ë¹æ Á×À½ ÀÌº¥Æ®¿¡ ³Ö¾îµÒ ÃßÈÄ °³¼± »çÇ×
+            // TODO : ìƒëŒ€ë°© ì£½ìŒ ì´ë²¤íŠ¸ì— ë„£ì–´ë‘  ì¶”í›„ ê°œì„  ì‚¬í•­
             _playerScript.targetedEnemy = null;
 
-            // °Å¸®°¡ ÀÎ½Ä°¡´ÉÇÑ °Å¸® ³»¿¡ ÀÖ´Ù¸é °æÇèÄ¡ ¾òÀ½
+            // ê±°ë¦¬ê°€ ì¸ì‹ê°€ëŠ¥í•œ ê±°ë¦¬ ë‚´ì— ìˆë‹¤ë©´ ê²½í—˜ì¹˜ ì–»ìŒ
             if (dist <= expDetectRange)
             {
                 this.acquiredExp += exp;
-                // °æÇèÄ¡°¡ ÃÖ´ë °æÇèÄ¡º¸´Ù ³ôÀ¸¸é ·¹º§¾÷À» ÇÑ´Ù
+                // ê²½í—˜ì¹˜ê°€ ìµœëŒ€ ê²½í—˜ì¹˜ë³´ë‹¤ ë†’ìœ¼ë©´ ë ˆë²¨ì—…ì„ í•œë‹¤
                 while (this.acquiredExp >= maxExp)
                 {
-                    // 10·¹º§ ´Ş¼º½Ã ·¹º§¾÷ÇÏÁö¾Ê°í °æÇèÄ¡¹Ù´Â Â÷µÇ ÃÖ´ëÄ¡ ÀÌ»óÀ¸·Ğ Â÷Áö ¾Ê´Â´Ù
+                    // 10ë ˆë²¨ ë‹¬ì„±ì‹œ ë ˆë²¨ì—…í•˜ì§€ì•Šê³  ê²½í—˜ì¹˜ë°”ëŠ” ì°¨ë˜ ìµœëŒ€ì¹˜ ì´ìƒìœ¼ë¡  ì°¨ì§€ ì•ŠëŠ”ë‹¤
                     if (CharactorLevelData.ContainsKey(level + 1) == false)
                     {
                         this.acquiredExp = Mathf.Clamp(this.acquiredExp, _parseMinExp, maxExp);
@@ -208,13 +211,13 @@ public class Stats : GoogleSheetManager
 
                     level++;
 
-                    // Å¸¿ö ÇØ±İÀº °ÔÀÓ¸Å´ÏÀú°¡ ÇÃ·¹ÀÌ¾î ·¹º§À» ¹Ş¾Æ¿Í¼­ ÇØ±İÇÑ´Ù
+                    // íƒ€ì›Œ í•´ê¸ˆì€ ê²Œì„ë§¤ë‹ˆì €ê°€ í”Œë ˆì´ì–´ ë ˆë²¨ì„ ë°›ì•„ì™€ì„œ í•´ê¸ˆí•œë‹¤
                     GameManager.Instance.UnlockTower(gameObject.tag, level);
                     StatDataParse(level);
                     SetPlayerStats();
                     photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, maxHealth);
 
-                    // Exp¿¡¼­ maxExp¸¸Å­ »«´Ù ·¹º§¾÷À» ÇßÀ¸´Ï±î
+                    // Expì—ì„œ maxExpë§Œí¼ ëº€ë‹¤ ë ˆë²¨ì—…ì„ í–ˆìœ¼ë‹ˆê¹Œ
                     this.acquiredExp = Mathf.Max(this.acquiredExp - maxExp, 0);
                 }
             }

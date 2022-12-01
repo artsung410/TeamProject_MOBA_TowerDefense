@@ -69,8 +69,6 @@ public class Enemybase : MonoBehaviourPun
 
     protected virtual void Awake()
     {
-
-        
         _eminontpye = EMINIONTYPE.Nomal;
         _outline = GetComponent<Outline>();
         _navMeshAgent = GetComponent<NavMeshAgent>();

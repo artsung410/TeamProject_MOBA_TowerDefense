@@ -16,7 +16,7 @@ public class NetualPos : MonoBehaviourPun
     float attackArea = 10f;
     private void Awake()
     {
-        pos = new Vector3(87.775f,2.3f,75.779f); // ¸ÊÁß¾Ó Æ÷Áö¼Ç 
+        pos = new Vector3(87.775f,2.3f,75.779f) * 2; // ¸ÊÁß¾Ó Æ÷Áö¼Ç 
         
     }
     private void OnEnable()
