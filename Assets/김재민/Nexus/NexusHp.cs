@@ -174,7 +174,7 @@ public class NexusHp : MonoBehaviourPun
 
             if (col.CompareTag(gameObject.tag) && col.gameObject.layer == 7 && photonView.IsMine) //우리팀이랑 태그 같고 플레이어 + 자기자신에게만 
             {
-                if (col.GetComponent<Health>().health < col.GetComponent<Stats>().MaxHealth)
+                if (col.GetComponent<Health>().health < col.GetComponent<Stats>().maxHealth)
                 {
                     photonView.RPC("effectSwich", RpcTarget.All, true);
                     col.GetComponent<Health>().Regenation(25f);

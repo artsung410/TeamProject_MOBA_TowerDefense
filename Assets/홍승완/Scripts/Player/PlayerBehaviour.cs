@@ -162,7 +162,7 @@ public class PlayerBehaviour : MonoBehaviourPun
             _rigid.angularVelocity = Vector3.zero;
 
             CurrentPlayerPos = transform.position;
-            _agent.speed = _statScript.MoveSpeed;
+            _agent.speed = _statScript.moveSpeed;
             // s≈∞ ¥©∏£∏È «‡µø ∏ÿ√„
             if (Input.GetKeyDown(KeyCode.S))
             {

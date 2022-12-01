@@ -127,11 +127,11 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerStats.MoveSpeed *= (1 + addValue); // 버프적용
+                playerStats.moveSpeed *= (1 + addValue); // 버프적용
             }
             else
             {
-                playerStats.MoveSpeed /= (1 + addValue);  // 원상복구
+                playerStats.moveSpeed /= (1 + addValue);  // 원상복구
             }
         }
 

@@ -30,7 +30,7 @@ public class Stats : GoogleSheetManager
     // ###############################################
 
     [Header("체력 스탯")]
-    public float MaxHealth = 1;
+    public float maxHealth = 1;
     //public float health;
 
     [Header("공격 스탯")]
@@ -42,23 +42,36 @@ public class Stats : GoogleSheetManager
     public HeroType AttackType;
 
     [Header("이동 관련")]
-    public float MoveSpeed = 1;
+    public float moveSpeed = 1;
 
     [Header("레벨")]
-    public int Level = 1;
+    public int level = 1;
 
     [Header("경험치")]
-    public float Exp;
-    public float ExpDetectRange;
-
+    public float acquiredExp;
+    public float expDetectRange;
     public int maxExp;
-    private int minExp;
-    private int charID;
-    public int enemyExp
-    {
-        get;
-        private set;
-    }
+    public int enemyExp;
+
+    [Header("버프변수")]
+    public float buffMaxHealth;
+    public float buffAttackDamge;
+    public float buffAttackSpeed;
+    public float buffAttackRange;
+    public float buffMoveSpeed;
+
+    #region ParsingData
+    private float _parseMaxHealth;
+    private float _parseAttackDmg;
+    private float _parseAttackSpeed;
+    private float _parseAttackRange;
+    private float _parseMoveSpeed;
+    private int _parseMinExp;
+    private int _parseMaxExp;
+    private int _parseCharID;
+    private int _parseEnemyExp;
+    #endregion
+
 
     PlayerBehaviour _playerScript;
     Health _health;
@@ -108,60 +121,59 @@ public class Stats : GoogleSheetManager
         yield return GetCharactorData.SendWebRequest();
         SetCharactorDatas(GetCharactorData.downloadHandler.text);
 
-        StatInit();
+        StatDataParse(1);
+        SetPlayerStats();
     }
-    public void StatInit()
+
+    private void StatDataParse(int level)
     {
-        MaxHealth = float.Parse(CharactorLevelData[1][(int)Stat_Columns.HP]);
-        attackDmg = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Dmg]);
-        attackRange = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Range]);
-        attackSpeed = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Atk_Speed]);
-        MoveSpeed = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Move_Speed]);
-        maxExp = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Max_Exp]);
-        charID = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Character_ID]);
-        enemyExp = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Exp_Enemy]);
+        _parseMaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
+        _parseAttackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
+        _parseAttackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
+        _parseAttackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
+        _parseMoveSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Move_Speed]);
+        _parseMaxExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Max_Exp]);
+        _parseCharID = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Character_ID]);
+        _parseEnemyExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Exp_Enemy]);
+    }
+
+    public void SetPlayerStats()
+    {
+        maxHealth = _parseMaxHealth + buffMaxHealth;
+        attackDmg = _parseAttackDmg + buffAttackDamge;
+        attackRange = _parseAttackRange + buffAttackRange;
+        attackSpeed = _parseAttackSpeed + buffAttackSpeed;
+        moveSpeed = _parseMoveSpeed + buffMoveSpeed;
+        maxExp = _parseMaxExp;
+        enemyExp = _parseEnemyExp;
     }
 
     private void OnEnable()
     {
-        if (CharactorLevelData.ContainsKey(Level))
+        if (CharactorLevelData.ContainsKey(level))
         {
             Debug.Log("stat OnEnable Check");
-            SetStats(Level);
+            StatDataParse(level);
+            SetPlayerStats();
         }
     }
 
     private void Start()
     {
-        Level = 1;
-        MaxHealth = 500;
+        level = 1;
+        maxHealth = 500;
         attackDmg = 10;
         attackRange = 5;
         attackSpeed = 1;
-        MoveSpeed = 15;
-        minExp = 0;
+        moveSpeed = 15;
+        _parseMinExp = 0;
         maxExp = 100;
-        charID = 1;
+        _parseCharID = 1;
         enemyExp = 100;
 
-        ExpDetectRange = 20f;
-        //Debug.Log("start부분 초기화 완료");
-    }
+        expDetectRange = 20f;
 
-    // 레벨에 따른 스텟 증가
-    public void SetStats(int level)
-    {
-        MaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
-
-        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
-        attackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
-        attackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
-
-        MoveSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Move_Speed]);
-
-        maxExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Max_Exp]);
-        charID = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Character_ID]);
-        enemyExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Exp_Enemy]);
+        SetPlayerStats();
     }
 
     public void PlayerLevelUpFactory(GameObject expBag, float exp)
@@ -181,52 +193,39 @@ public class Stats : GoogleSheetManager
             _playerScript.targetedEnemy = null;
 
             // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
-            if (dist <= ExpDetectRange)
+            if (dist <= expDetectRange)
             {
-                Exp += exp;
+                this.acquiredExp += exp;
                 // 경험치가 최대 경험치보다 높으면 레벨업을 한다
-                while (Exp >= maxExp)
+                while (this.acquiredExp >= maxExp)
                 {
                     // 10레벨 달성시 레벨업하지않고 경험치바는 차되 최대치 이상으론 차지 않는다
-                    if (CharactorLevelData.ContainsKey(Level + 1) == false)
+                    if (CharactorLevelData.ContainsKey(level + 1) == false)
                     {
-                        Exp = Mathf.Clamp(Exp, minExp, maxExp);
+                        this.acquiredExp = Mathf.Clamp(this.acquiredExp, _parseMinExp, maxExp);
                         return;
                     }
 
-                    Level++;
+                    level++;
 
                     // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
-                    GameManager.Instance.UnlockTower(gameObject.tag, Level);
-                    SetStats(Level);
-                    photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, MaxHealth);
+                    GameManager.Instance.UnlockTower(gameObject.tag, level);
+                    StatDataParse(level);
+                    SetPlayerStats();
+                    photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, maxHealth);
 
                     // Exp에서 maxExp만큼 뺀다 레벨업을 했으니까
-                    Exp = Mathf.Max(Exp - maxExp, 0);
+                    this.acquiredExp = Mathf.Max(this.acquiredExp - maxExp, 0);
                 }
             }
         }
 
     }
 
-    private void Update()
-    {
-        if (gameObject.tag == "Blue")
-        {
-            GameManager.Instance.PlayerLevel1 = Level;
-        }
-        else
-        {
-            GameManager.Instance.PlayerLevel2 = Level;
-        }
-    }
-
-
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.2f);
         Gizmos.DrawSphere(transform.position, attackRange);
     }
-
 
 }
