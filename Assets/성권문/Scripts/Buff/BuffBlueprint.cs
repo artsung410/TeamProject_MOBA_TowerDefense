@@ -39,6 +39,7 @@ public class BuffBlueprint
 
     [Header("[기본정보]")]
     public string Name;             // 버프 이름
+    public string ToolTipName;      // 툴팁용 이름
     public int ID;                  // 고유 아이디
     public Sprite Icon;             // 버프 아이콘
     public int GroupID;             // 그룹 아이디 
