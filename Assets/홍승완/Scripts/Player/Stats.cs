@@ -179,7 +179,6 @@ public class Stats : GoogleSheetManager
 
             // TODO : 상대방 죽음 이벤트에 넣어둠 추후 개선 사항
             _playerScript.targetedEnemy = null;
-            Debug.Log($"현재 타겟은? : {_playerScript.targetedEnemy}");
 
             // 거리가 인식가능한 거리 내에 있다면 경험치 얻음
             if (dist <= ExpDetectRange)
