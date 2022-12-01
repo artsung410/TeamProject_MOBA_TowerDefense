@@ -81,27 +81,27 @@ public class Player : MonoBehaviourPun
         }
     }
 
-    // ÇÃ·¹ÀÌ¾î ½ºÅÈ ÃÊ±âÈ­°¡ ÀÌ·ç¾îÁø µÚ¿¡ µğ¹öÇÁÀû¿ë
+    // í”Œë ˆì´ì–´ ìŠ¤íƒ¯ ì´ˆê¸°í™”ê°€ ì´ë£¨ì–´ì§„ ë’¤ì— ë””ë²„í”„ì ìš©
     IEnumerator delayApplyBuff(int id, float addValue, bool state)
     {
         yield return new WaitForSeconds(2f);
         photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
     }
 
-    // ½ºÅ³ Àü¿ë µğ¹öÇÁ
+    // ìŠ¤í‚¬ ì „ìš© ë””ë²„í”„
     public void ApplyDebuff(int id, float addValue, bool state)
     {
             photonView.RPC(nameof(RPC_ApplyBuff), RpcTarget.All, id, addValue, state);
     }
 
-// TODO : ¹öÇÁ »ó´ëÆíÇÑÅ× Àû¿ëÇÏ°Ô ÇÒ°Í
-// TODO : Ä³¸¯ÅÍ setactive falseµÇµµ ½ºÅ©¸³Æ® À¯ÁöÇÏ°ÔÇÔ
+// TODO : ë²„í”„ ìƒëŒ€í¸í•œí…Œ ì ìš©í•˜ê²Œ í• ê²ƒ
+// TODO : ìºë¦­í„° setactive falseë˜ë„ ìŠ¤í¬ë¦½íŠ¸ ìœ ì§€í•˜ê²Œí•¨
 
 
 [PunRPC]
     public void RPC_ApplyBuff(int id, float addValue, bool state)
     {
-        // ÇÃ·¹ÀÌ¾î ¹öÇÁ Àû¿ë
+        // í”Œë ˆì´ì–´ ë²„í”„ ì ìš©
         if (id == (int)Buff_Group.Attack_Increase || id == (int)Buff_Group.Attack_Decrese)
         {
             if (state)

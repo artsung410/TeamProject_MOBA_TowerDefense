@@ -60,7 +60,7 @@ public class Health : MonoBehaviourPun
     private void Init()
     {
         isDeath = false;
-        MaxHealth = _stats.MaxHealth;
+        MaxHealth = _stats.maxHealth;
         _prevMaxHealth = MaxHealth;
         health = MaxHealth;
 
@@ -217,9 +217,9 @@ public class Health : MonoBehaviourPun
     { 
 
         health += recovery; // health 현재 체력
-        if (health >= _stats.MaxHealth)
+        if (health >= _stats.maxHealth)
         {
-            overhp = health - _stats.MaxHealth;
+            overhp = health - _stats.maxHealth;
             health -= overhp; // 맥스 체력으로 바꿔줌
         }
 #if OLD_VER
