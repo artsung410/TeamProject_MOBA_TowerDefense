@@ -183,6 +183,9 @@ public class Enemybase : MonoBehaviourPun
             {
                 CurrnetHP -= Damage * (PlayerHUD.Instance.min + 1); // 1안더해주면 0분일때 데미지 안드감
                 _animator.SetTrigger("TakeDamage");
+                OrcFSM orc = gameObject.GetComponent<OrcFSM>();
+                orc.setNeturalMonsterHealthBar();
+                orc.HealthUI.transform.position = transform.position;
             }
             if (CurrnetHP <= 0)
             {
@@ -326,5 +329,4 @@ public class Enemybase : MonoBehaviourPun
     {
         _animator.SetFloat("Speed", atkSpeed);
     }
-
 }
