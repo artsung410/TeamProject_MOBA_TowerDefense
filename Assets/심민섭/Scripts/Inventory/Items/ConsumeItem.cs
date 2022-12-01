@@ -134,10 +134,10 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                                 return;
                                             }
                                         }
-                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 50)
+                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 25)
                                         {
                                             int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
-                                            if (minionRangeData == 50)
+                                            if (minionRangeData == 25)
                                             {
                                                 return;
                                             }
