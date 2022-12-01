@@ -572,11 +572,11 @@ public class InventoryGetData : MonoBehaviour
                 itemStruct.itemIcon = sendItems[i].itemIcon;
                 itemStruct.objType = sendItems[i].objType;
                 itemStruct.itemType = sendItems[i].itemType;
+                itemStruct.towerData = sendItems[i].towerData;
                 itemStruct.itemWeight = sendItems[i].itemWeight;
                 itemStruct.maxStack = sendItems[i].maxStack;
                 itemStruct.indexItemInList = sendItems[i].indexItemInList;
                 itemStruct.rarity = sendItems[i].rarity;
-                itemStruct.towerData = sendItems[i].towerData;
                 itemStruct.skillData = sendItems[i].skillData;
 
                 // 아이템 틀 만들고 데이터 넣어주기

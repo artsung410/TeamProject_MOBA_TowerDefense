@@ -60,6 +60,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     private void Awake()
     {
+        Cursor.lockState = CursorLockMode.Confined;
         // 게임이 끝나고 로비로 돌아 올떄를 대비해서 이미 연결이 되어있는지 판단한다.
         if (PhotonNetwork.IsConnected) // 연결이 되어있으면 true, 그렇지 않으면 false
         {
