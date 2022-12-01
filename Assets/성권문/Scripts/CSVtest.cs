@@ -89,11 +89,12 @@ public class CSVtest : MonoBehaviour
         StartCoroutine(GetDescData(descURL));
     }
 
+
+
     #region DescParsing
 
-    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D109";
+    private const string descURL = "https://docs.google.com/spreadsheets/d/182kN9I20M15JBWPLeWa-TvWvAjKiKSyEfA9sq9FsMPY/export?format=tsv&gid=54124976&range=A3:D109";
 
-    // Ű����� ID, List���� Name KoTooltip, EnTooltip�� ����
     Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
     List<List<string>> descList = new List<List<string>>();
 
@@ -104,12 +105,11 @@ public class CSVtest : MonoBehaviour
         UnityWebRequest DescDataRequest = UnityWebRequest.Get(url);
         yield return DescDataRequest.SendWebRequest();
         SplitDescData(DescDataRequest.downloadHandler.text);
-        
+
         StartCoroutine(GetTowerData());
         StartCoroutine(GetBuffData());
         StartCoroutine(GetMinionData());
 
-        //StartCoroutine(GetMinionData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
         StartCoroutine(GetCommonSkillData(commonSkillURL));
@@ -260,7 +260,7 @@ public class CSVtest : MonoBehaviour
 
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:J83";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:K83";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
@@ -297,6 +297,7 @@ public class CSVtest : MonoBehaviour
             buffDatabaseListCSV.itemList[i].Value = float.Parse(col[7]);
             buffDatabaseListCSV.itemList[i].Duration = float.Parse(col[8]);
             buffDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[9])][(int)DescColData.Text_En];
+            buffDatabaseListCSV.itemList[i].ToolTipName = col[10];
 
             BuffDic.Add(buffDatabaseListCSV.itemList[i].ID, buffDatabaseListCSV.itemList[i]);
         }

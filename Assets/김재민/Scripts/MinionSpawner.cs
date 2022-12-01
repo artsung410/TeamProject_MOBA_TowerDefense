@@ -37,7 +37,7 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     [HideInInspector]
     public string tag;
 
-    
+
     float elaspedTime;
     float minionSpawnTime = 20f;
 
@@ -84,7 +84,7 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
         }
     }
     // ∫Ì∑Á                             // ∑πµÂ 
-    void ChangeMinion(int minionID, GameObject transferedMinionBlue,GameObject transferedMinionRed,string tag) // 
+    void ChangeMinion(int minionID, GameObject transferedMinionBlue, GameObject transferedMinionRed, string tag) // 
     {
         Enemybase blueMinion = transferedMinionBlue.transform.GetChild(0).GetComponent<Enemybase>();
 
@@ -136,10 +136,10 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
                 return;
             }
 
-            newMinion1 = PhotonNetwork.Instantiate(BasicMinion[0].name, GameManager.Instance.spawnPositions[0].position, Quaternion.identity); // ¿Ã∞‘ πŸ≤Ò
+            newMinion1 = PhotonNetwork.Instantiate(BasicMinion[0].name, GameManager.Instance.SpawnMinionPosition[0].position, Quaternion.identity); // ¿Ã∞‘ πŸ≤Ò
             newMinion1.transform.GetChild(0).GetComponent<Enemybase>().SetInitData(MinionIDs[0]);
 
-            newMinion2 = PhotonNetwork.Instantiate(BasicMinion[1].name, GameManager.Instance.spawnPositions[0].position, Quaternion.identity);
+            newMinion2 = PhotonNetwork.Instantiate(BasicMinion[1].name, GameManager.Instance.SpawnMinionPosition[0].position, Quaternion.identity);
             newMinion2.transform.GetChild(0).GetComponent<Enemybase>().SetInitData(MinionIDs[1]);
         }
     }
@@ -153,10 +153,10 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
                 return;
             }
 
-            newMinion3 = PhotonNetwork.Instantiate(BasicMinion[2].name, GameManager.Instance.spawnPositions[1].position, Quaternion.identity); // ¿Ã∞‘ πŸ≤Ò
+            newMinion3 = PhotonNetwork.Instantiate(BasicMinion[2].name, GameManager.Instance.SpawnMinionPosition[1].position, Quaternion.identity); // ¿Ã∞‘ πŸ≤Ò
             newMinion3.transform.GetChild(0).GetComponent<Enemybase>().SetInitData(MinionIDs[2]);
 
-            newMinion4 = PhotonNetwork.Instantiate(BasicMinion[3].name, GameManager.Instance.spawnPositions[1].position, Quaternion.identity);
+            newMinion4 = PhotonNetwork.Instantiate(BasicMinion[3].name, GameManager.Instance.SpawnMinionPosition[1].position, Quaternion.identity);
             newMinion4.transform.GetChild(0).GetComponent<Enemybase>().SetInitData(MinionIDs[3]);
         }
     }

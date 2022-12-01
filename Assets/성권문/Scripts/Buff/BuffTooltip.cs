@@ -8,16 +8,54 @@ using TMPro;
     //             NAME : ARTSUNG                      
     //             MAIL : artsung410@gmail.com         
     // ###############################################
-
+    
 public class BuffTooltip : MonoBehaviour
 {
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI descriptionText;
+    public TextMeshProUGUI serveText;
+    public Image itemImage;
 
-    public void SetupTooltip(string name, string des)
+    // 버프 툴팁 적용
+    public void SetupBuffTooltip(BuffBlueprint buff)
     {
-        nameText.text = name;
-        descriptionText.text = des;
+        itemImage.sprite = buff.Icon;
+        string buffDescText = buff.Desc;
+        descriptionText.text = buffDescText.Replace("\r", "");
+
+        if (buff.Type == (int)Buff_Effect_Type.Buff)
+        {
+            nameText.text = $"<color=#00FF00>{buff.ToolTipName}</color>";                            
+            serveText.text = "Type : Buff";                                           
+        }
+        else
+        {
+            nameText.text = $"<color=#DC143C>{buff.ToolTipName}</color>";
+            serveText.text = "Type : Debuff";
+        }
+    }
+
+
+    // 스킬 툴팁 적용
+    public void SetupSkillTooltip(string keyName, Item item)
+    {
+        // ex. [Q] 마구휘두루기
+        string tempNameText = $"<color=#FFD700>[{keyName}] {item.skillData.Name.name}</color>";
+
+        // ex. Rank : 1        CoolTime : 7sec
+        string tempServeText = $"Rank : {item.skillData.Rank}    /    CoolTime : {item.skillData.CoolTime}";
+
+        // 툴팁 제목 적용
+        nameText.text = tempNameText.Replace("\r", "");
+
+        // 툴팁 부제목 적용
+        serveText.text = tempServeText.Replace("\r", "");
+
+        // 툴팁 아이콘 적용
+        itemImage.sprite = item.skillData.SkillIcon;
+
+        // 툴팁 설명 적용
+        descriptionText.text = item.skillData.Desc;
     }
 
     float halfwidth;

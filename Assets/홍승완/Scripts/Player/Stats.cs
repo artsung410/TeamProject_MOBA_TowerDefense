@@ -29,36 +29,49 @@ public class Stats : GoogleSheetManager
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    [Header("Ã¼·Â ½ºÅÈ")]
-    public float MaxHealth = 1;
+    [Header("ì²´ë ¥ ìŠ¤íƒ¯")]
+    public float maxHealth = 1;
     //public float health;
 
-    [Header("°ø°İ ½ºÅÈ")]
+    [Header("ê³µê²© ìŠ¤íƒ¯")]
     public float attackDmg = 1;
     public float attackSpeed = 1;
     public float attackRange = 1;
 
-    [Header("°ø°İ ¹æ½Ä")]
+    [Header("ê³µê²© ë°©ì‹")]
     public HeroType AttackType;
 
-    [Header("ÀÌµ¿ °ü·Ã")]
-    public float MoveSpeed = 1;
+    [Header("ì´ë™ ê´€ë ¨")]
+    public float moveSpeed = 1;
 
-    [Header("·¹º§")]
-    public int Level = 1;
+    [Header("ë ˆë²¨")]
+    public int level = 1;
 
-    [Header("°æÇèÄ¡")]
-    public float Exp;
-    public float ExpDetectRange;
-
+    [Header("ê²½í—˜ì¹˜")]
+    public float acquiredExp;
+    public float expDetectRange;
     public int maxExp;
-    private int minExp;
-    private int charID;
-    public int enemyExp
-    {
-        get;
-        private set;
-    }
+    public int enemyExp;
+
+    [Header("ë²„í”„ë³€ìˆ˜")]
+    public float buffMaxHealth;
+    public float buffAttackDamge;
+    public float buffAttackSpeed;
+    public float buffAttackRange;
+    public float buffMoveSpeed;
+
+    #region ParsingData
+    private float _parseMaxHealth;
+    private float _parseAttackDmg;
+    private float _parseAttackSpeed;
+    private float _parseAttackRange;
+    private float _parseMoveSpeed;
+    private int _parseMinExp;
+    private int _parseMaxExp;
+    private int _parseCharID;
+    private int _parseEnemyExp;
+    #endregion
+
 
     PlayerBehaviour _playerScript;
     Health _health;
@@ -68,17 +81,17 @@ public class Stats : GoogleSheetManager
         _playerScript = GetComponent<PlayerBehaviour>();
         _health = GetComponent<Health>();
 
-        // Å¸ÀÔ¿¡ µû¶ó °¡Á®¿À´Â ½ºÅÈÀÌ ´Ù¸£´Ù
+        // íƒ€ì…ì— ë”°ë¼ ê°€ì ¸ì˜¤ëŠ” ìŠ¤íƒ¯ì´ ë‹¤ë¥´ë‹¤
         if (AttackType == HeroType.Warrior)
         {
             StartCoroutine(GetLevelData(warriorURL));
         }
-        else if(AttackType == HeroType.Wizard)
+        else if (AttackType == HeroType.Wizard)
         {
             StartCoroutine(GetLevelData(magicionURL));
         }
 
-        // ±¸µ¶ÀÚ µî·Ï
+        // êµ¬ë…ì ë“±ë¡
         Health.OnPlayerDieEvent += PlayerLevelUpFactory;
         Enemybase.OnMinionDieEvent += PlayerLevelUpFactory;
         Turret.OnTurretDestroyEvent += PlayerLevelUpFactory;
@@ -108,126 +121,110 @@ public class Stats : GoogleSheetManager
         yield return GetCharactorData.SendWebRequest();
         SetCharactorDatas(GetCharactorData.downloadHandler.text);
 
-        StatInit();
+        StatDataParse(1);
+        SetPlayerStats();
     }
-    public void StatInit()
+
+    private void StatDataParse(int level)
     {
-        MaxHealth = float.Parse(CharactorLevelData[1][(int)Stat_Columns.HP]);
-        attackDmg = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Dmg]);
-        attackRange = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Range]);
-        attackSpeed = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Atk_Speed]);
-        MoveSpeed = float.Parse(CharactorLevelData[1][(int)Stat_Columns.Move_Speed]);
-        maxExp = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Max_Exp]);
-        charID = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Character_ID]);
-        enemyExp = int.Parse(CharactorLevelData[1][(int)Stat_Columns.Exp_Enemy]);
+        _parseMaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
+        _parseAttackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
+        _parseAttackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
+        _parseAttackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
+        _parseMoveSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Move_Speed]);
+        _parseMaxExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Max_Exp]);
+        _parseCharID = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Character_ID]);
+        _parseEnemyExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Exp_Enemy]);
+    }
+
+    public void SetPlayerStats()
+    {
+        maxHealth = _parseMaxHealth + buffMaxHealth;
+        attackDmg = _parseAttackDmg + buffAttackDamge;
+        attackRange = _parseAttackRange + buffAttackRange;
+        attackSpeed = _parseAttackSpeed + buffAttackSpeed;
+        moveSpeed = _parseMoveSpeed + buffMoveSpeed;
+        maxExp = _parseMaxExp;
+        enemyExp = _parseEnemyExp;
     }
 
     private void OnEnable()
     {
-        if (CharactorLevelData.ContainsKey(Level))
+        if (CharactorLevelData.ContainsKey(level))
         {
             Debug.Log("stat OnEnable Check");
-            SetStats(Level);
+            StatDataParse(level);
+            SetPlayerStats();
         }
     }
 
     private void Start()
     {
-        Level = 1;
-        MaxHealth = 500;
+        level = 1;
+        maxHealth = 500;
         attackDmg = 10;
         attackRange = 5;
         attackSpeed = 1;
-        MoveSpeed = 15;
-        minExp = 0;
+        moveSpeed = 15;
+        _parseMinExp = 0;
         maxExp = 100;
-        charID = 1;
+        _parseCharID = 1;
         enemyExp = 100;
+        expDetectRange = 20f;
 
-        ExpDetectRange = 20f;
-        //Debug.Log("startºÎºĞ ÃÊ±âÈ­ ¿Ï·á");
-    }
-
-    // ·¹º§¿¡ µû¸¥ ½ºÅİ Áõ°¡
-    public void SetStats(int level)
-    {
-        MaxHealth = float.Parse(CharactorLevelData[level][(int)Stat_Columns.HP]);
-
-        attackDmg = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Dmg]);
-        attackRange = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Range]);
-        attackSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Atk_Speed]);
-
-        MoveSpeed = float.Parse(CharactorLevelData[level][(int)Stat_Columns.Move_Speed]);
-
-        maxExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Max_Exp]);
-        charID = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Character_ID]);
-        enemyExp = int.Parse(CharactorLevelData[level][(int)Stat_Columns.Exp_Enemy]);
+        SetPlayerStats();
     }
 
     public void PlayerLevelUpFactory(GameObject expBag, float exp)
     {
         if ((object)expBag != null)
         {
-            // expBag¿Í ³ªÀÇ tag°¡ °°À¸¸é °°ÀºÆÀÀÌ´Ï±î returnÇÑ´Ù
+            // expBagì™€ ë‚˜ì˜ tagê°€ ê°™ìœ¼ë©´ ê°™ì€íŒ€ì´ë‹ˆê¹Œ returní•œë‹¤
             if (expBag.tag == gameObject.tag)
             {
                 return;
             }
 
-            // expBag°ú ³ª¿ÍÀÇ °Å¸®¸¦ °è»êÇÑ´Ù
+            // expBagê³¼ ë‚˜ì™€ì˜ ê±°ë¦¬ë¥¼ ê³„ì‚°í•œë‹¤
             float dist = Vector3.Distance(expBag.transform.position, this.transform.position);
 
-            // TODO : »ó´ë¹æ Á×À½ ÀÌº¥Æ®¿¡ ³Ö¾îµÒ ÃßÈÄ °³¼± »çÇ×
+            // TODO : ìƒëŒ€ë°© ì£½ìŒ ì´ë²¤íŠ¸ì— ë„£ì–´ë‘  ì¶”í›„ ê°œì„  ì‚¬í•­
             _playerScript.targetedEnemy = null;
-            Debug.Log($"ÇöÀç Å¸°ÙÀº? : {_playerScript.targetedEnemy}");
 
-            // °Å¸®°¡ ÀÎ½Ä°¡´ÉÇÑ °Å¸® ³»¿¡ ÀÖ´Ù¸é °æÇèÄ¡ ¾òÀ½
-            if (dist <= ExpDetectRange)
+            // ê±°ë¦¬ê°€ ì¸ì‹ê°€ëŠ¥í•œ ê±°ë¦¬ ë‚´ì— ìˆë‹¤ë©´ ê²½í—˜ì¹˜ ì–»ìŒ
+            if (dist <= expDetectRange)
             {
-                Exp += exp;
-                // °æÇèÄ¡°¡ ÃÖ´ë °æÇèÄ¡º¸´Ù ³ôÀ¸¸é ·¹º§¾÷À» ÇÑ´Ù
-                while (Exp >= maxExp)
+                this.acquiredExp += exp;
+                // ê²½í—˜ì¹˜ê°€ ìµœëŒ€ ê²½í—˜ì¹˜ë³´ë‹¤ ë†’ìœ¼ë©´ ë ˆë²¨ì—…ì„ í•œë‹¤
+                while (this.acquiredExp >= maxExp)
                 {
-                    // 10·¹º§ ´Ş¼º½Ã ·¹º§¾÷ÇÏÁö¾Ê°í °æÇèÄ¡¹Ù´Â Â÷µÇ ÃÖ´ëÄ¡ ÀÌ»óÀ¸·Ğ Â÷Áö ¾Ê´Â´Ù
-                    if (CharactorLevelData.ContainsKey(Level + 1) == false)
+                    // 10ë ˆë²¨ ë‹¬ì„±ì‹œ ë ˆë²¨ì—…í•˜ì§€ì•Šê³  ê²½í—˜ì¹˜ë°”ëŠ” ì°¨ë˜ ìµœëŒ€ì¹˜ ì´ìƒìœ¼ë¡  ì°¨ì§€ ì•ŠëŠ”ë‹¤
+                    if (CharactorLevelData.ContainsKey(level + 1) == false)
                     {
-                        Exp = Mathf.Clamp(Exp, minExp, maxExp);
+                        this.acquiredExp = Mathf.Clamp(this.acquiredExp, _parseMinExp, maxExp);
                         return;
                     }
 
-                    Level++;
+                    level++;
 
-                    // Å¸¿ö ÇØ±İÀº °ÔÀÓ¸Å´ÏÀú°¡ ÇÃ·¹ÀÌ¾î ·¹º§À» ¹Ş¾Æ¿Í¼­ ÇØ±İÇÑ´Ù
-                    GameManager.Instance.UnlockTower(gameObject.tag, Level);
-                    SetStats(Level);
-                    photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, MaxHealth);
+                    // íƒ€ì›Œ í•´ê¸ˆì€ ê²Œì„ë§¤ë‹ˆì €ê°€ í”Œë ˆì´ì–´ ë ˆë²¨ì„ ë°›ì•„ì™€ì„œ í•´ê¸ˆí•œë‹¤
+                    GameManager.Instance.UnlockTower(gameObject.tag, level);
+                    StatDataParse(level);
+                    SetPlayerStats();
+                    photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, maxHealth);
 
-                    // Exp¿¡¼­ maxExp¸¸Å­ »«´Ù ·¹º§¾÷À» ÇßÀ¸´Ï±î
-                    Exp = Mathf.Max(Exp - maxExp, 0);
+                    // Expì—ì„œ maxExpë§Œí¼ ëº€ë‹¤ ë ˆë²¨ì—…ì„ í–ˆìœ¼ë‹ˆê¹Œ
+                    this.acquiredExp = Mathf.Max(this.acquiredExp - maxExp, 0);
                 }
             }
         }
 
     }
 
-    private void Update()
-    {
-        if (gameObject.tag == "Blue")
-        {
-            GameManager.Instance.PlayerLevel1 = Level;
-        }
-        else
-        {
-            GameManager.Instance.PlayerLevel2 = Level;
-        }
-    }
-
-
     private void OnDrawGizmos()
     {
         Gizmos.color = new Color(1, 0, 0, 0.2f);
         Gizmos.DrawSphere(transform.position, attackRange);
     }
-
 
 }

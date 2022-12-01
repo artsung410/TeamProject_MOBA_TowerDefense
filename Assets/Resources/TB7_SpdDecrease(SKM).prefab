@@ -53,6 +53,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDB:
     Name: Move_Decrease_Tower2
+    NickName: 
     ID: 2012
     GroupID: 17
     Rank: 2
@@ -80,9 +81,8 @@ MonoBehaviour:
     Desc: 30028
     Sprite_TowerCard: {fileID: 21300000, guid: a23d6ef9b9d2358448fc31bd312389ad, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: ff83a5d3a1b524549881e7683272c48c, type: 3}
-    AudioClip_Attack_Name: 0
-    AudioClip_Hit_Name: 0
-    AudioClip_Normal_Name: "0\r"
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 15032
     MinionID: 0
   healthbarImages:
@@ -92,6 +92,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 3717229199190728417}
   hitbarImage: {fileID: 5143958238075589233}
   ui: {fileID: 8020552381727495497}
+  effectParticles: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
   attack: 0

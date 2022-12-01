@@ -44,9 +44,13 @@ public class BulletMove : MonoBehaviourPun
             rigidbody.velocity = transform.forward * ballVelocity;
             var ballTargetRotation = Quaternion.LookRotation(tg.transform.position + new Vector3(0, 1.5f) - transform.position);
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
-            transform.LookAt(tg.transform.position);
+            transform.LookAt(tg.transform.position + new Vector3(0,2f,0));
 
         }
+        //if(tg.tag == EnemyTag && tg.layer == 14)
+        //{
+        //    return;
+        //}
 
     }
 
@@ -97,6 +101,9 @@ public class BulletMove : MonoBehaviourPun
                     other.gameObject.GetComponent<Enemybase>().tagThrow("Blue");
 
                 }
+                PhotonNetwork.Destroy(gameObject);
+            }else if (other.gameObject.layer == 14)
+            {
                 PhotonNetwork.Destroy(gameObject);
             }
 
