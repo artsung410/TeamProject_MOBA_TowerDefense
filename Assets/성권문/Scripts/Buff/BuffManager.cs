@@ -32,7 +32,8 @@ public class BuffManager : MonoBehaviourPun
     public BuffDatabaseList buffDB;
 
     [HideInInspector]
-    public List<BuffBlueprint> currentBuffDatas = new List<BuffBlueprint>();           
+    public List<BuffBlueprint> currentBuffDatas = new List<BuffBlueprint>();
+    public List<int> currentBuffIds = new List<int>();
     // 각 월드에서 생성된 모든 버프들
     public static BuffManager Instance;
     public Dictionary<BuffBlueprint, float> buffDic = new Dictionary<BuffBlueprint, float>();             // 버프 쿨타임 담을 딕셔너리(버프 정렬시도 유지하도록)
@@ -48,6 +49,7 @@ public class BuffManager : MonoBehaviourPun
         if (buff.Type == (int)Buff_Effect_Type.Buff)
         {
             currentBuffDatas.Add(buff);
+            currentBuffIds.Add(buff.ID);
             playerBuffAdditionEvent.Invoke(buff.GroupID, buff.Value, true);
         }
         else if (buff.Type == (int)Buff_Effect_Type.Debuff)
@@ -58,6 +60,7 @@ public class BuffManager : MonoBehaviourPun
         else
         {
             currentBuffDatas.Add(buff);
+            currentBuffIds.Add(buff.ID);
         }
 
         AssemblyBuff();
@@ -67,7 +70,13 @@ public class BuffManager : MonoBehaviourPun
     [PunRPC]
     private void RPC_AddDeBuff(int id)
     {
+        if (currentBuffIds.Contains(id))
+        {
+            return;
+        }
+
         currentBuffDatas.Add(CSVtest.Instance.BuffDic[id]);
+        currentBuffIds.Add(id);
         playerBuffAdditionEvent.Invoke(CSVtest.Instance.BuffDic[id].GroupID, CSVtest.Instance.BuffDic[id].Value, true);
         AssemblyBuff();
         Debug.Log("디버프 적용2");
@@ -77,6 +86,9 @@ public class BuffManager : MonoBehaviourPun
     public void removeBuff(BuffBlueprint buff)
     {
         currentBuffDatas.Remove(buff);
+        currentBuffIds.Remove(buff.ID);
+
+        // 플레이어에 적용되었던 버프 해제
         playerBuffAdditionEvent.Invoke(buff.GroupID, buff.Value, false);
     }
 
@@ -96,7 +108,7 @@ public class BuffManager : MonoBehaviourPun
             transform.GetChild(i).GetComponent<BuffIcon>().buff = null;
             transform.GetChild(i).GetComponent<BuffIcon>().coolTime = 0f;
             transform.GetChild(i).GetComponent<BuffIcon>().elapsedTime = 0f;
-            transform.GetChild(i).GetComponent<BuffIcon>().coolTimeImage.fillAmount = 0f;
+
         }
 
         for (int i = 0; i < currentBuffDatas.Count; i++)
@@ -115,9 +127,6 @@ public class BuffManager : MonoBehaviourPun
 
             transform.GetChild(i).GetComponent<BuffIcon>().coolTime = currentBuffDatas[i].Duration; // 슬롯마다 버프쿨타임 세팅
             transform.GetChild(i).GetComponent<Image>().sprite = currentBuffDatas[i].Icon; // 슬롯 버프이미지 적용
-            Color color = transform.GetChild(i).GetComponent<Image>().color; 
-            color.a = 1f;
-            gameObject.transform.GetChild(i).GetComponent<Image>().color = color; // 슬롯 버프이미지 투명도 1로 적용
         }
     }
 }

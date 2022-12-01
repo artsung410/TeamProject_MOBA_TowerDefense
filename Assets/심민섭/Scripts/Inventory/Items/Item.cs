@@ -24,8 +24,8 @@ public class Item
     public int itemID;                          // 아이템의 만들어 진 순서 (Index)
     [TextArea] public string itemDesc;          // 아이템 설명
     public Sprite itemIcon;                     // 아이템 이미지
-    public GameObject itemModel;                // 아이템 프리펩
-    public ScriptableObject inGameData;
+    //public GameObject itemModel;              // 아이템 프리펩
+    public string objType;                      // 오브젝트 타입
     public int itemValue = 1;                   // 가지고 있는 아이템 갯수
     public ItemType itemType;                   // 아이템이 무슨 타입인지 정의
     public float itemWeight;                    // 아이템의 무게
@@ -36,17 +36,6 @@ public class Item
     public TowerBlueprint towerData;            // 타워 데이터
     public PlayerSkillDatas skillData;          // 스킬 데이터
 
-    // 아이템의 효과
-    [SerializeField]
-    public List<ItemAttribute> itemAttributes = new List<ItemAttribute>();    
-
-    [SerializeField]
-    public List<GameObject> specialPrefabs = new List<GameObject>();
-
-    // 버프 효과
-    [SerializeField]
-    public List<BuffData> buffDatas = new List<BuffData>();
-
     public Item(){}
 
     public Item(string name, int id, string desc, Sprite icon, GameObject model, ScriptableObject data, int maxStack, ItemType type, string sendmessagetext, List<ItemAttribute> itemAttributes)                 //function to create a instance of the Item
@@ -55,11 +44,11 @@ public class Item
         itemID = id;
         itemDesc = desc;
         itemIcon = icon;
-        itemModel = model;
-        inGameData = data;
+        //itemModel = model;
+        //inGameData = data;
         itemType = type;
         this.maxStack = maxStack;
-        this.itemAttributes = itemAttributes;
+        //this.itemAttributes = itemAttributes;
     }
 
     /// <summary>

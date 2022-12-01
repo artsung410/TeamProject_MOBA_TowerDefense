@@ -15,7 +15,6 @@ public class TrojanHorse: MonoBehaviour
     // 플레이어 스폰 유무
     // 타워 스폰 유무
     // 미니언 정보
-    // 
 
 
     [Header("제한 시간")]
@@ -30,16 +29,9 @@ public class TrojanHorse: MonoBehaviour
     [Header("장착된 카드 인덱스")]
     public List<int> cardIndex = new List<int>();
 
-    [Header("장착한 카드 명")]
-    public List<string> cardName = new List<string>();
-
-    [Header("장착한 프리펩")]
-    public List<GameObject> cardPrefab  = new List<GameObject>();
-
     [Header("장착한 아이템")]
     public List<Item> towerItems = new List<Item>();
 
-    private ItemOnObject itemOnObject;
 
     private GameObject EquipmentItemInventory;
 
@@ -55,22 +47,6 @@ public class TrojanHorse: MonoBehaviour
     [SerializeField]
     public List<int> skillIndex = new List<int>();
 
-    [Header("스킬 장착한 카드 명")]
-    [SerializeField]
-    private List<string> skillCName = new List<string>();
-
-    [Header("스킬 공격력")]
-    [SerializeField]
-    private List<int> skillATK = new List<int>();
-
-    [Header("스킬 사거리")]
-    [SerializeField]
-    private List<int> skillCrossroad = new List<int>();
-
-    [Header("스킬 쿨타임")]
-    [SerializeField]
-    private List<int> skillCoolTime = new List<int>();
-
     [Header("장착한 스킬아이템")]
     public List<Item> skillItems = new List<Item>();
 
@@ -83,13 +59,10 @@ public class TrojanHorse: MonoBehaviour
     {
         skillIndex.Clear();
         skillId.Clear();
-        skillCName.Clear();
         skillItems.Clear();
 
         cardIndex.Clear();
         cardId.Clear();
-        cardName.Clear();
-        cardPrefab.Clear();
         towerItems.Clear();
 
         // PlayerNumber 받기
@@ -118,7 +91,6 @@ public class TrojanHorse: MonoBehaviour
                     // 그리고 데이터를 가져옴
                     ItemOnObject itemOnObject = TrojanDataList[i].gameObject.transform.GetChild(0).GetComponent<ItemOnObject>();
                     skillId.Add(itemOnObject.item.itemID);
-                    skillCName.Add(itemOnObject.item.itemName);
                     skillItems.Add(itemOnObject.item);
                 }
 
@@ -128,33 +100,9 @@ public class TrojanHorse: MonoBehaviour
                     // 그리고 데이터를 가져옴
                     ItemOnObject itemOnObject = TrojanDataList[i].gameObject.transform.GetChild(0).GetComponent<ItemOnObject>();
                     cardId.Add(itemOnObject.item.itemID);
-                    cardName.Add(itemOnObject.item.itemName);
-                    cardPrefab.Add(itemOnObject.item.itemModel);
                     towerItems.Add(itemOnObject.item);
                 }
             }
         }
-
-
-        /*if (skillId.Count == 0)
-        {
-            return;
-        }
-
-        int count = TrojanDataList.Count / 2;
-
-        for (int i = 0; i < count; i++) // 4
-        {
-            for (int j = 0; j < itemDatabase.itemList.Count; j++) // 100
-            {
-                if (skillId[i] == itemDatabase.itemList[j].itemID)
-                {
-                    // 정보를 가져온다. Item Attributes
-                    skillATK.Add(itemDatabase.itemList[j].itemAttributes[0].attributeValue);
-                    //skillCrossroad.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
-                    skillCoolTime.Add(itemDatabase.itemList[j].itemAttributes[1].attributeValue);
-                }
-            }
-        }*/
     }
 }

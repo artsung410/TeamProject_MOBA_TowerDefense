@@ -117,13 +117,38 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         }
         // -------------------------------------------------------
 
-
         if (data.button == PointerEventData.InputButton.Left)
         {
             canvasGroup.blocksRaycasts = true;
             Transform newSlot = null;
             if (data.pointerEnter != null)
                 newSlot = data.pointerEnter.transform;
+
+            Debug.Log(newSlot.transform.parent.gameObject.tag);
+            Debug.Log(newSlot.transform.parent.parent.gameObject.tag);
+            //if (newSlot.transform.parent.gameObject.tag == "EquipmentSystem")
+
+            int skill_stack = 0;
+            int tower_stack = 0;
+            // 아이템이 슬롯에 있는 지 확인
+            if (newSlot.transform.parent.parent.gameObject.tag == "EquipmentSystem")
+            {
+                for (int i = 1; i < 4; i++)
+                {
+                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                    {
+                        skill_stack++;
+                    }
+                }
+                for (int i = 4; i < 8; i++)
+                {
+                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                    {
+                        tower_stack++;
+                    }
+                }
+            }
+            
 
             if (newSlot != null)
             {
@@ -190,8 +215,18 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
                             if (inventory.stackable && sameItem && firstItemStack && secondItemStack)
                             {
+                                // 카드 한장을 장착하고 같은 카드를 장착인벤에 있는 같은 카드로 합칠때 장착 슬롯이고 같은 카드가 있으면 되돌아 온다.
+                                if (firstItem.itemID == secondItem.itemID && secondItemGameObject.transform.parent.parent.parent.gameObject.tag == "EquipmentSystem")// || secondItemGameObject.transform.parent.parent.gameObject.name == "Tower Slots")
+                                {
+                                    firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                    firstItemRectTransform.localPosition = Vector3.zero;
+                                    return;
+                                }
+                                
+
                                 if (fitsIntoStack && !sameItemRerferenced)
                                 {
+                                    Debug.Log("22");
                                     secondItem.itemValue = firstItem.itemValue + secondItem.itemValue;
                                     secondItemGameObject.transform.SetParent(newSlot.parent.parent);
                                     Destroy(firstItemGameObject);
@@ -203,13 +238,11 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                         dup.transform.parent.parent.parent.parent.parent.GetComponent<Inventory>().updateItemList();
                                     }
                                 }
-
                                 else
                                 {
-                                    //creates the rest of the item
+                                    Debug.Log("33");
                                     int rest = (firstItem.itemValue + secondItem.itemValue) % firstItem.maxStack;
 
-                                    //fill up the other stack and adds the rest to the other stack 
                                     if (!fitsIntoStack && rest > 0)
                                     {
                                         firstItem.itemValue = firstItem.maxStack;
@@ -235,6 +268,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 //fill up the other stack and adds the rest to the other stack 
                                 if (!fitsIntoStack && rest > 0)
                                 {
+                                    Debug.Log("11");
                                     secondItem.itemValue = firstItem.maxStack;
                                     firstItem.itemValue = rest;
 
@@ -247,7 +281,9 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 //if they are different items or the stack is full, they get swapped
                                 else if (!fitsIntoStack && rest == 0)
                                 {
-                                    //if you are dragging an item from equipmentsystem to the inventory and try to swap it with the same itemtype
+                                    // 여기도 안들어옴
+                                    Debug.Log(firstItem.itemType);
+                                    Debug.Log(secondItem.itemType);
                                     if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
                                     {
                                         //Debug.Log($"7 : {newSlot.transform.parent.parent.parent.parent.parent.parent.parent.parent.parent.parent.gameObject.name}");
@@ -270,6 +306,12 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                             return;
                                         }
                                         if (oldSlot.tag == "InherenceSlot")
+                                        {
+                                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                            firstItemRectTransform.localPosition = Vector3.zero;
+                                            return;
+                                        }
+                                        if (oldSlot.tag == "Slot")
                                         {
                                             firstItemGameObject.transform.SetParent(oldSlot.transform);
                                             firstItemRectTransform.localPosition = Vector3.zero;
@@ -322,7 +364,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         }
                         else
                         {
-                            if (newSlot.tag != "Slot" && newSlot.tag != "ItemIcon" && oldSlot.tag != newSlot.tag || newSlot.tag != firstItem.ClassType + "Slot")
+                            if (newSlot.tag != "Slot" && newSlot.tag != "ItemIcon" && oldSlot.tag != newSlot.tag || newSlot.tag != firstItem.ClassType + "Slot") 
                             {
                                 firstItemGameObject.transform.SetParent(oldSlot.transform);
                                 firstItemRectTransform.localPosition = Vector3.zero;
@@ -338,13 +380,142 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         }
                     }
                 }
-
-                if (newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WarriorSlot" || newSlot.tag == "WizardSlot" || newSlot.tag == "AssassinSlot"
-                    || newSlot.tag == "InherenceSlot")
+                Debug.Log(newSlot.parent.gameObject.name);
+                Debug.Log(newSlot.tag);
+                if (newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WarriorSlot" 
+                    || newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "WizardSlot" 
+                    || newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "AssassinSlot"
+                    || newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "InherenceSlot" 
+                    || newSlot.parent.gameObject.name == "Slots - EquipmentSystem" && newSlot.tag == "Slot")
                 {
+                    int count = 0;
+                    bool isItemID = false;
+                    // 갯수가 한 개 인데 장착슬롯에 같은 아이템이 있는 경우 리턴
+                    if (dragItem.item.itemValue == 1)
+                    {
+                        // 스킬 카드
+                        if (dragItem.item.itemType == ItemType.Skill)
+                        {
+                            if (skill_stack != 0)
+                            {
+                                for (int i = 1; i < 4; i++)
+                                {
+                                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                                    {
+                                        // 해당칸은 제외한다. 조건 넣기
+                                        if (dragItem.item.itemID == GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemID)
+                                        {
+                                            count++;
+
+                                            if (count == 1)
+                                                continue;
+                                            if (count == 2)
+                                                isItemID = true;
+                                            count = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        
+                        // 타워 카드
+                        if (dragItem.item.itemType == ItemType.Tower)
+                        {
+                            if (tower_stack != 0)
+                            {
+                                for (int i = 4; i < 8; i++)
+                                {
+                                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                                    {
+                                        // 해당칸은 제외한다. 조건 넣기
+                                        if (dragItem.item.itemID == GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemID)
+                                        {
+                                            count++;
+
+                                            if (count == 1)
+                                                continue;
+                                            if (count == 2)
+                                                isItemID = true;
+                                            count = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                        
+                    if (isItemID)
+                    {
+                        firstItemGameObject.transform.SetParent(oldSlot.transform);
+                        firstItemRectTransform.localPosition = Vector3.zero;
+                        return;
+                    }
+
                     // 갯수가 1보다 크면
                     if (dragItem.item.itemValue > 1)
                     {
+                        if (newSlot.tag != "Slot" && newSlot.tag != "ItemIcon" && oldSlot.tag != newSlot.tag || newSlot.tag != firstItem.ClassType + "Slot")
+                        {
+                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                            firstItemRectTransform.localPosition = Vector3.zero;
+                            return;
+                        }
+                        // 같은 ID가 있으면 되돌아 온다.
+                        if (dragItem.item.itemType == ItemType.Skill)
+                        {
+                            if (skill_stack != 0)
+                            {
+                                for (int i = 1; i < 4; i++)
+                                {
+                                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                                    {
+                                        // 해당칸은 제외한다. 조건 넣기
+                                        if (dragItem.item.itemID == GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemID)
+                                        {
+                                            count++;
+
+                                            if (count == 1)
+                                                continue;
+                                            if (count == 2)
+                                                isItemID = true;
+                                            count = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (dragItem.item.itemType == ItemType.Tower)
+                        {
+                            if (tower_stack != 0)
+                            {
+                                for (int i = 4; i < 8; i++)
+                                {
+                                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                                    {
+                                        // 해당칸은 제외한다. 조건 넣기
+                                        if (dragItem.item.itemID == GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemID)
+                                        {
+                                            count++;
+
+                                            if (count == 1)
+                                                continue;
+                                            if (count == 2)
+                                                isItemID = true;
+                                            count = 0;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        if (isItemID)
+                        {
+                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                            firstItemRectTransform.localPosition = Vector3.zero;
+                            return;
+                        }
+
                         int itemValueCount;
                         itemValueCount = dragItem.item.itemValue;
                         // 수량을 1로 변화 시키고 장착 슬롯으로 복사
@@ -380,7 +551,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         if (sameItemType && !sameItemRerferenced) //
                         {
                             Transform temp1 = secondItemGameObject.transform.parent.parent.parent;
-                            Transform temp2 = oldSlot.transform.parent.parent;                            
+                            Transform temp2 = oldSlot.transform.parent.parent;
 
                             firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                             secondItemGameObject.transform.SetParent(oldSlot.transform);
@@ -439,7 +610,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
                 }
 
-                if (Inventory.GetComponent<CraftSystem>() != null)
+                /*if (Inventory.GetComponent<CraftSystem>() != null)
                 {
                     CraftSystem cS = Inventory.GetComponent<CraftSystem>();
                     int newSlotChildCount = newSlot.transform.parent.childCount;
@@ -525,7 +696,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             {
                                 //if you are dragging an item from equipmentsystem to the inventory and try to swap it with the same itemtype
                                 if (oldSlot.transform.parent.parent.GetComponent<EquipmentSystem>() != null && firstItem.itemType == secondItem.itemType)
-                                {                                  
+                                {
 
                                     firstItemGameObject.transform.SetParent(secondItemGameObject.transform.parent);
                                     secondItemGameObject.transform.SetParent(oldSlot.transform);
@@ -561,7 +732,7 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                             firstItemRectTransform.localPosition = Vector3.zero;
                         }
                         else
-                        {                            
+                        {
                             firstItemGameObject.transform.SetParent(newSlot.transform);
                             firstItemRectTransform.localPosition = Vector3.zero;
 
@@ -570,10 +741,12 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                         }
                     }
 
-                }
+                }*/
             }
         }
         inventory.OnUpdateItemList();
+        // 카드 현황 업데이트
+        EquimentInventory.instance.cardMonitorUpdate();
     }
 
 }

@@ -28,6 +28,10 @@ public class Turret : MonoBehaviourPun
     public GameObject ui; // Hp바 캔버스
     private GameObject newDestroyParticle; // 타워 파괴효과를 담을 변수
 
+    [Header("타워 이펙트")]
+    public GameObject effectParticles;
+    private GameObject newEffectParticles;
+
     [HideInInspector]
     public float maxHealth; // 초기체력
 
@@ -77,11 +81,11 @@ public class Turret : MonoBehaviourPun
 
     void Awake()
     {
+        // 오디오 할당
+        audioSource = GetComponent<AudioSource>();
+
         // 타워 아웃라인 컴포넌트 할당
         _outline = GetComponent<Outline>();
-
-        // [Event -> 自] 타워가 버프를 적용받을수 있도록 세팅 
-        BuffManager.towerBuffAdditionEvent += incrementBuffValue;
 
         // [Event -> 自] 게임이 끝나면 타워가 파괴할수 있도록 세팅
         PlayerHUD.onGameEnd += Destroy_gameEnd;
@@ -195,7 +199,7 @@ public class Turret : MonoBehaviourPun
         _outline.OutlineWidth = 8f;
     }
 
-    // =========================== 타워 데미지 처리 ===========================
+    // =========================== 타워 데미지 처리 / 파괴처리 ===========================
     public void Damage(float damage)
     {
         // 게임 끝나면 정지
@@ -223,11 +227,20 @@ public class Turret : MonoBehaviourPun
         {
             // 타워 파괴시 경험치
             OnTurretDestroyEvent.Invoke(gameObject, exp);
-
-            if(photonView.IsMine)
+            if (photonView.IsMine)
             {
                 newDestroyParticle = PhotonNetwork.Instantiate(destroyPF.name, new Vector3(transform.position.x, transform.position.y + 3, transform.position.z), transform.rotation);
+                AudioSource explosionAudiosource = newDestroyParticle.GetComponent<AudioSource>();
+                explosionAudiosource.clip = towerDB.AudioClip_Destroy;
+                explosionAudiosource.Play();
+
                 StartCoroutine(Destruction(newDestroyParticle));
+
+                if (newEffectParticles != null)
+                {
+                    PhotonNetwork.Destroy(newEffectParticles);
+                }
+
                 PhotonNetwork.Destroy(gameObject);
             }
             return;
@@ -253,7 +266,7 @@ public class Turret : MonoBehaviourPun
         }
     }
 
-    // =========================== 타워 파괴 처리 ===========================
+    // =========================== 외부(게임결과) -> 타워 파괴 처리 ===========================
     public void Destroy_gameEnd()
     {
         if (this == null)
@@ -268,6 +281,10 @@ public class Turret : MonoBehaviourPun
 
         PhotonNetwork.Destroy(gameObject);
 
+        if (newEffectParticles != null)
+        {
+            PhotonNetwork.Destroy(newEffectParticles);
+        }
     }
 
     [PunRPC]
@@ -289,48 +306,6 @@ public class Turret : MonoBehaviourPun
 
         PhotonNetwork.Destroy(particle);
     }
-
-    // =========================== 타워 버프 적용 처리 ===========================
-    public void incrementBuffValue(int id, float addValue, bool state)
-    {
-        if (!photonView.IsMine)
-        {
-            return;
-        }
-
-        //photonView.RPC("RPC_ApplyTowerBuff", RpcTarget.All, id, addValue, state);
-    }
-
-    //[PunRPC]
-    //public void RPC_ApplyBuff(int id, float value, bool st)
-    //{
-    //    if (id == (int)Buff_Effect_byTower.AtkUP)
-    //    {
-    //        if (st)
-    //        {
-    //            attack += value;
-    //            towerData.Projectiles.GetComponent<Projectiles>().damage += value;
-
-    //        }
-    //        else
-    //        {
-    //            attack -= value;
-    //            towerData.Projectiles.GetComponent<Projectiles>().damage -= value;
-    //        }
-    //    }
-
-    //    else if (id == (int)Buff_Effect_byTower.AtkSpeedUp)
-    //    {
-    //        if (st)
-    //        {
-    //            attackSpeed += value;
-    //        }
-    //        else
-    //        {
-    //            attackSpeed -= value;
-    //        }
-    //    }
-    //}
 
     // =========================== 타겟 추적 ===========================
 
@@ -372,6 +347,13 @@ public class Turret : MonoBehaviourPun
         Quaternion lookRotation = Quaternion.LookRotation(dir);
         Vector3 rotation = Quaternion.Lerp(partToRotate.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
         partToRotate.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+    }
+    // =========================== 타워 이펙트 생성 ===========================
+
+    protected void InitEffectParticles(Vector3 initPos)
+    {
+        newEffectParticles = PhotonNetwork.Instantiate(effectParticles.name, initPos, Quaternion.identity);
+        newEffectParticles.transform.Rotate(new Vector3(0, -90f, 0));
     }
 
     // =========================== 스킬타워 공격처리 ===========================

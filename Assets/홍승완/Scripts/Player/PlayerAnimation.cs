@@ -17,7 +17,6 @@ public class PlayerAnimation : MonoBehaviourPun
 
     public static PlayerAnimation instance;
     public Animator animator;
-
     public GameObject Chractor;
 
     NavMeshAgent agent;
@@ -26,6 +25,8 @@ public class PlayerAnimation : MonoBehaviourPun
     Health hp;
 
     float motionSmoothTime = 0.1f;
+
+    public bool IsAttack;
 
     void Awake()
     {
@@ -45,25 +46,6 @@ public class PlayerAnimation : MonoBehaviourPun
     float elapsedTime;
     void Update()
     {
-
-        //if (hp.isDeath)
-        //{
-        //    elapsedTime += Time.deltaTime;
-        //    if (elapsedTime >= 3f)
-        //    {
-        //        elapsedTime = 0f;
-        //        gameObject.SetActive(false);
-        //    }
-        //}
-        //else
-        //{
-        //    if (photonView.IsMine)
-        //    {
-        //        MoveAniMotion();
-        //        CombatMotion();
-        //    }
-        //}
-
         if (photonView.IsMine)
         {
             if (!hp.isDeath)
@@ -99,66 +81,27 @@ public class PlayerAnimation : MonoBehaviourPun
         animator.SetFloat("Speed", speed, motionSmoothTime, Time.deltaTime);
     }
 
-    IEnumerator MeleeAttackInterval()
-    {
-        yield return new WaitForSeconds(2f);
-        _playerScript.perfomMeleeAttack = false;
-    }
-
-    IEnumerator RangeAttackInterval()
-    {
-        yield return new WaitForSeconds(2f);
-        _playerScript.perfomRangeAttack = false;
-    }
-
+ 
     private void CombatMotion()
     {
-        if (_playerScript.targetedEnemy != null)
+        if (_playerScript.perfomMeleeAttack == true || _playerScript.perfomRangeAttack == true)
         {
-            if (_playerScript.perfomMeleeAttack == true || _playerScript.perfomRangeAttack == true)
+            if (photonView.IsMine)
             {
-                if (photonView.IsMine)
-                {
-                    _playerScript.IsAttack = true;
-                }
-                // 공격 모션 재생
-                animator.SetBool("Attack", true);
-
-                // 공격 모션 재생 속도
-                animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
-
-                if (playerStats.AttackType == HeroType.Warrior)
-                {
-                    StartCoroutine(MeleeAttackInterval());
-                }
-                else if (playerStats.AttackType == HeroType.Wizard)
-                {
-                    StartCoroutine(RangeAttackInterval());
-                }
+                IsAttack = true;
+            }
+            
+        }
+        else if (_playerScript.perfomMeleeAttack == false || _playerScript.perfomRangeAttack == false)
+        {
+            if (photonView.IsMine)
+            {
+                IsAttack = false;
             }
         }
-        else
-        {
-            if (_playerScript.perfomMeleeAttack == false || _playerScript.perfomRangeAttack == false)
-            {
-                if (photonView.IsMine)
-                {
-                    _playerScript.IsAttack = false;
-                }
-                Debug.Log("공격 중지");
-                animator.SetBool("Attack", false);
 
-                if (playerStats.AttackType == HeroType.Warrior)
-                {
-                    StopCoroutine(MeleeAttackInterval());
-                }
-                else if (playerStats.AttackType == HeroType.Wizard)
-                {
-                    StopCoroutine(RangeAttackInterval());
-                }
-            }
-        }
+        animator.SetBool("Attack", IsAttack);
+        animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
     }
-
 
 }

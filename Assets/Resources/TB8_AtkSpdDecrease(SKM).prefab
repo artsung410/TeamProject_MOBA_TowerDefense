@@ -198,7 +198,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1892187094370971551}
   - component: {fileID: 6692958617611842620}
-  - component: {fileID: 869879850920314635}
   - component: {fileID: 7700773853899705430}
   - component: {fileID: 4950131105701412861}
   - component: {fileID: 2132687706366117810}
@@ -241,7 +240,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDB:
     Name: 
+    NickName: 
     ID: 0
+    GroupID: 0
+    Rank: 0
+    Type: 0
     Pf: {fileID: 0}
     Combination_ResultID: 0
     Combination_Required_Value: 0
@@ -253,9 +256,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 0
-    Rank: 0
-    Type: 0
     Attack: 0
     Attack_Speed: 0
     Hp: 0
@@ -268,10 +268,10 @@ MonoBehaviour:
     Desc: 
     Sprite_TowerCard: {fileID: 0}
     Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -279,28 +279,15 @@ MonoBehaviour:
   healthbarImage: {fileID: 6763650667493500468}
   hitbarImage: {fileID: 2965641185974102692}
   ui: {fileID: 73651697690766748}
+  effectParticles: {fileID: 7379403800425520796, guid: d4014def249e6254c9cf12422d5270e8, type: 3}
   maxHealth: 0
   currentHealth: 0
   attack: 0
   attackSpeed: 0
   fowardBody: {fileID: 1018429317617624115}
   partToRotate: {fileID: 1860436717250118051}
-  firePoint: {fileID: 1860436717250118051}
+  firePoint: {fileID: 3934667427145118916}
   DangerZonePF: {fileID: 0}
---- !u!114 &869879850920314635
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7968371355090992170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4a437a1ecf30c04aadad3ff27c879f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpawnPoint: {fileID: 3934667427145118916}
-  Particles: {fileID: 7379403800425520796, guid: d4014def249e6254c9cf12422d5270e8, type: 3}
 --- !u!114 &7700773853899705430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -378,6 +365,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1892187094370971551}
     m_Modifications:
+    - target: {fileID: 3204027714071452281, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4367624973842323870, guid: 680da731b3c03c746b9779ffce7f600b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

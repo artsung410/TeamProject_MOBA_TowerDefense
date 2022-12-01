@@ -17,6 +17,9 @@ public class MagicExplosion : MonoBehaviourPun
     [HideInInspector]
     public float damage;
 
+    public int EffectID;
+
+    public float effectRange;
     private void OnEnable()
     {
         StartCoroutine(Destruction());
@@ -34,6 +37,7 @@ public class MagicExplosion : MonoBehaviourPun
         StopCoroutine(Destruction());
     }
 
+
     private void Damage(Transform enemy)
     {
         // 플레이어 데미지 적용
@@ -45,6 +49,13 @@ public class MagicExplosion : MonoBehaviourPun
             if (player != null && player.gameObject.activeSelf)
             {
                 player.OnDamage(damage);
+
+                Vector3 vecDistance = enemy.transform.position - transform.position; //거리계산
+                float distance = vecDistance.sqrMagnitude; // 최적화
+                if (distance <= effectRange * effectRange) //최적화 공격범위 안에있을때
+                {
+                    BuffManager.Instance.AddBuff(CSVtest.Instance.BuffDic[EffectID]);
+                }
             }
             else
             {

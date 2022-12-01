@@ -10,7 +10,6 @@ public class Turret_Arrow : Turret
 {
     private void Start()
     {
-        audioSource = GetComponent<AudioSource>();
         InvokeRepeating("UpdateTarget", 0f, 0.5f);
     }
 

@@ -10,10 +10,9 @@ public class TurretParticles : MonoBehaviourPun
     //             MAIL : artsung410@gmail.com         
     // ###############################################
     public Transform SpawnPoint;
-    public GameObject Particles;
 
     void Start()
     {
-        PhotonNetwork.Instantiate(Particles.name, SpawnPoint.position, SpawnPoint.rotation);
+        //PhotonNetwork.Instantiate(.name, SpawnPoint.position, SpawnPoint.rotation);
     }
 }

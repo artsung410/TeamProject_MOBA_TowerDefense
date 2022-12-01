@@ -44,18 +44,7 @@ public enum DescColData
 
 public class CSVtest : MonoBehaviour
 {
-    #region DescParsing
-
-    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D44";
-
-    // Ű����� ID, List���� Name KoTooltip, EnTooltip�� ����
-    Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
-    List<List<string>> descList = new List<List<string>>();
-
-    bool isDone = false;
-
     private static CSVtest _instance;
-
 
     public static CSVtest Instance
     {
@@ -94,17 +83,32 @@ public class CSVtest : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    private void Start()
+    {
+        StartCoroutine(GetDescData(descURL));
+    }
+
+
+
+    #region DescParsing
+
+    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D109";
+
+    Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
+    List<List<string>> descList = new List<List<string>>();
+
+
+
     IEnumerator GetDescData(string url)
     {
         UnityWebRequest DescDataRequest = UnityWebRequest.Get(url);
         yield return DescDataRequest.SendWebRequest();
         SplitDescData(DescDataRequest.downloadHandler.text);
-        
+
         StartCoroutine(GetTowerData());
         StartCoroutine(GetBuffData());
         StartCoroutine(GetMinionData());
 
-        //StartCoroutine(GetMinionData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
         StartCoroutine(GetCommonSkillData(commonSkillURL));
@@ -133,17 +137,9 @@ public class CSVtest : MonoBehaviour
 
     #endregion
 
-
-                       
-    private void Start()
-    {
-        StartCoroutine(GetDescData(descURL));
-    }
-
-
     #region Tower
 
-    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=625995306&range=A5:AM124";
+    private const string TowerURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=625995306&range=A5:AL124";
     
     [Header("[타워]")]
     public TowerDatabaseList towerDatabaseListCSV;
@@ -177,6 +173,7 @@ public class CSVtest : MonoBehaviour
             // 기본정보
             towerDatabaseListCSV.itemList[i].ID = int.Parse(col[0]);
             towerDatabaseListCSV.itemList[i].Pf = Resources.Load<GameObject>(col[3]);
+            towerDatabaseListCSV.itemList[i].NickName = col[5];
             towerDatabaseListCSV.itemList[i].Name = col[4];
 
             // 조합
@@ -211,18 +208,15 @@ public class CSVtest : MonoBehaviour
 
             if (int.Parse(col[33]) != 0)
             {
-                towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_Ko];
+                towerDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[33])][(int)DescColData.Text_En];
             }
 
             // 부가옵션
             towerDatabaseListCSV.itemList[i].Destroy_Effect_Pf = Resources.Load<GameObject>(col[30]);
-
             towerDatabaseListCSV.itemList[i].Sprite_TowerCard = Resources.Load<Sprite>("Sprites/TowerImage/" + col[34]);
-
             towerDatabaseListCSV.itemList[i].Sprite_TowerProtrait = Resources.Load<Sprite>("Sprites/TowerIcon/" + col[35]);
-            towerDatabaseListCSV.itemList[i].AudioClip_Attack_Name = col[36];
-            towerDatabaseListCSV.itemList[i].AudioClip_Hit_Name = col[37];
-            towerDatabaseListCSV.itemList[i].AudioClip_Normal_Name = col[38];
+            towerDatabaseListCSV.itemList[i].AudioClip_Attack = Resources.Load<AudioClip>("Sounds/" + col[36]);
+            towerDatabaseListCSV.itemList[i].AudioClip_Destroy = Resources.Load<AudioClip>("Sounds/ES_Break");
 
             // 버프타워만 해당
             towerDatabaseListCSV.itemList[i].buffID = int.Parse(col[31]);
@@ -234,7 +228,6 @@ public class CSVtest : MonoBehaviour
             TowerDic.Add(towerDatabaseListCSV.itemList[i].ID, towerDatabaseListCSV.itemList[i]);
 
             towerDatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
-            towerDatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
             towerDatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
             towerDatabaseList.itemList[i + 1].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
 
@@ -242,7 +235,6 @@ public class CSVtest : MonoBehaviour
             if (i < 50)
             {
                 tower_Attack_DatabaseList.itemList[i + 1].towerData = towerDatabaseListCSV.itemList[i];
-                tower_Attack_DatabaseList.itemList[i + 1].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Attack_DatabaseList.itemList[i + 1].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
                 tower_Attack_DatabaseList.itemList[i + 1].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
@@ -250,7 +242,6 @@ public class CSVtest : MonoBehaviour
             else if (i >= 50 && i < 90)
             {
                 tower_Buff_DatabaseList.itemList[i - 49].towerData = towerDatabaseListCSV.itemList[i];
-                tower_Buff_DatabaseList.itemList[i - 49].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Buff_DatabaseList.itemList[i - 49].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
                 tower_Buff_DatabaseList.itemList[i - 49].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
@@ -258,7 +249,6 @@ public class CSVtest : MonoBehaviour
             else
             {
                 tower_Minion_DatabaseList.itemList[i - 89].towerData = towerDatabaseListCSV.itemList[i];
-                tower_Minion_DatabaseList.itemList[i - 89].itemModel = towerDatabaseListCSV.itemList[i].Pf;
                 tower_Minion_DatabaseList.itemList[i - 89].itemIcon = towerDatabaseListCSV.itemList[i].Sprite_TowerCard;
                 tower_Minion_DatabaseList.itemList[i - 89].itemDesc = towerDatabaseListCSV.itemList[i].Desc;
             }
@@ -267,10 +257,9 @@ public class CSVtest : MonoBehaviour
 
     #endregion Tower
 
-
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:I74";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:K83";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
@@ -306,6 +295,8 @@ public class CSVtest : MonoBehaviour
             buffDatabaseListCSV.itemList[i].Target = int.Parse(col[6]);
             buffDatabaseListCSV.itemList[i].Value = float.Parse(col[7]);
             buffDatabaseListCSV.itemList[i].Duration = float.Parse(col[8]);
+            buffDatabaseListCSV.itemList[i].Desc = descDic[int.Parse(col[9])][(int)DescColData.Text_En];
+            buffDatabaseListCSV.itemList[i].ToolTipName = col[10];
 
             BuffDic.Add(buffDatabaseListCSV.itemList[i].ID, buffDatabaseListCSV.itemList[i]);
         }
@@ -360,8 +351,6 @@ public class CSVtest : MonoBehaviour
             MinionDatabaseListCSV.itemList[i].Exp = float.Parse(col[16]);
             MinionDatabaseListCSV.itemList[i].Icon_Blue = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[3] + "_Blue");
             MinionDatabaseListCSV.itemList[i].Icon_Red = Resources.Load<Sprite>("Sprites/MinionIcon/" + col[3] + "_Red");
-
-            Debug.Log(col[17]);
 
             MinionDic.Add(MinionDatabaseListCSV.itemList[i].ID, MinionDatabaseListCSV.itemList[i]);
         }
@@ -473,9 +462,14 @@ public class CSVtest : MonoBehaviour
             oldData.itemList[i + 1].itemName = skillDatas.DataList[i].NameLevel;
             oldData.itemList[i + 1].itemIcon = skillDatas.DataList[i].CardImage;
             oldData.itemList[i + 1].itemDesc = skillDatas.DataList[i].Desc;
-            oldData.itemList[i + 1].itemModel = skillDatas.DataList[i].Name;
         }
     }
 
+    #endregion
+
+    #region Sound
+    // 사운드 클립 파싱
+    [Header("[사운드]")]
+    public string temp;
     #endregion
 }

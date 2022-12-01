@@ -596,6 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDB:
     Name: 
+    NickName: 
     ID: 0
     GroupID: 0
     Rank: 0
@@ -623,9 +624,8 @@ MonoBehaviour:
     Desc: 
     Sprite_TowerCard: {fileID: 0}
     Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
     MinionID: 0
   healthbarImages:
@@ -635,6 +635,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 3739483490595420446}
   hitbarImage: {fileID: 5120613583254271374}
   ui: {fileID: 8015749598941180598}
+  effectParticles: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
   attack: 0

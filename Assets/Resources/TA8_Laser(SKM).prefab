@@ -211,6 +211,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   towerDB:
     Name: Laser_Tower
+    NickName: 
     ID: 36
     GroupID: 8
     Rank: 1
@@ -238,9 +239,8 @@ MonoBehaviour:
     Desc: "\uC9C0\uC774\uC774\uC789~~~ \uC810 \uBE7C\uB7EC \uC624\uC168\uB098\uC694? "
     Sprite_TowerCard: {fileID: 21300000, guid: 4f7d4be2ecacb7a44a92fc0d6f906507, type: 3}
     Sprite_TowerProtrait: {fileID: 21300000, guid: 8793e923d6c91e04186c727188fd5020, type: 3}
-    AudioClip_Attack_Name: 0
-    AudioClip_Hit_Name: 0
-    AudioClip_Normal_Name: "0\r"
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
     MinionID: 0
   healthbarImages:
@@ -250,6 +250,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 1606438173200269606}
   hitbarImage: {fileID: 7115253661067070902}
   ui: {fileID: 5373865999890385550}
+  effectParticles: {fileID: 3164666853513956341, guid: f56996e31bedba04a839df8d7cbacdda, type: 3}
   maxHealth: 0
   currentHealth: 0
   attack: 0

@@ -13,23 +13,17 @@ public class Sword : MonoBehaviour
     //HeroCombat combat;
     [SerializeField] PlayerBehaviour _playerScript;
     [SerializeField] Health _playerHP;
-
+    public PlayerAnimation Animation;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other == null)
-        {
-            return;
-        }
-
         if (other.tag == _playerScript.EnemyTag || other.gameObject.layer == 17)
         {
             if (_playerScript != null)
             {
-                if (_playerScript.IsAttack)
+                if (Animation.IsAttack)
                 {
                     _playerScript.enemyCol = other;
-                    Debug.Log($"Ä®¿¡ ´êÀº °´Ã¼ : {other}");
                 }
             }
             else

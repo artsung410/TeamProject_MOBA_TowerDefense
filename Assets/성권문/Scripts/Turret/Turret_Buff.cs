@@ -14,6 +14,19 @@ public class Turret_Buff : Turret
     {
         // 타겟을 수시로 찾을수있게 invoke를 한다.
         InvokeRepeating("UpdateTarget", 0f, 0.1f);
+
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
+        if (effectParticles == null)
+        {
+            return;
+        }
+
+        // 이펙트 파티클 생성
+        InitEffectParticles(firePoint.position);
     }
 
     // 가장 가까운 적을 찾는다, 단 자주찾지는 않는다. 

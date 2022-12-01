@@ -22,7 +22,8 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             tooltip.gameObject.SetActive(true);
             //TODO: 버프 스크립트 적용하기.
-            tooltip.SetupTooltip(buff.Name, buff.Name);
+            tooltip.SetupBuffTooltip(buff);
+            Debug.Log(GetType().Name);
         }
     }
 
@@ -49,16 +50,17 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         ApplyCooldown();
     }
 
+
     private void ApplyCooldown()
     {
         if (elapsedTime >= coolTime)
         {
             BuffManager.Instance.removeBuff(buff);
+            tooltip.gameObject.SetActive(false);
             gameObject.GetComponent<Image>().sprite = null;
             buff = null;
             coolTime = 0;
             elapsedTime = 0;
-            coolTimeImage.fillAmount = 0f;
             StartCoroutine(AssemblyBuffAndApplyRandomDelay());
             return;
         }
@@ -72,6 +74,7 @@ public class BuffIcon : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         float randNum = Random.Range(0.0f, 0.03f);
         yield return new WaitForSeconds(randNum);
+        coolTimeImage.fillAmount = 0f;
         BuffManager.Instance.AssemblyBuff();
     }
 

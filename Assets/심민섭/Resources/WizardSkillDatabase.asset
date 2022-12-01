@@ -18,8 +18,7 @@ MonoBehaviour:
     itemID: 0
     itemDesc: 
     itemIcon: {fileID: 0}
-    itemModel: {fileID: 0}
-    inGameData: {fileID: 0}
+    objType: 
     itemValue: 0
     itemType: 0
     itemWeight: 0
@@ -29,7 +28,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -41,9 +44,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -60,6 +60,7 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
       NameLevel: 
       Name: {fileID: 0}
@@ -86,16 +87,12 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-    itemAttributes: []
-    specialPrefabs: []
-    buffDatas: []
   - itemName: Blaze1
     ClassType: Wizard
     itemID: 1
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: dd3885098198d104888439be4c590aba, type: 3}
-    itemModel: {fileID: 5133832279900349527, guid: 6713276736472ee4d9f9f3d144109fdc, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Summons a path of fire in front to deal damage.\r"
+    itemIcon: {fileID: 21300000, guid: 4653847d1e3973647b3526d6b3af56c6, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -105,7 +102,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -117,9 +118,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -136,52 +134,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Blaze1
+      Name: {fileID: 5133832279900349527, guid: dea28f681b61595459b78080df094459, type: 3}
+      ID: 1
+      Probability: 10
+      Classification: 3
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 1
+      Value_1: 100
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 3
+      Range: 12
       RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
-      TickDamage: 0
-      TickCount: 0
-      TickTime: 0
+      RangeValue_1: 12
+      RangeValue_2: 3
+      HoldingTime: 2
+      TickDamage: 30
+      TickCount: 5
+      TickTime: 5
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 100
-    - attributeName: CoolTime
-      attributeValue: 3
-    - attributeName: HoldingTime
-      attributeValue: 2
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: 4653847d1e3973647b3526d6b3af56c6, type: 3}
+      SkillIcon: {fileID: 21300000, guid: a703c9c4072da2f4f95992ce8e48f9eb, type: 3}
+      Desc: "Summons a path of fire in front to deal damage.\r"
   - itemName: Blaze2
     ClassType: Wizard
     itemID: 2
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: dd3885098198d104888439be4c590aba, type: 3}
-    itemModel: {fileID: 5133832279900349527, guid: 6713276736472ee4d9f9f3d144109fdc, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Summons a path of fire in front to deal damage.\r"
+    itemIcon: {fileID: 21300000, guid: b036013189c8fea468ff216f4dbda4d5, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -191,7 +176,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -203,9 +192,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -222,52 +208,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Blaze2
+      Name: {fileID: 5133832279900349527, guid: dea28f681b61595459b78080df094459, type: 3}
+      ID: 2
+      Probability: 8
+      Classification: 3
+      Rank: 2
+      LockTime: 0.5
+      SkillType: 1
+      Value_1: 120
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 3
+      Range: 12
       RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
-      TickDamage: 0
-      TickCount: 0
-      TickTime: 0
+      RangeValue_1: 12
+      RangeValue_2: 3
+      HoldingTime: 2
+      TickDamage: 40
+      TickCount: 5
+      TickTime: 5
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 120
-    - attributeName: CoolTime
-      attributeValue: 3
-    - attributeName: HoldingTime
-      attributeValue: 2
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: b036013189c8fea468ff216f4dbda4d5, type: 3}
+      SkillIcon: {fileID: 21300000, guid: a703c9c4072da2f4f95992ce8e48f9eb, type: 3}
+      Desc: "Summons a path of fire in front to deal damage.\r"
   - itemName: Blaze3
     ClassType: Wizard
     itemID: 3
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: dd3885098198d104888439be4c590aba, type: 3}
-    itemModel: {fileID: 5133832279900349527, guid: 6713276736472ee4d9f9f3d144109fdc, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Summons a path of fire in front to deal damage.\r"
+    itemIcon: {fileID: 21300000, guid: 77f2478c6bd6fa84b8fd60998225c309, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -277,7 +250,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -289,9 +266,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -308,52 +282,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Blaze3
+      Name: {fileID: 5133832279900349527, guid: dea28f681b61595459b78080df094459, type: 3}
+      ID: 3
+      Probability: 2
+      Classification: 3
+      Rank: 3
+      LockTime: 0.5
+      SkillType: 1
+      Value_1: 150
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 3
+      Range: 12
       RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
-      TickDamage: 0
-      TickCount: 0
-      TickTime: 0
+      RangeValue_1: 12
+      RangeValue_2: 3
+      HoldingTime: 2
+      TickDamage: 50
+      TickCount: 5
+      TickTime: 5
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 150
-    - attributeName: CoolTime
-      attributeValue: 3
-    - attributeName: HoldingTime
-      attributeValue: 2
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: 77f2478c6bd6fa84b8fd60998225c309, type: 3}
+      SkillIcon: {fileID: 21300000, guid: a703c9c4072da2f4f95992ce8e48f9eb, type: 3}
+      Desc: "Summons a path of fire in front to deal damage.\r"
   - itemName: Lightning1
     ClassType: Wizard
     itemID: 4
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 8d9279416ee9fd94b8e278cff98754fb, type: 3}
-    itemModel: {fileID: 7462896851685500729, guid: 036522f9d1aaa81478cdad8123a71b71, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Strikes lightning to inflict damage on enemies within range.\r"
+    itemIcon: {fileID: 21300000, guid: 67ec7c6bb3c6720408c364c91cba7b72, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -363,7 +324,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -375,9 +340,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -394,52 +356,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Lightning1
+      Name: {fileID: 7462896851685500729, guid: 080a798e563e10145afa3c85115e4b54, type: 3}
+      ID: 4
+      Probability: 10
+      Classification: 3
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 6
+      Value_1: 200
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 15
+      Range: 12
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 5
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 0.5
       TickDamage: 0
       TickCount: 0
       TickTime: 0
-      CcType: 0
-      CcTime: 0
+      CcType: 2
+      CcTime: 2
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 200
-    - attributeName: CoolTime
-      attributeValue: 15
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: 67ec7c6bb3c6720408c364c91cba7b72, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 9a74945936e68224fb2b3bdcfd18b712, type: 3}
+      Desc: "Strikes lightning to inflict damage on enemies within range.\r"
   - itemName: Lightning2
     ClassType: Wizard
     itemID: 5
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 8d9279416ee9fd94b8e278cff98754fb, type: 3}
-    itemModel: {fileID: 7462896851685500729, guid: 036522f9d1aaa81478cdad8123a71b71, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Strikes lightning to inflict damage on enemies within range.\r"
+    itemIcon: {fileID: 21300000, guid: 4362dab3bcb9da04fa6b5a9485c13076, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -449,7 +398,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -461,9 +414,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -480,52 +430,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Lightning2
+      Name: {fileID: 7462896851685500729, guid: 080a798e563e10145afa3c85115e4b54, type: 3}
+      ID: 5
+      Probability: 8
+      Classification: 3
+      Rank: 2
+      LockTime: 0.5
+      SkillType: 6
+      Value_1: 220
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 15
+      Range: 12
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 5
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 0.5
       TickDamage: 0
       TickCount: 0
       TickTime: 0
-      CcType: 0
-      CcTime: 0
+      CcType: 2
+      CcTime: 3
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 220
-    - attributeName: CoolTime
-      attributeValue: 15
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: 4362dab3bcb9da04fa6b5a9485c13076, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 9a74945936e68224fb2b3bdcfd18b712, type: 3}
+      Desc: "Strikes lightning to inflict damage on enemies within range.\r"
   - itemName: Lightning3
     ClassType: Wizard
     itemID: 6
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 8d9279416ee9fd94b8e278cff98754fb, type: 3}
-    itemModel: {fileID: 7462896851685500729, guid: 036522f9d1aaa81478cdad8123a71b71, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Strikes lightning to inflict damage on enemies within range.\r"
+    itemIcon: {fileID: 21300000, guid: 9f0a402920db5664e831b6bfa48b1fb5, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -535,7 +472,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -547,9 +488,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -566,52 +504,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Lightning3
+      Name: {fileID: 7462896851685500729, guid: 080a798e563e10145afa3c85115e4b54, type: 3}
+      ID: 6
+      Probability: 2
+      Classification: 3
+      Rank: 3
+      LockTime: 0.5
+      SkillType: 6
+      Value_1: 250
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 15
+      Range: 12
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 7
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 0.5
       TickDamage: 0
       TickCount: 0
       TickTime: 0
-      CcType: 0
-      CcTime: 0
+      CcType: 2
+      CcTime: 5
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 250
-    - attributeName: CoolTime
-      attributeValue: 15
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 12
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: 9f0a402920db5664e831b6bfa48b1fb5, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 9a74945936e68224fb2b3bdcfd18b712, type: 3}
+      Desc: "Strikes lightning to inflict damage on enemies within range.\r"
   - itemName: Blink1
     ClassType: Wizard
     itemID: 7
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: b36a488e97c847049b40af620dadb465, type: 3}
-    itemModel: {fileID: 8824069081885807219, guid: 193cf827e0651f34284953a5205e4eb9, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Instantly teleports to a forward position.\r"
+    itemIcon: {fileID: 21300000, guid: fea31708ae8bb3e49983d240deecee32, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -621,7 +546,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -633,9 +562,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -652,52 +578,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Blink1
+      Name: {fileID: 8824069081885807219, guid: 98161b1709f059e47a00e710f7e6c178, type: 3}
+      ID: 7
+      Probability: 10
+      Classification: 3
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 3
+      Value_1: 30
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 8
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 2
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 0.5
       TickDamage: 0
       TickCount: 0
       TickTime: 0
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 30
-    - attributeName: CoolTime
-      attributeValue: 8
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: fea31708ae8bb3e49983d240deecee32, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 480c81e2065818245b8673d2805589a8, type: 3}
+      Desc: "Instantly teleports to a forward position.\r"
   - itemName: Blink2
     ClassType: Wizard
     itemID: 8
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: a49d70bc38fde7a4f95890a7ca766ef1, type: 3}
-    itemModel: {fileID: 8824069081885807219, guid: 193cf827e0651f34284953a5205e4eb9, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Instantly teleports to a forward position.\r"
+    itemIcon: {fileID: 21300000, guid: 83737f4248291694fa8077b2bea1519a, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -707,7 +620,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -719,9 +636,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -738,52 +652,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Blink2
+      Name: {fileID: 8824069081885807219, guid: 98161b1709f059e47a00e710f7e6c178, type: 3}
+      ID: 8
+      Probability: 8
+      Classification: 3
+      Rank: 2
+      LockTime: 0.5
+      SkillType: 3
+      Value_1: 30
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 7
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 2
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 0.5
       TickDamage: 0
       TickCount: 0
       TickTime: 0
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 30
-    - attributeName: CoolTime
-      attributeValue: 7
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: 83737f4248291694fa8077b2bea1519a, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 480c81e2065818245b8673d2805589a8, type: 3}
+      Desc: "Instantly teleports to a forward position.\r"
   - itemName: Blink3
     ClassType: Wizard
     itemID: 9
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: a49d70bc38fde7a4f95890a7ca766ef1, type: 3}
-    itemModel: {fileID: 8824069081885807219, guid: 193cf827e0651f34284953a5205e4eb9, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Instantly teleports to a forward position.\r"
+    itemIcon: {fileID: 21300000, guid: 36f6d0c13501c80438079a2d25af9022, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -793,7 +694,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -805,9 +710,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -824,52 +726,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: Blink3
+      Name: {fileID: 8824069081885807219, guid: 98161b1709f059e47a00e710f7e6c178, type: 3}
+      ID: 9
+      Probability: 2
+      Classification: 3
+      Rank: 3
+      LockTime: 0.5
+      SkillType: 3
+      Value_1: 30
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 6
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 2
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 0.5
       TickDamage: 0
       TickCount: 0
       TickTime: 0
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 30
-    - attributeName: CoolTime
-      attributeValue: 6
-    - attributeName: HoldingTime
-      attributeValue: 0.5
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: 36f6d0c13501c80438079a2d25af9022, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 480c81e2065818245b8673d2805589a8, type: 3}
+      Desc: "Instantly teleports to a forward position.\r"
   - itemName: IceArrow1
     ClassType: Wizard
     itemID: 10
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 2bccd332882fcd14b9e4c377e432c587, type: 3}
-    itemModel: {fileID: 2274722152363888086, guid: e219e71cc78cb15448b8d6256073d134, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Throws an ice arrow at the enemy, slowing their movement speed.\r"
+    itemIcon: {fileID: 21300000, guid: 69fc5339d233a2447b13fc7fc24f68f9, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -879,7 +768,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -891,9 +784,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -910,52 +800,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: IceArrow1
+      Name: {fileID: 2274722152363888086, guid: 7c4ad46d6feca8e43b7eaaf9b9bef174, type: 3}
+      ID: 10
+      Probability: 10
+      Classification: 3
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 2
+      Value_1: 50
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 8
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
+      RangeValue_1: 1
+      RangeValue_2: 2
+      HoldingTime: 3
       TickDamage: 0
       TickCount: 0
       TickTime: 0
-      CcType: 0
-      CcTime: 0
-      CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 50
-    - attributeName: CoolTime
-      attributeValue: 8
-    - attributeName: HoldingTime
-      attributeValue: 3
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CcType: 1
+      CcTime: 3
+      CcValue: 40
+      CardImage: {fileID: 21300000, guid: 69fc5339d233a2447b13fc7fc24f68f9, type: 3}
+      SkillIcon: {fileID: 21300000, guid: c44e779a86164af40bd4123a94c0802d, type: 3}
+      Desc: "Throws an ice arrow at the enemy, slowing their movement speed.\r"
   - itemName: IceArrow2
     ClassType: Wizard
     itemID: 11
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 2bccd332882fcd14b9e4c377e432c587, type: 3}
-    itemModel: {fileID: 2274722152363888086, guid: e219e71cc78cb15448b8d6256073d134, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Throws an ice arrow at the enemy, slowing their movement speed.\r"
+    itemIcon: {fileID: 21300000, guid: ceba85015f00f4a44b79a58092086bd2, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -965,7 +842,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -977,9 +858,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -996,52 +874,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: IceArrow2
+      Name: {fileID: 2274722152363888086, guid: 7c4ad46d6feca8e43b7eaaf9b9bef174, type: 3}
+      ID: 11
+      Probability: 8
+      Classification: 3
+      Rank: 2
+      LockTime: 0.5
+      SkillType: 2
+      Value_1: 60
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 8
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
+      RangeValue_1: 1
+      RangeValue_2: 2
+      HoldingTime: 3
       TickDamage: 0
       TickCount: 0
       TickTime: 0
-      CcType: 0
-      CcTime: 0
-      CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 60
-    - attributeName: CoolTime
-      attributeValue: 8
-    - attributeName: HoldingTime
-      attributeValue: 3
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CcType: 1
+      CcTime: 4
+      CcValue: 50
+      CardImage: {fileID: 21300000, guid: ceba85015f00f4a44b79a58092086bd2, type: 3}
+      SkillIcon: {fileID: 21300000, guid: c44e779a86164af40bd4123a94c0802d, type: 3}
+      Desc: "Throws an ice arrow at the enemy, slowing their movement speed.\r"
   - itemName: IceArrow3
     ClassType: Wizard
     itemID: 12
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 2bccd332882fcd14b9e4c377e432c587, type: 3}
-    itemModel: {fileID: 2274722152363888086, guid: e219e71cc78cb15448b8d6256073d134, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Throws an ice arrow at the enemy, slowing their movement speed.\r"
+    itemIcon: {fileID: 21300000, guid: b76c1ed49098be74d8a5295a4258e1b0, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -1051,7 +916,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -1063,9 +932,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -1082,52 +948,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: IceArrow3
+      Name: {fileID: 2274722152363888086, guid: 7c4ad46d6feca8e43b7eaaf9b9bef174, type: 3}
+      ID: 12
+      Probability: 2
+      Classification: 3
+      Rank: 3
+      LockTime: 0.5
+      SkillType: 2
+      Value_1: 80
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 8
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
-      RangeValue_2: 0
-      HoldingTime: 0
+      RangeValue_1: 1
+      RangeValue_2: 2
+      HoldingTime: 3
       TickDamage: 0
       TickCount: 0
       TickTime: 0
-      CcType: 0
-      CcTime: 0
-      CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 80
-    - attributeName: CoolTime
-      attributeValue: 8
-    - attributeName: HoldingTime
-      attributeValue: 3
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CcType: 1
+      CcTime: 5
+      CcValue: 60
+      CardImage: {fileID: 21300000, guid: b76c1ed49098be74d8a5295a4258e1b0, type: 3}
+      SkillIcon: {fileID: 21300000, guid: c44e779a86164af40bd4123a94c0802d, type: 3}
+      Desc: "Throws an ice arrow at the enemy, slowing their movement speed.\r"
   - itemName: EnergyBolt1
     ClassType: Wizard
     itemID: 13
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 4029a9cfeb86f134c9c5af05993eaac8, type: 3}
-    itemModel: {fileID: 8625263493138291574, guid: 60667240f90e8224cae016eb8c54ff0f, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Fires an energy sphere forward.\r"
+    itemIcon: {fileID: 21300000, guid: 89800cb958f514e498e3368180fb2978, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -1137,7 +990,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -1149,9 +1006,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -1168,52 +1022,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: EnergyBolt1
+      Name: {fileID: 8625263493138291574, guid: 20f60dbcbe6f7f549bd7d937cdceb8ac, type: 3}
+      ID: 13
+      Probability: 10
+      Classification: 3
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 2
+      Value_1: 80
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 7
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 2
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 3
       TickDamage: 0
       TickCount: 0
       TickTime: 0
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 80
-    - attributeName: CoolTime
-      attributeValue: 7
-    - attributeName: HoldingTime
-      attributeValue: 3
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: 89800cb958f514e498e3368180fb2978, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 6b8a3b6b7af5aa94ba8ad4fdcdf14135, type: 3}
+      Desc: "Fires an energy sphere forward.\r"
   - itemName: EnergyBolt2
     ClassType: Wizard
     itemID: 14
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 4029a9cfeb86f134c9c5af05993eaac8, type: 3}
-    itemModel: {fileID: 8625263493138291574, guid: 60667240f90e8224cae016eb8c54ff0f, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Fires an energy sphere forward.\r"
+    itemIcon: {fileID: 21300000, guid: e107656fdbbed834aaa4e9af1d3c334c, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -1223,7 +1064,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -1235,9 +1080,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -1254,52 +1096,39 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: EnergyBolt2
+      Name: {fileID: 8625263493138291574, guid: 20f60dbcbe6f7f549bd7d937cdceb8ac, type: 3}
+      ID: 14
+      Probability: 8
+      Classification: 3
+      Rank: 2
+      LockTime: 0.5
+      SkillType: 2
+      Value_1: 90
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 7
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 2
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 3
       TickDamage: 0
       TickCount: 0
       TickTime: 0
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 90
-    - attributeName: CoolTime
-      attributeValue: 7
-    - attributeName: HoldingTime
-      attributeValue: 3
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: e107656fdbbed834aaa4e9af1d3c334c, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 6b8a3b6b7af5aa94ba8ad4fdcdf14135, type: 3}
+      Desc: "Fires an energy sphere forward.\r"
   - itemName: EnergyBolt3
     ClassType: Wizard
     itemID: 15
-    itemDesc: Text
-    itemIcon: {fileID: 21300000, guid: 4029a9cfeb86f134c9c5af05993eaac8, type: 3}
-    itemModel: {fileID: 8625263493138291574, guid: 60667240f90e8224cae016eb8c54ff0f, type: 3}
-    inGameData: {fileID: 11400000, guid: 078ca222865e4fe44ac954712c58cb24, type: 2}
+    itemDesc: "Fires an energy sphere forward.\r"
+    itemIcon: {fileID: 21300000, guid: b855c3ba862ca0e4580801786166d0de, type: 3}
+    objType: Active_S
     itemValue: 1
     itemType: 1
     itemWeight: 0
@@ -1309,7 +1138,11 @@ MonoBehaviour:
     CombinationValue: 0
     towerData:
       Name: 
+      NickName: 
       ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
       Pf: {fileID: 0}
       Combination_ResultID: 0
       Combination_Required_Value: 0
@@ -1321,9 +1154,6 @@ MonoBehaviour:
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      GroupID: 0
-      Rank: 0
-      Type: 0
       Attack: 0
       Attack_Speed: 0
       Hp: 0
@@ -1340,42 +1170,30 @@ MonoBehaviour:
       AudioClip_Hit_Name: 
       AudioClip_Normal_Name: 
       buffID: 0
+      MinionID: 0
     skillData:
-      NameLevel: 
-      Name: {fileID: 0}
-      ID: 0
-      Probability: 0
-      Classification: 0
-      Rank: 0
-      LockTime: 0
-      SkillType: 0
-      Value_1: 0
+      NameLevel: EnergyBolt3
+      Name: {fileID: 8625263493138291574, guid: 20f60dbcbe6f7f549bd7d937cdceb8ac, type: 3}
+      ID: 15
+      Probability: 2
+      Classification: 3
+      Rank: 3
+      LockTime: 0.5
+      SkillType: 2
+      Value_1: 120
       Value_2: 0
-      CoolTime: 0
-      Range: 0
+      CoolTime: 7
+      Range: 20
       RangeType: 0
-      RangeValue_1: 0
+      RangeValue_1: 2
       RangeValue_2: 0
-      HoldingTime: 0
+      HoldingTime: 3
       TickDamage: 0
       TickCount: 0
       TickTime: 0
       CcType: 0
       CcTime: 0
       CcValue: 0
-      CardImage: {fileID: 0}
-      SkillIcon: {fileID: 0}
-      Desc: 
-    itemAttributes:
-    - attributeName: ATK
-      attributeValue: 120
-    - attributeName: CoolTime
-      attributeValue: 7
-    - attributeName: HoldingTime
-      attributeValue: 3
-    - attributeName: SkillRange
-      attributeValue: 20
-    - attributeName: LockTime
-      attributeValue: 0.5
-    specialPrefabs: []
-    buffDatas: []
+      CardImage: {fileID: 21300000, guid: b855c3ba862ca0e4580801786166d0de, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 6b8a3b6b7af5aa94ba8ad4fdcdf14135, type: 3}
+      Desc: "Fires an energy sphere forward.\r"

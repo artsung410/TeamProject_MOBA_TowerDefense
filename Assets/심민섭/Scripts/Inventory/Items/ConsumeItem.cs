@@ -118,16 +118,23 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     }
 
                                     // 미니언 근거리 데이터 range
-                                    if (item.itemType == ItemType.Tower)
+                                    if (item.itemType == ItemType.Tower && item.objType == "Minion_T")
                                     {
-                                        int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
-                                        if (minionRangeData == 5)
+                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 5)
                                         {
-                                            return;
+                                            int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
+                                            if (minionRangeData == 5)
+                                            {
+                                                return;
+                                            }
                                         }
-                                        if (minionRangeData == 50)
+                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 50)
                                         {
-                                            return;
+                                            int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
+                                            if (minionRangeData == 50)
+                                            {
+                                                return;
+                                            }
                                         }
                                     }
                                     
@@ -166,6 +173,8 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                         if (eS.transform.GetChild(1).GetChild(i).childCount == 0)
                                         {
                                             Instantiate(this.gameObject.transform, eS.transform.GetChild(1).GetChild(i));
+                                            // 장착 슬롯 크기 지정
+                                            eS.transform.GetChild(1).GetChild(i).GetChild(0).localScale = new Vector3(0.9166667f, 1.05f, 0f);
                                             //Debug.Log(eS.transform.GetChild(1).GetChild(i).GetChild(0).name);
                                             if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemValue >= 1)
                                             {
@@ -178,6 +187,8 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                     eS.gameObject.GetComponent<Inventory>().updateItemList();
                                     inventory.updateItemList();
                                     gearable = true;
+                                    // 카드 현황 업데이트
+                                    EquimentInventory.instance.cardMonitorUpdate();
                                     /*if (duplication != null)
                                         Destroy(duplication.gameObject);*/
                                     break;

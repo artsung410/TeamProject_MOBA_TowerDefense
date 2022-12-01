@@ -32,7 +32,7 @@ public class PostPlaveBetCaller : MonoBehaviour
     // 호출 정보 : message, betting_id
     public IEnumerator PostPlaveBetCaller_S()
     {
-        string url = "https://odin-api-sat.browseosiris.com/v1/betting/zera/place-bet";
+        string url = "https://odin-api-sat.browseosiris.com/v1/betting/ace/place-bet";
 
         // 여기선 두명의 세션 아이디를 가져와야함.
         WWWForm form = new WWWForm();
