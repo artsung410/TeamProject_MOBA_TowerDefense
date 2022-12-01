@@ -437,6 +437,18 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                                 isItemID = true;
                                             count = 0;
                                         }
+                                        // 미니언 타워 카드인 경우
+                                        if (firstItem.objType == "Minion_T")
+                                        {
+                                            // 사거리를 확인해서 근거리, 원거리카드가 장착되어 있는지 판단한다.
+                                            if (CSVtest.Instance.MinionDic[GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range
+                                                == CSVtest.Instance.MinionDic[firstItem.towerData.MinionID].Range)
+                                            {
+                                                firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                                firstItemRectTransform.localPosition = Vector3.zero;
+                                                return;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -502,6 +514,18 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                             if (count == 2)
                                                 isItemID = true;
                                             count = 0;
+                                        }
+                                        // 미니언 타워 카드인 경우
+                                        if (firstItem.objType == "Minion_T")
+                                        {
+                                            // 사거리를 확인해서 근거리, 원거리카드가 장착되어 있는지 판단한다.
+                                            if (CSVtest.Instance.MinionDic[GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range
+                                                == CSVtest.Instance.MinionDic[firstItem.towerData.MinionID].Range)
+                                            {
+                                                firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                                firstItemRectTransform.localPosition = Vector3.zero;
+                                                return;
+                                            }
                                         }
                                     }
                                 }
