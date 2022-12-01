@@ -51,7 +51,6 @@ public class HeroAbility : MonoBehaviourPun
 
     private IEnumerator Start()
     {
-        Debug.Log("ability start");
         while (true)
         {
 #if OLD_VER
@@ -87,7 +86,6 @@ public class HeroAbility : MonoBehaviourPun
 
                 for (int i = 0; i < 4; i++)
                 {
-                    Debug.Log(SkillManager.Instance.Datas[i].Name.name);
                     AbilityPrefabs[i] = SkillManager.Instance.Datas[i].Name;
                 }
                 yield break;

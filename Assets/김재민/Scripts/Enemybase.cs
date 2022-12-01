@@ -159,7 +159,7 @@ public class Enemybase : MonoBehaviourPun
         HP = minionDB.Hp;
         minionSprite = minionDB.Icon_Blue;
 
-        Debug.Log($"[미니언] { PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
+        //Debug.Log($"[미니언] { PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
     }
 
     public void TakeDamage(float Damage)
