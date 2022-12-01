@@ -46,7 +46,7 @@ public class Stats : MonoBehaviourPun
     public float moveSpeed;
 
     [Header("레벨")]
-    public int Level = 1;
+    public int Level;
 
     [Header("경험치")]
     public float acquiredExp;
@@ -69,7 +69,7 @@ public class Stats : MonoBehaviourPun
     {
         _playerScript = GetComponent<PlayerBehaviour>();
         _health = GetComponent<Health>();
-
+        Level = 1;
         // 구독자 등록
         Health.OnPlayerDieEvent += PlayerLevelUpFactory;
         Enemybase.OnMinionDieEvent += PlayerLevelUpFactory;
@@ -78,6 +78,7 @@ public class Stats : MonoBehaviourPun
 
     private void OnEnable()
     {
+        Debug.Log($"is work? : { CSVtest.Instance.wizardStatParsing.dataList[0].hp}");
         SetPlayerStats(AttackType, Level);
     }
 
@@ -103,6 +104,14 @@ public class Stats : MonoBehaviourPun
         expDetectRange = 25f;
     }
 
+    public void SetBuff()
+    {
+        maxHealth = myStat.hp + buffMaxHealth;
+        attackDmg = myStat.damage + buffAttackDamge;
+        attackRange = myStat.range + buffAttackRange;
+        attackSpeed = myStat.attackSpeed + buffAttackSpeed;
+        moveSpeed = myStat.moveSpeed + buffMoveSpeed;
+    }
 
     public void PlayerLevelUpFactory(GameObject expBag, float exp)
     {
@@ -150,26 +159,9 @@ public class Stats : MonoBehaviourPun
     {
         if (Input.GetKeyDown(KeyCode.L))
         {
-            float exp = 40f;
-            this.acquiredExp += exp;
-            // 경험치가 최대 경험치보다 높으면 레벨업을 한다
-            while (this.acquiredExp >= maxExp)
-            {
-                // maxLevel 달성시 레벨업하지않고 경험치바는 차되 최대치 이상으론 차지 않는다
-                if (myStat.charID == 0)
-                {
-                    this.acquiredExp = Mathf.Clamp(this.acquiredExp, 0, maxExp);
-                    return;
-                }
-                Level++;
-                SetPlayerStats(AttackType, Level);
-                // 타워 해금은 게임매니저가 플레이어 레벨을 받아와서 해금한다
-                GameManager.Instance.UnlockTower(gameObject.tag, Level);
-                photonView.RPC(nameof(_health.LevelHealthUpdate), RpcTarget.All, maxHealth);
-
-                // Exp에서 maxExp만큼 뺀다 레벨업을 했으니까
-                this.acquiredExp = Mathf.Max(this.acquiredExp - maxExp, 0);
-            }
+            buffAttackDamge = 10;
+            buffMoveSpeed = 3f;
+            SetBuff();
         }
     }
 
