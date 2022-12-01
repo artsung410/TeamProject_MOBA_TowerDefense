@@ -227,4 +227,9 @@ public class Stats : GoogleSheetManager
         Gizmos.DrawSphere(transform.position, attackRange);
     }
 
+    private void OnDestroy()
+    {
+        Enemybase.OnMinionDieEvent -= PlayerLevelUpFactory;
+    }
+
 }
