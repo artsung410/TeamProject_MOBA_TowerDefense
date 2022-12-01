@@ -136,7 +136,7 @@ public class Turret : MonoBehaviourPun
 
     private IEnumerator SetBuff()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return YieldInstructionCache.WaitForSeconds(0.5f);
         BuffBlueprint buff = CSVtest.Instance.BuffDic[towerDB.buffID];
         Debug.Log(buff.Name);
         BuffManager.Instance.AddBuff(buff);
@@ -255,12 +255,13 @@ public class Turret : MonoBehaviourPun
 
         while (true)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return YieldInstructionCache.WaitForSeconds(0.01f);
             prevValue -= delta;
             hitbarImage.fillAmount = prevValue;
 
             if (prevValue - value < 0.001f)
             {
+                hitbarImage.fillAmount = healthbarImage.fillAmount;
                 break;
             }
         }
@@ -302,7 +303,7 @@ public class Turret : MonoBehaviourPun
 
     IEnumerator Destruction(GameObject particle)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return YieldInstructionCache.WaitForSeconds(1.5f);
 
         PhotonNetwork.Destroy(particle);
     }
