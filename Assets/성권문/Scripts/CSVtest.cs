@@ -92,7 +92,7 @@ public class CSVtest : MonoBehaviour
 
     #region DescParsing
 
-    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D57";
+    private const string descURL = "https://docs.google.com/spreadsheets/d/1ta3EbfGEC9NswgOeCqHaI25BO9sPvpc2/export?format=tsv&range=A3:D109";
 
     // Ű����� ID, List���� Name KoTooltip, EnTooltip�� ����
     Dictionary<int, List<string>> descDic = new Dictionary<int, List<string>>();
@@ -110,7 +110,6 @@ public class CSVtest : MonoBehaviour
         StartCoroutine(GetBuffData());
         StartCoroutine(GetMinionData());
 
-        //StartCoroutine(GetMinionData());
         StartCoroutine(GetWarriorSkillData(warriorSkillURL));
         StartCoroutine(GetWizardSkillData(wizardSkillURL));
         StartCoroutine(GetCommonSkillData(commonSkillURL));
