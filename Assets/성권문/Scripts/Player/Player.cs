@@ -132,10 +132,7 @@ public class Player : MonoBehaviourPun
             {
                 float temp = playerStats.moveSpeed;
                 temp *= (addValue);
-                Debug.Log($"addValue : {addValue} temp : { temp }");
                 playerStats.buffMoveSpeed += temp;
-                Debug.Log($"playerStats.buffMoveSpeed : {playerStats.buffMoveSpeed}");
-
             }
             else
             {
@@ -169,6 +166,7 @@ public class Player : MonoBehaviourPun
             }
         }
 
-        playerStats.test();
+        playerStats.SetBuff();
+
     }
 }
