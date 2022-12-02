@@ -259,20 +259,20 @@ public class RandomSelect : MonoBehaviour
             else if (result[i].ClassType == "Inherence")
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_common, result[i].itemName, result[i].itemDesc);
-            }
-            else if (result[i].towerData.Type == 1) // 공격 타워
+            } // 오픈하는 덱에 따라 백이미지를 선택한다.
+            else if (DrawManager.instance.boxName == "Attack Tower" || DrawManager.instance.boxName == "Attack Tower_P") // 공격 타워
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_attackTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].towerData.Type == 2) // 버프타워 3, 디버프 타워
+            else if (DrawManager.instance.boxName == "Minion Tower" || DrawManager.instance.boxName == "Minion Tower_P") // 버프타워 3, 디버프 타워
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_minionTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].towerData.Type == 4) // 미니언 타워
+            else if (DrawManager.instance.boxName == "Buff & Debuff Tower" || DrawManager.instance.boxName == "Buff & Debuff Tower_P") // 미니언 타워
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_buffTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].ClassType == "") // 랜덤 타워
+            else if (DrawManager.instance.boxName == "Random Tower" || DrawManager.instance.boxName == "Random Tower_P") // 랜덤 타워
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_randomTower, result[i].towerData.NickName, result[i].itemDesc);
             }
