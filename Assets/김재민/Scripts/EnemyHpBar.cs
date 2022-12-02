@@ -75,11 +75,11 @@ public class EnemyHpBar : MonoBehaviourPun
             float prevValue = hitbarImage.fillAmount; //1f
             float delta = prevValue / 100f; // 0.01
 
-            elaspedTime += Time.deltaTime;
+            elaspedTime += Time.deltaTime * 2;
             if (elaspedTime >= 0.01f)
             {
                 elaspedTime = 0f;
-                prevValue -= delta; //0.8- 0.008 // 0.01 백번
+                prevValue -= (delta * 2f); //0.8- 0.008 // 0.01 백번
                 hitbarImage.fillAmount = prevValue;  // 0.01동안 동기화 
                 if(prevValue - healthbarImage.fillAmount < 0.001f)
                 {
@@ -113,7 +113,7 @@ public class EnemyHpBar : MonoBehaviourPun
 
         if (enemybase._eminontpye != EMINIONTYPE.Netural)
         {
-            transform.position = new Vector3(Enemy.position.x, 10f, Enemy.position.z);
+            transform.position = new Vector3(Enemy.position.x,Enemy.position.y + 5f, Enemy.position.z);
         }
         else if (enemybase._eminontpye == EMINIONTYPE.Netural)
         {

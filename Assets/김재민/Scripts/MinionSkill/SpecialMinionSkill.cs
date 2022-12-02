@@ -21,6 +21,9 @@ public class SpecialMinionSkill : SkillHandler
     [SerializeField]
     private GameObject dragon;
 
+    [SerializeField]
+    private GameObject Effect;
+
 
 
 
@@ -61,6 +64,11 @@ public class SpecialMinionSkill : SkillHandler
         }
     }
 
+    private void LateUpdate()
+    {
+        
+    }
+
     public override void SkillHoldingTime(float time) // 지속시간
     {
         elapsedTime += Time.deltaTime;
@@ -91,9 +99,12 @@ public class SpecialMinionSkill : SkillHandler
 
     public void RPC_RunAway()
     {
+        EffectOn(false);
         transform.GetChild(0).transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = true;
         transform.GetChild(0).transform.GetChild(0).GetComponent<NavMeshAgent>().enabled = true;
         transform.DetachChildren();
+        EffectOn(true);
+
     }
 
    private void nearFindObject()
@@ -114,7 +125,8 @@ public class SpecialMinionSkill : SkillHandler
                     if (transform.GetChild(0) != null)
                     {
                         gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpecialAttack>().target = col.transform;
-                        gameObject.transform.GetChild(0).transform.position = col.transform.position;   
+                        gameObject.transform.GetChild(0).transform.position = col.transform.position;
+                        gameObject.transform.GetChild(0).GetChild(0).transform.position = gameObject.transform.GetChild(0).transform.position + new Vector3(0,0, 4f);
                         TargetOn = true;
                         RunAway();
                     }
@@ -122,6 +134,19 @@ public class SpecialMinionSkill : SkillHandler
             }
         }
     }
+
+
+    public void EffectOn(bool value)
+    {
+        photonView.RPC(nameof(RPC_EffectOn), RpcTarget.All, value);
+    }
+
+    [PunRPC]
+    public void RPC_EffectOn(bool value)
+    {
+        Effect.SetActive(value);
+    }
+
 
 
 }
