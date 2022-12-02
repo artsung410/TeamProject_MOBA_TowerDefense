@@ -23,14 +23,11 @@ public class BulletMove : MonoBehaviourPun
     private void Awake()
     {
         rigidbody = GetComponent<Rigidbody>();
-
-        BulletDestroy(2f);
     }
 
     private void FixedUpdate()
     {
-      
-
+       
      
 
         // 유도탄
@@ -44,17 +41,16 @@ public class BulletMove : MonoBehaviourPun
         }
         else
         {
-           
-
             rigidbody.velocity = transform.forward * ballVelocity;
             var ballTargetRotation = Quaternion.LookRotation(tg.transform.position + new Vector3(0, 1.5f) - transform.position);
             rigidbody.MoveRotation(Quaternion.RotateTowards(transform.rotation, ballTargetRotation, turn));
-            transform.LookAt(tg.transform.position + new Vector3(0,1f));
+            transform.LookAt(tg.transform.position + new Vector3(0,2f,0));
 
         }
-        
-
-
+        //if(tg.tag == EnemyTag && tg.layer == 14)
+        //{
+        //    return;
+        //}
 
     }
 
@@ -115,11 +111,4 @@ public class BulletMove : MonoBehaviourPun
         }
 
     }
-
-    [PunRPC]
-    void BulletDestroy(float value)
-    {
-        Destroy(gameObject,value);
-    }
-
 }

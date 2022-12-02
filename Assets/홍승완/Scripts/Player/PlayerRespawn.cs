@@ -58,13 +58,13 @@ public class PlayerRespawn : MonoBehaviourPun
     {
         if (health.isDeath)
         {
-           health.gameObject.transform.position = playerRespawnPosition;
             elapsedTime += Time.deltaTime;
 
             if (elapsedTime >= respawnTime)
             {
                 // TODO : MissingReferenceException: The object of type 'Health' has been destroyed but you are still trying to access it.
                 // 리스폰위치 할당
+                health.gameObject.transform.position = playerRespawnPosition;
                 elapsedTime = 0f;
                 health.gameObject.SetActive(true);
                 HpBar.gameObject.SetActive(true);
