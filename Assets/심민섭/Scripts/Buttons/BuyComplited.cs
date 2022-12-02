@@ -77,7 +77,7 @@ public class BuyComplited : MonoBehaviour
         {
             buyItemImage.sprite = minionTowerCardImage;
         }
-        else if (buyItemName.text == "Buff Tower" || buyItemName.text == "Buff Tower_P")
+        else if (buyItemName.text == "Buff & Debuff Tower" || buyItemName.text == "Buff & Debuff Tower_P")
         {
             buyItemImage.sprite = buffTowerCardImage;
         }

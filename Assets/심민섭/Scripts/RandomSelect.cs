@@ -160,10 +160,10 @@ public class RandomSelect : MonoBehaviour
                 selectTowerCard = "Premium_Minion_Draw_Probability";
             }
         }
-        else if (DrawManager.instance.boxName == "Buff  & Debuff Tower" || DrawManager.instance.boxName == "Buff  & Debuff Tower_P")
+        else if (DrawManager.instance.boxName == "Buff & Debuff Tower" || DrawManager.instance.boxName == "Buff & Debuff Tower_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("BuffTowerDatabase");
-            if (DrawManager.instance.boxName == "Buff  & Debuff Tower")
+            if (DrawManager.instance.boxName == "Buff & Debuff Tower")
             {
                 total = 0;
                 for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
@@ -173,7 +173,7 @@ public class RandomSelect : MonoBehaviour
                 }
                 selectTowerCard = "Normal_Buff_Debuff_Draw_Probability";
             }
-            else if (DrawManager.instance.boxName == "Buff  & Debuff Tower_P")
+            else if (DrawManager.instance.boxName == "Buff & Debuff Tower_P")
             {
                 total = 0;
                 for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
@@ -259,20 +259,20 @@ public class RandomSelect : MonoBehaviour
             else if (result[i].ClassType == "Inherence")
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_common, result[i].itemName, result[i].itemDesc);
-            }
-            else if (result[i].towerData.Type == 1) // 공격 타워
+            } // 오픈하는 덱에 따라 백이미지를 선택한다.
+            else if (DrawManager.instance.boxName == "Attack Tower" || DrawManager.instance.boxName == "Attack Tower_P") // 공격 타워
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_attackTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].towerData.Type == 2) // 버프타워 3, 디버프 타워
+            else if (DrawManager.instance.boxName == "Minion Tower" || DrawManager.instance.boxName == "Minion Tower_P") // 버프타워 3, 디버프 타워
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_minionTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].towerData.Type == 4) // 미니언 타워
+            else if (DrawManager.instance.boxName == "Buff & Debuff Tower" || DrawManager.instance.boxName == "Buff & Debuff Tower_P") // 미니언 타워
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_buffTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].ClassType == "") // 랜덤 타워
+            else if (DrawManager.instance.boxName == "Random Tower" || DrawManager.instance.boxName == "Random Tower_P") // 랜덤 타워
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_randomTower, result[i].towerData.NickName, result[i].itemDesc);
             }
@@ -328,6 +328,8 @@ public class RandomSelect : MonoBehaviour
                     weight += inventoryItemList_skill.itemList[i].towerData.Premium_Random_Draw_Probability;
                 }
             }
+            if (inventoryItemList_skill.itemList[i].itemType == ItemType.uniqueSkill)
+                weight += inventoryItemList_skill.itemList[i].skillData.Probability;
             if (selectNum <= weight)
             {
                 return i;

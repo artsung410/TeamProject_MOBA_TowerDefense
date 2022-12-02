@@ -80,14 +80,14 @@ public class DataBaseInsert : MonoBehaviour
             {"Common Skill", MakeUserInfo.instance.cardPack_inherence_N},
             {"Attack Tower", MakeUserInfo.instance.cardPack_attack_N},
             {"Minion Tower", MakeUserInfo.instance.cardPack_minion_N},
-            {"Buff Tower", MakeUserInfo.instance.cardPack_buff_N},
+            {"Buff & Debuff Tower", MakeUserInfo.instance.cardPack_buff_N},
             {"Random Tower", MakeUserInfo.instance.cardPack_random_N},
             {"Warrior Skill_P", MakeUserInfo.instance.cardPack_warrior_P},
             {"Wizard Skill_P", MakeUserInfo.instance.cardPack_wizard_P},
             {"Common Skill_P", MakeUserInfo.instance.cardPack_inherence_P},
             {"Attack Tower_P", MakeUserInfo.instance.cardPack_attack_P},
             {"Minion Tower_P", MakeUserInfo.instance.cardPack_minion_P},
-            {"Buff Tower_P", MakeUserInfo.instance.cardPack_buff_P},
+            {"Buff & Debuff Tower_P", MakeUserInfo.instance.cardPack_buff_P},
             {"Random Tower_P", MakeUserInfo.instance.cardPack_random_P},
         };
 

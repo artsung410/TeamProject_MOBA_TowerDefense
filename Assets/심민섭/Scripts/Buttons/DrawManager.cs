@@ -285,7 +285,7 @@ public class DrawManager : MonoBehaviour
         {
             selectInventory = towerInventory;
         }
-        else if (boxName == "Buff  & Debuff Tower" || boxName == "Buff  & Debuff Tower_P")
+        else if (boxName == "Buff & Debuff Tower" || boxName == "Buff & Debuff Tower_P")
         {
             selectInventory = towerInventory;
         }
@@ -424,7 +424,7 @@ public class DrawManager : MonoBehaviour
         {
             for (int j = 0; j < selectInventory.transform.childCount; j++) // 인벤 슬롯 만큼 반복해서 빈 슬롯을 찾는다.
             {
-                for (int i = 0; i <= idListDistinct.Count; i++) // 인벤토리 갯수 만큼 반복
+                for (int i = 0; i < sameItem.Count; i++) // 인벤토리 갯수 만큼 반복
                 {
                     // 빈 슬롯 찾기
                     if (selectInventory.transform.GetChild(j).childCount == 0)
@@ -437,6 +437,16 @@ public class DrawManager : MonoBehaviour
                         {
                             // Key가 존재하면
                             itemStruct.itemValue = idListDistinct[itemStruct.itemID];
+                            // sameItem에 있는 같은 키를 삭제한다. 자기자신은 삭제 안함 왜냐면 밑에서 삭제하니까
+                            for (int del = 0;  del < sameItem.Count;  del++)
+                            {
+                                if (itemStruct.itemID == sameItem[del].itemID)
+                                {
+                                    if (del == i)
+                                        continue;
+                                    sameItem.RemoveAt(del);
+                                }
+                            }
                         }
                         else
                         {
@@ -477,9 +487,10 @@ public class DrawManager : MonoBehaviour
                         itemObjProduce.transform.localScale = new Vector3(0.55f, 0.7f, 0f);
 
                         // 넣었으면 아이템 삭제
+                        StructResultItem.RemoveAt(i);
                         sameItem.RemoveAt(i);
                         idListDistinct.Remove(itemStruct.itemID);
-                        if (idListDistinct.Count == 0)
+                        if (sameItem.Count == 0)
                             break;
                     }
                 }

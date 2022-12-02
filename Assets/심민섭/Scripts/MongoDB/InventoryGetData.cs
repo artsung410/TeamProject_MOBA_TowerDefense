@@ -478,7 +478,7 @@ public class InventoryGetData : MonoBehaviour
                 }
                 else if (cardPack[i].Contains("Buff"))
                 {
-                    itemProduce.item.itemName = "Buff Tower_P";
+                    itemProduce.item.itemName = "Buff & Debuff Tower_P";
                     itemProduce.item.itemIcon = buff_P;
 
                 }
@@ -519,7 +519,7 @@ public class InventoryGetData : MonoBehaviour
                 }
                 else if (cardPack[i].Contains("Buff"))
                 {
-                    itemProduce.item.itemName = "Buff Tower";
+                    itemProduce.item.itemName = "Buff & Debuff Tower";
                     itemProduce.item.itemIcon = buff_N;
 
                 }
