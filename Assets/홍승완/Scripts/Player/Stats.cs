@@ -172,4 +172,8 @@ public class Stats : MonoBehaviourPun
         Gizmos.DrawSphere(transform.position, attackRange);
     }
 
+    private void OnDestroy()
+    {
+        Enemybase.OnMinionDieEvent -= PlayerLevelUpFactory;
+    }
 }
