@@ -93,7 +93,6 @@ public class Enemybase : MonoBehaviourPun
             _outline.enabled = false;
             _outline.OutlineWidth = 8f;
         }
-        CurrnetHP = HP;
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -156,7 +155,7 @@ public class Enemybase : MonoBehaviourPun
         _animator.SetFloat("Speed", AttackSpeed);
             attackRange = minionDB.Range;
         moveSpeed = minionDB.Move_Speed;
-        HP = minionDB.Hp;
+        HP = CurrnetHP = minionDB.Hp;
         minionSprite = minionDB.Icon_Blue;
 
         //Debug.Log($"[미니언] { PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
