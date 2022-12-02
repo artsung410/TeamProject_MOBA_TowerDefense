@@ -602,60 +602,28 @@ public class Inventory : MonoBehaviour
 
     public void setDefaultSettings()
     {
-        if (GetComponent<EquipmentSystem>() == null && GetComponent<CraftSystem>() == null)
-        {
-            height = 5;
-            width = 5;
+        height = 2;
+        width = 4;
 
-            slotSize = 50;
-            iconSize = 45;
+        slotSize = 50;
+        iconSize = 45;
 
-            paddingBetweenX = 5;
-            paddingBetweenY = 5;
-            paddingTop = 35;
-            paddingBottom = 10;
-            paddingLeft = 10;
-            paddingRight = 10;
-        }
-        else if (GetComponent<CraftSystem>() != null)
-        {
-            height = 3;
-            width = 3;
-            slotSize = 55;
-            iconSize = 45;
-
-            paddingBetweenX = 5;
-            paddingBetweenY = 5;
-            paddingTop = 35;
-            paddingBottom = 95;
-            paddingLeft = 25;
-            paddingRight = 25;
-        }
-        else
-        {
-            height = 4;
-            width = 2;
-
-            slotSize = 50;
-            iconSize = 45;
-
-            paddingBetweenX = 100;
-            paddingBetweenY = 20;
-            paddingTop = 35;
-            paddingBottom = 10;
-            paddingLeft = 10;
-            paddingRight = 10;
-        }
+        paddingBetweenX = 25;
+        paddingBetweenY = 30;
+        paddingTop = 0;
+        paddingBottom = 0;
+        paddingRight = 20;
+        paddingLeft = 0;
     }
 
-    /*public void adjustInventorySize()
+    public void adjustInventorySize()
     {
         int x = (((width * slotSize) + ((width - 1) * paddingBetweenX)) + paddingLeft + paddingRight);
         int y = (((height * slotSize) + ((height - 1) * paddingBetweenY)) + paddingTop + paddingBottom);
         PanelRectTransform.sizeDelta = new Vector2(x, y);
 
         SlotGridRectTransform.sizeDelta = new Vector2(x, y);
-    }*/
+    }
 
     /// <summary>
     /// 슬롯 컨테이너 오브젝트를 가져오고 Rect, GridLayoutGroup을 각 변수에 저장

@@ -848,7 +848,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     private void FadeinImige()
     {
         StartCoroutine(imigeCourutine);
-
     }
 
     private IEnumerator textFadeout()
