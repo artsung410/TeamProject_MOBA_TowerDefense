@@ -13,9 +13,19 @@ public enum EMINIONTYPE
     Netural,
 }
 
+public enum EMINIONSIZE
+{ 
+    Small,
+    Nomal,
+    Big,
+
+}
+
+
 public class Enemybase : MonoBehaviourPun
 {
     public EMINIONTYPE _eminontpye;
+    public EMINIONSIZE _eminontpyeSize;
     // ###############################################
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
@@ -62,7 +72,7 @@ public class Enemybase : MonoBehaviourPun
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
     protected NavMeshAgent _navMeshAgent;
     protected Animator _animator;
-    public bool isDead = false;
+    protected bool isDead = false;
 
     public CapsuleCollider _capsuleCollider;
     private Outline _outline;
@@ -132,7 +142,7 @@ public class Enemybase : MonoBehaviourPun
 
     }
 
-    private void FixedUpdate()
+    private void LateUpdate()
     {
         if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && _animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.die"))
         {
@@ -230,8 +240,15 @@ public class Enemybase : MonoBehaviourPun
 
     public void Death()
     {
-        Destroy(transform.parent.gameObject);
+        if(photonView.IsMine)
+        {
+
+        PhotonNetwork.Destroy(transform.parent.gameObject);
+        }
+        
     }
+
+
     public void DamageOverTime(float Damage, float Time)
     {
 
@@ -248,7 +265,7 @@ public class Enemybase : MonoBehaviourPun
             {
                 yield break;
             }
-            Debug.Log($"{lastDamageTeam}");
+            
             if (CurrnetHP <= 0)
             {
                 if (_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
