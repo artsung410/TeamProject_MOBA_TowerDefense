@@ -26,9 +26,13 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
 
     [HideInInspector]
     public int BlueSkillWave;
-
     [HideInInspector]
     public int RedSkillWave;
+
+    [HideInInspector]
+    public int BlueSkillSpawnSize;
+    [HideInInspector]
+    public int RedSkillSpawnSize;
 
 
     [HideInInspector]
@@ -37,10 +41,11 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     [HideInInspector]
     public string tag;
 
-
+    //스킬미니언 관련
     float elaspedTime;
     float minionSpawnTime = 20f;
-
+    
+    //=================================================
     public static MinionSpawner Instance;
     public MinionDatabaseList minionDB_List;
 
@@ -73,12 +78,18 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
             RedSpawnMinion();
             if (tag == "Blue" && BlueSkillWave > 0)
             {
+                for(int i = 0; i < BlueSkillSpawnSize; i++ )
+                {
                 BlueSpawnMinion();
+                }
                 BlueSkillWave--;
             }
             else if (tag == "Red" && RedSkillWave > 0)
             {
-                RedSpawnMinion();
+                for (int i = 0; i < BlueSkillSpawnSize; i++)
+                {
+                    RedSpawnMinion();
+                }
                 RedSkillWave--;
             }
         }

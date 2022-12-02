@@ -10,6 +10,7 @@ public class MinionSpawnUp : SkillHandler
 
     public bool SpawnSkillOn = false;
     public int _waveCount = 3;
+    public int _SpawnSize = 0;
     public ScriptableObject buff;
 
 
@@ -28,36 +29,31 @@ public class MinionSpawnUp : SkillHandler
         GameObject MinionSpawner = GameObject.FindGameObjectWithTag("MinionSpawner");
         //BuffManager.Instance.AddBuff((BuffData)buff);
         BuffManager.Instance.AssemblyBuff();
+        _waveCount = (int)Data.Value_1;
+        _SpawnSize = (int)Data.HoldingTime;
 
         if (GetMytag(_ability) == "Blue")
         {
-            MinionSpawner.GetComponent<MinionSpawner>().BlueSkillWave = 3;
+            MinionSpawner.GetComponent<MinionSpawner>().BlueSkillWave = _waveCount;
             MinionSpawner.GetComponent<MinionSpawner>().tag = GetMytag(_ability);
+            MinionSpawner.GetComponent<MinionSpawner>().BlueSkillWave = _SpawnSize;
+
 
         }
         else if (GetMytag(_ability) == "Red")
         {
-            MinionSpawner.GetComponent<MinionSpawner>().RedSkillWave = 3;
+            MinionSpawner.GetComponent<MinionSpawner>().RedSkillWave = _waveCount;
             MinionSpawner.GetComponent<MinionSpawner>().tag = GetMytag(_ability);
+            MinionSpawner.GetComponent<MinionSpawner>().BlueSkillWave = _SpawnSize;
         }
 
     }
-    private void Update()
-    {
-        SkillHoldingTime(Data.HoldingTime);
-    }
+
 
 
     public override void SkillHoldingTime(float time)
     {
-        elaspedTime += Time.deltaTime;
-        if (elaspedTime >= time)
-        {
-
-            elaspedTime = 0;
-            PhotonNetwork.Destroy(gameObject);
-
-        }
+        
 
     }
 
