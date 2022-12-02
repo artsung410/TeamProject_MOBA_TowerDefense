@@ -48,7 +48,7 @@ public class GetAPICaller : MonoBehaviourPun
 
     private void Awake()
     {
-        CSVtest.onDataParsingEvent += DbInit;
+        //CSVtest.onDataParsingEvent += DbInit;
 
         if (_instance == null)
         {
@@ -71,12 +71,15 @@ public class GetAPICaller : MonoBehaviourPun
         }
         //Debug.Log(PhotonNetwork.CountOfPlayers);
 
+        // API 호출, DB 데이터
+        StartCoroutine(getUserProfileCaller());
+
     }
 
-    public void DbInit()
+    /*public void DbInit()
     {
         StartCoroutine(getUserProfileCaller());
-    }
+    }*/
 
     // 호출 정보 : StatusCode, _id, username
     private IEnumerator getUserProfileCaller()

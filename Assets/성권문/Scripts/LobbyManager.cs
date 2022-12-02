@@ -57,7 +57,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private Texture2D originalCursor;
 
-
     private void Awake()
     {
         Cursor.lockState = CursorLockMode.Confined;

@@ -123,7 +123,7 @@ public class OpenBoxWindow : MonoBehaviour
             openText.text = "1~3 star random minion tower cards. \n You can get one.";
             drawImage.sprite = minionTower;
         }
-        else if (drawText.text == "Buff Tower")
+        else if (drawText.text == "Buff & Debuff Tower")
         {
             openText.text = "1~3 star random buff tower cards. \n You can get one.";
             drawImage.sprite = buffTower;
@@ -143,7 +143,7 @@ public class OpenBoxWindow : MonoBehaviour
             openText.text = "1~3 star random minion tower cards. \n You can get one.";
             drawImage.sprite = minionTower_P;
         }
-        else if (drawText.text == "Buff Tower_P")
+        else if (drawText.text == "Buff & Debuff Tower_P")
         {
             openText.text = "1~3 star random buff tower cards. \n You can get one.";
             drawImage.sprite = buffTower_P;

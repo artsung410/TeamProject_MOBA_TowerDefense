@@ -160,10 +160,10 @@ public class RandomSelect : MonoBehaviour
                 selectTowerCard = "Premium_Minion_Draw_Probability";
             }
         }
-        else if (DrawManager.instance.boxName == "Buff  & Debuff Tower" || DrawManager.instance.boxName == "Buff  & Debuff Tower_P")
+        else if (DrawManager.instance.boxName == "Buff & Debuff Tower" || DrawManager.instance.boxName == "Buff & Debuff Tower_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("BuffTowerDatabase");
-            if (DrawManager.instance.boxName == "Buff  & Debuff Tower")
+            if (DrawManager.instance.boxName == "Buff & Debuff Tower")
             {
                 total = 0;
                 for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
@@ -173,7 +173,7 @@ public class RandomSelect : MonoBehaviour
                 }
                 selectTowerCard = "Normal_Buff_Debuff_Draw_Probability";
             }
-            else if (DrawManager.instance.boxName == "Buff  & Debuff Tower_P")
+            else if (DrawManager.instance.boxName == "Buff & Debuff Tower_P")
             {
                 total = 0;
                 for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
@@ -328,6 +328,8 @@ public class RandomSelect : MonoBehaviour
                     weight += inventoryItemList_skill.itemList[i].towerData.Premium_Random_Draw_Probability;
                 }
             }
+            if (inventoryItemList_skill.itemList[i].itemType == ItemType.uniqueSkill)
+                weight += inventoryItemList_skill.itemList[i].skillData.Probability;
             if (selectNum <= weight)
             {
                 return i;
