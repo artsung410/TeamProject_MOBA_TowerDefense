@@ -10755,7 +10755,7 @@ RectTransform:
   m_Children:
   - {fileID: 1053806845}
   - {fileID: 153449961}
-  m_Father: {fileID: 1878555566}
+  m_Father: {fileID: 4151785054912816565}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -21624,6 +21624,7 @@ GameObject:
   - component: {fileID: 928808927}
   - component: {fileID: 928808929}
   - component: {fileID: 928808928}
+  - component: {fileID: 928808930}
   m_Layer: 5
   m_Name: YesBackWarning - Image
   m_TagString: Untagged
@@ -21646,7 +21647,7 @@ RectTransform:
   - {fileID: 1267436975}
   - {fileID: 703853501}
   - {fileID: 34910529}
-  m_Father: {fileID: 1878555566}
+  m_Father: {fileID: 4151785054912816565}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -21692,6 +21693,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 928808926}
   m_CullTransparentMesh: 1
+--- !u!114 &928808930
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928808926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d50847807ccbf64ab81332228c8f03d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  charactor: {fileID: 709683685}
+  text: {fileID: 34910528}
 --- !u!1 &944552915
 GameObject:
   m_ObjectHideFlags: 0
@@ -43996,8 +44011,6 @@ RectTransform:
   - {fileID: 120866319}
   - {fileID: 17086751503405990}
   - {fileID: 1409177403}
-  - {fileID: 482497795}
-  - {fileID: 928808927}
   m_Father: {fileID: 371627565}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -50683,7 +50696,7 @@ RectTransform:
   - {fileID: 653069705}
   - {fileID: 719773482}
   m_Father: {fileID: 4151785054912816565}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
@@ -51695,6 +51708,8 @@ RectTransform:
   - {fileID: 4151785055127175225}
   - {fileID: 371627565}
   - {fileID: 1681356189}
+  - {fileID: 482497795}
+  - {fileID: 928808927}
   - {fileID: 2103092655}
   m_Father: {fileID: 654707144}
   m_RootOrder: 3
