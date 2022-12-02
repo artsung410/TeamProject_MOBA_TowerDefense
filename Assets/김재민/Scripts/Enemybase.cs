@@ -154,7 +154,7 @@ public class Enemybase : MonoBehaviourPun
         Damage = minionDB.Attack;
         AttackSpeed = minionDB.Attack_Speed;
         _animator.SetFloat("Speed", AttackSpeed);
-            attackRange = minionDB.Range;
+        attackRange = minionDB.Range;
         moveSpeed = minionDB.Move_Speed;
         HP = minionDB.Hp;
         minionSprite = minionDB.Icon_Blue;

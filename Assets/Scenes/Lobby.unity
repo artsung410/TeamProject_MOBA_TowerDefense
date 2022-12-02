@@ -10275,6 +10275,86 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 445890147}
   m_CullTransparentMesh: 1
+--- !u!1 &445943305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 445943306}
+  - component: {fileID: 445943308}
+  - component: {fileID: 445943307}
+  m_Layer: 0
+  m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &445943306
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445943305}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2032145186}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 5, y: 2}
+  m_SizeDelta: {x: 33.1, y: 35}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &445943307
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445943305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 10
+    m_FontStyle: 0
+    m_BestFit: 0
+    m_MinSize: 1
+    m_MaxSize: 115
+    m_Alignment: 4
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 1
+--- !u!222 &445943308
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 445943305}
+  m_CullTransparentMesh: 1
 --- !u!1 &447418305
 GameObject:
   m_ObjectHideFlags: 0
@@ -11220,6 +11300,79 @@ MonoBehaviour:
     itemWeight: 0
     maxStack: 99
     indexItemInList: 1
+    rarity: 10
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: Whirlwind1
+      Name: {fileID: 3005192478522135544, guid: 8191e680bd7102c408838da0a0956504, type: 3}
+      ID: 7
+      Probability: 10
+      Classification: 2
+      Rank: 1
+      LockTime: 4
+      SkillType: 1
+      Value_1: 30
+      Value_2: 0
+      CoolTime: 10
+      Range: 8
+      RangeType: 0
+      RangeValue_1: 4
+      RangeValue_2: 0
+      HoldingTime: 4
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 1
+      CcTime: 5
+      CcValue: 30
+      CardImage: {fileID: 21300000, guid: 4bfd43283db1aed48ad40ce929b27677, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 141bfebed7377bc43a016fd6312d8eee, type: 3}
+      Desc: "Creates a gust of wind with a sword, dealing damage to nearby enemies.\r"
+  - itemName: Whirlwind1
+    ClassType: Warrior
+    itemID: 7
+    itemDesc: "Creates a gust of wind with a sword, dealing damage to nearby enemies.\r"
+    itemIcon: {fileID: 21300000, guid: 4bfd43283db1aed48ad40ce929b27677, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 1
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 2
     rarity: 10
     CombinationValue: 0
     towerData:
@@ -15360,6 +15513,82 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649885647}
+  m_CullTransparentMesh: 1
+--- !u!1 &650125380
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650125381}
+  - component: {fileID: 650125383}
+  - component: {fileID: 650125382}
+  m_Layer: 0
+  m_Name: SlotCover
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &650125381
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650125380}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2032145186}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 55, y: 55}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &650125382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650125380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 0}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &650125383
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650125380}
   m_CullTransparentMesh: 1
 --- !u!1 &653069704
 GameObject:
@@ -36760,10 +36989,42 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: cfa0d45bc2a3c78499a51b76edc6f4df, type: 3}
+    - target: {fileID: 2193615624598723587, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193615624598723588, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 61.10001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193615624598723588, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -22.099995
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193615624598723588, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.7500076
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193615624598723588, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -1.5499954
+      objectReference: {fileID: 0}
     - target: {fileID: 2193615625132586072, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: ceaed2c01e1d6a1498b5a6f42067dcb4, type: 3}
+    - target: {fileID: 2193615625230806774, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 49.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193615625230806774, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 28.419998
+      objectReference: {fileID: 0}
+    - target: {fileID: 2193615625230806775, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
+      propertyPath: m_text
+      value: '"Please enter the report text"'
+      objectReference: {fileID: 0}
     - target: {fileID: 5355535948616446835, guid: d5c91f8590cd0a345846634c48e27f4b, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -44274,7 +44535,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2032145186}
   m_Father: {fileID: 426573418}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -47310,6 +47572,82 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1968626370}
   m_CullTransparentMesh: 1
+--- !u!1 &1973595508
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1973595509}
+  - component: {fileID: 1973595511}
+  - component: {fileID: 1973595510}
+  m_Layer: 0
+  m_Name: ItemIcon
+  m_TagString: ItemIcon
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1973595509
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973595508}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2032145186}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1973595510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973595508}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1973595511
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973595508}
+  m_CullTransparentMesh: 1
 --- !u!1 &1976825713
 GameObject:
   m_ObjectHideFlags: 0
@@ -48957,6 +49295,264 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2027659547}
   m_CullTransparentMesh: 1
+--- !u!1 &2032145185
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2032145186}
+  - component: {fileID: 2032145191}
+  - component: {fileID: 2032145190}
+  - component: {fileID: 2032145189}
+  - component: {fileID: 2032145188}
+  - component: {fileID: 2032145187}
+  m_Layer: 0
+  m_Name: Item(Clone)
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2032145186
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032145185}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.55, y: 0.7, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1973595509}
+  - {fileID: 445943306}
+  - {fileID: 650125381}
+  m_Father: {fileID: 1880794651}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 40, y: 40}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2032145187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032145185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 260b3591951f0674b9ef4ce647bed3c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tooltip: {fileID: 0}
+  tooltipGameObject: {fileID: 0}
+  canvasRectTransform: {fileID: 0}
+  tooltipRectTransform: {fileID: 0}
+--- !u!114 &2032145188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032145185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ae85c95785e694d8e55eb9067f21e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: dragonSummon1
+    ClassType: Inherence
+    itemID: 7
+    itemDesc: "Summons a minion to help you in subspace.\r"
+    itemIcon: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+    objType: Active_S
+    itemValue: 1
+    itemType: 2
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: -1
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: dragonSummon1
+      Name: {fileID: 5986862085301851285, guid: bee4f76b16913624eb6c0911235105e1, type: 3}
+      ID: 7
+      Probability: 16.666666
+      Classification: 1
+      Rank: 1
+      LockTime: 0.5
+      SkillType: 7
+      Value_1: 5021
+      Value_2: 5028
+      CoolTime: 20
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 21300000, guid: 6f39a148ffa0bb447bc33b3bb87a53c0, type: 3}
+      SkillIcon: {fileID: 21300000, guid: 0b40a759a114311418210830c433e3b1, type: 3}
+      Desc: "Summons a minion to help you in subspace.\r"
+--- !u!114 &2032145189
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032145185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 551ac6c5596767544a4e04bdb7790f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    itemName: 
+    ClassType: 
+    itemID: 0
+    itemDesc: 
+    itemIcon: {fileID: 0}
+    objType: 
+    itemValue: 1
+    itemType: 0
+    itemWeight: 0
+    maxStack: 5
+    indexItemInList: 99
+    rarity: 0
+    CombinationValue: 0
+    towerData:
+      Name: 
+      NickName: 
+      ID: 0
+      GroupID: 0
+      Rank: 0
+      Type: 0
+      Pf: {fileID: 0}
+      Combination_ResultID: 0
+      Combination_Required_Value: 0
+      Normal_Random_Draw_Probability: 0
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 0
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 0
+      Attack_Speed: 0
+      Hp: 0
+      Range: 0
+      Range_Type: 0
+      Projectile_Type: 0
+      Projectile_Speed: 0
+      Projectile_Pf: {fileID: 0}
+      Destroy_Effect_Pf: {fileID: 0}
+      Desc: 
+      Sprite_TowerCard: {fileID: 0}
+      Sprite_TowerProtrait: {fileID: 0}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  itemTypeOfSlot: 
+  duplication: {fileID: 0}
+--- !u!114 &2032145190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032145185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46874ca1f39c47447ad8a3b3733922f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!225 &2032145191
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2032145185}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2038495327
 GameObject:
   m_ObjectHideFlags: 0
@@ -51845,12 +52441,12 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-  - itemName: Tower_Attack_Guard2
+  - itemName: Tower_Attack_Cannon1
     ClassType: 
-    itemID: 2
-    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
-      \"Pyung~ Pyung~\"\r"
-    itemIcon: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
+    itemID: 6
+    itemDesc: "Fire your cannons to terrorize your enemies on the battlefield. It's
+      a tower with a bang.\r"
+    itemIcon: {fileID: 21300000, guid: d7d1b75e07a3b61419ec7582b56cbbd8, type: 3}
     objType: Active_T
     itemValue: 1
     itemType: 10
@@ -51858,39 +52454,39 @@ MonoBehaviour:
     maxStack: 99
     indexItemInList: 0
     rarity: 10
-    CombinationValue: 300
+    CombinationValue: 500
     towerData:
-      Name: Arrow_Tower2
-      NickName: Arrow Tower
-      ID: 2
-      GroupID: 1
-      Rank: 2
+      Name: Cannon_Tower1
+      NickName: Cannon Tower
+      ID: 6
+      GroupID: 2
+      Rank: 1
       Type: 1
-      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
-      Combination_ResultID: 3
-      Combination_Required_Value: 300
-      Normal_Random_Draw_Probability: 0.8333333
-      Normal_Attack_Draw_Probability: 2
+      Pf: {fileID: 834644509087740589, guid: dfc26d37c6a9b6944900c89c4a87ffd7, type: 3}
+      Combination_ResultID: 7
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
       Normal_Minion_Draw_Probability: 0
       Normal_Buff_Debuff_Draw_Probability: 0
       Premium_Random_Draw_Probability: 0
       Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 45
+      Attack: 70
       Attack_Speed: 0.3
-      Hp: 350
+      Hp: 300
       Range: 20
       Range_Type: 1
-      Projectile_Type: 1
+      Projectile_Type: 2
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Projectile_Pf: {fileID: 1227987357071359301, guid: 153dc21f0faff884281daf83fbe6a912, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
-        \"Pyung~ Pyung~\"\r"
-      Sprite_TowerCard: {fileID: 21300000, guid: 44fdd637a56423a45b40e9f1f2a741e7, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
-      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      Desc: "Fire your cannons to terrorize your enemies on the battlefield. It's
+        a tower with a bang.\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: d7d1b75e07a3b61419ec7582b56cbbd8, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 98bee616bb7a02e4596518561c96fa68, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: c38974efb734f974eb1314b30b5300d6, type: 3}
       AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
       buffID: 0
       MinionID: 0
@@ -51920,54 +52516,52 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-  - itemName: Tower_Attack_Guard3
+  - itemName: Tower_Attack_Flame1
     ClassType: 
-    itemID: 3
-    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
-      \"Pyung~ Pyung~\"\r"
-    itemIcon: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
+    itemID: 11
+    itemDesc: "Have you ever been baptized with fire? I'll show you the hot taste!\r"
+    itemIcon: {fileID: 21300000, guid: f634ee18e67349543a72b575ec92f985, type: 3}
     objType: Active_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 1
-    rarity: 10
-    CombinationValue: 200
+    rarity: 100
+    CombinationValue: 500
     towerData:
-      Name: Arrow_Tower3
-      NickName: Arrow Tower
-      ID: 3
-      GroupID: 1
-      Rank: 3
+      Name: Flame_Tower1
+      NickName: Flame Tower
+      ID: 11
+      GroupID: 3
+      Rank: 1
       Type: 1
-      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
-      Combination_ResultID: 4
-      Combination_Required_Value: 200
-      Normal_Random_Draw_Probability: 0.41666666
-      Normal_Attack_Draw_Probability: 1
+      Pf: {fileID: 7185640794416597223, guid: 3ad8a96c8f2dd994e823b94413ee0f7f, type: 3}
+      Combination_ResultID: 12
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
       Normal_Minion_Draw_Probability: 0
       Normal_Buff_Debuff_Draw_Probability: 0
-      Premium_Random_Draw_Probability: 3.75
-      Premium_Attack_Draw_Probability: 9
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 60
+      Attack: 20
       Attack_Speed: 0.3
-      Hp: 400
+      Hp: 300
       Range: 20
       Range_Type: 1
-      Projectile_Type: 1
+      Projectile_Type: 2
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Projectile_Pf: {fileID: 2774031681206823576, guid: 4d6567d4f336f81469e6dfbe5af4e6be, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
-        \"Pyung~ Pyung~\"\r"
-      Sprite_TowerCard: {fileID: 21300000, guid: 42fc5ffae723ebe49b8a2d7413de597d, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
-      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      Desc: "Have you ever been baptized with fire? I'll show you the hot taste!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: f634ee18e67349543a72b575ec92f985, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: b4e1bd93ddfd964479a090157cae8bb3, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: b3888fe165434aa42bd9be9d373c2108, type: 3}
       AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
-      buffID: 0
+      buffID: 20011
       MinionID: 0
     skillData:
       NameLevel: 
@@ -51995,55 +52589,442 @@ MonoBehaviour:
       CardImage: {fileID: 0}
       SkillIcon: {fileID: 0}
       Desc: 
-  - itemName: Tower_Attack_Guard4
+  - itemName: Tower_Attack_FrozenOrb1
     ClassType: 
-    itemID: 4
-    itemDesc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
-      \"Pyung~ Pyung~\"\r"
-    itemIcon: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
+    itemID: 16
+    itemDesc: "Ice Dongdong! Live Ice Party!\r"
+    itemIcon: {fileID: 21300000, guid: 623a39af688903b498e2e64d80ddc269, type: 3}
     objType: Active_T
     itemValue: 1
     itemType: 10
     itemWeight: 0
     maxStack: 99
     indexItemInList: 2
-    rarity: 10
-    CombinationValue: 100
+    rarity: 100
+    CombinationValue: 500
     towerData:
-      Name: Arrow_Tower4
-      NickName: Arrow Tower
-      ID: 4
-      GroupID: 1
-      Rank: 4
+      Name: FrozenOrb_Tower1
+      NickName: FrozenOrb Tower
+      ID: 16
+      GroupID: 4
+      Rank: 1
       Type: 1
-      Pf: {fileID: 165880, guid: 8718cc0c9d623ed43803c6d0e6442df6, type: 3}
-      Combination_ResultID: 5
-      Combination_Required_Value: 100
-      Normal_Random_Draw_Probability: 0
-      Normal_Attack_Draw_Probability: 0
+      Pf: {fileID: 7524440688518750253, guid: 8027df4f2622a3b4c9fa676f212ecdb4, type: 3}
+      Combination_ResultID: 17
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 7
       Normal_Minion_Draw_Probability: 0
       Normal_Buff_Debuff_Draw_Probability: 0
-      Premium_Random_Draw_Probability: 0.375
-      Premium_Attack_Draw_Probability: 0.9
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
       Premium_Minion_Draw_Probability: 0
       Premium_Buff_Debuff_Draw_Probability: 0
-      Attack: 75
+      Attack: 10
       Attack_Speed: 0.3
-      Hp: 450
+      Hp: 300
       Range: 20
-      Range_Type: 1
+      Range_Type: 2
+      Projectile_Type: 2
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 7197328022405195588, guid: 8c45a392b1fda0349a50587be877c283, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Ice Dongdong! Live Ice Party!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 623a39af688903b498e2e64d80ddc269, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 1e03618128856df46b2cf69e02184063, type: 3}
+      AudioClip_Attack: {fileID: 8300000, guid: d0b7932bc796e4d4f85d873fa65f918d, type: 3}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 20006
+      MinionID: 0
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  - itemName: Tower_Minion_Wolf1
+    ClassType: 
+    itemID: 91
+    itemDesc: "A group that lives in groups in a blue rock canyon. These packs of
+      wolves that have taken over the canyon It is a subject of fear and alert to
+      nearby animals. While gradually expanding its power Guided by the whispering
+      voice, I joined the battlefield. \"Aww~~~~\"\r"
+    itemIcon: {fileID: 21300000, guid: 4a78c42807ff16646bc1bfb8cd1eb20e, type: 3}
+    objType: Minion_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 3
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      Name: Wolf_Tower
+      NickName: Wolf Cave
+      ID: 3001
+      GroupID: 19
+      Rank: 1
+      Type: 4
+      Pf: {fileID: 2719887186148994814, guid: b0704d2253632714ba48b63ee466bd51, type: 3}
+      Combination_ResultID: 3002
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 11.666667
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 4
       Projectile_Type: 1
       Projectile_Speed: 60
-      Projectile_Pf: {fileID: 4048302374760608932, guid: 8756d5c4f2adcca4aa6150ca60dbe93b, type: 3}
+      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
       Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
-      Desc: "This is the most basic attack tower.  Fire arrows to block enemy attacks.
-        \"Pyung~ Pyung~\"\r"
-      Sprite_TowerCard: {fileID: 21300000, guid: c31c4d8c4979b6549af3301533564c91, type: 3}
-      Sprite_TowerProtrait: {fileID: 21300000, guid: 260961a9c2886834085e68d476bf06b7, type: 3}
-      AudioClip_Attack: {fileID: 8300000, guid: bb5e6c46f6d7d2849be9ace1ac0b8ab9, type: 3}
+      Desc: "A group that lives in groups in a blue rock canyon. These packs of wolves
+        that have taken over the canyon It is a subject of fear and alert to nearby
+        animals. While gradually expanding its power Guided by the whispering voice,
+        I joined the battlefield. \"Aww~~~~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 4a78c42807ff16646bc1bfb8cd1eb20e, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: e86ee112fa1af9d46936986970168b9c, type: 3}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 5031
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  - itemName: Tower_Minion_Golem1
+    ClassType: 
+    itemID: 96
+    itemDesc: "Golems, spirits of the earth born from the earth, have been communicating
+      with the earth since long ago. I've been caring for the land. As their land
+      became increasingly polluted, they became more ferocious. I'm out on the battlefield
+      to chastise the enemies who pollute the land! \"Kum!\"\r"
+    itemIcon: {fileID: 21300000, guid: 874a284c06ad5cf409909d18d2185b43, type: 3}
+    objType: Minion_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 4
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      Name: Golem_Tower
+      NickName: Golem Temple
+      ID: 3006
+      GroupID: 20
+      Rank: 1
+      Type: 4
+      Pf: {fileID: 2375627643360651068, guid: 93a798fb4b3843e4a9d0c34642f06e16, type: 3}
+      Combination_ResultID: 3007
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 11.666667
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 100
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Golems, spirits of the earth born from the earth, have been communicating
+        with the earth since long ago. I've been caring for the land. As their land
+        became increasingly polluted, they became more ferocious. I'm out on the
+        battlefield to chastise the enemies who pollute the land! \"Kum!\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 874a284c06ad5cf409909d18d2185b43, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: f2b0a0241eeb6e044932a56c3625ba16, type: 3}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 0}
+      buffID: 0
+      MinionID: 5026
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  - itemName: Tower_Minion_TreantGuard1
+    ClassType: 
+    itemID: 101
+    itemDesc: "A guardian of the nerd forest, he moves to eliminate the forest invaders.
+      \"Um Racha!\r"
+    itemIcon: {fileID: 21300000, guid: 40a5c20ad98354e45af3b55b30767a1f, type: 3}
+    objType: Minion_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 5
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      Name: TreantGuard_Tower1
+      NickName: TreantGuard Gate
+      ID: 3011
+      GroupID: 21
+      Rank: 1
+      Type: 4
+      Pf: {fileID: 1862620217445196292, guid: d23dcc87196ac024694551c0be14f3ec, type: 3}
+      Combination_ResultID: 3012
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 11.666667
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "A guardian of the nerd forest, he moves to eliminate the forest invaders.
+        \"Um Racha!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 40a5c20ad98354e45af3b55b30767a1f, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: a5b60337856a46d4b9143fda34cebf2a, type: 3}
+      AudioClip_Attack: {fileID: 0}
       AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
       buffID: 0
-      MinionID: 0
+      MinionID: 5046
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  - itemName: Tower_Minion_Monster_Bee1
+    ClassType: 
+    itemID: 111
+    itemDesc: "This gigantic, ruthless bee trembles in terror with its fast flapping
+      wings and noise. I'm making it With indiscriminate violence, these monsters
+      inflict great terror on their target. \"Weeeeeee~~~\"\r"
+    itemIcon: {fileID: 21300000, guid: 330f7ccce54b4a4489ab3a21df1c89cc, type: 3}
+    objType: Minion_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 6
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      Name: Monster_Bee_Tower1
+      NickName: Honeycomb
+      ID: 3021
+      GroupID: 23
+      Rank: 1
+      Type: 4
+      Pf: {fileID: 7566052548809756703, guid: cf8331d328f161b4a9d9adc21bc336ee, type: 3}
+      Combination_ResultID: 3022
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 11.666667
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "This gigantic, ruthless bee trembles in terror with its fast flapping
+        wings and noise. I'm making it With indiscriminate violence, these monsters
+        inflict great terror on their target. \"Weeeeeee~~~\"\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 330f7ccce54b4a4489ab3a21df1c89cc, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: c38c42b8c72a18e47b736cb946f1c9c6, type: 3}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 5036
+    skillData:
+      NameLevel: 
+      Name: {fileID: 0}
+      ID: 0
+      Probability: 0
+      Classification: 0
+      Rank: 0
+      LockTime: 0
+      SkillType: 0
+      Value_1: 0
+      Value_2: 0
+      CoolTime: 0
+      Range: 0
+      RangeType: 0
+      RangeValue_1: 0
+      RangeValue_2: 0
+      HoldingTime: 0
+      TickDamage: 0
+      TickCount: 0
+      TickTime: 0
+      CcType: 0
+      CcTime: 0
+      CcValue: 0
+      CardImage: {fileID: 0}
+      SkillIcon: {fileID: 0}
+      Desc: 
+  - itemName: Tower_Minion_Goblin1
+    ClassType: 
+    itemID: 106
+    itemDesc: "Goblins who built their own kingdom in the deep tunnels of the red
+      mine. \"Kick...key...key...kick!\" With red eyes and a mischievous smile, the
+      enemies A naughty guy who makes fun of you. Because of their habit of attacking
+      in groups It's hard to run away from them anyway!\r"
+    itemIcon: {fileID: 21300000, guid: 9ac8675880a82014db738e12ceec5666, type: 3}
+    objType: Minion_T
+    itemValue: 1
+    itemType: 10
+    itemWeight: 0
+    maxStack: 99
+    indexItemInList: 7
+    rarity: 100
+    CombinationValue: 0
+    towerData:
+      Name: Goblin_Tower1
+      NickName: Goblin Cave
+      ID: 3016
+      GroupID: 22
+      Rank: 1
+      Type: 4
+      Pf: {fileID: 736391118400893160, guid: 3704162df214a9d4db9c52de56b4c70e, type: 3}
+      Combination_ResultID: 3017
+      Combination_Required_Value: 500
+      Normal_Random_Draw_Probability: 2.9166667
+      Normal_Attack_Draw_Probability: 0
+      Normal_Minion_Draw_Probability: 11.666667
+      Normal_Buff_Debuff_Draw_Probability: 0
+      Premium_Random_Draw_Probability: 0
+      Premium_Attack_Draw_Probability: 0
+      Premium_Minion_Draw_Probability: 0
+      Premium_Buff_Debuff_Draw_Probability: 0
+      Attack: 1
+      Attack_Speed: 0.3
+      Hp: 250
+      Range: 20
+      Range_Type: 4
+      Projectile_Type: 1
+      Projectile_Speed: 60
+      Projectile_Pf: {fileID: 3720574515718989771, guid: f1d5dac7ff3733e4faee3b02529b5a58, type: 3}
+      Destroy_Effect_Pf: {fileID: 1705284682975132108, guid: fbe62b974630487458f54bd7eaf3bfcb, type: 3}
+      Desc: "Goblins who built their own kingdom in the deep tunnels of the red mine.
+        \"Kick...key...key...kick!\" With red eyes and a mischievous smile, the enemies
+        A naughty guy who makes fun of you. Because of their habit of attacking in
+        groups It's hard to run away from them anyway!\r"
+      Sprite_TowerCard: {fileID: 21300000, guid: 9ac8675880a82014db738e12ceec5666, type: 3}
+      Sprite_TowerProtrait: {fileID: 21300000, guid: 67d217d9f31cce249af0e75e504863df, type: 3}
+      AudioClip_Attack: {fileID: 0}
+      AudioClip_Destroy: {fileID: 8300000, guid: 04cd60f2810784945b5293efb7ac9e06, type: 3}
+      buffID: 0
+      MinionID: 5051
     skillData:
       NameLevel: 
       Name: {fileID: 0}
