@@ -172,7 +172,9 @@ public class EnemySatatus : Enemybase
 
                     Targeton = true;
                     _target = collider.transform;
-                
+                    transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
+
+
                 }
 
             }
@@ -180,6 +182,7 @@ public class EnemySatatus : Enemybase
             {
                 Targeton = true;
                 _target = collider.transform;
+                transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
 
             }
             //레이어로 확인해서 공격타켓 설정

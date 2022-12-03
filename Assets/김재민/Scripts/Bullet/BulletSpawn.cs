@@ -31,33 +31,39 @@ public class BulletSpawn : MonoBehaviourPun
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position,Quaternion.Euler(0,0,90f));
-            bullet.GetComponent<BulletMove>().tg = Minion._target.gameObject;
-            bullet.GetComponent<BulletMove>().Damage = Minion.Damage;
-            if (gameObject.CompareTag("Blue"))
-            {
-                bullet.GetComponent<BulletMove>().EnemyTag = "Red";
-            }
-            else
-            {
-                bullet.GetComponent<BulletMove>().EnemyTag = "Blue";
-            }
 
-            if (bullet.GetComponent<BulletMove>().tg == Minion._PrevTarget)
-            {
-                PhotonNetwork.Destroy(bullet);
-            }
 
-            if (gameObject.CompareTag("Blue"))
+            if (Minion._target != null)
             {
-                bullet.GetComponent<BulletMove>().CompareTag("Blue");
-                bullet.GetComponent<BulletMove>().EnemyTag = "Red";
+                GameObject bullet = PhotonNetwork.Instantiate(Prefab.name, _gunPivot.position, Quaternion.Euler(0, 0, 90f));
+                bullet.GetComponent<BulletMove>().tg = Minion._target.gameObject;
+                bullet.GetComponent<BulletMove>().Damage = Minion.Damage;
+                if (gameObject.CompareTag("Blue"))
+                {
+                    bullet.GetComponent<BulletMove>().EnemyTag = "Red";
+                }
+                else
+                {
+                    bullet.GetComponent<BulletMove>().EnemyTag = "Blue";
+                }
 
-            }
-            else
-            {
-                bullet.GetComponent<BulletMove>().CompareTag("Red");
-                bullet.GetComponent<BulletMove>().EnemyTag = "Blue";
+                if (bullet.GetComponent<BulletMove>().tg == Minion._PrevTarget)
+                {
+                    PhotonNetwork.Destroy(bullet);
+                }
+
+                if (gameObject.CompareTag("Blue"))
+                {
+                    bullet.GetComponent<BulletMove>().CompareTag("Blue");
+                    bullet.GetComponent<BulletMove>().EnemyTag = "Red";
+
+                }
+                else
+                {
+                    bullet.GetComponent<BulletMove>().CompareTag("Red");
+                    bullet.GetComponent<BulletMove>().EnemyTag = "Blue";
+                }
+
             }
 
 
