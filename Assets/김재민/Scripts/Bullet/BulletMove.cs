@@ -25,10 +25,20 @@ public class BulletMove : MonoBehaviourPun
         rigidbody = GetComponent<Rigidbody>();
     }
 
+    float elapsedTime;
+
     private void FixedUpdate()
     {
-       
-     
+        elapsedTime += Time.deltaTime;
+
+        // 3초지나면 자동으로 파괴
+        if (elapsedTime > 3f)
+        {
+            if (photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
+        }
 
         // 유도탄
         if (tg == null) //타켓이 없을때;
@@ -36,7 +46,6 @@ public class BulletMove : MonoBehaviourPun
             if (photonView.IsMine)
             {
                 PhotonNetwork.Destroy(gameObject);
-
             }
         }
         else
