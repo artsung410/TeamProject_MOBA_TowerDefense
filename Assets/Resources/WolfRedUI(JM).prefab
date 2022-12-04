@@ -2491,6 +2491,7 @@ GameObject:
   - component: {fileID: 5505944926011787662}
   - component: {fileID: 5730621960139930149}
   - component: {fileID: 490373259088906}
+  - component: {fileID: 5201960093469600057}
   m_Layer: 8
   m_Name: Forest_Wolf_Blue
   m_TagString: Untagged
@@ -2590,6 +2591,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 0
     Name: Run
+  - Type: 1
+    SynchronizeType: 0
+    Name: Speed
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -2622,6 +2626,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eminontpye: 0
+  _eminontpyeSize: 0
   minionDB:
     Name: 
     ID: 0
@@ -2648,7 +2653,6 @@ MonoBehaviour:
   CurrnetHP: 0
   EnemyTag: 
   myTag: 
-  isDead: 0
   _capsuleCollider: {fileID: 0}
   _target: {fileID: 0}
   Targeton: 0
@@ -2772,6 +2776,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!208 &5201960093469600057
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8275158135818118081}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &8407275305580677144
 GameObject:
   m_ObjectHideFlags: 0

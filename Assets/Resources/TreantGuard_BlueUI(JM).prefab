@@ -6418,6 +6418,7 @@ GameObject:
   - component: {fileID: 8003699985805925474}
   - component: {fileID: 8268377077521826721}
   - component: {fileID: 5160410949027428319}
+  - component: {fileID: 2237437866431817477}
   m_Layer: 8
   m_Name: TreantGuard_Blue
   m_TagString: Untagged
@@ -6592,7 +6593,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _eminontpye: 0
   _eminontpyeSize: 0
-
   minionDB:
     Name: 
     ID: 0
@@ -6610,16 +6610,15 @@ MonoBehaviour:
     Icon_Blue: {fileID: 0}
     Icon_Red: {fileID: 0}
   moveSpeed: 0
-  attackRange: 8
-  Damage: 10
+  attackRange: 0
+  Damage: 0
   AttackSpeed: 1
   minionSprite: {fileID: 0}
-  HP: 100
+  HP: 0
   lastDamageTeam: 
   CurrnetHP: 0
   EnemyTag: 
   myTag: 
-  isDead: 0
   _capsuleCollider: {fileID: 0}
   _target: {fileID: 0}
   Targeton: 0
@@ -6696,6 +6695,22 @@ MonoBehaviour:
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
+--- !u!208 &2237437866431817477
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4078420876500979685}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.5, y: 1, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &4078420876500979687
 GameObject:
   m_ObjectHideFlags: 0

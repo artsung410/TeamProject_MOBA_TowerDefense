@@ -76,6 +76,7 @@ public class EnemySatatus : Enemybase
             {
                 _animator.SetBool("Attack", false);
                 _navMeshAgent.isStopped = false;
+                _navMeshObstacle.carving = false;
                 Targeton = false;
                 _target = _PrevTarget;
                 transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
@@ -110,6 +111,7 @@ public class EnemySatatus : Enemybase
 
             Vector3 vecAtkDistance = _target.position - transform.position;
             float AtkDistance = Vector3.SqrMagnitude(vecAtkDistance);
+            _navMeshObstacle.carving = true;
             _navMeshAgent.isStopped = true;
             _animator.SetBool("Attack", true);
             transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
@@ -120,6 +122,7 @@ public class EnemySatatus : Enemybase
                 Targeton = false;
                 _animator.SetBool("Attack", false);
                 _navMeshAgent.isStopped = false;
+                _navMeshObstacle.carving = false;
                 _estate = ESTATE.move;
                 _target = _PrevTarget;
                 stateChange();
@@ -155,6 +158,10 @@ public class EnemySatatus : Enemybase
         {
             sencerArea = 0f;
             return;
+        }
+        if(_eminontpye == EMINIONTYPE.Shot)
+        {
+            sencerArea = 14f;
         }
         sencerArea += 0.1f;
         Collider[] RangeTarget = Physics.OverlapSphere(transform.position,sencerArea);
