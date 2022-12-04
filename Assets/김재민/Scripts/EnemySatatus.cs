@@ -169,12 +169,18 @@ public class EnemySatatus : Enemybase
 
                 if (Targeton == false && collider.gameObject.layer == 6 || collider.gameObject.layer == 7 || collider.gameObject.layer == 8 || collider.gameObject.layer == 12 || collider.gameObject.layer == 13)
                 {
-
                     Targeton = true;
                     _target = collider.transform;
-                
-                }
 
+                    if (collider.gameObject.layer == 6 || collider.gameObject.layer == 12)
+                    {
+                        attackRange = 15f;
+                    }
+                    else
+                    {
+                        attackRange = minionDB.Range;
+                    }
+                }
             }
              else if(collider.gameObject.layer == 17)
             {
