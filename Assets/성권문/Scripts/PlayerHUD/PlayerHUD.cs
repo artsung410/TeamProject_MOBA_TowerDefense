@@ -291,13 +291,13 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             {
                 GameManager.Instance.winner = "Blue";
                 gameWinMessage = GameManager.Instance.winner;
-                GameManager.Instance.isGameEnd = true;
+                
             }
             else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
             {
                 GameManager.Instance.winner = "Red";
                 gameWinMessage = GameManager.Instance.winner;
-                GameManager.Instance.isGameEnd = true;
+                
             }
             photonView.RPC(nameof(RPCInitScore), RpcTarget.All);
 
@@ -475,6 +475,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+                GameManager.Instance.isGameEnd = true;
             }
             else
             {
@@ -485,6 +486,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
+                GameManager.Instance.isGameEnd = true;
             }
         }
         else if (GameManager.Instance.winner == "Red")
@@ -498,6 +500,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
+                GameManager.Instance.isGameEnd = true;
             }
             else
             {
@@ -508,6 +511,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 GameWinPanel.SetActive(false);
                 GameResultImage.SetActive(true);
                 GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+                GameManager.Instance.isGameEnd = true;
             }
         }
         yield return null;
