@@ -99,7 +99,13 @@ public class Leap : SkillHandler
             _behaviour.ForSkillAgent(leapPos);
 
             // 착지시 주변에 데미지를 준다(한번만 호출)
-            Debug.Log($"거리가 안 닿나봐 : {Vector3.Distance(_behaviour.transform.position, leapPos)}");
+            //Debug.Log($"y축 차이가 얼마인가 : {_behaviour.transform.position.y}, {leapPos.y}");
+            float diffY = Mathf.Abs(_behaviour.transform.position.y - leapPos.y);
+            if (diffY >= 1f)
+            {
+                _behaviour.transform.position = new Vector3(_behaviour.transform.position.x, leapPos.y, _behaviour.transform.position.z);
+            }
+
             if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 1f)
             {
                 //_damageZone.SetActive(true);
@@ -110,8 +116,7 @@ public class Leap : SkillHandler
 
             if (isArrive)
             {
-            SkillHoldingTime(Data.HoldingTime);
-
+                SkillHoldingTime(Data.HoldingTime);
             }
         }
 
@@ -160,9 +165,6 @@ public class Leap : SkillHandler
     {
         if (photonView.IsMine)
         {
-            // 충돌하면 
-            // 바닥에 떨어짐(현재위치)
-            // 플레이어 자신이 감지되고있어서 예외처리해줌
             if (collision.gameObject.tag == "Water" || collision.gameObject.tag == "Ground" || collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7)
             {
                 return;

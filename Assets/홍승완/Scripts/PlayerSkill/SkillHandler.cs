@@ -129,18 +129,18 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
         }
     }
 
-    public void CrowdControlStun(GameObject target, float time, bool stun)
-    {
-        if (target.gameObject.layer == 7 && target.tag == enemyTag)
-        {
-            PlayerBehaviour player = target.GetComponent<PlayerBehaviour>();
+    //public void CrowdControlStun(GameObject target, float time, bool stun)
+    //{
+    //    if (target.gameObject.layer == 7 && target.tag == enemyTag)
+    //    {
+    //        PlayerBehaviour player = target.GetComponent<PlayerBehaviour>();
 
-            if (player != null)
-            {
-                player.OnStun(stun, time);
-            }
-        }
-    }
+    //        if (player != null)
+    //        {
+    //            player.OnStun(stun, time);
+    //        }
+    //    }
+    //}
 
     protected string GetMytag(HeroAbility ability)
     {

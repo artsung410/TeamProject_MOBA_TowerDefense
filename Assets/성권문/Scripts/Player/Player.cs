@@ -158,11 +158,11 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerBehaviour.OnStun(state, 10f);
+                playerBehaviour.OnStun(state);
             }
             else
             {
-                playerBehaviour.OnStun(state, 0f);
+                playerBehaviour.OnStun(state);
             }
         }
 
