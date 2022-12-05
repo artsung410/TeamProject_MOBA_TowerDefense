@@ -116,14 +116,14 @@ public class SpecialMinionSkill : SkillHandler
     }
 
     [PunRPC]
-
     public void RPC_RunAway()
     {
-        EffectOn(false);
+
+        Effect.SetActive(false);
         transform.GetChild(0).transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = true;
         transform.GetChild(0).transform.GetChild(0).GetComponent<NavMeshAgent>().enabled = true;
         transform.DetachChildren();
-        EffectOn(true);
+        Effect.SetActive(true); 
 
     }
 
@@ -161,16 +161,9 @@ public class SpecialMinionSkill : SkillHandler
     }
 
 
-    public void EffectOn(bool value)
-    {
-        photonView.RPC(nameof(RPC_EffectOn), RpcTarget.All, value);
-    }
 
-    [PunRPC]
-    public void RPC_EffectOn(bool value)
-    {
-        Effect.SetActive(value);
-    }
+
+
 
 
 

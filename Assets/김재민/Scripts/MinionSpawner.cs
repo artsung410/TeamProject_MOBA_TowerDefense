@@ -63,36 +63,36 @@ public class MinionSpawner : MonoBehaviourPunCallbacks
     void Start()
     {
         Turret_Minion.minionTowerEvent += ChangeMinion;
-        //BlueSpawnMinion();
-        //RedSpawnMinion();
+        BlueSpawnMinion();
+        RedSpawnMinion();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //elaspedTime += Time.deltaTime;
-        //if (elaspedTime >= minionSpawnTime)
-        //{
-        //    elaspedTime = 0;
-        //    BlueSpawnMinion();
-        //    RedSpawnMinion();
-        //    if (tag == "Blue" && BlueSkillWave > 0)
-        //    {
-        //        for(int i = 0; i < BlueSkillSpawnSize; i++ )
-        //        {
-        //        BlueSpawnMinion();
-        //        }
-        //        BlueSkillWave--;
-        //    }
-        //    else if (tag == "Red" && RedSkillWave > 0)
-        //    {
-        //        for (int i = 0; i < BlueSkillSpawnSize; i++)
-        //        {
-        //            RedSpawnMinion();
-        //        }
-        //        RedSkillWave--;
-        //    }
-        //}
+        elaspedTime += Time.deltaTime;
+        if (elaspedTime >= minionSpawnTime)
+        {
+            elaspedTime = 0;
+            BlueSpawnMinion();
+            RedSpawnMinion();
+            if (tag == "Blue" && BlueSkillWave > 0)
+            {
+                for (int i = 0; i < BlueSkillSpawnSize; i++)
+                {
+                    BlueSpawnMinion();
+                }
+                BlueSkillWave--;
+            }
+            else if (tag == "Red" && RedSkillWave > 0)
+            {
+                for (int i = 0; i < BlueSkillSpawnSize; i++)
+                {
+                    RedSpawnMinion();
+                }
+                RedSkillWave--;
+            }
+        }
     }
     // 블루                             // 레드 
     void ChangeMinion(int minionID, GameObject transferedMinionBlue, GameObject transferedMinionRed, string tag) // 

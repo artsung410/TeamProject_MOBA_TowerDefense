@@ -234,7 +234,11 @@ public class Enemybase : MonoBehaviourPun
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent != null)
                 {
-                    
+                    if (_navMeshAgent == null)
+                    {
+                        return;
+                    }
+
                     _navMeshAgent.SetDestination(transform.position);
                     _navMeshAgent.isStopped = true;
 

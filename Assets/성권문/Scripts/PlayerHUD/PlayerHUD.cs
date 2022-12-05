@@ -152,7 +152,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     {
         // 게임 제한 시간 관련 코드
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
-        int time = tro.limitedTime;
+        int time = 600;
 
         //시, 분, 초 선언
         int hours, minute, second;
@@ -640,7 +640,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
     private IEnumerator setHp()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(2f);
         playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
         enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>(); 
         StopCoroutine(setHp());
