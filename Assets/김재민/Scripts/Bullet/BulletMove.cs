@@ -13,6 +13,7 @@ public class BulletMove : MonoBehaviourPun
 
 
     public GameObject tg;
+    
 
     new Rigidbody rigidbody;
     public float turn;
@@ -22,7 +23,9 @@ public class BulletMove : MonoBehaviourPun
     // Update is called once per frame
     private void Awake()
     {
+        
         rigidbody = GetComponent<Rigidbody>();
+        transform.GetChild(0).gameObject.SetActive(false);
     }
 
     float elapsedTime;
@@ -71,48 +74,65 @@ public class BulletMove : MonoBehaviourPun
 
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 8)
             {
+                
+                photonView.RPC(nameof(RPC_hitEffect), RpcTarget.All, true);
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
             // 타워일때 처리
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 6)
             {
+                
+                photonView.RPC(nameof(RPC_hitEffect), RpcTarget.All, true);
                 other.gameObject.GetComponent<Turret>().Damage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
             // 플레이어일때 
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 7)
             {
+                
+                photonView.RPC(nameof(RPC_hitEffect), RpcTarget.All, true);
                 other.gameObject.GetComponent<Health>().OnDamage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
             // 넥서스 일때
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 12)
             {
+                
+                photonView.RPC(nameof(RPC_hitEffect), RpcTarget.All, true);
                 other.gameObject.GetComponent<NexusHp>().TakeOnDagmage(Damage);
                 PhotonNetwork.Destroy(gameObject);
             }
             else if (other.CompareTag(EnemyTag) && other.gameObject.layer == 13)
             {
+
+                
+                photonView.RPC(nameof(RPC_hitEffect), RpcTarget.All, true);
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
 
                 PhotonNetwork.Destroy(gameObject);
             }
             else if (other.gameObject.layer == 17)
             {
+                
+                photonView.RPC(nameof(RPC_hitEffect), RpcTarget.All, true);
                 other.gameObject.GetComponent<Enemybase>().TakeDamage(Damage);
                 if (EnemyTag == "Blue")
                 {
+                    
                     other.gameObject.GetComponent<Enemybase>().tagThrow("Red");
                 }
                 else
                 {
+                    
                     other.gameObject.GetComponent<Enemybase>().tagThrow("Blue");
 
                 }
                 PhotonNetwork.Destroy(gameObject);
             }else if (other.gameObject.layer == 14)
             {
+                
+                photonView.RPC(nameof(RPC_hitEffect), RpcTarget.All, true);
                 PhotonNetwork.Destroy(gameObject);
             }
 
@@ -120,4 +140,15 @@ public class BulletMove : MonoBehaviourPun
         }
 
     }
+    [PunRPC]
+    private void RPC_hitEffect(bool value)
+    {
+        transform.GetChild(0).gameObject.SetActive(value);
+        GameObject Effect  = transform.GetChild(0).gameObject;
+        transform.DetachChildren();
+        Destroy(Effect,0.5f);
+    }
+
+
+   
 }
