@@ -24,14 +24,14 @@ public class CharacterCircleUI : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
-                transform.GetChild(0).GetComponent<Image>().color = Color.blue;
+                transform.GetChild(1).GetComponent<Image>().color = Color.blue;
                 player = GameManager.Instance.CurrentPlayers[0];
                 heroImg.sprite = player.GetComponent<Player>().playerIcon;
             }
 
             else
             {
-                transform.GetChild(0).GetComponent<Image>().color = Color.red;
+                transform.GetChild(1).GetComponent<Image>().color = Color.red;
                 player = GameManager.Instance.CurrentPlayers[1];
                 heroImg.sprite = player.GetComponent<Player>().playerIcon;
 
@@ -42,7 +42,7 @@ public class CharacterCircleUI : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
-                transform.GetChild(0).GetComponent<Image>().color = Color.red;
+                transform.GetChild(1).GetComponent<Image>().color = Color.red;
                 player = GameManager.Instance.CurrentPlayers[0];
                 heroImg.sprite = player.GetComponent<Player>().playerIcon;
 
@@ -50,7 +50,7 @@ public class CharacterCircleUI : MonoBehaviourPun
 
             else
             {
-                transform.GetChild(0).GetComponent<Image>().color = Color.blue;
+                transform.GetChild(1).GetComponent<Image>().color = Color.blue;
                 player = GameManager.Instance.CurrentPlayers[1];
                 heroImg.sprite = player.GetComponent<Player>().playerIcon;
 

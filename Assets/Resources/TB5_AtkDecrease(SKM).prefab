@@ -166,9 +166,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerDB:
-    ID: 0
-    Pf: {fileID: 0}
     Name: 
+    NickName: 
+    ID: 0
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Pf: {fileID: 0}
     Combination_ResultID: 0
     Combination_Required_Value: 0
     Normal_Random_Draw_Probability: 0
@@ -179,9 +183,6 @@ MonoBehaviour:
     Premium_Attack_Draw_Probability: 0
     Premium_Minion_Draw_Probability: 0
     Premium_Buff_Debuff_Draw_Probability: 0
-    GroupID: 0
-    Rank: 0
-    Type: 0
     Attack: 0
     Attack_Speed: 0
     Hp: 0
@@ -194,12 +195,10 @@ MonoBehaviour:
     Desc: 
     Sprite_TowerCard: {fileID: 0}
     Sprite_TowerProtrait: {fileID: 0}
-    AudioClip_Attack_Name: 
-    AudioClip_Hit_Name: 
-    AudioClip_Normal_Name: 
+    AudioClip_Attack: {fileID: 0}
+    AudioClip_Destroy: {fileID: 0}
     buffID: 0
-  towerData: {fileID: 11400000, guid: e9baa0ef5cd379a4190331b7236a456b, type: 2}
-  currentHealth: 0
+    MinionID: 0
   healthbarImages:
   - {fileID: 21300000, guid: 143e36975c14c5c4497907bad40240bb, type: 3}
   - {fileID: 21300000, guid: 396048e95b81af541b1f42d4d43bb06b, type: 3}
@@ -207,6 +206,7 @@ MonoBehaviour:
   healthbarImage: {fileID: 3665651031233547568}
   hitbarImage: {fileID: 5055924662554444192}
   ui: {fileID: 7928582296880711320}
+  effectParticles: {fileID: 0}
   maxHealth: 0
   currentHealth: 0
   attack: 0

@@ -169,4 +169,9 @@ public class Player : MonoBehaviourPun
         playerStats.SetBuff();
 
     }
+
+    private void OnDestroy()
+    {
+        BuffManager.playerBuffAdditionEvent -= incrementBuffValue;
+    }
 }

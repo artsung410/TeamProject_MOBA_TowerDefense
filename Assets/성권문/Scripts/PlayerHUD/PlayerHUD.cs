@@ -320,7 +320,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 Debug.Log("Image Call");
                 //StartCoroutine(resultImigePopup);
                 ResultPopUp(winnerTime, gameWinMessage);
-
                 GameManager.Instance.isGameEnd = true;
             }
             else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
@@ -329,9 +328,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 GameManager.Instance.winner = "Red";
                 gameWinMessage = GameManager.Instance.winner;
                 Debug.Log("Image Call");
-                //StartCoroutine(resultImigePopup);
                 ResultPopUp(winnerTime, gameWinMessage);
-
                 GameManager.Instance.isGameEnd = true;
             }
             photonView.RPC(nameof(RPCInitScore), RpcTarget.All);
