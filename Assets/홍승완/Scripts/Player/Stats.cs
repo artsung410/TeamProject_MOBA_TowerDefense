@@ -78,7 +78,7 @@ public class Stats : MonoBehaviourPun
 
     private void OnEnable()
     {
-        Debug.Log($"is work? : { CSVtest.Instance.wizardStatParsing.dataList[0].hp}");
+        //Debug.Log($"is work? : { CSVtest.Instance.wizardStatParsing.dataList[0].hp}");
         SetPlayerStats(AttackType, Level);
     }
 
@@ -156,15 +156,6 @@ public class Stats : MonoBehaviourPun
 
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            buffAttackDamge = 10;
-            buffMoveSpeed = 3f;
-            SetBuff();
-        }
-    }
 
     private void OnDrawGizmos()
     {

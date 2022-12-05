@@ -111,7 +111,7 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
 
                 if (minion != null)
                 {
-                    Debug.Log("input skillTimeDamage");
+                    //Debug.Log("input skillTimeDamage");
                     minion.DamageOverTime(damage,time);
                 }
             }
