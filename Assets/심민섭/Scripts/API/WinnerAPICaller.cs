@@ -77,7 +77,7 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
             JsonData jsonPlayer = JsonMapper.ToObject(jsonResult);
 
             // 데이터 저장
-            aPIStorage.amount_won = jsonPlayer["data"]["amount_won"].ToString();
+            WinnerManager.instance.winAmount = jsonPlayer["data"]["amount_won"].ToString();
             Debug.Log("WinnerCaller Data Save Complited");
         }
     }
