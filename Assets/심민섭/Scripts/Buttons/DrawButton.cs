@@ -194,7 +194,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
-        DrawManager.instance.buyCurencyName = "Daapx";
+        DrawManager.instance.buyCurencyName = "Dappx";
     }
     public void DrawWarriorSkillCard_P()
     {
@@ -204,7 +204,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
-        DrawManager.instance.buyCurencyName = "Daapx";
+        DrawManager.instance.buyCurencyName = "Dappx";
 
     }
     public void DrawWizardSkillCard_P()
@@ -215,7 +215,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
-        DrawManager.instance.buyCurencyName = "Daapx";
+        DrawManager.instance.buyCurencyName = "Dappx";
     }
     public void DrawAssassinSkillCard_P()
     {
@@ -225,7 +225,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
-        DrawManager.instance.buyCurencyName = "Daapx";
+        DrawManager.instance.buyCurencyName = "Dappx";
     }
 
     // ----------------- 뽑기 버튼(타워 노말) -------------------
@@ -280,7 +280,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
-        DrawManager.instance.buyCurencyName = "Daapx";
+        DrawManager.instance.buyCurencyName = "Dappx";
     }
     public void DrawAttackTowerCard_P()
     {
@@ -290,7 +290,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
-        DrawManager.instance.buyCurencyName = "Daapx";
+        DrawManager.instance.buyCurencyName = "Dappx";
 
     }
     public void DrawMinionTowerlCard_P()
@@ -301,7 +301,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
-        DrawManager.instance.buyCurencyName = "Daapx";
+        DrawManager.instance.buyCurencyName = "Dappx";
     }
     public void DrawBuffTowerCard_P()
     {
@@ -311,7 +311,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
-        DrawManager.instance.buyCurencyName = "Daapx";
+        DrawManager.instance.buyCurencyName = "Dappx";
     }
 
 }
