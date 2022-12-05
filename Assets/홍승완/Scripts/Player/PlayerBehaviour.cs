@@ -65,6 +65,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     // SMS End --------------------------------------------//
 
     #region Other Components
+    public PlayerAnimation motion;
     NavMeshAgent _agent;
     Stats _statScript;
     Health _playerHealth;
@@ -174,15 +175,14 @@ public class PlayerBehaviour : MonoBehaviourPun
 
             if (isStun == true)
             {
-                recoveryTime += Time.deltaTime;
-                Debug.Log($"recoveryTime : {recoveryTime}\n" +
-                    $"stunTime : {StunTime}");
-                if (recoveryTime >= StunTime)
-                {
-                    recoveryTime = 0f;
-                    StunTime = 0f;
-                    isStun = false;
-                }
+                //recoveryTime += Time.deltaTime;
+                //if (recoveryTime >= StunTime)
+                //{
+                //    recoveryTime = 0f;
+                //    StunTime = 0f;
+                //    isStun = false;
+                //}
+                return;
             }
             else
             {
@@ -199,20 +199,20 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
-    public void OnStun(bool stun, float time)
+    public void OnStun(bool stun)
     {
         if (_playerHealth.isDeath)
         {
             return;
         }
-        photonView.RPC(nameof(RPC_Stun), RpcTarget.All, stun, time);
+        photonView.RPC(nameof(RPC_Stun), RpcTarget.All, stun);
     }
 
     [PunRPC]
-    public void RPC_Stun(bool stun, float time)
+    public void RPC_Stun(bool stun)
     {
+        //motion.DizzyMotion(stun);
         isStun = stun;
-        StunTime = time;
     }
 
     private void IsPlayerDie()

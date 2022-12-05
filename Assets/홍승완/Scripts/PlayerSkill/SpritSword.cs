@@ -25,8 +25,6 @@ public class SpritSword : SkillHandler
     private float width;
     private float vertical;
 
-    public float Speed;
-
     private void Awake()
     {
         width = damageZone.GetComponent<BoxCollider>().size.x;
@@ -44,7 +42,6 @@ public class SpritSword : SkillHandler
         
         currentPos = transform.position;
 
-        Speed = 5f;
     }
 
     // Start is called before the first frame update
@@ -95,8 +92,9 @@ public class SpritSword : SkillHandler
 
     public override void SkillUpdatePosition()
     {
+        Debug.Log(Data.Value_2);
         // 발사체는 앞으로 날아가게끔 한다
-        transform.Translate(Time.deltaTime * Speed * Vector3.forward);
+        transform.Translate(Time.deltaTime * Data.Value_2 * Vector3.forward);
 
         // 회전부분은 처음회전위치에서 날아간다
         transform.rotation = quaternion;

@@ -1605,6 +1605,9 @@ MonoBehaviour:
   - Type: 1
     SynchronizeType: 2
     Name: AttackSpeed
+  - Type: 4
+    SynchronizeType: 2
+    Name: isStun
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0
@@ -3344,6 +3347,7 @@ MonoBehaviour:
   moveMouseObj1: {fileID: 0}
   moveMouseObj2: {fileID: 0}
   moveMousePointer: {fileID: 0}
+  motion: {fileID: 0}
 --- !u!114 &6994365721379009202
 MonoBehaviour:
   m_ObjectHideFlags: 0

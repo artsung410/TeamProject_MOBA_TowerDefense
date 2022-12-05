@@ -278,7 +278,7 @@ public class CSVtest : MonoBehaviour
 
     #region Buff
 
-    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:K83";
+    private const string BuffURL = "https://docs.google.com/spreadsheets/d/1IkitwusiwPWK0fK9i1gbCqsgtLl1YQBJ/export?format=tsv&gid=1296679834&range=A4:K86";
 
     [Header("[버프]")]
     public BuffDatabaseList buffDatabaseListCSV;
@@ -558,9 +558,4 @@ public class CSVtest : MonoBehaviour
     }
     #endregion
 
-    #region Sound
-    // 사운드 클립 파싱
-    [Header("[사운드]")]
-    public string temp;
-    #endregion
 }

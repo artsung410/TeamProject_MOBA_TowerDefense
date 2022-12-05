@@ -45,7 +45,6 @@ public class PlayerAnimation : MonoBehaviourPun
         //Debug.Log($"플레이어 랜더러 : {hp.isDeath}");
     }
 
-    float elapsedTime;
     void Update()
     {
         if (photonView.IsMine)
@@ -82,7 +81,6 @@ public class PlayerAnimation : MonoBehaviourPun
         float speed = agent.velocity.magnitude / agent.speed;
         animator.SetFloat("Speed", speed, motionSmoothTime, Time.deltaTime);
     }
-
  
     private void CombatMotion()
     {
@@ -110,5 +108,10 @@ public class PlayerAnimation : MonoBehaviourPun
 
         animator.SetBool("Attack", IsAttack);
         animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
+    }
+
+    public void DizzyMotion(bool stun)
+    {
+        animator.SetBool("isStun", stun);
     }
 }
