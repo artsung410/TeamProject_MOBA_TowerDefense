@@ -15,7 +15,7 @@ public class EnemySatatus : Enemybase
     public Transform _PrevTarget { get; private set; }
     public bool Targeton = false;
 
-    
+
     public enum ESTATE
     {
         move,
@@ -34,8 +34,8 @@ public class EnemySatatus : Enemybase
         base.Awake();
         _estate = ESTATE.move;
         CurrnetHP = HP;
-       Mathf.Clamp(sencerArea, 0f, maxArea);
-        
+        Mathf.Clamp(sencerArea, 0f, maxArea);
+
     }
     protected override void OnEnable()
     {
@@ -50,7 +50,7 @@ public class EnemySatatus : Enemybase
                 _PrevTarget = _target; // 
             }
         }
-    } 
+    }
     private void Start()
     {
         _navMeshAgent.SetDestination(_PrevTarget.position); // 넥서스 좌표
@@ -62,7 +62,7 @@ public class EnemySatatus : Enemybase
 
     private void Update()
     {
-        
+
         if (isDead) return;
         UpdateEnemyTarget();
     }
@@ -97,12 +97,12 @@ public class EnemySatatus : Enemybase
     }
     private IEnumerator attack() // 공격
     {
-        while (isDead == false &&_estate == ESTATE.attack)
+        while (isDead == false && _estate == ESTATE.attack)
         {
 
             if (_target == null)
             {
-                
+
                 _estate = ESTATE.move;
                 stateChange();
                 break;
@@ -154,17 +154,17 @@ public class EnemySatatus : Enemybase
     }
     private void UpdateEnemyTarget() // 타워 6 플레이어 7 미니언 8 12 넥서스 13 스페셜
     {
-        if(Targeton || sencerArea >= maxArea)
+        if (Targeton || sencerArea >= maxArea)
         {
             sencerArea = 0f;
             return;
         }
-        if(_eminontpye == EMINIONTYPE.Shot)
+        if (_eminontpye == EMINIONTYPE.Shot)
         {
             sencerArea = 14f;
         }
         sencerArea += 0.1f;
-        Collider[] RangeTarget = Physics.OverlapSphere(transform.position,sencerArea);
+        Collider[] RangeTarget = Physics.OverlapSphere(transform.position, sencerArea);
         foreach (Collider collider in RangeTarget)
         {
             if (collider.tag == myTag || collider.gameObject.layer == 0)
@@ -183,17 +183,16 @@ public class EnemySatatus : Enemybase
 
                 }
 
-                    if (collider.gameObject.layer == 6 || collider.gameObject.layer == 12)
-                    {
-                        attackRange = 15f;
-                    }
-                    else
-                    {
-                        attackRange = minionDB.Range;
-                    }
+                if (collider.gameObject.layer == 6 || collider.gameObject.layer == 12)
+                {
+                    attackRange = 15f;
+                }
+                else
+                {
+                    attackRange = minionDB.Range;
                 }
             }
-             else if(collider.gameObject.layer == 17)
+            else if (collider.gameObject.layer == 17)
             {
                 Targeton = true;
                 _target = collider.transform;
@@ -208,8 +207,9 @@ public class EnemySatatus : Enemybase
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, sencerArea);
     }
-
 }
+
+
 
 
 
