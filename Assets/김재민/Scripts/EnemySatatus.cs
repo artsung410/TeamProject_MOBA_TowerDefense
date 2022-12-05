@@ -74,9 +74,9 @@ public class EnemySatatus : Enemybase
         {
             if (_target == null) //타켓이 죽엇을때 공격범위 초기화 
             {
+                attackRange = minionDB.Range;
                 _animator.SetBool("Attack", false);
                 _navMeshAgent.isStopped = false;
-                //_navMeshObstacle.carving = false;
                 Targeton = false;
                 _target = _PrevTarget;
                 transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
@@ -183,21 +183,28 @@ public class EnemySatatus : Enemybase
 
                 }
 
-                if (collider.gameObject.layer == 6 || collider.gameObject.layer == 12)
+                if (collider.gameObject.layer == 12) // 넥서스 사거리
                 {
-                    attackRange = 15f;
+                    attackRange = 15f; 
                 }
-                else
+                else  if (collider.gameObject.layer == 6)
                 {
-                    attackRange = minionDB.Range;
+                    if(_eminontpye == EMINIONTYPE.Nomal)
+                    {
+                        attackRange = 6f; // 타워사거리 
+                    }
                 }
+                
             }
-            else if (collider.gameObject.layer == 17)
+            else if (collider.gameObject.layer == 17) // 중립몬스터 사거리
             {
                 Targeton = true;
                 _target = collider.transform;
                 transform.LookAt(new Vector3(_target.position.x, transform.position.y, _target.position.z));
-
+                if (_eminontpye == EMINIONTYPE.Nomal)
+                {
+                    attackRange = 7f;
+                }
             }
             //레이어로 확인해서 공격타켓 설정
         }
