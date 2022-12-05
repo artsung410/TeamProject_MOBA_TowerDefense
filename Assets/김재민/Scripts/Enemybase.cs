@@ -71,6 +71,7 @@ public class Enemybase : MonoBehaviourPun
 
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
     protected NavMeshAgent _navMeshAgent;
+    protected NavMeshObstacle _navMeshObstacle;
     protected Animator _animator;
     protected bool isDead = false;
 
@@ -81,6 +82,7 @@ public class Enemybase : MonoBehaviourPun
     {
         _eminontpye = EMINIONTYPE.Nomal;
         _outline = GetComponent<Outline>();
+        _navMeshObstacle = GetComponent<NavMeshObstacle>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
