@@ -66,7 +66,7 @@ public class BulletMove : MonoBehaviourPun
     private void OnTriggerEnter(Collider other)
     {
         // 미니언일 때 처리
-        if (photonView.IsMine)
+        if (PhotonNetwork.IsMasterClient)
         {
 
             if (other.CompareTag(EnemyTag) && other.gameObject.layer == 8)

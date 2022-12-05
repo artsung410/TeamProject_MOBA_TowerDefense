@@ -119,12 +119,6 @@ public class EnemyHpBar : MonoBehaviourPun
         {
             transform.position = new Vector3(Enemy.position.x, 17f, Enemy.position.z);
         }
-        
-        if(enemybase._capsuleCollider.height >= 2f)
-        {
-            transform.position = new Vector3(Enemy.position.x, Enemy.position.y + 8f, Enemy.position.z);
-        }
-        
     }
 
     

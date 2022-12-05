@@ -39,9 +39,6 @@ public class SpecialMinionSkill : SkillHandler
         
         elapsedTime = 0f;
         if (_ability == null) return;
-        transform.GetChild(0).transform.GetChild(0).GetComponent<Enemybase>().SetInitData((int)Data.Value_1);
-
-
         _ability.OnLock(true);
         gameObject.tag = GetMytag(_ability);
         InvokeRepeating(nameof(nearFindObject), 0, 0.5f);

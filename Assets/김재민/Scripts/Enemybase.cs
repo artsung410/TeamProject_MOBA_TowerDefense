@@ -146,13 +146,6 @@ public class Enemybase : MonoBehaviourPun
 
     private void LateUpdate()
     {
-        if(_eminontpye == EMINIONTYPE.Netural)
-        {
-            OrcFSM orc = gameObject.GetComponent<OrcFSM>();
-            orc.setNeturalMonsterHealthBar();
-            orc.HealthUI.transform.position = transform.position;         
-        }
-
         if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && _animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.die"))
         {
             Death();
@@ -201,7 +194,9 @@ public class Enemybase : MonoBehaviourPun
             {
                 CurrnetHP -= Damage * (PlayerHUD.Instance.min + 1); // 1안더해주면 0분일때 데미지 안드감
                 _animator.SetTrigger("TakeDamage");
-               
+                OrcFSM orc = gameObject.GetComponent<OrcFSM>();
+                orc.setNeturalMonsterHealthBar();
+                orc.HealthUI.transform.position = transform.position;
             }
             if (CurrnetHP <= 0)
             {
@@ -217,7 +212,7 @@ public class Enemybase : MonoBehaviourPun
                 _capsuleCollider.enabled = false;
                 if (_navMeshAgent == true)
                 {
-                    
+                    transform.LookAt(transform.forward);
                     _navMeshAgent.SetDestination(transform.position);
                     _navMeshAgent.isStopped = true;
 
@@ -237,10 +232,6 @@ public class Enemybase : MonoBehaviourPun
     [PunRPC]
     public void RPC_tagThrow(string value)
     {
-        if(PlayerHUD.Instance.NeutalMonsterDie == true)
-        {
-            return;
-        }
         lastDamageTeam = value;
     }
 
