@@ -60,7 +60,7 @@ public class EnemySatatus : Enemybase
     }
 
 
-    private void Update()
+    private void FixedUpdate()
     {
 
         if (isDead) return;

@@ -77,15 +77,19 @@ public class Enemybase : MonoBehaviourPun
 
     public CapsuleCollider _capsuleCollider;
     private Outline _outline;
+    private GameObject skillParent;
 
     protected virtual void Awake()
     {
+
         _eminontpye = EMINIONTYPE.Nomal;
         _outline = GetComponent<Outline>();
         _navMeshObstacle = GetComponent<NavMeshObstacle>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        
+
     }
 
     protected virtual void OnEnable() // 생성
@@ -97,6 +101,9 @@ public class Enemybase : MonoBehaviourPun
         else if (GetComponent<OrcFSM>() != null)
         {
             _eminontpye = EMINIONTYPE.Netural;
+        }else if (GetComponent<SpecialAttack>() != null)
+        {
+            _eminontpye = EMINIONTYPE.Special;
         }
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
@@ -141,10 +148,15 @@ public class Enemybase : MonoBehaviourPun
             }
         }
 
+        if(_eminontpye == EMINIONTYPE.Special)
+        {
+            skillParent = transform.parent.transform.parent.gameObject;
+        }
+
 
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         if(_eminontpye == EMINIONTYPE.Netural)
         {
@@ -152,10 +164,15 @@ public class Enemybase : MonoBehaviourPun
             orc.setNeturalMonsterHealthBar();
             orc.HealthUI.transform.position = transform.position;         
         }
-
+        Debug.Log($"{_animator.GetCurrentAnimatorStateInfo(0).normalizedTime}으앙80퍼되서쥬금");
         if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && _animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.die"))
         {
-            Death();
+            Debug.Log("으앙80퍼되서쥬금");
+
+            //if (photonView.IsMine)
+            //{
+            //}
+                Death();
         }
     }
 
@@ -215,13 +232,14 @@ public class Enemybase : MonoBehaviourPun
                 }
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
-                if (_navMeshAgent == true)
+                if (_navMeshAgent != null)
                 {
                     
                     _navMeshAgent.SetDestination(transform.position);
                     _navMeshAgent.isStopped = true;
 
                 }
+                Debug.Log("으앙다이상태임쥬금");
                 _animator.SetTrigger("Die");
                 isDead = true;
 
@@ -251,11 +269,19 @@ public class Enemybase : MonoBehaviourPun
 
     public void Death()
     {
-        if(photonView.IsMine)
+        Debug.Log("으앙쥬금");
+        if (_eminontpye == EMINIONTYPE.Special)
+            {
+            Destroy(transform.parent.gameObject); 
+            Destroy(skillParent);
+            return;
+            }
+       if(photonView.IsMine)
         {
-
         PhotonNetwork.Destroy(transform.parent.gameObject);
+
         }
+
         
     }
 

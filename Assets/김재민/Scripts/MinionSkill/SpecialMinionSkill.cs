@@ -33,6 +33,7 @@ public class SpecialMinionSkill : SkillHandler
     {
 
         //Instance = this;   
+        
     }
     private void Start()
     {
@@ -45,7 +46,7 @@ public class SpecialMinionSkill : SkillHandler
         _ability.OnLock(true);
         gameObject.tag = GetMytag(_ability);
         InvokeRepeating(nameof(nearFindObject), 0, 0.5f);
-
+        dragon = transform.GetChild(0).gameObject;
 
     }
 
@@ -57,13 +58,30 @@ public class SpecialMinionSkill : SkillHandler
         }
         if (_ability.gameObject.GetComponent<Health>().isDeath == true)
         {
-            PhotonNetwork.Destroy(gameObject);
+            if (photonView.IsMine)
+            {
+             PhotonNetwork.Destroy(gameObject);
+            }
+        }
+
+        if (gameObject == null)
+        {
+            return;
         }
 
         if (photonView.IsMine)
         {
+
             SkillUpdatePosition();
             SkillHoldingTime(15f);   
+        }
+
+        if(dragon == null)
+        {
+            if(photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
         }
     }
 
@@ -82,7 +100,6 @@ public class SpecialMinionSkill : SkillHandler
         if(elapsedTime >= time)
         {
             PhotonNetwork.Destroy(gameObject);
-            
         }
 
     }
@@ -112,6 +129,11 @@ public class SpecialMinionSkill : SkillHandler
 
    private void nearFindObject()
     {
+        if (gameObject == null)
+        {
+            return;
+        }
+
         Collider[] Enemys = Physics.OverlapSphere(transform.position, 15f);
         foreach (Collider col in Enemys)
         {
