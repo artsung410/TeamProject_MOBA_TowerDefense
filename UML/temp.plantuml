@@ -90,6 +90,13 @@ package INGAME <<Rectangle>>
       +OnLeftRoom()
    }
 
+   Class BuffManager
+   {
+      +List<BuffBlueprint> currentBuffDatas;
+      +List<int> currentBuffIds;
+      +Dictionary<BuffBlueprint, float> buffDic;
+   }
+
    scale 1000 width
    package Player <<Rectangle>> 
    {
@@ -112,7 +119,7 @@ package INGAME <<Rectangle>>
          +string EnemyTag
       }
 
-      Class Status
+      Class Stat
       {
          +float StartHealth
          +float health
@@ -137,11 +144,6 @@ package INGAME <<Rectangle>>
          -void AbilityE()
          -void AbilityR()
       }
-
-      Class Health
-      {
-
-      }
    }
 
    scale 1000 width
@@ -161,7 +163,7 @@ package INGAME <<Rectangle>>
          -ESTATE _estate;
       }
 
-      Struct MinionData
+      Class MinionBlueprint
       {
          +int Id
          +string Name
@@ -200,14 +202,12 @@ package INGAME <<Rectangle>>
 
       Class Tower
       {
-         - float AttackLatency;
+         + TowerBlueprint towerDB;
+         - string enemyTag;
          - fire();
-         + GameObject projectile; // 투사체
-         + Towe
-         rSkilCard[] skills;
       }
 
-      Struct TowerData
+      Class TowerBlueprint
       {
          +int Id 
          +string Name 
@@ -225,14 +225,6 @@ package INGAME <<Rectangle>>
          +AudioClip SoundAttack
          +AudioClip SoundHit
          +AudioClip SoundNormal 
-      }
-
-      Class Projectile
-      {
-      + ProjectileType projectileTpye
-      + float Damage
-      + string enemyTag
-      - OnTriggerEnter()
       }
    }
    
@@ -264,7 +256,7 @@ package INGAME <<Rectangle>>
       }
    
       
-      Struct SkillData
+      Class SkillData
       {
          +int Id 
          +string Name 
@@ -308,27 +300,28 @@ package PunLibrary <<Database>>
    }
 }
 
-ItemDatabaseList <.. TrojanHorse
 TrojanHorse <.. GameManager
-
-ItemDatabaseList --> TowerPrefab
-ItemDatabaseList --> SkillPrefab
-TowerData --> MinionPrefab
-TowerData --> BuffData
-SkillData --> BuffData
-MinionSpwaner --> MinionPrefab
-
-
+TowerBlueprint --> MinionPrefab
+MinionPrefab <.. MinionSpwaner
 SkillHandler o-- SkillData
 SkillPrefab o-- SkillHandler
-Enemybase o-- MinionData
-MinionPrefab o-- Enemybase
-TowerPrefab o-- TowerData
+Enemybase o-- MinionBlueprint
+
 TowerPrefab o-- Tower
-Tower o-- Projectile
+Tower o-- TowerBlueprint
+
 PlayerPrefab o-- PlayerBehaviour
 PlayerPrefab o-- HeroAbility
-PlayerPrefab o-- Status 
-GoogleCSV o-- CSVtest
+PlayerPrefab o-- Stat 
 
+GoogleCSV o-- CSVtest
+CSVtest <-- TowerBlueprint
+CSVtest <-- SkillData
+CSVtest <-- MinionBlueprint
+CSVtest <-- Stat
+CSVtest <-- TrojanHorse
+Tower <.. BuffManager
+SkillHandler <.. BuffManager
+HeroAbility o-- SkillPrefab
+MinionPrefab o-- Enemybase
 @enduml
