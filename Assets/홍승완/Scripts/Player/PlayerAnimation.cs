@@ -23,6 +23,7 @@ public class PlayerAnimation : MonoBehaviourPun
     Stats playerStats;
     PlayerBehaviour _playerScript;
     Health hp;
+    HeroAbility _abillity;
 
     float motionSmoothTime = 0.1f;
 
@@ -36,6 +37,7 @@ public class PlayerAnimation : MonoBehaviourPun
         playerStats = Chractor.GetComponent<Stats>();
         _playerScript = Chractor.GetComponent<PlayerBehaviour>();
         hp = Chractor.GetComponent<Health>();
+        _abillity = Chractor.GetComponent<HeroAbility>();
     }
 
     private void OnEnable()
@@ -84,6 +86,12 @@ public class PlayerAnimation : MonoBehaviourPun
  
     private void CombatMotion()
     {
+        if (_abillity.isActive == true)
+        {
+            animator.SetBool("Attack", false);
+            return;
+        }
+
         if (_playerScript.perfomMeleeAttack == true || _playerScript.perfomRangeAttack == true)
         {
             if (photonView.IsMine)
@@ -103,5 +111,4 @@ public class PlayerAnimation : MonoBehaviourPun
         animator.SetBool("Attack", IsAttack);
         animator.SetFloat("AttackSpeed", playerStats.attackSpeed);
     }
-
 }

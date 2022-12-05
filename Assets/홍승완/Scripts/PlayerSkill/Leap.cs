@@ -93,20 +93,26 @@ public class Leap : SkillHandler
             SkillUpdatePosition();
 
             // 지속시간동안 플레이어가 지정한 장소로 이동한다 => 도약은 애니메이션 처리
-            _behaviour.transform.position = Vector3.MoveTowards(_behaviour.transform.position, leapPos, Time.deltaTime * 3f);
+            _behaviour.transform.position = Vector3.MoveTowards(_behaviour.transform.position, leapPos, Time.deltaTime * 10f);
 
             // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
             _behaviour.ForSkillAgent(leapPos);
 
             // 착지시 주변에 데미지를 준다(한번만 호출)
-            if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
+            Debug.Log($"거리가 안 닿나봐 : {Vector3.Distance(_behaviour.transform.position, leapPos)}");
+            if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 1f)
             {
                 //_damageZone.SetActive(true);
                 photonView.RPC(nameof(RPC_Activate), RpcTarget.All);
                 _ani.animator.SetBool("JumpAttack", false);
                 isArrive = true;
             }
+
+            if (isArrive)
+            {
             SkillHoldingTime(Data.HoldingTime);
+
+            }
         }
 
     }
@@ -175,6 +181,7 @@ public class Leap : SkillHandler
     [PunRPC]
     public void RPC_Activate()
     {
+        Debug.Log("effect on");
         damageZone.SetActive(true);
     }
 
