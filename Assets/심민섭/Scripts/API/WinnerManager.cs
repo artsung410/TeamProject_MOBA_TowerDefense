@@ -17,6 +17,7 @@ public class WinnerManager : MonoBehaviour
         if (GameManager.Instance.isGameEnd)
         {
             Instantiate(WinPostAPICallerPre, Vector3.zero, Quaternion.identity);
+            CurencyChange.instance.amountCurrency = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>().amount_won;
             Destroy(GameObject.FindGameObjectWithTag("APIStorage").gameObject);
             Destroy(GameObject.FindGameObjectWithTag("GetCaller").gameObject);
             Destroy(gameObject);
