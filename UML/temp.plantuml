@@ -4,13 +4,6 @@
 scale 1000 width
 package LOBBY <<Rectangle>>
 {
-   Struct ItemDatabaseList
-   {
-      +List<Item> itemList 
-      +Item getItemById
-
-   }
-
    Class LobbyManager
    {
       -readonly string gameVersion
@@ -35,6 +28,11 @@ package LOBBY <<Rectangle>>
 
       // 인벤토리 스크립트
       -Inventory mainInventory 
+   }
+
+   Protocol Inventory #back:SkyBlue
+   {
+
    }
 
    Class TrojanHorse
@@ -77,6 +75,19 @@ package LOBBY <<Rectangle>>
 scale 1000 width
 package INGAME <<Rectangle>>
 {
+   scale 2800 width
+   package PunLibrary <<Database>> 
+   {
+      Class MonoBehaviourPun
+      {
+      
+      }
+   
+      Class MonoBehaviourPunCallbacks
+      {
+      }
+   }
+
    Class GameManager
    {
       -static GameManager instance 
@@ -287,19 +298,6 @@ package INGAME <<Rectangle>>
 
 }
 
-scale 2800 width
-package PunLibrary <<Database>> 
-{
-   Class MonoBehaviourPun
-   {
-
-   }
-
-   Class MonoBehaviourPunCallbacks
-   {
-   }
-}
-
 TrojanHorse <.. GameManager
 TowerBlueprint --> MinionPrefab
 MinionPrefab <.. MinionSpwaner
@@ -320,8 +318,12 @@ CSVtest <-- SkillData
 CSVtest <-- MinionBlueprint
 CSVtest <-- Stat
 CSVtest <-- TrojanHorse
-Tower <.. BuffManager
-SkillHandler <.. BuffManager
+Tower .. BuffManager
+SkillHandler .. BuffManager
 HeroAbility o-- SkillPrefab
 MinionPrefab o-- Enemybase
+
+Inventory o-- PlayerInventory
+PlayerInventory <.. TrojanHorse
+LobbyManager <.. TrojanHorse 
 @enduml
