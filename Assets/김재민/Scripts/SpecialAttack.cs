@@ -33,7 +33,7 @@ public class SpecialAttack : Enemybase
     }
     private void Start()
     {
-        Destroy(transform.parent.gameObject,15f);
+        
         if (gameObject.CompareTag("Blue"))
         {
             transform.GetChild(2).transform.GetChild(0).GetComponent<DragonAttack>().EnemyTag = EnemyTag;
@@ -49,6 +49,8 @@ public class SpecialAttack : Enemybase
     // Update is called once per frame
     void Update()
     {
+
+
         if (_skill.TargetOn == true)
         {
             Attack();
@@ -123,15 +125,16 @@ public class SpecialAttack : Enemybase
 
     void CombackSon()
     {
+        if (_skill == null)
+        {
+            return;
+        }
+
         photonView.RPC(nameof(RPC_CombackSon), RpcTarget.All);
     }
     [PunRPC]
     void RPC_CombackSon()
     {
-        if(_skill.gameObject == null)
-        {
-            return;
-        }
         Effect.SetActive(false);
         transform.position = new Vector3(_skill.gameObject.transform.position.x, _skill.gameObject.transform.position.y, _skill.gameObject.transform.position.z + 10);
         transform.rotation = Quaternion.Euler(0, 90, 0);
