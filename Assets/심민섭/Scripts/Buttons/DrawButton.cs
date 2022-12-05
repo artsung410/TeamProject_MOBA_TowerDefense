@@ -151,6 +151,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Zera";
     }
     public void DrawWarriorSkillCard_N()
     {
@@ -160,6 +161,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Zera";
 
     }
     public void DrawWizardSkillCard_N()
@@ -170,6 +172,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Zera";
     }
     public void DrawAssassinSkillCard_N()
     {
@@ -179,6 +182,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Zera";
     }
 
     // ----------------- 뽑기 버튼(스킬 프리미엄) -------------------
@@ -190,6 +194,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Daapx";
     }
     public void DrawWarriorSkillCard_P()
     {
@@ -199,6 +204,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Daapx";
 
     }
     public void DrawWizardSkillCard_P()
@@ -209,6 +215,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Daapx";
     }
     public void DrawAssassinSkillCard_P()
     {
@@ -218,6 +225,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Daapx";
     }
 
     // ----------------- 뽑기 버튼(타워 노말) -------------------
@@ -229,6 +237,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Zera";
     }
     public void DrawAttackTowerCard_N()
     {
@@ -238,6 +247,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Zera";
 
     }
     public void DrawMinionTowerlCard_N()
@@ -248,6 +258,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Zera";
     }
     public void DrawBuffTowerCard_N()
     {
@@ -257,6 +268,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Zera";
     }
 
     // ----------------- 뽑기 버튼(타워 프리미엄) -------------------
@@ -268,6 +280,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Daapx";
     }
     public void DrawAttackTowerCard_P()
     {
@@ -277,6 +290,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Daapx";
 
     }
     public void DrawMinionTowerlCard_P()
@@ -287,6 +301,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Daapx";
     }
     public void DrawBuffTowerCard_P()
     {
@@ -296,6 +311,7 @@ public class DrawButton : MonoBehaviour
         DrawManager.instance.selectImage = gameObject.transform.GetChild(2).GetComponent<Image>().sprite;
         DrawManager.instance.selectNameText = gameObject.transform.GetChild(0).GetComponent<Text>().text;
         DrawManager.instance.selectExplanationText = gameObject.transform.GetChild(1).GetComponent<Text>().text;
+        DrawManager.instance.buyCurencyName = "Daapx";
     }
 
 }
