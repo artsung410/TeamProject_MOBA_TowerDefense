@@ -63,6 +63,8 @@ public class OrcFSM : Enemybase
 
     void Start()
     {
+        Iattack = attack();
+        Imove = move();
         gameObject.tag = "Untagged"; //태그 바꿈
         transform.GetChild(0).gameObject.GetComponent<BoxCollider>().enabled = false; //처음에 데미지트리거끔
         transform.GetChild(1).gameObject.SetActive(false); // 이펙트
