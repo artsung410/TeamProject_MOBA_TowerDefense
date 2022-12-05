@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
+  - {fileID: 2100000, guid: e1146b63feab4ed4095673eec45c497e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -162,7 +162,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
+  - {fileID: 2100000, guid: e1146b63feab4ed4095673eec45c497e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -338,7 +338,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
+  - {fileID: 2100000, guid: e1146b63feab4ed4095673eec45c497e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -469,7 +469,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
+  - {fileID: 2100000, guid: e1146b63feab4ed4095673eec45c497e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -776,7 +776,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ab622082e86535642a76e4874f1d0256, type: 2}
+  - {fileID: 2100000, guid: e1146b63feab4ed4095673eec45c497e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -915,7 +915,7 @@ SphereCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 10.095604
+  m_Radius: 12
   m_Center: {x: 0.0000009536743, y: 1.1309415, z: -0.00000047683716}
 --- !u!208 &2035428738620416573
 NavMeshObstacle:
@@ -948,7 +948,13 @@ MonoBehaviour:
   CurrentHp: 1000
   MaxHp: 1000
   destroyParticle: {fileID: 146554, guid: 019a36e340cb90b40b3ed5a92f9a6fdb, type: 3}
-  _slider: {fileID: 8187979672730570622}
+  healthbarImages:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  healthbarImage: {fileID: 0}
+  hitbarImage: {fileID: 0}
+  ui: {fileID: 0}
   nexusSprite: {fileID: 21300000, guid: 326d1298d78c99d4fb3e46671a1acf11, type: 3}
   healthEffect: {fileID: 0}
 --- !u!114 &7374329792301658525

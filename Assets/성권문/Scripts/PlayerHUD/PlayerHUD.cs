@@ -654,10 +654,10 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         playerExperienceBar.fillAmount = playerStat.acquiredExp / playerStat.maxExp;
 
         // DPS
-        PlayerDpsText.text = $"{playerStat.attackDmg / playerStat.attackSpeed}";
+        PlayerDpsText.text = $"{Math.Round(playerStat.attackDmg / playerStat.attackSpeed)}";
 
         // 이동속도
-        PlayerSpeedText.text = $"{playerStat.moveSpeed}";
+        PlayerSpeedText.text = $"{Math.Round(playerStat.moveSpeed)}";
 
         // 초상화
         PlayerPortrait.sprite = playerScript.playerIcon;

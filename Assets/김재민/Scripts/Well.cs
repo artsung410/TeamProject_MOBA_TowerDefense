@@ -24,7 +24,7 @@ public class Well : MonoBehaviourPun
     // Update is called once per frame
     void Update()
     {
-        
+        Debug.Log("Æë±º");
     }
 
     private void RegenerationSwitch()
