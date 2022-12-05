@@ -284,7 +284,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         if (targetedEnemy != null)
         {
             float dist = Vector3.Distance(transform.position, targetedEnemy.transform.position) - interpolationRange;
-            Debug.Log($"타겟과의 거리 : {dist}");
+            //Debug.Log($"타겟과의 거리 : {dist}");
             // 타겟이 공격범위 밖일때
             if (dist > _statScript.attackRange)
             {
@@ -424,7 +424,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void AutoSearchTarget()
     {
-        // TODO : 가장 가까운 적을 탐색하되 기존 타겟은 계속 타격하고 타겟이 없어지면 탐색
+        Debug.Log("AutoSearch 실행중");
         if (targetedEnemy != null)
         {
             return;
@@ -506,12 +506,12 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 타워 보간
         else if (targetedEnemy.layer == 6)
         {
-            interpolationRange = 3f;
+            interpolationRange = 3.5f;
         }
         // 넥서스 보간
         else if (targetedEnemy.layer == 12)
         {
-            interpolationRange = 6f;
+            interpolationRange = 7f;
         }
         // 중립몬스터 보간
         else if (targetedEnemy.layer == 17)
