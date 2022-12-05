@@ -18,8 +18,6 @@ using System.Collections;
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     private readonly string gameVersion = "1";
-
-    IEnumerator test1; 
     // SMS start -----------------------------------------------------
     // 최대 인원 수
     private int roomMaxPlayers = 2;
@@ -81,7 +79,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Cursor.SetCursor(originalCursor, Vector2.zero, CursorMode.Auto);
 
         matchingCancle = false;
-        StartCoroutine(test1);
     }
 
 
