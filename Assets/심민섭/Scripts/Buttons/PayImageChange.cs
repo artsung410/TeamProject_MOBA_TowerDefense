@@ -20,14 +20,16 @@ public class PayImageChange : MonoBehaviour
 
     public void ZeraImageChange()
     {
-        payImage.sprite = zera;
-        DrawManager.instance.buyCurencyName = "Zera";
+        if (DrawManager.instance.buyCurencyName == "Zera")
+            payImage.sprite = zera;
+        //DrawManager.instance.buyCurencyName = "Zera";
     }
 
     public void DappxImageChange()
     {
-        payImage.sprite = dappx;
-        DrawManager.instance.buyCurencyName = "Dappx";
+        if (DrawManager.instance.buyCurencyName == "Dappx")
+            payImage.sprite = dappx;
+        //DrawManager.instance.buyCurencyName = "Dappx";
     }
     
 }
