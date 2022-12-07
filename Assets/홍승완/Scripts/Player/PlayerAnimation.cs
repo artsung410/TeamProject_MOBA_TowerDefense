@@ -112,6 +112,7 @@ public class PlayerAnimation : MonoBehaviourPun
 
     public void DizzyMotion(bool stun)
     {
+        animator.SetBool("Attack", !stun);
         animator.SetBool("isStun", stun);
     }
 }

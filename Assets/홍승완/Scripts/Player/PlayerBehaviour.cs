@@ -165,23 +165,12 @@ public class PlayerBehaviour : MonoBehaviourPun
             CurrentPlayerPos = transform.position;
             _agent.speed = _statScript.moveSpeed;
             // sÅ° ´©¸£¸é Çàµ¿ ¸ØÃã
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) || isStun)
             {
+                targetedEnemy = null;
                 _agent.SetDestination(CurrentPlayerPos);
                 _agent.stoppingDistance = 0f;
-
                 CancelInvoke(nameof(AutoSearchTarget));
-            }
-
-            if (isStun == true)
-            {
-                //recoveryTime += Time.deltaTime;
-                //if (recoveryTime >= StunTime)
-                //{
-                //    recoveryTime = 0f;
-                //    StunTime = 0f;
-                //    isStun = false;
-                //}
                 return;
             }
             else
@@ -211,8 +200,8 @@ public class PlayerBehaviour : MonoBehaviourPun
     [PunRPC]
     public void RPC_Stun(bool stun)
     {
-        //motion.DizzyMotion(stun);
         isStun = stun;
+        motion.DizzyMotion(stun);
     }
 
     private void IsPlayerDie()
