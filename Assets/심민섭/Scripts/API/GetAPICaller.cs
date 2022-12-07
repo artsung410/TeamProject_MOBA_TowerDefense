@@ -178,9 +178,9 @@ public class GetAPICaller : MonoBehaviourPun
             StartCoroutine(getSettingsCaller());
         }
 
-        // Ace
-        string getbettingCurrencyAce = $"https://odin-api-sat.browseosiris.com/v1/betting/ace/balance/{playerStorage.session_id}";
-        using (UnityWebRequest www = UnityWebRequest.Get(getbettingCurrencyAce))
+        // Dappx
+        string getbettingCurrencyDappx = $"https://odin-api-sat.browseosiris.com/v1/betting/dappx/balance/{playerStorage.session_id}";
+        using (UnityWebRequest www = UnityWebRequest.Get(getbettingCurrencyDappx))
         {
             yield return www.SendWebRequest();
 
@@ -196,14 +196,14 @@ public class GetAPICaller : MonoBehaviourPun
             JsonData jsonPlayer = JsonMapper.ToObject(jsonResult);
 
             // 데이터 저장
-            playerStorage.ace = jsonPlayer["data"]["balance"].ToString();
-            string aceValue = $"{float.Parse(playerStorage.ace): 0}";
-            GameObject.FindGameObjectWithTag("Dappx").GetComponent<Text>().text = aceValue;
+            playerStorage.dappx = jsonPlayer["data"]["balance"].ToString();
+            string dappxValue = $"{float.Parse(playerStorage.dappx): 0}";
+            GameObject.FindGameObjectWithTag("Dappx").GetComponent<Text>().text = dappxValue;
 
             /*GameObject apiStorageObj = GameObject.FindGameObjectWithTag("APIStorage").gameObject;
             APIStorage aPIStorage = apiStorageObj.GetComponent<APIStorage>();
-            aPIStorage.ace[playerStorage.playerNumber] = jsonPlayer["data"]["balance"].ToString();*/
-            Debug.Log("getbettingCurrency Ace Data Save Complited");
+            aPIStorage.dappx[playerStorage.playerNumber] = jsonPlayer["data"]["balance"].ToString();*/
+            Debug.Log("getbettingCurrency Dappx Data Save Complited");
             //getAPIComplite = true;
         }
     }

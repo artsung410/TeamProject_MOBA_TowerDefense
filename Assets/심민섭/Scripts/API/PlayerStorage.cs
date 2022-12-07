@@ -17,7 +17,7 @@ public class PlayerStorage : MonoBehaviour
     [SerializeField]
     public string zera;
     [SerializeField]
-    public string ace;
+    public string dappx;
     [SerializeField]
     public string bet_id;
     [SerializeField]

@@ -82,7 +82,7 @@ public class APIStorage : MonoBehaviour
 
     // 유저의 재화를 저장할 변수
     public string[] zera = new string[2];
-    public string[] ace = new string[2];
+    public string[] dappx = new string[2];
     // API 호출 상태 코드 200이 아니면 에러를 반환한다.
     public string[] statusCode = new string[2];
 
