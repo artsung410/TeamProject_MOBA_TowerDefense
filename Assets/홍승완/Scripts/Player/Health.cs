@@ -189,13 +189,9 @@ public class Health : MonoBehaviourPun
     {
         if (health <= 0f)
         {
-            PlayerHUD.Instance.AddScoreToEnemy(gameObject.tag);
             isDeath = true;
+            PlayerHUD.Instance.AddScoreToEnemy(gameObject.tag);
             ani.DieMotion();
-#if OLD_VER
-            hpSlider3D.gameObject.SetActive(false);
-
-#endif
 #if NEW_VER
             HealthObject.SetActive(false);
 #endif

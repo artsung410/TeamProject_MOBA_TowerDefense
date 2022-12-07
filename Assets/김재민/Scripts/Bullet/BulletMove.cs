@@ -169,22 +169,19 @@ public class BulletMove : MonoBehaviourPun
         destroy = DestroyBullet();
     }
 
+    float elapsedTime;
     bool isArrival;
     private void Update()
     {
         if (photonView.IsMine)
         {
-
-            if (tg == null)
+            elapsedTime += Time.deltaTime;
+            if (tg == null || tg.tag == EnemyTag && tg.layer == 14 || elapsedTime > 3f)
             {
                 PhotonNetwork.Destroy(gameObject);
             }
             else
             {
-                if (tg.tag == EnemyTag && tg.layer == 14)
-                {
-                    return;
-                }
                 transform.position = Vector3.MoveTowards(transform.position, tg.transform.position, ballVelocity * Time.deltaTime);
 
                 if (isArrival == false)
