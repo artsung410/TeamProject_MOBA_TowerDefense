@@ -164,10 +164,10 @@ public class Enemybase : MonoBehaviourPun
             orc.setNeturalMonsterHealthBar();
             orc.HealthUI.transform.position = transform.position;         
         }
-        Debug.Log($"{_animator.GetCurrentAnimatorStateInfo(0).normalizedTime}으앙80퍼되서쥬금");
+        //Debug.Log($"{_animator.GetCurrentAnimatorStateInfo(0).normalizedTime}으앙80퍼되서쥬금");
         if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && _animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.die"))
         {
-            Debug.Log("으앙80퍼되서쥬금");
+            //Debug.Log("으앙80퍼되서쥬금");
 
             //if (photonView.IsMine)
             //{
