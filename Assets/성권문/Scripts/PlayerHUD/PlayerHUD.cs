@@ -89,7 +89,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     [Header("BossMonsterUI")]
     public GameObject BossSpawnNotification;
 
-    
+
 
     private int[] playerScores = { 0, 0 };
 
@@ -174,7 +174,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         imigeCourutine = ImageFadeIn();
         //resultImigePopup = ResultImagePopUp();
         textCouruntine = textFadeout();
-        
+
         StartCoroutine(SetPlayer());
         setSkill();
         StartCoroutine(setHp());
@@ -199,7 +199,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         {
             // 시간 계산 하는부분
             //if (GameManager.Instance.winner == "Draw") // 2
-            if(GameWinPanel.GetComponent<Image>().sprite == GameResultDraw)
+            if (GameWinPanel.GetComponent<Image>().sprite == GameResultDraw)
             {
                 testTime += Time.deltaTime;
                 if (testTime >= 1f)
@@ -350,13 +350,13 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             stream.SendNext(min);
             stream.SendNext(isTimeEnd);
         }
-        else if(stream.IsReading)
+        else if (stream.IsReading)
         {
             // Network player, receive data
             this.sec = (float)stream.ReceiveNext();
             this.min = (int)stream.ReceiveNext();
             this.isTimeEnd = (bool)stream.ReceiveNext();
-            
+
         }
     }
 
@@ -417,7 +417,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                     GameWinPanel.SetActive(false);
                     BossSpawnNotification.SetActive(true);
                     TextFadeOut();
-                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+                    //GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
                 }
             }
             else
@@ -430,7 +430,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                     GameWinPanel.SetActive(false);
                     BossSpawnNotification.SetActive(true);
                     TextFadeOut();
-                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+                    //GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
                 }
             }
         }
@@ -446,7 +446,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 {
                     GameWinPanel.SetActive(false);
                     GameResultImage.SetActive(true);
-                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameWinSprite;
                 }
             }
             else
@@ -458,11 +458,11 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 {
                     GameWinPanel.SetActive(false);
                     GameResultImage.SetActive(true);
-                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameDefeatSprite;
                 }
             }
         }
-        else if(winner == "Red")
+        else if (winner == "Red")
         {
             Debug.Log("Red");
             if (PhotonNetwork.IsMasterClient)
@@ -474,7 +474,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 {
                     GameWinPanel.SetActive(false);
                     GameResultImage.SetActive(true);
-                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
+                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameDefeatSprite;
                 }
             }
             else
@@ -486,7 +486,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 {
                     GameWinPanel.SetActive(false);
                     GameResultImage.SetActive(true);
-                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameWinSprite;
                 }
             }
         }
@@ -570,13 +570,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             return;
         }
 
-        GameManager.Instance.isGameEnd = true;
-        onGameEnd.Invoke();
-
         string gameWinMessage = "";
-
-        //GameManager.Instance.winner = "Blue";
-
         if (tag == "Red")
         {
             GameManager.Instance.winner = "Blue";
@@ -587,12 +581,22 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             GameManager.Instance.winner = "Red";
             gameWinMessage = GameManager.Instance.winner;
         }
-
-        // 승패 이미지 호출
-        //StartCoroutine(ResultImagePopUp());
-        ResultPopUp(Time.deltaTime, gameWinMessage);
+        StartCoroutine(CorPopUp(gameWinMessage));
+        GameManager.Instance.isGameEnd = true;
+        onGameEnd.Invoke();
 
         //StartCoroutine(DelayLeaveRoom());
+    }
+
+    float nexusTime;
+    IEnumerator CorPopUp(string str)
+    {
+        while (true)
+        {
+            nexusTime += Time.deltaTime;
+            yield return null;
+            ResultPopUp(nexusTime, str);
+        }
     }
 
     private IEnumerator DelayLeaveRoom()
@@ -885,7 +889,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
     private IEnumerator textFadeout()
     {
-        Debug.Log("김재민가라사대 : 동적할당은 개 ㅆ쓰레기");
         float fadeValue = 1f;
 
         TextMeshProUGUI bossText = BossSpawnNotification.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
