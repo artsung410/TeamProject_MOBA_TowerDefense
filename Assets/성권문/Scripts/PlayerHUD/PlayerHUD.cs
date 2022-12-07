@@ -179,7 +179,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         setSkill();
         StartCoroutine(setHp());
         setMouseCursor();
-        photonView.RPC("RPCInitScore", RpcTarget.All);
+        //photonView.RPC("RPCInitScore", RpcTarget.All);
         for (int i = 0; i < ChatText.Length; i++)
         {
             ChatText[i].text = "";
@@ -190,15 +190,8 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
     private void FixedUpdate()
     {
-        //if (GameManager.Instance.isGameEnd == true)
-        //{
-        //    return;
-        //}
-
         if (PhotonNetwork.IsMasterClient)
         {
-            // 시간 계산 하는부분
-            //if (GameManager.Instance.winner == "Draw") // 2
             if (GameWinPanel.GetComponent<Image>().sprite == GameResultDraw)
             {
                 testTime += Time.deltaTime;
@@ -245,6 +238,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         UpdateStatusUI();
         UpdateHealthUI();
         UpdateInfo();
+        UpdateScore();
 
         if (false == Chating && Input.GetKeyDown(KeyCode.Return))
         {
@@ -331,16 +325,14 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 ResultPopUp(winnerTime, gameWinMessage);
                 GameManager.Instance.isGameEnd = true;
             }
-            photonView.RPC(nameof(RPCInitScore), RpcTarget.All);
 
+            //photonView.RPC(nameof(RPCInitScore), RpcTarget.All); 왜 필요한가?
             onGameEnd.Invoke();
 
-            //승패 이미지 호출
-            //StartCoroutine(DelayLeaveRoom());
         }
     }
 
-    // 시간만 동기화 해줬다
+    // 호스트가 관리하는 부분 : 시간, 게임종료여부, 점수
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting && PhotonNetwork.IsMasterClient)
@@ -349,6 +341,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             stream.SendNext(sec);
             stream.SendNext(min);
             stream.SendNext(isTimeEnd);
+            stream.SendNext(playerScores);
         }
         else if (stream.IsReading)
         {
@@ -356,7 +349,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             this.sec = (float)stream.ReceiveNext();
             this.min = (int)stream.ReceiveNext();
             this.isTimeEnd = (bool)stream.ReceiveNext();
-
+            this.playerScores = (int[])stream.ReceiveNext();
         }
     }
 
@@ -376,21 +369,25 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             playerScores[(int)PlayerColor.Red] += 1;
         }
 
-        // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
-        photonView.RPC(nameof(RPCUpdateScoreText), RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
+        //photonView.RPC(nameof(RPCUpdateScoreText), RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
+    }
+    
+    public void UpdateScore()
+    {
+        scoreTMPro.text = $"{playerScores[(int)PlayerColor.Blue]}        {playerScores[(int)PlayerColor.Red]}";
     }
 
-    [PunRPC]
-    private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
-    {
-        scoreTMPro.text = $"{player1ScoreText}        {player2ScoreText}";
-    }
+    //[PunRPC]
+    //private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
+    //{
+    //    scoreTMPro.text = $"{player1ScoreText}        {player2ScoreText}";
+    //}
 
-    [PunRPC]
-    private void RPCInitScore()
-    {
-        scoreTMPro.text = $"0        0";
-    }
+    //[PunRPC]
+    //private void RPCInitScore()
+    //{
+    //    scoreTMPro.text = $"0        0";
+    //}
 
     #endregion
 
