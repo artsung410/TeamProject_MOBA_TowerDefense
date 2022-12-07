@@ -10,8 +10,8 @@ public class EnergyBall : MonoBehaviourPun
     //             MAIL : gkenfktm@gmail.com         
     // ###############################################
 
-    public GameObject Target; // 플레이어에게서 정보 받아옴
-    float _damage; // 파싱데이터 담을부분
+    public GameObject Target;   // 플레이어에게서 정보 받아옴
+    float _damage;              // 파싱데이터 담을부분
     public float EnergyBallSpeed; 
     public bool StopEnergyBall;
 
@@ -48,13 +48,11 @@ public class EnergyBall : MonoBehaviourPun
     {
         if (!photonView.IsMine)
         {
-            //Debug.Log($"photonView가 내것이 아님");
             return;
         }
 
         if (Target == null)
         {
-            //Debug.Log($"Target이 null 총알 삭제");
             PhotonNetwork.Destroy(gameObject);
         }
         else
