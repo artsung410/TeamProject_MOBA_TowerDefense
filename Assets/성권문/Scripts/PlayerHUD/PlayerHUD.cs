@@ -641,9 +641,27 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
     private IEnumerator setHp()
     {
-        yield return new WaitForSeconds(2f);
-        playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
-        enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>(); 
+        //yield return new WaitForSeconds(2f);
+        //playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
+        //enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>(); 
+        //StopCoroutine(setHp());
+
+        while (true)
+        {
+            yield return null;
+            try
+            {
+                playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
+                Debug.Log(playerHp);
+                enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
+                Debug.Log(enemyHp);
+                break;
+            }
+            catch (Exception ie)
+            {
+                print(ie);
+            }
+        }
         StopCoroutine(setHp());
     }
 
