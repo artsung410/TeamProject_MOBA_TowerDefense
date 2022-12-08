@@ -24,6 +24,7 @@ public class SpritSword : SkillHandler
     private float damage;
     private float width;
     private float vertical;
+    
 
     private void Awake()
     {
@@ -41,6 +42,12 @@ public class SpritSword : SkillHandler
         vertical = Data.RangeValue_2;
         
         currentPos = transform.position;
+
+        speed = Data.Value_2;
+        if (speed == 0)
+        {
+            speed = 20f;
+        }
 
     }
 
@@ -94,7 +101,7 @@ public class SpritSword : SkillHandler
     {
         Debug.Log(Data.Value_2);
         // 발사체는 앞으로 날아가게끔 한다
-        transform.Translate(Time.deltaTime * Data.Value_2 * Vector3.forward);
+        transform.Translate(Time.deltaTime * speed * Vector3.forward);
 
         // 회전부분은 처음회전위치에서 날아간다
         transform.rotation = quaternion;

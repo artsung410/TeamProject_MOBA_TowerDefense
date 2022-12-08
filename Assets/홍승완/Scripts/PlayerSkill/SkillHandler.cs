@@ -26,6 +26,8 @@ public abstract class SkillHandler : MonoBehaviourPun, IDamageable
     protected string _myTag;
     protected string enemyTag;
 
+    protected float speed;
+
     public PlayerSkillDatas Data;
 
     // 플레이어 HeroAbility를 받아옴

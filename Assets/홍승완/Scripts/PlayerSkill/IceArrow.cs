@@ -38,6 +38,11 @@ public class IceArrow : SkillHandler
 
         currentPos = transform.position;
 
+        speed = Data.Value_2;
+        if (speed == 0)
+        {
+            speed = 20f;
+        }
     }
 
     // Start is called before the first frame update
@@ -91,7 +96,7 @@ public class IceArrow : SkillHandler
 
     public override void SkillUpdatePosition()
     {
-        transform.Translate(Time.deltaTime * Data.Value_2 * Vector3.forward);
+        transform.Translate(Time.deltaTime * speed * Vector3.forward);
         transform.rotation = quaternion;
     }
 
