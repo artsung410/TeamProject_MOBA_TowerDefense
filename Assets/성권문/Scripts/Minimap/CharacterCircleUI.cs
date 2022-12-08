@@ -13,24 +13,28 @@ public class CharacterCircleUI : MonoBehaviourPun
 
     Quaternion PrevRotation;
     GameObject player;
+    public Image heroImg;
 
     private void OnEnable()
     {
-        transform.Rotate(-90, -135f, 0f);
+        transform.rotation = Quaternion.Euler(new Vector3(-90f, -45f, -135f));
         PrevRotation = transform.rotation;
 
         if (PhotonNetwork.IsMasterClient)
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 1 && photonView.IsMine)
             {
-                transform.GetChild(0).GetComponent<Image>().color = Color.blue;
+                transform.GetChild(1).GetComponent<Image>().color = Color.blue;
                 player = GameManager.Instance.CurrentPlayers[0];
+                heroImg.sprite = player.GetComponent<Player>().playerIcon;
             }
 
             else
             {
-                transform.GetChild(0).GetComponent<Image>().color = Color.red;
+                transform.GetChild(1).GetComponent<Image>().color = Color.red;
                 player = GameManager.Instance.CurrentPlayers[1];
+                heroImg.sprite = player.GetComponent<Player>().playerIcon;
+
             }
         }
 
@@ -38,14 +42,18 @@ public class CharacterCircleUI : MonoBehaviourPun
         {
             if (PhotonNetwork.LocalPlayer.ActorNumber == 2 && photonView.IsMine)
             {
-                transform.GetChild(0).GetComponent<Image>().color = Color.red;
+                transform.GetChild(1).GetComponent<Image>().color = Color.red;
                 player = GameManager.Instance.CurrentPlayers[0];
+                heroImg.sprite = player.GetComponent<Player>().playerIcon;
+
             }
 
             else
             {
-                transform.GetChild(0).GetComponent<Image>().color = Color.blue;
+                transform.GetChild(1).GetComponent<Image>().color = Color.blue;
                 player = GameManager.Instance.CurrentPlayers[1];
+                heroImg.sprite = player.GetComponent<Player>().playerIcon;
+
             }
         }
     }

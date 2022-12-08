@@ -285,7 +285,7 @@ public class DrawManager : MonoBehaviour
         {
             selectInventory = towerInventory;
         }
-        else if (boxName == "Buff Tower" || boxName == "Buff Tower_P")
+        else if (boxName == "Buff & Debuff Tower" || boxName == "Buff & Debuff Tower_P")
         {
             selectInventory = towerInventory;
         }
@@ -336,6 +336,8 @@ public class DrawManager : MonoBehaviour
                 }
             }
             itemStruct.itemType = ResultItem[i].itemType;
+            itemStruct.towerData = ResultItem[i].towerData;
+            itemStruct.skillData = ResultItem[i].skillData;
             itemStruct.itemWeight = ResultItem[i].itemWeight;
             itemStruct.maxStack = ResultItem[i].maxStack;
             itemStruct.indexItemInList = ResultItem[i].indexItemInList;
@@ -422,7 +424,7 @@ public class DrawManager : MonoBehaviour
         {
             for (int j = 0; j < selectInventory.transform.childCount; j++) // 인벤 슬롯 만큼 반복해서 빈 슬롯을 찾는다.
             {
-                for (int i = 0; i <= idListDistinct.Count; i++) // 인벤토리 갯수 만큼 반복
+                for (int i = 0; i < sameItem.Count; i++) // 인벤토리 갯수 만큼 반복
                 {
                     // 빈 슬롯 찾기
                     if (selectInventory.transform.GetChild(j).childCount == 0)
@@ -435,6 +437,16 @@ public class DrawManager : MonoBehaviour
                         {
                             // Key가 존재하면
                             itemStruct.itemValue = idListDistinct[itemStruct.itemID];
+                            // sameItem에 있는 같은 키를 삭제한다. 자기자신은 삭제 안함 왜냐면 밑에서 삭제하니까
+                            for (int del = 0;  del < sameItem.Count;  del++)
+                            {
+                                if (itemStruct.itemID == sameItem[del].itemID)
+                                {
+                                    if (del == i)
+                                        continue;
+                                    sameItem.RemoveAt(del);
+                                }
+                            }
                         }
                         else
                         {
@@ -444,6 +456,8 @@ public class DrawManager : MonoBehaviour
                         itemStruct.itemIcon = sameItem[i].itemIcon;
                         itemStruct.objType = sameItem[i].objType;
                         itemStruct.itemType = sameItem[i].itemType;
+                        itemStruct.towerData = sameItem[i].towerData;
+                        itemStruct.skillData = sameItem[i].skillData;
                         itemStruct.itemWeight = sameItem[i].itemWeight;
                         itemStruct.maxStack = sameItem[i].maxStack;
                         itemStruct.indexItemInList = sameItem[i].indexItemInList;
@@ -461,6 +475,8 @@ public class DrawManager : MonoBehaviour
                         itemProduce.item.objType = StructResultItem[i].objType;
                         itemProduce.item.itemValue = StructResultItem[i].itemValue;
                         itemProduce.item.itemType = StructResultItem[i].itemType;
+                        itemProduce.item.towerData = StructResultItem[i].towerData;
+                        itemProduce.item.skillData = StructResultItem[i].skillData;
                         itemProduce.item.itemWeight = StructResultItem[i].itemWeight;
                         itemProduce.item.maxStack = StructResultItem[i].maxStack;
                         itemProduce.item.indexItemInList = StructResultItem[i].indexItemInList;
@@ -471,9 +487,10 @@ public class DrawManager : MonoBehaviour
                         itemObjProduce.transform.localScale = new Vector3(0.55f, 0.7f, 0f);
 
                         // 넣었으면 아이템 삭제
+                        StructResultItem.RemoveAt(i);
                         sameItem.RemoveAt(i);
                         idListDistinct.Remove(itemStruct.itemID);
-                        if (idListDistinct.Count == 0)
+                        if (sameItem.Count == 0)
                             break;
                     }
                 }
@@ -518,6 +535,8 @@ public class DrawManager : MonoBehaviour
                     itemProduce.item.objType = StructResultItem[j].objType;
                     itemProduce.item.itemValue = StructResultItem[j].itemValue;
                     itemProduce.item.itemType = StructResultItem[j].itemType;
+                    itemProduce.item.towerData = StructResultItem[j].towerData;
+                    itemProduce.item.skillData = StructResultItem[j].skillData;
                     itemProduce.item.itemWeight = StructResultItem[j].itemWeight;
                     itemProduce.item.maxStack = StructResultItem[j].maxStack;
                     itemProduce.item.indexItemInList = StructResultItem[j].indexItemInList;

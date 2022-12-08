@@ -115,7 +115,7 @@ public class Whirlwind : SkillHandler
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 BuffBlueprint buff = CSVtest.Instance.BuffDic[Data.ID + 50];
-                if (other.gameObject.layer == 7)
+                if (other.gameObject.layer == 7 && other.CompareTag(enemyTag))
                 {
                     BuffManager.Instance.AddBuff(buff);
                 }
@@ -130,5 +130,4 @@ public class Whirlwind : SkillHandler
         StopAllCoroutines();
     }
 
-    // TODO : 휠윈드 군중제어 슬로우 존재
 }

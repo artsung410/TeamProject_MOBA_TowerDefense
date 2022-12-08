@@ -5762,7 +5762,7 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1.5
+  m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0.92, z: 0}
 --- !u!114 &3423317172349975089
@@ -5778,6 +5778,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eminontpye: 0
+  _eminontpyeSize: 0
+  minionDB:
+    Name: 
+    ID: 0
+    GroupID: 0
+    Rank: 0
+    Type: 0
+    Projectile_Speed: 0
+    Projectile_Type: 0
+    Attack: 0
+    Attack_Speed: 0
+    Range: 0
+    Move_Speed: 0
+    Hp: 0
+    Exp: 0
+    Icon_Blue: {fileID: 0}
+    Icon_Red: {fileID: 0}
   moveSpeed: 0
   attackRange: 6
   Damage: 10
@@ -5788,9 +5805,7 @@ MonoBehaviour:
   CurrnetHP: 0
   EnemyTag: 
   myTag: 
-  isDead: 0
   _capsuleCollider: {fileID: 0}
-  hit: 0
   _target: {fileID: 0}
   Targeton: 0
   _estate: 0
@@ -5900,8 +5915,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ShowLayerWeightsInspector: 1
   ShowParameterInspector: 1
-  m_SynchronizeParameters: []
-  m_SynchronizeLayers: []
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 0
+    Name: Attack
+  - Type: 4
+    SynchronizeType: 0
+    Name: Walk
+  - Type: 9
+    SynchronizeType: 0
+    Name: TakeDamage
+  - Type: 9
+    SynchronizeType: 0
+    Name: Die
+  - Type: 9
+    SynchronizeType: 0
+    Name: Run
+  - Type: 1
+    SynchronizeType: 0
+    Name: Speed
+  m_SynchronizeLayers:
+  - SynchronizeType: 0
+    LayerIndex: 0
 --- !u!1 &2434436351185935688
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,3 +1,6 @@
+#define JM_VER
+//#define HS_VER
+
 using Photon.Pun;
 using System.Collections;
 using TMPro;
@@ -86,7 +89,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     [Header("BossMonsterUI")]
     public GameObject BossSpawnNotification;
 
-    
+
 
     private int[] playerScores = { 0, 0 };
 
@@ -149,7 +152,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     {
         // 게임 제한 시간 관련 코드
         TrojanHorse tro = GameObject.FindGameObjectWithTag("GetCaller").gameObject.GetComponent<TrojanHorse>();
-        int time = tro.limitedTime;
+        int time = 600;
 
         //시, 분, 초 선언
         int hours, minute, second;
@@ -161,44 +164,46 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         min = minute;
         sec = second;
         BossSpawnNotification.SetActive(false);
+
+
+        bossText = BossSpawnNotification.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
     }
 
     private void Start()
     {
         imigeCourutine = ImageFadeIn();
-        resultImigePopup = ResultImagePopUp();
+        //resultImigePopup = ResultImagePopUp();
         textCouruntine = textFadeout();
-        
+
         StartCoroutine(SetPlayer());
         setSkill();
         StartCoroutine(setHp());
         setMouseCursor();
-        photonView.RPC("RPCInitScore", RpcTarget.All);
+        //photonView.RPC("RPCInitScore", RpcTarget.All);
         for (int i = 0; i < ChatText.Length; i++)
         {
             ChatText[i].text = "";
         }
     }
 
+    float testTime;
+
     private void FixedUpdate()
     {
-
-        if (GameManager.Instance.isGameEnd == true)
-        {
-            return;
-        }
-
         if (PhotonNetwork.IsMasterClient)
         {
-            // 시간 계산 하는부분
-            if (GameManager.Instance.winner == "Draw") // 2
+            if (GameWinPanel.GetComponent<Image>().sprite == GameResultDraw)
             {
-                if ((int)sec >= 60)
+                testTime += Time.deltaTime;
+                if (testTime >= 1f)
                 {
-                    sec = 0;
-                    min++;
+                    if ((int)sec >= 60)
+                    {
+                        sec = 0;
+                        min++;
+                    }
+                    sec += Time.deltaTime;
                 }
-                sec += Time.deltaTime;
             }
             else
             {
@@ -209,11 +214,18 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
                 }
                 sec -= Time.deltaTime;
 
+                if (min <= 0 && sec <= 0)
+                {
+                    min = 0;
+                    sec = 0;
+                    isTimeEnd = true;
+                }
             }
-        }
-        // 시간을 이용한 구현부분
-        Timer(min, sec);
 
+        }
+
+        // 시간을 이용한 구현부분
+        Timer(min, sec, isTimeEnd);
     }
 
     void Update()
@@ -226,6 +238,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         UpdateStatusUI();
         UpdateHealthUI();
         UpdateInfo();
+        UpdateScore();
 
         if (false == Chating && Input.GetKeyDown(KeyCode.Return))
         {
@@ -262,120 +275,83 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
     #region 🕦 Timer & Scroe Panel 🕦
 
-    void Timer(int min, float sec)
+    public bool isTimeEnd;
+    float winnerTime;
+    float neutralTime;
+    void Timer(int min, float sec, bool end)
     {
         timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-
         if (NeutalMonsterDie)
         {
+            neutralTime += Time.deltaTime;
             Debug.Log("시작");
             Debug.Log($"{GameManager.Instance.winner}");
             onGameEnd.Invoke();
-            // 승패 이미지 호출
-            StartCoroutine(ResultImagePopUp());
+            ResultPopUp(neutralTime, GameManager.Instance.winner);
             return;
         }
 
-        if (min < 0) // 3
+        // 호스트는 조건문이 실행, 클라이언트는 실행안됨
+        if (end == true) // 3
         {
             string gameWinMessage = "";
-
+            Debug.Log("time's up");
+            winnerTime += Time.deltaTime;
             if (playerScores[(int)PlayerColor.Blue] == playerScores[(int)PlayerColor.Red])
             {
+                Debug.Log("&&&&&&&&&&&&&& Draw &&&&&&&&&&&&&&&");
                 GameManager.Instance.winner = "Draw";
+                Debug.Log(GameManager.Instance.winner);
                 gameWinMessage = GameManager.Instance.winner;
-                StartCoroutine(resultImigePopup);
+                ResultPopUp(winnerTime, gameWinMessage);
                 return;
             }
             else if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
             {
+                Debug.Log("&&&&&&&&&&&&&& Blue &&&&&&&&&&&&&&&");
                 GameManager.Instance.winner = "Blue";
                 gameWinMessage = GameManager.Instance.winner;
+                Debug.Log("Image Call");
+                //StartCoroutine(resultImigePopup);
+                ResultPopUp(winnerTime, gameWinMessage);
                 GameManager.Instance.isGameEnd = true;
             }
             else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
             {
+                Debug.Log("&&&&&&&&&&&&&& Red &&&&&&&&&&&&&&&");
                 GameManager.Instance.winner = "Red";
                 gameWinMessage = GameManager.Instance.winner;
+                Debug.Log("Image Call");
+                ResultPopUp(winnerTime, gameWinMessage);
                 GameManager.Instance.isGameEnd = true;
             }
-            photonView.RPC(nameof(RPCInitScore), RpcTarget.All);
 
-            //photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
-            min = 0;
-            sec = 0;
-            //timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-
+            //photonView.RPC(nameof(RPCInitScore), RpcTarget.All); 왜 필요한가?
             onGameEnd.Invoke();
 
-            //승패 이미지 호출
-            StartCoroutine(resultImigePopup);
-            StartCoroutine(DelayLeaveRoom());
         }
     }
 
-    //public void test(int min, float sec)
-    //{
-    //    Debug.Log($"min : {min}\n" +
-    //        $"sec : {sec}");
-
-    //    if (min < 0) // 3
-    //    {
-    //        string gameWinMessage = "";
-
-    //        if (playerScores[(int)PlayerColor.Blue] == playerScores[(int)PlayerColor.Red])
-    //        {
-    //            GameManager.Instance.winner = "Draw";
-    //        }
-    //        else if (playerScores[(int)PlayerColor.Blue] > playerScores[(int)PlayerColor.Red])
-    //        {
-    //            GameManager.Instance.winner = "Blue";
-    //            gameWinMessage = GameManager.Instance.winner;
-    //            GameManager.Instance.isGameEnd = true;
-    //        }
-    //        else if ((playerScores[(int)PlayerColor.Blue] < playerScores[(int)PlayerColor.Red]))
-    //        {
-    //            GameManager.Instance.winner = "Red";
-    //            gameWinMessage = GameManager.Instance.winner;
-    //            GameManager.Instance.isGameEnd = true;
-    //        }
-    //        photonView.RPC(nameof(RPCInitScore), RpcTarget.All);
-
-    //        photonView.RPC("RPC_ActivationGameWinUI", RpcTarget.All, gameWinMessage);
-    //        min = 0;
-    //        sec = 0;
-    //        timerTMPro.text = string.Format("{0:D2}:{1:D2}", min, (int)sec);
-
-    //        onGameEnd.Invoke();
-
-    //         승패 이미지 호출
-    //        StartCoroutine(resultImigePopup);
-
-    //        StartCoroutine(DelayLeaveRoom());
-    //        return;
-    //    }
-    //}
-
-    // 시간만 동기화 해줬다
+    // 호스트가 관리하는 부분 : 시간, 게임종료여부, 점수
     public void OnPhotonSerializeView(PhotonStream stream, PhotonMessageInfo info)
     {
         if (stream.IsWriting && PhotonNetwork.IsMasterClient)
         {
             // We own this player: send the others our data
-            //stream.SendNext(timerTMPro.text);
             stream.SendNext(sec);
             stream.SendNext(min);
+            stream.SendNext(isTimeEnd);
+            stream.SendNext(playerScores);
         }
-        else if(stream.IsReading)
+        else if (stream.IsReading)
         {
             // Network player, receive data
-            //this.timerTMPro.text = (string)stream.ReceiveNext();
             this.sec = (float)stream.ReceiveNext();
             this.min = (int)stream.ReceiveNext();
-            
+            this.isTimeEnd = (bool)stream.ReceiveNext();
+            this.playerScores = (int[])stream.ReceiveNext();
         }
     }
-
 
     public void AddScoreToEnemy(string tag)
     {
@@ -393,21 +369,25 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             playerScores[(int)PlayerColor.Red] += 1;
         }
 
-        // RpcTarget : 어떤 클라이언트에게 동기화를 징행할 것인지, All이면 모든 클라이언트들에게 동기화 진행.
-        photonView.RPC("RPCUpdateScoreText", RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
+        //photonView.RPC(nameof(RPCUpdateScoreText), RpcTarget.All, playerScores[0].ToString(), playerScores[1].ToString());
+    }
+    
+    public void UpdateScore()
+    {
+        scoreTMPro.text = $"{playerScores[(int)PlayerColor.Blue]}        {playerScores[(int)PlayerColor.Red]}";
     }
 
-    [PunRPC]
-    private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
-    {
-        scoreTMPro.text = $"{player1ScoreText}        {player2ScoreText}";
-    }
+    //[PunRPC]
+    //private void RPCUpdateScoreText(string player1ScoreText, string player2ScoreText)
+    //{
+    //    scoreTMPro.text = $"{player1ScoreText}        {player2ScoreText}";
+    //}
 
-    [PunRPC]
-    private void RPCInitScore()
-    {
-        scoreTMPro.text = $"0        0";
-    }
+    //[PunRPC]
+    //private void RPCInitScore()
+    //{
+    //    scoreTMPro.text = $"0        0";
+    //}
 
     #endregion
 
@@ -419,100 +399,150 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
     #region 🚩 GameResult Panel 🚩
 
-    // 승패 결과 이미지 팝업 함수
-    private IEnumerator ResultImagePopUp()
+    private void ResultPopUp(float elapse, string winner)
     {
-
-        Debug.Log("1");
-        Debug.Log("두번째시작");
-        Debug.Log($"{GameManager.Instance.winner}"); // 여기서 draw 로 들어감왜??
-        // 오브젝트 활성화
-        GameWinPanel.SetActive(true); 
-
-        //GameManager.Instance.winner = "Blue";
-
-        // 승자가 블루면
-        if (GameManager.Instance.winner == "Draw")
+        if (winner == "Draw")
         {
-
+            Debug.Log("Draw");
             if (PhotonNetwork.IsMasterClient)
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
+                GameWinPanel.SetActive(true);
                 FadeinImige();
-                yield return Delay500;
-
-                GameWinPanel.SetActive(false);
-                BossSpawnNotification.SetActive(true);
-                StartCoroutine(textCouruntine);
-
-
-                ////GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+                if (elapse >= 5f)
+                {
+                    GameWinPanel.SetActive(false);
+                    BossSpawnNotification.SetActive(true);
+                    TextFadeOut();
+                    //GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+                }
             }
             else
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameResultDraw;
+                GameWinPanel.SetActive(true);
                 FadeinImige();
-                yield return Delay500;
-                GameWinPanel.SetActive(false);
-                BossSpawnNotification.SetActive(true);
-                StartCoroutine(textCouruntine);
-
-                //GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+                if (elapse >= 5f)
+                {
+                    GameWinPanel.SetActive(false);
+                    BossSpawnNotification.SetActive(true);
+                    TextFadeOut();
+                    //GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDraw;
+                }
             }
-            
         }
-        else if (GameManager.Instance.winner == "Blue")
+        else if (winner == "Blue")
         {
-            Debug.Log("2 "); 
+            Debug.Log("Blue");
             if (PhotonNetwork.IsMasterClient)
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
+                GameWinPanel.SetActive(true);
                 FadeinImige();
-                Debug.Log("3");
-                yield return Delay500;
-                GameWinPanel.SetActive(false);
-                GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+                if (elapse >= 5f)
+                {
+                    GameWinPanel.SetActive(false);
+                    GameResultImage.SetActive(true);
+                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameWinSprite;
+                }
             }
             else
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
+                GameWinPanel.SetActive(true);
                 FadeinImige();
-                Debug.Log("4");
-                yield return Delay500;
-                GameWinPanel.SetActive(false);
-                GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
+                if (elapse >= 5f)
+                {
+                    GameWinPanel.SetActive(false);
+                    GameResultImage.SetActive(true);
+                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameDefeatSprite;
+                }
             }
         }
-        else if (GameManager.Instance.winner == "Red")
+        else if (winner == "Red")
         {
+            Debug.Log("Red");
             if (PhotonNetwork.IsMasterClient)
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
+                GameWinPanel.SetActive(true);
                 FadeinImige();
-
-                yield return Delay500;
-                GameWinPanel.SetActive(false);
-                GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
+                if (elapse >= 5f)
+                {
+                    GameWinPanel.SetActive(false);
+                    GameResultImage.SetActive(true);
+                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameDefeatSprite;
+                }
             }
             else
             {
                 GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
+                GameWinPanel.SetActive(true);
                 FadeinImige();
-
-                yield return Delay500;
-                GameWinPanel.SetActive(false);
-                GameResultImage.SetActive(true);
-                GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+                if (elapse >= 5f)
+                {
+                    GameWinPanel.SetActive(false);
+                    GameResultImage.SetActive(true);
+                    GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameWinSprite;
+                }
             }
         }
-        yield return null;
     }
 
+    // 승패 결과 이미지 팝업 함수
+    //private IEnumerator ResultImagePopUp()
+    //{
+    //    Debug.Log($"result image popup start");
+    //    Debug.Log(GameManager.Instance.winner);
+    //    if (GameManager.Instance.winner == "Blue")
+    //    {
+    //        Debug.Log("2 "); 
+    //        if (PhotonNetwork.IsMasterClient)
+    //        {
+    //            GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
+    //            FadeinImige();
+    //            Debug.Log("3");
+    //            yield return Delay500;
+    //            GameWinPanel.SetActive(false);
+    //            GameResultImage.SetActive(true);
+    //            GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+    //        }
+    //        else
+    //        {
+    //            GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
+    //            FadeinImige();
+    //            Debug.Log("4");
+    //            yield return Delay500;
+    //            GameWinPanel.SetActive(false);
+    //            GameResultImage.SetActive(true);
+    //            GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
+    //        }
+    //    }
+    //    else if (GameManager.Instance.winner == "Red")
+    //    {
+    //        if (PhotonNetwork.IsMasterClient)
+    //        {
+    //            GameWinPanel.GetComponent<Image>().sprite = GameDefeatSprite;
+    //            FadeinImige();
+
+    //            yield return Delay500;
+    //            GameWinPanel.SetActive(false);
+    //            GameResultImage.SetActive(true);
+    //            GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultDef;
+    //        }
+    //        else
+    //        {
+    //            GameWinPanel.GetComponent<Image>().sprite = GameWinSprite;
+    //            FadeinImige();
+
+    //            yield return Delay500;
+    //            GameWinPanel.SetActive(false);
+    //            GameResultImage.SetActive(true);
+    //            GameResultImage.transform.GetChild(0).GetChild(1).GetComponent<Image>().sprite = GameResultWin;
+    //        }
+    //    }
+    //    yield return null;
+    //}
 
     // 페이드 인 함수
     private IEnumerator ImageFadeIn()
@@ -522,13 +552,12 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         while (fadeValue <= 1.0f)
         {
             fadeValue += 0.01f;
-
             yield return new WaitForSeconds(0.01f);
 
             gameWinPanel.color = new Color(255, 255, 255, fadeValue);
 
+            yield return null; // 코루틴 한번 도는지 확인해주는 작업?
         }
-
     }
 
     public void ActivationGameWinUI_Nexus(string tag)
@@ -538,13 +567,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             return;
         }
 
-        GameManager.Instance.isGameEnd = true;
-        onGameEnd.Invoke();
-
         string gameWinMessage = "";
-
-        //GameManager.Instance.winner = "Blue";
-
         if (tag == "Red")
         {
             GameManager.Instance.winner = "Blue";
@@ -555,11 +578,22 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
             GameManager.Instance.winner = "Red";
             gameWinMessage = GameManager.Instance.winner;
         }
-
-        // 승패 이미지 호출
-        StartCoroutine(ResultImagePopUp());
+        StartCoroutine(CorPopUp(gameWinMessage));
+        GameManager.Instance.isGameEnd = true;
+        onGameEnd.Invoke();
 
         //StartCoroutine(DelayLeaveRoom());
+    }
+
+    float nexusTime;
+    IEnumerator CorPopUp(string str)
+    {
+        while (true)
+        {
+            nexusTime += Time.deltaTime;
+            yield return null;
+            ResultPopUp(nexusTime, str);
+        }
     }
 
     private IEnumerator DelayLeaveRoom()
@@ -607,9 +641,22 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
     private IEnumerator setHp()
     {
-        yield return new WaitForSeconds(1.5f);
-        playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
-        enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>(); 
+        while (true)
+        {
+            yield return null;
+            try
+            {
+                playerHp = GameManager.Instance.CurrentPlayers[0].GetComponent<Health>();
+                Debug.Log(playerHp);
+                enemyHp = GameManager.Instance.CurrentPlayers[1].GetComponent<Health>();
+                Debug.Log(enemyHp);
+                break;
+            }
+            catch (Exception ie)
+            {
+                print(ie);
+            }
+        }
         StopCoroutine(setHp());
     }
 
@@ -654,16 +701,16 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         playerExperienceBar.fillAmount = playerStat.acquiredExp / playerStat.maxExp;
 
         // DPS
-        PlayerDpsText.text = $"{playerStat.attackDmg / playerStat.attackSpeed}";
+        PlayerDpsText.text = $"{Math.Round(playerStat.attackDmg / playerStat.attackSpeed)}";
 
         // 이동속도
-        PlayerSpeedText.text = $"{playerStat.moveSpeed}";
+        PlayerSpeedText.text = $"{Math.Round(playerStat.moveSpeed)}";
 
         // 초상화
         PlayerPortrait.sprite = playerScript.playerIcon;
 
         // 레벨
-        PlayerLevelText.text = $"{playerStat.level}";
+        PlayerLevelText.text = $"{playerStat.Level}";
     }
 
     #endregion
@@ -764,7 +811,7 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         InfoPanel.SetActive(true);
 
         InfoIcon.sprite = player.playerIcon;
-        InfoLevel.text = player.playerStats.level.ToString();
+        InfoLevel.text = player.playerStats.Level.ToString();
     }
 
     public void ActivationTowerInfoUI(Turret turret)
@@ -798,13 +845,24 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
         InfoSpdMpro.text = spd.ToString();
         InfoLevel.text = minion.minionDB.Rank.ToString();
 
+        // 들어온 아이콘이 용일때 리턴
+        if(icon.name == "Dragonknight18")
+        {
+            InfoIcon.sprite = icon;
+            return;
+        }
+
         if (minion.gameObject.tag == "Blue")
         {
             InfoIcon.sprite = minion.minionDB.Icon_Blue;
         }
-        else
+        else if (minion.gameObject.tag == "Red")
         {
             InfoIcon.sprite = minion.minionDB.Icon_Red;
+        }
+        else
+        {
+            InfoIcon.sprite = icon;
         }
     }
 
@@ -837,7 +895,6 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
     private void FadeinImige()
     {
         StartCoroutine(imigeCourutine);
-
     }
 
     private IEnumerator textFadeout()
@@ -846,19 +903,41 @@ public class PlayerHUD : MonoBehaviourPun, IPunObservable
 
         TextMeshProUGUI bossText = BossSpawnNotification.transform.GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
 
-        while (fadeValue >= 0f)
+        while (true)
         {
             fadeValue -= 0.2f;
-            if (fadeValue <= 0f)
+            yield return new WaitForSeconds(1f);
+            if (fadeValue <= 0f && BossMonsterSpawnON == false)
             {
                 BossMonsterSpawnON = true;
                 GameManager.Instance.bossMonsterSpawn();
+                yield break;
             }
-            yield return new WaitForSeconds(0.1f);
 
             bossText.color = new Color(255, 255, 255, fadeValue);
+            yield return null;
+
         }
     }
+
+    float fadeTest = 1f;
+    TextMeshProUGUI bossText;
+    public void TextFadeOut()
+    {
+        fadeTest -= 0.01f;
+        if (BossMonsterSpawnON)
+        {
+            return;
+        }
+
+        if (fadeTest <= 0f && BossMonsterSpawnON == false)
+        {
+            BossMonsterSpawnON = true;
+            GameManager.Instance.bossMonsterSpawn();
+        }
+        bossText.color = new Color(255, 255, 255, fadeTest);
+    }
+
 
     #region Report System
 

@@ -334,6 +334,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _eminontpye: 0
+  _eminontpyeSize: 0
   minionDB:
     Name: 
     ID: 0
@@ -360,7 +361,6 @@ MonoBehaviour:
   CurrnetHP: 0
   EnemyTag: Red
   myTag: 
-  isDead: 0
   _capsuleCollider: {fileID: 0}
   _target: {fileID: 6588534852443025334, guid: a3c77e8767700ef4ba6bc93e206fdece, type: 3}
   Targeton: 0
@@ -400,6 +400,9 @@ MonoBehaviour:
   - Type: 9
     SynchronizeType: 0
     Name: Die
+  - Type: 1
+    SynchronizeType: 0
+    Name: Speed
   m_SynchronizeLayers:
   - SynchronizeType: 2
     LayerIndex: 0

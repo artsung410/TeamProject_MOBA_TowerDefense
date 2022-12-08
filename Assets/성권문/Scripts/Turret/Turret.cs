@@ -131,12 +131,12 @@ public class Turret : MonoBehaviourPun
         // 타워 데이터 -> 타워 투사체 속도적용
         projectiles_Speed = towerDB.Projectile_Speed;
 
-        Debug.Log($"[타워]{ PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
+        //Debug.Log($"[타워]{ PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
     }
 
     private IEnumerator SetBuff()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return YieldInstructionCache.WaitForSeconds(0.5f);
         BuffBlueprint buff = CSVtest.Instance.BuffDic[towerDB.buffID];
         Debug.Log(buff.Name);
         BuffManager.Instance.AddBuff(buff);
@@ -255,12 +255,13 @@ public class Turret : MonoBehaviourPun
 
         while (true)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return YieldInstructionCache.WaitForSeconds(0.01f);
             prevValue -= delta;
             hitbarImage.fillAmount = prevValue;
 
             if (prevValue - value < 0.001f)
             {
+                hitbarImage.fillAmount = healthbarImage.fillAmount;
                 break;
             }
         }
@@ -302,7 +303,7 @@ public class Turret : MonoBehaviourPun
 
     IEnumerator Destruction(GameObject particle)
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return YieldInstructionCache.WaitForSeconds(1.5f);
 
         PhotonNetwork.Destroy(particle);
     }

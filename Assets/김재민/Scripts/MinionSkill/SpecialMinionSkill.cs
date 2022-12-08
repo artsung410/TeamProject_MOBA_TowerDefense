@@ -21,6 +21,9 @@ public class SpecialMinionSkill : SkillHandler
     [SerializeField]
     private GameObject dragon;
 
+    [SerializeField]
+    private GameObject Effect;
+
 
 
 
@@ -30,16 +33,20 @@ public class SpecialMinionSkill : SkillHandler
     {
 
         //Instance = this;   
+        
     }
     private void Start()
     {
         
         elapsedTime = 0f;
         if (_ability == null) return;
+        transform.GetChild(0).transform.GetChild(0).GetComponent<Enemybase>().SetInitData((int)Data.Value_1);
+
+
         _ability.OnLock(true);
         gameObject.tag = GetMytag(_ability);
         InvokeRepeating(nameof(nearFindObject), 0, 0.5f);
-
+        dragon = transform.GetChild(0).gameObject;
 
     }
 
@@ -51,14 +58,36 @@ public class SpecialMinionSkill : SkillHandler
         }
         if (_ability.gameObject.GetComponent<Health>().isDeath == true)
         {
-            PhotonNetwork.Destroy(gameObject);
+            if (photonView.IsMine)
+            {
+             PhotonNetwork.Destroy(gameObject);
+            }
+        }
+
+        if (gameObject == null)
+        {
+            return;
         }
 
         if (photonView.IsMine)
         {
+
             SkillUpdatePosition();
             SkillHoldingTime(15f);   
         }
+
+        if(dragon == null)
+        {
+            if(photonView.IsMine)
+            {
+                PhotonNetwork.Destroy(gameObject);
+            }
+        }
+    }
+
+    private void LateUpdate()
+    {
+        
     }
 
     public override void SkillHoldingTime(float time) // 지속시간
@@ -71,7 +100,6 @@ public class SpecialMinionSkill : SkillHandler
         if(elapsedTime >= time)
         {
             PhotonNetwork.Destroy(gameObject);
-            
         }
 
     }
@@ -88,16 +116,24 @@ public class SpecialMinionSkill : SkillHandler
     }
 
     [PunRPC]
-
     public void RPC_RunAway()
     {
+
+        Effect.SetActive(false);
         transform.GetChild(0).transform.GetChild(0).GetComponent<CapsuleCollider>().enabled = true;
         transform.GetChild(0).transform.GetChild(0).GetComponent<NavMeshAgent>().enabled = true;
         transform.DetachChildren();
+        Effect.SetActive(true); 
+
     }
 
    private void nearFindObject()
     {
+        if (gameObject == null)
+        {
+            return;
+        }
+
         Collider[] Enemys = Physics.OverlapSphere(transform.position, 15f);
         foreach (Collider col in Enemys)
         {
@@ -114,7 +150,8 @@ public class SpecialMinionSkill : SkillHandler
                     if (transform.GetChild(0) != null)
                     {
                         gameObject.transform.GetChild(0).GetChild(0).GetComponent<SpecialAttack>().target = col.transform;
-                        gameObject.transform.GetChild(0).transform.position = col.transform.position;   
+                        gameObject.transform.GetChild(0).transform.position = col.transform.position;
+                        gameObject.transform.GetChild(0).GetChild(0).transform.position = gameObject.transform.GetChild(0).transform.position + new Vector3(0,0, 4f);
                         TargetOn = true;
                         RunAway();
                     }
@@ -122,6 +159,12 @@ public class SpecialMinionSkill : SkillHandler
             }
         }
     }
+
+
+
+
+
+
 
 
 }

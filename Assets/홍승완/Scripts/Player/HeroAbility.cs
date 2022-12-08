@@ -36,22 +36,19 @@ public class HeroAbility : MonoBehaviourPun
     GameObject go;
     PlayerBehaviour _behaviour;
 
-    //TrojanHorse _trojanHorse;
-
-    #region private 변수들
-
-
-    #endregion
-
     void Awake()
     {
         AbilityPrefabs = new GameObject[4];
         _behaviour = GetComponent<PlayerBehaviour>();
     }
 
+    private void OnEnable()
+    {
+        OnLock(false);
+    }
+
     private IEnumerator Start()
     {
-        Debug.Log("ability start");
         while (true)
         {
 #if OLD_VER
@@ -87,7 +84,6 @@ public class HeroAbility : MonoBehaviourPun
 
                 for (int i = 0; i < 4; i++)
                 {
-                    Debug.Log(SkillManager.Instance.Datas[i].Name.name);
                     AbilityPrefabs[i] = SkillManager.Instance.Datas[i].Name;
                 }
                 yield break;
@@ -294,7 +290,7 @@ public class HeroAbility : MonoBehaviourPun
 
     public void OnLock(bool isLock)
     {
-        Debug.Log("onlock 실행");
+        //Debug.Log("onlock 실행");
         photonView.RPC(nameof(RPC_Lock), RpcTarget.All, isLock);
     }
 
@@ -302,6 +298,5 @@ public class HeroAbility : MonoBehaviourPun
     public void RPC_Lock(bool isLock)
     {
         isActive = isLock;
-        Debug.Log(isActive);
     }
 }

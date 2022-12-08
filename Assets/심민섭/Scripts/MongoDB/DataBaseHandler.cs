@@ -48,7 +48,7 @@ public class DataBaseHandler : MonoBehaviour
         }
     }*/
 
-    public class Nomal
+    /*public class Nomal
     {
         public string warrior { get; set; }
         public string wizard { get; set; }
@@ -83,7 +83,7 @@ public class DataBaseHandler : MonoBehaviour
         collection = database.GetCollection<Root>("TestCollection");
         Debug.Log("구조 생성");
         await collection.InsertOneAsync(root);
-    }
+    }*/
 
 
 

@@ -93,20 +93,31 @@ public class Leap : SkillHandler
             SkillUpdatePosition();
 
             // 지속시간동안 플레이어가 지정한 장소로 이동한다 => 도약은 애니메이션 처리
-            _behaviour.transform.position = Vector3.MoveTowards(_behaviour.transform.position, leapPos, Time.deltaTime * 3f);
+            _behaviour.transform.position = Vector3.MoveTowards(_behaviour.transform.position, leapPos, Time.deltaTime * 10f);
 
             // 원래 위치로 돌아가지 않도록 도착지를 최종목적지로 설정한다
             _behaviour.ForSkillAgent(leapPos);
 
             // 착지시 주변에 데미지를 준다(한번만 호출)
-            if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 0.1f)
+            //Debug.Log($"y축 차이가 얼마인가 : {_behaviour.transform.position.y}, {leapPos.y}");
+            float diffY = Mathf.Abs(_behaviour.transform.position.y - leapPos.y);
+            if (diffY >= 1f)
+            {
+                _behaviour.transform.position = new Vector3(_behaviour.transform.position.x, leapPos.y, _behaviour.transform.position.z);
+            }
+
+            if (Vector3.Distance(_behaviour.transform.position, leapPos) <= 1f)
             {
                 //_damageZone.SetActive(true);
                 photonView.RPC(nameof(RPC_Activate), RpcTarget.All);
                 _ani.animator.SetBool("JumpAttack", false);
                 isArrive = true;
             }
-            SkillHoldingTime(Data.HoldingTime);
+
+            if (isArrive)
+            {
+                SkillHoldingTime(Data.HoldingTime);
+            }
         }
 
     }
@@ -154,9 +165,6 @@ public class Leap : SkillHandler
     {
         if (photonView.IsMine)
         {
-            // 충돌하면 
-            // 바닥에 떨어짐(현재위치)
-            // 플레이어 자신이 감지되고있어서 예외처리해줌
             if (collision.gameObject.tag == "Water" || collision.gameObject.tag == "Ground" || collision.gameObject.tag == _ability.tag && collision.gameObject.layer == 7)
             {
                 return;
@@ -175,6 +183,7 @@ public class Leap : SkillHandler
     [PunRPC]
     public void RPC_Activate()
     {
+        Debug.Log("effect on");
         damageZone.SetActive(true);
     }
 

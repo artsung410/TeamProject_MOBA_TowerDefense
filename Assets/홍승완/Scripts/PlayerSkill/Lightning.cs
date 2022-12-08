@@ -114,8 +114,13 @@ public class Lightning : SkillHandler
             // 중립 몬스터 : 태그없음, layer 17
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
+                //CrowdControlStun(other.gameObject, crowdControlTime, true);
+                BuffBlueprint buff = CSVtest.Instance.BuffDic[Data.ID + 100]; // 기절
+                if (other.gameObject.layer == 7 || other.CompareTag(enemyTag))
+                {
+                    BuffManager.Instance.AddBuff(buff);
+                }
                 SkillDamage(damage, other.gameObject);
-                CrowdControlStun(other.gameObject, crowdControlTime, true);
             }
             
         }

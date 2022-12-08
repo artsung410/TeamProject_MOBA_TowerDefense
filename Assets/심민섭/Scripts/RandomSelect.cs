@@ -37,58 +37,180 @@ public class RandomSelect : MonoBehaviour
     [SerializeField]
     private Sprite cardBack_randomTower;
 
+    // 타워 카드 선택
+    private string selectTowerCard;
+
     public void SkillResultSelect()
     {
         // 인벤토리 지정
-        DrawManager.instance.SelectInventory();
+        DrawManager.instance.SelectInventory();        
 
         // 여기서 어떤 카드인지 카드 데이터베이스를 지정해준다.(어떤 카드를 오픈하는지 전달해주면됨)
-        if (DrawManager.instance.boxName == "Warrior Skill")
+        if (DrawManager.instance.boxName == "Warrior Skill" || DrawManager.instance.boxName == "Warrior Skill_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("WarriorSkillDatabase");
-            Debug.Log("전사 스킬");
+            if (DrawManager.instance.boxName == "Warrior Skill")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].skillData.Probability;
+                }
+            }
+            else if (DrawManager.instance.boxName == "Warrior Skill_P")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].skillData.Probability;
+                }
+            }
         }
-        else if (DrawManager.instance.boxName == "Wizard Skill")
+        else if (DrawManager.instance.boxName == "Wizard Skill" || DrawManager.instance.boxName == "Wizard Skill_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("WizardSkillDatabase");
-            Debug.Log("마법사 스킬");
+            if (DrawManager.instance.boxName == "Wizard Skill")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].skillData.Probability;
+                }
+            }
+            else if (DrawManager.instance.boxName == "Wizard Skill_P")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].skillData.Probability;
+                }
+            }
         }
-        else if (DrawManager.instance.boxName == "Common Skill")
+        else if (DrawManager.instance.boxName == "Common Skill" || DrawManager.instance.boxName == "Common Skill_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("InherenceSkillDatabase");
-            Debug.Log("공통 스킬");
+            if (DrawManager.instance.boxName == "Common Skill")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].skillData.Probability;
+                }
+            }
+            else if (DrawManager.instance.boxName == "Common Skill_P")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].skillData.Probability;
+                }
+            }
         }
-        else if (DrawManager.instance.boxName == "Attack Tower")
+        else if (DrawManager.instance.boxName == "Attack Tower" || DrawManager.instance.boxName == "Attack Tower_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("AttackTowerDatabase");
-            Debug.Log("공격 타워");
+            if (DrawManager.instance.boxName == "Attack Tower")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].towerData.Normal_Attack_Draw_Probability;
+                }
+                selectTowerCard = "Normal_Attack_Draw_Probability";
+            }
+            else if (DrawManager.instance.boxName == "Attack Tower_P")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].towerData.Premium_Attack_Draw_Probability;
+                }
+                selectTowerCard = "Premium_Attack_Draw_Probability";
+            }
         }
-        else if (DrawManager.instance.boxName == "Minion Tower")
+        else if (DrawManager.instance.boxName == "Minion Tower" || DrawManager.instance.boxName == "Minion Tower_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("MinionTowerDatabase");
-            Debug.Log("미니언 타워");
+            if (DrawManager.instance.boxName == "Minion Tower")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].towerData.Normal_Minion_Draw_Probability;
+                }
+                selectTowerCard = "Normal_Minion_Draw_Probability";
+            }
+            else if (DrawManager.instance.boxName == "Minion Tower_P")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].towerData.Premium_Minion_Draw_Probability;
+                }
+                selectTowerCard = "Premium_Minion_Draw_Probability";
+            }
         }
-        else if (DrawManager.instance.boxName == "Buff Tower")
+        else if (DrawManager.instance.boxName == "Buff & Debuff Tower" || DrawManager.instance.boxName == "Buff & Debuff Tower_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("BuffTowerDatabase");
-            Debug.Log("버프 타워");
+            if (DrawManager.instance.boxName == "Buff & Debuff Tower")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].towerData.Normal_Buff_Debuff_Draw_Probability;
+                }
+                selectTowerCard = "Normal_Buff_Debuff_Draw_Probability";
+            }
+            else if (DrawManager.instance.boxName == "Buff & Debuff Tower_P")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].towerData.Premium_Buff_Debuff_Draw_Probability;
+                }
+                selectTowerCard = "Premium_Buff_Debuff_Draw_Probability";
+            }
         }
-        else if (DrawManager.instance.boxName == "Random Tower")
+        else if (DrawManager.instance.boxName == "Random Tower" || DrawManager.instance.boxName == "Random Tower_P")
         {
             inventoryItemList_skill = (ItemDataBaseList)Resources.Load("TowerDatabase");
-            Debug.Log("랜덤 타워");
+            if (DrawManager.instance.boxName == "Random Tower")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].towerData.Normal_Random_Draw_Probability;
+                }
+                selectTowerCard = "Normal_Random_Draw_Probability";
+            }
+            else if (DrawManager.instance.boxName == "Random Tower_P")
+            {
+                total = 0;
+                for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
+                {
+                    // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
+                    total += inventoryItemList_skill.itemList[i].towerData.Premium_Random_Draw_Probability;
+                }
+                selectTowerCard = "Premium_Random_Draw_Probability";
+            }
         }
         else
         {
             Debug.LogError("맞는 데이터베이스가 없습니다.");
-        }
-
-
-        total = 0;
-        for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
-        {
-            // 스크립트가 활성화 되면 카드 덱의 모든 카드의 총 가중치를 구해줍니다.
-            total += inventoryItemList_skill.itemList[i].rarity;
         }
 
         if (total == 0)
@@ -137,22 +259,22 @@ public class RandomSelect : MonoBehaviour
             else if (result[i].ClassType == "Inherence")
             {
                 cardUI.CardUISet(result[i].itemIcon, cardBack_common, result[i].itemName, result[i].itemDesc);
-            }
-            else if (result[i].towerData.Type == 1) // 공격 타워
+            } // 오픈하는 덱에 따라 백이미지를 선택한다.
+            else if (DrawManager.instance.boxName == "Attack Tower" || DrawManager.instance.boxName == "Attack Tower_P") // 공격 타워
             {
-                cardUI.CardUISet(result[i].itemIcon, cardBack_attackTower, result[i].itemName, result[i].itemDesc);
+                cardUI.CardUISet(result[i].itemIcon, cardBack_attackTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].towerData.Type == 2) // 버프타워 3, 디버프 타워
+            else if (DrawManager.instance.boxName == "Minion Tower" || DrawManager.instance.boxName == "Minion Tower_P") // 버프타워 3, 디버프 타워
             {
-                cardUI.CardUISet(result[i].itemIcon, cardBack_minionTower, result[i].itemName, result[i].itemDesc);
+                cardUI.CardUISet(result[i].itemIcon, cardBack_minionTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].towerData.Type == 4) // 미니언 타워
+            else if (DrawManager.instance.boxName == "Buff & Debuff Tower" || DrawManager.instance.boxName == "Buff & Debuff Tower_P") // 미니언 타워
             {
-                cardUI.CardUISet(result[i].itemIcon, cardBack_buffTower, result[i].itemName, result[i].itemDesc);
+                cardUI.CardUISet(result[i].itemIcon, cardBack_buffTower, result[i].towerData.NickName, result[i].itemDesc);
             }
-            else if (result[i].ClassType == "") // 랜덤 타워
+            else if (DrawManager.instance.boxName == "Random Tower" || DrawManager.instance.boxName == "Random Tower_P") // 랜덤 타워
             {
-                cardUI.CardUISet(result[i].itemIcon, cardBack_randomTower, result[i].itemName, result[i].itemDesc);
+                cardUI.CardUISet(result[i].itemIcon, cardBack_randomTower, result[i].towerData.NickName, result[i].itemDesc);
             }
         }
         // 뽑은 아이템을 getDrawResultItem에 모두 넣고 실행한다.
@@ -163,17 +285,53 @@ public class RandomSelect : MonoBehaviour
     public int SkillRandomCard()
     {
         float weight = 0;
-        int selectNum = 0;
+        float selectNum = 0;
 
         selectNum = Mathf.RoundToInt(total * Random.Range(0.0f, 1.0f));
         //Debug.Log(selectNum);
         for (int i = 1; i <= inventoryItemList_skill.itemList.Count - 1; i++)
         {
-            weight += inventoryItemList_skill.itemList[i].rarity;
+            if (inventoryItemList_skill.itemList[i].itemType == ItemType.Skill)
+                weight += inventoryItemList_skill.itemList[i].skillData.Probability;
+            if (inventoryItemList_skill.itemList[i].itemType == ItemType.Tower)
+            {
+                if (selectTowerCard == "Normal_Attack_Draw_Probability")
+                {
+                    weight += inventoryItemList_skill.itemList[i].towerData.Normal_Attack_Draw_Probability;
+                }
+                else if (selectTowerCard == "Premium_Attack_Draw_Probability")
+                {
+                    weight += inventoryItemList_skill.itemList[i].towerData.Premium_Attack_Draw_Probability;
+                }
+                else if (selectTowerCard == "Normal_Minion_Draw_Probability")
+                {
+                    weight += inventoryItemList_skill.itemList[i].towerData.Normal_Minion_Draw_Probability;
+                }
+                else if (selectTowerCard == "Premium_Minion_Draw_Probability")
+                {
+                    weight += inventoryItemList_skill.itemList[i].towerData.Premium_Minion_Draw_Probability;
+                }
+                else if (selectTowerCard == "Normal_Buff_Debuff_Draw_Probability")
+                {
+                    weight += inventoryItemList_skill.itemList[i].towerData.Normal_Buff_Debuff_Draw_Probability;
+                }
+                else if (selectTowerCard == "Premium_Buff_Debuff_Draw_Probability")
+                {
+                    weight += inventoryItemList_skill.itemList[i].towerData.Premium_Buff_Debuff_Draw_Probability;
+                }
+                else if (selectTowerCard == "Normal_Random_Draw_Probability")
+                {
+                    weight += inventoryItemList_skill.itemList[i].towerData.Normal_Random_Draw_Probability;
+                }
+                else if (selectTowerCard == "Premium_Random_Draw_Probability")
+                {
+                    weight += inventoryItemList_skill.itemList[i].towerData.Premium_Random_Draw_Probability;
+                }
+            }
+            if (inventoryItemList_skill.itemList[i].itemType == ItemType.uniqueSkill)
+                weight += inventoryItemList_skill.itemList[i].skillData.Probability;
             if (selectNum <= weight)
             {
-                // CardIndex를 뽑음
-                //Debug.Log($"i : {i}");
                 return i;
             }
         }

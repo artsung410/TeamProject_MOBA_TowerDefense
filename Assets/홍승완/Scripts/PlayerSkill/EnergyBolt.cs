@@ -64,7 +64,7 @@ public class EnergyBolt : SkillHandler
 
     public override void SkillUpdatePosition()
     {
-        transform.Translate(Time.deltaTime * 10 * Vector3.forward);
+        transform.Translate(Time.deltaTime * Data.Value_2 * Vector3.forward);
         transform.rotation = quaternion;
     }
 

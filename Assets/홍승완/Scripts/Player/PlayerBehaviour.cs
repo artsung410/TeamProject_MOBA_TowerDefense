@@ -65,6 +65,7 @@ public class PlayerBehaviour : MonoBehaviourPun
     // SMS End --------------------------------------------//
 
     #region Other Components
+    public PlayerAnimation motion;
     NavMeshAgent _agent;
     Stats _statScript;
     Health _playerHealth;
@@ -164,25 +165,13 @@ public class PlayerBehaviour : MonoBehaviourPun
             CurrentPlayerPos = transform.position;
             _agent.speed = _statScript.moveSpeed;
             // s키 누르면 행동 멈춤
-            if (Input.GetKeyDown(KeyCode.S))
+            if (Input.GetKeyDown(KeyCode.S) || isStun)
             {
+                targetedEnemy = null;
                 _agent.SetDestination(CurrentPlayerPos);
                 _agent.stoppingDistance = 0f;
-
                 CancelInvoke(nameof(AutoSearchTarget));
-            }
-
-            if (isStun == true)
-            {
-                recoveryTime += Time.deltaTime;
-                Debug.Log($"recoveryTime : {recoveryTime}\n" +
-                    $"stunTime : {StunTime}");
-                if (recoveryTime >= StunTime)
-                {
-                    recoveryTime = 0f;
-                    StunTime = 0f;
-                    isStun = false;
-                }
+                return;
             }
             else
             {
@@ -199,20 +188,20 @@ public class PlayerBehaviour : MonoBehaviourPun
         }
     }
 
-    public void OnStun(bool stun, float time)
+    public void OnStun(bool stun)
     {
         if (_playerHealth.isDeath)
         {
             return;
         }
-        photonView.RPC(nameof(RPC_Stun), RpcTarget.All, stun, time);
+        photonView.RPC(nameof(RPC_Stun), RpcTarget.All, stun);
     }
 
     [PunRPC]
-    public void RPC_Stun(bool stun, float time)
+    public void RPC_Stun(bool stun)
     {
         isStun = stun;
-        StunTime = time;
+        motion.DizzyMotion(stun);
     }
 
     private void IsPlayerDie()
@@ -284,7 +273,7 @@ public class PlayerBehaviour : MonoBehaviourPun
         if (targetedEnemy != null)
         {
             float dist = Vector3.Distance(transform.position, targetedEnemy.transform.position) - interpolationRange;
-
+            //Debug.Log($"타겟과의 거리 : {dist}");
             // 타겟이 공격범위 밖일때
             if (dist > _statScript.attackRange)
             {
@@ -424,7 +413,7 @@ public class PlayerBehaviour : MonoBehaviourPun
 
     private void AutoSearchTarget()
     {
-        // TODO : 가장 가까운 적을 탐색하되 기존 타겟은 계속 타격하고 타겟이 없어지면 탐색
+        Debug.Log("AutoSearch 실행중");
         if (targetedEnemy != null)
         {
             return;
@@ -506,17 +495,17 @@ public class PlayerBehaviour : MonoBehaviourPun
         // 타워 보간
         else if (targetedEnemy.layer == 6)
         {
-            interpolationRange = 3f;
+            interpolationRange = 3.5f;
         }
         // 넥서스 보간
         else if (targetedEnemy.layer == 12)
         {
-            interpolationRange = 6f;
+            interpolationRange = 7f;
         }
         // 중립몬스터 보간
         else if (targetedEnemy.layer == 17)
         {
-            interpolationRange = 1f;
+            interpolationRange = 2f;
         }
     }
 

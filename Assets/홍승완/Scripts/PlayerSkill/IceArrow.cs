@@ -91,7 +91,7 @@ public class IceArrow : SkillHandler
 
     public override void SkillUpdatePosition()
     {
-        transform.Translate(Time.deltaTime * 10f * Vector3.forward);
+        transform.Translate(Time.deltaTime * Data.Value_2 * Vector3.forward);
         transform.rotation = quaternion;
     }
 
@@ -107,8 +107,7 @@ public class IceArrow : SkillHandler
             if (other.GetComponent<Health>() || other.GetComponent<Enemybase>())
             {
                 BuffBlueprint buff = CSVtest.Instance.BuffDic[Data.ID + 100]; // 이동속도 감소
-
-                if (other.gameObject.layer == 7)
+                if (other.gameObject.layer == 7 || other.CompareTag(enemyTag))
                 {
                     BuffManager.Instance.AddBuff(buff);
                 }

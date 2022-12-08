@@ -27,7 +27,7 @@ public class SMS_Player_API_INFO : MonoBehaviourPun
             aPIStorage.session_id[0] = playerStorage.session_id;
             aPIStorage.userName[0] = playerStorage.userName;
             aPIStorage.zera[0] = playerStorage.zera;
-            aPIStorage.ace[0] = playerStorage.ace;
+            aPIStorage.dappx[0] = playerStorage.dappx;
             aPIStorage.bet_id[0] = playerStorage.bet_id;
         }
 
@@ -37,7 +37,7 @@ public class SMS_Player_API_INFO : MonoBehaviourPun
             GameObject getCallerObj = GameObject.FindGameObjectWithTag("GetCaller").gameObject;
             PlayerStorage playerStorage = getCallerObj.GetComponent<PlayerStorage>();
             PhotonView photonView = PhotonView.Get(this);
-            photonView.RPC("RPCStorageCaller", RpcTarget.MasterClient, playerStorage._id, playerStorage.session_id, playerStorage.userName, playerStorage.playerNumber, playerStorage.zera, playerStorage.ace, playerStorage.bet_id);
+            photonView.RPC("RPCStorageCaller", RpcTarget.MasterClient, playerStorage._id, playerStorage.session_id, playerStorage.userName, playerStorage.playerNumber, playerStorage.zera, playerStorage.dappx, playerStorage.bet_id);
         }
     }
 
@@ -52,7 +52,7 @@ public class SMS_Player_API_INFO : MonoBehaviourPun
         aPIStorage.userName[1] = userName;
         aPIStorage.playerNumber[1] = playerNumber;
         aPIStorage.zera[1] = zera;
-        aPIStorage.ace[1] = ace;
+        aPIStorage.dappx[1] = ace;
         aPIStorage.bet_id[1] = bet_id;
     }
     // 호스트 쪽에서 RPC호출한다.

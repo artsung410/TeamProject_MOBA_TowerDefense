@@ -38,8 +38,8 @@ public class SkillCoolTimeManager : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             coolTimeImgs[i] = PlayerHUD.Instance.skillTable.transform.GetChild(i).GetChild(2).gameObject.GetComponent<Image>();
-            Debug.Log($" i : {i}\n" +
-                $"coltime : {coolTimeImgs[i]}");
+            //Debug.Log($" i : {i}\n" +
+            //    $"coltime : {coolTimeImgs[i]}");
 #if OLD_VER
             skillCoolTimeArr[i] = SkillManager.Instance.CoolTime[i];
 #endif

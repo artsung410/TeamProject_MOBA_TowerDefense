@@ -130,12 +130,9 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                float temp = playerStats.buffMoveSpeed;
+                float temp = playerStats.moveSpeed;
                 temp *= (addValue);
-                Debug.Log($"addValue : {addValue} temp : { temp }");
                 playerStats.buffMoveSpeed += temp;
-                Debug.Log($"playerStats.buffMoveSpeed : {playerStats.buffMoveSpeed}");
-
             }
             else
             {
@@ -161,15 +158,20 @@ public class Player : MonoBehaviourPun
         {
             if (state)
             {
-                playerBehaviour.OnStun(state, 10f);
+                playerBehaviour.OnStun(state);
             }
             else
             {
-                playerBehaviour.OnStun(state, 0f);
+                playerBehaviour.OnStun(state);
             }
         }
 
-        playerStats.SetPlayerStats();
+        playerStats.SetBuff();
 
+    }
+
+    private void OnDestroy()
+    {
+        BuffManager.playerBuffAdditionEvent -= incrementBuffValue;
     }
 }

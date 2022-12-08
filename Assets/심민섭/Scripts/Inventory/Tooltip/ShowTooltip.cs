@@ -56,7 +56,6 @@ public class ShowTooltip : MonoBehaviour, IPointerEnterHandler, IPointerExitHand
         {
             tooltip.deactivateTooltip();
         }
-        Debug.Log(this.gameObject.transform.parent.parent.parent.parent.parent.parent.gameObject.name);
 
         if (this.gameObject.transform.parent.parent.parent.parent.parent.parent.gameObject.name == "OtherTab")
         {

@@ -20,9 +20,9 @@ public abstract class GoogleSheetManager : MonoBehaviourPun
 
     #region 구글스프레드시트DB
 
-    protected const string warriorURL = "https://docs.google.com/spreadsheets/d/1Ia6nhRo4KaXRp4dxQl92a12QB_t6tnVw/export?format=tsv&gid=96320651&range=D4:K10";
+    protected const string warriorURL = "https://docs.google.com/spreadsheets/d/1cMpFR0mXGTAqoFxhMgu32bFFhkJuvxmy/exfort?format=tsv&gid=511513918&range=D4:K10";
 
-    protected const string magicionURL = "https://docs.google.com/spreadsheets/d/1Ia6nhRo4KaXRp4dxQl92a12QB_t6tnVw/export?format=tsv&gid=1889391686&range=D4:K10";
+    protected const string magicionURL = "https://docs.google.com/spreadsheets/d/1cMpFR0mXGTAqoFxhMgu32bFFhkJuvxmy/exfort?format=tsv&gid=511513918&range=D11:K17";
 
     #endregion
 

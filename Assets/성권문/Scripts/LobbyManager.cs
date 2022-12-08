@@ -18,7 +18,6 @@ using System.Collections;
 public class LobbyManager : MonoBehaviourPunCallbacks
 {
     private readonly string gameVersion = "1";
-
     // SMS start -----------------------------------------------------
     // 최대 인원 수
     private int roomMaxPlayers = 2;
@@ -57,9 +56,12 @@ public class LobbyManager : MonoBehaviourPunCallbacks
     [SerializeField]
     private Texture2D originalCursor;
 
+    
 
     private void Awake()
     {
+  
+        Cursor.lockState = CursorLockMode.Confined;
         // 게임이 끝나고 로비로 돌아 올떄를 대비해서 이미 연결이 되어있는지 판단한다.
         if (PhotonNetwork.IsConnected) // 연결이 되어있으면 true, 그렇지 않으면 false
         {
@@ -100,6 +102,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             // 서버에 접속이 되어있다면
             OnConnectedToMaster();
         }
+        
     }
 
     // 마스터 서버에 접속 시도 / 자동실행
@@ -394,5 +397,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
             return;
         }
     }
+
 
 }

@@ -105,50 +105,26 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
         duplication.GetComponent<ConsumeItem>().duplication = Item;
     }
 
+
+    private string classType;
+
     public void OnEndDrag(PointerEventData data)
     {
         // 아이템 삭제
-        Transform trashCan = null;
+        /*Transform trashCan = null;
         if (data.pointerEnter != null)
             trashCan = data.pointerEnter.transform;
         if (trashCan.gameObject.name == "TrashCan")
         {
             Destroy(draggedItemBox.GetChild(0).gameObject);
-        }
+        }*/
         // -------------------------------------------------------
-
         if (data.button == PointerEventData.InputButton.Left)
         {
             canvasGroup.blocksRaycasts = true;
             Transform newSlot = null;
             if (data.pointerEnter != null)
                 newSlot = data.pointerEnter.transform;
-
-            Debug.Log(newSlot.transform.parent.gameObject.tag);
-            Debug.Log(newSlot.transform.parent.parent.gameObject.tag);
-            //if (newSlot.transform.parent.gameObject.tag == "EquipmentSystem")
-
-            int skill_stack = 0;
-            int tower_stack = 0;
-            // 아이템이 슬롯에 있는 지 확인
-            if (newSlot.transform.parent.parent.gameObject.tag == "EquipmentSystem")
-            {
-                for (int i = 1; i < 4; i++)
-                {
-                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
-                    {
-                        skill_stack++;
-                    }
-                }
-                for (int i = 4; i < 8; i++)
-                {
-                    if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
-                    {
-                        tower_stack++;
-                    }
-                }
-            }
-            
 
             if (newSlot != null)
             {
@@ -167,9 +143,35 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                 // 새로운 곳에 만들 아이템 공간에 이미 아이템이 존재하다면 아이템을 서로 바꿔치기한다.
                 if (newSlot.parent.GetComponent<ItemOnObject>() != null)
                     secondItem = newSlot.parent.GetComponent<ItemOnObject>().item;
+                Debug.Log(newSlot.name);
+                if (newSlot == null)
+                {
+                    firstItemGameObject.transform.SetParent(oldSlot.transform);
+                    firstItemRectTransform.localPosition = Vector3.zero;
+                    return;
+                }
 
-                //Debug.Log($"newSlot : {newSlot.tag}");
-                //Debug.Log($"oldSlot : {oldSlot.tag}");
+                int skill_stack = 0;
+                int tower_stack = 0;
+                // 아이템이 슬롯에 있는 지 확인
+                if (newSlot.transform.parent.parent.gameObject.tag == "EquipmentSystem")
+                {
+                    for (int i = 1; i < 4; i++)
+                    {
+                        if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                        {
+                            skill_stack++;
+                            classType = GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.ClassType;
+                        }
+                    }
+                    for (int i = 4; i < 8; i++)
+                    {
+                        if (GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).childCount != 0)
+                        {
+                            tower_stack++;
+                        }
+                    }
+                }
 
                 // 현재 아이템과 타겟 아이템의 이름이 같은가?
                 bool sameItem = firstItem.itemName == secondItem.itemName;
@@ -226,7 +228,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
 
                                 if (fitsIntoStack && !sameItemRerferenced)
                                 {
-                                    Debug.Log("22");
                                     secondItem.itemValue = firstItem.itemValue + secondItem.itemValue;
                                     secondItemGameObject.transform.SetParent(newSlot.parent.parent);
                                     Destroy(firstItemGameObject);
@@ -240,7 +241,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 }
                                 else
                                 {
-                                    Debug.Log("33");
                                     int rest = (firstItem.itemValue + secondItem.itemValue) % firstItem.maxStack;
 
                                     if (!fitsIntoStack && rest > 0)
@@ -268,7 +268,6 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                 //fill up the other stack and adds the rest to the other stack 
                                 if (!fitsIntoStack && rest > 0)
                                 {
-                                    Debug.Log("11");
                                     secondItem.itemValue = firstItem.maxStack;
                                     firstItem.itemValue = rest;
 
@@ -438,6 +437,18 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                                 isItemID = true;
                                             count = 0;
                                         }
+                                        // 미니언 타워 카드인 경우
+                                        if (firstItem.objType == "Minion_T")
+                                        {
+                                            // 사거리를 확인해서 근거리, 원거리카드가 장착되어 있는지 판단한다.
+                                            if (CSVtest.Instance.MinionDic[GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range
+                                                == CSVtest.Instance.MinionDic[firstItem.towerData.MinionID].Range)
+                                            {
+                                                firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                                firstItemRectTransform.localPosition = Vector3.zero;
+                                                return;
+                                            }
+                                        }
                                     }
                                 }
                             }
@@ -504,12 +515,31 @@ public class DragItem : MonoBehaviour, IDragHandler, IPointerDownHandler, IEndDr
                                                 isItemID = true;
                                             count = 0;
                                         }
+                                        // 미니언 타워 카드인 경우
+                                        if (firstItem.objType == "Minion_T")
+                                        {
+                                            // 사거리를 확인해서 근거리, 원거리카드가 장착되어 있는지 판단한다.
+                                            if (CSVtest.Instance.MinionDic[GameObject.FindGameObjectWithTag("EquipmentSystem").transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range
+                                                == CSVtest.Instance.MinionDic[firstItem.towerData.MinionID].Range)
+                                            {
+                                                firstItemGameObject.transform.SetParent(oldSlot.transform);
+                                                firstItemRectTransform.localPosition = Vector3.zero;
+                                                return;
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
 
                         if (isItemID)
+                        {
+                            firstItemGameObject.transform.SetParent(oldSlot.transform);
+                            firstItemRectTransform.localPosition = Vector3.zero;
+                            return;
+                        }
+
+                        if (classType != dragItem.item.ClassType && classType != null)
                         {
                             firstItemGameObject.transform.SetParent(oldSlot.transform);
                             firstItemRectTransform.localPosition = Vector3.zero;

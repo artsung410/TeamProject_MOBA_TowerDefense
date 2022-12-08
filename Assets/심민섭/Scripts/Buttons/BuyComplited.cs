@@ -49,35 +49,35 @@ public class BuyComplited : MonoBehaviour
         buyItemName.text = DrawManager.instance.selectNameText;
         // 조건문을 두어서 텍스트에 맞는 이미지가 뜨게 변경
 
-        if (buyItemName.text == "Common Skill")
+        if (buyItemName.text == "Common Skill" || buyItemName.text == "Common Skill_P")
         {
             buyItemImage.sprite = commonSkillCardImage;
         }
-        else if (buyItemName.text == "Warrior Skill")
+        else if (buyItemName.text == "Warrior Skill" || buyItemName.text == "Warrior Skill_P")
         {
             buyItemImage.sprite = warriorSkillCardImage;
         }
-        else if (buyItemName.text == "Wizard Skill")
+        else if (buyItemName.text == "Wizard Skill" || buyItemName.text == "Wizard Skill_P")
         {
             buyItemImage.sprite = wizardSkillCardImage;
         }
-        else if (buyItemName.text == "Assassin Skill")
+        else if (buyItemName.text == "Assassin Skill" || buyItemName.text == "Assassin Skill_P")
         {
             buyItemImage.sprite = assessinSkillCardImage;
         }
-        else if (buyItemName.text == "Random Tower")
+        else if (buyItemName.text == "Random Tower" || buyItemName.text == "Random Tower_P")
         {
             buyItemImage.sprite = randomTowerCardImage;
         }
-        else if (buyItemName.text == "Attack Tower")
+        else if (buyItemName.text == "Attack Tower" || buyItemName.text == "Attack Tower_P")
         {
             buyItemImage.sprite = attackTowerCardImage;
         }
-        else if (buyItemName.text == "Minion Tower")
+        else if (buyItemName.text == "Minion Tower" || buyItemName.text == "Minion Tower_P")
         {
             buyItemImage.sprite = minionTowerCardImage;
         }
-        else if (buyItemName.text == "Buff Tower")
+        else if (buyItemName.text == "Buff & Debuff Tower" || buyItemName.text == "Buff & Debuff Tower_P")
         {
             buyItemImage.sprite = buffTowerCardImage;
         }

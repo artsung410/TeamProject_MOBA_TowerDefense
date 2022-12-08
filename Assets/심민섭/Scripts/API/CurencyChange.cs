@@ -10,6 +10,16 @@ public class CurencyChange : MonoBehaviour
     //             MAIL : minsub4400@gmail.com         
     // ###############################################
 
+    public static CurencyChange instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
+
+    public string amountCurrency;
+
+
     private void OnEnable()
     {
         // 활성화될 때 마다 재화 배팅 수량을 가져와 업데이트 한다.
@@ -22,7 +32,7 @@ public class CurencyChange : MonoBehaviour
 
         if (gameObject.name == "Dappx - Text")
         {
-            gameObject.GetComponent<Text>().text = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>().amount_won;
+            gameObject.GetComponent<Text>().text = amountCurrency;
         }
     }
 }

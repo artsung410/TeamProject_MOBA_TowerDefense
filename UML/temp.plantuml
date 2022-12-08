@@ -1,347 +1,329 @@
 @startuml
 
 
-scale 2800 width
-
-
-
-
-
-Struct BuffData
+scale 1000 width
+package LOBBY <<Rectangle>>
 {
-    +int Id 
-    +string Name 
-    +Effect_Type EffectType 
-    +Target TargetType 
-    +float EffectValue 
-    +Effect_Position EffectPosition
-    +bool Unlimited
-    +float EffectDuration
-    +string Desc
-    +Sprite BuffIcon 
-}
+   Class LobbyManager
+   {
+      -readonly string gameVersion
+   태 텍스트
+      +Button joinButton
+      +GameObject playerStoragePre
+      +Connect()
+   }
+   Class PlayerInventory
+   {
+      +InputManager inputManagerDatabase;
+      +GameObject craftSystem;
+      +GameObject characterSystem;
+      -CraftSystem cS;
 
-Struct ItemDatabaseList
-{
-   +List<Item> itemList 
-   +Item getItemById
+      // 인벤토리 게임 오브젝트
+      +GameObject inventory;
 
-}
+      // 제작, 케릭터장비창
+      -Inventory craftSystemInventory;
+      -Inventory characterSystemInventory;
 
-Class LobbyManager
-{
-   -readonly string gameVersion
-   +TextMeshProUGUI connectionInfoText; // 네트워크 상태 텍스트
-   +Button joinButton
-   +GameObject playerStoragePre
-   +Connect()
-}
-Class PlayerInventory
-{
-   +InputManager inputManagerDatabase;
-   +GameObject craftSystem;
-   +GameObject characterSystem;
-   -CraftSystem cS;
+      // 인벤토리 스크립트
+      -Inventory mainInventory 
+   }
 
-    // 인벤토리 게임 오브젝트
-   +GameObject inventory;
+   Protocol Inventory #back:SkyBlue
+   {
 
-    // 제작, 케릭터장비창
-   -Inventory craftSystemInventory;
-   -Inventory characterSystemInventory;
+   }
 
-    // 인벤토리 스크립트
-   -Inventory mainInventory 
-}
+   Class TrojanHorse
+   {
+      private ItemOnObject itemOnObject;
+      private GameObject EquipmentItemInventory;
 
-Class TrojanHorse
-{
-    private ItemOnObject itemOnObject;
-    private GameObject EquipmentItemInventory;
+      +int playerNumber // 플레이어ID
+      // ----------- 타워 ---------------
+      +List<int> towerId // 타워고유ID
+      +List<GameObject> towerPrefab // 타워 프리팹
+      +List<Item> towerItems // 타워DB
 
-    +int playerNumber // 플레이어ID
-    // ----------- 타워 ---------------
-    +List<int> towerId // 타워고유ID
-    +List<string> towerName // 타워명
-    +List<int> towerHP // 타워 Hp
-    +List<int> towerATK // 타워 공격력
-    +List<int> towerATKSpeed // 타워 공격속도
-    +List<int> towerRange // 스킬사거리
-    +List<Sprite> tpwerIcpm // 타워 아이콘
-    +List<GameObject> towerPrefab // 타워 프리팹
+      // ----------- 스킬 ---------------
+      +List<int> skillId // 스킬고유ID
+      +List<Item> skillItems // 스킬DB
+   }
 
-    // ----------- 스킬 ---------------
-    +List<int> skillId // 스킬고유ID
-    +List<string> skillCName // 스킬명
-    +List<int> skillATK // 스킬공격력
-    +List<int> skillCrossroad // 스킬사거리
-    +List<int> skillCoolTime // 스킬 쿨타임
-    +PlayerTrojanInfo()
-}
+   Protocol GoogleCSV #back:SkyBlue
+   {
 
-scale 2800 width
-package PunLibrary <<Database>> 
-{
-Class MonoBehaviourPun
-{
+   }
 
-}
+   Class CSVtest
+   {
+      // 파싱데이터 저장
+      +Dictionary<int, List<string>> warriorStatDatas; // 전사 스탯 
+      +Dictionary<int, List<string>> wizardStatDatas; // 마법사 스탯
+      +Dictionary<int, List<string>> WarriorSkillDatas; // 전사 스킬
+      +Dictionary<int, List<string>> WizardSkillDatas; // 마법사 스킬
+      +Dictionary<int, List<string>> CommonSkillDatas // 공통스킬
+      +Dictionary<int, TowerBlueprint> TowerDic; // 타워
+      +Dictionary<int, MinionBlueprint> MinionDic; // 미니언
+      +Dictionary<int, BuffBlueprint> BuffDic; // 버프
+      +Dictionary<int, List<string>> descDic; // Desc
+   }
 
-Class MonoBehaviourPunCallbacks
-{
-}
-}
-
-Class LivingEntity
-{
-   +int Hp
-   +Void TakeDamage()
-}
-
-Class GameManager
-{
-    -static GameManager instance // 전역화
-    +Transform[] tiles; // 타워가 생성될 위치
-    +Transform[] spawnPositions // 플레이어가 생성할 위치
-    +GameObject playerPrefab // 생성할 플레이어의 원형 프리팹
-    +GameObject[] EnemyPrefabs 
-    +List<GameObject> CurrentTowers // 월드상에 설치된 타워들
-    +int localPlayerIndex
-    -SpawnPlayer()
-    -SpawnTower()
-    -SpawnEnemy()
-    +InitTag()
-    +OnLeftRoom()
 }
 
 scale 1000 width
-package Player <<Rectangle>> 
+package INGAME <<Rectangle>>
 {
-   Protocol PlayerPrefab #back:SkyBlue
+   scale 2800 width
+   package PunLibrary <<Database>> 
    {
-
-   }
-
-   Class PlayerBehaviour
-   {
-      +static Vector3 CurrentPlayerPos
-      +HeroAttackType heroAttackType
-      +RotateSpeed
-      +float RotateVelocity
-      +LayerMask Layer
-      -RaycastHit Hit
-      +Camera Cam
-      +GameObject targetedEnemy
-      +bool perfomMeleeAttack = false
-      +string EnemyTag
-   }
-
-   Class Status
-   {
-      +float StartHealth
-      +float health
-      +float attackDmg
-      +float attackSpeed
-      +float attackTime
-      +float attackRange
-      +float MoveSpeed
-      -HeroCombat _heroCombatScripts
-      +PlayerBehaviour _playerScript
-   }
-
-   Class HeroAbility
-   {
-      +GameObject[] AbilityPrefabs;
-      +Transform skillSpawn;
-      +SkillCoolTimeManager coolTimeManager;
-      -GameObject go;
-      -TrojanHorse _trojan;
-      -void AbilityQ()
-      -void AbilityW()
-      -void AbilityE()
-      -void AbilityR()
-   }
-
-   Class Health
-   {
-
-   }
-}
-
-scale 1000 width
-package Minion <<Rectangle>> 
-{
-
-Protocol MinionPrefab #back:SkyBlue
-{
-
-}
-
-Class Enemybase
-{
-    +public Transform _target;
-    -private Transform _PrevTarget;
-    -Rigidbody _rigidbody;
-    -ESTATE _estate;
-}
-
-Struct MinionData
-{
-   +int Id
-   +string Name
-   +enum Minion_Type
-   +int Target_Recognize_Range;
-   +float Attack
-   +float Attack_Speed
-   +float Attack_Range
-   +float Move_Speed
-   +float Hp
-   +float Exp 
-   +Sprite Icon
-   +String Desc
-}
-}
-
-Class MinionSpwaner
-{
-    +GameObject[] EnemyPrefabs;
-    -float elaspedTime;
-    -float minionSpawnTime;
-    -void ChangeMinion()
-    -void BlueSpawnMinion()
-    -void RedSpawnMinion()
-}
-
-
-
-scale 2800 width
-package Tower <<Rectangle>> 
-{
-
-Protocol TowerPrefab #back:SkyBlue
-{
-}
-
-Class Tower
-{
-   - float AttackLatency;
-   - fire();
-   + GameObject projectile; // 투사체
-   + Towe
-   rSkilCard[] skills;
-}
-
-Struct TowerData
-{
-    +int Id 
-    +string Name 
-    +Tower_Type TowerType
-    +float Attack 
-    +float AttackSpeed
-    +float AttackRange 
-    +Attack_Range_Type AttackRangeType 
-    +float AttackRangeTypeRadius 00344833
-    +float MaxHP 
-    +List<ScriptableObject> Scriptables 
-    +GameObject ObjectPF 
-    +Sprite Icon 
-    +string Desc
-    +AudioClip SoundAttack
-    +AudioClip SoundHit
-    +AudioClip SoundNormal 
-}
-
-Class Projectile
-{
-+ ProjectileType projectileTpye
-+ float Damage
-+ string enemyTag
-- OnTriggerEnter()
-}
-}
-
-scale 2800 width
-package Skill <<Rectangle>> 
-{
-   Protocol SkillPrefab #back:SkyBlue
-   {
-   }
-
-   Class SkillHandler
-   {
-    #HeroAbility _ability;
-    #Stats _stat;
-    #PlayerBehaviour _behaviour;
-    #PlayerAnimation _ani;
-    #string _myTag;
-    +float SetDamage()
-    +float SetHodingTime()
-    +float SetRange()
-    +void GetPlayerPos()
-    +void GetPlayerStatus()
-    +void GetMousePos()
-    +void GetAnimation()
-    +void SkillDamage()
-    #string getMytag()
-    +abstract void SkillHoldingTime(float time);
-    +abstract void SkillUpdatePosition();
-   }
-
+      Class MonoBehaviourPun
+      {
+      
+      }
    
-   Struct SkillData
+      Class MonoBehaviourPunCallbacks
+      {
+      }
+   }
+
+   Class GameManager
    {
-      +int Id 
-      +string Name 
-      +string Name_Level 
-      +int Classification
-      +int Rank 
-      +int Type 
-      +int Value1 
-      +int Value2 
-      +float Cool_Time 
-      +float Range 
-      +int Range_Type 
-      +int Range_Value1 
-      +int Range_Value2 
-      +float Holding_Time 
-      +int Continuous_Damage 
-      +int Continuous_Damage_Hits 
-      +int Continuous_Damage_Time 
-      +Crowd_Control_Type Crowd_Control_Type 
-      +float Crowd_Control_Time 
-      +float Crowd_Control_Value 
-      +GameObject ObjectPF 
-      +BuffData Buff 
-      +Sprite Icon 
+      -static GameManager instance 
+      +Transform[] tiles; 
+      +GameObject[] EnemyPrefabs 
+      +int localPlayerIndex
+      -SpawnPlayer()
+      -SpawnTower()
+      -SpawnEnemy()
+      +InitTag()
+      +OnLeftRoom()
+   }
+
+   Class BuffManager
+   {
+      +List<BuffBlueprint> currentBuffDatas;
+      +List<int> currentBuffIds;
+      +Dictionary<BuffBlueprint, float> buffDic;
+   }
+
+   scale 1000 width
+   package Player <<Rectangle>> 
+   {
+      Protocol PlayerPrefab #back:SkyBlue
+      {
+
+      }
+
+      Class PlayerBehaviour
+      {
+         +static Vector3 CurrentPlayerPos
+         +HeroAttackType heroAttackType
+         +RotateSpeed
+         +float RotateVelocity
+         +LayerMask Layer
+         -RaycastHit Hit
+         +Camera Cam
+         +GameObject targetedEnemy
+         +bool perfomMeleeAttack = false
+         +string EnemyTag
+      }
+
+      Class Stat
+      {
+         +float StartHealth
+         +float health
+         +float attackDmg
+         +float attackSpeed
+         +float attackTime
+         +float attackRange
+         +float MoveSpeed
+         -HeroCombat _heroCombatScripts
+         +PlayerBehaviour _playerScript
+      }
+
+      Class HeroAbility
+      {
+         +GameObject[] AbilityPrefabs;
+         +Transform skillSpawn;
+         +SkillCoolTimeManager coolTimeManager;
+         -GameObject go;
+         -TrojanHorse _trojan;
+         -void AbilityQ()
+         -void AbilityW()
+         -void AbilityE()
+         -void AbilityR()
+      }
+   }
+
+   scale 1000 width
+   package Minion <<Rectangle>> 
+   {
+   
+      Protocol MinionPrefab #back:SkyBlue
+      {
+      
+      }
+
+      Class Enemybase
+      {
+         +public Transform _target;
+         -private Transform _PrevTarget;
+         -Rigidbody _rigidbody;
+         -ESTATE _estate;
+      }
+
+      Class MinionBlueprint
+      {
+         +int Id
+         +string Name
+         +enum Minion_Type
+         +int Target_Recognize_Range;
+         +float Attack
+         +float Attack_Speed
+         +float Attack_Range
+         +float Move_Speed
+         +float Hp
+         +float Exp 
+         +Sprite Icon
+         +String Desc
+      }
+   }
+   
+   Class MinionSpwaner
+   {
+      +GameObject[] EnemyPrefabs;
+      -float elaspedTime;
+      -float minionSpawnTime;
+      -void ChangeMinion()
+      -void BlueSpawnMinion()
+      -void RedSpawnMinion()
+   }
+   
+   
+   
+   scale 2800 width
+   package Tower <<Rectangle>> 
+   {
+   
+      Protocol TowerPrefab #back:SkyBlue
+      {
+      }
+
+      Class Tower
+      {
+         + TowerBlueprint towerDB;
+         - string enemyTag;
+         - fire();
+      }
+
+      Class TowerBlueprint
+      {
+         +int Id 
+         +string Name 
+         +Tower_Type TowerType
+         +float Attack 
+         +float AttackSpeed
+         +float AttackRange 
+         +Attack_Range_Type AttackRangeType 
+         +float AttackRangeTypeRadius 00344833
+         +float MaxHP 
+         +List<ScriptableObject> Scriptables 
+         +GameObject ObjectPF 
+         +Sprite Icon 
+         +string Desc
+         +AudioClip SoundAttack
+         +AudioClip SoundHit
+         +AudioClip SoundNormal 
+      }
+   }
+   
+   scale 2800 width
+   package Skill <<Rectangle>> 
+   {
+      Protocol SkillPrefab #back:SkyBlue
+      {
+      }
+   
+      Class SkillHandler
+      {
+      #HeroAbility _ability;
+      #Stats _stat;
+      #PlayerBehaviour _behaviour;
+      #PlayerAnimation _ani;
+      #string _myTag;
+      +float SetDamage()
+      +float SetHodingTime()
+      +float SetRange()
+      +void GetPlayerPos()
+      +void GetPlayerStatus()
+      +void GetMousePos()
+      +void GetAnimation()
+      +void SkillDamage()
+      #string getMytag()
+      +abstract void SkillHoldingTime(float time);
+      +abstract void SkillUpdatePosition();
+      }
+   
+      
+      Class SkillData
+      {
+         +int Id 
+         +string Name 
+         +string Name_Level 
+         +int Classification
+         +int Rank 
+         +int Type 
+         +int Value1 
+         +int Value2 
+         +float Cool_Time 
+         +float Range 
+         +int Range_Type 
+         +int Range_Value1 
+         +int Range_Value2 
+         +float Holding_Time 
+         +int Continuous_Damage 
+         +int Continuous_Damage_Hits 
+         +int Continuous_Damage_Time 
+         +Crowd_Control_Type Crowd_Control_Type 
+         +float Crowd_Control_Time 
+         +float Crowd_Control_Value 
+         +GameObject ObjectPF 
+         +BuffData Buff 
+         +Sprite Icon 
+      }
+   
    }
 
 }
 
-ItemDatabaseList <.. TrojanHorse
 TrojanHorse <.. GameManager
-
-ItemDatabaseList --> TowerPrefab
-ItemDatabaseList --> SkillPrefab
-TowerData --> MinionPrefab
-TowerData --> BuffData
-SkillData --> BuffData
-MinionSpwaner --> MinionPrefab
-HeroAbility --> SkillPrefab
-
-
+TowerBlueprint --> MinionPrefab
+MinionPrefab <.. MinionSpwaner
 SkillHandler o-- SkillData
 SkillPrefab o-- SkillHandler
-Enemybase o-- MinionData
-MinionPrefab o-- Enemybase
-TowerPrefab o-- TowerData
+Enemybase o-- MinionBlueprint
+
 TowerPrefab o-- Tower
-Tower o-- Projectile
+Tower o-- TowerBlueprint
+
 PlayerPrefab o-- PlayerBehaviour
 PlayerPrefab o-- HeroAbility
-PlayerPrefab o-- Status 
+PlayerPrefab o-- Stat 
 
-LivingEntity <|-- Tower
-LivingEntity <|-- Enemybase
-LivingEntity <|-- Player
+GoogleCSV o-- CSVtest
+CSVtest <-- TowerBlueprint
+CSVtest <-- SkillData
+CSVtest <-- MinionBlueprint
+CSVtest <-- Stat
+CSVtest <-- TrojanHorse
+Tower .. BuffManager
+SkillHandler .. BuffManager
+HeroAbility o-- SkillPrefab
+MinionPrefab o-- Enemybase
 
+Inventory o-- PlayerInventory
+PlayerInventory <.. TrojanHorse
+LobbyManager <.. TrojanHorse 
 @enduml

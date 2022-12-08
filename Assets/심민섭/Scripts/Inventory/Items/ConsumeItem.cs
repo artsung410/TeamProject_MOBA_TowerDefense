@@ -112,7 +112,13 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                 if (eS.transform.GetChild(1).GetChild(i).childCount == 1)
                                 {
                                     //Debug.Log(eS.transform.GetChild(1).GetChild(i).GetChild(0).gameObject.name); // itemIcon(clone)
+                                    // 같은 카드는 한 개 이상 장착할 수 없게 하는 코드
                                     if (item.itemName == eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.itemName)
+                                    {
+                                        return;
+                                    }
+                                    // 클래스가 다를때 카드를 장착할 수 없게 하는 코드
+                                    if (item.ClassType != eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.ClassType)
                                     {
                                         return;
                                     }
@@ -128,10 +134,10 @@ public class ConsumeItem : MonoBehaviour, IPointerDownHandler
                                                 return;
                                             }
                                         }
-                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 50)
+                                        if (eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.objType == "Minion_T" && (int)CSVtest.Instance.MinionDic[eS.transform.GetChild(1).GetChild(i).GetChild(0).GetComponent<ItemOnObject>().item.towerData.MinionID].Range == 25)
                                         {
                                             int minionRangeData = (int)CSVtest.Instance.MinionDic[item.towerData.MinionID].Range;
-                                            if (minionRangeData == 50)
+                                            if (minionRangeData == 25)
                                             {
                                                 return;
                                             }

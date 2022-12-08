@@ -13,9 +13,19 @@ public enum EMINIONTYPE
     Netural,
 }
 
+public enum EMINIONSIZE
+{ 
+    Small,
+    Nomal,
+    Big,
+
+}
+
+
 public class Enemybase : MonoBehaviourPun
 {
     public EMINIONTYPE _eminontpye;
+    public EMINIONSIZE _eminontpyeSize;
     // ###############################################
     //             NAME : KimJaeMin                      
     //             MAIL : woals1566@gmail.com         
@@ -61,19 +71,25 @@ public class Enemybase : MonoBehaviourPun
 
     WaitForSeconds Delay100 = new WaitForSeconds(1f);
     protected NavMeshAgent _navMeshAgent;
+    protected NavMeshObstacle _navMeshObstacle;
     protected Animator _animator;
-    public bool isDead = false;
+    protected bool isDead = false;
 
     public CapsuleCollider _capsuleCollider;
     private Outline _outline;
+    private GameObject skillParent;
 
     protected virtual void Awake()
     {
+
         _eminontpye = EMINIONTYPE.Nomal;
         _outline = GetComponent<Outline>();
+        _navMeshObstacle = GetComponent<NavMeshObstacle>();
         _navMeshAgent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _capsuleCollider = GetComponent<CapsuleCollider>();
+        
+
     }
 
     protected virtual void OnEnable() // 생성
@@ -85,6 +101,9 @@ public class Enemybase : MonoBehaviourPun
         else if (GetComponent<OrcFSM>() != null)
         {
             _eminontpye = EMINIONTYPE.Netural;
+        }else if (GetComponent<SpecialAttack>() != null)
+        {
+            _eminontpye = EMINIONTYPE.Special;
         }
         _navMeshAgent.enabled = false;
         _navMeshAgent.enabled = true;
@@ -93,7 +112,6 @@ public class Enemybase : MonoBehaviourPun
             _outline.enabled = false;
             _outline.OutlineWidth = 8f;
         }
-        CurrnetHP = HP;
 
         if (PhotonNetwork.IsMasterClient)
         {
@@ -130,14 +148,31 @@ public class Enemybase : MonoBehaviourPun
             }
         }
 
+        if(_eminontpye == EMINIONTYPE.Special)
+        {
+            skillParent = transform.parent.transform.parent.gameObject;
+        }
+
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
+        if(_eminontpye == EMINIONTYPE.Netural)
+        {
+            OrcFSM orc = gameObject.GetComponent<OrcFSM>();
+            orc.setNeturalMonsterHealthBar();
+            orc.HealthUI.transform.position = transform.position;         
+        }
+        //Debug.Log($"{_animator.GetCurrentAnimatorStateInfo(0).normalizedTime}으앙80퍼되서쥬금");
         if (_animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 0.8f && _animator.GetCurrentAnimatorStateInfo(0).IsName("Base Layer.die"))
         {
-            Death();
+            //Debug.Log("으앙80퍼되서쥬금");
+
+            //if (photonView.IsMine)
+            //{
+            //}
+                Death();
         }
     }
 
@@ -154,12 +189,12 @@ public class Enemybase : MonoBehaviourPun
         Damage = minionDB.Attack;
         AttackSpeed = minionDB.Attack_Speed;
         _animator.SetFloat("Speed", AttackSpeed);
-            attackRange = minionDB.Range;
+        attackRange = minionDB.Range;
         moveSpeed = minionDB.Move_Speed;
-        HP = minionDB.Hp;
+        HP = CurrnetHP = minionDB.Hp;
         minionSprite = minionDB.Icon_Blue;
 
-        Debug.Log($"[미니언] { PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
+        //Debug.Log($"[미니언] { PhotonNetwork.LocalPlayer.ActorNumber}월드 {gameObject.name} 초기데이터 세팅 완료");
     }
 
     public void TakeDamage(float Damage)
@@ -183,6 +218,7 @@ public class Enemybase : MonoBehaviourPun
             {
                 CurrnetHP -= Damage * (PlayerHUD.Instance.min + 1); // 1안더해주면 0분일때 데미지 안드감
                 _animator.SetTrigger("TakeDamage");
+               
             }
             if (CurrnetHP <= 0)
             {
@@ -196,13 +232,18 @@ public class Enemybase : MonoBehaviourPun
                 }
                 OnMinionDieEvent.Invoke(this.gameObject, exp);
                 _capsuleCollider.enabled = false;
-                if (_navMeshAgent == true)
+                if (_navMeshAgent != null)
                 {
-                    transform.LookAt(transform.forward);
+                    if (_navMeshAgent == null)
+                    {
+                        return;
+                    }
+
                     _navMeshAgent.SetDestination(transform.position);
                     _navMeshAgent.isStopped = true;
 
                 }
+                Debug.Log("으앙다이상태임쥬금");
                 _animator.SetTrigger("Die");
                 isDead = true;
 
@@ -218,6 +259,10 @@ public class Enemybase : MonoBehaviourPun
     [PunRPC]
     public void RPC_tagThrow(string value)
     {
+        if(PlayerHUD.Instance.NeutalMonsterDie == true)
+        {
+            return;
+        }
         lastDamageTeam = value;
     }
 
@@ -228,8 +273,23 @@ public class Enemybase : MonoBehaviourPun
 
     public void Death()
     {
-        Destroy(transform.parent.gameObject);
+        Debug.Log("으앙쥬금");
+        if (_eminontpye == EMINIONTYPE.Special)
+            {
+            Destroy(transform.parent.gameObject); 
+            Destroy(skillParent);
+            return;
+            }
+       if(photonView.IsMine)
+        {
+        PhotonNetwork.Destroy(transform.parent.gameObject);
+
+        }
+
+        
     }
+
+
     public void DamageOverTime(float Damage, float Time)
     {
 
@@ -246,7 +306,7 @@ public class Enemybase : MonoBehaviourPun
             {
                 yield break;
             }
-            Debug.Log($"{lastDamageTeam}");
+            
             if (CurrnetHP <= 0)
             {
                 if (_eminontpye == EMINIONTYPE.Netural) // 중립몬스터이면 막타데미지를
@@ -326,5 +386,4 @@ public class Enemybase : MonoBehaviourPun
     {
         _animator.SetFloat("Speed", atkSpeed);
     }
-
 }
