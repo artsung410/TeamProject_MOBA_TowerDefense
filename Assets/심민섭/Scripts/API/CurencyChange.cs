@@ -18,7 +18,13 @@ public class CurencyChange : MonoBehaviour
     }
 
     public string amountCurrency;
+    public bool amountCurrencyBool = false;
 
+    public void AmountCurrency()
+    {
+        gameObject.GetComponent<Text>().text = amountCurrency;
+        WinnerManager.instance.isWinAmountBoll = true;
+    }
 
     private void OnEnable()
     {
@@ -27,12 +33,6 @@ public class CurencyChange : MonoBehaviour
         if (gameObject.name == "DaapxCount")
         {
             gameObject.GetComponent<Text>().text = GameObject.FindGameObjectWithTag("GetCaller").GetComponent<PlayerStorage>().win_amount;
-        }
-        
-
-        if (gameObject.name == "Dappx - Text")
-        {
-            gameObject.GetComponent<Text>().text = amountCurrency;
         }
     }
 }

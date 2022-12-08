@@ -20,7 +20,7 @@ public class PostPlaveBetCaller : MonoBehaviour
     {
         if (PhotonNetwork.IsMasterClient)
         {
-            aPIStorage = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>();
+            //aPIStorage = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>();
             StartCoroutine(PostPlaveBetCaller_S());
         }
         else
@@ -32,11 +32,12 @@ public class PostPlaveBetCaller : MonoBehaviour
     // 호출 정보 : message, betting_id
     public IEnumerator PostPlaveBetCaller_S()
     {
-        string url = "https://odin-api-sat.browseosiris.com/v1/betting/ace/place-bet";
+        yield return new WaitForSeconds(0.5f);
+        string url = "https://odin-api-sat.browseosiris.com/v1/betting/dappx/place-bet";
 
         // 여기선 두명의 세션 아이디를 가져와야함.
         WWWForm form = new WWWForm();
-
+        aPIStorage = GameObject.FindGameObjectWithTag("APIStorage").GetComponent<APIStorage>();
         placeBet placeBet = new placeBet();
         placeBet.players_session_id = new string[2];
         placeBet.players_session_id[0] = aPIStorage.session_id[0];

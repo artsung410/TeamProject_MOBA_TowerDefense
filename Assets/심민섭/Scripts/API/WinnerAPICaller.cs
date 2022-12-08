@@ -26,14 +26,17 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        StartCoroutine(WinnerAPICaller_S());
+        if (PhotonNetwork.IsMasterClient)
+            StartCoroutine(WinnerAPICaller_S());
+        else
+            return;
     }
     // 로딩에서 호출
 
     // 이긴 사람이 나오면 이긴 사람의 id를 가지고 호출
     public IEnumerator WinnerAPICaller_S()
     {
-        string url = "https://odin-api-sat.browseosiris.com/v1/betting/zera/declare-winner";
+        string url = "https://odin-api-sat.browseosiris.com/v1/betting/dappx/declare-winner";
 
         // 배팅 ID을 가져오고 이긴사람의 id
         WWWForm form = new WWWForm();
@@ -63,7 +66,6 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
 
             www.SetRequestHeader("api-key", aPIStorage.apiKey);
             www.SetRequestHeader("Content-Type", "application/json");
-
             yield return www.SendWebRequest();
 
             if (www.result == UnityWebRequest.Result.ConnectionError || www.result == UnityWebRequest.Result.ProtocolError)
@@ -79,8 +81,12 @@ public class WinnerAPICaller : MonoBehaviourPunCallbacks
             // 데이터 저장
             WinnerManager.instance.winAmount = jsonPlayer["data"]["amount_won"].ToString();
             Debug.Log("WinnerCaller Data Save Complited");
+            WinnerManager.instance.winner = true;
         }
+
+        Destroy(gameObject);
     }
+
 }
 
 
